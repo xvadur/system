@@ -8,6 +8,69 @@ Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny 
 
 **⚠️ KRITICKÉ:** Po vytvorení save game súboru MUSÍŠ automaticky commitnúť a pushnúť všetky zmeny na GitHub pomocou git príkazov. Toto je povinný krok - bez neho sa zmeny nezachovajú.
 
+## 0. Automatické Uloženie Promptov (POVINNÉ - PRVÝ KROK)
+
+**⚠️ KRITICKÉ:** Pred vytvorením save game MUSÍŠ automaticky uložiť všetky user prompty z aktuálnej konverzácie.
+
+### Postup:
+
+1. **Automatická extrakcia promptov z konverzácie:**
+   - Prejdi celú aktuálnu konverzáciu (od začiatku session)
+   - Identifikuj všetky user prompty (všetky správy od užívateľa)
+   - Zbieraj ich do zoznamu s metadátami
+
+2. **Uloženie cez batch funkciu:**
+   Použi Python kód na uloženie všetkých promptov naraz:
+   ```python
+   import sys
+   from pathlib import Path
+   from datetime import datetime
+   sys.path.insert(0, str(Path.cwd()))
+   
+   from scripts.save_conversation_prompts import save_prompts_batch
+   
+   # Automaticky zbier všetky user prompty z aktuálnej konverzácie
+   # (identifikuj ich z kontextu - všetky user messages v tejto session)
+   prompts_to_save = []
+   
+   # PRÍKLAD: Ak máš prístup k histórii konverzácie, iteruj cez user messages
+   # V Cursor môžeš identifikovať prompty z kontextu konverzácie
+   # Každý user prompt pridaj do zoznamu:
+   
+   # Pre každý user prompt v konverzácii:
+   # prompts_to_save.append({
+   #     'content': 'text promptu',
+   #     'metadata': {
+   #         'session': datetime.now().strftime('%Y-%m-%d'),
+   #         'source': 'savegame',
+   #         'extracted_at': datetime.now().isoformat()
+   #     }
+   # })
+   
+   # AKTUÁLNE: Použi kontext z aktuálnej konverzácie
+   # Zbier všetky user prompty, ktoré vidíš v tejto session
+   # (môžeš ich identifikovať z user_query v kontexte)
+   
+   saved_count = save_prompts_batch(prompts_to_save)
+   print(f"✅ Uložených {saved_count} promptov z konverzácie")
+   ```
+
+3. **Automatizácia:**
+   Skript automaticky:
+   - Detekuje duplikáty (porovnáva obsah promptov)
+   - Uloží len nové prompty
+   - Pridá metadáta (timestamp, source, session)
+
+**Poznámka:** 
+- Skript automaticky detekuje duplikáty a uloží len nové prompty
+- Prompty, ktoré už existujú v `prompts_log.jsonl`, sa preskočia
+- Každý prompt sa uloží s metadátami (timestamp, source: 'savegame', session dátum)
+
+**Dôležité:** 
+- Tento krok MUSÍ byť vykonaný PRED analýzou stavu a vytvorením save game súboru
+- Agent MUSÍ automaticky identifikovať všetky user prompty z aktuálnej konverzácie
+- Prompty sa ukladajú do `xvadur/data/prompts_log.jsonl` cez `MinisterOfMemory` a `FileStore`
+
 ## 1. Analýza Stavu
 Zisti aktuálne hodnoty z:
 - `xvadur/logs/XVADUR_XP.md` (XP, Level, Rank)
@@ -96,6 +159,7 @@ Ulož tento obsah do súboru: `xvadur/save_games/SAVE_GAME_LATEST.md`.
 **Dodatočné aktualizácie:**
 - Aktualizuj `xvadur/logs/XVADUR_XP.md` s finálnymi XP hodnotami (ak sa zmenili)
 - Pridaj záznam do `xvadur/logs/XVADUR_LOG.md` o vytvorení save game
+- **Overenie promptov:** Skontroluj, že všetky prompty z konverzácie sú uložené v `prompts_log.jsonl`
 
 **⚠️ POZOR:** Po uložení súborov MUSÍŠ okamžite pokračovať na krok 4 (Git Commit & Push).
 
