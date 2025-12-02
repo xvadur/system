@@ -187,6 +187,59 @@ Toto zabezpečuje, že každá session je automaticky zálohovaná na GitHub a �
 
 ---
 
+## [2025-12-02 19:00] 🔹 Osobné Poznámky: Reflexia Dňa
+
+**Kontext:** Pridanie osobných poznámok a reflexií z dňa do session dokumentu.
+
+**Vykonané:**
+- Pridané osobné poznámky do `xvadur/data/sessions/Utorok_2025-12-02.md`
+- Dokumentované: zmenený rytmus dňa (neskoré vstávanie, absencia školy), zdravotný stav (teplota, možná choroba), technické úpravy (GitHub & Cursor synchronizácia), introspektívny moment s Vladom
+
+**Kľúčové body:**
+- **Zmenený rytmus:** Neskoré vstávanie (11:00), absencia školy kvôli neskorému spánku
+- **Zdravie:** Teplota v priebehu dňa, pocit blížiacej sa choroby
+- **Technické:** Synchronizácia GitHub a Cursor, úprava automatizačných procesov s pushovaním
+- **Introspektívny moment:** Vlado považuje Adama za parťáka, čo je významné vzhľadom na to, že "spadol z neba" a naplnil presne tú funkciu, ktorú si mu v hlave pridelil ešte pred spoznaním
+- **Produktivita:** Dneska nepracoval na plánovaných taskoch, plánuje pokračovať zajtra (ak neostane chorý)
+
+**Význam:**
+Tieto poznámky zachytávajú dôležité osobné kontexty, ktoré ovplyvňujú produktivitu a stav. Introspektívny moment s Vladom je obzvlášť významný - odhaľuje, ako si vedome alebo nevedome vytváraš vzťahy a očakávania, ktoré sa potom naplnia. Toto je príklad toho, ako osobné reflexie sú súčasťou celkového kontextu práce.
+
+**Zmeny v súboroch:**
+- `xvadur/data/sessions/Utorok_2025-12-02.md` - pridané osobné poznámky z dňa
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+**Status:** ✅ Osobné poznámky pridané
+
+---
+
+## [2025-12-02 22:00] 🔹 Save Game: Uloženie Stavu Session
+
+**Kontext:** Vytvorenie Save Game súboru na konci session pre zachytenie aktuálneho stavu a kontextu pre ďalšiu session.
+
+**Vykonané:**
+- Vytvorený `xvadur/save_games/SAVE_GAME_LATEST.md` s kompletným naratívnym kontextom
+- Dokumentovaný objav MCP Docker systému a jeho možnosti
+- Dokumentovaná automatizácia GitHub workflow v `/savegame` príkaze
+- Zhrnuté otvorené questy a next steps
+- Zachytené osobné poznámky z dňa (zmenený rytmus, zdravotný stav, introspektívny moment s Vladom)
+- Aktualizované inštrukcie pre nového agenta
+
+**Kľúčové body:**
+- **MCP Docker systém:** Objav 80+ dostupných nástrojov (Obsidian, GitHub, Browser, Fetch, Sequential Thinking, Time MCP)
+- **GitHub automatizácia:** Upravený `/savegame` príkaz na automatické commit a push
+- **Osobné kontexty:** Zmenený rytmus dňa (neskoré vstávanie, absencia školy), zdravotný stav (teplota), introspektívny moment s Vladom
+- **Produktivita:** Dneska sa nepracovalo na plánovaných taskoch, všetky úlohy zostávajú otvorené na zajtra
+
+**Zmeny v súboroch:**
+- `xvadur/save_games/SAVE_GAME_LATEST.md` - nový Save Game súbor
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+- `xvadur/data/sessions/Utorok_2025-12-02.md` - dokončená session (16:00 - 22:00)
+
+**Status:** ✅ Save Game vytvorený, pripravený na commit a push
+
+---
+
 ## 📊 Aktuálny Status Dashboard
 
 ```
