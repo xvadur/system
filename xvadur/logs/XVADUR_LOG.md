@@ -60,16 +60,14 @@ Kľúčový insight: *"IDE je skutocne miesto kde by sa mala vykonavat interakci
 2. **Zjednotenie príkazov:** Synchronizácia `/loadgame`, `/savegame`, `/xvadur`
 3. **Aktualizácia ciest:** `xvadur_obsidian/` → `xvadur/`, zjednotená štruktúra
 4. **Best practices:** Dokumentácia efektívneho používania AI v Cursor IDE
-5. **Session dokumentácia:** Vytvorenie `session_2025-12-01_20-00.md`
-6. **Plán na zajtra:** Vytvorenie `plan_2025-12-02.md` s detailným plánom
-7. **Git inicializácia:** Vytvorenie git repozitára a push do GitHub
+5. **Session dokumentácia:** Vytvorenie `Pondelok_2025-12-01.md`
+6. **Git inicializácia:** Vytvorenie git repozitára a push do GitHub
 
 **Zmeny v súboroch:**
 - `.cursor/commands/savegame.md` - aktualizované názvoslovie a cesty
 - `.cursor/commands/loadgame.md` - zjednotená štruktúra a cesty
 - `.cursor/commands/xvadur.md` - synchronizované s novým workflow
-- `xvadur/data/sessions/session_2025-12-01_20-00.md` - nový session dokument
-- `xvadur/data/sessions/plan_2025-12-02.md` - plán na zajtrajšiu session
+- `xvadur/data/sessions/Pondelok_2025-12-01.md` - nový session dokument
 
 **Vizualizácie:**
 
@@ -116,6 +114,48 @@ Kľúčový insight: *"IDE je skutocne miesto kde by sa mala vykonavat interakci
 ║  ⭐ TOTAL XP:               [█████░░░░░░░░░░░░░░░] 2.50 XP      ║
 ╚═══════════════════════════════════════════════════════════════╝
 ```
+
+---
+
+## [2025-12-02 16:00] 🔹 Nová Session: Pokračovanie Práce na xvadur_runtime
+
+**Kontext:** Začiatok novej session pokračujúcej v práci z predchádzajúcej session (2025-12-01). Hlavnými úlohami sú finalizácia xvadur_runtime konfigurácie, vytvorenie xvadur_profile a práce na aktívnych projektoch.
+
+**Hlavné úlohy:**
+- Dokončiť xvadur_runtime konfiguráciu (vysoká priorita)
+- Vytvoriť xvadur_profile (vysoká priorita)
+- Agentworkflow ElevenLab (#recepcia_projekt)
+- XP System v2.0
+- Organizácia záznamu cvičenia (#cvicenie)
+- Upratať v celom repozitáry
+
+**Syntéza:**
+Táto session pokračuje v systematickej práci na finalizácii IDE prostredia a vylepšení workflow. Dôraz je kladený na dokončenie základných konfiguračných úloh pred pokračovaním v projektovej práci.
+
+**Zmeny v súboroch:**
+- `xvadur/data/sessions/Utorok_2025-12-02.md` - nový session dokument
+- `xvadur/logs/XVADUR_LOG.md` - aktualizovaný s novým záznamom
+- Aktualizované odkazy na session dokumenty v súvisiacich súboroch
+
+**Status:** 🟢 Aktívna
+
+---
+
+## [2025-12-02 17:00] 🔹 Save Game: Uloženie Stavu Session
+
+**Kontext:** Vytvorenie Save Game súboru na konci session pre zachytenie aktuálneho stavu a kontextu pre ďalšiu session.
+
+**Vykonané:**
+- Vytvorený `xvadur/save_games/SAVE_GAME_LATEST.md` s kompletným naratívnym kontextom
+- Dokumentovaný objav MCP Docker systému a jeho možnosti
+- Zhrnuté otvorené questy a next steps
+- Aktualizované inštrukcie pre nového agenta
+
+**Zmeny v súboroch:**
+- `xvadur/save_games/SAVE_GAME_LATEST.md` - nový Save Game súbor
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+**Status:** ✅ Save Game vytvorený
 
 ---
 
