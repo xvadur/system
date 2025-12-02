@@ -477,11 +477,42 @@ Každý záznam obsahuje:
 **Kontext:** Ukončenie dnešnej session (Utorok, 2. december 2025, 16:00 - 00:00).
 
 **Hlavné body:**
+- ✅ MCP Docker systém - objavený a začatý používať (80+ nástrojov)
 - ✅ Automatické ukladanie promptov - finalizované a overené
 - ✅ Identity Map vytvorená (`xvadur_profile.md`)
 - ✅ Systém pripravený na použitie (16 promptov uložených)
+- ✅ Session dokument aktualizovaný s MCP sekciou
 - ⚠️ Quest: Vlado - recepčná skoro hotová, ale oddáva sa dokončenie
 
 **Status:** Session ukončená a uložená do `SAVE_GAME_LATEST.md`.
+
+---
+
+## [2025-12-02 00:30] 🔹 Aktualizácia Dokumentácie: MCP Docker Systém
+
+**Kontext:** Aktualizácia všetkých log a savegame dokumentov s informáciami o MCP Docker systéme a dnešnej session.
+
+**Vykonané:**
+- Aktualizovaný `xvadur/data/sessions/Utorok_2025-12-02.md` s kompletnou sekciou o MCP Docker systéme
+- Pridaná úloha #1: MCP Docker Systém - Objav a Použitie do dokončených úloh
+- Pridaný "MCP Docker Systém - Objav" do kľúčových momentov
+- Rozšírená sekcia "Priebežné Poznámky" o použití MCP v session
+- Aktualizovaný `xvadur/logs/XVADUR_LOG.md` s novým záznamom
+- Aktualizovaný `xvadur/save_games/SAVE_GAME_LATEST.md` s MCP informáciami
+
+**Kľúčové body:**
+- **MCP Docker systém:** Objav 80+ dostupných nástrojov (Obsidian MCP, GitHub MCP, Browser MCP, Fetch MCP, Sequential Thinking MCP, Time MCP)
+- **Použitie v session:**
+  - GitHub MCP: Merge PR #3 (MinisterOfMemory systém)
+  - GitHub MCP: Automatizácia git workflow v `/savegame`
+  - Identifikovaný strategický potenciál pre rapid prototyping a service integration
+- **Význam:** "Ľahko operabilný MCP do ktorého môžem pohodlne pridávať ďalšie funkcie"
+
+**Zmeny v súboroch:**
+- `xvadur/data/sessions/Utorok_2025-12-02.md` - pridaná MCP sekcia
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+- `xvadur/save_games/SAVE_GAME_LATEST.md` - aktualizovaný s MCP informáciami
+
+**Status:** ✅ Všetky dokumenty aktualizované
 
 ---
