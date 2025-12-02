@@ -1,0 +1,15 @@
+{
+  "date": "2025-07-21",
+  "timestamp": "2025-07-21T01:00:45.930000+00:00",
+  "index": 1,
+  "text": "Peter_identita xvadur_identita \n  \n  nizzsie je moja komunikacia s petom o probeleme ktory rtiesime od paitka, teraz je nedela 3 hodiny rano (zas dopice je vela hodin a ja pracujem, ale je to nutne a potrebne) ani ja ani on sme nevedeli co je zle a domnieval som sa ze som kokot, ale nakoniec som prisiel troubleshootingom velm narocnym ze ako to vlastne je a preco to nefunguje.. na toto som prisiel \n  \n  —-\n  \n  Peťo už viem kde je problem.. na mojom personalnom n8n mi ide worflow dobre, vytvoril som tam mockup data a dojde mi notifikacia na slack.V tom firemnom n8n ja neviem vytvarat credentials lebo nemam prava na to. To je jedine vyvsvetlenie preco to nejde na firemnom ani mne ani tebe a preco to na mojom personalnom ide. Lebo tam som si vytvaral bota ja.\n  \n  2:56\n  \n  a je to aj odpoved na otazku, ze preco som od teba dostal notifikaciu, ked nejsi pri pocitaci, lebo v tom firemnom worflow kde si mi robil github, ked som tam skusal ci to funguje tak to malo tvojho bota a tak mi poslal notifikaciu\n  \n  2:58\n  \n  cize ja to neviem teraz robit kvoli tomu z enemam pristupy na gtihubu a n8n.. mi tak vychadza podla toho co mi ai hovoria.. a ze som sa ich pytal niekolko",
+  "word_count": 213,
+  "source_path": "data/chronology/2025-07-21.md",
+  "diacritic_ratio": 0.0017,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

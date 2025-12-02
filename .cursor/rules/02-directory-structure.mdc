@@ -1,0 +1,61 @@
+---
+description: Štruktúra projektu a umiestnenie súborov v Magnum Opus
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Directory Structure
+
+Toto pravidlo definuje štruktúru projektu a umiestnenie súborov.
+
+## Hlavná Štruktúra
+
+```
+Magnum Opus/
+├── xvadur_agent/          # Frontend & Backend
+│   ├── xvadur_console/    # React frontend (TypeScript, Vite, TailwindCSS)
+│   └── mcp/               # MCP servers (Python)
+├── xvadur_brave/          # Data Science & Analysis
+│   ├── data/              # Datasets, chronologies, derived data
+│   ├── scripts/           # Python skripty pre analýzu
+│   └── docs/              # Dokumentácia
+├── xvadur_obsidian/       # Knowledge Base (Obsidian vault)
+│   ├── chat/              # Konverzácie, checkpointy
+│   ├── xvadur/            # Xvadur konverzačný režim
+│   └── ...                # Ďalšie Obsidian poznámky
+├── .cursor/               # Cursor konfigurácia
+│   ├── commands/          # Custom commands
+│   └── rules/             # Cursor Rules (tento adresár)
+└── .cursorrules           # Globálny systémový prompt
+```
+
+## Pravidlá Umiestnenia
+
+### Frontend (`xvadur_agent/xvadur_console/`)
+- **Komponenty:** `components/` - React komponenty (priamo v root, nie v `src/`)
+- **Utils:** `utils/` - pomocné funkcie
+- **Types:** `types.ts` - TypeScript typy (root súbor)
+- **Services:** `services/` - API služby (napr. `geminiService.ts`)
+- **Data:** `data/` - mock dáta a konfigurácia
+- **Config:** `vite.config.ts`, `tsconfig.json` - konfiguračné súbory (root)
+
+### Backend (`xvadur_agent/mcp/`)
+- **MCP Servers:** `mcp/servers/` - MCP server implementácie
+- **Examples:** `mcp/examples/` - príklady a šablóny
+- **Utils:** `mcp/utils/` - pomocné funkcie
+
+### Data Science (`xvadur_brave/`)
+- **Data:** `data/` - všetky dátové súbory
+- **Scripts:** `scripts/` - Python skripty
+- **Docs:** `docs/` - dokumentácia
+
+### Knowledge Base (`xvadur_obsidian/`)
+- **Chat:** `chat/` - konverzácie, checkpointy
+- **Xvadur:** `xvadur/` - xvadur konverzačný režim
+- **Obsidian:** štandardná Obsidian štruktúra
+
+## Dôležité
+- **Nekrižovať hranice:** Frontend kód nepatrí do backendu a naopak
+- **Respektovať štruktúru:** Nové súbory musia byť v správnych adresároch
+- **Konzistentnosť:** Používať rovnakú štruktúru naprieč projektom
+

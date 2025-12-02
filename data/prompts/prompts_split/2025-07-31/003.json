@@ -1,0 +1,15 @@
+{
+  "date": "2025-07-31",
+  "timestamp": "2025-07-31T01:35:07.957000+00:00",
+  "index": 3,
+  "text": "nemam permisie na githube cize neviem otvarat repositare, na githube nie su ziaden public repo. vies mi povedat ci sa v komunikacii nachadzaju konkretne githuby na konkretne produkty? \n  \n  peter mi dal konkretne mena ktore chce do aplikacei ktoru robim. ja neviem kto je externy a kto je kmenovy, preto by som to nechal tak na teraz \n  \n  zisitli sme ze zopar ludi obsluhuje pomerne velke \"chunky\" - resp neviem priradit iba jedneho k jednemu produktu tym padom by bolo vela veci duplicitne. dylan je napisany v organisation dashboard ako designer, staci to? \n  \n  peter explicitne nepovedal ze chce v appke okolo produktu vymenovany cely team, chcel vyslovene iba leadera, resp to povedal \n  \n  navrhujem to nechat v tejto fazy v akej to mám s tym ze dokoncim polish. Spisem zoznam veci ktrore mi bud chybaju alebo nie su explicitné. myslim si ze som sa posunul od \"asi ta vyhodim lebo nejsi efektivny\" k funkcnemu a skoro produkcnemu navrhu. je 31.7 03:30 - preto by som si isiel teraz lahnut. aby som sa aspon o 8 zobudil. Napisem petovy v akom som stave a co potrebujem potvrdit alebo doplnit, lebo naozaj akoze.. aby som ja prehaldaval kompletne celu slack komuniakciu aby osm nasiel dva udaje to ozaj nejsom ochotny, v zmysle.. strasne vela veci robim workaroundom a strasne ma to stresuje.. je strasne mile ze mi peter natolko veri ze mi nedava kompletne informacie ale myslim si z eked mu napisem kratku notifikaciu o tom ze chcem aby mi potvrdil alebo vyvratil daco tak sa nemoze hnevat. Spominal vsak, že sa mám pytat koho potrebujem. Budem pisat olehovy za tie kontaky na developerov a martinovy za api colekcie, hoci api som proriesil tak ze som v postman nasiel nejake api k autoapply. cize by osm mohol napisat aj do toho internal ze potrebujem veci. co myslis?",
+  "word_count": 302,
+  "source_path": "data/chronology/2025-07-31.md",
+  "diacritic_ratio": 0.0023,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

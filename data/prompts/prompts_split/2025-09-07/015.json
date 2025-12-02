@@ -1,0 +1,15 @@
+{
+  "date": "2025-09-07",
+  "timestamp": "2025-09-07T18:49:50.107000+00:00",
+  "index": 15,
+  "text": "l som na topm cely den, aby som to dal do takejto podoby, robil som to na 6 drafotv a kadzy bol iny, zistil som jak je tazke uuchopit temu putavo ale nastastie je to len skill, ktory si dokkonca teraz viem cely automatizovat., to bude skusatt zajtra, \n  \n  viem co som robil na to aby osm zsiksal hentaky text, a skusim to zajtra navhrnut ako worflow a skusim si to sprtavit cez n8n, agregaciu dat, zdrojovanie, relevbantne data a grafy, nejyk draft sayntezy a je to potom len okomentujem. \n  \n  prestavujem si to tak, ze to bude sucast mojho vysveneho workflow, ktory zoberie moje dlhe texty,m premeni ich na strukturovany zapis, bavime sa o razsahu niekolykch 100 stran textu alebo uvodny myslienku na pol strtany, \n  \n  text sa zoebre extrahuju sa z neho halvne body, urobi sa outline a postupne sa naplni obsahom podla mojich uvah, ak sa umienim o ai adopcii, worflow mi k tomu da dva relevantne zdroje s komentarom \n  \n  to sa posle dalej, vysklada sa korpus, nieco ako deep research na chatgpt, bude z toho cca taky rozsah materialu do 10 stran sumarizacie, aby osm mal dostatok materialu na komentovanie a neprisiel som o svoje uvahy",
+  "word_count": 197,
+  "source_path": "data/chronology/2025-09-07.md",
+  "diacritic_ratio": 0.0,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

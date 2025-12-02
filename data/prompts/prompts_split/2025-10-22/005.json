@@ -1,0 +1,15 @@
+{
+  "date": "2025-10-22",
+  "timestamp": "2025-10-22T16:00:02.288000+00:00",
+  "index": 5,
+  "text": "mozno som spravil chybu v tom, ze ked som to skusal, tak som dal production uril do toolu, a potom som webhook klikol na listen, cize webhook cakal na test url, ale prisla mu vzdy production. \n  \n  lebo teraz mi to preslo, ked osm nedal listening, a nasiel som to v executions, ze tie data z elevenlabu prisli. \n  \n  a kedze ja osm cakal, kedy sa mi vo webhooku objavia data, a nehladal som v executions, tak som nevedel ze to funguje.",
+  "word_count": 80,
+  "source_path": "data/chronology/2025-10-22.md",
+  "diacritic_ratio": 0.0,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

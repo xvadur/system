@@ -1,0 +1,43 @@
+{
+  "session_id": "2025-12-01_11:00",
+  "date": "2025-12-01",
+  "duration": "45min",
+  "metrics": {
+    "word_count": 4754,
+    "prompt_count": 1,
+    "complexity": 10.0,
+    "temporal_references": 33,
+    "recursive_depth": 3,
+    "sentiment": "positive",
+    "rag_queries": 0
+  },
+  "xp": {
+    "earned": 6.2,
+    "breakdown": {
+      "introspective_depth": 2.0,
+      "prompt_count_bonus": 0.0,
+      "complexity_bonus": 0.5,
+      "temporal_refs": 1.5,
+      "recursive_depth": 1.2,
+      "vulnerability_bonus": 1.0,
+      "rag_queries": 0.0
+    }
+  },
+  "topic": "Identity Map & Chronologická Analýza: Od Sanitára k Architektovi",
+  "backlinks": [
+    "RAG_SYSTEM_ARCHITECTURE",
+    "UNIQUENESS_ASSESSMENT",
+    "Quest: Vlado",
+    "xvadur_profile",
+    "NEMOCNICA_CHRONOLOGY",
+    "RECEPCIA_VLADO_CHRONOLOGY",
+    "CHRONOLOGICAL_MAP_2025",
+    "AI_CHRONOLOGY",
+    "RAG_INTEGRATION_COMPLETE",
+    "CYCLE_COMPLETION_DECEMBER_2025",
+    "Identity Map",
+    "The Anti-Fragile Architect",
+    "KOREŇOVÝ SYSTÉM",
+    "VÝCVIKOVÉ TÁBORY"
+  ]
+}

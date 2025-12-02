@@ -1,0 +1,15 @@
+{
+  "date": "2025-07-25",
+  "timestamp": "2025-07-25T17:13:00.795000+00:00",
+  "index": 2,
+  "text": "potrebujem aby si mi vysvetlil,  co mi ten amrtin poslal, je to nejaky juian. dal mi toto, a nerozumiem tomu: \n  \n  DEV api key: 6JiV6anNpfPwbsvGxulgvg\n  \n  PROD api key: SbI5sFk5bG4uecudGEHwBKindMYcHF99fkNEIgCjInc\n  \n  Hello @xvadur,  I've implemented base endpoints for the dashboard - they can be seen under the queues resource in our internal api.\n  \n  The authentication is api key based, I'm sending you the api keys for dev and prod environments to DMs. If you have any questions or requests don't hesitate to text me. (edited)",
+  "word_count": 82,
+  "source_path": "data/chronology/2025-07-25.md",
+  "diacritic_ratio": 0.0,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

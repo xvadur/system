@@ -1,0 +1,15 @@
+{
+  "date": "2025-07-28",
+  "timestamp": "2025-07-28T12:34:58.251000+00:00",
+  "index": 10,
+  "text": "INT-17: New page in retool -> Processes teraz ideme robit toto. nahral som ti tam screenshot, to je sucastny stqav ale nepaci sa mi to. mal som tam problem, pretoze tabulk ataha data z databazy. petoi potrebuje moznost pridania udajov do tabulky. tabulka ma nativnu moznost pridavania riadkov, akurat je tam problem s tym, že su tam dva linky aktualne, slack handle - to vyriesim cez button, uz viem ako asi, a potom tam chcel pdfko, ktore je v tabulke napisane ako url, a pdfko je ulozene v retool databaze. cize ked potom chcem pridat riadok, tak tam neviem z tabulky pridat link na sack ani na pdfko lebo viem pridavat iba String formát. preto som spravil samostatnu sekciu, pomocou ktorej, ked sa stalci tlacidlo tak sa data odoslu do databazy a zobrazia sa k tabulke. je to workaround ale, mam pocit ze by sa to malo dat spravti jednoduchsie",
+  "word_count": 150,
+  "source_path": "data/chronology/2025-07-28.md",
+  "diacritic_ratio": 0.0024,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

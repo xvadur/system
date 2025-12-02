@@ -1,0 +1,15 @@
+{
+  "date": "2025-09-11",
+  "timestamp": "2025-09-11T12:50:58.656000+00:00",
+  "index": 2,
+  "text": "kukal som dokopy asi 15 hodin tutoriualov a kazdy ten debilny turorial bol o tom co je to n8n, co su to nodes, a ako sa spravi 3 krokovy workflow na zistenie pocasa, alebo zistenie poslednych emailov.. myslim si ze je to aj kvoli tomu ze tyto youtubery ktoryzacali predavat automatizacie n8n tak sa to nauicili cez tutorialy, naucili sa s tym pracovvat, automatizacie predavaju a publikum si prestuju na jednoiduchych tutorialoch,. aby im potom ludia isli na ich platenu platformu, lebo nejak zarabat musia, a v tzej komunite potom vytvaraju dalsi obsah detajlnejsi, pre ludi ktory to potom tiez dalej vyuzivaju. \n  \n  su to vacsinou amrericke komunity s globalnym presahom samozrejme kedez maju 500k, 100k na youtube a na skool.com maju tak 2000, čo je dost. \n  \n  ale nevysvetluju napriklad osobne vyuzitie, ktore by zasahovalo do cloveka ako takeho, lebo oni sami to nerobia. \n  \n  maju nejaky prompt a je vacsinou kvalitny, ale nevysvetluju ten samotny prompt co dokaze. lebo ten pormpt ktory vkladas do agenta. ten rpmpt v skutocnosti dokaze obsluhovat velku paletu veci a ja neviem jakych. \n  \n  ked som robil ten prvy worfkflow, tak som vedel z textu do 10000 slov extrahovat cokolvek som chcel, rozdelit to na segmenty. proste extrakcia dat z textu podla zadania. \n  \n  to si viem predstavit ze by mi mohlo byt velmi uzitocne, pretoze tak by sa mohol trocha zmenit sposob jakym sa pisu newslettre\n  \n  v mojom pripade by to vyzeralo tak, ze worflow by vedel detajlne analyzovat text podla fakt ze roznych a vela parametrov, hladat v tom sentiment, proste vsetko, pocet slov, logickych celkov psychologickych parametrov atd, mohlo by to tam pridat automaticky metadata a subezne to ukladat na google sheets. potom by sa z toho mohol\n  \n  kazdy parameter ktory by suvisel s dalsim researchom ako naprikald. ak sa zmienim o ai bubline, vojne v afganistane a vojnou vo vietname tak sa identifikuju jednotlive vrstvy, tieto vrstvy sa zanalyzuju a vyhodnotia samostatne v kontexte povodneho textu a predchadzajucich resp ostatnych prac agenta aby ziadny agent nemal kontext celej pipeline, a putuje cely jeden  korpus putuje do nejakeho finalizatora ktory prideli strukturu a polishuje celu analyzu. \n  \n  cize na zaklade mojho textu vznikne podrobny rozbor, ktory mi poskytne bohaty korpus informacii ktore budem moct potom dalej pouzit alebo z toho napisat newsletter",
+  "word_count": 376,
+  "source_path": "data/chronology/2025-09-11.md",
+  "diacritic_ratio": 0.0004,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

@@ -1,0 +1,67 @@
+# Common
+.DS_Store
+.env
+.env.local
+.env.*.local
+.venv/
+.idea/
+.vscode/
+node_modules/
+dist/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+ENV/
+env/
+.pytest_cache/
+**/site-packages/
+**/.venv/
+**/temp_*/
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+*.jsonl
+**/cursor_activity.jsonl
+**/activity.jsonl
+
+# Data files (large) - ale zachovať RAG index a prompty
+# **/data/cursor_activity.jsonl
+# **/data/*.jsonl
+
+# Editor swap files
+*~
+
+# Temporary files
+temp_*
+*.tmp
+
+# Obsidian
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Python virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/settings.json
+.vscode/launch.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+

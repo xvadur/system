@@ -1,0 +1,15 @@
+{
+  "date": "2025-10-22",
+  "timestamp": "2025-10-22T16:40:40.113000+00:00",
+  "index": 6,
+  "text": "cize.. ano, yes.. pochopil som ako funguje webhook. je to uspech, lebo islo ma z toho jebnut. vcera a dnes. a dnes vecer som na to prisiel. cely cas so to robil dobre, ale zabudol som na tento detajl. \n  \n  teraz viem cez parametre nastavit hocijaku velicinu aby agent agregoval od volajuceho. \n  \n  podarilo sa mi to vyriesit aj ked je to totalna blbost… teraz uz to bude iba o prompte. \n  \n  prompt proste ziska udaje od pacienta a spravi mu rezervaciu",
+  "word_count": 79,
+  "source_path": "data/chronology/2025-10-22.md",
+  "diacritic_ratio": 0.0,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

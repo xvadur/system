@@ -1,0 +1,68 @@
+---
+description: Tech stack a osvedčené postupy pre React, TypeScript, Python
+globs: ["**/*.tsx", "**/*.ts", "**/*.jsx", "**/*.js", "**/*.py"]
+alwaysApply: false
+---
+
+# Tech Stack
+
+Toto pravidlo definuje technológie a osvedčené postupy používané v projekte.
+
+## Frontend (`xvadur_agent/xvadur_console/`)
+
+### Framework & Build
+- **React:** 19.2.0+ (funkcionálne komponenty s hooks, **NIE class components**)
+- **TypeScript:** 5.8.2+ (vždy používať typy, **NIE `any`**)
+- **Vite:** 6.2.0+ (build tool)
+- **TailwindCSS:** Utility-first CSS (používať Tailwind namiesto custom CSS)
+
+### AI & APIs
+- **Google GenAI SDK:** `@google/genai` ^1.30.0
+- **API Integration:** Vždy používať TypeScript typy pre API responses
+
+### UI Libraries
+- **Icons:** Lucide React ^0.554.0
+- **Charts:** Recharts ^3.4.1
+
+### Best Practices
+- **Funkcionálne komponenty:** Vždy používať hooks, nie class components
+- **TypeScript:** Vždy definovať typy, používať `interface` alebo `type`
+- **Hooks:** Používať React hooks (`useState`, `useEffect`, `useCallback`, `useMemo`)
+- **Error Handling:** Vždy ošetriť chyby (try-catch, error boundaries)
+- **Accessibility:** Respektovať a11y best practices (ARIA labels, keyboard navigation)
+
+## Backend (`xvadur_agent/mcp/`)
+
+### Language & Runtime
+- **Python:** 3.10+ (type hints, **NIE `Any`**)
+- **MCP SDK:** Model Context Protocol SDK
+- **Uvicorn/Starlette:** ASGI server
+
+### Best Practices
+- **Type Hints:** Vždy používať type hints (`def func(param: str) -> int:`)
+- **Error Handling:** Vždy ošetriť výnimky (try-except)
+- **Documentation:** Docstrings pre všetky funkcie a triedy
+- **Clean Code:** Single responsibility, jasné názvy, pure funkcie kde je to možné
+
+## Data Science (`xvadur_brave/`)
+
+### Language
+- **Python:** 3.10+ (type hints, pandas, numpy, scikit-learn)
+
+### Libraries
+- **FAISS:** Vector database pre RAG
+- **OpenAI:** Embeddings API
+- **Pandas/NumPy:** Data analysis
+
+### Best Practices
+- **Type Hints:** Vždy používať type hints
+- **Error Handling:** Vždy ošetriť chyby
+- **Documentation:** Docstrings pre všetky funkcie
+
+## Dôležité Zákazy
+- ❌ **NIE class components** v React (len funkcionálne komponenty)
+- ❌ **NIE `any`** v TypeScript (vždy konkrétne typy)
+- ❌ **NIE legacy patterns** (staré React API, staré Python patterns)
+- ❌ **NIE custom CSS** ak existuje Tailwind utility
+- ❌ **NIE `Any`** v Python (vždy konkrétne typy)
+

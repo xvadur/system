@@ -1,0 +1,40 @@
+{
+  "session_id": "2025-12-01_09:45",
+  "date": "2025-12-01",
+  "duration": "1h 30min",
+  "metrics": {
+    "word_count": 7160,
+    "prompt_count": 1,
+    "complexity": 9.5,
+    "temporal_references": 6,
+    "recursive_depth": 3,
+    "sentiment": "positive",
+    "rag_queries": 0
+  },
+  "xp": {
+    "earned": 6.19,
+    "breakdown": {
+      "introspective_depth": 2.00,
+      "prompt_count_bonus": 0.00,
+      "complexity_bonus": 0.45,
+      "temporal_refs": 1.50,
+      "recursive_depth": 1.20,
+      "vulnerability_bonus": 1.00,
+      "rag_queries": 0.00
+    }
+  },
+  "topic": "Transformačný Moment: Ludwig AI, MCP & Emocionálny Prielom",
+  "backlinks": [
+    "RAG_SYSTEM_ARCHITECTURE",
+    "RECEPCIA_VLADO_CHRONOLOGY",
+    "Quest: Vlado",
+    "CYCLE_COMPLETION_DECEMBER_2025",
+    "RAG_INTEGRATION_COMPLETE",
+    "xvadur_profile",
+    "UNIQUENESS_ASSESSMENT",
+    "CHECKPOINT_LATEST",
+    "Heavy is the Crown",
+    "HISTORIC_EVENT_OBSIDIAN_MCP_FIXED",
+    "SYNCHRONIZATION_2024_2025"
+  ]
+}
