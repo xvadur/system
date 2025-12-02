@@ -159,6 +159,34 @@ Táto session pokračuje v systematickej práci na finalizácii IDE prostredia a
 
 ---
 
+## [2025-12-02 18:00] 🔹 GitHub Integrácia: Automatizácia Save Game Workflow
+
+**Kontext:** Užívateľ požadoval, aby `/savegame` automaticky posielal zmeny na GitHub podľa toho, čo sa robilo v session.
+
+**Vykonané:**
+- Upravený `.cursor/commands/savegame.md` s automatickými git operáciami
+- Pridané jasné inštrukcie pre agenta, že git commit a push sú povinné
+- Dokumentované, čo sa automaticky pushne (save game, logy, session dokumenty, všetky zmeny)
+- Pridané príklady commit messages a troubleshooting poznámky
+
+**Zmeny v súboroch:**
+- `.cursor/commands/savegame.md` - rozšírený o automatické git operácie
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+**Technické detaily:**
+- Post-commit hook (`.git/hooks/post-commit`) automaticky pushne zmeny po commite
+- Agent musí použiť `run_terminal_cmd` na vykonanie: `git add -A`, `git commit`, `git push`
+- Všetky zmeny v workspace sa automaticky commitnú a pushnú pri `/savegame`
+
+**Význam:**
+> *"Chcem aby práca s GitHubom bola naviazaná na save game. Keď dám savegame, tak sa veci odoslu na github, podla toho co sme robili"*
+
+Toto zabezpečuje, že každá session je automaticky zálohovaná na GitHub a ďalšia session má vždy aktuálny kontext.
+
+**Status:** ✅ GitHub integrácia dokončená
+
+---
+
 ## 📊 Aktuálny Status Dashboard
 
 ```

@@ -6,6 +6,8 @@ description: Uloží aktuálny kontext konverzácie, stav gamifikácie a naratí
 
 Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny stav konverzácie a gamifikácie, aby mohol byť plynule načítaný v novej session.
 
+**⚠️ KRITICKÉ:** Po vytvorení save game súboru MUSÍŠ automaticky commitnúť a pushnúť všetky zmeny na GitHub pomocou git príkazov. Toto je povinný krok - bez neho sa zmeny nezachovajú.
+
 ## 1. Analýza Stavu
 Zisti aktuálne hodnoty z:
 - `xvadur/logs/XVADUR_XP.md` (XP, Level, Rank)
@@ -62,29 +64,85 @@ Ulož tento obsah do súboru: `xvadur/save_games/SAVE_GAME_LATEST.md`.
 - Aktualizuj `xvadur/logs/XVADUR_XP.md` s finálnymi XP hodnotami (ak sa zmenili)
 - Pridaj záznam do `xvadur/logs/XVADUR_LOG.md` o vytvorení save game
 
-## 4. Git Commit & Push (Automatické)
-Po vytvorení save game súboru:
-1. **Pridaj súbor do git:**
+**⚠️ POZOR:** Po uložení súborov MUSÍŠ okamžite pokračovať na krok 4 (Git Commit & Push).
+
+## 4. Git Commit & Push (Automatické - POVINNÉ)
+
+**⚠️ DÔLEŽITÉ:** Po vytvorení save game súboru MUSÍŠ automaticky commitnúť a pushnúť všetky zmeny na GitHub.
+
+### Postup:
+
+1. **Zisti, čo sa zmenilo:**
+   - Použi `git status` alebo `git status --short` na zistenie všetkých zmien
+   - Zahrň všetky zmenené súbory (nie len save game)
+
+2. **Pridaj všetky zmeny do git:**
    ```bash
+   git add -A
+   # alebo konkrétne súbory:
    git add xvadur/save_games/SAVE_GAME_LATEST.md
    git add xvadur/logs/XVADUR_XP.md xvadur/logs/XVADUR_LOG.md
+   git add xvadur/data/sessions/*.md  # session dokumenty
+   # ... a všetky ostatné zmenené súbory
    ```
 
-2. **Vytvor commit s popisným správou:**
+3. **Vytvor commit s popisným správou:**
    ```bash
-   git commit -m "savegame: [Dátum] - [Krátky popis session]"
+   git commit -m "savegame: [Dátum] - [Krátky popis toho, čo sa robilo v session]"
    ```
+   
+   **Príklady commit messages:**
+   - `savegame: 2025-12-02 - MCP Docker objav, reorganizácia workspace`
+   - `savegame: 2025-12-02 - GitHub integrácia, automatizácia savegame workflow`
+   - `savegame: 2025-12-02 - Dokončenie xvadur_runtime, vytvorenie profilu`
 
-3. **Push na GitHub:**
-   - **Automatický push:** Post-commit hook automaticky pushne na GitHub po commite
+4. **Push na GitHub:**
+   - **Automatický push:** Post-commit hook (`.git/hooks/post-commit`) automaticky pushne na GitHub po commite
    - **Ak hook nefunguje:** Manuálne `git push origin main`
+   - **Overenie:** Po commite by sa mal hook automaticky spustiť a pushnúť zmeny
 
-**Poznámka:** Git post-commit hook (`.git/hooks/post-commit`) automaticky pushne zmeny na GitHub po každom commite. Toto zabezpečuje, že všetky zmeny sú okamžite zálohované a synchronizované.
+### Čo sa automaticky pushne:
 
-**Dokumentácia:**
+- ✅ Save game súbor (`xvadur/save_games/SAVE_GAME_LATEST.md`)
+- ✅ Aktualizované logy (`xvadur/logs/XVADUR_LOG.md`, `xvadur/logs/XVADUR_XP.md`)
+- ✅ Session dokumenty (`xvadur/data/sessions/*.md`)
+- ✅ Všetky ostatné zmenené súbory v workspace
+
+### Poznámky:
+
+- **Post-commit hook:** Automaticky pushne zmeny na GitHub po každom commite
+- **Ak hook nefunguje:** Skontroluj oprávnenia (`chmod +x .git/hooks/post-commit`)
+- **Remote:** Over, či je nastavený `git remote -v` (mal by byť `origin`)
+- **Branch:** Over, či pracuješ na správnom branchi (`git branch`)
+
+### Dokumentácia:
+
 - Automatický git push: `xvadur/config/AUTOMATIC_GIT_PUSH.md`
 - Setup hooks: `xvadur/config/GIT_HOOKS_SETUP.md`
 - Hook template: `xvadur/config/hooks/post-commit`
+
+**⚠️ KRITICKÉ:** Tento krok je povinný. Bez commitu a pushu sa zmeny nezachovajú na GitHub a ďalšia session nebude mať aktuálny kontext.
+
+### Automatické vykonanie (Použi `run_terminal_cmd`):
+
+Agent MUSÍ automaticky vykonať tieto príkazy pomocou `run_terminal_cmd`:
+
+```bash
+# 1. Zisti, čo sa zmenilo
+git status --short
+
+# 2. Pridaj všetky zmeny
+git add -A
+
+# 3. Vytvor commit s popisným správou
+git commit -m "savegame: [Dátum] - [Krátky popis toho, čo sa robilo]"
+
+# 4. Push na GitHub (hook to urobí automaticky, ale môžeš overiť)
+# Post-commit hook automaticky pushne, ale môžeš overiť:
+git push origin main
+```
+
+**Poznámka:** Post-commit hook by mal automaticky pushnúť po commite, ale ak nefunguje, manuálny push zabezpečí, že zmeny sú na GitHub.
 
 ---
 
