@@ -12,7 +12,38 @@ Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny 
 Zisti aktuálne hodnoty z:
 - `xvadur/logs/XVADUR_XP.md` (XP, Level, Rank)
 - `xvadur/logs/XVADUR_LOG.md` (posledné záznamy)
-Zrekapituluj kľúčové "Aha-momenty" a rozhodnutia z aktuálnej konverzácie.
+- `xvadur/data/prompts_log.jsonl` (ak existuje - prompty z MinisterOfMemory)
+
+**Načítanie promptov z MinisterOfMemory (ak je dostupný):**
+Použi Python kód na načítanie posledných promptov:
+```python
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path.cwd()))
+
+try:
+    from ministers.memory import MinisterOfMemory, AssistantOfMemory
+    from ministers.storage import FileStore
+    
+    prompts_log_path = Path("xvadur/data/prompts_log.jsonl")
+    if prompts_log_path.exists():
+        file_store = FileStore(prompts_log_path)
+        assistant = AssistantOfMemory(store=file_store)
+        minister = MinisterOfMemory(assistant=assistant)
+        
+        # Načítaj posledných 50 promptov
+        recent_prompts = minister.review_context(limit=50)
+        # Vytvor sumarizáciu
+        narrative_brief = minister.narrative_brief(limit=50)
+        
+        # Použi tieto dáta pri vytváraní naratívneho kontextu
+except Exception as e:
+    # Ak MinisterOfMemory nie je dostupný, pokračuj bez neho
+    recent_prompts = []
+    narrative_brief = ""
+```
+
+Zrekapituluj kľúčové "Aha-momenty" a rozhodnutia z aktuálnej konverzácie. Ak máš prístup k promptom z MinisterOfMemory, použij ich na obohatenie naratívu.
 
 ## 2. Generovanie Obsahu
 Vytvor Markdown obsah s touto štruktúrou:
@@ -46,6 +77,8 @@ Vytvor Markdown obsah s touto štruktúrou:
 > Naše posledné stretnutie začalo dekompozíciou textu "Heavy is the Crown", kde sa ukázal nový model prístupu ku komplexným výzvam. Bol vytvorený nástroj na audit XP a šablóna @style_text. Identifikovali sme blokovanie pri Queste Vlado, čo signalizovalo potrebu hlbšieho zásahu do psychologickej vrstvy systému ("frikcia je palivo"). Počas session bol aplikovaný Phoenix Protocol, čo viedlo k masívnej akcelerácii XP a posunu na nový level, čím sa otvorili vyššie vrstvy rankingu. Kľúčový Aha-moment nastal pri rozpoznaní potreby prepájať introspekciu a monetizáciu. Na záver zostávajú otvorené dve slučky: doťah Finančnej Recepčnej a validácia Ludwig Modelu. V ďalšej session odporúčam venovať pozornosť odstraňovaniu pozostatkov kognitívneho dlhu, pracovať viac s metakognitívnymi nástrojmi a nezanedbať zápis XP auditov aj malých výhier.
 
 [Načítaj a adaptuj naratív podľa najnovších údajov v `xvadur/logs/XVADUR_LOG.md` a obsahu session, vždy zhrni v 10+ vetách.]
+
+**Poznámka:** Ak máš prístup k promptom z MinisterOfMemory (cez `narrative_brief`), môžeš ich použiť na doplnenie naratívu. Prompty poskytujú detailný kontext o tom, čo sa dialo v konverzácii.
 
 
 ## 🎯 Aktívne Questy & Next Steps

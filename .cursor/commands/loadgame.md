@@ -17,6 +17,33 @@ Použi `read_file` na:
 3.  `xvadur/logs/XVADUR_XP.md` (XP, Level, Rank)
 4.  `xvadur/data/profile/xvadur_profile.md` (Profil - voliteľné, ak existuje)
 
+**Načítanie histórie promptov z MinisterOfMemory (voliteľné, ak je dostupný):**
+Ak existuje `xvadur/data/prompts_log.jsonl`, môžeš načítať posledné prompty:
+```python
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path.cwd()))
+
+try:
+    from ministers.memory import MinisterOfMemory, AssistantOfMemory
+    from ministers.storage import FileStore
+    
+    prompts_log_path = Path("xvadur/data/prompts_log.jsonl")
+    if prompts_log_path.exists():
+        file_store = FileStore(prompts_log_path)
+        assistant = AssistantOfMemory(store=file_store)
+        minister = MinisterOfMemory(assistant=assistant)
+        
+        # Načítaj posledných 20 promptov pre kontext
+        recent_prompts = minister.review_context(limit=20)
+        # Zobraz v summary, ak sú relevantné
+except Exception:
+    # Ak MinisterOfMemory nie je dostupný, pokračuj bez neho
+    recent_prompts = []
+```
+
+**Poznámka:** Prompty z MinisterOfMemory poskytujú dodatočný kontext o predchádzajúcich konverzáciách, ktorý môže byť užitočný pri obnovení práce.
+
 ---
 
 ### 2. 🛠️ ACTIVE WORKFLOW (Priebežná práca)

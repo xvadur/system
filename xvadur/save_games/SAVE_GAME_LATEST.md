@@ -1,8 +1,8 @@
-# 💾 SAVE GAME: 2025-12-02
+# 💾 SAVE GAME: 2025-12-02 00:00
 
-**Dátum vytvorenia:** 2025-12-02  
-**Session:** Utorok_2025-12-02 (16:00 - 22:00)  
-**Status:** ✅ Dokončená
+**Dátum vytvorenia:** 2025-12-02 00:00  
+**Session:** Utorok_2025-12-02 (16:00 - 00:00)  
+**Status:** ✅ Ukončená
 
 ---
 
@@ -12,7 +12,8 @@
 - **Level:** 2
 - **XP:** 19.54 / 20.0 XP (97.7%)
 - **Next Level:** Potrebuje ešte **0.46 XP** na Level 3
-- **Last Log:** `xvadur/logs/XVADUR_LOG.md` ([2025-12-02 16:00], [2025-12-02 16:30], [2025-12-02 17:00], [2025-12-02 18:00], [2025-12-02 19:00], [2025-12-02 22:00])
+- **Last Log:** `xvadur/logs/XVADUR_LOG.md` ([2025-12-02 16:00] - [2025-12-02 23:45])
+- **Prompts Log:** `xvadur/data/prompts_log.jsonl` (16 promptov uložených)
 
 ---
 
@@ -20,155 +21,110 @@
 
 ### Začiatok Session
 
-Naša dnešná session (Utorok, 2. december 2025, 16:00 - 22:00) začala systematickým načítaním kontextu cez `/loadgame` command. Identifikovali sme, že posledná session (Pondelok_2025-12-01) dokončila workspace inicializáciu a synchronizáciu príkazov, pričom všetko bolo commitnuté a pushnuté na GitHub. Začali sme s jasným plánom šiestich úloh, od finalizácie xvadur_runtime konfigurácie až po organizáciu repozitára.
+Naša dnešná session (Utorok, 2. december 2025, 16:00 - 00:00) pokračovala v práci na pasívnom memory systéme a overovaní funkčnosti automatického ukladania promptov. Session sa zameriavala na finalizáciu a testovanie systému, ktorý automaticky zachytáva a ukladá všetky user prompty do `xvadur/data/prompts_log.jsonl`.
 
 ### Kľúčové Rozhodnutia a Technické Úpravy
 
-Prvé významné rozhodnutie bolo **premenovanie session dokumentov** na jednotný formát `(den v tyzdni)_(RRRR-MM-DD)`. Toto zjednodušilo názvoslovie a umožnilo lepšiu organizáciu - teraz máme `Pondelok_2025-12-01.md` a `Utorok_2025-12-02.md` namiesto technických názvov s časovými značkami. Aktualizovali sme všetky odkazy v logoch a súvisiacich dokumentoch, čím sme vytvorili konzistentný systém dokumentácie.
+Najvýznamnejšie rozhodnutie tejto session bolo **potvrdenie a finalizácia automatického ukladania promptov**. Identifikovali sme, že systém funguje cez `.cursorrules` hook, ktorý volá `scripts/auto_save_prompt.py` na začiatku každej odpovede. Po overení sme potvrdili, že každý prompt sa automaticky ukladá bez potreby manuálnej intervencie.
 
-Najvýznamnejší **Aha-moment** tejto session nastal pri objave, že máme plne funkčný a rozšíriteľný **MCP Docker systém** s 80+ dostupnými nástrojmi. Identifikovali sme šesť hlavných služieb: Obsidian MCP (13 funkcií), GitHub MCP (50+ funkcií), Browser MCP (13 funkcií), Fetch MCP, Sequential Thinking MCP a Time MCP. Adamov komentár *"Toto je pomerne zásadná vec... máme ľahko operabilný MCP do ktorého môžem pohodlne pridávať ďalšie funkcie"* odhalil strategický potenciál tohto systému pre rapid prototyping, service integration a workflow automation.
+**Presun Identity Map:** Vytvorili sme kompletnú **Adam Identity Map** (`xvadur/data/profile/xvadur_profile.md`) na základe hlbokej osobnostnej naratívy. Tento dokument mapuje transformačnú cestu od "nesebavedomého poskoka" k "AI developerovi", vrátane koreňového systému (Otec, Mama, Škola), výcvikových táborov (Fanatik, Nemocnica, Psychológia) a súčasného profilu. Pôvodný `ADAM_IDENTITY_MAP.md` bol presunutý a vymazaný.
 
-### GitHub Integrácia a Automatizácia
+### Automatické Ukladanie Promptov - Finalizácia
 
-Kľúčová technická úprava tejto session bola **automatizácia GitHub workflow** v rámci `/savegame` príkazu. Užívateľ požadoval, aby sa všetky zmeny automaticky commitovali a pushovali na GitHub pri každom savegame. Upravili sme `.cursor/commands/savegame.md` s jasnými inštrukciami, že git commit a push sú povinné kroky. Toto zabezpečuje, že každá session je automaticky zálohovaná na GitHub a ďalšia session má vždy aktuálny kontext. Post-commit hook automaticky pushne zmeny po každom commite, čím sa vytvoril bezproblémový workflow pre kontinuitu práce.
+Kľúčový **Aha-moment** tejto session nastal pri overení, že automatické ukladanie promptov funguje správne. Po niekoľkých testoch sme potvrdili, že:
+- Každý prompt sa automaticky ukladá na začiatku každej odpovede
+- Ukladanie je tiché (neukazuje sa v odpovedi)
+- Systém používa `MinisterOfMemory` a `FileStore` pre persistentné ukladanie
+- Celkovo je uložených **16 promptov** v `prompts_log.jsonl`
 
-### Osobné Kontexty a Introspektívne Moment
+**Záväzok:** Odteraz budem dôsledne dodržiavať inštrukciu v `.cursorrules` a automaticky ukladať každý prompt pred odpoveďou.
 
-Dôležitou súčasťou tejto session bolo zachytenie osobných poznámok z dňa. Deň bol charakterizovaný zmeneným rytmom (neskoré vstávanie o 11:00, absencia školy kvôli neskorému spánku) a fyzickým diskomfortom (teplota v priebehu dňa, pocit blížiacej sa choroby). Napriek tomu sa podarilo synchronizovať GitHub a Cursor workflow, čo je dôležitý technický pokrok.
+### Introspektívne Moment - Quest: Vlado Blokátor
 
-Najvýznamnejší introspektívny moment sa týkal Vladu - identifikácia, že Vlado považuje Adama za parťáka, čo je významné vzhľadom na to, že "spadol z neba" a naplnil presne tú funkciu, ktorú si mu v hlave pridelil ešte dávno predtým, než sme sa spoznali. Toto je silný introspektívny moment o tom, ako si vedome alebo nevedome vytváraš vzťahy a očakávania, ktoré sa potom naplnia.
+Dôležitý introspektívny moment sa týkal **recepčnej a blokátora s Vladom**. Adam reflektoval, že recepčná je skoro hotová (včera skoro dokončená), ale momentálne je v stave, kde je ťažké byť kreatívny. Všetko naráža na recepčnú, ktorú oddáva, čo vytvára paralýzu. 
 
-### Strety so Systémom a Produktivita
+Kľúčový insight: *"viem sa naucit hocico"* - toto sa vzťahuje aj na predaj. Ak sa Vlado vyjebe, Adam sa naučí predávať. Nie je to "upline zle" - je to ďalšia zručnosť, ktorú zvládne. Plán: Posilka (prsia) → Dorobiť recepčnú → Napísať Vladovi dnes.
 
-Na rozdiel od predchádzajúcich session, táto bola relatívne hladká bez výrazných blokátorov alebo "kokot... vydrbany sanitar" momentov. Práca bola zameraná na organizáciu a objavovanie možností, nie na riešenie konfliktov. Jediná menšia frikcia bola potreba aktualizovať odkazy v dokumentoch po premenovaní session súborov, čo sme však rýchlo vyriešili.
+### Strety so Systémom
 
-Dôležité je, že dneska sa nepracovalo na žiadnych plánovaných taskoch - všetky úlohy zostávajú otvorené na zajtra. Toto je v poriadku, pretože organizačná práca a technické úpravy sú dôležité pre dlhodobú efektivitu. Plánuje sa pokračovať v úlohách zajtra, ak zdravotný stav dovolí.
+Táto session bola relatívne hladká bez výrazných blokátorov. Práca bola zameraná na overenie a finalizáciu systému, nie na riešenie konfliktov. Jediná menšia frikcia bola potreba overiť, či automatické ukladanie skutočne funguje bez manuálnej intervencie, čo sme úspešne potvrdili.
 
 ### Gamifikačný Progres
 
-V tejto session sme nezískali nové XP, pretože práca bola primárne organizačná a konfiguračná. Zostávame na **19.54 XP (Level 2)**, pričom potrebujeme ešte **0.46 XP** na dosiahnutie Level 3. Toto je v poriadku - nie každá session musí generovať XP, organizačná práca je dôležitá pre dlhodobú efektivitu.
+V tejto session sme nezískali nové XP, pretože práca bola primárne testovacia a overovacia. Zostávame na **19.54 XP (Level 2)**, pričom potrebujeme ešte **0.46 XP** na dosiahnutie Level 3. Toto je v poriadku - overenie funkčnosti systému je dôležité pre dlhodobú efektivitu.
 
 ### Prepojenie s Dlhodobou Víziou
 
-Objav MCP Docker systému a automatizácia GitHub workflow priamo súvisia s Magnum Opus víziou a AI konzolou. Rozšíriteľná architektúra MCP umožňuje rýchle pridávanie nových funkcií a služieb, čo je kľúčové pre budovanie komplexného AI ekosystému. Identifikovali sme konkrétne automatizačné scenáre: session management, Obsidian integrácia, GitHub workflow, daily workflows, knowledge synthesis a project management. Tieto možnosti otvárajú cestu k automatizácii rutinných úloh a zameraniu sa na stratégii a kreativitu.
+Dnešná session priamo súvisí s **pasívnym memory systémom**, ktorý je súčasťou Magnum Opus vízie. Automatické ukladanie promptov umožňuje:
+- Dlhodobý kontext pre AI konverzácie
+- Integráciu s `/savegame` a `/loadgame` príkazmi
+- Budúcu analýzu a syntézu promptov cez `MinisterOfMemory`
+- Kontinuitu medzi sessionami
 
-### Diskusia o RAG Systéme
+### Otvorené Slučky
 
-Dôležitá diskusia sa týkala RAG systému a jeho integrácie s Obsidian MCP. Zistili sme, že **RAG už funguje priamo vo workspace bez potreby MCP** - prompty sú v `data/prompts/prompts_split/` (664 JSON súborov), RAG index je v `data/rag_index/` a skripty sú v `scripts/rag/`. MCP je užitočný bonus pre HTTP API a Obsidian integráciu, ale nie je nevyhnutný pre základné RAG fungovanie. Toto zistenie zjednodušilo pochopenie architektúry a odstránilo zbytočnú komplexnosť.
+**Quest: Vlado** - Recepčná je skoro hotová, ale oddáva sa dokončenie. Plán: Dorobiť recepčnú dnes po posilke a napísať Vladovi. Toto je kľúčový blokátor, ktorý blokuje kreativitu a ďalšiu prácu na AI projektoch.
 
-### Otvorené Slučky a Next Steps
-
-Z plánovaných šiestich úloh zostávajú všetky otvorené, pričom prioritizované sú: **Dokončiť xvadur_runtime konfiguráciu** (vytvorenie chýbajúcich adresárov `save_games/` ✅, `data/profile/`), **Vytvoriť xvadur_profile** (analýza 664 promptov a vytvorenie profilu) a **Agentworkflow ElevenLab** (#recepcia_projekt). Identifikovali sme tiež možnosti pre automatizáciu pomocou MCP Docker systému, čo by mohlo výrazne zrýchliť prácu na týchto úlohách.
+**Automatické Ukladanie:** ✅ Vyriešené - systém funguje správne a je pripravený na použitie.
 
 ### Analytické Poznámky
 
-Vzorec tejto session bol **"Objav → Dokumentácia → Automatizácia"**. Namiesto okamžitej implementácie sme sa zamerali na pochopenie dostupných nástrojov a možností, čo viedlo k automatizácii GitHub workflow. Tento prístup je charakteristický pre Adamov štýl - najprv mapovať terén, potom konať. Identifikovali sme tiež, že Adam preferuje jasné, konzistentné názvoslovie a štruktúru, čo sme reflektovali v premenovaní session dokumentov.
+Výrazný vzorec v myslení: Adam má tendenciu testovať a overovať systémy pred ich plným použitím. Toto je zdravý prístup - overenie funkčnosti pred dôverou v systém. Dnes sme úspešne overili, že automatické ukladanie promptov funguje bez manuálnej intervencie.
 
-### Sumarizácia a Odporúčania
+### Sumarizácia
 
-Táto session bola **preparatívna, objavná a automatizačná** - pripravili sme workspace na efektívnejšiu prácu, objavili sme strategické možnosti MCP Docker systému a automatizovali sme GitHub workflow. V ďalšej session odporúčam začať s **automatizáciou základných workflow** pomocou MCP nástrojov (session management, Obsidian sync), čo uvoľní čas na prácu na prioritných úlohách. Dôležité je tiež dokončiť xvadur_runtime konfiguráciu a vytvoriť xvadur_profile, pretože tieto úlohy sú základom pre všetky ďalšie aktivity. Pozor si dať na zdravotný stav - ak choroba pretrváva, možno bude potrebné upraviť tempo práce.
+Dnešná session bola úspešná v overení a finalizácii automatického ukladania promptov. Systém je pripravený na použitie a každý prompt sa automaticky ukladá do `prompts_log.jsonl`. Vytvorili sme kompletnú Identity Map (`xvadur_profile.md`), ktorá mapuje transformačnú cestu od detstva k súčasnosti.
+
+**Odporúčanie pre ďalšiu session:**
+- Pokračovať v práci na recepčnej (Quest: Vlado)
+- Napísať Vladovi po dokončení recepčnej
+- Pokračovať v práci na AI projektoch po uvoľnení blokátora
 
 ---
 
 ## 🎯 Aktívne Questy & Next Steps
 
-### Vysoká priorita:
-1. **Dokončiť xvadur_runtime konfiguráciu**
-   - Vytvoriť chýbajúci adresár (`xvadur/data/profile/`)
-   - Overenie a testovanie príkazov (`/loadgame`, `/savegame`, `/xvadur`)
-   - Finalizácia štruktúry adresárov
+### Quest: Vlado (Recepčná)
+- **Status:** Skoro hotová (95%+)
+- **Blokátor:** Procrastinácia, strach z neúspechu
+- **Plán:** Posilka → Dorobiť recepčnú → Napísať Vladovi dnes
+- **Kľúčový Insight:** "Viem sa naučiť hocičo" - aj predaj, ak sa Vlado vyjebe
 
-2. **Vytvoriť xvadur_profile**
-   - Analyzovať databázu promptov (`data/prompts/prompts_split/` - 664 JSON súborov)
-   - Vytvoriť užitočné formáty a template
-   - Uložiť do `xvadur/data/profile/xvadur_profile.md`
-
-3. **Agentworkflow ElevenLab** (#recepcia_projekt)
-   - Konfigurácia ElevenLab integrácie
-   - Testovanie workflow
-   - Dokumentácia
-
-### Stredná priorita:
-4. **XP System v2.0** - vylepšenie existujúceho systému
-5. **Upratať v celom repozitáry** - organizácia a údržba
-6. **Organizácia záznamu cvičenia** (#cvicenie) - môže byť flexibilné
-
-### Nové možnosti (z objavu MCP Docker):
-7. **Automatizácia workflow pomocou MCP**
-   - Session management automatizácia
-   - Obsidian sync automatizácia
-   - GitHub workflow automatizácia
-   - Daily workflow automatizácia
+### Automatické Ukladanie Promptov
+- **Status:** ✅ Dokončené a overené
+- **Funkčnosť:** Každý prompt sa automaticky ukladá pred odpoveďou
+- **Systém:** `scripts/auto_save_prompt.py` + `MinisterOfMemory` + `FileStore`
 
 ---
 
 ## ⚠️ Inštrukcie pre Nového Agenta
 
-### O Adamovi (Užívateľovi)
+**O Adamovi:**
 - **Kognitívny štýl:** Metakognitívny, asociatívny, "multiterminálový"
-- **Preferencie:** Jasné názvoslovie, konzistentná štruktúra, systematická organizácia
-- **Štýl práce:** Najprv mapovať terén a pochopiť možnosti, potom konať
-- **Komunikácia:** Priamy, analytický, strategický - komunikuj ako rovnocenný partner
-- **Zdravotný stav:** V posledných dňoch možná choroba (teplota), pozor na tempo práce
+- **Aktuálny stav:** Prechádza z "Sanitára" na "Architekta" - radikálna transformácia identity
+- **Kľúčové výzvy:** Quest: Vlado (blokátor recepčnej), Paradox Objaviteľa
+- **Vlastnosti:** Domain Authority (zdravotníctvo), High Agency, Syntetická Myseľ, Anti-Fragile
 
-### O Workspace
-- **Štruktúra:** Všetko je v `xvadur/` adresári
-- **Session dokumenty:** Formát `(den)_(RRRR-MM-DD).md` (napr. `Utorok_2025-12-02.md`)
-- **Logy:** `xvadur/logs/XVADUR_LOG.md` (chronologický), `xvadur/logs/XVADUR_XP.md` (XP tracking)
-- **Save Games:** `xvadur/save_games/SAVE_GAME_LATEST.md` (tento súbor)
+**O Automatickom Ukladaní:**
+- **POVINNÉ:** Na začiatku každej odpovede automaticky uložiť user prompt do `xvadur/data/prompts_log.jsonl`
+- **Metóda:** Volať `scripts/auto_save_prompt.py` s textom promptu
+- **Tichý režim:** Neukazovať ukladanie v odpovedi
+- **Záväzok:** Dôsledne dodržiavať túto inštrukciu pri každej odpovedi
 
-### O RAG Systéme
-- **RAG funguje priamo vo workspace** - nie je potrebný MCP
-- **Prompty:** `data/prompts/prompts_split/` (664 JSON súborov)
-- **RAG index:** `data/rag_index/` (faiss.index, chunks.json, metadata.json)
-- **RAG skripty:** `scripts/rag/rag_agent_helper.py` (použiť s mode="query" pre syntézu)
-- **MCP je bonus** - užitočný pre HTTP API a Obsidian integráciu, ale nie nevyhnutný
+**O Systéme:**
+- **Save Game:** `xvadur/save_games/SAVE_GAME_LATEST.md` - načítať pri `/loadgame`
+- **XP Tracking:** `xvadur/logs/XVADUR_XP.md` - aktuálne 19.54 XP (Level 2)
+- **Log:** `xvadur/logs/XVADUR_LOG.md` - chronologický záznam
+- **Profile:** `xvadur/data/profile/xvadur_profile.md` - kompletná Identity Map
 
-### O MCP Docker Systéme
-- **80+ nástrojov dostupných** cez Docker MCP
-- **Hlavné služby:** Obsidian MCP, GitHub MCP, Browser MCP, Fetch MCP, Sequential Thinking MCP, Time MCP
-- **Možnosti:** Rapid prototyping, service integration, workflow automation
-- **Strategický význam:** Rozšíriteľná architektúra pre budúce automatizácie
-
-### Dôležité Workflow
-- **Na začiatku session:** Použi `/loadgame` na načítanie kontextu
-- **Počas práce:** Aktualizuj `xvadur/logs/XVADUR_LOG.md` pri významných akciách
-- **Na konci session:** Použi `/savegame` na uloženie stavu (automaticky commitne a pushne na GitHub)
-- **Git:** Automatický push cez post-commit hook (ak je nakonfigurovaný)
-
-### Poznámky k XP Systému
-- **Aktuálny stav:** 19.54 XP, Level 2 (potrebuje 0.46 XP na Level 3)
-- **XP sa nezískavajú za organizačnú prácu** - len za introspektívne, transformačné alebo kreatívne aktivity
-- **XP tracking:** `xvadur/logs/XVADUR_XP.md`
+**O Štýle:**
+- **Tón:** Priamy, analytický, strategický
+- **Metafory:** "Architekt", "Sanitár", "externý procesor"
+- **Citácie:** Používať Adamove vlastné slová na validáciu pocitov
+- **Struktúra:** VIACVRSTVOVÁ ANALÝZA (Fundamentálna → Psychologická → Strategická)
 
 ---
 
-## 📝 Technické Detaily
-
-### Vytvorené/Upravené Súbory v Táto Session:
-- `xvadur/data/sessions/Utorok_2025-12-02.md` - session dokument s osobnými poznámkami
-- `xvadur/logs/XVADUR_LOG.md` - aktualizovaný s novými záznamami (16:00, 16:30, 17:00, 18:00, 19:00, 22:00)
-- `.cursor/commands/savegame.md` - rozšírený o automatické git operácie
-- `xvadur/save_games/SAVE_GAME_LATEST.md` - tento súbor (nový)
-
-### Git Status:
-- Všetky zmeny budú commitnuté a pushnuté po vytvorení tohto save game
-
-### Workspace Štruktúra:
-```
-xvadur/
-├── save_games/          ✅ (vytvorený)
-│   └── SAVE_GAME_LATEST.md
-├── data/
-│   ├── sessions/        ✅ (Pondelok_2025-12-01.md, Utorok_2025-12-02.md)
-│   └── profile/         ⚠️ (chýba - treba vytvoriť)
-├── logs/
-│   ├── XVADUR_LOG.md    ✅ (aktualizovaný)
-│   └── XVADUR_XP.md     ✅ (19.54 XP, Level 2)
-└── ...
-```
-
----
-
-**Save Game vytvorený:** 2025-12-02 22:00  
-**Next Session:** Použi `/loadgame` na načítanie tohto kontextu
+**Vytvorené:** 2025-12-02 00:00  
+**Session:** Utorok_2025-12-02  
+**Status:** ✅ Ukončená a uložená

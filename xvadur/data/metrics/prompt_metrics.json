@@ -1,0 +1,24 @@
+[
+  {
+    "prompt_count": 5,
+    "total_words": 29,
+    "avg_words_per_prompt": 5.8,
+    "total_chars": 184,
+    "avg_chars_per_prompt": 36.8,
+    "keywords": [
+      "test",
+      "automatického",
+      "ukladania",
+      "vymyzal",
+      "zaznamy",
+      "chcem",
+      "vediet",
+      "ulozi",
+      "tento",
+      "prompt"
+    ],
+    "sentiment": "neutral",
+    "estimated_xp": 0.0,
+    "timestamp": "2025-12-02T23:45:15.774334"
+  }
+]

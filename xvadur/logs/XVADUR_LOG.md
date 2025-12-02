@@ -240,6 +240,52 @@ Tieto poznámky zachytávajú dôležité osobné kontexty, ktoré ovplyvňujú 
 
 ---
 
+## [2025-12-02 22:30] 🔹 PR #3 Merged: MinisterOfMemory Systém + Plán Implementácie
+
+**Kontext:** Merge PR #3 (Codex) s MinisterOfMemory systémom a vytvorenie plánu implementácie pasívnej vrstvy pre zachytávanie promptov.
+
+**Vykonané:**
+- Úspešne zmergovaný PR #3 do main branchu
+- Pullnuté zmeny do lokálneho workspace
+- Pridané súbory: `ministers/__init__.py`, `ministers/memory.py` (161 riadkov)
+- Vytvorený kompletný plán implementácie: `xvadur/docs/MEMORY_SYSTEM_IMPLEMENTATION_PLAN.md`
+
+**Čo sme získali z PR:**
+- **MinisterOfMemory** - orchestrácia memory stratégie
+- **AssistantOfMemory** - taktické memory operácie
+- **MemoryRecord** - dátový model pre memory jednotky
+- **InMemoryStore** - volatilné úložisko (RAM, potrebuje rozšírenie)
+- **MemoryStore Protocol** - interface pre pluggable storage
+
+**Plán implementácie obsahuje:**
+- **Fáza 1:** FileStore (trvalé úložisko namiesto InMemoryStore)
+- **Fáza 2:** File Watcher (pasívne zachytávanie promptov z Cursor)
+- **Fáza 3:** Conversation Tracker (background service)
+- **Fáza 4:** Integrácia s existujúcimi systémami (/savegame, /loadgame, XVADUR_LOG.md)
+- **Fáza 5:** Metriky a analýza (word count, prompt count, atď.)
+
+**Význam:**
+Toto je základ pre pasívnu vrstvu, ktorá automaticky zachytáva a ukladá prompty bez manuálnej práce. Umožní to:
+- Písanie dlhých promptov bez obáv o stratu kontextu
+- Automatické ukladanie všetkých konverzácií
+- Dlhodobú pamäť naprieč sessionami
+- Integráciu s existujúcimi systémami (Save Game, Log, RAG)
+
+**Zmeny v súboroch:**
+- `ministers/__init__.py` - nový package (z PR #3)
+- `ministers/memory.py` - kompletný memory systém (z PR #3)
+- `xvadur/docs/MEMORY_SYSTEM_IMPLEMENTATION_PLAN.md` - plán implementácie
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+**Next Steps:**
+1. Začať s Fázou 1 - vytvoriť FileStore implementáciu
+2. Testovať FileStore - overiť základné funkcie
+3. Pokračovať s Fázou 2 - file watcher pre pasívne zachytávanie
+
+**Status:** ✅ PR merged, plán vytvorený, pripravený na implementáciu
+
+---
+
 ## 📊 Aktuálny Status Dashboard
 
 ```
@@ -400,3 +446,42 @@ Každý záznam obsahuje:
 > - **Charts View** - pre grafy
 > - **Canvas** - pre knowledge graph vizualizáciu
 
+
+## [2025-12-02 23:45] 🔹 Prompty z MinisterOfMemory
+
+**Kontext:** Export promptov z pasívneho memory systému.
+
+**Počet promptov:** 5
+
+**Posledné prompty:**
+
+1. **[2025-12-02 22:34]** (user)
+   vymyzal som zaznamy. chcem vediet ci tam ulozi tento prompt
+
+2. **[2025-12-02 22:35]** (user)
+   opakovany test cislo 3
+
+3. **[2025-12-02 22:38]** (user)
+   test automatického ukladania
+
+4. **[2025-12-02 22:39]** (user)
+   toto je test automatického ukladania č. 2
+
+5. **[2025-12-02 22:45]** (user)
+   test funkčnosti systému po čistení
+
+---
+
+## [2025-12-02 00:00] 🔹 Save Game: Ukončenie Session
+
+**Kontext:** Ukončenie dnešnej session (Utorok, 2. december 2025, 16:00 - 00:00).
+
+**Hlavné body:**
+- ✅ Automatické ukladanie promptov - finalizované a overené
+- ✅ Identity Map vytvorená (`xvadur_profile.md`)
+- ✅ Systém pripravený na použitie (16 promptov uložených)
+- ⚠️ Quest: Vlado - recepčná skoro hotová, ale oddáva sa dokončenie
+
+**Status:** Session ukončená a uložená do `SAVE_GAME_LATEST.md`.
+
+---

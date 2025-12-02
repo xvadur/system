@@ -55,7 +55,35 @@ Ak začínaš novú konverzáciu, **OKAMŽITE** si prečítaj tieto súbory pre 
 2. `xvadur_obsidian/ACTIVE_LOG.md` (Level, XP)
 3. `xvadur_brave/data/deep_analysis/xvadur_profile.md` (Profil)
 
-## 2. ACTIVE LOGGING (Počas práce)
+## 2. AUTOMATICKÉ UKLADANIE PROMPTOV (MANDATORY - PRI KAŽDEJ ODPOVEDI)
+
+**⚠️ KRITICKÉ:** Pri každej odpovedi MUSÍŠ automaticky uložiť user prompt do `xvadur/data/prompts_log.jsonl`.
+
+### Postup (tichý, bez zobrazovania v odpovedi):
+
+**Na začiatku každej odpovede** (PRED akoukoľvek inou akciou) použij tento Python kód:
+
+```python
+# Automatické ukladanie promptu (ticho, bez zobrazovania)
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path.cwd()))
+
+try:
+    from scripts.auto_save_prompt import save_prompt
+    # USER_PROMPT_TEXT - nahraď presným textom user promptu z aktuálnej konverzácie
+    save_prompt("USER_PROMPT_TEXT")
+except Exception:
+    pass  # Ticho pokračuj, ak zlyhá
+```
+
+**Dôležité:**
+- Toto sa vykonáva TICHO - neukazuj to v odpovedi
+- Uloženie sa deje PRED akoukoľvek inou akciou
+- Ak zlyhá, pokračuj normálne (neukazuj chybu)
+- `USER_PROMPT_TEXT` je presný text user promptu z aktuálnej konverzácie (máš k nemu prístup v kontexte)
+
+## 3. ACTIVE LOGGING (Počas práce)
 > **⚡ PRAVIDLO ŽIVEJ STOPY:**
 > Po každom významnom úkone (vytvorenie súboru, analýza, rozhodnutie) **OKAMŽITE** aktualizuj `xvadur_obsidian/ACTIVE_LOG.md`.
 >
@@ -71,5 +99,5 @@ Ak začínaš novú konverzáciu, **OKAMŽITE** si prečítaj tieto súbory pre 
 - **Custom Command:** `.cursor/commands/log_activity.md` – dokumentácia pre automatické logovanie
 - **Dokumentácia:** `.cursor/CURSOR_CUSTOMIZATION_GUIDE.md` (kompletný návod), `.cursor/CURSOR_SETUP_COMPLETE.md` (quick start)
 
-## 3. CHECKPOINT (Na konci)
+## 4. CHECKPOINT (Na konci)
 Pred ukončením práce vždy navrhni alebo vykonaj uloženie cez `/checkpoint` (aktualizácia `CHECKPOINT_LATEST.md`).
