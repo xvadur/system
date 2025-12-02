@@ -50,6 +50,16 @@ git remote add origin https://github.com/xvadur/system.git
 git push -u origin main
 ```
 
+### Inštalácia Hooku (Po Klonovaní Repozitára)
+
+```bash
+# Skopírovať hook template do .git/hooks/
+cp xvadur/config/hooks/post-commit .git/hooks/post-commit
+
+# Nastaviť oprávnenia na spustenie
+chmod +x .git/hooks/post-commit
+```
+
 ### Kontrola Hooku
 
 ```bash
@@ -219,7 +229,9 @@ Hook skontroluje:
 ## 📚 Referencie
 
 - **Git Hooks Dokumentácia:** [Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)
-- **Post-Commit Hook:** `.git/hooks/post-commit`
+- **Post-Commit Hook:** `.git/hooks/post-commit` (lokálny)
+- **Hook Template:** `xvadur/config/hooks/post-commit` (v repozitári)
+- **Setup Guide:** `xvadur/config/GIT_HOOKS_SETUP.md`
 - **Save Game Command:** `.cursor/commands/savegame.md`
 - **Git Ignore:** `.gitignore`
 

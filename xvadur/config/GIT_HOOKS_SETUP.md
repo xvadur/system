@@ -22,22 +22,17 @@ cp .git/hooks/post-commit /cesta/k/novemu/workspace/.git/hooks/post-commit
 chmod +x /cesta/k/novemu/workspace/.git/hooks/post-commit
 ```
 
-### 2. Alebo Vytvor Hook Template v Repozitári
+### 2. Použi Hook Template z Repozitára
 
-Vytvor `hooks/post-commit` v repozitári (mimo `.git/`):
+Hook template je v `xvadur/config/hooks/post-commit`:
 
 ```bash
-mkdir -p hooks
-cp .git/hooks/post-commit hooks/post-commit
-git add hooks/post-commit
-git commit -m "feat: Add git hook template"
-```
-
-Potom na novom počítači:
-```bash
-cp hooks/post-commit .git/hooks/post-commit
+# Po klonovaní repozitára
+cp xvadur/config/hooks/post-commit .git/hooks/post-commit
 chmod +x .git/hooks/post-commit
 ```
+
+**Poznámka:** Hook template je už v repozitári, stačí ho skopírovať na správne miesto.
 
 ### 3. Alebo Použi Git Hooks Dir (Git 2.9+)
 
@@ -59,8 +54,8 @@ A skopírovať hooks tam.
 
 **Odporúčanie:**
 - Hook je jednoduchý a dá sa rýchlo nastaviť
-- Dokumentácia je v `docs/AUTOMATIC_GIT_PUSH.md`
-- Template hook je možné pridať do repozitára (ak chceš)
+- Dokumentácia je v `xvadur/config/AUTOMATIC_GIT_PUSH.md`
+- Hook template je v `xvadur/config/hooks/post-commit`
 
 ---
 

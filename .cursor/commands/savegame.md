@@ -79,7 +79,12 @@ Po vytvorení save game súboru:
    - **Automatický push:** Post-commit hook automaticky pushne na GitHub po commite
    - **Ak hook nefunguje:** Manuálne `git push origin main`
 
-**Poznámka:** Git post-commit hook (`/.git/hooks/post-commit`) automaticky pushne zmeny na GitHub po každom commite. Toto zabezpečuje, že všetky zmeny sú okamžite zálohované a synchronizované.
+**Poznámka:** Git post-commit hook (`.git/hooks/post-commit`) automaticky pushne zmeny na GitHub po každom commite. Toto zabezpečuje, že všetky zmeny sú okamžite zálohované a synchronizované.
+
+**Dokumentácia:**
+- Automatický git push: `xvadur/config/AUTOMATIC_GIT_PUSH.md`
+- Setup hooks: `xvadur/config/GIT_HOOKS_SETUP.md`
+- Hook template: `xvadur/config/hooks/post-commit`
 
 ---
 
