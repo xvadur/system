@@ -179,3 +179,5 @@ Všetky cesty sú relatívne k root adresáru workspace:
 **Status:** ✅ Funkčný, pripravený na prácu
 
 
+
+
