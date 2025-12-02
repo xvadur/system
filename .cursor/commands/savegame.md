@@ -62,6 +62,25 @@ Ulož tento obsah do súboru: `xvadur/save_games/SAVE_GAME_LATEST.md`.
 - Aktualizuj `xvadur/logs/XVADUR_XP.md` s finálnymi XP hodnotami (ak sa zmenili)
 - Pridaj záznam do `xvadur/logs/XVADUR_LOG.md` o vytvorení save game
 
+## 4. Git Commit & Push (Automatické)
+Po vytvorení save game súboru:
+1. **Pridaj súbor do git:**
+   ```bash
+   git add xvadur/save_games/SAVE_GAME_LATEST.md
+   git add xvadur/logs/XVADUR_XP.md xvadur/logs/XVADUR_LOG.md
+   ```
+
+2. **Vytvor commit s popisným správou:**
+   ```bash
+   git commit -m "savegame: [Dátum] - [Krátky popis session]"
+   ```
+
+3. **Push na GitHub:**
+   - **Automatický push:** Post-commit hook automaticky pushne na GitHub po commite
+   - **Ak hook nefunguje:** Manuálne `git push origin main`
+
+**Poznámka:** Git post-commit hook (`/.git/hooks/post-commit`) automaticky pushne zmeny na GitHub po každom commite. Toto zabezpečuje, že všetky zmeny sú okamžite zálohované a synchronizované.
+
 ---
 
 ## 💡 IDE-Based Workflow Kontext
