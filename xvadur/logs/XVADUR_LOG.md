@@ -542,3 +542,32 @@ Každý záznam obsahuje:
 **Status:** ✅ Session ukončená, všetko uložené a pripravené na commit
 
 ---
+
+## [2025-12-02 01:00] 🔹 Save Game: Finálne Uloženie s Automatickým Ukladaním Promptov
+
+**Kontext:** Finálne ukončenie dnešnej session (Utorok, 2. december 2025, 16:00 - 01:00) s kompletným save game a automatickým uložením všetkých promptov.
+
+**Vykonané:**
+- Automaticky uložené všetky chýbajúce prompty z konverzácie (6 nových promptov)
+- Vytvorený finálny `xvadur/save_games/SAVE_GAME_LATEST.md` s kompletným naratívom
+- Aktualizované všetky dokumenty (logy, session, Cursor Rules)
+- Implementovaný nový systém pre automatické ukladanie promptov pri `/savegame`
+
+**Kľúčové body:**
+- **MCP Docker systém:** Objavený a začatý používať (80+ nástrojov)
+- **Automatické ukladanie:** Finalizované, overené a rozšírené (27 promptov uložených)
+- **Nové rozšírenie:** Automatické ukladanie všetkých promptov pri každom `/savegame` cez `scripts/save_conversation_prompts.py`
+- **Identity Map:** Vytvorená (`xvadur_profile.md`)
+- **Dokumentácia:** Všetky Cursor Rules aktualizované
+- **Quest: Vlado:** Stále otvorený (recepčná 95%+)
+
+**Zmeny v súboroch:**
+- `xvadur/save_games/SAVE_GAME_LATEST.md` - finálny save game
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+- `xvadur/data/prompts_log.jsonl` - 27 promptov (6 nových uložených)
+- `scripts/save_conversation_prompts.py` - nový skript pre batch ukladanie
+- `.cursor/commands/savegame.md` - aktualizovaný s automatickým ukladaním promptov
+
+**Status:** ✅ Session ukončená, všetko uložené a pripravené na commit
+
+---
