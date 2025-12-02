@@ -28,6 +28,11 @@ Ak Cursor opakovane používa `any` namiesto správnych typov, automaticky vygen
 - Ak typ nie je známy, použiť `unknown` a type guard
 ```
 
+## Integrácia s Memory Systémom
+- **MinisterOfMemory:** Self-improve mechanizmus môže využívať históriu promptov z `prompts_log.jsonl`
+- **Pattern Detection:** Analýza opakujúcich sa chýb cez `MinisterOfMemory.review_context()`
+- **Automatické ukladanie:** Všetky prompty sa automaticky ukladajú, čo umožňuje lepšiu detekciu vzorcov
+
 ## Poznámka
-Toto pravidlo je prevzaté z TaskMaster AI a adaptované pre Magnum Opus.
+Toto pravidlo je prevzaté z TaskMaster AI a adaptované pre Magnum Opus. Od 2025-12-02 je integrované s MinisterOfMemory systémom pre lepšiu detekciu vzorcov.
 

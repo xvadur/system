@@ -44,7 +44,7 @@ Toto pravidlo definuje technológie a osvedčené postupy používané v projekt
 - **Documentation:** Docstrings pre všetky funkcie a triedy
 - **Clean Code:** Single responsibility, jasné názvy, pure funkcie kde je to možné
 
-## Data Science (`xvadur_brave/`)
+## Data Science & Memory (`xvadur_brave/`, `ministers/`)
 
 ### Language
 - **Python:** 3.10+ (type hints, pandas, numpy, scikit-learn)
@@ -54,10 +54,51 @@ Toto pravidlo definuje technológie a osvedčené postupy používané v projekt
 - **OpenAI:** Embeddings API
 - **Pandas/NumPy:** Data analysis
 
+### Memory Management (`ministers/`)
+- **MinisterOfMemory:** Orchestrácia memory stratégie
+- **AssistantOfMemory:** Taktické memory operácie
+- **FileStore:** Persistentné úložisko (JSONL)
+- **MemoryRecord:** Dátový model pre memory jednotky
+
 ### Best Practices
 - **Type Hints:** Vždy používať type hints
 - **Error Handling:** Vždy ošetriť chyby
 - **Documentation:** Docstrings pre všetky funkcie
+- **Memory Storage:** Používať `FileStore` pre persistentné dáta, `InMemoryStore` pre volatilné
+
+## MCP Docker Systém
+
+### Dostupné Služby
+- **Obsidian MCP:** 13 funkcií (Knowledge Base operácie, vyhľadávanie, periodické poznámky)
+- **GitHub MCP:** 50+ funkcií (repozitáre, issues, PRs, releases, automatizácia)
+- **Browser MCP:** 13 funkcií (web automatizácia, scraping)
+- **Fetch MCP:** Web content načítavanie
+- **Sequential Thinking MCP:** Analytické nástroje
+- **Time MCP:** Časové operácie
+
+### Použitie
+- **Rapid prototyping:** Rýchle pridávanie nových funkcií
+- **Service integration:** Jednoduchá integrácia externých služieb
+- **Workflow automation:** Automatizácia komplexných workflow
+- **Knowledge management:** Priama integrácia s Obsidian vaultom
+
+### Best Practices
+- **Výber správneho MCP:** Použiť najvhodnejší MCP pre danú úlohu
+- **Error Handling:** Vždy ošetriť chyby pri MCP volaniach
+- **Dokumentácia:** Dokumentovať používanie MCP v kóde
+
+## Automatické Ukladanie Promptov
+
+### Systém
+- **Súbor:** `scripts/auto_save_prompt.py` - automatické ukladanie user promptov
+- **Úložisko:** `xvadur/data/prompts_log.jsonl` (JSONL formát)
+- **Integrácia:** `.cursorrules` volá `auto_save_prompt.py` na začiatku každej odpovede
+- **Backend:** `MinisterOfMemory` + `FileStore` pre persistentné ukladanie
+
+### Best Practices
+- **Tichý režim:** Ukladanie sa neukazuje v odpovedi
+- **Error Handling:** Ak zlyhá, pokračovať normálne (neukazovať chybu)
+- **Metadata:** Pridávať relevantné metadata k promptom
 
 ## Dôležité Zákazy
 - ❌ **NIE class components** v React (len funkcionálne komponenty)
@@ -65,4 +106,5 @@ Toto pravidlo definuje technológie a osvedčené postupy používané v projekt
 - ❌ **NIE legacy patterns** (staré React API, staré Python patterns)
 - ❌ **NIE custom CSS** ak existuje Tailwind utility
 - ❌ **NIE `Any`** v Python (vždy konkrétne typy)
+- ❌ **NIE volatilné úložisko** pre dôležité dáta (použiť `FileStore` namiesto `InMemoryStore`)
 
