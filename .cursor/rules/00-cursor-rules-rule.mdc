@@ -40,3 +40,8 @@ alwaysApply: false  # true = vždy, false = len keď glob matchuje
 - Alebo manuálne vytvoriť nový `.mdc` súbor v `cursor/rules/`
 - Self-improve mechanizmus automaticky generuje nové pravidlá z opakujúcich sa chýb
 
+## Integrácia s XVADUR Systémom
+- **Automatické ukladanie promptov:** `.cursorrules` obsahuje hook na automatické ukladanie user promptov do `xvadur/data/prompts_log.jsonl`
+- **Save Game systém:** Custom commands (`/savegame`, `/loadgame`) integrujú s Cursor Rules
+- **MCP Docker:** Cursor má prístup k 80+ MCP nástrojom (GitHub, Obsidian, Browser, atď.)
+
