@@ -11,51 +11,109 @@ Toto pravidlo definuje štruktúru projektu a umiestnenie súborov.
 ## Hlavná Štruktúra
 
 ```
-Magnum Opus/
-├── xvadur_agent/          # Frontend & Backend
-│   ├── xvadur_console/    # React frontend (TypeScript, Vite, TailwindCSS)
-│   └── mcp/               # MCP servers (Python)
-├── xvadur_brave/          # Data Science & Analysis
-│   ├── data/              # Datasets, chronologies, derived data
-│   ├── scripts/           # Python skripty pre analýzu
-│   └── docs/              # Dokumentácia
-├── xvadur_obsidian/       # Knowledge Base (Obsidian vault)
-│   ├── chat/              # Konverzácie, checkpointy
-│   ├── xvadur/            # Xvadur konverzačný režim
-│   └── ...                # Ďalšie Obsidian poznámky
-├── .cursor/               # Cursor konfigurácia
-│   ├── commands/          # Custom commands
-│   └── rules/             # Cursor Rules (tento adresár)
-└── .cursorrules           # Globálny systémový prompt
+xvadur-workspace/
+├── xvadur/                    # Hlavná vrstva - XVADUR systém
+│   ├── config/                # Konfigurácia (git hooks, automatizácia)
+│   ├── data/                  # Dáta
+│   │   ├── prompts_log.jsonl  # Automatické ukladanie promptov (JSONL)
+│   │   ├── profile/            # Profily a identity maps
+│   │   │   └── xvadur_profile.md  # Adam Identity Map
+│   │   ├── sessions/           # Session dokumenty (denné)
+│   │   └── metrics/            # Metriky a analýzy
+│   ├── docs/                  # Dokumentácia
+│   ├── logs/                   # Logy (XVADUR_LOG.md, XVADUR_XP.md)
+│   ├── save_games/             # Save Game súbory (SAVE_GAME_LATEST.md)
+│   └── scripts/                # Skripty (backlinking, visualizations)
+│
+├── ministers/                  # Ministerial layer (Python package)
+│   ├── __init__.py             # Package exports
+│   ├── memory.py               # MinisterOfMemory systém
+│   └── storage.py             # FileStore implementácia
+│
+├── scripts/                    # Workspace skripty
+│   ├── auto_save_prompt.py    # Automatické ukladanie promptov
+│   └── rag/                    # RAG skripty
+│
+├── .cursor/                    # Cursor konfigurácia
+│   ├── commands/               # Custom commands (loadgame, savegame, xvadur)
+│   └── rules/                  # Cursor Rules (tento adresár)
+│
+├── .cursorrules                # Globálny systémový prompt (automatické ukladanie)
+├── .gitignore                  # Git ignore (prompts_log.jsonl je ignorovaný)
+└── requirements.txt            # Python dependencies
 ```
 
 ## Pravidlá Umiestnenia
 
-### Frontend (`xvadur_agent/xvadur_console/`)
-- **Komponenty:** `components/` - React komponenty (priamo v root, nie v `src/`)
-- **Utils:** `utils/` - pomocné funkcie
-- **Types:** `types.ts` - TypeScript typy (root súbor)
-- **Services:** `services/` - API služby (napr. `geminiService.ts`)
-- **Data:** `data/` - mock dáta a konfigurácia
-- **Config:** `vite.config.ts`, `tsconfig.json` - konfiguračné súbory (root)
-
-### Backend (`xvadur_agent/mcp/`)
-- **MCP Servers:** `mcp/servers/` - MCP server implementácie
-- **Examples:** `mcp/examples/` - príklady a šablóny
-- **Utils:** `mcp/utils/` - pomocné funkcie
-
-### Data Science (`xvadur_brave/`)
+### XVADUR Systém (`xvadur/`)
+- **Config:** `config/` - konfiguračné súbory (git hooks, automatizácia)
 - **Data:** `data/` - všetky dátové súbory
-- **Scripts:** `scripts/` - Python skripty
-- **Docs:** `docs/` - dokumentácia
+  - `prompts_log.jsonl` - automatické ukladanie promptov (lokálne, nie v git)
+  - `profile/` - profily a identity maps (`xvadur_profile.md`)
+  - `sessions/` - denné session dokumenty (`Utorok_2025-12-02.md`)
+  - `metrics/` - metriky a analýzy
+- **Logs:** `logs/` - chronologické logy (`XVADUR_LOG.md`, `XVADUR_XP.md`)
+- **Save Games:** `save_games/` - save game súbory (`SAVE_GAME_LATEST.md`)
+- **Docs:** `docs/` - dokumentácia systému
+- **Scripts:** `scripts/` - pomocné skripty
 
-### Knowledge Base (`xvadur_obsidian/`)
-- **Chat:** `chat/` - konverzácie, checkpointy
-- **Xvadur:** `xvadur/` - xvadur konverzačný režim
-- **Obsidian:** štandardná Obsidian štruktúra
+### Ministerial Layer (`ministers/`)
+- **Memory:** `memory.py` - MinisterOfMemory, AssistantOfMemory, MemoryRecord, InMemoryStore
+- **Storage:** `storage.py` - FileStore implementácia (JSONL persistent storage)
+- **Package:** `__init__.py` - package exports
+
+### Workspace Scripts (`scripts/`)
+- **Auto Save:** `auto_save_prompt.py` - automatické ukladanie promptov (volané z `.cursorrules`)
+- **RAG:** `rag/` - RAG helper skripty
+
+### Cursor Konfigurácia (`.cursor/`)
+- **Commands:** `commands/` - custom commands
+  - `loadgame.md` - načítanie kontextu z save game
+  - `savegame.md` - uloženie aktuálneho stavu (s automatickým git push)
+  - `xvadur.md` - xvadur konverzačný režim
+- **Rules:** `rules/` - Cursor Rules (`.mdc` súbory)
+
+### MCP Docker Systém
+- **Dostupné služby:** Obsidian MCP (13), GitHub MCP (50+), Browser MCP (13), Fetch MCP, Sequential Thinking MCP, Time MCP
+- **Použitie:** Merge PR, automatizácia git workflow, rapid prototyping
+- **Význam:** "Ľahko operabilný MCP do ktorého môžem pohodlne pridávať ďalšie funkcie"
 
 ## Dôležité
 - **Nekrižovať hranice:** Frontend kód nepatrí do backendu a naopak
 - **Respektovať štruktúru:** Nové súbory musia byť v správnych adresároch
 - **Konzistentnosť:** Používať rovnakú štruktúru naprieč projektom
+
+## Nové Komponenty (2025-12-02)
+
+### Automatické Ukladanie Promptov
+- **Súbor:** `xvadur/data/prompts_log.jsonl` (lokálne, nie v git)
+- **Systém:** `scripts/auto_save_prompt.py` + `MinisterOfMemory` + `FileStore`
+- **Integrácia:** `.cursorrules` volá `auto_save_prompt.py` na začiatku každej odpovede
+- **Formát:** JSONL (jeden JSON objekt na riadok)
+
+### MinisterOfMemory Systém
+- **Package:** `ministers/` - Python package pre memory management
+- **Komponenty:**
+  - `MemoryRecord` - dátový model pre memory jednotky
+  - `MemoryStore` - protocol pre pluggable storage
+  - `InMemoryStore` - volatilné úložisko (RAM)
+  - `FileStore` - persistentné úložisko (JSONL)
+  - `AssistantOfMemory` - taktické memory operácie
+  - `MinisterOfMemory` - orchestrácia memory stratégie
+
+### Identity Map
+- **Súbor:** `xvadur/data/profile/xvadur_profile.md`
+- **Obsah:** Kompletná mapa identity od "nesebavedomého poskoka" k "AI developerovi"
+- **Sekcie:** Koreňový systém, Výcvikové tábory, Transformačné momenty, Súčasný profil
+
+### Session Dokumenty
+- **Umiestnenie:** `xvadur/data/sessions/`
+- **Formát:** `{Deň}_{YYYY-MM-DD}.md` (napr. `Utorok_2025-12-02.md`)
+- **Obsah:** Denné session dokumenty s poznámkami, úlohami, metrikami
+
+### Save Game Systém
+- **Umiestnenie:** `xvadur/save_games/`
+- **Súbor:** `SAVE_GAME_LATEST.md` - najnovší save game (prepísaný pri každom `/savegame`)
+- **Obsah:** Naratívny kontext, questy, status, inštrukcie pre nového agenta
+- **Git:** Automatický commit a push po vytvorení save game
 
