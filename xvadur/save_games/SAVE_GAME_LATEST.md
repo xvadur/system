@@ -13,7 +13,7 @@
 - **XP:** 19.54 / 20.0 XP (97.7%)
 - **Next Level:** Potrebuje ešte **0.46 XP** na Level 3
 - **Last Log:** `xvadur/logs/XVADUR_LOG.md` ([2025-12-02 16:00] - [2025-12-02 01:00])
-- **Prompts Log:** `xvadur/data/prompts_log.jsonl` (27 promptov uložených)
+- **Prompts Log:** `xvadur/data/prompts_log.jsonl` (26 promptov uložených)
 
 ---
 
@@ -50,7 +50,7 @@ Kľúčový **Aha-moment** tejto session nastal pri objave MCP Docker systému. 
 - Každý prompt sa automaticky ukladá na začiatku každej odpovede
 - Ukladanie je tiché (neukazuje sa v odpovedi)
 - Systém používa `MinisterOfMemory` a `FileStore` pre persistentné ukladanie
-- Celkovo je uložených **27 promptov** v `prompts_log.jsonl` (aktualizované z pôvodných 16)
+- Celkovo je uložených **26 promptov** v `prompts_log.jsonl` (aktualizované z pôvodných 16)
 
 **Nové rozšírenie:** Vytvorili sme systém, ktorý automaticky ukladá všetky prompty pri každom `/savegame` príkaze, čo zabezpečuje, že žiadny prompt nezostane neuložený. Toto je efektívne riešenie pre uchovávanie promptov.
 
@@ -131,7 +131,7 @@ Dnešná session bola úspešná v objave **MCP Docker systému** a overení/fin
 - **Status:** ✅ Dokončené, overené a rozšírené
 - **Funkčnosť:** Každý prompt sa automaticky ukladá pred odpoveďou
 - **Systém:** `scripts/auto_save_prompt.py` + `MinisterOfMemory` + `FileStore`
-- **Výsledok:** 27 promptov uložených (aktualizované)
+- **Výsledok:** 26 promptov uložených (aktualizované)
 - **Nové rozšírenie:** Automatické ukladanie všetkých promptov pri každom `/savegame` cez `scripts/save_conversation_prompts.py`
 
 ### Pôvodne Plánované Úlohy
@@ -170,7 +170,7 @@ Dnešná session bola úspešná v objave **MCP Docker systému** a overení/fin
 - **XP Tracking:** `xvadur/logs/XVADUR_XP.md` - aktuálne 19.54 XP (Level 2)
 - **Log:** `xvadur/logs/XVADUR_LOG.md` - chronologický záznam
 - **Profile:** `xvadur/data/profile/xvadur_profile.md` - kompletná Identity Map
-- **Prompts:** `xvadur/data/prompts_log.jsonl` - 27 promptov uložených
+- **Prompts:** `xvadur/data/prompts_log.jsonl` - 26 promptov uložených
 
 **O Štýle:**
 - **Tón:** Priamy, analytický, strategický

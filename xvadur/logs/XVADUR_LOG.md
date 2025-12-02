@@ -555,7 +555,7 @@ Každý záznam obsahuje:
 
 **Kľúčové body:**
 - **MCP Docker systém:** Objavený a začatý používať (80+ nástrojov)
-- **Automatické ukladanie:** Finalizované, overené a rozšírené (27 promptov uložených)
+- **Automatické ukladanie:** Finalizované, overené a rozšírené (26 promptov uložených)
 - **Nové rozšírenie:** Automatické ukladanie všetkých promptov pri každom `/savegame` cez `scripts/save_conversation_prompts.py`
 - **Identity Map:** Vytvorená (`xvadur_profile.md`)
 - **Dokumentácia:** Všetky Cursor Rules aktualizované
@@ -564,7 +564,7 @@ Každý záznam obsahuje:
 **Zmeny v súboroch:**
 - `xvadur/save_games/SAVE_GAME_LATEST.md` - finálny save game
 - `xvadur/logs/XVADUR_LOG.md` - tento záznam
-- `xvadur/data/prompts_log.jsonl` - 27 promptov (6 nových uložených)
+- `xvadur/data/prompts_log.jsonl` - 26 promptov (6 nových uložených)
 - `scripts/save_conversation_prompts.py` - nový skript pre batch ukladanie
 - `.cursor/commands/savegame.md` - aktualizovaný s automatickým ukladaním promptov
 
