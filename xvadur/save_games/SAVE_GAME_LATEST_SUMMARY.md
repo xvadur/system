@@ -1,75 +1,74 @@
-# 💾 SAVE GAME SUMMARY: 2025-12-03 14:25
+# 💾 SAVE GAME SUMMARY: 2025-12-03
 
 ## 📊 Status
-- **Rank:** Architekt (Level 4)
-- **Level:** 4
-- **XP:** 55.47 / 100.0 XP (55.5%)
-- **Next Level:** 44.53 XP potrebné
-- **Streak:** 2 dní
-- **Last Session:** Streda_2025-12-03 (13:00 - 14:25)
+
+- **Rank:** Architekt (Level 5)
+- **Level:** 5
+- **XP:** 116.97 / 200.0 XP (58.5%)
+- **Next Level:** 83.03 XP potrebné
+- **Last Session:** Streda_2025-12-03 (14:00 - 22:30)
 
 ---
 
 ## 🎯 Posledná Session - Sumár
 
 **Čo sa robilo:**
-- Identifikovaný problém s XP systémom (subjektívne metriky, manuálne výpočty)
-- Implementovaný hybridný XP systém s automatickým výpočtom z logu a promptov
-- Pridané grafy do XP systému - automatické generovanie ASCII grafov z histórie
-- Úprava `XVADUR_LOG.md` - odstránené placeholdery, zjednodušený formát
+- Vytvorená chronologická syntéza vývoja myslenia a konania z originálnych promptov
+- Implementovaná syntéza podľa mesiacov a podľa 62 fáz pomocou LLM
+- Vytvorený PDF export z hlavného výstupu (2562 riadkov)
+- Vyčistený repo od dočasných súborov (6 súborov, ~72 KB)
 
 **Kľúčové rozhodnutia:**
-- Automatický výpočet XP z existujúcich dát (log + prompty)
-- XP systém integrovaný do `/savegame` (krok 0.5)
-- Grafy sa generujú automaticky a zobrazujú priebeh XP v čase
-- Log obsahuje len skutočné záznamy práce (bez placeholderov)
+- Syntéza z originálnych promptov je lepšia ako z extrahovaných aktivít
+- Použitie modelu `tngtech/deepseek-r1t2-chimera:free` (163k token kontext)
+- Identifikácia fáz podľa zmien v word_count (nie je ideálna, potrebuje vylepšenie)
 
 **Vykonané úlohy:**
-- ✅ Implementácia hybridného XP systému (`scripts/calculate_xp.py`)
-- ✅ Prepísanie `XVADUR_XP.md` na nový formát
-- ✅ Integrácia XP výpočtu do `/savegame` commandu
-- ✅ Úprava `XVADUR_LOG.md` - odstránenie placeholderov
-- ✅ Pridanie grafov do XP systému (história, timeline, trend)
+- ✅ Vytvorený skript `scripts/synthesize_from_raw_prompts.py`
+- ✅ Syntéza podľa mesiacov: `synthesis_evolution_from_raw.md` (491 riadkov)
+- ✅ Syntéza podľa fáz: `synthesis_evolution_by_phases.md` (2562 riadkov)
+- ✅ PDF export vytvorený a opravený (odstránené raw tagy)
+- ✅ Vyčistený repo od dočasných súborov
+- ✅ Vytvorená rekapitulácia: `SESSION_RECAP_2025-12-03.md`
 
 ---
 
 ## 🎯 Aktívne Questy
 
-### Quest: Vlado (Recepčná)
-- **Status:** ✅ Funkčná, prompt hotový
-- **Next Steps:** Upraviť konverzačnú logiku, zber údajov o hovoroch do databázy
-- **Blokátory:** SIP Trunk (Vlado rieši), ElevenLabs Enterprise (potrebné)
+### Quest 1: Ujasniť Očakávania od Syntézy
+- **Status:** ⏳ Otvorený
+- **Next Steps:** Definovať, čo presne chceš z syntézy (chronologický naratív, analýza vzorcov, transformácie?)
+- **Blokátory:** Žiadne
 
-### Automatizačné Procesy vo Workspace a GitHub
-- **Status:** ⏳ V procese
-- **Next Steps:** Automatické vytváranie session dokumentov, aktualizovanie logov, backlinking, metriky
-- **Dokončené:** ✅ Save Game Summary systém, ✅ Hybridný XP systém, ✅ Grafy v XP systéme
+### Quest 2: Vylepšiť Identifikáciu Fáz
+- **Status:** ⏳ Otvorený
+- **Next Steps:** Skúsiť identifikáciu fáz podľa zmien v témach (nie len word_count)
+- **Blokátory:** Žiadne
 
-### MCP Docker Systém
-- **Status:** ✅ Objavený a používaný
-- **Next Steps:** Pokračovať v integrácii do automatizačných procesov
+### Quest 3: Robustnejší Postup pre Syntézu
+- **Status:** ⏳ Otvorený
+- **Next Steps:** Vylepšiť prompty pre model, implementovať validáciu a opravu chýb
+- **Blokátory:** Žiadne
 
 ---
 
 ## 📋 Next Steps
 
-1. Pokračovať v práci na automatizačných procesoch (session dokumenty, logy, backlinking)
-2. Dokončiť Quest: Vlado (recepčná) - upraviť konverzačnú logiku
-3. Implementovať zber údajov o hovoroch do databázy
-4. Pokračovať v integrácii MCP Docker systému
+1. **Ujasniť očakávania od syntézy** - Definovať, čo presne chceš z syntézy
+2. **Vylepšiť identifikáciu fáz** - Skúsiť kombináciu viacerých faktorov (word_count, témy, transformačné momenty)
+3. **Robustnejší postup pre syntézu** - Lepšie prompty, validácia, oprava chýb
+4. **Pokračovať v čistení repo** - Organizovať a dokumentovať výstupy
 
 ---
 
 ## 🔑 Kľúčové Kontexty
 
-- **Hybridný XP systém:** Automaticky počíta XP z logu (práca) a promptov (aktivita), plne automatizovaný
-- **XP hodnoty:** 55.47 XP, Level 4, Streak 2 dní (automaticky vypočítané)
-- **Grafy:** Automaticky generované ASCII grafy zobrazujú priebeh XP v čase
-- **Log formát:** Zjednodušený, len skutočné záznamy práce (bez placeholderov)
-- **Recepčná:** Funkčná, end-to-end test úspešný, vzťah s Vladom sa posunul na parťáka
-- **MCP Docker:** 80+ nástrojov dostupných, používaný pre automatizáciu workflow
+- **Syntéza promptov:** Experimentálna, potrebuje ujasnenie očakávaní
+- **Model limity:** Niekedy vracia raw tagy, kontextové okno niekedy prekročené
+- **PDF export:** Funguje, ale vyžaduje manuálnu konverziu a čistenie raw tagov
+- **Repo:** Vyčistený od dočasných súborov, ponechané len finálne výstupy
 
 ---
 
-**Full Details:** `xvadur/save_games/SAVE_GAME_LATEST.md`
-**Last Updated:** 2025-12-03 14:25
+**Full Details:** `xvadur/save_games/SAVE_GAME_LATEST.md`  
+**Last Updated:** 2025-12-03 22:30

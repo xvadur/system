@@ -284,3 +284,229 @@
 - `xvadur/logs/XVADUR_LOG.md` - tento záznam
 
 ---
+
+## [2025-12-03 15:00] 🔹 Práca s Databázou Promptov
+
+**Vykonané:**
+- Identifikovaná databáza promptov: 664 historických promptov v `data/prompts/prompts_split/`
+- 45 aktuálnych promptov v `xvadur/data/prompts_log.jsonl`
+- Vytvorený README dokument pre databázu promptov (`data/prompts/README.md`)
+- Dokumentácia štruktúry, formátov, nástrojov a plánovaných analýz
+
+**Kľúčové body:**
+- **Historické prompty:** JSON formát, organizované podľa dátumov (2025-07-19 až 2025-11-06)
+- **Aktuálne prompty:** JSONL formát, automatické ukladanie cez `auto_save_prompt.py`
+- **RAG index:** Existuje v `data/rag_index/` (FAISS) pre semantic search
+- **MinisterOfMemory:** Používa FileStore pre persistentné ukladanie
+
+**Plánované práce:**
+- Analýza základných štatistík (word count, priemerná dĺžka, časové trendy)
+- Tematická analýza promptov
+- Konzolidácia historických a aktuálnych promptov (ak je potrebné)
+- Vylepšenie RAG indexu a vyhľadávania
+
+**Zmeny v súboroch:**
+- `data/prompts/README.md` - nový README dokument pre databázu promptov
+- `xvadur/data/sessions/Streda_2025-12-03.md` - aktualizovaný s prácou na databáze
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+---
+
+## [2025-12-03 15:15] 🔹 Analýza Metrík Promptov - Vypočítanie Štatistík
+
+**Vykonané:**
+- Vytvorený skript `scripts/analyze_prompts_metrics.py` pre analýzu metrík
+- Vypočítané základné metriky pre všetky mesiace:
+  - Počet promptov, word count, počet viet, median počtu viet
+- Aktualizovaná tabuľka v `data/prompts/README.md` s kompletnými metrikami
+
+**Kľúčové výsledky:**
+- **Celkom:** 708 promptov (664 historických + 44 aktuálnych)
+- **Word count:** 254,948 slov
+- **Počet viet:** 12,041 viet
+- **Top mesiac:** September 2025 (214 promptov, 124,768 slov)
+- **Najvyšší median viet:** Október 2025 (13.0 viet na prompt)
+
+**Rozdelenie podľa mesiacov:**
+- Júl 2025: 153 promptov, 23,539 slov, 1,198 viet, median 5.0
+- August 2025: 185 promptov, 51,506 slov, 2,337 viet, median 6.0
+- September 2025: 214 promptov, 124,768 slov, 5,559 viet, median 10.0
+- Október 2025: 96 promptov, 45,490 slov, 2,415 viet, median 13.0
+- November 2025: 16 promptov, 7,053 slov, 378 viet, median 12.0
+- December 2025: 44 promptov, 2,592 slov, 154 viet, median 1.0
+
+**Zmeny v súboroch:**
+- `scripts/analyze_prompts_metrics.py` - nový skript pre analýzu metrík
+- `data/prompts/README.md` - aktualizovaná tabuľka s metrikami
+- `xvadur/data/sessions/Streda_2025-12-03.md` - aktualizovaný s výsledkami
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+---
+
+## [2025-12-03 15:30] 🔹 Tematická Analýza Promptov - Identifikácia Dominantných Tém
+
+**Vykonané:**
+- Vytvorený skript `scripts/analyze_prompts_topics_final.py` pre tematickú analýzu
+- Identifikované top 3 témy pre každý mesiac pomocou kľúčových slov a fráz
+- Aktualizovaná tabuľka v `data/prompts/README.md` s pridaným stĺpcom "Top 3 Témy"
+
+**Kľúčové výsledky:**
+- **AI Technologie:** Dominantná téma v každom mesiaci (okrem decembra 2025)
+  - Najvyššie skóre: September 2025 (2,396 výskytov)
+- **Depresia/Frustrácia:** Častá téma v júli až novembri 2025
+- **Biznis/Projekty:** Významná téma v auguste až novembri 2025
+- **Osobný Rozvoj:** Dominantná téma v decembri 2025
+- **Workspace Systémy:** Nová téma v decembri 2025 (Cursor, Obsidian, MCP)
+
+**Top 3 témy podľa mesiacov:**
+- Júl 2025: AI Technologie, Depresia/Frustrácia, Automatizácia/Kód
+- August 2025: AI Technologie, Biznis/Projekty, Depresia/Frustrácia
+- September 2025: AI Technologie, Biznis/Projekty, Depresia/Frustrácia
+- Október 2025: AI Technologie, Depresia/Frustrácia, Biznis/Projekty
+- November 2025: AI Technologie, Depresia/Frustrácia, Biznis/Projekty
+- December 2025: Osobný Rozvoj, Workspace Systémy, AI Technologie
+
+**Zmeny v súboroch:**
+- `scripts/analyze_prompts_topics_final.py` - nový skript pre tematickú analýzu
+- `data/prompts/README.md` - rozšírená tabuľka s témami + sekcia o dominantných témach
+- `xvadur/data/sessions/Streda_2025-12-03.md` - aktualizovaný s výsledkami tematickej analýzy
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+---
+
+## [2025-12-03 15:45] 🔹 Analýza Príčin "Depresie/Frustrácie" v Promptoch
+
+**Vykonané:**
+- Vytvorené skripty `scripts/analyze_depression_prompts.py` a `scripts/analyze_depression_causes.py`
+- Detailná analýza 322 promptov s depresnými/frustračnými znakmi (45.5% z celkového počtu)
+- Kategorizácia promptov na: Neistota, Frustrácia z práce, Skutočná depresia, Zmiešané
+
+**Kľúčové zistenie:**
+- **Väčšina "depresie" nie je skutočná depresia!**
+  - **Neistota (41.9%):** "neviem", "neviem ako", "neviem co" - konzultácia s AI, neistota pri práci
+  - **Frustrácia z práce (8.1%):** "odpor", "nefunguje", "nemozem" - technické problémy, frustrácia z projektov
+  - **Skutočná depresia (8.7%):** "smutok", "strateny", "sam", "opusteny" - skutočná depresia
+  - **Zmiešané (41.3%):** Kombinácia viacerých kategórií
+
+**Najčastejšie kľúčové slová:**
+1. "neviem" - 404x (najčastejšie!)
+2. "sam" - 119x
+3. "nemozem" - 62x
+4. "nechcem" - 57x
+5. "neviem co" - 39x
+
+**Rozdelenie podľa mesiacov:**
+- September 2025: 121 promptov (najviac!)
+- August 2025: 78 promptov (najvyššie percento skutočnej depresie - 14.1%)
+- Október 2025: 53 promptov (najvyššie percento neistoty - 62.3%)
+
+**Záver:**
+"Depresia/Frustrácia" ako téma je hlavne neistota a konzultácia s AI, nie skutočná depresia. Skutočná depresia je len 8.7% z promptov s depresnými/frustračnými znakmi.
+
+**Zmeny v súboroch:**
+- `scripts/analyze_depression_prompts.py` - skript pre identifikáciu depresných promptov
+- `scripts/analyze_depression_causes.py` - skript pre kategorizáciu príčin
+- `data/prompts/DEPRESSION_ANALYSIS.md` - nový dokument s detailnou analýzou
+- `data/prompts/README.md` - aktualizovaný s odkazom na analýzu
+- `xvadur/data/sessions/Streda_2025-12-03.md` - aktualizovaný s výsledkami
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+---
+
+## [2025-12-03 16:00] 🔹 Extrakcia Aktivit z Promptov - LLM-based Activity Extraction
+
+**Vykonané:**
+- Vytvorený skript `scripts/extract_prompt_activities.py` pre extrakciu aktivít z promptov
+- Implementovaná funkcionalita:
+  - Načítanie historických a aktuálnych promptov
+  - Filtrovanie promptov < 1000 slov (dlhé preskočí)
+  - OpenAI API volania s retry logic a rate limiting
+  - Ukladanie výsledkov do `data/prompts/prompts_activities.jsonl`
+  - Resume functionality - môže pokračovať po prerušení
+  - Test mode pre testovanie na malom sample
+  - Progress tracking a error handling
+
+**Kľúčové body:**
+- **Model:** `gpt-4o-mini` (rýchlejší, lacnejší)
+- **Formát výstupu:** JSONL s poliami: prompt_id, date, timestamp, word_count, activity, thoughts, summary_extracted_at
+- **Štatistiky:** 606 promptov < 1000 slov z 664 historických (91.3%)
+- **OpenAI Prompt:** Extrahuje aktivitu (čo robil) a myšlienky (nad čím rozmýšľal) z každého promptu
+- **Rate limiting:** 1.1s medzi requestmi (60 requests/min)
+
+**Použitie:**
+- Časová os aktivít: "Čo som robil v septembri 2025"
+- Vyhľadávanie podľa aktivity
+- Analýza myšlienok a tém
+- Generovanie monthly summaries
+
+**Zmeny v súboroch:**
+- `scripts/extract_prompt_activities.py` - nový skript pre extrakciu aktivít
+- `data/prompts/README.md` - aktualizovaný s dokumentáciou nového súboru a skriptu
+- `xvadur/data/sessions/Streda_2025-12-03.md` - aktualizovaný s výsledkami
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+---
+
+## [2025-12-03 14:00 - 22:30] 🔹 Syntéza Promptov - Chronologická Analýza Vývoja Myslenia a Konania
+
+**Vykonané:**
+- Vytvorený skript `scripts/synthesize_from_raw_prompts.py` pre chronologickú syntézu z originálnych promptov
+- Implementovaná syntéza podľa mesiacov a podľa fáz vývoja
+- Použitý model: `tngtech/deepseek-r1t2-chimera:free` (163k token kontext)
+- Vytvorené dva hlavné výstupy:
+  1. `synthesis_evolution_from_raw.md` (491 riadkov) - syntéza podľa mesiacov
+  2. `synthesis_evolution_by_phases.md` (2562 riadkov) - syntéza podľa 62 fáz
+
+**Kľúčové výsledky:**
+- **62 fáz** identifikovaných podľa zmien v word_count
+- **~15-20 úspešných syntéz** (24-32%) s podrobnou analýzou vývoja myslenia a konania
+- **~21 prázdnych fáz** (34%) - potrebuje lepšiu identifikáciu fáz
+- **Príklady kvalitných syntéz:**
+  - Fáza 7 (24.-26. júl): Objav Abacusu - podrobná analýza experimentovania
+  - Fáza 24 (19.-21. august): Vytvorenie brandu Xvadur - finančná kríza a adaptácia
+  - Fáza 57 (30. október - 2. november): Prekonanie prokrastinácie - kritická reflexia → akcia → úspech
+
+**Problémy a riešenia:**
+- Model niekedy vracia raw tagy (`<s>`, `[OUT]`, `[/INST]`) namiesto čistého textu
+- Kontextové okno niekedy prekročené (Fáza 39: 35k tokenov, limit 32k)
+- Model sa niekedy zacyklí (Fáza 33: stokrát `<s>` tagy)
+- **Riešenie:** Vytvorený HTML súbor s odstránenými raw tagmi pre PDF export
+
+**PDF Export:**
+- Vytvorený `synthesis_evolution_by_phases.html` (175K) pre konverziu do PDF
+- Opravené strikethrough problémy (odstránené `<s>` tagy)
+- PDF úspešne vytvorené manuálne (Cmd+P → Uložiť ako PDF)
+
+**Vyčistenie repo:**
+- Zmazané dočasné syntézy (6 súborov, ~72 KB):
+  - `synthesis_by_periods.md`, `synthesis_by_periods_local.md`
+  - `synthesis_story_arcs.md`, `synthesis_story_arcs_local.md`
+  - `synthesis_transformations.md`, `synthesis_transformations_local.md`
+- Zmazané error logy (3 súbory)
+- Ponechané len finálne výstupy:
+  - `synthesis_evolution_by_phases.md` (160K) - hlavný výstup
+  - `synthesis_evolution_by_phases.html` (175K) - HTML pre PDF
+  - `synthesis_evolution_from_raw.md` (25K)
+  - `SESSION_RECAP_2025-12-03.md` (4.8K) - rekapitulácia
+
+**Zistenia:**
+- Syntéza z originálnych promptov je lepšia ako z extrahovaných aktivít
+- Veľké kontextové okno (163k tokenov) umožňuje syntetizovať dlhšie obdobia
+- Syntéza podľa fáz je užitočná, ale potrebuje lepšiu identifikáciu fáz (word_count nie je ideálny)
+- PDF export funguje, ale vyžaduje čistenie raw tagov
+
+**Potrebuje ujasniť:**
+- Čo presne od syntézy očakávať? (chronologický naratív, analýza vzorcov, transformácie?)
+- Ako lepšie identifikovať fázy? (word_count nie je ideálny)
+- Ako robiť syntézu robustnejšie? (lepšie prompty, iný model, validácia?)
+
+**Zmeny v súboroch:**
+- `scripts/synthesize_from_raw_prompts.py` - nový skript pre syntézu
+- `data/prompts/synthesis/synthesis_evolution_by_phases.md` - hlavný výstup (2562 riadkov)
+- `data/prompts/synthesis/synthesis_evolution_by_phases.html` - HTML verzia pre PDF
+- `data/prompts/synthesis/synthesis_evolution_from_raw.md` - syntéza podľa mesiacov (491 riadkov)
+- `data/prompts/synthesis/SESSION_RECAP_2025-12-03.md` - rekapitulácia session
+- `xvadur/data/sessions/Streda_2025-12-03.md` - aktualizovaný s výsledkami syntézy
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+---

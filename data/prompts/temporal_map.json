@@ -1,0 +1,2145 @@
+{
+  "created_at": "2025-12-03T20:32:47.557922",
+  "total_prompts": 647,
+  "story_arcs": [
+    {
+      "project": "n8n",
+      "prompt_ids": [
+        "2025-07-19_013",
+        "2025-07-21_001",
+        "2025-07-21_002",
+        "2025-07-21_007",
+        "2025-07-21_009",
+        "2025-07-21_015",
+        "2025-07-22_003",
+        "2025-07-22_006",
+        "2025-07-23_005",
+        "2025-07-23_020",
+        "2025-07-26_008",
+        "2025-07-26_014",
+        "2025-07-26_016",
+        "2025-07-26_017",
+        "2025-07-26_018",
+        "2025-07-27_001",
+        "2025-07-27_019",
+        "2025-07-31_014",
+        "2025-07-31_017",
+        "2025-08-01_001",
+        "2025-08-03_007",
+        "2025-08-04_005",
+        "2025-08-04_007",
+        "2025-08-04_008",
+        "2025-08-04_009",
+        "2025-08-07_003",
+        "2025-08-07_004",
+        "2025-08-08_016",
+        "2025-08-09_007",
+        "2025-08-11_025",
+        "2025-08-21_019",
+        "2025-08-22_007",
+        "2025-08-22_017",
+        "2025-08-25_010",
+        "2025-08-26_002",
+        "2025-08-30_002",
+        "2025-09-06_010",
+        "2025-09-06_014",
+        "2025-09-06_016",
+        "2025-09-07_015",
+        "2025-09-08_003",
+        "2025-09-08_006",
+        "2025-09-08_007",
+        "2025-09-09_003",
+        "2025-09-09_004",
+        "2025-09-11_001",
+        "2025-09-11_002",
+        "2025-09-11_007",
+        "2025-09-12_001",
+        "2025-09-13_001",
+        "2025-09-13_004",
+        "2025-09-15_028",
+        "2025-09-16_004",
+        "2025-09-18_004",
+        "2025-09-19_003",
+        "2025-09-19_017",
+        "2025-09-22_003",
+        "2025-09-24_005",
+        "2025-09-25_003",
+        "2025-09-25_004",
+        "2025-09-25_005",
+        "2025-09-25_007",
+        "2025-09-28_010",
+        "2025-09-28_011",
+        "2025-09-29_006",
+        "2025-09-29_007",
+        "2025-09-29_008",
+        "2025-09-29_009",
+        "2025-09-29_010",
+        "2025-09-29_011",
+        "2025-10-01_003",
+        "2025-10-02_001",
+        "2025-10-02_002",
+        "2025-10-03_003",
+        "2025-10-03_005",
+        "2025-10-03_006",
+        "2025-10-04_001",
+        "2025-10-04_004",
+        "2025-10-04_005",
+        "2025-10-06_005",
+        "2025-10-06_006",
+        "2025-10-08_001",
+        "2025-10-09_003",
+        "2025-10-14_004",
+        "2025-10-16_001",
+        "2025-10-21_002",
+        "2025-10-22_001",
+        "2025-10-23_002",
+        "2025-11-01_002"
+      ],
+      "prompt_count": 89,
+      "start_date": "2025-07-19",
+      "end_date": "2025-11-01",
+      "duration_days": 106,
+      "dominant_category": "work",
+      "sentiment_trend": "neutral",
+      "total_words": 24698,
+      "avg_words_per_prompt": 277.5056179775281
+    },
+    {
+      "project": "Recepčná",
+      "prompt_ids": [
+        "2025-10-04_005",
+        "2025-10-07_002",
+        "2025-10-16_001",
+        "2025-10-18_005",
+        "2025-10-19_003",
+        "2025-10-22_003",
+        "2025-10-30_004",
+        "2025-11-03_002",
+        "current_13",
+        "current_34",
+        "current_35"
+      ],
+      "prompt_count": 11,
+      "start_date": "2025-10-04",
+      "end_date": "2025-12-03",
+      "duration_days": 61,
+      "dominant_category": "work",
+      "sentiment_trend": "neutral",
+      "total_words": 3459,
+      "avg_words_per_prompt": 314.45454545454544
+    },
+    {
+      "project": "aiappla",
+      "prompt_ids": [
+        "2025-08-02_004",
+        "2025-09-04_007",
+        "2025-09-15_030",
+        "2025-09-16_010",
+        "2025-09-16_011",
+        "2025-09-30_004"
+      ],
+      "prompt_count": 6,
+      "start_date": "2025-08-02",
+      "end_date": "2025-09-30",
+      "duration_days": 60,
+      "dominant_category": "reflection",
+      "sentiment_trend": "neutral",
+      "total_words": 1398,
+      "avg_words_per_prompt": 233.0
+    },
+    {
+      "project": "analyza_konvecia",
+      "prompt_ids": [
+        "2025-07-23_003",
+        "2025-07-27_008",
+        "2025-08-05_004",
+        "2025-09-03_006",
+        "2025-09-03_007"
+      ],
+      "prompt_count": 5,
+      "start_date": "2025-07-23",
+      "end_date": "2025-09-03",
+      "duration_days": 43,
+      "dominant_category": "reflection",
+      "sentiment_trend": "neutral",
+      "total_words": 609,
+      "avg_words_per_prompt": 121.8
+    },
+    {
+      "project": "github",
+      "prompt_ids": [
+        "2025-07-21_001",
+        "2025-07-27_031",
+        "2025-07-30_002",
+        "2025-07-31_019"
+      ],
+      "prompt_count": 4,
+      "start_date": "2025-07-21",
+      "end_date": "2025-07-31",
+      "duration_days": 11,
+      "dominant_category": "work",
+      "sentiment_trend": "neutral",
+      "total_words": 516,
+      "avg_words_per_prompt": 129.0
+    },
+    {
+      "project": "xvadur_identita",
+      "prompt_ids": [
+        "2025-07-24_011",
+        "2025-07-27_024",
+        "2025-09-03_006",
+        "2025-09-03_007"
+      ],
+      "prompt_count": 4,
+      "start_date": "2025-07-24",
+      "end_date": "2025-09-03",
+      "duration_days": 42,
+      "dominant_category": "reflection",
+      "sentiment_trend": "neutral",
+      "total_words": 306,
+      "avg_words_per_prompt": 76.5
+    },
+    {
+      "project": "xvadur",
+      "prompt_ids": [
+        "2025-07-27_008",
+        "2025-08-03_001",
+        "2025-09-03_006",
+        "2025-09-03_007"
+      ],
+      "prompt_count": 4,
+      "start_date": "2025-07-27",
+      "end_date": "2025-09-03",
+      "duration_days": 39,
+      "dominant_category": "learning",
+      "sentiment_trend": "neutral",
+      "total_words": 201,
+      "avg_words_per_prompt": 50.25
+    },
+    {
+      "project": "startup",
+      "prompt_ids": [
+        "2025-09-15_011",
+        "2025-09-16_006",
+        "2025-09-16_010",
+        "2025-10-10_005"
+      ],
+      "prompt_count": 4,
+      "start_date": "2025-09-15",
+      "end_date": "2025-10-10",
+      "duration_days": 26,
+      "dominant_category": "planning",
+      "sentiment_trend": "neutral",
+      "total_words": 329,
+      "avg_words_per_prompt": 82.25
+    },
+    {
+      "project": "newsletter",
+      "prompt_ids": [
+        "2025-09-04_005",
+        "2025-09-07_006",
+        "2025-09-15_003"
+      ],
+      "prompt_count": 3,
+      "start_date": "2025-09-04",
+      "end_date": "2025-09-15",
+      "duration_days": 12,
+      "dominant_category": "work",
+      "sentiment_trend": "negative",
+      "total_words": 174,
+      "avg_words_per_prompt": 58.0
+    },
+    {
+      "project": "Dashboard",
+      "prompt_ids": [
+        "2025-07-23_001",
+        "2025-07-23_002"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-07-23",
+      "end_date": "2025-07-23",
+      "duration_days": 1,
+      "dominant_category": "problem_solving",
+      "sentiment_trend": "negative",
+      "total_words": 273,
+      "avg_words_per_prompt": 136.5
+    },
+    {
+      "project": "adam_raw_inputs",
+      "prompt_ids": [
+        "2025-07-27_008",
+        "2025-08-03_013"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-07-27",
+      "end_date": "2025-08-03",
+      "duration_days": 8,
+      "dominant_category": "learning",
+      "sentiment_trend": "neutral",
+      "total_words": 442,
+      "avg_words_per_prompt": 221.0
+    },
+    {
+      "project": "landing-ag",
+      "prompt_ids": [
+        "2025-07-27_033",
+        "2025-07-28_003"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-07-27",
+      "end_date": "2025-07-28",
+      "duration_days": 2,
+      "dominant_category": "work",
+      "sentiment_trend": "neutral",
+      "total_words": 221,
+      "avg_words_per_prompt": 110.5
+    },
+    {
+      "project": "resume-builder",
+      "prompt_ids": [
+        "2025-07-28_001",
+        "2025-07-28_003"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-07-28",
+      "end_date": "2025-07-28",
+      "duration_days": 1,
+      "dominant_category": "learning",
+      "sentiment_trend": "positive",
+      "total_words": 289,
+      "avg_words_per_prompt": 144.5
+    },
+    {
+      "project": "monoblok",
+      "prompt_ids": [
+        "2025-07-30_001",
+        "2025-10-10_001"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-07-30",
+      "end_date": "2025-10-10",
+      "duration_days": 73,
+      "dominant_category": "problem_solving",
+      "sentiment_trend": "negative",
+      "total_words": 596,
+      "avg_words_per_prompt": 298.0
+    },
+    {
+      "project": "gpt5",
+      "prompt_ids": [
+        "2025-08-07_011",
+        "2025-08-21_012"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-08-07",
+      "end_date": "2025-08-21",
+      "duration_days": 15,
+      "dominant_category": "reflection",
+      "sentiment_trend": "neutral",
+      "total_words": 148,
+      "avg_words_per_prompt": 74.0
+    },
+    {
+      "project": "googlo",
+      "prompt_ids": [
+        "2025-09-16_011",
+        "2025-10-19_004"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-09-16",
+      "end_date": "2025-10-19",
+      "duration_days": 34,
+      "dominant_category": "reflection",
+      "sentiment_trend": "neutral",
+      "total_words": 106,
+      "avg_words_per_prompt": 53.0
+    },
+    {
+      "project": "recepcna",
+      "prompt_ids": [
+        "2025-10-02_005",
+        "2025-11-01_004"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-10-02",
+      "end_date": "2025-11-01",
+      "duration_days": 31,
+      "dominant_category": "reflection",
+      "sentiment_trend": "neutral",
+      "total_words": 1336,
+      "avg_words_per_prompt": 668.0
+    },
+    {
+      "project": "promptyva",
+      "prompt_ids": [
+        "2025-11-06_001",
+        "current_44"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-11-06",
+      "end_date": "2025-12-03",
+      "duration_days": 28,
+      "dominant_category": "problem_solving",
+      "sentiment_trend": "negative",
+      "total_words": 69,
+      "avg_words_per_prompt": 34.5
+    }
+  ],
+  "temporal_clusters": [
+    {
+      "cluster_id": "cluster_1",
+      "prompt_ids": [
+        "2025-07-19_001",
+        "2025-07-19_002",
+        "2025-07-19_004",
+        "2025-07-19_005",
+        "2025-07-19_007",
+        "2025-07-19_011",
+        "2025-07-19_012",
+        "2025-07-19_014",
+        "2025-07-19_015",
+        "2025-07-20_001",
+        "2025-07-20_002",
+        "2025-07-20_003",
+        "2025-07-20_005",
+        "2025-07-20_006",
+        "2025-07-20_008",
+        "2025-07-20_009",
+        "2025-07-20_010",
+        "2025-07-20_011",
+        "2025-07-20_012",
+        "2025-07-20_013",
+        "2025-07-20_014",
+        "2025-07-20_015",
+        "2025-07-20_016",
+        "2025-07-21_004",
+        "2025-07-21_007",
+        "2025-07-21_009",
+        "2025-07-21_015",
+        "2025-07-21_020",
+        "2025-07-22_004",
+        "2025-07-23_003",
+        "2025-07-23_004",
+        "2025-07-23_005",
+        "2025-07-23_006",
+        "2025-07-23_007",
+        "2025-07-23_009",
+        "2025-07-23_010",
+        "2025-07-23_022",
+        "2025-07-23_024",
+        "2025-07-24_001",
+        "2025-07-24_003",
+        "2025-07-24_005",
+        "2025-07-24_008",
+        "2025-07-24_019",
+        "2025-07-24_021",
+        "2025-07-26_008",
+        "2025-07-26_009",
+        "2025-07-26_010",
+        "2025-07-26_011",
+        "2025-07-26_014",
+        "2025-07-26_019",
+        "2025-07-26_021"
+      ],
+      "prompt_count": 51,
+      "start_date": "2025-07-19",
+      "end_date": "2025-07-26",
+      "duration_days": 8,
+      "projects": [
+        "freelencerstvo",
+        "analyza_konvecia",
+        "n8n",
+        "Analyza_konverzacii",
+        "PLATFORMU"
+      ],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "mesiac",
+        "peto",
+        "podla",
+        "dokument",
+        "text"
+      ]
+    },
+    {
+      "cluster_id": "cluster_2",
+      "prompt_ids": [
+        "2025-07-19_003",
+        "2025-07-19_009",
+        "2025-07-19_010",
+        "2025-07-20_019",
+        "2025-07-20_020",
+        "2025-07-22_003",
+        "2025-07-23_002",
+        "2025-07-23_011",
+        "2025-07-23_019",
+        "2025-07-23_023",
+        "2025-07-24_022",
+        "2025-07-26_018"
+      ],
+      "prompt_count": 12,
+      "start_date": "2025-07-19",
+      "end_date": "2025-07-26",
+      "duration_days": 8,
+      "projects": [
+        "Retool",
+        "n8n",
+        "roadmap",
+        "Dashboard"
+      ],
+      "dominant_category": "planning",
+      "top_concepts": [
+        "zadanie",
+        "peto",
+        "mesiac",
+        "vyuzivat",
+        "chopda"
+      ]
+    },
+    {
+      "cluster_id": "cluster_3",
+      "prompt_ids": [
+        "2025-07-19_013",
+        "2025-07-21_001",
+        "2025-07-21_002",
+        "2025-07-21_003",
+        "2025-07-22_001",
+        "2025-07-22_006",
+        "2025-07-23_001",
+        "2025-07-23_015",
+        "2025-07-23_020",
+        "2025-07-23_021",
+        "2025-07-24_002",
+        "2025-07-24_007",
+        "2025-07-24_015",
+        "2025-07-26_005",
+        "2025-07-26_006",
+        "2025-07-26_016",
+        "2025-07-26_017"
+      ],
+      "prompt_count": 17,
+      "start_date": "2025-07-19",
+      "end_date": "2025-07-26",
+      "duration_days": 8,
+      "projects": [
+        "github",
+        "noda",
+        "trapit",
+        "N8N",
+        "n8n",
+        "Dashboard"
+      ],
+      "dominant_category": "problem_solving",
+      "top_concepts": [
+        "peto",
+        "zadanie",
+        "pristup",
+        "vytvarat",
+        "otazka"
+      ]
+    },
+    {
+      "cluster_id": "cluster_4",
+      "prompt_ids": [
+        "2025-07-19_016",
+        "2025-07-20_004",
+        "2025-07-20_017",
+        "2025-07-21_010",
+        "2025-07-21_019",
+        "2025-07-25_002",
+        "2025-07-26_020"
+      ],
+      "prompt_count": 7,
+      "start_date": "2025-07-19",
+      "end_date": "2025-07-26",
+      "duration_days": 8,
+      "projects": [
+        "supabas",
+        "Knowladge_raw"
+      ],
+      "dominant_category": "work",
+      "top_concepts": [
+        "analyza",
+        "dokument",
+        "text",
+        "pracovat",
+        "dales"
+      ]
+    },
+    {
+      "cluster_id": "cluster_5",
+      "prompt_ids": [
+        "2025-07-20_018",
+        "2025-07-24_011",
+        "2025-07-27_007",
+        "2025-07-27_008",
+        "2025-07-27_009",
+        "2025-07-27_013",
+        "2025-07-27_014"
+      ],
+      "prompt_count": 7,
+      "start_date": "2025-07-20",
+      "end_date": "2025-07-27",
+      "duration_days": 8,
+      "projects": [
+        "xvadur",
+        "analyza_konverzacii",
+        "knowledg_ba",
+        "xvadur_identita",
+        "sonnet",
+        "epi_upgrad",
+        "akpi_resea",
+        "avelka",
+        "analyza_konvecia",
+        "adam_raw_inputs",
+        "_masiva",
+        "AKPI_research"
+      ],
+      "dominant_category": "learning",
+      "top_concepts": [
+        "chem",
+        "xvadur_identita",
+        "_masiva",
+        "destilacia",
+        "tymto"
+      ]
+    },
+    {
+      "cluster_id": "cluster_6",
+      "prompt_ids": [
+        "2025-07-27_001",
+        "2025-07-27_019",
+        "2025-07-27_021",
+        "2025-07-27_024",
+        "2025-07-27_030",
+        "2025-07-27_031",
+        "2025-07-27_032",
+        "2025-07-27_033",
+        "2025-07-28_003",
+        "2025-07-28_008",
+        "2025-07-28_010",
+        "2025-07-29_009",
+        "2025-07-29_010",
+        "2025-07-29_017",
+        "2025-07-30_002",
+        "2025-07-31_001",
+        "2025-07-31_002",
+        "2025-07-31_003",
+        "2025-07-31_004",
+        "2025-07-31_005",
+        "2025-07-31_007",
+        "2025-07-31_009",
+        "2025-07-31_012",
+        "2025-07-31_014",
+        "2025-07-31_017",
+        "2025-08-01_001",
+        "2025-08-03_007"
+      ],
+      "prompt_count": 27,
+      "start_date": "2025-07-27",
+      "end_date": "2025-08-03",
+      "duration_days": 8,
+      "projects": [
+        "github",
+        "xvadur_identita",
+        "dashboard",
+        "apilkaciu",
+        "GitHub",
+        "napisalk",
+        "INT-14",
+        "Zapier",
+        "int-16",
+        "INT-16",
+        "product",
+        "abacus_app",
+        "landing-ag",
+        "resume-scaner",
+        "esta",
+        "openai",
+        "Kouniakcia",
+        "n8n",
+        "resume-builder"
+      ],
+      "dominant_category": "work",
+      "top_concepts": [
+        "zadanie",
+        "esta",
+        "pracovat",
+        "peto",
+        "agent"
+      ]
+    },
+    {
+      "cluster_id": "cluster_7",
+      "prompt_ids": [
+        "2025-07-27_002",
+        "2025-07-27_003",
+        "2025-07-27_004",
+        "2025-07-27_005",
+        "2025-07-27_006",
+        "2025-07-27_017",
+        "2025-07-27_023",
+        "2025-07-27_034",
+        "2025-07-27_035",
+        "2025-07-28_004",
+        "2025-07-29_002",
+        "2025-07-29_008",
+        "2025-07-29_012",
+        "2025-07-29_013",
+        "2025-07-31_015",
+        "2025-07-31_016",
+        "2025-08-01_003",
+        "2025-08-01_004",
+        "2025-08-01_005",
+        "2025-08-01_006",
+        "2025-08-01_007",
+        "2025-08-02_003",
+        "2025-08-02_004",
+        "2025-08-03_003",
+        "2025-08-03_005",
+        "2025-08-03_012",
+        "2025-08-03_013",
+        "2025-08-03_017",
+        "2025-08-03_021",
+        "2025-08-03_022",
+        "2025-08-03_023"
+      ],
+      "prompt_count": 31,
+      "start_date": "2025-07-27",
+      "end_date": "2025-08-03",
+      "duration_days": 8,
+      "projects": [
+        "aiappla",
+        "adam_raw_inputs"
+      ],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "mesiac",
+        "system",
+        "vysledok",
+        "vec",
+        "otazka"
+      ]
+    },
+    {
+      "cluster_id": "cluster_8",
+      "prompt_ids": [
+        "2025-07-27_015",
+        "2025-07-27_016",
+        "2025-07-27_025",
+        "2025-07-29_011",
+        "2025-07-29_016",
+        "2025-07-29_019",
+        "2025-07-31_018",
+        "2025-08-03_002",
+        "2025-08-03_010"
+      ],
+      "prompt_count": 9,
+      "start_date": "2025-07-27",
+      "end_date": "2025-08-03",
+      "duration_days": 8,
+      "projects": [
+        "nemocnica",
+        "appka",
+        "firma"
+      ],
+      "dominant_category": "planning",
+      "top_concepts": [
+        "zmysel",
+        "zaroven",
+        "piatka",
+        "robit",
+        "budget"
+      ]
+    },
+    {
+      "cluster_id": "cluster_9",
+      "prompt_ids": [
+        "2025-07-28_001",
+        "2025-08-03_001",
+        "2025-08-03_006"
+      ],
+      "prompt_count": 3,
+      "start_date": "2025-07-28",
+      "end_date": "2025-08-03",
+      "duration_days": 7,
+      "projects": [
+        "phoenix",
+        "resume-builder",
+        "xvadur",
+        "sidis"
+      ],
+      "dominant_category": "learning",
+      "top_concepts": [
+        "strukturovanie",
+        "resume-builder",
+        "text",
+        "struktura",
+        "benefit"
+      ]
+    },
+    {
+      "cluster_id": "cluster_10",
+      "prompt_ids": [
+        "2025-07-28_007",
+        "2025-07-28_011",
+        "2025-07-29_003",
+        "2025-07-29_005",
+        "2025-07-29_018",
+        "2025-07-30_001",
+        "2025-07-31_019",
+        "2025-07-31_020",
+        "2025-08-04_005",
+        "2025-08-04_007",
+        "2025-08-04_015"
+      ],
+      "prompt_count": 11,
+      "start_date": "2025-07-28",
+      "end_date": "2025-08-04",
+      "duration_days": 8,
+      "projects": [
+        "freelencer",
+        "github",
+        "kedzo",
+        "web-te",
+        "n8n",
+        "tlac",
+        "monoblok",
+        "int-17"
+      ],
+      "dominant_category": "problem_solving",
+      "top_concepts": [
+        "aplikacia",
+        "mozo",
+        "deformacia",
+        "linear",
+        "nemo"
+      ]
+    },
+    {
+      "cluster_id": "cluster_11",
+      "prompt_ids": [
+        "2025-08-04_002",
+        "2025-08-04_003",
+        "2025-08-04_006",
+        "2025-08-04_011",
+        "2025-08-04_012",
+        "2025-08-04_013",
+        "2025-08-04_014",
+        "2025-08-04_017",
+        "2025-08-04_018",
+        "2025-08-05_002",
+        "2025-08-05_004",
+        "2025-08-05_006",
+        "2025-08-05_007",
+        "2025-08-05_008",
+        "2025-08-05_013",
+        "2025-08-05_015",
+        "2025-08-05_017",
+        "2025-08-05_019",
+        "2025-08-05_021",
+        "2025-08-05_022",
+        "2025-08-05_023",
+        "2025-08-05_025",
+        "2025-08-05_026",
+        "2025-08-05_027",
+        "2025-08-05_028",
+        "2025-08-05_030",
+        "2025-08-05_031",
+        "2025-08-06_002",
+        "2025-08-07_001",
+        "2025-08-07_003",
+        "2025-08-07_008",
+        "2025-08-07_011",
+        "2025-08-07_012",
+        "2025-08-07_013",
+        "2025-08-07_018",
+        "2025-08-07_019",
+        "2025-08-07_021",
+        "2025-08-08_010",
+        "2025-08-08_014",
+        "2025-08-08_016",
+        "2025-08-08_019",
+        "2025-08-08_022",
+        "2025-08-08_025",
+        "2025-08-08_026",
+        "2025-08-08_028",
+        "2025-08-09_002",
+        "2025-08-09_007",
+        "2025-08-09_008",
+        "2025-08-10_002",
+        "2025-08-10_003",
+        "2025-08-10_007",
+        "2025-08-10_008",
+        "2025-08-11_002",
+        "2025-08-11_005",
+        "2025-08-11_009",
+        "2025-08-11_010",
+        "2025-08-11_011",
+        "2025-08-11_024",
+        "2025-08-11_026",
+        "2025-08-11_027",
+        "2025-08-11_029",
+        "2025-08-11_031",
+        "2025-08-11_032",
+        "2025-08-11_035"
+      ],
+      "prompt_count": 64,
+      "start_date": "2025-08-04",
+      "end_date": "2025-08-11",
+      "duration_days": 8,
+      "projects": [
+        "stream",
+        "chattgpt",
+        "facebook",
+        "tedqo",
+        "voalco",
+        "analyza_konvecia",
+        "kortex",
+        "DreamFactory",
+        "projekt",
+        "n8n",
+        "gpt5"
+      ],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "vsetko",
+        "cesta",
+        "otazka",
+        "slovo",
+        "svet"
+      ]
+    },
+    {
+      "cluster_id": "cluster_12",
+      "prompt_ids": [
+        "2025-08-04_008",
+        "2025-08-04_009",
+        "2025-08-07_004",
+        "2025-08-08_012",
+        "2025-08-11_025",
+        "2025-08-11_034"
+      ],
+      "prompt_count": 6,
+      "start_date": "2025-08-04",
+      "end_date": "2025-08-11",
+      "duration_days": 8,
+      "projects": [
+        "n8n"
+      ],
+      "dominant_category": "planning",
+      "top_concepts": [
+        "napojit",
+        "vyuzivat",
+        "hladam",
+        "task",
+        "dales"
+      ]
+    },
+    {
+      "cluster_id": "cluster_13",
+      "prompt_ids": [
+        "2025-08-05_003",
+        "2025-08-07_002",
+        "2025-08-07_015",
+        "2025-08-08_011",
+        "2025-08-08_013",
+        "2025-08-09_006",
+        "2025-08-11_003",
+        "2025-08-11_007"
+      ],
+      "prompt_count": 8,
+      "start_date": "2025-08-05",
+      "end_date": "2025-08-11",
+      "duration_days": 7,
+      "projects": [
+        "workspac",
+        "documentisia",
+        "engineering"
+      ],
+      "dominant_category": "work",
+      "top_concepts": [
+        "text",
+        "pracovat",
+        "peto",
+        "button",
+        "task"
+      ]
+    },
+    {
+      "cluster_id": "cluster_14",
+      "prompt_ids": [
+        "2025-08-05_012",
+        "2025-08-07_016",
+        "2025-08-07_022",
+        "2025-08-08_027"
+      ],
+      "prompt_count": 4,
+      "start_date": "2025-08-05",
+      "end_date": "2025-08-08",
+      "duration_days": 4,
+      "projects": [
+        "freelancing"
+      ],
+      "dominant_category": "learning",
+      "top_concepts": [
+        "instukcia",
+        "analyza",
+        "prompot",
+        "agent",
+        "datam"
+      ]
+    },
+    {
+      "cluster_id": "cluster_15",
+      "prompt_ids": [
+        "2025-08-08_015",
+        "2025-08-08_020",
+        "2025-08-08_021",
+        "2025-08-10_004",
+        "2025-08-11_033"
+      ],
+      "prompt_count": 5,
+      "start_date": "2025-08-08",
+      "end_date": "2025-08-11",
+      "duration_days": 4,
+      "projects": [],
+      "dominant_category": "problem_solving",
+      "top_concepts": [
+        "ignorant",
+        "funkca",
+        "stal",
+        "ux/ui",
+        "funkcia"
+      ]
+    },
+    {
+      "cluster_id": "cluster_16",
+      "prompt_ids": [
+        "2025-08-15_002",
+        "2025-08-15_003",
+        "2025-08-21_003",
+        "2025-08-21_004",
+        "2025-08-21_006",
+        "2025-08-21_007",
+        "2025-08-21_009",
+        "2025-08-21_011",
+        "2025-08-21_013",
+        "2025-08-21_019",
+        "2025-08-21_020",
+        "2025-08-21_021",
+        "2025-08-22_008",
+        "2025-08-22_009",
+        "2025-08-22_010"
+      ],
+      "prompt_count": 15,
+      "start_date": "2025-08-15",
+      "end_date": "2025-08-22",
+      "duration_days": 8,
+      "projects": [
+        "zviot",
+        "n8n",
+        "kniznica"
+      ],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "myslim",
+        "podla",
+        "unikatno",
+        "text",
+        "mozo"
+      ]
+    },
+    {
+      "cluster_id": "cluster_17",
+      "prompt_ids": [
+        "2025-08-19_003",
+        "2025-08-21_002",
+        "2025-08-21_023",
+        "2025-08-22_006",
+        "2025-08-22_007",
+        "2025-08-22_016",
+        "2025-08-22_017",
+        "2025-08-25_007"
+      ],
+      "prompt_count": 8,
+      "start_date": "2025-08-19",
+      "end_date": "2025-08-25",
+      "duration_days": 7,
+      "projects": [
+        "ebook",
+        "n8n",
+        "kurza"
+      ],
+      "dominant_category": "planning",
+      "top_concepts": [
+        "strateg",
+        "roadmap",
+        "kalinaka",
+        "vsetko",
+        "vykona"
+      ]
+    },
+    {
+      "cluster_id": "cluster_18",
+      "prompt_ids": [
+        "2025-08-21_012",
+        "2025-08-21_017",
+        "2025-08-21_018"
+      ],
+      "prompt_count": 3,
+      "start_date": "2025-08-21",
+      "end_date": "2025-08-21",
+      "duration_days": 1,
+      "projects": [
+        "gemin",
+        "gpt5"
+      ],
+      "dominant_category": "learning",
+      "top_concepts": [
+        "prostrred",
+        "vysledok",
+        "kortex",
+        "gpt5",
+        "prostred"
+      ]
+    },
+    {
+      "cluster_id": "cluster_19",
+      "prompt_ids": [
+        "2025-08-23_008",
+        "2025-08-23_009",
+        "2025-08-24_002",
+        "2025-08-25_008",
+        "2025-08-25_011",
+        "2025-08-25_012",
+        "2025-08-25_013",
+        "2025-08-26_001",
+        "2025-08-26_004",
+        "2025-08-26_005",
+        "2025-08-27_008",
+        "2025-08-30_002",
+        "2025-08-30_005",
+        "2025-08-30_006",
+        "2025-08-30_011",
+        "2025-08-30_012",
+        "2025-08-30_013",
+        "2025-08-30_014"
+      ],
+      "prompt_count": 18,
+      "start_date": "2025-08-23",
+      "end_date": "2025-08-30",
+      "duration_days": 8,
+      "projects": [
+        "n8n",
+        "aexperiment",
+        "promopet"
+      ],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "slovo",
+        "otazka",
+        "pristup",
+        "casa",
+        "sprava"
+      ]
+    },
+    {
+      "cluster_id": "cluster_20",
+      "prompt_ids": [
+        "2025-08-25_010",
+        "2025-08-26_002",
+        "2025-08-31_021"
+      ],
+      "prompt_count": 3,
+      "start_date": "2025-08-25",
+      "end_date": "2025-08-31",
+      "duration_days": 7,
+      "projects": [
+        "n8n",
+        "core_xvadur"
+      ],
+      "dominant_category": "work",
+      "top_concepts": [
+        "pracovat",
+        "ochotny",
+        "deep",
+        "ktor",
+        "divo"
+      ]
+    },
+    {
+      "cluster_id": "cluster_21",
+      "prompt_ids": [
+        "2025-08-27_002",
+        "2025-08-31_009",
+        "2025-09-03_008",
+        "2025-09-03_013"
+      ],
+      "prompt_count": 4,
+      "start_date": "2025-08-27",
+      "end_date": "2025-09-03",
+      "duration_days": 8,
+      "projects": [
+        "vlog"
+      ],
+      "dominant_category": "planning",
+      "top_concepts": [
+        "vlog",
+        "zameranie",
+        "automatizacia",
+        "worflow",
+        "prechadzka"
+      ]
+    },
+    {
+      "cluster_id": "cluster_22",
+      "prompt_ids": [
+        "2025-08-31_002",
+        "2025-08-31_003",
+        "2025-08-31_006",
+        "2025-08-31_007",
+        "2025-08-31_008",
+        "2025-08-31_010",
+        "2025-08-31_011",
+        "2025-08-31_012",
+        "2025-08-31_013",
+        "2025-08-31_015",
+        "2025-08-31_020",
+        "2025-09-01_002",
+        "2025-09-02_005",
+        "2025-09-03_002",
+        "2025-09-03_003",
+        "2025-09-03_004",
+        "2025-09-03_005",
+        "2025-09-03_006",
+        "2025-09-03_007",
+        "2025-09-03_014",
+        "2025-09-04_001",
+        "2025-09-04_006",
+        "2025-09-04_015",
+        "2025-09-04_020",
+        "2025-09-04_021",
+        "2025-09-04_022",
+        "2025-09-04_023",
+        "2025-09-05_003",
+        "2025-09-05_006",
+        "2025-09-06_001",
+        "2025-09-06_003",
+        "2025-09-06_004",
+        "2025-09-06_007",
+        "2025-09-06_008",
+        "2025-09-06_011",
+        "2025-09-06_012",
+        "2025-09-06_013",
+        "2025-09-06_017",
+        "2025-09-07_001",
+        "2025-09-07_002",
+        "2025-09-07_005",
+        "2025-09-07_010",
+        "2025-09-07_011",
+        "2025-09-07_012",
+        "2025-09-07_013",
+        "2025-09-07_015"
+      ],
+      "prompt_count": 46,
+      "start_date": "2025-08-31",
+      "end_date": "2025-09-07",
+      "duration_days": 8,
+      "projects": [
+        "xvadur",
+        "xvadur_identita",
+        "...",
+        "analyza_konvecia",
+        "n8n"
+      ],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "slovo",
+        "laura",
+        "casa",
+        "cesta",
+        "ruka"
+      ]
+    },
+    {
+      "cluster_id": "cluster_23",
+      "prompt_ids": [
+        "2025-08-31_005",
+        "2025-08-31_019"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-08-31",
+      "end_date": "2025-08-31",
+      "duration_days": 1,
+      "projects": [],
+      "dominant_category": "problem_solving",
+      "top_concepts": [
+        "tiket",
+        "otazka",
+        "clvoek",
+        "schopný",
+        "anal"
+      ]
+    },
+    {
+      "cluster_id": "cluster_24",
+      "prompt_ids": [
+        "2025-09-02_006",
+        "2025-09-04_005",
+        "2025-09-04_007",
+        "2025-09-06_010",
+        "2025-09-06_016",
+        "2025-09-07_006",
+        "2025-09-08_007",
+        "2025-09-09_007",
+        "2025-09-09_009",
+        "2025-09-09_014",
+        "2025-09-09_017"
+      ],
+      "prompt_count": 11,
+      "start_date": "2025-09-02",
+      "end_date": "2025-09-09",
+      "duration_days": 8,
+      "projects": [
+        "aiappla",
+        "abacus",
+        "newsletter",
+        "n8n"
+      ],
+      "dominant_category": "work",
+      "top_concepts": [
+        "pracovat",
+        "spolupraca",
+        "newsletter",
+        "nasiel",
+        "promptyva"
+      ]
+    },
+    {
+      "cluster_id": "cluster_25",
+      "prompt_ids": [
+        "2025-09-06_014",
+        "2025-09-08_002",
+        "2025-09-08_003",
+        "2025-09-08_006",
+        "2025-09-09_003",
+        "2025-09-09_004",
+        "2025-09-09_013",
+        "2025-09-11_001",
+        "2025-09-11_002",
+        "2025-09-11_007",
+        "2025-09-12_001",
+        "2025-09-13_001",
+        "2025-09-13_002",
+        "2025-09-13_004",
+        "2025-09-13_006"
+      ],
+      "prompt_count": 15,
+      "start_date": "2025-09-06",
+      "end_date": "2025-09-13",
+      "duration_days": 8,
+      "projects": [
+        "n8n"
+      ],
+      "dominant_category": "planning",
+      "top_concepts": [
+        "slovo",
+        "mesiac",
+        "strateg",
+        "pozica",
+        "nastroj"
+      ]
+    },
+    {
+      "cluster_id": "cluster_26",
+      "prompt_ids": [
+        "2025-09-07_016",
+        "2025-09-09_016",
+        "2025-09-14_012"
+      ],
+      "prompt_count": 3,
+      "start_date": "2025-09-07",
+      "end_date": "2025-09-14",
+      "duration_days": 8,
+      "projects": [
+        "book"
+      ],
+      "dominant_category": "learning",
+      "top_concepts": [
+        "procves",
+        "statistika",
+        "autoamtizovat",
+        "zdroj",
+        "hodina"
+      ]
+    },
+    {
+      "cluster_id": "cluster_27",
+      "prompt_ids": [
+        "2025-09-11_008",
+        "2025-09-13_003",
+        "2025-09-13_005",
+        "2025-09-13_007",
+        "2025-09-13_008",
+        "2025-09-13_009",
+        "2025-09-14_002",
+        "2025-09-14_003",
+        "2025-09-14_006",
+        "2025-09-14_007",
+        "2025-09-14_010",
+        "2025-09-14_014",
+        "2025-09-15_001",
+        "2025-09-15_002",
+        "2025-09-15_007",
+        "2025-09-15_008",
+        "2025-09-15_009",
+        "2025-09-15_017",
+        "2025-09-15_020",
+        "2025-09-15_024",
+        "2025-09-15_026",
+        "2025-09-15_027",
+        "2025-09-15_028",
+        "2025-09-15_030",
+        "2025-09-16_001",
+        "2025-09-16_003",
+        "2025-09-16_004",
+        "2025-09-16_005",
+        "2025-09-16_006",
+        "2025-09-16_010",
+        "2025-09-16_011",
+        "2025-09-17_001",
+        "2025-09-17_005",
+        "2025-09-17_006",
+        "2025-09-17_008",
+        "2025-09-17_010",
+        "2025-09-17_011",
+        "2025-09-17_012",
+        "2025-09-18_001",
+        "2025-09-18_002",
+        "2025-09-18_004",
+        "2025-09-18_005",
+        "2025-09-18_006",
+        "2025-09-18_008",
+        "2025-09-18_010",
+        "2025-09-18_013"
+      ],
+      "prompt_count": 46,
+      "start_date": "2025-09-11",
+      "end_date": "2025-09-18",
+      "duration_days": 8,
+      "projects": [
+        "underground svet",
+        "googlo",
+        "startup",
+        "aiappla",
+        "automizacia",
+        "n8n",
+        "kapitoli"
+      ],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "mesiac",
+        "slovo",
+        "zdroj",
+        "cesta",
+        "pracovat"
+      ]
+    },
+    {
+      "cluster_id": "cluster_28",
+      "prompt_ids": [
+        "2025-09-14_011",
+        "2025-09-15_003",
+        "2025-09-15_023",
+        "2025-09-19_003"
+      ],
+      "prompt_count": 4,
+      "start_date": "2025-09-14",
+      "end_date": "2025-09-19",
+      "duration_days": 6,
+      "projects": [
+        "newsletter",
+        "n8n",
+        "verium"
+      ],
+      "dominant_category": "work",
+      "top_concepts": [
+        "vystup",
+        "robit",
+        "dvere",
+        "mozen",
+        "praci"
+      ]
+    },
+    {
+      "cluster_id": "cluster_29",
+      "prompt_ids": [
+        "2025-09-15_005",
+        "2025-09-15_006",
+        "2025-09-15_011",
+        "2025-09-15_025",
+        "2025-09-19_017"
+      ],
+      "prompt_count": 5,
+      "start_date": "2025-09-15",
+      "end_date": "2025-09-19",
+      "duration_days": 5,
+      "projects": [
+        "startup",
+        "n8n"
+      ],
+      "dominant_category": "planning",
+      "top_concepts": [
+        "stac",
+        "mesiac",
+        "pocit",
+        "p=resvedcenie",
+        "stretnutim"
+      ]
+    },
+    {
+      "cluster_id": "cluster_30",
+      "prompt_ids": [
+        "2025-09-19_002",
+        "2025-09-19_004",
+        "2025-09-19_005",
+        "2025-09-19_006",
+        "2025-09-19_007",
+        "2025-09-19_009",
+        "2025-09-19_012",
+        "2025-09-19_014",
+        "2025-09-19_015",
+        "2025-09-19_016",
+        "2025-09-19_018",
+        "2025-09-19_019",
+        "2025-09-20_001",
+        "2025-09-21_001",
+        "2025-09-21_002",
+        "2025-09-21_003",
+        "2025-09-21_004",
+        "2025-09-21_005",
+        "2025-09-21_006",
+        "2025-09-22_004",
+        "2025-09-22_005",
+        "2025-09-23_002",
+        "2025-09-23_003",
+        "2025-09-23_007",
+        "2025-09-23_008",
+        "2025-09-24_002",
+        "2025-09-24_003",
+        "2025-09-24_004",
+        "2025-09-24_005",
+        "2025-09-24_007",
+        "2025-09-24_008",
+        "2025-09-24_010",
+        "2025-09-24_011",
+        "2025-09-24_013",
+        "2025-09-24_014",
+        "2025-09-26_006"
+      ],
+      "prompt_count": 36,
+      "start_date": "2025-09-19",
+      "end_date": "2025-09-26",
+      "duration_days": 8,
+      "projects": [
+        "n8n"
+      ],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "uvaha",
+        "mesiac",
+        "slovo",
+        "svet",
+        "cesta"
+      ]
+    },
+    {
+      "cluster_id": "cluster_31",
+      "prompt_ids": [
+        "2025-09-22_003",
+        "2025-09-23_005",
+        "2025-09-25_003",
+        "2025-09-25_004",
+        "2025-09-25_005",
+        "2025-09-25_007",
+        "2025-09-28_010",
+        "2025-09-28_011",
+        "2025-09-29_006",
+        "2025-09-29_007",
+        "2025-09-29_008",
+        "2025-09-29_009",
+        "2025-09-29_010",
+        "2025-09-29_011"
+      ],
+      "prompt_count": 14,
+      "start_date": "2025-09-22",
+      "end_date": "2025-09-29",
+      "duration_days": 8,
+      "projects": [
+        "n8n"
+      ],
+      "dominant_category": "work",
+      "top_concepts": [
+        "mesiac",
+        "podla",
+        "uctovnictvo",
+        "zmysel",
+        "googlo"
+      ]
+    },
+    {
+      "cluster_id": "cluster_32",
+      "prompt_ids": [
+        "2025-09-24_012",
+        "2025-09-29_005",
+        "2025-09-30_007",
+        "2025-10-01_001"
+      ],
+      "prompt_count": 4,
+      "start_date": "2025-09-24",
+      "end_date": "2025-10-01",
+      "duration_days": 8,
+      "projects": [],
+      "dominant_category": "planning",
+      "top_concepts": [
+        "analyza",
+        "paul",
+        "stanovim",
+        "predimenzuva",
+        "sprava"
+      ]
+    },
+    {
+      "cluster_id": "cluster_33",
+      "prompt_ids": [
+        "2025-09-27_002",
+        "2025-09-27_003",
+        "2025-09-27_004",
+        "2025-09-27_005",
+        "2025-09-28_003",
+        "2025-09-28_004",
+        "2025-09-28_005",
+        "2025-09-28_008",
+        "2025-09-29_003",
+        "2025-09-30_001",
+        "2025-09-30_004",
+        "2025-10-01_004",
+        "2025-10-01_005",
+        "2025-10-02_001",
+        "2025-10-02_002",
+        "2025-10-02_005",
+        "2025-10-03_002",
+        "2025-10-03_003"
+      ],
+      "prompt_count": 18,
+      "start_date": "2025-09-27",
+      "end_date": "2025-10-03",
+      "duration_days": 7,
+      "projects": [
+        "recepcna",
+        "aiappla",
+        "n8n"
+      ],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "mesiac",
+        "pristup",
+        "slovo",
+        "pristupovat",
+        "pracovat"
+      ]
+    },
+    {
+      "cluster_id": "cluster_34",
+      "prompt_ids": [
+        "2025-10-01_003",
+        "2025-10-03_005",
+        "2025-10-03_006",
+        "2025-10-04_001",
+        "2025-10-04_003",
+        "2025-10-04_004",
+        "2025-10-04_005",
+        "2025-10-06_004",
+        "2025-10-06_005",
+        "2025-10-06_006",
+        "2025-10-08_001"
+      ],
+      "prompt_count": 11,
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-08",
+      "duration_days": 8,
+      "projects": [
+        "elvenlab",
+        "n8n",
+        "Recepčná"
+      ],
+      "dominant_category": "work",
+      "top_concepts": [
+        "https",
+        "testovat",
+        "hosting",
+        "technolog",
+        "otazka"
+      ]
+    },
+    {
+      "cluster_id": "cluster_35",
+      "prompt_ids": [
+        "2025-10-05_001",
+        "2025-10-05_002",
+        "2025-10-05_003",
+        "2025-10-05_004",
+        "2025-10-05_005",
+        "2025-10-06_003",
+        "2025-10-07_002",
+        "2025-10-07_003",
+        "2025-10-07_004",
+        "2025-10-09_003",
+        "2025-10-09_004",
+        "2025-10-09_005",
+        "2025-10-11_002",
+        "2025-10-12_001",
+        "2025-10-12_003"
+      ],
+      "prompt_count": 15,
+      "start_date": "2025-10-05",
+      "end_date": "2025-10-12",
+      "duration_days": 8,
+      "projects": [
+        "zdravotnictvo",
+        "vapi",
+        "n8n",
+        "Recepčná"
+      ],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "reakcia",
+        "vsetko",
+        "slovo",
+        "sanca",
+        "purpos"
+      ]
+    },
+    {
+      "cluster_id": "cluster_36",
+      "prompt_ids": [
+        "2025-10-10_001",
+        "2025-10-10_005",
+        "2025-10-14_007"
+      ],
+      "prompt_count": 3,
+      "start_date": "2025-10-10",
+      "end_date": "2025-10-14",
+      "duration_days": 5,
+      "projects": [
+        "startup",
+        "monoblok"
+      ],
+      "dominant_category": "planning",
+      "top_concepts": [
+        "povzbudenie",
+        "zodpovednosota",
+        "pracovat",
+        "urcena",
+        "skor"
+      ]
+    },
+    {
+      "cluster_id": "cluster_37",
+      "prompt_ids": [
+        "2025-10-10_002",
+        "2025-10-10_003",
+        "2025-10-14_002"
+      ],
+      "prompt_count": 3,
+      "start_date": "2025-10-10",
+      "end_date": "2025-10-14",
+      "duration_days": 5,
+      "projects": [],
+      "dominant_category": "learning",
+      "top_concepts": [
+        "slovo",
+        "extrakxia",
+        "dokument",
+        "vytvaran",
+        "evaulacia"
+      ]
+    },
+    {
+      "cluster_id": "cluster_38",
+      "prompt_ids": [
+        "2025-10-14_004",
+        "2025-10-14_006",
+        "2025-10-14_012",
+        "2025-10-16_001",
+        "2025-10-19_004",
+        "2025-10-21_002"
+      ],
+      "prompt_count": 6,
+      "start_date": "2025-10-14",
+      "end_date": "2025-10-21",
+      "duration_days": 8,
+      "projects": [
+        "googlo",
+        "studio",
+        "Recepčná",
+        "n8n",
+        "restauracia"
+      ],
+      "dominant_category": "work",
+      "top_concepts": [
+        "googlo",
+        "obsluhovat",
+        "pacient",
+        "calendar",
+        "vedet"
+      ]
+    },
+    {
+      "cluster_id": "cluster_39",
+      "prompt_ids": [
+        "2025-10-14_005",
+        "2025-10-14_010"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-10-14",
+      "end_date": "2025-10-14",
+      "duration_days": 1,
+      "projects": [],
+      "dominant_category": "problem_solving",
+      "top_concepts": [
+        "casa",
+        "pozica",
+        "otazka",
+        "zabezpecit",
+        "pokryvat"
+      ]
+    },
+    {
+      "cluster_id": "cluster_40",
+      "prompt_ids": [
+        "2025-10-14_011",
+        "2025-10-18_002",
+        "2025-10-18_003",
+        "2025-10-19_002",
+        "2025-10-19_003",
+        "2025-10-21_006",
+        "2025-10-21_008",
+        "2025-10-21_009"
+      ],
+      "prompt_count": 8,
+      "start_date": "2025-10-14",
+      "end_date": "2025-10-21",
+      "duration_days": 8,
+      "projects": [
+        "Recepčná"
+      ],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "slovo",
+        "uzkosť",
+        "raga",
+        "kortex",
+        "fine"
+      ]
+    },
+    {
+      "cluster_id": "cluster_41",
+      "prompt_ids": [
+        "2025-10-18_001",
+        "2025-10-23_003"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-10-18",
+      "end_date": "2025-10-23",
+      "duration_days": 6,
+      "projects": [],
+      "dominant_category": "learning",
+      "top_concepts": [
+        "system",
+        "zaklad",
+        "potreba",
+        "analyza",
+        "miera"
+      ]
+    },
+    {
+      "cluster_id": "cluster_42",
+      "prompt_ids": [
+        "2025-10-18_005",
+        "2025-10-22_003"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-10-18",
+      "end_date": "2025-10-22",
+      "duration_days": 5,
+      "projects": [
+        "Recepčná"
+      ],
+      "dominant_category": "planning",
+      "top_concepts": [
+        "mozo",
+        "vybudovat",
+        "koncpeo",
+        "opisat",
+        "vyhoda"
+      ]
+    },
+    {
+      "cluster_id": "cluster_43",
+      "prompt_ids": [
+        "2025-10-22_001",
+        "2025-10-22_005",
+        "2025-10-23_002",
+        "2025-10-27_002"
+      ],
+      "prompt_count": 4,
+      "start_date": "2025-10-22",
+      "end_date": "2025-10-27",
+      "duration_days": 6,
+      "projects": [
+        "n8n"
+      ],
+      "dominant_category": "work",
+      "top_concepts": [
+        "napojit",
+        "platena",
+        "obsluhovat",
+        "stac",
+        "rad"
+      ]
+    },
+    {
+      "cluster_id": "cluster_44",
+      "prompt_ids": [
+        "2025-10-22_002",
+        "2025-10-22_007",
+        "2025-10-22_008",
+        "2025-10-22_009",
+        "2025-10-23_001",
+        "2025-10-24_002",
+        "2025-10-26_001",
+        "2025-10-26_003",
+        "2025-10-27_003"
+      ],
+      "prompt_count": 9,
+      "start_date": "2025-10-22",
+      "end_date": "2025-10-27",
+      "duration_days": 6,
+      "projects": [],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "zmysel",
+        "laura",
+        "otazka",
+        "regulovat",
+        "piča"
+      ]
+    },
+    {
+      "cluster_id": "cluster_45",
+      "prompt_ids": [
+        "2025-10-30_002",
+        "2025-10-30_003",
+        "2025-11-01_001",
+        "2025-11-01_003",
+        "2025-11-02_003",
+        "2025-11-02_004",
+        "2025-11-02_005",
+        "2025-11-05_005",
+        "2025-11-05_006"
+      ],
+      "prompt_count": 9,
+      "start_date": "2025-10-30",
+      "end_date": "2025-11-05",
+      "duration_days": 7,
+      "projects": [],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "mesiac",
+        "otazka",
+        "vyrovnat",
+        "potencial",
+        "vsetko"
+      ]
+    },
+    {
+      "cluster_id": "cluster_46",
+      "prompt_ids": [
+        "2025-10-30_004",
+        "2025-11-01_002",
+        "2025-11-02_001",
+        "2025-11-02_006",
+        "2025-11-03_002"
+      ],
+      "prompt_count": 5,
+      "start_date": "2025-10-30",
+      "end_date": "2025-11-03",
+      "duration_days": 5,
+      "projects": [
+        "n8n",
+        "Recepčná"
+      ],
+      "dominant_category": "work",
+      "top_concepts": [
+        "pracovat",
+        "mesiac",
+        "hodin",
+        "intenet",
+        "recepcia"
+      ]
+    },
+    {
+      "cluster_id": "cluster_47",
+      "prompt_ids": [
+        "2025-11-01_004",
+        "2025-11-01_005"
+      ],
+      "prompt_count": 2,
+      "start_date": "2025-11-01",
+      "end_date": "2025-11-01",
+      "duration_days": 1,
+      "projects": [
+        "recepcna"
+      ],
+      "dominant_category": "planning",
+      "top_concepts": [
+        "roadmap",
+        "nastroj",
+        "stolica",
+        "deptat",
+        "nozdra"
+      ]
+    },
+    {
+      "cluster_id": "cluster_48",
+      "prompt_ids": [
+        "current_1",
+        "current_9",
+        "current_10",
+        "current_11",
+        "current_12",
+        "current_13",
+        "current_17",
+        "current_19",
+        "current_20",
+        "current_24",
+        "current_25",
+        "current_26",
+        "current_27",
+        "current_31",
+        "current_35",
+        "current_39",
+        "current_42"
+      ],
+      "prompt_count": 17,
+      "start_date": "2025-12-02",
+      "end_date": "2025-12-03",
+      "duration_days": 2,
+      "projects": [
+        "Recepčná"
+      ],
+      "dominant_category": "reflection",
+      "top_concepts": [
+        "prompta",
+        "pormpt",
+        "nova",
+        "identita",
+        "dokument"
+      ]
+    },
+    {
+      "cluster_id": "cluster_49",
+      "prompt_ids": [
+        "current_2",
+        "current_3",
+        "current_28"
+      ],
+      "prompt_count": 3,
+      "start_date": "2025-12-02",
+      "end_date": "2025-12-03",
+      "duration_days": 2,
+      "projects": [],
+      "dominant_category": "learning",
+      "top_concepts": [
+        "test",
+        "ukladanie",
+        "timestampa",
+        "zóna",
+        "europe/bratislava"
+      ]
+    },
+    {
+      "cluster_id": "cluster_50",
+      "prompt_ids": [
+        "current_4",
+        "current_5",
+        "current_7",
+        "current_15",
+        "current_16",
+        "current_38"
+      ],
+      "prompt_count": 6,
+      "start_date": "2025-12-02",
+      "end_date": "2025-12-03",
+      "duration_days": 2,
+      "projects": [
+        "guthub"
+      ],
+      "dominant_category": "problem_solving",
+      "top_concepts": [
+        "test",
+        "ukladanie",
+        "funkčnosť",
+        "čistenie",
+        "systém"
+      ]
+    },
+    {
+      "cluster_id": "cluster_51",
+      "prompt_ids": [
+        "current_8",
+        "current_14",
+        "current_18",
+        "current_21",
+        "current_22",
+        "current_23",
+        "current_29",
+        "current_30",
+        "current_33",
+        "current_34",
+        "current_36",
+        "current_37",
+        "current_41",
+        "current_44"
+      ],
+      "prompt_count": 14,
+      "start_date": "2025-12-02",
+      "end_date": "2025-12-03",
+      "duration_days": 2,
+      "projects": [
+        "Te",
+        "promptyva",
+        "recepcia",
+        "Recepčná",
+        "Textu"
+      ],
+      "dominant_category": "work",
+      "top_concepts": [
+        "dokument",
+        "praca",
+        "prompta",
+        "github",
+        "subor"
+      ]
+    }
+  ],
+  "statistics": {
+    "total_story_arcs": 18,
+    "total_clusters": 51,
+    "projects_with_arcs": 18,
+    "prompts_in_arcs": 148,
+    "prompts_in_clusters": 638
+  }
+}
