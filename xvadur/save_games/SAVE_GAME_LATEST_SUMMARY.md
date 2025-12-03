@@ -1,32 +1,33 @@
-# 💾 SAVE GAME SUMMARY: 2025-12-03 13:51
+# 💾 SAVE GAME SUMMARY: 2025-12-03 14:16
 
 ## 📊 Status
-- **Rank:** Architekt (Level 2)
-- **Level:** 2
-- **XP:** 19.54 / 20.0 XP (97.7%)
-- **Next Level:** 0.46 XP potrebné
-- **Last Session:** Streda_2025-12-03 (13:00 - 13:51)
+- **Rank:** Architekt (Level 3)
+- **Level:** 3
+- **XP:** 46.67 / 50.0 XP (93.3%)
+- **Next Level:** 3.33 XP potrebné
+- **Streak:** 2 dní
+- **Last Session:** Streda_2025-12-03 (13:00 - 14:16)
 
 ---
 
 ## 🎯 Posledná Session - Sumár
 
 **Čo sa robilo:**
-- Identifikovaný problém s vysokou spotrebou tokenov pri `/loadgame` (~1741 riadkov)
-- Diskutované stratégie optimalizácie (hierarchický prístup, kompresia, lazy loading)
-- Implementovaný Save Game Summary systém pre automatické generovanie kompaktného summary
-- Upravené `.cursor/commands/savegame.md` a `.cursor/commands/loadgame.md` pre optimalizáciu
+- Identifikovaný problém s XP systémom (subjektívne metriky, manuálne výpočty)
+- Diskutované stratégie riešenia (hybridný systém založený na skutočných dátach)
+- Implementovaný hybridný XP systém s automatickým výpočtom z logu a promptov
+- Upravený `XVADUR_LOG.md` - odstránené placeholdery, zjednodušený formát
 
 **Kľúčové rozhodnutia:**
-- Automatické generovanie `SAVE_GAME_LATEST_SUMMARY.md` pri každom `/savegame`
-- Selektívne načítanie pri `/loadgame` (len summary + posledných 5 záznamov z logu + aktuálny XP status)
-- Fallback na `SAVE_GAME_LATEST.md` ak summary neexistuje (backward compatibility)
+- Automatický výpočet XP z existujúcich dát (log + prompty)
+- XP systém integrovaný do `/savegame` (krok 0.5)
+- Log obsahuje len skutočné záznamy práce (bez placeholderov)
 
 **Vykonané úlohy:**
-- ✅ Implementácia Save Game Summary systému
-- ✅ Optimalizácia `/loadgame` commandu
-- ✅ Aktualizácia `/savegame` commandu s automatickým generovaním summary
-- ✅ Uložené 4 nové prompty z konverzácie
+- ✅ Implementácia hybridného XP systému (`scripts/calculate_xp.py`)
+- ✅ Prepísanie `XVADUR_XP.md` na nový formát
+- ✅ Integrácia XP výpočtu do `/savegame` commandu
+- ✅ Úprava `XVADUR_LOG.md` - odstránenie placeholderov
 
 ---
 
@@ -40,7 +41,7 @@
 ### Automatizačné Procesy vo Workspace a GitHub
 - **Status:** ⏳ V procese
 - **Next Steps:** Automatické vytváranie session dokumentov, aktualizovanie logov, backlinking, metriky
-- **Dokončené:** ✅ Save Game Summary systém
+- **Dokončené:** ✅ Save Game Summary systém, ✅ Hybridný XP systém
 
 ### MCP Docker Systém
 - **Status:** ✅ Objavený a používaný
@@ -50,23 +51,22 @@
 
 ## 📋 Next Steps
 
-1. Otestovať nový Save Game Summary systém v praxi
-2. Pokračovať v práci na automatizačných procesoch (session dokumenty, logy, backlinking)
-3. Upraviť konverzačnú logiku recepčnej
-4. Implementovať zber údajov o hovoroch do databázy
+1. Pokračovať v práci na automatizačných procesoch (session dokumenty, logy, backlinking)
+2. Dokončiť Quest: Vlado (recepčná) - upraviť konverzačnú logiku
+3. Implementovať zber údajov o hovoroch do databázy
+4. Pokračovať v integrácii MCP Docker systému
 
 ---
 
 ## 🔑 Kľúčové Kontexty
 
-- **Optimalizácia tokenov:** 90% redukcia spotreby (z 1741 na ~170 riadkov)
-- **Save Game Summary:** Automaticky generovaný pri každom `/savegame`, obsahuje kompaktný sumár (~50-70 riadkov)
-- **Load Game:** Načíta len summary + selektívne časti (posledných 5 záznamov z logu, aktuálny XP status)
+- **Hybridný XP systém:** Automaticky počíta XP z logu (práca) a promptov (aktivita), plne automatizovaný
+- **XP hodnoty:** 46.67 XP, Level 3, Streak 2 dní (automaticky vypočítané)
+- **Log formát:** Zjednodušený, len skutočné záznamy práce (bez placeholderov)
 - **Recepčná:** Funkčná, end-to-end test úspešný, vzťah s Vladom sa posunul na parťáka
 - **MCP Docker:** 80+ nástrojov dostupných, používaný pre automatizáciu workflow
 
 ---
 
 **Full Details:** `xvadur/save_games/SAVE_GAME_LATEST.md`
-**Last Updated:** 2025-12-03 13:51
-
+**Last Updated:** 2025-12-03 14:16

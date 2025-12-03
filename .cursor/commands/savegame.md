@@ -71,11 +71,58 @@ Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny 
 - Agent MUSÍ automaticky identifikovať všetky user prompty z aktuálnej konverzácie
 - Prompty sa ukladajú do `xvadur/data/prompts_log.jsonl` cez `MinisterOfMemory` a `FileStore`
 
+## 0.5. Automatický Výpočet XP (POVINNÉ - PO ULOŽENÍ PROMPTOV)
+
+**⚠️ DÔLEŽITÉ:** Po uložení promptov MUSÍŠ automaticky vypočítať a aktualizovať XP.
+
+### Postup:
+
+1. **Spustiť XP calculation skript:**
+   Použi Python kód na automatický výpočet XP:
+   ```python
+   import sys
+   from pathlib import Path
+   sys.path.insert(0, str(Path.cwd()))
+   
+   from scripts.calculate_xp import calculate_xp, update_xp_file
+   
+   # Vypočítaj XP z logu a promptov
+   xp_data = calculate_xp()
+   
+   # Aktualizuj XVADUR_XP.md
+   update_xp_file('xvadur/logs/XVADUR_XP.md', xp_data)
+   
+   print(f"✅ XP vypočítané: {xp_data['total_xp']} XP (Level {xp_data['current_level']})")
+   ```
+
+2. **Automatizácia:**
+   Skript automaticky:
+   - Parsuje `xvadur/logs/XVADUR_LOG.md` (záznamy, súbory, úlohy)
+   - Parsuje `xvadur/data/prompts_log.jsonl` (prompty, word count)
+   - Počíta streak dní
+   - Počíta level podľa exponenciálneho systému
+   - Aktualizuje `xvadur/logs/XVADUR_XP.md` s novými hodnotami
+
+3. **Použitie XP dát v save game:**
+   - Zobraz XP breakdown v save game naratíve (sekcia "Gamifikačný progres")
+   - Zahrň aktuálny level a XP v sekcii "📊 Status"
+
+**Poznámka:**
+- XP sa počíta automaticky z existujúcich dát (log + prompty)
+- Žiadne manuálne výpočty nie sú potrebné
+- XP sa aktualizuje pri každom `/savegame`
+
+**Dôležité:**
+- Tento krok MUSÍ byť vykonaný PO uložení promptov (krok 0)
+- XP hodnoty sa použijú v save game naratíve (krok 2)
+
 ## 1. Analýza Stavu
 Zisti aktuálne hodnoty z:
-- `xvadur/logs/XVADUR_XP.md` (XP, Level, Rank)
+- `xvadur/logs/XVADUR_XP.md` (XP, Level - už aktualizované v kroku 0.5)
 - `xvadur/logs/XVADUR_LOG.md` (posledné záznamy)
 - `xvadur/data/prompts_log.jsonl` (ak existuje - prompty z MinisterOfMemory)
+
+**Poznámka:** XP hodnoty už boli automaticky vypočítané a aktualizované v kroku 0.5. Použi tieto hodnoty pri vytváraní save game.
 
 **Načítanie promptov z MinisterOfMemory (ak je dostupný):**
 Použi Python kód na načítanie posledných promptov:
@@ -115,9 +162,10 @@ Vytvor Markdown obsah s touto štruktúrou:
 # 💾 SAVE GAME: [Dátum]
 
 ## 📊 Status
-- **Rank:** [Rank]
-- **Level:** [Level]
-- **XP:** [Current XP]
+- **Rank:** [Rank - odvodiť z Level alebo použiť existujúci]
+- **Level:** [Level - z kroku 0.5, xp_data['current_level']]
+- **XP:** [Current XP] / [Next Level XP] ([Percent]%) - z kroku 0.5, xp_data['total_xp'] / xp_data['next_level_xp']
+- **Streak:** [X] dní - z kroku 0.5, xp_data['streak_days']
 - **Last Log:** [Link na log]
 
 ## 🧠 Naratívny Kontext (Story so far)
@@ -129,7 +177,7 @@ Vytvor Markdown obsah s touto štruktúrou:
 3. **Tvorba nástrojov/skriptov:** Čo bolo vytvorené alebo refaktorované? Aké AI utility alebo príkazy vznikli?
 4. **Introspektívne momenty:** Aké dôležité Aha-momenty, myšlienkové skraty alebo psychologické bloky sa objavili?
 5. **Strety so systémom:** Kde vznikla frikcia - napr. vyhýbanie sa, neukončené questy, “kokot… vydrbany sanitar” momenty podľa Adamovej terminológie.
-6. **Gamifikačný progres:** Koľko XP/Level bolo získaných, čo to znamenalo v rámci systému?
+6. **Gamifikačný progres:** Koľko XP/Level bolo získaných, čo to znamenalo v rámci systému? (Použi hodnoty z kroku 0.5 - automaticky vypočítané XP breakdown)
 7. **Prepojenie s dlhodobou víziou:** Ako sa aktuálne rozhodnutia alebo výstupy viažu na Magnum Opus, AI konzolu a osobnú značku?
 8. **Otvorené slučky:** Aké questy/blokátory ostávajú riešiť? (viď log)
 9. **Analytické poznámky:** Výrazné vzorce v myslení alebo štýle, ktoré by mal nový agent zachytiť.
