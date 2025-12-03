@@ -244,3 +244,43 @@
 - `xvadur/save_games/SAVE_GAME_LATEST_SUMMARY.md` - aktualizovaný summary
 
 ---
+
+## [2025-12-03 14:23] 🔹 Pridanie Grafov do XP Systému
+
+**Vykonané:**
+- Rozšírený `scripts/calculate_xp.py` o ukladanie histórie XP do `xvadur/data/metrics/xp_history.jsonl`
+- Pridaná funkcia `generate_xp_graph()` - generuje ASCII graf z histórie XP
+- Graf zobrazuje: Level progress bar, XP timeline (posledných 15 záznamov), trend
+- Graf sa automaticky aktualizuje pri každom `/savegame`
+
+**Kľúčové body:**
+- **História XP:** Automaticky sa ukladá do JSONL súboru pri každom výpočte
+- **Graf:** Zobrazuje progress bar pre aktuálny level a timeline posledných 15 záznamov
+- **Trend:** Automaticky počíta zmeny XP v čase
+
+**Zmeny v súboroch:**
+- `scripts/calculate_xp.py` - pridané funkcie pre históriu a graf
+- `xvadur/logs/XVADUR_XP.md` - obsahuje automaticky generovaný graf
+- `xvadur/data/metrics/xp_history.jsonl` - nový súbor pre históriu XP
+
+---
+
+## [2025-12-03 14:25] 🔹 Save Game: Ukončenie Session - XP Systém a Grafy
+
+**Vykonané:**
+- Automaticky vypočítané XP: 55.47 XP, Level 4, Streak 2 dní
+- Vytvorený finálny `xvadur/save_games/SAVE_GAME_LATEST.md` s kompletným naratívom
+- Vytvorený `xvadur/save_games/SAVE_GAME_LATEST_SUMMARY.md` - kompaktný sumár
+- Aktualizované všetky dokumenty (logy, Save Game, Summary)
+
+**Kľúčové body:**
+- **XP systém:** Plne automatizovaný, počíta z logu a promptov
+- **Grafy:** Automaticky generované, zobrazujú priebeh XP v čase
+- **Aktuálny stav:** 55.47 XP, Level 4, Streak 2 dní
+
+**Zmeny v súboroch:**
+- `xvadur/save_games/SAVE_GAME_LATEST.md` - finálny save game
+- `xvadur/save_games/SAVE_GAME_LATEST_SUMMARY.md` - aktualizovaný summary
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+---

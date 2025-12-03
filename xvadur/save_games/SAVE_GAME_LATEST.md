@@ -1,19 +1,19 @@
-# 💾 SAVE GAME: 2025-12-03 14:16
+# 💾 SAVE GAME: 2025-12-03 14:25
 
-**Dátum vytvorenia:** 2025-12-03 14:16  
-**Session:** Streda_2025-12-03 (13:00 - 14:16)  
+**Dátum vytvorenia:** 2025-12-03 14:25  
+**Session:** Streda_2025-12-03 (13:00 - 14:25)  
 **Status:** ✅ Ukončená
 
 ---
 
 ## 📊 Status
 
-- **Rank:** Architekt (Level 3)
-- **Level:** 3
-- **XP:** 46.67 / 50.0 XP (93.3%)
-- **Next Level:** Potrebuje ešte **3.33 XP** na Level 4
+- **Rank:** Architekt (Level 4)
+- **Level:** 4
+- **XP:** 55.47 / 100.0 XP (55.5%)
+- **Next Level:** Potrebuje ešte **44.53 XP** na Level 5
 - **Streak:** 2 dní
-- **Last Log:** `xvadur/logs/XVADUR_LOG.md` ([2025-12-01 20:00] - [2025-12-03 14:15])
+- **Last Log:** `xvadur/logs/XVADUR_LOG.md` ([2025-12-01 20:00] - [2025-12-03 14:25])
 - **Prompts Log:** `xvadur/data/prompts_log.jsonl` (43+ promptov uložených)
 
 ---
@@ -22,9 +22,9 @@
 
 ### Začiatok Session
 
-Naša dnešná session (Streda, 3. december 2025, 13:00 - 14:16) pokračovala v práci na automatizačných procesoch vo workspace. Session začala načítaním kontextu cez `/loadgame` a pokračovala identifikáciou a riešením problému s XP systémom.
+Naša dnešná session (Streda, 3. december 2025, 13:00 - 14:25) pokračovala v práci na automatizačných procesoch vo workspace. Session začala načítaním kontextu cez `/loadgame` a pokračovala identifikáciou a riešením problémov s XP systémom a logom.
 
-### Kľúčový Problém: XP Systém Ne Fungoval
+### Kľúčový Problém 1: XP Systém Ne Fungoval
 
 **Identifikácia problému:**
 Adam identifikoval, že XP systém vôbec nefunguje - bol založený na subjektívnych metrikách (complexity, sentiment, recursive depth), ktoré sa museli manuálne počítať. V logu bolo veľa práce (2025-12-01 až 2025-12-03), ale v XP súbore boli len 3 session z 2025-12-01. Od 2025-12-02 a 2025-12-03 neboli žiadne nové XP, hoci bola veľká práca.
@@ -45,14 +45,14 @@ Implementovať automatický hybridný XP systém, ktorý počíta XP z existujú
    - Parsuje `XVADUR_LOG.md` (záznamy, súbory, úlohy)
    - Parsuje `prompts_log.jsonl` (prompty, word count)
    - Počíta streak dní
-   - Počíta level podľa exponenciálneho systému (Level 1 = 10 XP, Level 2 = 25 XP, Level 3 = 50 XP, atď.)
+   - Počíta level podľa exponenciálneho systému (Level 1 = 10 XP, Level 2 = 25 XP, Level 3 = 50 XP, Level 4 = 100 XP, atď.)
    - Automaticky aktualizuje `XVADUR_XP.md`
 
 2. **`xvadur/logs/XVADUR_XP.md`:**
    - Prepísaný na jednoduchý formát bez placeholderov
    - Automaticky vypočítané hodnoty
    - Detailný XP breakdown (z práce, z aktivity, bonusy)
-   - Aktuálny stav: 46.67 XP, Level 3, Streak 2 dní
+   - Aktuálny stav: 55.47 XP, Level 4, Streak 2 dní
 
 3. **`.cursor/commands/savegame.md`:**
    - Pridaný krok 0.5: Automatický Výpočet XP
@@ -69,16 +69,16 @@ Implementovať automatický hybridný XP systém, ktorý počíta XP z existujú
 - Session: 1.0 XP
 
 **Výsledok:**
-- **Celkové XP:** 46.67 XP (namiesto starých 19.54 XP)
-- **Level:** 3 (namiesto Level 2)
+- **Celkové XP:** 55.47 XP (namiesto starých 19.54 XP)
+- **Level:** 4 (namiesto Level 2)
 - **Breakdown:**
-  - Z práce: 37.7 XP (záznamy: 8.0, súbory: 1.7, úlohy: 28.0)
+  - Z práce: 46.5 XP (záznamy: 9.0, súbory: 2.0, úlohy: 35.5)
   - Z aktivity: 5.57 XP (prompty: 4.3, slová: 1.27)
   - Bonusy: 3.4 XP (streak: 0.4, sessions: 3.0)
 
-### Úprava XVADUR_LOG
+### Kľúčový Problém 2: Log Obsahoval Placeholdery
 
-**Kľúčové rozhodnutie:**
+**Identifikácia problému:**
 Adam identifikoval, že log obsahuje placeholdery a nepoužívané sekcie, ktoré nie sú potrebné. Log má obsahovať len to, čo sa skutočne robí.
 
 **Implementované zmeny:**
@@ -87,27 +87,58 @@ Adam identifikoval, že log obsahuje placeholdery a nepoužívané sekcie, ktor�
 - Odstránené zbytočné sekcie: "Syntéza", "Vzorce", "Kvantitatívne metriky", "XP Breakdown", "Knowledge Graph", "Vizualizácie"
 - Log teraz obsahuje len skutočné záznamy práce
 
+### Pridanie Grafov do XP Systému
+
+**Kľúčové rozhodnutie:**
+Adam chcel vidieť priebeh XP v grafe. Implementovali sme automatické generovanie ASCII grafov z histórie XP.
+
+**Implementované zmeny:**
+
+1. **Ukladanie histórie XP:**
+   - Každý výpočet XP sa ukladá do `xvadur/data/metrics/xp_history.jsonl`
+   - Záznam obsahuje: timestamp, total_xp, level, breakdown
+
+2. **Generovanie ASCII grafu:**
+   - **Level Progress Bar:** Zobrazuje progress k ďalšiemu levelu
+   - **XP Timeline:** Posledných 15 záznamov s vizualizáciou
+   - **Trend:** Automatický výpočet zmeny XP v čase
+
+3. **Automatická aktualizácia:**
+   - Graf sa generuje automaticky pri každom `/savegame`
+   - Zobrazuje sa v `XVADUR_XP.md` hneď po "Aktuálny Status"
+
+**Výsledok:**
+- Graf zobrazuje priebeh XP v čase
+- Automaticky sa aktualizuje pri každom `/savegame`
+- Trend ukazuje zmeny XP (napr. ↗️ +4.10 XP)
+
 ### Gamifikačný Progres
 
-Počas tejto session bol implementovaný kompletný hybridný XP systém, ktorý automaticky počíta XP z existujúcich dát. Systém je plne automatizovaný a nevyžaduje manuálne výpočty. Aktuálny stav: **46.67 XP, Level 3, Streak 2 dní**. Na Level 4 potrebuje ešte 3.33 XP.
+Počas tejto session bol implementovaný kompletný hybridný XP systém s automatickými grafmi. Systém je plne automatizovaný a nevyžaduje manuálne výpočty. Aktuálny stav: **55.47 XP, Level 4, Streak 2 dní**. Na Level 5 potrebuje ešte 44.53 XP.
+
+**XP Breakdown z tejto session:**
+- Z práce: 46.5 XP (záznamy: 9.0, súbory: 2.0, úlohy: 35.5)
+- Z aktivity: 5.57 XP (prompty: 4.3, slová: 1.27)
+- Bonusy: 3.4 XP (streak: 0.4, sessions: 3.0)
+- **TOTAL: 55.47 XP**
 
 ### Prepojenie s Dlhodobou Víziou
 
-Tento systém je kľúčový pre gamifikáciu práce a tracking produktivity. Umožňuje automatické sledovanie progressu bez manuálnej práce, čo je v súlade s víziou "AI hernej konzoly" - automatizácia a gamifikácia všetkých procesov.
+Tento systém je kľúčový pre gamifikáciu práce a tracking produktivity. Umožňuje automatické sledovanie progressu bez manuálnej práce, čo je v súlade s víziou "AI hernej konzoly" - automatizácia a gamifikácia všetkých procesov. Grafy poskytujú vizuálnu spätnú väzbu o progresse, čo je dôležité pre motiváciu a tracking.
 
 ### Otvorené Slučky
 
 - **Quest: Vlado (Recepčná):** Stále otvorený - recepčná funkčná, prompt hotový, ale treba upraviť konverzačnú logiku a zber údajov o hovoroch do databázy
-- **Automatizačné Procesy:** V procese - implementovaný XP systém, ďalej treba automatické vytváranie session dokumentov, aktualizovanie logov, backlinking, metriky
+- **Automatizačné Procesy:** V procese - implementovaný XP systém a grafy, ďalej treba automatické vytváranie session dokumentov, aktualizovanie logov, backlinking, metriky
 - **MCP Docker Systém:** Objavený a používaný - pokračovať v integrácii do automatizačných procesov
 
 ### Analytické Poznámky
 
-Adam má tendenciu identifikovať problémy v systémoch a navrhovať riešenia. Táto session ukázala, že vie efektívne identifikovať, čo nefunguje (XP systém) a navrhnúť lepšie riešenie (hybridný automatický systém). Taktiež preferuje jednoduché, objektívne systémy namiesto zložitých, subjektívnych.
+Adam má tendenciu identifikovať problémy v systémoch a navrhovať riešenia. Táto session ukázala, že vie efektívne identifikovať, čo nefunguje (XP systém, placeholdery v logu) a navrhnúť lepšie riešenia (hybridný automatický systém, grafy). Taktiež preferuje jednoduché, objektívne systémy namiesto zložitých, subjektívnych. Grafy poskytujú vizuálnu spätnú väzbu, čo je dôležité pre tracking progressu.
 
 ### Sumarizácia
 
-Táto session bola zameraná na opravu a vylepšenie XP systému. Implementovaný hybridný systém je plne automatizovaný, objektívny a založený na skutočných dátach. V ďalšej session odporúčam pokračovať v práci na automatizačných procesoch (session dokumenty, logy, backlinking) a dokončiť Quest: Vlado (recepčná).
+Táto session bola zameraná na opravu a vylepšenie XP systému a logu. Implementovaný hybridný systém s automatickými grafmi je plne automatizovaný, objektívny a založený na skutočných dátach. Grafy poskytujú vizuálnu spätnú väzbu o progresse. V ďalšej session odporúčam pokračovať v práci na automatizačných procesoch (session dokumenty, logy, backlinking) a dokončiť Quest: Vlado (recepčná).
 
 ---
 
@@ -130,6 +161,7 @@ Táto session bola zameraná na opravu a vylepšenie XP systému. Implementovan�
 - **Dokončené:** 
   - ✅ Save Game Summary systém
   - ✅ Hybridný XP systém
+  - ✅ Grafy v XP systéme
 
 ### MCP Docker Systém
 - **Status:** ✅ Objavený a používaný
@@ -144,11 +176,13 @@ Táto session bola zameraná na opravu a vylepšenie XP systému. Implementovan�
 - Identifikuje problémy v systémoch a navrhuje riešenia
 - Chce automatizáciu všetkého, čo sa dá automatizovať
 - Preferuje skutočné dáta namiesto manuálnych výpočtov
+- Chce vidieť progress vizuálne (grafy, progress bary)
 
 **O XP Systéme:**
 - XP sa počíta automaticky z logu a promptov pri každom `/savegame`
 - Žiadne manuálne výpočty nie sú potrebné
 - Systém je plne automatizovaný a objektívny
+- Grafy sa generujú automaticky a zobrazujú priebeh XP v čase
 
 **O Logu:**
 - Log obsahuje len skutočné záznamy práce
@@ -157,4 +191,4 @@ Táto session bola zameraná na opravu a vylepšenie XP systému. Implementovan�
 
 ---
 
-**Posledná aktualizácia:** 2025-12-03 14:16
+**Posledná aktualizácia:** 2025-12-03 14:25

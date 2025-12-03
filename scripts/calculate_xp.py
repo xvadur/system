@@ -282,11 +282,159 @@ def calculate_xp(log_path: str = 'xvadur/logs/XVADUR_LOG.md',
     }
 
 
+def save_xp_history(xp_data: Dict, history_path: str = 'xvadur/data/metrics/xp_history.jsonl') -> None:
+    """
+    Uloží aktuálny výpočet XP do histórie
+    """
+    history_path = Path(history_path)
+    history_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Vytvoriť záznam
+    record = {
+        'timestamp': datetime.now().isoformat(),
+        'total_xp': xp_data['total_xp'],
+        'level': xp_data['current_level'],
+        'next_level_xp': xp_data['next_level_xp'],
+        'xp_needed': xp_data['xp_needed'],
+        'streak_days': xp_data['streak_days'],
+        'breakdown': xp_data['breakdown']
+    }
+    
+    # Pridať do JSONL súboru
+    with open(history_path, 'a', encoding='utf-8') as f:
+        f.write(json.dumps(record) + '\n')
+
+
+def load_xp_history(history_path: str = 'xvadur/data/metrics/xp_history.jsonl', limit: int = 30) -> List[Dict]:
+    """
+    Načíta históriu XP (posledných N záznamov)
+    """
+    history_path = Path(history_path)
+    
+    if not history_path.exists():
+        return []
+    
+    records = []
+    with open(history_path, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                record = json.loads(line)
+                records.append(record)
+            except json.JSONDecodeError:
+                continue
+    
+    # Vrátiť posledných N záznamov
+    return records[-limit:]
+
+
+def generate_xp_graph(history: List[Dict], max_width: int = 40) -> str:
+    """
+    Generuje ASCII graf z histórie XP
+    """
+    if not history:
+        return "```\n(Žiadna história - graf sa zobrazí po prvom /savegame)\n```"
+    
+    # Zoradiť podľa dátumu
+    sorted_history = sorted(history, key=lambda x: x.get('timestamp', ''))
+    
+    # Nájsť min a max XP pre škálovanie
+    xp_values = [record['total_xp'] for record in sorted_history]
+    if not xp_values:
+        return "```\n(Žiadne dáta)\n```"
+    
+    min_xp = min(xp_values)
+    max_xp = max(xp_values)
+    xp_range = max_xp - min_xp if max_xp > min_xp else max_xp if max_xp > 0 else 1
+    
+    # Generovať graf
+    graph_lines = ["```"]
+    graph_lines.append("## 📈 XP Progress Graph")
+    graph_lines.append("")
+    
+    # Progress bar pre aktuálny level
+    if sorted_history:
+        latest = sorted_history[-1]
+        current_xp = latest['total_xp']
+        next_level = latest['next_level_xp']
+        level = latest['level']
+        
+        # Progress bar
+        percentage = (current_xp / next_level * 100) if next_level > 0 else 0
+        filled = int((current_xp / next_level) * max_width) if next_level > 0 else 0
+        empty = max_width - filled
+        bar = "█" * filled + "░" * empty
+        
+        graph_lines.append(f"**Level {level} Progress:**")
+        graph_lines.append(f"[{bar}] {current_xp:.2f} / {next_level} XP ({percentage:.1f}%)")
+        graph_lines.append("")
+    
+    # Časová os (posledných 15 záznamov)
+    graph_lines.append("**XP Timeline (posledných 15 záznamov):**")
+    graph_lines.append("")
+    
+    # Zobraziť len posledných 15 záznamov
+    recent_history = sorted_history[-15:]
+    
+    for record in recent_history:
+        timestamp_str = record.get('timestamp', '')
+        try:
+            dt = datetime.fromisoformat(timestamp_str)
+            date_str = dt.strftime('%m-%d %H:%M')
+        except:
+            date_str = timestamp_str[:10] if len(timestamp_str) > 10 else timestamp_str
+        
+        xp = record['total_xp']
+        level = record.get('level', 1)
+        
+        # Normalizovať XP na 0-1 rozsah pre graf (relatívne k max_xp)
+        normalized = (xp / max_xp) if max_xp > 0 else 0
+        bar_width = int(normalized * max_width)
+        bar = "█" * bar_width + "░" * (max_width - bar_width)
+        
+        graph_lines.append(f"{date_str}  {bar}  {xp:.2f} XP (L{level})")
+    
+    # Trend
+    if len(sorted_history) >= 2:
+        first_xp = sorted_history[0]['total_xp']
+        last_xp = sorted_history[-1]['total_xp']
+        change = last_xp - first_xp
+        
+        if change > 0:
+            trend = f"↗️ +{change:.2f} XP"
+        elif change < 0:
+            trend = f"↘️ {change:.2f} XP"
+        else:
+            trend = "➡️ 0 XP"
+        
+        first_date = sorted_history[0].get('timestamp', '')[:10]
+        last_date = sorted_history[-1].get('timestamp', '')[:10]
+        
+        graph_lines.append("")
+        graph_lines.append(f"**Trend:** {trend} (od {first_date} do {last_date})")
+        graph_lines.append(f"**Záznamov v histórii:** {len(sorted_history)}")
+    
+    graph_lines.append("```")
+    
+    return "\n".join(graph_lines)
+
+
 def update_xp_file(xp_file_path: str, xp_data: Dict) -> None:
     """
-    Aktualizuje XVADUR_XP.md s novými hodnotami
+    Aktualizuje XVADUR_XP.md s novými hodnotami a grafom
     """
     xp_file_path = Path(xp_file_path)
+    
+    # Uložiť do histórie
+    save_xp_history(xp_data)
+    
+    # Načítať históriu pre graf
+    history = load_xp_history()
+    
+    # Generovať graf
+    graph = generate_xp_graph(history)
     
     breakdown = xp_data['breakdown']
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
@@ -304,6 +452,10 @@ def update_xp_file(xp_file_path: str, xp_data: Dict) -> None:
 - **Level:** {xp_data['current_level']}
 - **Next Level:** {xp_data['next_level_xp']} XP (potrebuje ešte {xp_data['xp_needed']} XP)
 - **Streak:** {xp_data['streak_days']} dní
+
+---
+
+{graph}
 
 ---
 
@@ -331,7 +483,7 @@ def update_xp_file(xp_file_path: str, xp_data: Dict) -> None:
 
 ## 📈 História
 
-*História sa bude automaticky generovať pri každom /savegame*
+*História sa automaticky ukladá do `xvadur/data/metrics/xp_history.jsonl`*
 
 ---
 

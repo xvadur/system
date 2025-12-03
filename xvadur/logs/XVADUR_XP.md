@@ -1,26 +1,44 @@
 # 🎮 XVADUR XP TRACKING
 
 **Status:** Aktívny  
-**Posledná aktualizácia:** 2025-12-03 14:16
+**Posledná aktualizácia:** 2025-12-03 14:25
 
 ---
 
 ## 📊 Aktuálny Status
 
-- **Celkové XP:** 46.67
-- **Level:** 3
-- **Next Level:** 50 XP (potrebuje ešte 3.33 XP)
+- **Celkové XP:** 55.47
+- **Level:** 4
+- **Next Level:** 100 XP (potrebuje ešte 44.53 XP)
 - **Streak:** 2 dní
+
+---
+
+```
+## 📈 XP Progress Graph
+
+**Level 4 Progress:**
+[██████████████████████░░░░░░░░░░░░░░░░░░] 55.47 / 100 XP (55.5%)
+
+**XP Timeline (posledných 15 záznamov):**
+
+12-03 14:22  █████████████████████████████████████░░░  51.37 XP (L4)
+12-03 14:23  █████████████████████████████████████░░░  51.37 XP (L4)
+12-03 14:25  ████████████████████████████████████████  55.47 XP (L4)
+
+**Trend:** ↗️ +4.10 XP (od 2025-12-03 do 2025-12-03)
+**Záznamov v histórii:** 3
+```
 
 ---
 
 ## 💎 XP Breakdown
 
 ### Z Práce (Log)
-- **Záznamy:** 16 × 0.5 = 8.0 XP
-- **Zmeny súborov:** 17 × 0.1 = 1.7 XP
-- **Dokončené úlohy:** 56 × 0.5 = 28.0 XP
-- **Subtotal:** 37.7 XP
+- **Záznamy:** 18 × 0.5 = 9.0 XP
+- **Zmeny súborov:** 20 × 0.1 = 2.0 XP
+- **Dokončené úlohy:** 71 × 0.5 = 35.5 XP
+- **Subtotal:** 46.5 XP
 
 ### Z Aktivity (Prompty)
 - **Prompty:** 43 × 0.1 = 4.3 XP
@@ -32,13 +50,13 @@
 - **Sessions:** 3 × 1.0 = 3.0 XP
 - **Subtotal:** 3.4 XP
 
-**⭐ TOTAL:** 46.67 XP
+**⭐ TOTAL:** 55.47 XP
 
 ---
 
 ## 📈 História
 
-*História sa bude automaticky generovať pri každom /savegame*
+*História sa automaticky ukladá do `xvadur/data/metrics/xp_history.jsonl`*
 
 ---
 
