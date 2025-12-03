@@ -9,9 +9,38 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import datetime
 import logging
-from typing import Any, Callable, Dict, Iterable, List, Protocol
+from typing import Any, Callable, Dict, Iterable, List, Protocol, Optional
 
 logger = logging.getLogger(__name__)
+
+
+def _get_current_time_with_timezone(timezone: str = "Europe/Bratislava") -> datetime:
+    """Získa aktuálny čas so správnou časovou zónou.
+    
+    Args:
+        timezone: Časová zóna (default: Europe/Bratislava)
+        
+    Returns:
+        datetime objekt so správnym časom a časovou zónou
+    """
+    try:
+        # Python 3.9+ má zoneinfo
+        from zoneinfo import ZoneInfo
+        return datetime.now(ZoneInfo(timezone))
+    except ImportError:
+        # Fallback pre staršie Python verzie (< 3.9)
+        try:
+            import pytz
+            tz = pytz.timezone(timezone)
+            return datetime.now(tz)
+        except ImportError:
+            # Ak nie sú dostupné timezone knižnice, použijeme UTC
+            logger.warning("Timezone libraries not available, using UTC")
+            return datetime.utcnow()
+    except Exception as e:
+        # Ak zlyhá, použijeme UTC
+        logger.warning(f"Failed to get timezone-aware time: {e}, using UTC")
+        return datetime.utcnow()
 
 
 # AETH: Define the atomic memory unit to preserve traceability across agents.
@@ -81,11 +110,22 @@ class AssistantOfMemory:
         # AETH: Allow pluggable summarization to adapt to evolving narrative needs.
         self.summarizer = summarizer or self._default_summarizer
 
-    def ingest(self, role: str, content: str, metadata: Dict[str, Any] | None = None) -> MemoryRecord:
-        """Record a new memory entry with consistent timestamping."""
+    def ingest(self, role: str, content: str, metadata: Dict[str, Any] | None = None, timestamp: Optional[datetime] = None) -> MemoryRecord:
+        """Record a new memory entry with consistent timestamping.
+        
+        Args:
+            role: Role of the speaker (user/assistant/system)
+            content: Content of the message
+            metadata: Optional metadata dictionary
+            timestamp: Optional timestamp (if None, uses current time with timezone)
+        """
 
+        # Použi poskytnutý timestamp alebo získaj aktuálny čas so správnou časovou zónou
+        if timestamp is None:
+            timestamp = _get_current_time_with_timezone()
+        
         record = MemoryRecord(
-            timestamp=datetime.utcnow(),
+            timestamp=timestamp,
             role=role,
             content=content,
             metadata=metadata or {},
@@ -123,11 +163,18 @@ class MinisterOfMemory:
         # AETH: Delegate operational tasks to an assistant to respect hierarchy.
         self.assistant = assistant or AssistantOfMemory()
 
-    def log_event(self, role: str, content: str, metadata: Dict[str, Any] | None = None) -> MemoryRecord:
-        """Capture an event into the ministerial memory pipeline."""
+    def log_event(self, role: str, content: str, metadata: Dict[str, Any] | None = None, timestamp: Optional[datetime] = None) -> MemoryRecord:
+        """Capture an event into the ministerial memory pipeline.
+        
+        Args:
+            role: Role of the speaker (user/assistant/system)
+            content: Content of the message
+            metadata: Optional metadata dictionary
+            timestamp: Optional timestamp (if None, uses current time with timezone)
+        """
 
         logger.info("Minister logging event for role=%s", role)
-        return self.assistant.ingest(role=role, content=content, metadata=metadata)
+        return self.assistant.ingest(role=role, content=content, metadata=metadata, timestamp=timestamp)
 
     def review_context(self, limit: int = 5) -> List[MemoryRecord]:
         """Inspect the latest memories to inform strategic decisions."""

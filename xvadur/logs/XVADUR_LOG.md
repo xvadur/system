@@ -571,3 +571,24 @@ Každý záznam obsahuje:
 **Status:** ✅ Session ukončená, všetko uložené a pripravené na commit
 
 ---
+
+## [2025-12-03 13:30] 🔹 Nová Session: Automatizačné Procesy vo Workspace a GitHub
+
+**Kontext:** Začiatok novej session zameranej na automatizačné procesy vo workspace a githube.
+
+**Hlavné témy:**
+- Automatizácia workspace procesov (session dokumenty, logy, backlinking, metriky)
+- Automatizácia GitHub procesov (commit messages, PR management, CI/CD)
+- Integrácia MCP Docker systému do automatizačných procesov
+
+**Vytvorené:**
+- `xvadur/data/sessions/Streda_2025-12-03.md` - nový session dokument
+- `xvadur/recepcia/README.md` - README pre recepčnú projekt
+
+**Zmeny v súboroch:**
+- `xvadur/data/sessions/Streda_2025-12-03.md` - nový session dokument
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+**Status:** 🟢 Aktívna session
+
+---

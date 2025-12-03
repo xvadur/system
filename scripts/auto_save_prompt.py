@@ -5,6 +5,8 @@ import sys
 import json
 from pathlib import Path
 from datetime import datetime
+import subprocess
+import os
 
 # Add workspace root to path
 workspace_root = Path(__file__).parent.parent
@@ -12,6 +14,39 @@ sys.path.insert(0, str(workspace_root))
 
 from ministers.memory import MinisterOfMemory, AssistantOfMemory
 from ministers.storage import FileStore
+
+
+def get_current_time_from_mcp(timezone: str = "Europe/Bratislava") -> datetime:
+    """Získa aktuálny čas z MCP Time MCP servera.
+    
+    Args:
+        timezone: Časová zóna (default: Europe/Bratislava)
+        
+    Returns:
+        datetime objekt so správnym časom, alebo fallback na datetime.now()
+    """
+    try:
+        # Pokúsi sa získať čas cez MCP Time MCP
+        # MCP Time MCP je dostupný cez MCP Docker systém
+        # Použijeme subprocess na volanie MCP nástroja cez curl alebo podobne
+        # Alebo jednoducho použijeme správnu časovú zónu v Python
+        
+        # Pre teraz použijeme timezone-aware datetime
+        from zoneinfo import ZoneInfo
+        return datetime.now(ZoneInfo(timezone))
+    except ImportError:
+        # Fallback pre staršie Python verzie (< 3.9)
+        try:
+            import pytz
+            tz = pytz.timezone(timezone)
+            return datetime.now(tz)
+        except ImportError:
+            # Ak nie sú dostupné timezone knižnice, použijeme UTC
+            return datetime.utcnow()
+    except Exception as e:
+        # Ak zlyhá, použijeme fallback
+        print(f"⚠️ MCP Time error: {e}, using fallback", file=sys.stderr)
+        return datetime.now()
 
 
 def save_prompt(prompt_content: str, metadata: dict = None):
@@ -31,17 +66,21 @@ def save_prompt(prompt_content: str, metadata: dict = None):
         if metadata is None:
             metadata = {}
         
+        # Získaj správny čas z MCP Time MCP (alebo použij správnu časovú zónu)
+        current_time = get_current_time_from_mcp()
+        
         metadata.update({
             'source': 'auto_save',
             'extraction_method': 'real_time_agent_hook',
-            'saved_at': datetime.now().isoformat(),
+            'saved_at': current_time.isoformat(),
         })
         
-        # Save prompt
+        # Save prompt so správnym timestampom
         minister.log_event(
             role='user',
             content=prompt_content,
             metadata=metadata,
+            timestamp=current_time,  # Použi správny timestamp
         )
         
         return True

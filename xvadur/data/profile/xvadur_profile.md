@@ -365,7 +365,7 @@ V dobe AI, kde je všetko dostupné, vyhráva ten, kto sa dokáže do témy pono
 **Príklady:**
 - Mama vyhodila z domu → Konverzia
 - Nezobraný na medicínu → AI objav
-- Quest: Vlado → ? (v procese)
+- Quest: Vlado → ✅ Recepčná funkčná (30.11 ukázaná Vladovi), vzťah sa posunul na parťáka (1.12 cvičenie)
 
 ---
 
