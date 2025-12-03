@@ -161,7 +161,91 @@ Ulož tento obsah do súboru: `xvadur/save_games/SAVE_GAME_LATEST.md`.
 - Pridaj záznam do `xvadur/logs/XVADUR_LOG.md` o vytvorení save game
 - **Overenie promptov:** Skontroluj, že všetky prompty z konverzácie sú uložené v `prompts_log.jsonl`
 
-**⚠️ POZOR:** Po uložení súborov MUSÍŠ okamžite pokračovať na krok 4 (Git Commit & Push).
+**⚠️ POZOR:** Po uložení súborov MUSÍŠ okamžite pokračovať na krok 3.5 (Generovanie Summary).
+
+## 3.5. Generovanie Save Game Summary (Automatické - POVINNÉ)
+
+**⚠️ DÔLEŽITÉ:** Po vytvorení `SAVE_GAME_LATEST.md` MUSÍŠ automaticky vygenerovať kompaktný `SAVE_GAME_LATEST_SUMMARY.md` pre efektívne načítanie pri `/loadgame`.
+
+### Postup:
+
+1. **Načítaj vytvorený `SAVE_GAME_LATEST.md`:**
+   - Použi `read_file` na načítanie celého súboru
+   - Extrahuj kľúčové informácie
+
+2. **Vygeneruj kompaktný summary obsah:**
+   Vytvor Markdown obsah s touto štruktúrou (~50-70 riadkov):
+
+   ```markdown
+   # 💾 SAVE GAME SUMMARY: [Dátum]
+
+   ## 📊 Status
+   - **Rank:** [Rank]
+   - **Level:** [Level]
+   - **XP:** [Current XP] / [Next Level XP] ([Percent]%)
+   - **Next Level:** [XP potrebné] XP potrebné
+   - **Last Session:** [Session názov] ([Čas])
+
+   ---
+
+   ## 🎯 Posledná Session - Sumár
+
+   **Čo sa robilo:**
+   - [3-5 bullet points z "Začiatok Session" a "Kľúčové Rozhodnutia"]
+   - [Extrahuj len najdôležitejšie body]
+
+   **Kľúčové rozhodnutia:**
+   - [2-3 najdôležitejšie rozhodnutia z naratívu]
+
+   **Vykonané úlohy:**
+   - [Zoznam vykonaných úloh z naratívu]
+
+   ---
+
+   ## 🎯 Aktívne Questy
+
+   ### [Quest Názov]
+   - **Status:** [✅/⏳/❌]
+   - **Next Steps:** [1-2 vety]
+   - **Blokátory:** [ak existujú]
+
+   [Opakuj pre každý aktívny quest]
+
+   ---
+
+   ## 📋 Next Steps
+
+   1. [Prioritizovaný zoznam 3-5 bodov z "Next Steps" sekcie]
+
+   ---
+
+   ## 🔑 Kľúčové Kontexty
+
+   - [Dôležité zmeny v projektoch]
+   - [Technické poznámky]
+   - [Vzťahy/Blokátory]
+
+   ---
+
+   **Full Details:** `xvadur/save_games/SAVE_GAME_LATEST.md`
+   **Last Updated:** [Dátum a čas]
+   ```
+
+3. **Extrahuj informácie z `SAVE_GAME_LATEST.md`:**
+   - **Status:** Zkopíruj presne z sekcie "📊 Status"
+   - **Posledná Session:** Extrahuj z "🧠 Naratívny Kontext" - len kľúčové body (3-5 bullet points)
+   - **Aktívne Questy:** Zkopíruj z "🎯 Aktívne Questy & Next Steps" - len názov, status, next steps
+   - **Next Steps:** Prioritizovaný zoznam (3-5 bodov)
+   - **Kľúčové Kontexty:** Extrahuj dôležité technické poznámky a zmeny
+
+4. **Ulož summary:**
+   - Ulož do `xvadur/save_games/SAVE_GAME_LATEST_SUMMARY.md`
+   - Ak súbor existuje, prepíš ho
+   - **Cieľová veľkosť:** ~50-70 riadkov (namiesto 191 riadkov v SAVE_GAME_LATEST.md)
+
+**Poznámka:** Summary musí byť kompaktný, ale zachovať všetky kľúčové informácie potrebné pre rýchle načítanie kontextu pri `/loadgame`. Detaily zostávajú v `SAVE_GAME_LATEST.md`.
+
+**⚠️ POZOR:** Po vytvorení summary MUSÍŠ okamžite pokračovať na krok 4 (Git Commit & Push).
 
 ## 4. Git Commit & Push (Automatické - POVINNÉ)
 
@@ -201,6 +285,7 @@ Ulož tento obsah do súboru: `xvadur/save_games/SAVE_GAME_LATEST.md`.
 ### Čo sa automaticky pushne:
 
 - ✅ Save game súbor (`xvadur/save_games/SAVE_GAME_LATEST.md`)
+- ✅ Save game summary (`xvadur/save_games/SAVE_GAME_LATEST_SUMMARY.md`)
 - ✅ Aktualizované logy (`xvadur/logs/XVADUR_LOG.md`, `xvadur/logs/XVADUR_XP.md`)
 - ✅ Session dokumenty (`xvadur/data/sessions/*.md`)
 - ✅ Všetky ostatné zmenené súbory v workspace

@@ -624,3 +624,31 @@ Každý záznam obsahuje:
 **Status:** ✅ Session ukončená, všetko uložené a pripravené na commit
 
 ---
+
+## [2025-12-03 13:51] 🔹 Save Game: Optimalizácia Load Game - Save Game Summary Systém
+
+**Kontext:** Ukončenie dnešnej session (Streda, 3. december 2025, 13:00 - 13:51) s implementáciou Save Game Summary systému pre optimalizáciu `/loadgame`.
+
+**Vykonané:**
+- Automaticky uložené všetky prompty z konverzácie (4 nové prompty)
+- Vytvorený finálny `xvadur/save_games/SAVE_GAME_LATEST.md` s kompletným naratívom
+- Vytvorený `xvadur/save_games/SAVE_GAME_LATEST_SUMMARY.md` - kompaktný sumár (~60 riadkov)
+- Aktualizované všetky dokumenty (logy, Save Game, Summary)
+
+**Kľúčové body:**
+- **Problém identifikovaný:** `/loadgame` spotrebúval ~1741 riadkov (takmer polovicu kontextového okna)
+- **Riešenie implementované:** Save Game Summary systém - automatické generovanie kompaktného summary pri `/savegame`
+- **Optimalizácia `/loadgame`:** Načítanie len summary + selektívne časti (posledných 5 záznamov z logu, aktuálny XP status)
+- **Výsledok:** 90% redukcia spotreby tokenov (z 1741 na ~170 riadkov)
+
+**Zmeny v súboroch:**
+- `xvadur/save_games/SAVE_GAME_LATEST.md` - finálny save game
+- `xvadur/save_games/SAVE_GAME_LATEST_SUMMARY.md` - nový summary súbor (prvýkrát)
+- `xvadur/logs/XVADUR_LOG.md` - tento záznam
+- `xvadur/data/prompts_log.jsonl` - 43 promptov (4 nové uložené)
+- `.cursor/commands/savegame.md` - pridané generovanie summary
+- `.cursor/commands/loadgame.md` - optimalizované načítanie
+
+**Status:** ✅ Session ukončená, všetko uložené a pripravené na commit
+
+---

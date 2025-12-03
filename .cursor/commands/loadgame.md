@@ -12,10 +12,42 @@ Tento súbor definuje kompletný životný cyklus práce s agentom.
 ### 1. 📥 LOAD_GAME (`/loadgame`)
 Pri štarte novej session okamžite načítaj kontext:
 Použi `read_file` na:
-1.  `xvadur/save_games/SAVE_GAME_LATEST.md` (Príbeh, Questy, Status)
-2.  `xvadur/logs/XVADUR_LOG.md` (Chronologický log)
-3.  `xvadur/logs/XVADUR_XP.md` (XP, Level, Rank)
-4.  `xvadur/data/profile/xvadur_profile.md` (Profil - voliteľné, ak existuje)
+
+1.  **Save Game Summary (Priorita):**
+    - `xvadur/save_games/SAVE_GAME_LATEST_SUMMARY.md` (Kompaktný sumár - ~50-70 riadkov)
+    - **Fallback:** Ak summary neexistuje, načítaj `xvadur/save_games/SAVE_GAME_LATEST.md` (backward compatibility)
+
+2.  **Posledné záznamy z logu:**
+    - `xvadur/logs/XVADUR_LOG.md` - len posledných 5 záznamov (~100 riadkov)
+    - **Technika:** Načítaj súbor a extrahuj len záznamy od posledného `## [YYYY-MM-DD HH:MM]` smerom nahor (posledných 5 záznamov)
+    - **Formát:** Každý záznam začína s `## [YYYY-MM-DD HH:MM]` a končí pred ďalším záznamom alebo `---`
+
+3.  **Aktuálny XP Status:**
+    - `xvadur/logs/XVADUR_XP.md` - len sekcia "📊 Aktuálny Status" (~20 riadkov)
+    - **Technika:** Načítaj len riadky obsahujúce sekciu `## 📊 Aktuálny Status` (typicky riadky 8-13)
+
+4.  **Profil (Voliteľné):**
+    - `xvadur/data/profile/xvadur_profile.md` - len sekcia "IV. SÚČASNÝ PROFIL" (~50 riadkov)
+    - **Technika:** Načítaj len sekciu `## IV. SÚČASNÝ PROFIL: KTO JE ADAM?` (ak existuje)
+
+**Technické detaily pre selektívne načítanie:**
+
+**Pre log (posledných 5 záznamov):**
+- Načítaj celý súbor `xvadur/logs/XVADUR_LOG.md`
+- Identifikuj záznamy podľa patternu `## [YYYY-MM-DD HH:MM]`
+- Extrahuj len posledných 5 záznamov (od najnovšieho smerom nahor)
+- Každý záznam začína s `## [YYYY-MM-DD HH:MM]` a končí pred ďalším záznamom alebo `---`
+- **Príklad:** Ak súbor má 10 záznamov, načítaj len záznamy 6-10
+
+**Pre XP (len aktuálny status):**
+- Načítaj súbor `xvadur/logs/XVADUR_XP.md`
+- Extrahuj len sekciu `## 📊 Aktuálny Status` (typicky riadky 8-13)
+- Preskoč históriu a agregované metriky
+
+**Pre profil (len súčasný profil):**
+- Načítaj súbor `xvadur/data/profile/xvadur_profile.md`
+- Extrahuj len sekciu `## IV. SÚČASNÝ PROFIL: KTO JE ADAM?`
+- Preskoč históriu a transformačné momenty
 
 **Načítanie histórie promptov z MinisterOfMemory (voliteľné, ak je dostupný):**
 Ak existuje `xvadur/data/prompts_log.jsonl`, môžeš načítať posledné prompty:
@@ -43,6 +75,11 @@ except Exception:
 ```
 
 **Poznámka:** Prompty z MinisterOfMemory poskytujú dodatočný kontext o predchádzajúcich konverzáciách, ktorý môže byť užitočný pri obnovení práce.
+
+**Výsledok načítania:**
+- **Pred optimalizáciou:** ~1741 riadkov (191 + 627 + 288 + 410 + 225)
+- **Po optimalizácii:** ~170 riadkov (70 + 100 + 20 + 50)
+- **Redukcia:** ~90% tokenov
 
 ---
 
