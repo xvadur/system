@@ -1,0 +1,15 @@
+{
+  "date": "2025-10-04",
+  "timestamp": "2025-10-04T14:35:15.978000+00:00",
+  "index": 3,
+  "text": "to jak promptujem, su to dobre prompty pre llm? lebo viem ze by to malo vyzerat inaka le vysledky ktore dostavam su podla mna dobre \n  \n  hentak som ten prompt robil, a natom som zozral vsetky kredity. \n  \n  idealne by bolo keby som si vedel spravit evaulacne testy. predchvilou som to videl prvy krat.. neni to tazke ale musim by som tomu venovat par hodin urcite.. nebolo by to na dva prompty. \n  \n  chcem to teraz spravit tak aby to vedel vyskusat aj vlado, aby videl ze to funguje. Už som musel kupit za 5e kredity, lebo si budeme muset urobit aj hlas z nejakeho podcastu 30 minutoveho aby sme mali dobre znejuci slovensky hlas, a teda musim vela testovat lebo je tam niekolko parametrov ktore su potrebne a ten hovor sa potom natiahne ked chcem zistit ako to cele prebehne. \n  \n  lebo teraz ked chcem otestovat oba workflow, tak ked ich dam ako actvie, tak aj tak musim manulane spustit execute a ked jeden worflow prejde a chcem ist do dalsieho aby som ho dal execute, tak sa mi z toho prveho vymazu data a tak neviem ci to prebehlo.. ale asi by sa to malo ulozit do executions, to musim pozret ale nejsom si isty ci som to tam videl ked som pozeral",
+  "word_count": 211,
+  "source_path": "data/chronology/2025-10-04.md",
+  "diacritic_ratio": 0.0009,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

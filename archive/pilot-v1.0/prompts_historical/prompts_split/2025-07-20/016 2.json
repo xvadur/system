@@ -1,0 +1,15 @@
+{
+  "date": "2025-07-20",
+  "timestamp": "2025-07-20T15:23:07.437000+00:00",
+  "index": 16,
+  "text": "vyborne. \n  \n  mám knowladge base ktorá má 34 000 slov, su to surove texty z ktorých sme extrahopvali identitu ktorú teraz máš a pomocou ktorej sme vytvorili xpi, a teraz by som toto xpi chcel aplikovat na tuto znalostnu bazu. je to nestrukturovany zapis mojich myslienok za nejake obodbie, je to par mesiacov. kazdy texty resp odkes v tomto dokumente je jeden prompt, ktorý som posielal do gpt v kontexte ktory neni dolezity. chcem aby sme sa podla xpi pozreli na tieto prompty a jednak otestovali nase xpi a posudili moju knowladge. dava to zmysel? To bude akokeby spatna validacia xpi mojej identiti a aj mojej introspekcie v jednom kroku. povedz ci rozumies, ci to dava zmysel, a ci ti mozem dat taky velky dokument aby si s nim pracxoval podla xpi",
+  "word_count": 131,
+  "source_path": "data/chronology/2025-07-20.md",
+  "diacritic_ratio": 0.0106,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

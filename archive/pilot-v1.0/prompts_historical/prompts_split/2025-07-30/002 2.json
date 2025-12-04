@@ -1,0 +1,15 @@
+{
+  "date": "2025-07-30",
+  "timestamp": "2025-07-30T23:54:25.191000+00:00",
+  "index": 2,
+  "text": "INT-14,16,17 sem som ti nahral moju aktualnu prácu. primarne som robil INT-16: Product kazdy produkt j ejeden view kontajnera, kde su prislusne linky na prislusne kanaly (ktoré som nasiel)- github, slack channel, figma. kazdy produkt má leadera ktorého sa mi podarilo identifikovat lebo peter mi nikdy nepovedal explicitne kdo je coho leader. je to v stave ze chyba uz len zopar detailov inak by som povedal ze zdania su vypracovane. ked sa na to vizualne pozries vies mi povedat, ci to vyzera tak ze som splnil zadania? \n  \n  INT-16: Product INT-14: Organisation INT-17: Processes",
+  "word_count": 93,
+  "source_path": "data/chronology/2025-07-30.md",
+  "diacritic_ratio": 0.0069,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

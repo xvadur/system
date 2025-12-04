@@ -1,0 +1,15 @@
+{
+  "date": "2025-10-04",
+  "timestamp": "2025-10-04T17:28:50.811000+00:00",
+  "index": 4,
+  "text": "dobre cize od vcera som sa za dnes pohol k tomuto: \n  \n  mam stabilny selfhostin n8n, server stale bezi na jednom sesion aj ked vypnem pocitac. to je dost uspech kedze som takto usetril 35e na n8n \n  \n  mam elevenlabagenta, ktorý správne vola webhooky a pyta sa spravne informacie. \n  \n  keby som mohol dynamickejsie testovat tak by som to mal omnoho rychlejsie, lenze ten jeden rozhovor trva pomern dlho cize zere vela kreditov. \n  \n  existuje teda silny prodkolkad ze ked to spravne napormptujem in advanced, test bude stabilnejsi a ryvchlesi.\n  \n  za dnes som sa dostal do fazy ze elevenlab posiela a prijam spravne udaje a tychto foundation teraz mozem stavat dalej. \n  \n  myslim si ze je to uspech lebo tym padom, mozem cez agenta od pacienta vyziadat hocijake udaje, a poslat ich hocikam, nie? je to uspech?",
+  "word_count": 132,
+  "source_path": "data/chronology/2025-10-04.md",
+  "diacritic_ratio": 0.0025,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

@@ -1,0 +1,15 @@
+{
+  "date": "2025-08-27",
+  "timestamp": "2025-08-27T20:23:50.316000+00:00",
+  "index": 8,
+  "text": "neviem jak to mam spravit jednoducho v kortex. ze ci pod moj dlhy text mam vytvarat dokumenty v ktorych budu uvahy k textu alebo ci mam robit elementy pod ten text v ktorych budu jednotlive komentare? lebo neviem ako to potom funguje v chate, ze ked sa odvolam na dokument ktory obsahuje 7 dalsich dokumentov tak ked ti cez zavinac oznacim ten velky dokument budes vediet citat aj tie dokumenty ktore k tomu prinalezia alebo budem musiet kazdy dokument ozancit zvlastn ked chcem kontext z celej tej debaty o tom jednom dlhom texte ktory ma dalsie komentare? a teda nebolo by pre tento ucel lepsie napisat do colapsable komponent?",
+  "word_count": 109,
+  "source_path": "data/chronology/2025-08-27.md",
+  "diacritic_ratio": 0.0,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

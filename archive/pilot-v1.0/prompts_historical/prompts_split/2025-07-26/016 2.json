@@ -1,0 +1,15 @@
+{
+  "date": "2025-07-26",
+  "timestamp": "2025-07-26T21:06:48.438000+00:00",
+  "index": 16,
+  "text": "INT-21: Automate QA Preview Message for Feature PRs pridal som sem screen shot z n8n a kod worflow. skontroluj to. apovedz ci to mozem oznacit ako done. ja nemam pristup ku tvorbe credetials na linear ani github ani slack, cize to si dolni zadavatel, kolega.",
+  "word_count": 45,
+  "source_path": "data/chronology/2025-07-26.md",
+  "diacritic_ratio": 0.0,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

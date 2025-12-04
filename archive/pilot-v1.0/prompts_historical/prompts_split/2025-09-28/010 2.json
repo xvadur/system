@@ -1,0 +1,15 @@
+{
+  "date": "2025-09-28",
+  "timestamp": "2025-09-28T19:45:24.162000+00:00",
+  "index": 10,
+  "text": "ja som sa mesiaci pripravoval na to ze sa chcem vzdat akejkolvek moznosti byt zamestnany. chcem byt podnikatel a toto je moj zaciatok. \n  \n  zacalo tot ak ze som sa spoznal s vladom, ktory zlavidoval vsetko nad cim som rozmyslal. \n  \n  chce investovat do ai a chce projkt, ktorý ked mi predstavil tak mi zasvietili kontrolky. \n  \n  jeho navrh bol, ze spraviem proste ai uctovnictvo a toho by som sa chcel drzat. \n  \n  prechadzal som svoje stare projekty na google studio a zistil som ze uz som nieco take robil ked osm chcel cez apku spravovat svoje financie. vtedy som to chcel riesit, cez chatui do ktoreho budem iba pisat co som nakupoval alebo zarobil a postupne sa mi bude tvorit graf. \n  \n  nieco take by osm do buducna chcel urcite ajja, pretoze by som chcel miesto kde si firma dá všetky dostupne dokumenty o firme, budu tym padom na jednom mieste, chcem aby to bolo pospajane z ich databazou aby som nemal problemy s gdpr alebo zakonmy. \n  \n  chcem vytvorit aplikaciu pre firmy, ktore zozenie vlado lebo ma skusensoti s akviziciami a col calls, ta fima bude mat nejaky system uctovnictva z ktoreho vedia urobit export a tento export vedia dat do pwa, ktorý im zobrazi dashboard, ulozisko dokumentov, z dokumentov ktorých sa neskor stane rag vdaka ktoremu budu moct firmy klast otazky svojim dokumentom v zmysle, ako to ropbim teraz ja.\n  \n  kazda firma by potrebovala a mala extremny benefit keby mala dostatocny prehlad o tom co sa deje vo firme, kto pracuje v akom projekte, kto vykonava co na danom projekte, kolko co stoji a ake su vyhaldiaky do buducna. \n  \n  chcel by som spravit diagnosticky nastroj ktory podla heuristik bude vedeit pracovat s datami \n  \n  prave som spustil selfhost n8n cez docker a zacnem pracovat na worflow. zacnem jednoducho a budem postupovat zlozitejsie. \n  \n  dokoncim bussines plan aktorý poslem vladovy a zajtra sa pustim do experimentovania",
+  "word_count": 310,
+  "source_path": "data/chronology/2025-09-28.md",
+  "diacritic_ratio": 0.0032,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}

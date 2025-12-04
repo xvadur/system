@@ -1,0 +1,15 @@
+{
+  "date": "2025-07-21",
+  "timestamp": "2025-07-21T01:10:37.886000+00:00",
+  "index": 3,
+  "text": "Budeme potrebovat urgentne jednu automatizaciu.Cez N8N treba nastavit ze ked pride novy PR review request na githube, tak sa danemu cloveku posle na slack notifikacia do DM\n  \n  toto bolo zadanie ktore som dostal. nič viac a ja som z toho urobil tie nasledovne veci. to bolo piatok rano, uz vtedy som nemal pristupy cize uz vtedy som to nemohol urobit, a teraz o niekolko dni neskor som identifikoval pricinu. keby som skusenejsi tak na to pridem skor, ale takto mi to trvalo dlho. ale uz sa mi to nikdy nestane",
+  "word_count": 90,
+  "source_path": "data/chronology/2025-07-21.md",
+  "diacritic_ratio": 0.002,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}
