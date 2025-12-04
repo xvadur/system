@@ -19,7 +19,7 @@ from scripts.mcp_helpers import (
     export_to_obsidian,
     get_time_from_mcp,
 )
-from scripts.calculate_daily_metrics import calculate_metrics_for_session # Bude vytvorený neskôr
+from scripts.calculate_daily_metrics import calculate_metrics_for_session
 
 def archive_current_session():
     """
