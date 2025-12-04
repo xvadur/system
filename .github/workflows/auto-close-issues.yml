@@ -1,0 +1,72 @@
+name: Auto-Close Issues
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'development/logs/XVADUR_LOG.md'
+
+jobs:
+  close-issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Parse log for completed quests
+        id: parse-log
+        run: |
+          # Parsuj XVADUR_LOG.md a nájdi dokončené úlohy
+          # Formát: [HH:MM] ✅ Dokončená úloha #123: [Popis]
+          COMPLETED_ISSUES=$(grep -oP '✅ Dokončená úloha #\K[0-9]+' development/logs/XVADUR_LOG.md || echo "")
+          
+          if [ -z "$COMPLETED_ISSUES" ]; then
+            echo "completed_issues=" >> $GITHUB_OUTPUT
+            echo "No completed issues found"
+          else
+            echo "completed_issues=$COMPLETED_ISSUES" >> $GITHUB_OUTPUT
+            echo "Found completed issues: $COMPLETED_ISSUES"
+          fi
+      
+      - name: Close completed issues
+        if: steps.parse-log.outputs.completed_issues != ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Zatvor každé dokončené Issue
+          for issue_num in ${{ steps.parse-log.outputs.completed_issues }}; do
+            echo "Closing issue #$issue_num"
+            
+            # Skontroluj, či Issue ešte nie je zatvorené
+            STATE=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+              "https://api.github.com/repos/${{ github.repository }}/issues/$issue_num" | \
+              jq -r '.state')
+            
+            if [ "$STATE" = "open" ]; then
+              # Zatvor Issue
+              curl -X PATCH \
+                -H "Authorization: token $GITHUB_TOKEN" \
+                -H "Accept: application/vnd.github.v3+json" \
+                "https://api.github.com/repos/${{ github.repository }}/issues/$issue_num" \
+                -d '{"state":"closed"}'
+              
+              echo "✅ Closed issue #$issue_num"
+            else
+              echo "⚠️ Issue #$issue_num is already $STATE"
+            fi
+          done
+      
+      - name: Summary
+        if: always()
+        run: |
+          if [ -z "${{ steps.parse-log.outputs.completed_issues }}" ]; then
+            echo "No completed issues found in log"
+          else
+            echo "Processed completed issues: ${{ steps.parse-log.outputs.completed_issues }}"
+          fi
+

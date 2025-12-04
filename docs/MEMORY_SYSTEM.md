@@ -69,6 +69,6 @@ Súčasný systém je **pasívny, bezúdržbový a plne automatizovaný**.
 ---
 
 ## 🔗 Súvisiace Dokumenty
-- **`xvadur/data/kortex_analysis/KORTEX_ANALYSIS.md`**: Analýza historických dát.
-- **`xvadur/docs/README.md`**: Hlavný rozcestník dokumentácie.
+- **`docs/README.md`**: Hlavný rozcestník dokumentácie.
+- **`docs/ARCHITECTURE.md`**: Detailný popis v2.0 architektúry.
 

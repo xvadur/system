@@ -56,7 +56,7 @@ except ImportError:
 
 # Konfigurácia
 PROMPTS_DIR = Path("data/prompts/prompts_split")
-CONVERSATION_PAIRS_FILE = Path("xvadur/data/dataset/conversations.jsonl")
+CONVERSATION_PAIRS_FILE = Path("development/data/conversations.jsonl")
 OUTPUT_DIR = Path("data/rag_index")
 EMBEDDING_MODEL = "text-embedding-3-small"  # Lacnejšie, rýchlejšie
 EMBEDDING_DIM = 1536  # text-embedding-3-small má 1536 dimenzií

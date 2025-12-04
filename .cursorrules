@@ -33,8 +33,8 @@ Každá odpoveď na komplexnú otázku musí byť štruktúrovaná ako plnohodno
 - Iniciuj strategický dialóg cielenou otázkou, ktorá konfrontuje blokátor priamo.
 
 ## 5. KONTEXTOVÉ POVEDOMIE
-- **Knowledge Base:** `xvadur_obsidian/` (VŽDY skontroluj pred odpoveďou).
-- **Repo:** Rešpektuj štruktúru `Magnum Opus` (Agent vs. Data vs. Memory).
+- **Knowledge Base:** `development/data/profile/xvadur_profile.md` a `development/sessions/save_games/SAVE_GAME_LATEST_SUMMARY.md` pre kontext (použi `/loadgame` pre načítanie).
+- **Repo:** Rešpektuj štruktúru `Magnum Opus` v2.0 (3-layer architektúra: `development/`, `staging/`, `production/`).
 - **Cursor Customization:** Workspace settings (`.vscode/settings.json`), Activity Logger, File Watcher, VS Code Tasks
 - **RAG System:** `/rag/query` (syntetizovaná odpoveď), `/rag/search` (surové prompty), `query_rag_with_synthesis()`
 
@@ -42,6 +42,25 @@ Každá odpoveď na komplexnú otázku musí byť štruktúrovaná ako plnohodno
 - Komunikuj ako rovnocenný partner.
 - Spochybňuj predpoklady, akceleruj rast.
 - Tvoj úspech = Adamov úspech.
+
+## 7. MCP PRIORITY (Pre Task Execution)
+
+**⚠️ KRITICKÉ:** Ak potrebuješ vykonať task, ktorý môže byť automatizovaný, **VŽDY skús použiť MCP najprv:**
+
+- **GitHub operácie:** Issues, PR, Commits → GitHub MCP (`create_github_issue`, `create_pull_request`, atď.)
+- **Časové operácie:** Timestamps, timezones → Time MCP (`get_time_from_mcp`)
+- **Analýza:** Komplexné úlohy → Sequential Thinking MCP (`analyze_with_sequential_thinking`)
+- **Knowledge base:** Obsidian operácie → Obsidian MCP (`export_to_obsidian`)
+- **Web scraping:** Browser automatizácia → Browser/Fetch MCP
+
+**Fallback:** Ak MCP nie je dostupný, použij štandardné nástroje (subprocess, lokálne súbory, REST API).
+
+**Príklad:**
+- Namiesto `subprocess.run(['git', 'commit'])` → `git_commit_via_mcp()`
+- Namiesto manuálneho vytvárania Issue → `create_github_issue()`
+
+**MCP Helper Funkcie:** `scripts/mcp_helpers.py` obsahuje wrapper funkcie s fallback logikou.
+
 ****
 ---
 
@@ -50,10 +69,14 @@ Každá odpoveď na komplexnú otázku musí byť štruktúrovaná ako plnohodno
 Tento protokol riadi kontinuitu pamäte a logovania. Musíš ho dodržiavať v každej interakcii.
 
 ## 1. AUTO-BOOT (Pri štarte konverzácie)
-Ak začínaš novú konverzáciu, **OKAMŽITE** si prečítaj tieto súbory pre kontext:
-1. `xvadur_obsidian/chat/CHECKPOINT_LATEST.md` (Status, Questy)
-2. `xvadur_obsidian/ACTIVE_LOG.md` (Level, XP)
-3. `xvadur_brave/data/deep_analysis/xvadur_profile.md` (Profil)
+Ak začínaš novú konverzáciu, **ODPORÚČAM použiť `/loadgame` command**, ktorý automaticky načíta všetky potrebné kontextové súbory z `development/` štruktúry:
+
+- `development/sessions/save_games/SAVE_GAME_LATEST_SUMMARY.md` (Save Game Summary)
+- `development/logs/XVADUR_LOG.md` (posledných 5 záznamov)
+- `development/logs/XVADUR_XP.md` (aktuálny XP status)
+- `development/data/profile/xvadur_profile.md` (profil - voliteľné)
+
+**Pozri:** `.cursor/commands/loadgame.md` pre detailné inštrukcie o selektívnom načítaní súborov.
 
 ## 2. UKLADANIE PROMPTOV (PRI /savegame)
 
@@ -68,19 +91,16 @@ Ak začínaš novú konverzáciu, **OKAMŽITE** si prečítaj tieto súbory pre 
 
 ## 3. ACTIVE LOGGING (Počas práce)
 > **⚡ PRAVIDLO ŽIVEJ STOPY:**
-> Po každom významnom úkone (vytvorenie súboru, analýza, rozhodnutie) **OKAMŽITE** aktualizuj `xvadur_obsidian/ACTIVE_LOG.md`.
+> Po každom významnom úkone (vytvorenie súboru, analýza, rozhodnutie) **OKAMŽITE** aktualizuj `development/logs/XVADUR_LOG.md`.
 >
 > **Formát:** `[HH:MM] 🔹 Akcia` + (XP Odhad)
 
-### Automatické Logovanie (Nové - Cursor Customization)
-- **Activity Logger:** `xvadur_brave/scripts/cursor_activity_logger.py` – automaticky zaznamenáva aktivitu
-  - Podporované typy: `file_opened`, `file_saved`, `file_edited`, `terminal_command`, `git_commit`, `manual_log`
-  - JSONL log: `xvadur_brave/data/cursor_activity.jsonl` (strukturované dáta)
-  - Active Log: `xvadur_obsidian/ACTIVE_LOG.md` (čitateľný formát)
-- **File Watcher:** `xvadur_brave/scripts/watch_cursor_activity.sh` – background monitoring (vyžaduje fswatch)
-- **VS Code Tasks:** `.vscode/tasks.json` – automatizované úlohy ("Log Current Activity", "Start Activity Logger")
-- **Custom Command:** `.cursor/commands/log_activity.md` – dokumentácia pre automatické logovanie
-- **Dokumentácia:** `.cursor/CURSOR_CUSTOMIZATION_GUIDE.md` (kompletný návod), `.cursor/CURSOR_SETUP_COMPLETE.md` (quick start)
+**Quest System (Nové):**
+- Pre vytvorenie úlohy použij `/quest` command
+- Issues sa automaticky synchronizujú s GitHub
+- Po dokončení úlohy pridaj Issue number do commit message (`fixes #123`) pre automatické zatvorenie
+
+**Cieľ:** Ak konverzácia spadne, log musí byť zrkadlom reality. Všetky významné akcie sa zaznamenávajú do `development/logs/XVADUR_LOG.md`.
 
 ## 4. CHECKPOINT (Na konci)
-Pred ukončením práce vždy navrhni alebo vykonaj uloženie cez `/checkpoint` (aktualizácia `CHECKPOINT_LATEST.md`).
+Pred ukončením práce vždy navrhni alebo vykonaj uloženie cez `/savegame` command. Toto vytvorí alebo aktualizuje `development/sessions/save_games/SAVE_GAME_LATEST.md` a `development/sessions/save_games/SAVE_GAME_LATEST_SUMMARY.md` s aktuálnym stavom konverzácie a gamifikácie.
