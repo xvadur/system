@@ -13,7 +13,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Callable, Dict, List
 
-from ministers.memory import MemoryRecord, MemoryStore
+from core.ministers.memory import MemoryRecord, MemoryStore
 
 logger = logging.getLogger(__name__)
 

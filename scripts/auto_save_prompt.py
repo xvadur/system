@@ -12,8 +12,8 @@ import os
 workspace_root = Path(__file__).parent.parent
 sys.path.insert(0, str(workspace_root))
 
-from ministers.memory import MinisterOfMemory, AssistantOfMemory
-from ministers.storage import FileStore
+from core.ministers.memory import MinisterOfMemory, AssistantOfMemory
+from core.ministers.storage import FileStore
 
 
 def get_current_time_from_mcp(timezone: str = "Europe/Bratislava") -> datetime:

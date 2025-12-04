@@ -2,14 +2,14 @@
 
 # AETH: Establish package namespace for ministerial agents.
 
-from ministers.memory import (
+from core.ministers.memory import (
     AssistantOfMemory,
     InMemoryStore,
     MemoryRecord,
     MemoryStore,
     MinisterOfMemory,
 )
-from ministers.storage import FileStore
+from core.ministers.storage import FileStore
 
 __all__ = [
     "AssistantOfMemory",

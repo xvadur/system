@@ -13,8 +13,8 @@ from pathlib import Path
 workspace_root = Path(__file__).parent.parent
 sys.path.insert(0, str(workspace_root))
 
-from ministers.memory import AssistantOfMemory, MinisterOfMemory
-from ministers.storage import FileStore
+from core.ministers.memory import AssistantOfMemory, MinisterOfMemory
+from core.ministers.storage import FileStore
 
 logger = logging.getLogger(__name__)
 
