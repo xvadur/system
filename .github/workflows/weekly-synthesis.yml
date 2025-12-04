@@ -1,0 +1,83 @@
+# XVADUR Weekly Synthesis Workflow
+# Týždenná agregácia metrík a vytvorenie reportu
+
+name: Weekly Synthesis
+
+on:
+  schedule:
+    # Každú nedeľu o 23:00 (UTC)
+    - cron: '0 23 * * 0'
+  workflow_dispatch:  # Manuálne spustenie
+
+permissions:
+  contents: write
+
+jobs:
+  weekly-report:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          
+      - name: Generate Weekly Report
+        run: |
+          python -c "
+          import json
+          from datetime import datetime, timedelta
+          from pathlib import Path
+          
+          # Načítanie XP histórie
+          xp_history = Path('data/xp_history.jsonl')
+          if xp_history.exists():
+              records = []
+              for line in xp_history.read_text().strip().split('\n'):
+                  if line:
+                      records.append(json.loads(line))
+              
+              # Filtrovanie posledných 7 dní
+              week_ago = datetime.now() - timedelta(days=7)
+              week_records = [r for r in records if datetime.fromisoformat(r['timestamp'].replace('Z', '+00:00')) > week_ago]
+              
+              if week_records:
+                  start_xp = week_records[0]['total_xp'] if week_records else 0
+                  end_xp = week_records[-1]['total_xp'] if week_records else 0
+                  xp_gained = end_xp - start_xp
+                  
+                  print(f'📊 Weekly XP Report')
+                  print(f'   Start: {start_xp:.2f} XP')
+                  print(f'   End: {end_xp:.2f} XP')
+                  print(f'   Gained: {xp_gained:.2f} XP')
+              else:
+                  print('No XP data for this week')
+          else:
+              print('XP history not found')
+          "
+          
+      - name: Create Weekly Report File
+        run: |
+          WEEK=$(date +%Y-W%V)
+          mkdir -p sessions/archive
+          echo "# Weekly Report: $WEEK" > sessions/archive/week_${WEEK}.md
+          echo "" >> sessions/archive/week_${WEEK}.md
+          echo "Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> sessions/archive/week_${WEEK}.md
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "chore(report): weekly synthesis [skip ci]"
+          git push
+

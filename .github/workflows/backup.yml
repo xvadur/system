@@ -1,0 +1,72 @@
+# XVADUR Backup Workflow
+# Automatická záloha kritických dát pri každom push
+
+name: Backup Critical Data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'sessions/**'
+      - 'logs/**'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+          
+      - name: Validate JSON files
+        run: |
+          echo "🔍 Validating JSONL files..."
+          
+          for file in data/*.jsonl; do
+            if [ -f "$file" ]; then
+              echo "Checking $file..."
+              python3 -c "
+          import json
+          import sys
+          
+          errors = 0
+          with open('$file', 'r') as f:
+              for i, line in enumerate(f, 1):
+                  if line.strip():
+                      try:
+                          json.loads(line)
+                      except json.JSONDecodeError as e:
+                          print(f'  Line {i}: {e}')
+                          errors += 1
+          
+          if errors:
+              print(f'  ❌ {errors} errors found')
+              sys.exit(1)
+          else:
+              print(f'  ✅ Valid')
+          "
+            fi
+          done
+          
+      - name: Check data integrity
+        run: |
+          echo "📊 Data Integrity Check"
+          
+          # Počet záznamov v conversations.jsonl
+          if [ -f "data/conversations.jsonl" ]; then
+            CONV_COUNT=$(wc -l < data/conversations.jsonl)
+            echo "  conversations.jsonl: $CONV_COUNT records"
+          fi
+          
+          # Počet záznamov v prompts_log.jsonl
+          if [ -f "data/prompts_log.jsonl" ]; then
+            PROMPT_COUNT=$(wc -l < data/prompts_log.jsonl)
+            echo "  prompts_log.jsonl: $PROMPT_COUNT records"
+          fi
+          
+          echo "✅ Backup validation complete"
+

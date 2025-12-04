@@ -1,0 +1,54 @@
+# XVADUR Daily Metrics Workflow
+# Automatický výpočet XP a aktualizácia metrík každý deň
+
+name: Daily Metrics
+
+on:
+  schedule:
+    # Každý deň o 23:59 (UTC) = 00:59 CET
+    - cron: '59 22 * * *'
+  workflow_dispatch:  # Manuálne spustenie
+
+permissions:
+  contents: write
+
+jobs:
+  calculate-metrics:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          
+      - name: Calculate XP
+        run: |
+          python -c "
+          import sys
+          sys.path.insert(0, '.')
+          from core.xp.calculator import calculate_xp, update_xp_file
+          
+          xp_data = calculate_xp()
+          update_xp_file('logs/XVADUR_XP.md', xp_data)
+          
+          print(f'✅ XP: {xp_data[\"total_xp\"]} (Level {xp_data[\"current_level\"]})')
+          "
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "chore(metrics): daily XP update [skip ci]"
+          git push
+
