@@ -125,7 +125,7 @@ data/prompts/prompts_nlp4sk.jsonl
 
 **Vytvorené pomocou:** `scripts/analyze_prompts_nlp4sk.py` (lokálne NLP nástroje: Stanza, Hugging Face)
 
-### Granularná Kategorizácia (`prompts_categorized.jsonl`) ⭐⭐ **NAJNOVŠÍ**
+### Granularná Kategorizácia (`prompts_categorized.jsonl`) ⭐⭐
 ```
 data/prompts/prompts_categorized.jsonl
 ```
@@ -166,6 +166,67 @@ data/prompts/prompts_categorized.jsonl
 - Temporálna analýza (ako sa menili kategórie v čase)
 
 **Vytvorené pomocou:** `scripts/categorize_prompts_granular.py` (OpenAI API)
+
+### Konsolidovaná Štruktúra (`prompts_enriched.jsonl`) ⭐⭐⭐ **ODPORÚČANÉ**
+```
+data/prompts/prompts_enriched.jsonl
+```
+
+**Účel:** Zlúčené metadáta z troch zdrojov (activities + NLP + categories) do jednej štruktúry.
+
+**Formát JSONL (jeden JSON objekt na riadok):**
+```json
+{
+  "prompt_id": "2025-07-19_001",
+  "date": "2025-07-19",
+  "timestamp": "2025-07-19T02:19:19.998000+00:00",
+  "word_count": 61,
+  
+  "activity": "Adam pracoval na surovom zápise...",
+  "thoughts": "Rozmýšľal o tom, ako sa menia témy...",
+  "summary_extracted_at": "2025-12-03T15:23:35",
+  
+  "sentiment": "negative",
+  "sentiment_score": 0.453,
+  "people": ["Cibula"],
+  "organizations": [],
+  "locations": [],
+  "technologies": ["zapisal"],
+  "concepts": ["tem", "text", "surova", ...],
+  "analyzed_at": "2025-12-03T19:09:21",
+  
+  "category": "reflection",
+  "subcategory": "emotional",
+  "context": {
+    "projects": [],
+    "people": ["Cibula"],
+    "technologies": ["zapisal"],
+    "emotions": ["negative"]
+  },
+  "categorized_at": "2025-12-03T19:31:42"
+}
+```
+
+**Obsahuje:**
+- ✅ Všetky základné metadáta (prompt_id, date, timestamp, word_count)
+- ✅ Activity metadata (activity, thoughts)
+- ✅ NLP metadata (sentiment, entities, concepts)
+- ✅ Category metadata (category, subcategory, context)
+
+**Štatistiky (649 promptov):**
+- Má activity: 649 (100%)
+- Má NLP: 649 (100%)
+- Má category: 647 (99.7%)
+
+**Výhody:**
+- **Jeden zdroj pravdy** - Všetky metadáta na jednom mieste
+- **Jednoduchšie dotazy** - Nemusíš načítavať 3 súbory
+- **Lepšia performance** - Jeden súbor je rýchlejší
+- **Kompletnosť** - Všetky metadáta v jednom zázname
+
+**Vytvorené pomocou:** `scripts/merge_prompt_metadata.py`
+
+**Dokumentácia:** Pozri [METADATA_STRUCTURE.md](METADATA_STRUCTURE.md) pre kompletnú dokumentáciu štruktúry a príklady použitia.
 
 ### Temporálna Mapa (`temporal_map.json`) ⭐⭐ **NAJNOVŠÍ**
 ```

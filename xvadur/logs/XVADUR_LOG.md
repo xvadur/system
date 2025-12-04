@@ -4,6 +4,36 @@
 
 ---
 
+## [2025-12-04 01:00] 🔹 Kontinuálna Analýza: Pokus a Pause
+
+**Vykonané:**
+- Vytvorený skript `scripts/analyze_day_founder_style.py` pre kontinuálnu analýzu v štýle Founder's Audit
+- Upravený skript na OpenRouter API s modelom `tngtech/tng-r1t-chimera:free` (FREE)
+- Vytvorená dokumentácia `data/prompts/CONTINUOUS_ANALYSIS_GUIDE.md`
+- Konsolidácia 3 guide dokumentov do jedného `ANALYSIS_GUIDE.md`
+- Merge 3 JSONL metadata súborov do `prompts_enriched.jsonl`
+- Vytvorená dokumentácia `METADATA_STRUCTURE.md`
+
+**Problém:**
+- Analýza sa nepodarila (API limit/chyba)
+- Adam chce "vysrať sa na to teraz" - pause na kontinuálnu analýzu
+- Dôležité: Majú funkčný RAG a metadata
+
+**Zmeny v súboroch:**
+- `scripts/analyze_day_founder_style.py` - skript pre kontinuálnu analýzu (OpenRouter)
+- `data/prompts/CONTINUOUS_ANALYSIS_GUIDE.md` - dokumentácia
+- `data/prompts/ANALYSIS_GUIDE.md` - konsolidovaný guide
+- `data/prompts/prompts_enriched.jsonl` - zlúčené metadata
+- `data/prompts/METADATA_STRUCTURE.md` - dokumentácia štruktúry
+- `scripts/merge_prompt_metadata.py` - skript pre merge
+
+**Status:**
+- ✅ RAG systém funkčný
+- ✅ Metadata konsolidované
+- ⏸️ Kontinuálna analýza pozastavená (API problémy)
+
+---
+
 ## [2025-12-01 20:00] 🔹 Workspace Inicializácia & IDE-Based Workflow
 
 **Vykonané:**

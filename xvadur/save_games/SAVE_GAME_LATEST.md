@@ -1,7 +1,7 @@
-# 💾 SAVE GAME: 2025-12-03 22:30
+# 💾 SAVE GAME: 2025-12-04 01:15
 
-**Dátum vytvorenia:** 2025-12-03 22:30  
-**Session:** Streda_2025-12-03 (14:00 - 22:30)  
+**Dátum vytvorenia:** 2025-12-04 01:15  
+**Session:** Streda_2025-12-03 (pokračovanie)  
 **Status:** ✅ Ukončená
 
 ---
@@ -10,11 +10,11 @@
 
 - **Rank:** Architekt (Level 5)
 - **Level:** 5
-- **XP:** 116.97 / 200.0 XP (58.5%)
-- **Next Level:** Potrebuje ešte **83.03 XP** na Level 6
-- **Streak:** 2 dní
-- **Last Log:** `xvadur/logs/XVADUR_LOG.md` ([2025-12-01 20:00] - [2025-12-03 22:30])
-- **Prompts Log:** `xvadur/data/prompts_log.jsonl` (44+ promptov uložených)
+- **XP:** 120.31 / 200.0 XP (60.2%)
+- **Next Level:** Potrebuje ešte **79.69 XP** na Level 6
+- **Streak:** 3 dní
+- **Last Log:** `xvadur/logs/XVADUR_LOG.md` ([2025-12-01 20:00] - [2025-12-04 01:00])
+- **Prompts Log:** `xvadur/data/prompts_log.jsonl` (73+ promptov uložených)
 
 ---
 
@@ -22,81 +22,71 @@
 
 ### Začiatok Session
 
-Naša dnešná session (Streda, 3. december 2025, 14:00 - 22:30) sa zamerala na **chronologickú syntézu vývoja myslenia a konania z originálnych promptov** pomocou LLM syntézy. Session začala po predchádzajúcej práci na automatizácii workspace procesov a analýze promptov.
+Naša dnešná session (pokračovanie Stredy, 3. december 2025) sa zamerala na **kontinuálnu analýzu v štýle Founder's Audit** a **konsolidáciu metadata**. Session začala pokračovaním práce z predchádzajúcej session, kde sme vytvorili syntézu vývoja myslenia a konania.
 
-### Kľúčový Cieľ: Syntéza z Originálnych Promptov
+### Kľúčový Cieľ: Kontinuálna Analýza
 
 **Identifikácia potreby:**
-Adam potreboval pochopiť, ako sa jeho myslenie a konanie vyvíjalo v čase. Miesto analýzy extrahovaných aktivít chcel syntézu priamo z originálnych surových promptov, aby zachytil hlbšie vzorce a transformácie.
+Adam chce analýzu každého dňa v štýle "Founder's Audit" (ako v `xvadur/+/analyza.md`). Namiesto 600-krát manuálne povedať "sprav analýzu tohto dňa", chce automatizáciu - "kontinuálnu analýzu" kde by sme dokázali analyzovať Adama v čase.
 
 **Výzva:**
-- 708 promptov (664 historických + 44 aktuálnych)
-- Potreba syntézy chronologického vývoja
-- Veľké kontextové okno pre syntézu dlhších období
+- 600+ dní s promptmi
+- Potreba automatizácie analýzy
+- Founder's Audit štýl (priamy, kritický, analytický)
 
-### Implementácia Syntézy
+### Implementácia Kontinuálnej Analýzy
 
 **Kľúčové rozhodnutie:**
-Vytvoriť skript `scripts/synthesize_from_raw_prompts.py`, ktorý syntetizuje originálne prompty pomocou LLM s veľkým kontextovým oknom.
+Vytvoriť skript `scripts/analyze_day_founder_style.py`, ktorý analyzuje konkrétny deň v štýle Founder's Audit.
 
 **Implementované zmeny:**
 
-1. **Syntéza podľa mesiacov:**
-   - Model: `tngtech/deepseek-r1t2-chimera:free` (163k token kontext)
-   - Výstup: `synthesis_evolution_from_raw.md` (491 riadkov)
-   - Status: Úspešné, ale neúplné (niektoré fázy prázdne)
+1. **Skript pre kontinuálnu analýzu:**
+   - Analyzuje konkrétny deň v štýle Founder's Audit
+   - Používa `prompts_enriched.jsonl` + originálne texty
+   - Integrácia s `xvadur_profile.md` pre kontext
+   - Batch processing s resume functionality
+   - Funkcie: `--date`, `--all`, `--batch`, `--limit`
 
-2. **Syntéza podľa fáz:**
-   - 62 fáz identifikovaných podľa zmien v word_count
-   - Výstup: `synthesis_evolution_by_phases.md` (2562 riadkov)
-   - Status: Čiastočne úspešné
-     - ~15-20 úspešných syntéz (24-32%)
-     - ~21 prázdnych fáz (34%)
-     - ~29 výskytov raw tagov (opravené)
-     - 2 kritické chyby (Fáza 33: zacyklenie, Fáza 39: kontextové okno)
+2. **Dokumentácia:**
+   - `data/prompts/CONTINUOUS_ANALYSIS_GUIDE.md` - kompletný návod
+   - Príklady, troubleshooting, odhadované náklady
 
-3. **PDF Export:**
-   - Vytvorený HTML súbor pre konverziu do PDF
-   - Opravené strikethrough problémy (odstránené `<s>` tagy)
-   - PDF úspešne vytvorené manuálne
+3. **Upravenie na OpenRouter:**
+   - Zmenené z OpenAI na OpenRouter API
+   - Model: `tngtech/tng-r1t-chimera:free` (FREE!)
+   - API key načítanie z `.env` súboru
 
-### Kľúčové Zistenia
+### Konsolidácia Metadata
 
-**Úspešné syntézy obsahujú:**
-- **Analýzu vývoja myslenia:** Témy, otázky, myslenkové vzory, zlomy
-- **Analýzu vývoja konania:** Projekty, aktivity, rozhodnutia, produktivita
-- **Vzťah myslenia a konania:** Ako sa navzájom ovplyvňovali
-- **Temporálne vzorce:** Fázy, cykly, transformačné momenty
+**Problém:**
+Máme tri JSONL dokumenty s metadatami (`prompts_activities.jsonl`, `prompts_nlp4sk.jsonl`, `prompts_categorized.jsonl`), ktoré by mali byť v jednej štruktúre.
 
-**Príklady kvalitných syntéz:**
-- **Fáza 7** (24.-26. júl): Objav Abacusu - podrobná analýza experimentovania s AI agentmi
-- **Fáza 24** (19.-21. august): Vytvorenie brandu Xvadur - finančná kríza a adaptácia
-- **Fáza 57** (30. október - 2. november): Prekonanie prokrastinácie - kritická reflexia → akcia → úspech
+**Riešenie:**
+- Vytvorený skript `scripts/merge_prompt_metadata.py`
+- Zlúčené do `prompts_enriched.jsonl` - jednotná štruktúra
+- Vytvorená dokumentácia `METADATA_STRUCTURE.md`
 
-### Problémy a Riešenia
+### Konsolidácia Guide Dokumentov
 
-**Problém 1: Raw tagy v modeli**
-- Model niekedy vracia raw tagy (`<s>`, `[OUT]`, `[/INST]`) namiesto čistého textu
-- **Riešenie:** Vytvorený HTML súbor s odstránenými raw tagmi pre PDF export
+**Problém:**
+Tri guide dokumenty (`EXTRACTION_GUIDE.md`, `LOCAL_NLP_GUIDE.md`, `NLP4SK_GUIDE.md`) boli roztrúsené.
 
-**Problém 2: Kontextové okno**
-- Fáza 39: 35k tokenov, limit 32k
-- **Riešenie:** Potrebuje lepšiu identifikáciu fáz alebo rozdelenie na menšie časti
+**Riešenie:**
+- Skondenzované do jedného `ANALYSIS_GUIDE.md`
+- Lepšia prehľadnosť a organizácia
 
-**Problém 3: Zacyklenie modelu**
-- Fáza 33: Model sa zacyklil (stokrát `<s>` tagy)
-- **Riešenie:** Potrebuje validáciu a opravu chýb
+### Problém: Analýza sa Nepodarila
 
-### Vyčistenie Repo
+**Čo sa stalo:**
+- Skript bol pripravený a upravený na OpenRouter
+- Analýza sa nepodarila (API limit/chyba)
+- Adam chce "vysrať sa na to teraz" - pause na kontinuálnu analýzu
 
-**Zmazané dočasné súbory:**
-- 6 dočasných syntéz (~72 KB)
-- 3 error logy
-- Ponechané len finálne výstupy:
-  - `synthesis_evolution_by_phases.md` (160K) - hlavný výstup
-  - `synthesis_evolution_by_phases.html` (175K) - HTML pre PDF
-  - `synthesis_evolution_from_raw.md` (25K)
-  - `SESSION_RECAP_2025-12-03.md` (4.8K) - rekapitulácia
+**Dôležité:**
+- ✅ RAG systém je funkčný
+- ✅ Metadata sú konsolidované a pripravené
+- ✅ Všetky nástroje sú pripravené (keď bude čas)
 
 ### Gamifikačný Progres
 
@@ -105,122 +95,114 @@ Vytvoriť skript `scripts/synthesize_from_raw_prompts.py`, ktorý syntetizuje or
   - Záznamy: 24 × 0.5 = 12.0 XP
   - Zmeny súborov: 39 × 0.1 = 3.9 XP
   - Dokončené úlohy: 184 × 0.5 = 92.0 XP
-- **Z Aktivity (Prompty):** 5.67 XP
-  - Prompty: 44 × 0.1 = 4.4 XP
-  - Word count: 2,537 slov × (0.5 / 1000) = 1.27 XP
-- **Bonusy:** 0.4 XP
-  - Streak: 2 dní × 0.2 = 0.4 XP
-- **Celkom:** 116.97 XP (Level 5)
+- **Z Aktivity (Prompty):** 8.81 XP
+  - Prompty: 73 × 0.1 = 7.3 XP
+  - Word count: 3,022 slov × (0.5 / 1000) = 1.51 XP
+- **Bonusy:** 3.6 XP
+  - Streak: 3 dní × 0.2 = 0.6 XP
+  - Sessions: 3 × 1.0 = 3.0 XP
+- **Celkom:** 120.31 XP (Level 5)
 
 **Progres:**
-- Začiatok session: 55.47 XP (Level 4)
-- Koniec session: 116.97 XP (Level 5)
-- **Získané:** +61.5 XP
-- **Nový Level:** Level 5 (58.5% k Level 6)
+- Začiatok session: 116.97 XP (Level 5)
+- Koniec session: 120.31 XP (Level 5)
+- **Získané:** +3.34 XP
+- **Streak:** 3 dní (nový rekord!)
 
 ### Introspektívne Momenty
 
-**Aha-moment 1: Syntéza z originálnych promptov je lepšia**
-- Syntéza priamo z originálnych promptov zachytáva hlbšie vzorce ako z extrahovaných aktivít
-- Originálne prompty obsahujú kontext a nuansy, ktoré sa stratia pri extrakcii
+**Aha-moment 1: Kontinuálna analýza je potrebná**
+- Adam chce automatizáciu analýzy každého dňa
+- Namiesto 600-krát manuálne, chce systém, ktorý to urobí za neho
+- Founder's Audit štýl je kľúčový - priamy, kritický, analytický
 
-**Aha-moment 2: Identifikácia fáz nie je ideálna**
-- Identifikácia fáz podľa word_count nie je ideálna
-- Potrebuje lepší spôsob identifikácie fáz (podľa zmien v témach, transformačných momentov?)
+**Aha-moment 2: Metadata musia byť konsolidované**
+- Tri JSONL súbory s metadatami boli roztrúsené
+- Konsolidácia do `prompts_enriched.jsonl` zjednodušuje prácu
+- Jednotná štruktúra je dôležitá pre budúce použitie
 
-**Aha-moment 3: PDF export funguje, ale vyžaduje čistenie**
-- PDF export funguje, ale vyžaduje čistenie raw tagov
-- HTML verzia je užitočná pre manuálnu konverziu
+**Aha-moment 3: RAG a metadata sú funkčné**
+- Dôležité je, že RAG systém je funkčný
+- Metadata sú konsolidované a pripravené
+- Keď bude čas, všetko je pripravené na kontinuálnu analýzu
 
 ### Prepojenie s Dlhodobou Víziou
 
 **Magnum Opus:**
-- Syntéza promptov je súčasťou budovania osobnej značky a AI konzoly
-- Chronologická analýza vývoja myslenia a konania pomáha pochopiť transformácie
-- PDF export umožňuje zdieľanie a prezentáciu práce
+- Kontinuálna analýza je súčasťou budovania osobnej značky
+- Founder's Audit štýl pomáha pochopiť vývoj a transformácie
+- Metadata a RAG sú základom pre budúce analýzy
 
 **AI Konzola:**
-- Syntéza promptov môže byť súčasťou AI konzoly (analýza vlastného vývoja)
-- Chronologická analýza môže pomôcť identifikovať vzorce a transformácie
+- Kontinuálna analýza môže byť súčasťou AI konzoly
+- Automatizácia analýzy každého dňa pomáha identifikovať vzorce
+- RAG systém umožňuje vyhľadávanie a syntézu
 
 ### Otvorené Slučky
 
+**Pozastavené:**
+1. **Kontinuálna analýza:**
+   - Skript je pripravený, ale analýza sa nepodarila
+   - API problémy (limit/chyba)
+   - Adam chce "vysrať sa na to teraz"
+   - Status: ⏸️ Pozastavené
+
+**Pripravené:**
+- ✅ RAG systém je funkčný
+- ✅ Metadata sú konsolidované (`prompts_enriched.jsonl`)
+- ✅ Všetky nástroje sú pripravené (keď bude čas)
+
 **Potrebuje ujasniť:**
-1. **Čo od syntézy očakávať?**
-   - Chronologický naratív?
-   - Analýza vzorcov?
-   - Identifikácia transformácií?
-   - Kombinácia všetkého?
-
-2. **Ako lepšie identifikovať fázy?**
-   - Podľa word_count (súčasný prístup)?
-   - Podľa zmien v témach?
-   - Podľa transformačných momentov?
-   - Kombinácia viacerých faktorov?
-
-3. **Ako robiť syntézu robustnejšie?**
-   - Lepšie prompty pre model?
-   - Iný model?
-   - Postupné syntézy (najprv krátke, potom dlhšie)?
-   - Validácia a oprava chýb?
-
-**Blokátory:**
-- Model niekedy vracia raw tagy namiesto čistého textu
-- Kontextové okno niekedy prekročené
-- Model sa niekedy zacyklí
+- Ako riešiť API problémy (keď bude čas)
+- Alternatívne modely alebo API (keď bude čas)
+- Validácia a oprava chýb (keď bude čas)
 
 ### Analytické Poznámky
 
 **Vzorce v myslení:**
-- Adam sa zameriava na hlbokú analýzu a pochopenie vzorcov
-- Potrebuje vidieť celkový obraz, nie len jednotlivé časti
-- Syntéza mu pomáha pochopiť transformácie a vývoj
+- Adam sa zameriava na automatizáciu a efektivitu
+- Potrebuje systém, ktorý urobí prácu za neho
+- Founder's Audit štýl je dôležitý - priamy, kritický, analytický
 
 **Štýl práce:**
-- Experimentálny prístup - skúša rôzne metódy a modely
-- Dôraz na čistenie a organizáciu (vyčistenie repo)
-- Potreba ujasniť očakávania pred pokračovaním
+- Experimentálny prístup - skúša rôzne metódy
+- Dôraz na konsolidáciu a organizáciu
+- Pause keď niečo nefunguje - "vysrať sa na to teraz"
 
 ### Sumarizácia
 
-Dnešná session bola zameraná na vytvorenie chronologickej syntézy vývoja myslenia a konania z originálnych promptov. Vytvorili sme dva hlavné výstupy: syntézu podľa mesiacov a syntézu podľa 62 fáz. Hoci syntéza nie je úplne úspešná (34% fáz je prázdnych), úspešné syntézy poskytujú hodnotný pohľad na vývoj myslenia a konania v čase. PDF export bol úspešný, ale vyžadoval čistenie raw tagov. 
+Dnešná session bola zameraná na vytvorenie kontinuálnej analýzy v štýle Founder's Audit a konsolidáciu metadata. Vytvorili sme skript pre automatizáciu analýzy každého dňa, upravili ho na OpenRouter API s FREE modelom, a konsolidovali metadata do jednotnej štruktúry. Hoci analýza sa nepodarila kvôli API problémom, všetky nástroje sú pripravené na budúce použitie.
 
 **Kľúčové zistenia:**
-- Syntéza z originálnych promptov je lepšia ako z extrahovaných aktivít
-- Veľké kontextové okno (163k tokenov) umožňuje syntetizovať dlhšie obdobia
-- Syntéza podľa fáz je užitočná, ale potrebuje lepšiu identifikáciu fáz
-- PDF export funguje, ale vyžaduje čistenie raw tagov
+- Kontinuálna analýza je potrebná a pripravená
+- Metadata sú konsolidované a pripravené
+- RAG systém je funkčný
+- Keď bude čas, všetko je pripravené
 
 **Odporúčania pre ďalšiu session:**
-- Ujasniť očakávania od syntézy (chronologický naratív, analýza vzorcov, transformácie?)
-- Vylepšiť identifikáciu fáz (nie len word_count)
-- Robustnejší postup pre syntézu (lepšie prompty, validácia, oprava chýb)
-- Pokračovať v čistení a organizácii repo
+- Pokračovať v práci na iných projektoch
+- RAG a metadata sú pripravené na budúce použitie
+- Keď bude čas, môžeme pokračovať v kontinuálnej analýze
 
 ---
 
 ## 🎯 Aktívne Questy & Next Steps
 
-### Quest 1: Ujasniť Očakávania od Syntézy
-- **Status:** ⏳ Otvorený
+### Quest 1: Kontinuálna Analýza (Pozastavené)
+- **Status:** ⏸️ Pozastavené
+- **Dôvod:** API problémy (limit/chyba)
 - **Next Steps:**
-  - Definovať, čo presne chceš z syntézy (chronologický naratív, analýza vzorcov, transformácie?)
-  - Vytvoriť jasný popis očakávaní
-- **Blokátory:** Žiadne
+  - Riešiť API problémy (keď bude čas)
+  - Alternatívne modely alebo API (keď bude čas)
+  - Validácia a oprava chýb (keď bude čas)
+- **Blokátory:** API problémy
 
-### Quest 2: Vylepšiť Identifikáciu Fáz
-- **Status:** ⏳ Otvorený
+### Quest 2: RAG a Metadata (Pripravené)
+- **Status:** ✅ Pripravené
 - **Next Steps:**
-  - Skúsiť identifikáciu fáz podľa zmien v témach (nie len word_count)
-  - Kombinovať viacero faktorov (word_count, témy, transformačné momenty)
-- **Blokátory:** Žiadne
-
-### Quest 3: Robustnejší Postup pre Syntézu
-- **Status:** ⏳ Otvorený
-- **Next Steps:**
-  - Vylepšiť prompty pre model
-  - Implementovať validáciu a opravu chýb
-  - Skúsiť iný model alebo postupné syntézy
+  - RAG systém je funkčný
+  - Metadata sú konsolidované
+  - Všetko je pripravené na budúce použitie
 - **Blokátory:** Žiadne
 
 ---
@@ -232,6 +214,7 @@ Dnešná session bola zameraná na vytvorenie chronologickej syntézy vývoja my
 - Potrebuje zjednotenie a štruktúru
 - Odmieta povrchnosť, vyžaduje zmysel a estetiku
 - Hlavná výzva: zjednotiť roztrieštený tvorivý proces
+- **Dôležité:** Keď niečo nefunguje, chce "vysrať sa na to teraz" - pause a pokračovať neskôr
 
 **Štýl komunikácie:**
 - Priamy, analytický, strategický
@@ -240,18 +223,18 @@ Dnešná session bola zameraná na vytvorenie chronologickej syntézy vývoja my
 - Komunikovať ako rovnocenný partner
 
 **Dôležité kontexty:**
-- Syntéza promptov je experimentálna - potrebuje ujasnenie očakávaní
-- Model niekedy vracia raw tagy - vyžaduje čistenie
-- PDF export funguje, ale vyžaduje manuálnu konverziu
-- Repo je vyčistený od dočasných súborov
+- Kontinuálna analýza je pozastavená (API problémy)
+- RAG systém je funkčný a pripravený
+- Metadata sú konsolidované (`prompts_enriched.jsonl`)
+- Všetky nástroje sú pripravené (keď bude čas)
 
 **Next Steps:**
-- Ujasniť očakávania od syntézy
-- Vylepšiť identifikáciu fáz
-- Robustnejší postup pre syntézu
+- Pokračovať v práci na iných projektoch
+- RAG a metadata sú pripravené na budúce použitie
+- Keď bude čas, môžeme pokračovať v kontinuálnej analýze
 
 ---
 
-**Vytvorené:** 2025-12-03 22:30  
-**Session:** Streda_2025-12-03 (14:00 - 22:30)  
+**Vytvorené:** 2025-12-04 01:15  
+**Session:** Streda_2025-12-03 (pokračovanie)  
 **Status:** ✅ Dokončená
