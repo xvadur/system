@@ -182,8 +182,8 @@ def calculate_level(total_xp: float) -> Tuple[int, float, float]:
     return (current_level - 1, next_level_xp, next_level_xp - total_xp)
 
 
-def calculate_xp(log_path: str = 'xvadur/logs/XVADUR_LOG.md',
-                 prompts_path: str = 'xvadur/data/prompts_log.jsonl') -> Dict:
+def calculate_xp(prompts_path: str = 'development/data/prompts_log.jsonl',
+                 log_path: str = 'development/logs/XVADUR_LOG.md') -> Dict:
     """
     Hlavná funkcia pre výpočet XP
     Vracia dict s breakdown a celkovým XP
@@ -282,7 +282,7 @@ def calculate_xp(log_path: str = 'xvadur/logs/XVADUR_LOG.md',
     }
 
 
-def save_xp_history(xp_data: Dict, history_path: str = 'xvadur/data/metrics/xp_history.jsonl') -> None:
+def save_xp_history(xp_data: Dict, history_path: str = 'development/data/xp_history.jsonl') -> None:
     """
     Uloží aktuálny výpočet XP do histórie
     """
@@ -305,7 +305,7 @@ def save_xp_history(xp_data: Dict, history_path: str = 'xvadur/data/metrics/xp_h
         f.write(json.dumps(record) + '\n')
 
 
-def load_xp_history(history_path: str = 'xvadur/data/metrics/xp_history.jsonl', limit: int = 30) -> List[Dict]:
+def load_xp_history(history_path: str = 'development/data/xp_history.jsonl', limit: int = 30) -> List[Dict]:
     """
     Načíta históriu XP (posledných N záznamov)
     """
@@ -428,10 +428,10 @@ def update_xp_file(xp_file_path: str, xp_data: Dict) -> None:
     xp_file_path = Path(xp_file_path)
     
     # Uložiť do histórie
-    save_xp_history(xp_data)
+    save_xp_history(xp_data, 'development/data/xp_history.jsonl')
     
     # Načítať históriu pre graf
-    history = load_xp_history()
+    history = load_xp_history('development/data/xp_history.jsonl')
     
     # Generovať graf
     graph = generate_xp_graph(history)
@@ -483,13 +483,13 @@ def update_xp_file(xp_file_path: str, xp_data: Dict) -> None:
 
 ## 📈 História
 
-*História sa automaticky ukladá do `xvadur/data/metrics/xp_history.jsonl`*
+*História sa automaticky ukladá do `development/data/xp_history.jsonl`*
 
 ---
 
 **Automaticky vypočítané z:**
-- `xvadur/logs/XVADUR_LOG.md` (práca)
-- `xvadur/data/prompts_log.jsonl` (aktivita)
+- `development/logs/XVADUR_LOG.md` (práca)
+- `development/data/prompts_log.jsonl` (aktivita)
 """
     
     xp_file_path.write_text(content, encoding='utf-8')
@@ -506,6 +506,6 @@ if __name__ == '__main__':
     print(json.dumps(xp_data['breakdown'], indent=2))
     
     # Aktualizovať súbor
-    update_xp_file('xvadur/logs/XVADUR_XP.md', xp_data)
+    update_xp_file('development/logs/XVADUR_XP.md', xp_data)
     print("\n✅ XP súbor aktualizovaný")
 

@@ -31,16 +31,12 @@ cp .env.example .env
 
 ```
 xvadur-workspace/
-├── core/                    # Jadro systému
-│   ├── ministers/           # Memory management
-│   ├── rag/                 # RAG systém
-│   └── xp/                  # Gamifikácia
+├── development/             # Tvoja práca
+├── staging/                 # Denný review
+├── production/              # Automatizácie
 │
-├── data/                    # Single Source of Truth
-│   ├── conversations.jsonl  # Hlavný dataset (1,822 párov)
-│   ├── prompts_log.jsonl    # Aktuálne prompty
-│   └── rag_index/           # FAISS index
-│
+├── core/                    # Jadro systému (Memory, RAG, XP)
+├── data/                    # Globálne dáta (RAG index)
 ├── sessions/                # Session management
 │   ├── current/             # Aktuálna session
 │   ├── archive/             # Archív
@@ -115,11 +111,13 @@ update_xp_file("logs/XVADUR_XP.md", xp_data)
 
 ---
 
-## 📚 Dokumentácia
+## 📖 Dokumentácia
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) - Technická architektúra
-- [`docs/MEMORY_SYSTEM.md`](docs/MEMORY_SYSTEM.md) - MinisterOfMemory
-- [`docs/rag/RAG_GUIDE.md`](docs/rag/RAG_GUIDE.md) - RAG systém
+- **[ARCHITEKTÚRA](docs/ARCHITECTURE.md):** Detailný popis v2.0 architektúry.
+- **[SESSION MANAGEMENT](docs/SESSION_MANAGEMENT.md):** Popis 3-vrstvového session managementu.
+- **[MCP INTEGRÁCIA](docs/MCP_INTEGRATION.md):** Ako sa používa MCP Docker systém.
+- **[MEMORY SYSTÉM](docs/MEMORY_SYSTEM.md):** Ako funguje `MinisterOfMemory`.
+- **[RAG SYSTÉM](docs/rag/RAG_GUIDE.md):** Návod na použitie RAG.
 
 ---
 

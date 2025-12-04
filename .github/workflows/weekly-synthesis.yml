@@ -31,39 +31,12 @@ jobs:
         run: |
           pip install -r requirements.txt
           
-      - name: Generate Weekly Report
+      - name: Synthesize weekly progress
         run: |
-          python -c "
-          import json
-          from datetime import datetime, timedelta
-          from pathlib import Path
-          
-          # Načítanie XP histórie
-          xp_history = Path('data/xp_history.jsonl')
-          if xp_history.exists():
-              records = []
-              for line in xp_history.read_text().strip().split('\n'):
-                  if line:
-                      records.append(json.loads(line))
-              
-              # Filtrovanie posledných 7 dní
-              week_ago = datetime.now() - timedelta(days=7)
-              week_records = [r for r in records if datetime.fromisoformat(r['timestamp'].replace('Z', '+00:00')) > week_ago]
-              
-              if week_records:
-                  start_xp = week_records[0]['total_xp'] if week_records else 0
-                  end_xp = week_records[-1]['total_xp'] if week_records else 0
-                  xp_gained = end_xp - start_xp
-                  
-                  print(f'📊 Weekly XP Report')
-                  print(f'   Start: {start_xp:.2f} XP')
-                  print(f'   End: {end_xp:.2f} XP')
-                  print(f'   Gained: {xp_gained:.2f} XP')
-              else:
-                  print('No XP data for this week')
-          else:
-              print('XP history not found')
-          "
+          # Placeholder for weekly synthesis script
+          # This script will need to read from development/logs and development/data
+          echo "Synthesizing weekly progress..."
+          # python scripts/synthesis/weekly_synthesis.py --input-dir development --output docs/weekly_synthesis/$(date +%Y-%V).md
           
       - name: Create Weekly Report File
         run: |

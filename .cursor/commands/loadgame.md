@@ -14,38 +14,38 @@ Pri štarte novej session okamžite načítaj kontext:
 Použi `read_file` na:
 
 1.  **Save Game Summary (Priorita):**
-    - `xvadur/save_games/SAVE_GAME_LATEST_SUMMARY.md` (Kompaktný sumár - ~50-70 riadkov)
-    - **Fallback:** Ak summary neexistuje, načítaj `xvadur/save_games/SAVE_GAME_LATEST.md` (backward compatibility)
+    - `development/sessions/save_games/SAVE_GAME_LATEST_SUMMARY.md` (Kompaktný sumár - ~50-70 riadkov)
+    - **Fallback:** Ak summary neexistuje, načítaj `development/sessions/save_games/SAVE_GAME_LATEST.md` (backward compatibility)
 
 2.  **Posledné záznamy z logu:**
-    - `xvadur/logs/XVADUR_LOG.md` - len posledných 5 záznamov (~100 riadkov)
+    - `development/logs/XVADUR_LOG.md` - len posledných 5 záznamov (~100 riadkov)
     - **Technika:** Načítaj súbor a extrahuj len záznamy od posledného `## [YYYY-MM-DD HH:MM]` smerom nahor (posledných 5 záznamov)
     - **Formát:** Každý záznam začína s `## [YYYY-MM-DD HH:MM]` a končí pred ďalším záznamom alebo `---`
 
 3.  **Aktuálny XP Status:**
-    - `xvadur/logs/XVADUR_XP.md` - len sekcia "📊 Aktuálny Status" (~20 riadkov)
+    - `development/logs/XVADUR_XP.md` - len sekcia "📊 Aktuálny Status" (~20 riadkov)
     - **Technika:** Načítaj len riadky obsahujúce sekciu `## 📊 Aktuálny Status` (typicky riadky 8-13)
 
 4.  **Profil (Voliteľné):**
-    - `xvadur/data/profile/xvadur_profile.md` - len sekcia "IV. SÚČASNÝ PROFIL" (~50 riadkov)
+    - `development/data/profile/xvadur_profile.md` - len sekcia "IV. SÚČASNÝ PROFIL" (~50 riadkov)
     - **Technika:** Načítaj len sekciu `## IV. SÚČASNÝ PROFIL: KTO JE ADAM?` (ak existuje)
 
 **Technické detaily pre selektívne načítanie:**
 
 **Pre log (posledných 5 záznamov):**
-- Načítaj celý súbor `logs/XVADUR_LOG.md`
+- Načítaj celý súbor `development/logs/XVADUR_LOG.md`
 - Identifikuj záznamy podľa patternu `## [YYYY-MM-DD HH:MM]`
 - Extrahuj len posledných 5 záznamov (od najnovšieho smerom nahor)
 - Každý záznam začína s `## [YYYY-MM-DD HH:MM]` a končí pred ďalším záznamom alebo `---`
 - **Príklad:** Ak súbor má 10 záznamov, načítaj len záznamy 6-10
 
 **Pre XP (len aktuálny status):**
-- Načítaj súbor `logs/XVADUR_XP.md`
+- Načítaj súbor `development/logs/XVADUR_XP.md`
 - Extrahuj len sekciu `## 📊 Aktuálny Status` (typicky riadky 8-13)
 - Preskoč históriu a agregované metriky
 
 **Pre profil (len súčasný profil):**
-- Načítaj súbor `data/profile/xvadur_profile.md`
+- Načítaj súbor `development/data/profile/xvadur_profile.md`
 - Extrahuj len sekciu `## IV. SÚČASNÝ PROFIL: KTO JE ADAM?`
 - Preskoč históriu a transformačné momenty
 

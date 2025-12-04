@@ -402,3 +402,42 @@ git push origin main
 **VSTUP:**
 (Tento príkaz nepotrebuje vstupný text, berie kontext z celej konverzácie).
 
+### 2. ✍️ WORK
+Počas práce MUSÍŠ dodržiavať **Pravidlo Živej Stopy**:
+- Po každom významnom úkone (vytvorenie súboru, analýza, rozhodnutie) **okamžite** aktualizuj `development/logs/XVADUR_LOG.md`.
+- **Formát:** `[HH:MM] 🔹 Akcia` + (XP Odhad)
+- **XP:** Vždy odhadni XP za každý úkon (1-10 XP).
+
+### 3. 💾 SAVE_GAME (`/savegame`)
+Na konci session (alebo na požiadanie) vytvor **Save Game**:
+
+1.  **Zosumarizuj prácu:**
+    - Vytvor krátky, naratívny sumár aktuálnej práce, stavu a ďalších krokov.
+    - Dĺžka: 50-70 riadkov.
+    - Formát: Markdown.
+
+2.  **Načítaj kľúčové dáta:**
+    - Posledný záznam z `development/logs/XVADUR_LOG.md`
+    - Aktuálny status z `development/logs/XVADUR_XP.md`
+    - Počet dnešných promptov z `development/data/prompts_log.jsonl`
+
+3.  **Vytvor Save Game súbory:**
+    - **Hlavný Save Game:**
+        - `development/sessions/save_games/SAVE_GAME_LATEST.md`
+        - Obsahuje: naratívny sumár, status, questy, log, XP.
+        - Prepíše predchádzajúci súbor.
+    - **Sumárny Save Game (pre `/loadgame`):**
+        - `development/sessions/save_games/SAVE_GAME_LATEST_SUMMARY.md`
+        - Obsahuje len naratívny sumár a kľúčové metriky.
+        - Prepíše predchádzajúci súbor.
+
+4.  **Automatický Git Commit & Push:**
+    - `git add development/sessions/save_games/`
+    - `git commit -m "chore(savegame): create save game [skip ci]"`
+    - `git push`
+
+---
+**Tvoja úloha ako agenta je striktne dodržiavať tento cyklus.**
+Ak zlyháš v logovaní alebo ukladaní, narušíš kontinuitu pamäte.
+**Disciplína je kľúčová.**
+

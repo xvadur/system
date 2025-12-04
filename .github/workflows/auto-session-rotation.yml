@@ -1,0 +1,41 @@
+name: Auto Session Rotation
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 00:00 UTC = 01:00 CET
+  workflow_dispatch:
+
+jobs:
+  rotate-session:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run session rotation scripts
+        run: |
+          python scripts/auto_archive_session.py
+          python scripts/create_new_session.py
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(session): auto-rotation for $(date -u +'%Y-%m-%d')"
+            git push
+          fi

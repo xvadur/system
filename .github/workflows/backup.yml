@@ -70,3 +70,17 @@ jobs:
           
           echo "✅ Backup validation complete"
 
+  validate-and-backup:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+          
+      - name: Validate and Backup Data
+        run: |
+          # Placeholder for data validation and backup script
+          # This script will need to target the new development/data and development/logs directories
+          echo "Validating and backing up data..."
+          # python scripts/utils/validate_backup.py --source-dir development --backup-dir production/backups/$(date +%Y-%m-%d)
+

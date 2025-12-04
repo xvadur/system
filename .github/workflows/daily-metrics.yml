@@ -38,8 +38,8 @@ jobs:
           sys.path.insert(0, '.')
           from core.xp.calculator import calculate_xp, update_xp_file
           
-          xp_data = calculate_xp()
-          update_xp_file('logs/XVADUR_XP.md', xp_data)
+          xp_data = calculate_xp('development/data/prompts_log.jsonl', 'development/logs/XVADUR_LOG.md')
+          update_xp_file('development/logs/XVADUR_XP.md', xp_data)
           
           print(f'✅ XP: {xp_data[\"total_xp\"]} (Level {xp_data[\"current_level\"]})')
           "
