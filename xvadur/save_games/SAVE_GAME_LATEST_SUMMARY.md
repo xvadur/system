@@ -16,6 +16,8 @@
 - ✅ Rozšírenie RAG systému o AI odpovede z conversation pairs (1,822 párov)
 - ✅ Implementácia content type filtering (`prompt`, `response`, `pair`)
 - ✅ Oprava API key loading z `.env` súboru v `build_rag_index.py`
+- ✅ Oprava zip chunking bug (všetky chunky sa správne spracúvajú)
+- ✅ Oprava portability debug log path (dynamická cesta)
 - ✅ Vytvorenie dokumentácie (`docs/rag/RAG_EXTENDED.md`)
 - ⏸️ Rebuild RAG indexu pozastavený (OpenAI kvóta presiahnutá)
 
@@ -28,6 +30,8 @@
 - Rozšírenie `build_rag_index.py` o `load_conversation_pairs()` a `create_dialogue_chunks()`
 - Aktualizácia `rag_agent_helper.py` a `rag_search.py` o content type filtering
 - Oprava API key loading (načítanie z `.env`)
+- Oprava zip chunking bug v `create_dialogue_chunks()` (spracovanie všetkých chunkov)
+- Oprava portability debug log path (dynamická cesta namiesto hardcodovanej)
 - Vytvorenie dokumentácie rozšírenia
 - Aktualizácia `RAG_README.md` s informáciami o nových funkciách
 
@@ -77,8 +81,9 @@
 
 ## 🔑 Kľúčové Kontexty
 
-- **RAG systém:** Rozšírený o AI odpovede, všetky funkcie implementované, rebuild pozastavený kvôli OpenAI kvóte
+- **RAG systém:** Rozšírený o AI odpovede, všetky funkcie implementované, bug fixes dokončené, rebuild pozastavený kvôli OpenAI kvóte
 - **API key:** Opravené načítanie z `.env` súboru vo všetkých skriptoch
+- **Bug fixes:** Zip chunking bug opravený, debug log path portabilita opravená
 - **Dokumentácia:** Kompletná (`docs/rag/RAG_EXTENDED.md`, `docs/rag/RAG_README.md`)
 - **Technický stav:** Všetky zmeny commitnuté a pushnuté na GitHub
 - **Cursor Pro:** Nový nákup, pripravený na konfiguráciu a automatizácie
@@ -86,4 +91,4 @@
 ---
 
 **Full Details:** `xvadur/save_games/SAVE_GAME_LATEST.md`  
-**Last Updated:** 2025-12-04 17:31
+**Last Updated:** 2025-12-04 17:45

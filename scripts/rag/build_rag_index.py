@@ -13,6 +13,30 @@ from pathlib import Path
 from typing import List, Dict, Optional
 import time
 
+# Debug logging - relative to workspace root
+# Script is in scripts/rag/, so go up 2 levels to workspace root
+_workspace_root = Path(__file__).parent.parent.parent
+DEBUG_LOG_PATH = _workspace_root / ".cursor" / "debug.log"
+
+def debug_log(location: str, message: str, data: dict, hypothesis_id: str = None):
+    """Write debug log entry."""
+    try:
+        import json
+        from datetime import datetime
+        log_entry = {
+            "timestamp": int(datetime.now().timestamp() * 1000),
+            "location": location,
+            "message": message,
+            "data": data,
+            "sessionId": "debug-session",
+            "runId": "run1",
+            "hypothesisId": hypothesis_id
+        }
+        with open(DEBUG_LOG_PATH, 'a', encoding='utf-8') as f:
+            f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
+    except Exception:
+        pass  # Fail silently
+
 # OpenAI pre embeddings
 try:
     from openai import OpenAI
@@ -221,14 +245,101 @@ def create_dialogue_chunks(pair: Dict) -> List[str]:
         user_chunks = chunk_text(user_text, MAX_CHUNK_SIZE // 2)
         ai_chunks = chunk_text(ai_text, MAX_CHUNK_SIZE // 2)
         
+        # #region agent log
+        debug_log(
+            "build_rag_index.py:220",
+            "create_dialogue_chunks: Before zip pairing",
+            {
+                "user_chunks_count": len(user_chunks),
+                "ai_chunks_count": len(ai_chunks),
+                "user_text_length": len(user_text),
+                "ai_text_length": len(ai_text)
+            },
+            "A"
+        )
+        # #endregion
+        
         # Kombinuj user a AI chunky
+        paired_count = 0
         for i, (uc, ac) in enumerate(zip(user_chunks, ai_chunks)):
+            # #region agent log
+            debug_log(
+                "build_rag_index.py:225",
+                "create_dialogue_chunks: Processing zip pair",
+                {
+                    "pair_index": i,
+                    "user_chunk_length": len(uc),
+                    "ai_chunk_length": len(ac),
+                    "combined_length": len(f"User: {uc}\n\nAssistant: {ac}")
+                },
+                "A"
+            )
+            # #endregion
             combined = f"User: {uc}\n\nAssistant: {ac}"
             if len(combined) <= MAX_CHUNK_SIZE:
                 chunks.append(combined)
             else:
                 # Ak je stále príliš dlhý, rozdeliť ešte viac
                 chunks.extend(chunk_text(combined, MAX_CHUNK_SIZE))
+            paired_count += 1
+        
+        # #region agent log
+        debug_log(
+            "build_rag_index.py:240",
+            "create_dialogue_chunks: After zip pairing",
+            {
+                "paired_count": paired_count,
+                "user_chunks_count": len(user_chunks),
+                "ai_chunks_count": len(ai_chunks),
+                "chunks_created": len(chunks),
+                "user_chunks_lost": max(0, len(user_chunks) - paired_count),
+                "ai_chunks_lost": max(0, len(ai_chunks) - paired_count)
+            },
+            "A"
+        )
+        # #endregion
+        
+        # Handle remaining chunks from longer list
+        if len(user_chunks) > len(ai_chunks):
+            # #region agent log
+            debug_log(
+                "build_rag_index.py:250",
+                "create_dialogue_chunks: Handling remaining user chunks",
+                {
+                    "remaining_user_chunks": len(user_chunks) - paired_count,
+                    "last_ai_chunk": ai_chunks[-1] if ai_chunks else None
+                },
+                "C"
+            )
+            # #endregion
+            # Remaining user chunks - pair with last AI chunk or create standalone
+            last_ai_chunk = ai_chunks[-1] if ai_chunks else ""
+            for uc in user_chunks[paired_count:]:
+                combined = f"User: {uc}\n\nAssistant: {last_ai_chunk}" if last_ai_chunk else f"User: {uc}"
+                if len(combined) <= MAX_CHUNK_SIZE:
+                    chunks.append(combined)
+                else:
+                    chunks.extend(chunk_text(combined, MAX_CHUNK_SIZE))
+        elif len(ai_chunks) > len(user_chunks):
+            # #region agent log
+            debug_log(
+                "build_rag_index.py:265",
+                "create_dialogue_chunks: Handling remaining AI chunks",
+                {
+                    "remaining_ai_chunks": len(ai_chunks) - paired_count,
+                    "last_user_chunk": user_chunks[-1] if user_chunks else None
+                },
+                "C"
+            )
+            # #endregion
+            # Remaining AI chunks - pair with last user chunk
+            last_user_chunk = user_chunks[-1] if user_chunks else ""
+            for ac in ai_chunks[paired_count:]:
+                combined = f"User: {last_user_chunk}\n\nAssistant: {ac}" if last_user_chunk else f"Assistant: {ac}"
+                if len(combined) <= MAX_CHUNK_SIZE:
+                    chunks.append(combined)
+                else:
+                    chunks.extend(chunk_text(combined, MAX_CHUNK_SIZE))
     else:
         # User prompt je krátky, rozdeliť len AI odpoveď
         ai_chunks = chunk_text(ai_text, MAX_CHUNK_SIZE - len(user_text) - 20)  # -20 pre "User: ...\n\nAssistant: "

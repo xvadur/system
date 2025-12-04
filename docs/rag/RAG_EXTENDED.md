@@ -206,7 +206,8 @@ FAISS index veľkosť: 3,644 vektorov
 ---
 
 **Vytvorené:** 2025-12-04  
-**Status:** ✅ Implementované, ⏸️ Rebuild pozastavený (OpenAI kvóta)
+**Status:** ✅ Implementované, ⏸️ Rebuild pozastavený (OpenAI kvóta)  
+**Posledná aktualizácia:** 2025-12-04 17:45 - Bug fixes (zip chunking, debug log path)
 
 ## ⚠️ Aktuálny Stav (2025-12-04)
 
@@ -214,6 +215,8 @@ FAISS index veľkosť: 3,644 vektorov
 - Všetky funkcie implementované
 - API key loading opravený (načítava z `.env`)
 - Content type filtering funguje
+- **Bug fixes:** Zip chunking bug opravený (všetky chunky sa spracúvajú správne)
+- **Portabilita:** Debug log path dynamický (namiesto hardcodovanej cesty)
 
 **Rebuild Status:** ⏸️ Pozastavený
 - **Dôvod:** OpenAI kvóta presiahnutá (Error 429: insufficient_quota)
@@ -229,5 +232,17 @@ FAISS index veľkosť: 3,644 vektorov
 3. Odhadované náklady: ~$10-20 pre ~3,644 chunkov
 
 **Alternatíva:** Použiť len prompty (bez conversation pairs) - nastav `INCLUDE_AI_RESPONSES = False`
+
+## 🐛 Bug Fixes (2025-12-04)
+
+**Zip Chunking Bug:**
+- **Problém:** `zip(user_chunks, ai_chunks)` ticho zahadzovalo chunky z dlhšieho zoznamu
+- **Riešenie:** Pridaná logika na spracovanie zvyšných chunkov z dlhšieho zoznamu
+- **Vplyv:** Všetky chunky sa teraz správne spracúvajú a indexujú
+
+**Debug Log Path Portabilita:**
+- **Problém:** Hardcodovaná absolútna cesta `/Users/_xvadur/Desktop/xvadur-workspace/.cursor/debug.log`
+- **Riešenie:** Dynamická cesta `Path(__file__).parent.parent.parent / ".cursor" / "debug.log"`
+- **Vplyv:** Kód je teraz prenosný na akýkoľvek stroj
 
 

@@ -678,3 +678,30 @@
 - Úprava load/save game protokolov
 
 ---
+
+
+## [2025-12-04 17:45] 🔹 Bug Fixes: RAG Chunking a Portabilita
+
+**Vykonané:**
+- ✅ Opravený kritický bug v `create_dialogue_chunks()` - `zip()` ticho zahadzovalo chunky z dlhšieho zoznamu
+- ✅ Opravená portabilita debug log path - namiesto hardcodovanej absolútnej cesty používa dynamickú cestu
+- ✅ Pridaná debug instrumentácia pre monitoring chunking procesu
+
+**Hlavné Výsledky:**
+- **Opravený zip bug:** Funkcia teraz správne spracúva všetky chunky aj keď majú rôzne dĺžky
+- **Portabilita:** Debug log path sa teraz dynamicky konštruuje z workspace root
+- **Debug logging:** Pridaná instrumentácia pre sledovanie chunking procesu
+
+**Technické Detaily:**
+- `create_dialogue_chunks()` teraz spracúva zvyšné chunky z dlhšieho zoznamu
+- `DEBUG_LOG_PATH` používa `Path(__file__).parent.parent.parent` namiesto hardcodovanej cesty
+- Debug logs sú v `.cursor/debug.log` (relatívne k workspace root)
+
+**Zmeny v súboroch:**
+- `scripts/rag/build_rag_index.py` - opravený zip bug a debug log path
+
+**Status:**
+- ✅ Bug fixes dokončené
+- ✅ Kód pripravený na rebuild (po pridaní OpenAI kreditu)
+
+---
