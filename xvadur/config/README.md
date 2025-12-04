@@ -9,20 +9,11 @@
 
 ### Dokumentácia
 
-1. **`AUTOMATIC_GIT_PUSH.md`** - Kompletná dokumentácia automatického git push na GitHub
-   - Ako funguje automatizácia
-   - Konfigurácia a nastavenie
-   - Riešenie problémov
+1. **`GIT_SETUP.md`** - Kompletná dokumentácia git setupu
+   - Automatický git push na GitHub
+   - Nastavenie post-commit hooku
+   - Konfigurácia a troubleshooting
    - Best practices
-
-2. **`GIT_HOOKS_SETUP.md`** - Inštrukcie pre nastavenie git hooks
-   - Ako nastaviť hooks na novom počítači
-   - Riešenie problémov s hooks
-   - Poznámky o git hooks
-
-3. **`xvadur_command.md`** - Dokumentácia pre `/xvadur` príkaz
-   - Konverzačná vrstva pre filozofické a reflexívne rozhovory
-   - XP tracking, backlinking, visualizácie
 
 ### Hook Templates
 
@@ -51,50 +42,34 @@
    ```
 
 3. **Dokumentácia:**
-   - Detailný návod: `xvadur/config/AUTOMATIC_GIT_PUSH.md`
-   - Setup guide: `xvadur/config/GIT_HOOKS_SETUP.md`
+   - Kompletný návod: `xvadur/config/GIT_SETUP.md`
 
 ---
 
 ## 📚 Dokumentácia
 
-### Automatický Git Push
+### Git Setup
 
-**Súbor:** `AUTOMATIC_GIT_PUSH.md`
+**Súbor:** `GIT_SETUP.md`
 
-Popisuje automatizáciu pushu na GitHub:
+Kompletná dokumentácia git setupu:
 - ✅ Post-commit hook pre automatický push
 - ✅ Integrácia do `/savegame` príkazu
 - ✅ Konfigurácia a troubleshooting
 - ✅ Best practices
-
-### Git Hooks Setup
-
-**Súbor:** `GIT_HOOKS_SETUP.md`
-
-Inštrukcie pre nastavenie hooks:
 - ⚠️ Prečo hooks sa necommitnú
 - 🔧 Ako nastaviť hooks na novom počítači
-- 📝 Poznámky a odporúčania
 
-### XVADUR Command
-
-**Súbor:** `xvadur_command.md`
-
-Dokumentácia konverzačnej vrstvy:
-- 🧠 Filozofické a reflexívne rozhovory
-- 📊 XP tracking a gamifikácia
-- 🔗 Backlinking a knowledge graph
-- 📈 Visualizácie metrík
+**Poznámka:** Dokumentácia pre `/xvadur` príkaz je v `.cursor/commands/xvadur.md`
 
 ---
 
 ## 🔗 Súvisiace Súbory
 
 - **Cursor Commands:** `.cursor/commands/`
-  - `savegame.md` - ukladanie session stavu
+  - `savegame.md` - ukladanie session stavu (automatický git push)
   - `loadgame.md` - načítanie session stavu
-  - `xvadur.md` - konverzačná vrstva
+  - `xvadur.md` - konverzačná vrstva (filozofické rozhovory)
 
 - **Git Hook:** `.git/hooks/post-commit` (lokálny)
 - **Hook Template:** `xvadur/config/hooks/post-commit` (v repozitári)
@@ -104,8 +79,8 @@ Dokumentácia konverzačnej vrstvy:
 ## 💡 Poznámky
 
 - **Git Hooks:** Hooks sa necommitnú do repozitára (štandardné správanie)
-- **Hook Template:** Template je v repozitári pre ľahké nastavenie na novom počítači
-- **Dokumentácia:** Všetka dokumentácia je v tomto adresári pre lepšiu organizáciu
+- **Hook Template:** Template je v repozitári (`hooks/post-commit`) pre ľahké nastavenie na novom počítači
+- **Dokumentácia:** Git dokumentácia je konsolidovaná do jedného súboru (`GIT_SETUP.md`)
 
 ---
 

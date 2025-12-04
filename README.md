@@ -1,185 +1,96 @@
 # 🧠 XVADUR Workspace
 
-**Čistý workspace pre XVADUR systém s RAG integráciou**
+**Magnum Opus: Architektúra Osobného Kognitívneho Systému**
 
-Tento workspace obsahuje izolovanú verziu XVADUR systému - filozofický, reflexívny a kreatívny konverzačný režim pre dokumentáciu transformácie s plnou RAG podporou.
+Tento workspace slúži ako centrálny hub pre transformáciu Adama ("Sanitár") na "AI Architekta" (Human 3.0). Obsahuje kompletnú pamäť, nástroje na analýzu a systémy pre RAG.
 
 ---
 
-## 📁 Štruktúra
+## 🚀 Hlavné Komponenty
+
+### 1. 🧠 MinisterOfMemory (`ministers/`)
+Autonómny pamäťový systém, ktorý zabezpečuje, že žiadna myšlienka sa nestratí.
+- **Real-time Capture:** Automatické ukladanie promptov pri každej odpovedi.
+- **Storage:** JSONL databáza v `xvadur/data/prompts_log.jsonl`.
+- **Architektúra:** Modulárny systém (`MinisterOfMemory`, `AssistantOfMemory`, `FileStore`).
+- **Dokumentácia:** [`xvadur/docs/MEMORY_SYSTEM.md`](xvadur/docs/MEMORY_SYSTEM.md)
+
+### 2. 📊 Kortex Dataset (`xvadur/data/dataset/`)
+"Single Source of Truth" - kompletná história konverzácií s AI (Kortex Backup).
+- **Obsah:** 1,822 konverzačných párov (User + AI).
+- **Rozsah:** 976,917 slov, 126 aktívnych dní.
+- **Kvalita:** Garantovane bez duplikátov a vyčistené.
+- **Štruktúra:**
+  - `prompts.jsonl` (User vstupy)
+  - `responses.jsonl` (AI odpovede)
+  - `conversations.jsonl` (Páry pre RAG/Finetuning)
+
+### 3. 🔎 RAG & Analýza (`scripts/`)
+Nástroje na dolovanie významu z dát.
+- **Semantic Search:** Vyhľadávanie v histórii podľa významu.
+- **Chronológia:** Generovanie denných/mesačných prehľadov (`xvadur/data/kortex_chronology/`).
+- **Human 3.0 Evaluácia:** (V pláne) Objektívne hodnotenie transformácie.
+
+---
+
+## 📁 Štruktúra Adresárov
 
 ```
 xvadur-workspace/
-├── xvadur/                    # Hlavná vrstva - XVADUR systém
-│   ├── config/                # Konfigurácia (xvadur_command.md)
-│   ├── data/                  # Dáta (metrics, sessions, synthesis)
-│   ├── docs/                  # Dokumentácia
-│   ├── logs/                  # Logy (XVADUR_LOG.md, XVADUR_XP.md)
-│   ├── scripts/               # Skripty (backlinking, visualizations)
-│   └── +/                     # Analýzy a poznámky
+├── ministers/                  # Memory System logika (Python package)
+├── scripts/                    # Automatizačné a analytické skripty
+│   ├── auto_save_prompt.py     # Hook pre .cursorrules
+│   ├── analysis/               # Analytické nástroje (NLP, metrics)
+│   ├── kortex/                 # Spracovanie Kortex backupu
+│   ├── rag/                    # RAG implementácia
+│   └── utils/                  # Pomocné nástroje (vizualizácie, export)
 │
-├── data/                      # RAG dáta
-│   ├── rag_index/             # FAISS index (faiss.index, chunks.json, metadata.json)
-│   └── prompts/               # Zdrojové prompty
-│       └── prompts_split/     # 664 JSON súborov
+├── xvadur/                     # Dátová vrstva
+│   ├── data/                   # Všetky dáta
+│   │   ├── dataset/            # Kortex final dataset
+│   │   ├── sessions/           # Denné session dokumenty
+│   │   └── kortex_analysis/    # Výstupy analýz
+│   │
+│   ├── docs/                   # Dokumentácia systému
+│   ├── logs/                   # Operačné logy (XP, activity)
+│   └── save_games/             # Checkpointy pre kontinuitu
 │
-├── scripts/                   # RAG skripty
-│   └── rag/
-│       ├── rag_agent_helper.py    # RAG helper pre Cursor agenta
-│       ├── rag_search.py           # RAG search funkcie
-│       └── build_rag_index.py      # Stavba RAG indexu
-│
-├── docs/                      # Dokumentácia
-│   └── rag/                   # RAG dokumentácia
-│
-├── mcp/                       # MCP server (voliteľné)
-│   └── obsidian_mcp_server.py
-│
-├── .cursor/                   # Cursor rules
-│   └── rules/
-│
-├── .cursorrules               # Globálny systémový prompt
-├── .gitignore                 # Git ignore
-├── requirements.txt           # Python dependencies
-└── README.md                  # Tento súbor
+├── .cursorrules                # Systémový prompt pre Cursor
+└── requirements.txt            # Python závislosti
 ```
 
 ---
 
-## 🚀 Rýchly Štart
+## 🛠️ Rýchly Štart
 
-### 1. Inštalácia závislostí
-
+### 1. Inštalácia
 ```bash
-# Vytvorenie virtuálneho prostredia
 python3 -m venv .venv
-source .venv/bin/activate  # Na Mac/Linux
-# alebo: .venv\Scripts\activate  # Na Windows
-
-# Inštalácia dependencies
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Nastavenie API kľúčov
-
-Vytvor `.env` súbor v root adresári:
-
+### 2. Konfigurácia
+Vytvor `.env` súbor pre RAG funkcionalitu:
 ```bash
-OPENAI_API_KEY=sk-tvoj-api-key
+OPENAI_API_KEY=sk-...
 ```
 
-### 3. Testovanie RAG
-
-```bash
-# RAG Search
-python3 scripts/rag/rag_agent_helper.py "tvoj dotaz" 5 0.4
-
-# RAG Query s syntézou
-python3 scripts/rag/rag_agent_helper.py "tvoj dotaz" 10 0.3 true query
-```
-
-### 4. Použitie v Cursor
-
-Workspace je pripravený na prácu v Cursor IDE:
-- `.cursorrules` - globálny systémový prompt
-- `.cursor/rules/` - špecifické pravidlá
-- RAG skripty sú pripravené na volanie z Cursor agenta
+### 3. Bežná Práca (Workflow)
+Systém je navrhnutý pre **Cursor IDE**.
+- **Pamäť:** Funguje automaticky na pozadí (`.cursorrules` volá `auto_save_prompt.py`).
+- **Ukončenie práce:** Spusti príkaz `/savegame` (uloží kontext a vytvorí checkpoint).
+- **Začiatok práce:** Spusti príkaz `/loadgame` (načíta posledný checkpoint).
 
 ---
 
-## 🧠 XVADUR Systém
+## 📈 Metriky Transformácie
 
-XVADUR je filozofický, reflexívny a kreatívny konverzačný režim pre dokumentáciu transformácie.
-
-### Funkcie:
-- **Dokumentácia transformácie** - analytický spôsob, objektívne, bez obalu
-- **RAG integrácia** - automatické citovanie relevantných pasáží z histórie
-- **Backlinking** - automatické vytváranie `[[]]` linkov v Obsidian vaultu
-- **XP tracking** - vlastný XP tracking systém
-- **Vizualizácie** - ASCII grafy a heatmapy
-
-### Použitie:
-
-V Cursor použij command `/xvadur` alebo začni konverzáciu s `@xvadur`.
+- **Celkový výkon (Kortex):** 976,917 slov
+- **Aktuálny Level:** 2.5 (Synthesist) -> Cieľ 3.0
+- **Dominantný Mód:** "Operational Excellence" (Efektivita)
 
 ---
 
-## 📊 RAG Systém
-
-RAG (Retrieval-Augmented Generation) systém umožňuje vyhľadávanie v histórii 664 promptov.
-
-### Dáta:
-- **664 promptov** → **1,204 chunkov**
-- **FAISS index** (lokálne, rýchle)
-- **OpenAI embeddings** (`text-embedding-3-small`, 1536 dimenzií)
-
-### Funkcie:
-- **Semantic search** - vyhľadávanie podľa významu
-- **Keyword search** - vyhľadávanie podľa kľúčových slov
-- **Hybrid search** - kombinácia semantic + keyword
-- **Query synthesis** - automatická syntéza odpovedí z promptov
-
-### Rebuild RAG indexu:
-
-```bash
-python3 scripts/rag/build_rag_index.py
-```
-
-**Poznámka:** Rebuild trvá ~5-10 minút a stojí ~$5-10 (pre 664 promptov).
-
----
-
-## 🔧 Konfigurácia
-
-### Cesty v skriptoch:
-
-Všetky cesty sú relatívne k root adresáru workspace:
-- `data/rag_index/` - RAG index
-- `data/prompts/prompts_split/` - Zdrojové prompty
-- `.env` - Environment premenné
-
-### Cursor Rules:
-
-- `.cursorrules` - globálny systémový prompt
-- `.cursor/rules/` - špecifické pravidlá pre rôzne aspekty
-
----
-
-## 📝 Poznámky
-
-- **Súčasný workspace** (`Magnum Opus`) zostáva pre Chat UI a dataset
-- **Tento workspace** je izolovaný pre XVADUR systém a RAG
-- **Obsidian vault** zostáva lokálne (necommituje sa)
-
----
-
-## 🎯 Ďalšie Kroky
-
-1. **Git inicializácia:**
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: Initial XVADUR workspace"
-   ```
-
-2. **GitHub push:**
-   ```bash
-   git remote add origin https://github.com/tvoj-username/xvadur-workspace.git
-   git push -u origin main
-   ```
-
-3. **Testovanie:**
-   - Test RAG search
-   - Test XVADUR skripty
-   - Test Cursor rules
-
----
-
-**Vytvorené:** 2025-12-01  
-**Status:** ✅ Funkčný, pripravený na prácu
-
-
-
-
-
-
+**Vytvorené:** 2025-12-04  
+**Status:** ✅ Aktívny & Stabilný

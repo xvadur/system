@@ -467,11 +467,58 @@ Odpoveď musí byť užitočná a čitateľná, nie len zoznam surových citáci
         }
 
 
+def format_result(result: Dict) -> str:
+    """Formátuje výsledok pre pekný výpis"""
+    text = result.get("text", "")
+    date = result.get("date", "N/A")
+    source_path = result.get("source_path", "N/A")
+    chunk_index = result.get("chunk_index", 0)
+    total_chunks = result.get("total_chunks", 1)
+    search_type = result.get("search_type", "semantic")
+    content_type = result.get("content_type", "prompt")
+    
+    # Skrátenie textu ak je príliš dlhý
+    if len(text) > 500:
+        text = text[:500] + "..."
+    
+    # Hybrid search info
+    score_info = f"Score: {result['score']:.4f}"
+    if search_type == "hybrid":
+        semantic_score = result.get("semantic_score", 0)
+        keyword_score = result.get("keyword_score", 0)
+        score_info += f" (Semantic: {semantic_score:.4f}, Keyword: {keyword_score:.4f})"
+    
+    output = f"""
+{'='*60}
+Rank #{result['rank']} - {search_type.upper()} - {score_info}
+Type: {content_type.upper()}
+{'='*60}
+Dátum: {date}
+Zdroj: {source_path}
+Chunk: {chunk_index + 1}/{total_chunks}
+{'='*60}
+
+{text}
+
+"""
+    return output
+
+
 def main():
-    """Hlavná funkcia - volaná z Cursor agenta"""
+    """Hlavná funkcia - volaná z Cursor agenta alebo CLI"""
     if len(sys.argv) < 2:
-        print(json.dumps({"error": "Usage: rag_agent_helper.py 'query' [top_k] [min_score] [use_hybrid] [mode] [model]"}))
-        print(json.dumps({"modes": ["search", "query"], "default": "search"}))
+        print("Použitie: python rag_agent_helper.py 'query' [top_k] [min_score] [use_hybrid] [mode] [content_type] [output_format]")
+        print("\nParametre:")
+        print("  query          - Vyhľadávací dotaz (povinný)")
+        print("  top_k          - Počet výsledkov (default: 5)")
+        print("  min_score      - Minimálne similarity score (default: 0.4)")
+        print("  use_hybrid     - Použiť hybrid search (default: true)")
+        print("  mode           - 'search' alebo 'query' (default: search)")
+        print("  content_type   - Filter: 'prompt', 'response', 'pair', alebo None (default: None)")
+        print("  output_format  - 'json' alebo 'pretty' (default: json)")
+        print("\nPríklady:")
+        print("  python rag_agent_helper.py 'ako som riešil n8n' 5 0.4 true search None pretty")
+        print("  python rag_agent_helper.py 'chronológia augusta' 10 0.4 true query None json")
         sys.exit(1)
     
     query = sys.argv[1]
@@ -479,30 +526,76 @@ def main():
     min_score = float(sys.argv[3]) if len(sys.argv) > 3 else 0.4
     use_hybrid = sys.argv[4].lower() == "true" if len(sys.argv) > 4 else True
     mode = sys.argv[5].lower() if len(sys.argv) > 5 else "search"  # "search" alebo "query"
-    model = sys.argv[6] if len(sys.argv) > 6 else "gpt-4o-mini"
+    content_type_filter = sys.argv[6] if len(sys.argv) > 6 else None
+    output_format = sys.argv[7].lower() if len(sys.argv) > 7 else "json"  # "json" alebo "pretty"
+    
+    if content_type_filter and content_type_filter.lower() == "none":
+        content_type_filter = None
     
     if mode == "query":
         # Syntetizovaná odpoveď
+        model = sys.argv[8] if len(sys.argv) > 8 else "gpt-4o-mini"
         result = query_rag_with_synthesis(
             query=query,
             top_k=top_k,
             min_score=min_score,
             use_hybrid=use_hybrid,
-            model=model
+            model=model,
+            content_type_filter=content_type_filter
         )
-        print(json.dumps(result, ensure_ascii=False, indent=2))
+        
+        if output_format == "pretty":
+            print("="*60)
+            print("✅ RAG QUERY - SYNTHESIS MODE")
+            print("="*60)
+            print(f"Dotaz: {query}")
+            print(f"Model: {model}")
+            print("="*60)
+            print("\n" + result.get("synthesized_answer", "Žiadna odpoveď"))
+            print("\n" + "="*60)
+            print(f"Zdrojov: {result.get('sources_count', 0)}")
+            print("="*60)
+        else:
+            print(json.dumps(result, ensure_ascii=False, indent=2))
     else:
-        # Pôvodný search mode - surové výsledky
-        results = search_rag(query, top_k, min_score, use_hybrid=use_hybrid)
+        # Search mode - surové výsledky
+        results = search_rag(
+            query, 
+            top_k=top_k, 
+            min_score=min_score, 
+            use_hybrid=use_hybrid,
+            content_type_filter=content_type_filter
+        )
         
-        output = {
-            "query": query,
-            "search_type": "hybrid" if use_hybrid else "semantic",
-            "results_count": len(results),
-            "results": results
-        }
-        
-        print(json.dumps(output, ensure_ascii=False, indent=2))
+        if output_format == "pretty":
+            print("="*60)
+            print("🔍 RAG SEARCH - " + ("HYBRID MODE" if use_hybrid else "SEMANTIC MODE"))
+            print("="*60)
+            print(f"Dotaz: {query}")
+            print(f"Top K: {top_k}")
+            print(f"Mode: {'Hybrid (Semantic + Keyword)' if use_hybrid else 'Semantic only'}")
+            if content_type_filter:
+                print(f"Content Type Filter: {content_type_filter}")
+            print("="*60)
+            print()
+            
+            if not results:
+                print("❌ Nenašli sa žiadne výsledky")
+                return
+            
+            print(f"✅ Nájdených {len(results)} výsledkov:\n")
+            
+            for result in results:
+                print(format_result(result))
+        else:
+            # JSON výstup (pre agenta)
+            output = {
+                "query": query,
+                "search_type": "hybrid" if use_hybrid else "semantic",
+                "results_count": len(results),
+                "results": results
+            }
+            print(json.dumps(output, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

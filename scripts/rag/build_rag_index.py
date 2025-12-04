@@ -56,7 +56,7 @@ except ImportError:
 
 # Konfigurácia
 PROMPTS_DIR = Path("data/prompts/prompts_split")
-CONVERSATION_PAIRS_FILE = Path("xvadur/data/kortex_guaranteed/conversation_pairs_guaranteed.jsonl")
+CONVERSATION_PAIRS_FILE = Path("xvadur/data/dataset/conversations.jsonl")
 OUTPUT_DIR = Path("data/rag_index")
 EMBEDDING_MODEL = "text-embedding-3-small"  # Lacnejšie, rýchlejšie
 EMBEDDING_DIM = 1536  # text-embedding-3-small má 1536 dimenzií
@@ -624,7 +624,7 @@ def main():
     # Vytvorenie indexu
     build_index(prompts, pairs, OUTPUT_DIR)
     
-    print("\n🎉 Hotovo! Teraz môžeš použiť rag_search.py na vyhľadávanie.")
+    print("\n🎉 Hotovo! Teraz môžeš použiť rag_agent_helper.py na vyhľadávanie.")
 
 
 if __name__ == "__main__":
