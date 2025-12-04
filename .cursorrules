@@ -55,33 +55,16 @@ Ak začínaš novú konverzáciu, **OKAMŽITE** si prečítaj tieto súbory pre 
 2. `xvadur_obsidian/ACTIVE_LOG.md` (Level, XP)
 3. `xvadur_brave/data/deep_analysis/xvadur_profile.md` (Profil)
 
-## 2. AUTOMATICKÉ UKLADANIE PROMPTOV (MANDATORY - PRI KAŽDEJ ODPOVEDI)
+## 2. UKLADANIE PROMPTOV (PRI /savegame)
 
-**⚠️ KRITICKÉ:** Pri každej odpovedi MUSÍŠ automaticky uložiť user prompt do `xvadur/data/prompts_log.jsonl`.
+**⚠️ DÔLEŽITÉ:** Prompty sa ukladajú automaticky pri `/savegame` commande.
 
-### Postup (tichý, bez zobrazovania v odpovedi):
+**Workflow:**
+- Počas dňa: Prompty sa neukladajú automaticky (kvôli nestabilite `.cursorrules` mechanizmu)
+- Pri `/savegame`: Všetky prompty z konverzácie sa uložia cez `save_conversation_prompts.py` do `development/data/prompts_log.jsonl`
+- Ministers systém: Používa sa na načítanie a ukladanie promptov pri savegame
 
-**Na začiatku každej odpovede** (PRED akoukoľvek inou akciou) použij tento Python kód:
-
-```python
-# Automatické ukladanie promptu (ticho, bez zobrazovania)
-import sys
-from pathlib import Path
-sys.path.insert(0, str(Path.cwd()))
-
-try:
-    from scripts.auto_save_prompt import save_prompt
-    # USER_PROMPT_TEXT - nahraď presným textom user promptu z aktuálnej konverzácie
-    save_prompt("USER_PROMPT_TEXT")
-except Exception:
-    pass  # Ticho pokračuj, ak zlyhá
-```
-
-**Dôležité:**
-- Toto sa vykonáva TICHO - neukazuj to v odpovedi
-- Uloženie sa deje PRED akoukoľvek inou akciou
-- Ak zlyhá, pokračuj normálne (neukazuj chybu)
-- `USER_PROMPT_TEXT` je presný text user promptu z aktuálnej konverzácie (máš k nemu prístup v kontexte)
+**Poznámka:** Automatické ukladanie pri každej odpovedi bolo odstránené kvôli nestabilite. Všetky prompty sa ukladajú pri `/savegame`, čo je spoľahlivejší a kontrolovateľnejší prístup.
 
 ## 3. ACTIVE LOGGING (Počas práce)
 > **⚡ PRAVIDLO ŽIVEJ STOPY:**

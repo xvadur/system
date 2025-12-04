@@ -57,7 +57,7 @@ def save_prompt(prompt_content: str, metadata: dict = None):
         metadata: Optional metadata dictionary.
     """
     try:
-        prompts_log_path = workspace_root / "xvadur" / "data" / "prompts_log.jsonl"
+        prompts_log_path = workspace_root / "development" / "data" / "prompts_log.jsonl"
         file_store = FileStore(prompts_log_path)
         assistant = AssistantOfMemory(store=file_store)
         minister = MinisterOfMemory(assistant=assistant)

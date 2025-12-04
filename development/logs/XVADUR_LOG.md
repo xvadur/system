@@ -4,6 +4,43 @@
 
 ---
 
+## [2025-12-04 22:07] 🔹 Session: Debugging & Stabilizácia Prompt Logging Systému
+
+**Vykonané:**
+- ✅ Debugging problému s automatickým ukladaním promptov
+- ✅ Identifikácia nestabilného mechanizmu v `.cursorrules`
+- ✅ Zmena na savegame-only prístup pre ukladanie promptov
+- ✅ Odstránenie debug logov z `scripts/auto_save_prompt.py`
+- ✅ Aktualizácia `.cursorrules` na odrážanie nového prístupu
+- ✅ Aktualizácia dokumentácie (`docs/MEMORY_SYSTEM.md`)
+- ✅ Vytvorenie nového save game
+
+**Hlavné Výsledky:**
+- **Prompt logging:** Systém je teraz stabilnejší (savegame-only prístup)
+- **Ministers systém:** Plne funkčný a integrovaný s savegame workflow
+- **Dokumentácia:** Aktualizovaná na odrážanie nového prístupu
+- **XP progres:** 159.78 → 167.9 (+8.12 XP, Level 5)
+
+**Kľúčové rozhodnutia:**
+- Odstránenie nestabilného automatického ukladania cez `.cursorrules` (AI ignoroval vložený Python kód)
+- Zmena na savegame-only prístup - všetky prompty sa ukladajú pri `/savegame` commande
+- Preferencia explicitných kontrolných bodov nad "magickou" automatizáciou
+
+**Zmeny v súboroch:**
+- `.cursorrules` - odstránené automatické ukladanie, pridané vysvetlenie savegame-only workflow
+- `scripts/auto_save_prompt.py` - odstránené debug logy, zjednodušený kód
+- `docs/MEMORY_SYSTEM.md` - aktualizovaný workflow na odrážanie savegame-only prístupu
+- `development/sessions/save_games/SAVE_GAME_LATEST.md` - nový save game
+- `development/sessions/save_games/SAVE_GAME_LATEST_SUMMARY.md` - nový summary
+
+**Status:**
+- ✅ Prompt logging systém stabilizovaný
+- ✅ Dokumentácia aktualizovaná
+- ✅ Save game vytvorený
+- ⏭️ Ďalšia priorita: Identifikácia a oprava inkoherencií v systéme
+
+---
+
 ## [2025-12-04 18:57] 🔹 Session: Workspace Konsolidácia & Dokumentácia
 
 **Vykonané:**

@@ -63,8 +63,8 @@ jobs:
           fi
           
           # Počet záznamov v prompts_log.jsonl
-          if [ -f "data/prompts_log.jsonl" ]; then
-            PROMPT_COUNT=$(wc -l < data/prompts_log.jsonl)
+          if [ -f "development/data/prompts_log.jsonl" ]; then
+            PROMPT_COUNT=$(wc -l < development/data/prompts_log.jsonl)
             echo "  prompts_log.jsonl: $PROMPT_COUNT records"
           fi
           

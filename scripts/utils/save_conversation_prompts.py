@@ -20,7 +20,7 @@ from core.ministers.storage import FileStore
 
 def get_existing_prompts() -> set:
     """Get set of existing prompt contents (for deduplication)."""
-    prompts_log_path = workspace_root / "xvadur" / "data" / "prompts_log.jsonl"
+    prompts_log_path = workspace_root / "development" / "data" / "prompts_log.jsonl"
     existing = set()
     
     if prompts_log_path.exists():
@@ -55,7 +55,7 @@ def save_prompts_batch(prompts: List[Dict[str, Any]]) -> int:
         return 0
     
     try:
-        prompts_log_path = workspace_root / "xvadur" / "data" / "prompts_log.jsonl"
+        prompts_log_path = workspace_root / "development" / "data" / "prompts_log.jsonl"
         file_store = FileStore(prompts_log_path)
         assistant = AssistantOfMemory(store=file_store)
         minister = MinisterOfMemory(assistant=assistant)

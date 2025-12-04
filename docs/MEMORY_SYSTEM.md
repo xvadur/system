@@ -25,27 +25,23 @@ Systém je postavený na modulárnej architektúre `ministers` balíčka.
 - **`__init__.py`**: Exportuje rozhranie pre zvyšok systému.
 
 ### 2. Automatizácia (`scripts/`)
-- **`auto_save_prompt.py`**: Skript volaný priamo z `.cursorrules`. Pri každej odpovedi AI automaticky uloží prompt.
-- **`save_conversation_prompts.py`**: Dávkové ukladanie pri `/savegame` (backup).
+- **`auto_save_prompt.py`**: Skript pre manuálne ukladanie promptov (používa sa pri `/savegame`).
+- **`save_conversation_prompts.py`**: Dávkové ukladanie pri `/savegame` - hlavný mechanizmus ukladania promptov.
 
-### 3. Dáta (`xvadur/data/`)
+### 3. Dáta (`development/data/`)
 - **`prompts_log.jsonl`**: Hlavná databáza promptov (append-only JSONL).
-- **`dataset/`**: Vyčistené a dedupikované dáta pre analýzu/RAG.
+- **`dataset/`**: Vyčistené a dedupikované dáta pre analýzu/RAG (ak existuje).
 
 ---
 
 ## 🔄 Workflow
 
-### A. Real-time Ukladanie (Primárny tok)
-1. Užívateľ napíše prompt.
-2. Cursor AI generuje odpoveď.
-3. **Pred odpoveďou** `.cursorrules` automaticky spustí `scripts/auto_save_prompt.py`.
-4. Prompt sa uloží do `xvadur/data/prompts_log.jsonl`.
-
-### B. Batch Backup (Sekundárny tok)
+### A. Ukladanie pri Savegame (Primárny tok)
 1. Užívateľ spustí `/savegame`.
 2. Systém spustí `scripts/save_conversation_prompts.py`.
-3. Uložia sa všetky prompty z aktuálnej konverzácie (s detekciou duplikátov).
+3. Uložia sa všetky prompty z aktuálnej konverzácie (s detekciou duplikátov) do `development/data/prompts_log.jsonl`.
+
+**Poznámka:** Automatické ukladanie pri každej odpovedi bolo odstránené kvôli nestabilite `.cursorrules` mechanizmu. Všetky prompty sa teraz ukladajú pri `/savegame`, čo je spoľahlivejší a kontrolovateľnejší prístup.
 
 ---
 

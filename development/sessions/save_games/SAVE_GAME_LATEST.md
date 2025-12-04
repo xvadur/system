@@ -3,43 +3,61 @@
 ## 📊 Status
 - **Rank:** Synthesist (Level 5)
 - **Level:** 5
-- **XP:** 159.78 / 200 (79.9%)
-- **Next Level:** 40.22 XP potrebné
+- **XP:** 167.9 / 200 (84.0%)
+- **Next Level:** 32.1 XP potrebné
 - **Streak:** 3 dní
-- **Last Log:** [2025-12-04 18:57] Workspace Konsolidácia & Dokumentácia
+- **Last Log:** [2025-12-04 22:07] Debugging & Stabilizácia Prompt Logging Systému
 
 ---
 
 ## 🧠 Naratívny Kontext (Story so far)
 
-Dnešná session bola zameraná na **konsolidáciu a upratovanie workspace** - transformácia z "chaotického rastu" na "organizovanú architektúru". Začali sme s identifikáciou duplicitných súborov a neorganizovaných dátových štruktúr, ktoré vznikli počas rýchleho vývoja systému.
+Posledná session bola zameraná na **debugging a stabilizáciu prompt logging systému** - identifikácia a riešenie nestabilného automatického ukladania promptov, ktoré nefungovalo spoľahlivo.
 
-**Začiatok session:** Session začala s požiadavkou na konsolidáciu `kortex_analysis` súborov - malo tam zostať len jeden JSON a markdowny mali byť zmysluplne zlúčené. Toto odhalilo širší problém: workspace mal viacero miest, kde sa dáta ukladali v rôznych štádiách spracovania (`kortex_extracted`, `kortex_cleaned`, `kortex_final`, `kortex_guaranteed`).
+**Začiatok session:** Session začala s identifikáciou problému - `prompts_log.jsonl` sa neaktualizoval automaticky, iba pri `/savegame`. Po testovaní sme zistili, že automatické ukladanie cez `.cursorrules` (vložený Python kód) nefungovalo, pretože Cursor AI ho ignoroval alebo nevyrábal správne.
 
-**Kľúčové rozhodnutia:** Hlavné architektonické rozhodnutie bolo vytvoriť **"Single Source of Truth"** pre všetky dáta. Vytvorili sme `xvadur/data/dataset/` adresár, kam sme presunuli finálne, garantované dáta s jednoduchými názvami (`prompts.jsonl`, `responses.jsonl`, `conversations.jsonl`). Odstránili sme všetky medzikroky a duplicity. Podobne sme konsolidovali dokumentáciu (`docs/`) - zlúčili sme 3 memory dokumenty do jedného `MEMORY_SYSTEM.md` a aktualizovali `README.md` ako rozcestník.
+**Kľúčové rozhodnutia:** Hlavné architektonické rozhodnutie bolo **odstránenie nestabilného automatického ukladania** a zmena na **savegame-only prístup**. Toto je spoľahlivejší a kontrolovateľnejší mechanizmus - všetky prompty sa ukladajú pri `/savegame` commande, čo zaisťuje, že žiadne prompty sa nestratia a je jasné, kedy sa ukladanie deje. Odstránili sme debug logy z kódu, ktoré boli pridané na diagnostiku problému.
 
-**Tvorba nástrojov:** Všetky skripty (`xvadur_visualizations.py`, `xvadur_backlinking.py`) boli presunuté do `scripts/utils/`, kde logicky patria medzi ostatné utility. Odstránili sme prázdny `xvadur/scripts/` adresár. Aktualizovali sme všetky odkazy v skriptoch a dokumentácii, aby odkazovali na nové umiestnenie (`xvadur/data/dataset/` namiesto `kortex_guaranteed/`).
+**Tvorba nástrojov:** Opravili sme importy v `scripts/auto_save_prompt.py` (odstránenie debug logov, zjednodušenie kódu). Aktualizovali sme dokumentáciu (`docs/MEMORY_SYSTEM.md`) na odrážanie nového savegame-only prístupu. Upravili sme `.cursorrules` na odstránenie nestabilného automatického ukladania a jasné vysvetlenie savegame-only workflow.
 
-**Introspektívne momenty:** Identifikovali sme vzorec v práci - po období rýchleho rastu (vytváranie nových systémov) prichádza fáza konsolidácie (upratovanie, deduplikácia, organizácia). Toto je zdravý cyklus, ktorý zabezpečuje, že systém zostáva udržiavateľný a škálovateľný. Workspace teraz má jasnú štruktúru, kde každý súbor má svoje miesto a účel.
+**Introspektívne momenty:** Identifikovali sme vzorec - automatické systémy, ktoré sa spoliehajú na AI správanie (ako vložený Python kód v `.cursorrules`), sú nestabilné a nepredvídateľné. Spoľahlivejšie je mať explicitné, kontrolované body (ako `/savegame`), kde sa ukladanie deje. Toto je dôležitá lekcia pre dizajn automatizácie - preferovať explicitné kontrolné body nad "magickou" automatizáciou.
 
-**Strety so systémom:** Hlavná frikcia bola v identifikácii, ktoré súbory sú "finálne" a ktoré sú len medzikroky. Riešenie bolo jednoduché - použili sme počet riadkov a štatistiky čistenia (`removal_stats.json`) na identifikáciu najkvalitnejších dát. Finálne dáta (`kortex_final` a `kortex_guaranteed`) boli identické, tak sme použili garantované verzie.
+**Strety so systémom:** Hlavná frikcia bola v debugovaní, prečo automatické ukladanie nefungovalo. Problém bol, že `.cursorrules` je len textová inštrukcia, ktorú AI môže ignorovať alebo nesprávne interpretovať. Riešenie bolo jednoduché - odstránenie nestabilného mechanizmu a zmena na savegame-only prístup, ktorý je jasný, kontrolovateľný a spoľahlivý.
 
-**Gamifikačný progres:** XP sa zvýšilo z 154.48 na 159.78 (+5.3 XP), čo predstavuje stabilný progres v Level 5. Streak zostáva na 3 dňoch. Progres je primárne z práce na konsolidácii workspace (presuny súborov, aktualizácia odkazov, dokumentácia). Systém automaticky počíta XP z logu a promptov, čo zabezpečuje objektívne hodnotenie práce.
+**Gamifikačný progres:** XP sa zvýšilo z 159.78 na 167.9 (+8.12 XP), čo predstavuje stabilný progres v Level 5. Streak zostáva na 3 dňoch. Progres je primárne z práce na debugovaní a stabilizácii prompt logging systému. Systém automaticky počíta XP z logu a promptov, čo zabezpečuje objektívne hodnotenie práce.
 
-**Prepojenie s dlhodobou víziou:** Konsolidácia workspace je kľúčová pre škálovateľnosť Magnum Opus architektúry. Jasná štruktúra umožňuje ľahšiu navigáciu, lepšiu dokumentáciu a jednoduchšiu údržbu. Dataset je teraz pripravený na RAG, Finetuning alebo akúkoľvek hlbokú analýzu. Aktualizovaný README poskytuje jasný prehľad celého systému pre nových používateľov alebo kontribútorov.
+**Prepojenie s dlhodobou víziou:** Stabilizácia prompt logging systému je kľúčová pre kontinuitu pamäte v Magnum Opus architektúre. Savegame-only prístup zabezpečuje, že všetky prompty sú zachytené a uložené spoľahlivo. Ministers systém (`core/ministers/`) je teraz plne funkčný a integrovaný s savegame workflow. Dokumentácia je aktualizovaná na odrážanie nového prístupu.
 
-**Otvorené slučky:** Hlavná otvorená slučka je **Human 3.0 Evaluácia** - plán na aplikáciu Human 3.0 frameworku na celý dataset (1,822 konverzácií) pre objektívne hodnotenie transformácie. Ďalšie otvorené slučky: týždenné témové mapovanie (NLP analýza), rozšírenie RAG systému (týždenné syntézy), HTML Dashboard pre vizualizáciu dát.
+**Otvorené slučky:** Hlavná otvorená slučka je **identifikácia a oprava inkoherencií v systéme** - užívateľ chce prejsť celý systém a identifikovať nekonzistencie v cestách, importoch, dokumentácii. Ďalšie otvorené slučky: review `.cursorrules` na konzistentnosť a jasnosť, kontinuálne zlepšovanie automatizácie a dokumentácie.
 
-**Analytické poznámky:** Vzorec v práci je jasný - systematické konsolidovanie po období rastu, dôraz na organizáciu a dokumentáciu, automatizácia opakujúcich sa úloh. Užívateľ má silnú schopnosť identifikovať chaos a systematicky ho transformovať na poriadok. Práca s workspace ukazuje zrelosť v architektonických rozhodnutiach - preferencia jednoduchosti a jasnosti nad flexibilitou.
+**Analytické poznámky:** Vzorec v práci je jasný - systematické debugovanie problémov, identifikácia nestabilných mechanizmov, nahradenie spoľahlivejšími riešeniami. Užívateľ má silnú schopnosť identifikovať nestabilitu a systematicky ju riešiť. Práca s automatizáciou ukazuje zrelosť v architektonických rozhodnutiach - preferencia spoľahlivosti a jednoduchosti nad "magickou" automatizáciou.
 
-**Sumarizácia:** Session bola produktívna - konsolidovali sme workspace, vytvorili sme "Single Source of Truth" pre dáta, zlúčili sme dokumentáciu, presunuli sme skripty na správne miesta, aktualizovali sme všetky odkazy. Workspace je teraz organizovaný a pripravený na ďalší rast. V ďalšej session odporúčam: 1) Spustiť Human 3.0 Evaluáciu (top priorita), 2) Realizovať týždenné témové mapovanie, 3) Vytvoriť HTML Dashboard pre vizualizáciu dát. Dôležité je zachovať momentum a pokračovať v systematickom rozširovaní systémov na základe pevného základu.
+**Sumarizácia:** Session bola produktívna - debugovali sme problém s automatickým ukladaním promptov, identifikovali sme nestabilný mechanizmus, nahradili sme ho spoľahlivejším savegame-only prístupom, odstránili sme debug logy, aktualizovali sme dokumentáciu. Systém je teraz stabilnejší a spoľahlivejší. V ďalšej session odporúčam: 1) Identifikovať a opraviť inkoherencie v systéme (cesty, importy, dokumentácia), 2) Review `.cursorrules` na konzistentnosť a jasnosť, 3) Kontinuálne zlepšovanie automatizácie a dokumentácie. Dôležité je zachovať systematický prístup k debugging a stabilizácii systémov.
 
 ---
 
 ## 🎯 Aktívne Questy & Next Steps
 
+### Quest: Oprava Inkoherencií v Systéme
+- **Status:** 🔄 V Prebiehaní (Aktuálna Priorita)
+- **Next Steps:**
+  1. Prejsť celý systém a identifikovať nekonzistencie v cestách
+  2. Opraviť importy v skriptoch, ktoré používajú staré cesty
+  3. Aktualizovať dokumentáciu na odrážanie aktuálnej štruktúry
+  4. Overiť konzistentnosť medzi `.cursorrules`, Cursor commands a skriptmi
+- **Blokátory:** Žiadne
+
+### Quest: Review CursorRules
+- **Status:** 📝 Plánovaná (Priorita #2)
+- **Next Steps:**
+  1. Prejsť `.cursorrules` na konzistentnosť a jasnosť
+  2. Identifikovať redundantné alebo protichodné inštrukcie
+  3. Zjednodušiť a zorganizovať pravidlá
+  4. Overiť, že všetky cesty sú správne
+- **Blokátory:** Žiadne
+
 ### Quest: Human 3.0 Evaluácia
-- **Status:** 📝 Plánovaná (Top Priorita)
+- **Status:** 📝 Plánovaná
 - **Next Steps:**
   1. Vytvoriť skript `scripts/evaluate_human30_transformation.py`
   2. Aplikovať Human 3.0 framework na dataset (1,822 konverzácií)
@@ -47,33 +65,15 @@ Dnešná session bola zameraná na **konsolidáciu a upratovanie workspace** - t
   4. Vygenerovať kompletný evaluačný report
 - **Blokátory:** Žiadne
 
-### Quest: Týždenné Témové Mapovanie
-- **Status:** 📝 Plánovaná (Priorita #2)
-- **Next Steps:**
-  1. Zoskupiť 1,822 konverzácií do týždňov (W29-W49)
-  2. NLP analýza na identifikáciu 3-5 hlavných tém pre každý týždeň
-  3. Vytvoriť týždenné reporty (`weekly_themes/Wxx.md`)
-  4. Generovanie HTML Dashboardu pre vizualizáciu
-- **Blokátory:** Žiadne
-
-### Quest: Rozšírenie RAG Systému
-- **Status:** ⏸️ Pozastavený (OpenAI kvóta)
-- **Next Steps:**
-  1. Pridať kredit do OpenAI (https://platform.openai.com/account/billing)
-  2. Dokončiť rebuild RAG indexu s conversation pairs
-  3. Implementovať týždenné syntézy
-  4. Implementovať tematické syntézy
-- **Blokátory:** Finančný (potrebný kredit ~$10-20)
-
 ---
 
 ## ⚠️ Inštrukcie pre Nového Agenta
 
 **O užívateľovi:**
 - Adam je introspektívny tvorca s metakognitívnym štýlom myslenia
-- Preferuje systematické konsolidovanie po období rastu
-- Má silnú schopnosť identifikovať chaos a transformovať ho na poriadok
-- Workspace je teraz organizovaný a pripravený na ďalší rast
+- Preferuje systematické debugovanie a stabilizáciu systémov
+- Má silnú schopnosť identifikovať nestabilitu a systematicky ju riešiť
+- Workspace je teraz stabilnejší a spoľahlivejší
 
 **O štýle komunikácie:**
 - Priamy, analytický, strategický
@@ -82,26 +82,24 @@ Dnešná session bola zameraná na **konsolidáciu a upratovanie workspace** - t
 - Odmieta povrchnosť
 
 **O aktuálnom stave:**
-- Workspace je konsolidovaný - všetky dáta sú v `xvadur/data/dataset/`
-- Dokumentácia je zlúčená a aktualizovaná (`docs/MEMORY_SYSTEM.md`, `docs/README.md`)
-- Skripty sú organizované v `scripts/` podľa kategórií
-- Hlavný README poskytuje jasný prehľad systému
-- Ďalšie priority: Human 3.0 Evaluácia, Týždenné mapovanie, RAG rebuild
+- Prompt logging systém je teraz stabilnejší (savegame-only prístup)
+- Ministers systém je plne funkčný a integrovaný s savegame workflow
+- Dokumentácia je aktualizovaná na odrážanie nového prístupu
+- Hlavná priorita: identifikácia a oprava inkoherencií v systéme
 
 **O technickom kontexte:**
 - Workspace: `/Users/_xvadur/Desktop/xvadur-workspace`
-- Dataset: `xvadur/data/dataset/` (prompts.jsonl, responses.jsonl, conversations.jsonl)
-- Dokumentácia: `xvadur/docs/MEMORY_SYSTEM.md`, `xvadur/docs/README.md`
-- Session dokumenty: `xvadur/data/sessions/Stvrtok_2025-12-04.md`
+- Prompt logging: `development/data/prompts_log.jsonl` (savegame-only)
+- Ministers systém: `core/ministers/` (plne funkčný)
+- Dokumentácia: `docs/MEMORY_SYSTEM.md`, `docs/README.md`
+- XP systém: `development/logs/XVADUR_XP.md` (167.9 XP, Level 5)
 
 **Dôležité poznámky:**
-- Všetky odkazy v skriptoch sú aktualizované na nové umiestnenie (`xvadur/data/dataset/`)
-- Workspace má jasnú štruktúru - každý súbor má svoje miesto
-- Dataset je pripravený na RAG, Finetuning alebo analýzu
-- Human 3.0 Evaluácia je top priorita pre ďalšiu session
+- Prompty sa ukladajú iba pri `/savegame` commande (nie automaticky)
+- Ministers systém používa `FileStore` pre persistentné ukladanie (JSONL)
+- Všetky cesty používajú `development/` prefix (3-layer architektúra)
+- Systém je pripravený na identifikáciu a opravu inkoherencií
 
 ---
 
-**Vytvorené:** 2025-12-04 18:57  
-**Posledná aktualizácia:** 2025-12-04 18:57  
-**Session:** Workspace Konsolidácia & Dokumentácia
+**Posledná aktualizácia:** 2025-12-04 22:07

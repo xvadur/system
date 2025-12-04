@@ -69,7 +69,7 @@ Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny 
 **Dôležité:** 
 - Tento krok MUSÍ byť vykonaný PRED analýzou stavu a vytvorením save game súboru
 - Agent MUSÍ automaticky identifikovať všetky user prompty z aktuálnej konverzácie
-- Prompty sa ukladajú do `data/prompts_log.jsonl` cez `MinisterOfMemory` a `FileStore`
+- Prompty sa ukladajú do `development/data/prompts_log.jsonl` cez `MinisterOfMemory` a `FileStore`
 
 ## 0.5. Automatický Výpočet XP (POVINNÉ - PO ULOŽENÍ PROMPTOV)
 
@@ -98,7 +98,7 @@ Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny 
 2. **Automatizácia:**
    Skript automaticky:
    - Parsuje `logs/XVADUR_LOG.md` (záznamy, súbory, úlohy)
-   - Parsuje `data/prompts_log.jsonl` (prompty, word count)
+   - Parsuje `development/data/prompts_log.jsonl` (prompty, word count)
    - Počíta streak dní
    - Počíta level podľa exponenciálneho systému
    - Aktualizuje `xvadur/logs/XVADUR_XP.md` s novými hodnotami
@@ -118,9 +118,9 @@ Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny 
 
 ## 1. Analýza Stavu
 Zisti aktuálne hodnoty z:
-- `logs/XVADUR_XP.md` (XP, Level - už aktualizované v kroku 0.5)
-- `logs/XVADUR_LOG.md` (posledné záznamy)
-- `data/prompts_log.jsonl` (ak existuje - prompty z MinisterOfMemory)
+- `development/logs/XVADUR_XP.md` (XP, Level - už aktualizované v kroku 0.5)
+- `development/logs/XVADUR_LOG.md` (posledné záznamy)
+- `development/data/prompts_log.jsonl` (ak existuje - prompty z MinisterOfMemory)
 
 **Poznámka:** XP hodnoty už boli automaticky vypočítané a aktualizované v kroku 0.5. Použi tieto hodnoty pri vytváraní save game.
 
@@ -132,10 +132,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path.cwd()))
 
 try:
-    from ministers.memory import MinisterOfMemory, AssistantOfMemory
-    from ministers.storage import FileStore
+    from core.ministers.memory import MinisterOfMemory, AssistantOfMemory
+    from core.ministers.storage import FileStore
     
-    prompts_log_path = Path("data/prompts_log.jsonl")
+    prompts_log_path = Path("development/data/prompts_log.jsonl")
     if prompts_log_path.exists():
         file_store = FileStore(prompts_log_path)
         assistant = AssistantOfMemory(store=file_store)
@@ -207,7 +207,7 @@ Ulož tento obsah do súboru: `xvadur/save_games/SAVE_GAME_LATEST.md`.
 **Dodatočné aktualizácie:**
 - Aktualizuj `logs/XVADUR_XP.md` s finálnymi XP hodnotami (ak sa zmenili)
 - Pridaj záznam do `logs/XVADUR_LOG.md` o vytvorení save game
-- **Overenie promptov:** Skontroluj, že všetky prompty z konverzácie sú uložené v `prompts_log.jsonl`
+- **Overenie promptov:** Skontroluj, že všetky prompty z konverzácie sú uložené v `development/data/prompts_log.jsonl`
 
 **⚠️ POZOR:** Po uložení súborov MUSÍŠ okamžite pokračovať na krok 3.5 (Generovanie Summary).
 
