@@ -39,7 +39,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Zatvor každé dokončené Issue
-          for issue_num in ${{ steps.parse-log.outputs.completed_issues }}; do
+          COMPLETED_ISSUES="${{ steps.parse-log.outputs.completed_issues }}"
+          for issue_num in $COMPLETED_ISSUES; do
             echo "Closing issue #$issue_num"
             
             # Skontroluj, či Issue ešte nie je zatvorené
