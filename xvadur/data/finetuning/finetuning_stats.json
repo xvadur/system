@@ -1,0 +1,9 @@
+{
+  "total_examples": 1822,
+  "valid_examples": 1822,
+  "invalid_examples": 0,
+  "avg_user_length": 3626,
+  "avg_assistant_length": 4572,
+  "total_tokens_estimate": 3733477,
+  "file_size_mb": 15.424429893493652
+}

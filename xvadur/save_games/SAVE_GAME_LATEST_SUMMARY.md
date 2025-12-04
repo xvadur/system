@@ -1,73 +1,89 @@
 # 💾 SAVE GAME SUMMARY: 2025-12-04
 
 ## 📊 Status
-- **Rank:** Architekt (Level 5)
+- **Rank:** Synthesist (Level 5)
 - **Level:** 5
-- **XP:** 127.16 / 200.0 XP (63.6%)
-- **Next Level:** 72.84 XP potrebné
-- **Last Session:** Streda_2025-12-03 (02:00)
+- **XP:** 148.57 / 200 (74.3%)
+- **Next Level:** 51.43 XP potrebné
+- **Streak:** 3 dní
+- **Last Session:** Rozšírenie RAG Systému (2025-12-04 17:31)
 
 ---
 
 ## 🎯 Posledná Session - Sumár
 
 **Čo sa robilo:**
-- Vytvorené týždenné metriky pre prompty (18 týždňov, 737 promptov)
-- Diskutovaná extrakcia AI odpovedí z backup JSON súboru
-- Identifikovaný plán na ďalšiu session: extrahovať AI odpovede a spárovať s promptmi
+- ✅ Rozšírenie RAG systému o AI odpovede z conversation pairs (1,822 párov)
+- ✅ Implementácia content type filtering (`prompt`, `response`, `pair`)
+- ✅ Oprava API key loading z `.env` súboru v `build_rag_index.py`
+- ✅ Vytvorenie dokumentácie (`docs/rag/RAG_EXTENDED.md`)
+- ⏸️ Rebuild RAG indexu pozastavený (OpenAI kvóta presiahnutá)
 
 **Kľúčové rozhodnutia:**
-- Týždenné analýzy sú lepšie ako denné (viac dátových bodov, lepšie vzorce)
-- AI odpovede z backupu umožnia kompletnú syntézu konverzácií
-- Čistenie dát (odstránenie duplikátov, kódu) pre čistejší obraz
+- Kombinovanie prompt + odpoveď ako jeden chunk (zachovanie kontextu)
+- Content type filtering pre flexibilné vyhľadávanie
+- Použitie rovnakého API key loading mechanizmu vo všetkých skriptoch
 
 **Vykonané úlohy:**
-- ✅ Vytvorený skript `scripts/analyze_prompts_weekly_metrics.py`
-- ✅ Vytvorená dokumentácia `data/prompts/WEEKLY_METRICS.md`
-- ✅ Aktualizovaný `data/prompts/README.md` s týždennými metrikami
-- ✅ XP progres: 127.16 XP (Level 5, 63.6%)
+- Rozšírenie `build_rag_index.py` o `load_conversation_pairs()` a `create_dialogue_chunks()`
+- Aktualizácia `rag_agent_helper.py` a `rag_search.py` o content type filtering
+- Oprava API key loading (načítanie z `.env`)
+- Vytvorenie dokumentácie rozšírenia
+- Aktualizácia `RAG_README.md` s informáciami o nových funkciách
 
 ---
 
 ## 🎯 Aktívne Questy
 
-### Extrakcia AI Odpovedí z Backupu
-- **Status:** ⏳ Plánované
+### Quest: Dokončenie RAG Rebuild
+- **Status:** ⏸️ Pozastavený
 - **Next Steps:** 
-  1. Analyzovať štruktúru `data/kortex-backup (1).json`
-  2. Vytvoriť skript na extrakciu AI odpovedí
-  3. Spárovať s user promptmi
-  4. Odstrániť duplikáty, kód
-  5. Integrovať do RAG systému
+  1. Pridať kredit do OpenAI (~$10-20)
+  2. Spustiť rebuild: `python3 scripts/rag/build_rag_index.py`
+- **Blokátory:** Finančný (OpenAI kvóta)
 
-### Integrácia AI Odpovedí do RAG
-- **Status:** ⏳ Plánované
+### Quest: Konfigurácia Cursor Pro
+- **Status:** 🆕 Nový
 - **Next Steps:**
-  1. Rozšíriť `build_rag_index.py` o AI odpovede
-  2. Aktualizovať syntézy (založené na dialógoch)
-  3. Pripraviť dáta pre finetuning
+  1. Preskúmať možnosti Cursor Pro
+  2. Nastaviť custom commands pre GitHub automatizácie
+  3. Integrovať MCP Docker nástroje
+
+### Quest: GitHub Automatizácie
+- **Status:** 🆕 Nový
+- **Next Steps:**
+  1. Navrhnúť automatizácie pre PR workflow
+  2. Vytvoriť custom commands pre merge, review, deploy
+  3. Integrovať s existujúcim git hook systémom
+
+### Quest: Úprava Load/Save Game Protokolov
+- **Status:** 🆕 Nový
+- **Next Steps:**
+  1. Preskúmať aktuálne protokoly
+  2. Identifikovať zlepšenia pre novú fázu session
+  3. Implementovať zmeny v `.cursor/commands/`
 
 ---
 
 ## 📋 Next Steps
 
-1. **Analyzovať štruktúru backup JSON súboru** (`data/kortex-backup (1).json`)
-2. **Vytvoriť skript na extrakciu AI odpovedí** (spárovať s promptmi)
-3. **Odstrániť duplikáty a kód** (čistejší obraz konverzácií)
-4. **Integrovať do RAG systému** (vyhľadávanie v promptoch aj odpovediach)
-5. **Pripraviť dáta pre finetuning** (user prompt → AI odpoveď páry)
+1. **Pridať kredit do OpenAI** a dokončiť RAG rebuild
+2. **Začať prácu na konfigurácii Cursor Pro** (nový nákup)
+3. **Navrhnúť automatizácie s GitHubom** (PR, merge, review workflow)
+4. **Upraviť load/save game protokoly** pre novú fázu session
+5. **Testovať nové funkcie** po dokončení rebuild
 
 ---
 
 ## 🔑 Kľúčové Kontexty
 
-- **Týždenné metriky:** 18 týždňov, 737 promptov, 255,463 slov
-- **Backup JSON:** Obsahuje kompletnú konverzáciu (user prompty + AI odpovede)
-- **Čistenie dát:** AI odpovede majú diakritiku, user prompty nie (Adam píše málo, AI všetky)
-- **RAG systém:** Funkčný a pripravený na rozšírenie o AI odpovede
-- **Metadata:** Konsolidované v `prompts_enriched.jsonl`
+- **RAG systém:** Rozšírený o AI odpovede, všetky funkcie implementované, rebuild pozastavený kvôli OpenAI kvóte
+- **API key:** Opravené načítanie z `.env` súboru vo všetkých skriptoch
+- **Dokumentácia:** Kompletná (`docs/rag/RAG_EXTENDED.md`, `docs/rag/RAG_README.md`)
+- **Technický stav:** Všetky zmeny commitnuté a pushnuté na GitHub
+- **Cursor Pro:** Nový nákup, pripravený na konfiguráciu a automatizácie
 
 ---
 
 **Full Details:** `xvadur/save_games/SAVE_GAME_LATEST.md`  
-**Last Updated:** 2025-12-04 02:00
+**Last Updated:** 2025-12-04 17:31

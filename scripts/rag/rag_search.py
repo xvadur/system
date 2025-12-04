@@ -153,6 +153,7 @@ def format_result(result: Dict) -> str:
     chunk_index = result.get("chunk_index", 0)
     total_chunks = result.get("total_chunks", 1)
     search_type = result.get("search_type", "semantic")
+    content_type = result.get("content_type", "prompt")
     
     # Skrátenie textu ak je príliš dlhý
     if len(text) > 500:
@@ -168,6 +169,7 @@ def format_result(result: Dict) -> str:
     output = f"""
 {'='*60}
 Rank #{result['rank']} - {search_type.upper()} - {score_info}
+Type: {content_type.upper()}
 {'='*60}
 Dátum: {date}
 Zdroj: {source_path}
@@ -183,13 +185,19 @@ Chunk: {chunk_index + 1}/{total_chunks}
 def main():
     """Hlavná funkcia"""
     if len(sys.argv) < 2:
-        print("Použitie: python rag_search.py 'tvoj dotaz' [top_k] [use_hybrid]")
+        print("Použitie: python rag_search.py 'tvoj dotaz' [top_k] [use_hybrid] [content_type]")
         print("Príklad: python rag_search.py 'ako som riešil n8n problémy' 5 true")
+        print("Príklad: python rag_search.py 'transformácia identity' 10 true pair")
+        print("Content types: prompt, response, pair, alebo None (všetko)")
         sys.exit(1)
     
     query = sys.argv[1]
     top_k = int(sys.argv[2]) if len(sys.argv) > 2 else DEFAULT_TOP_K
     use_hybrid = sys.argv[3].lower() == "true" if len(sys.argv) > 3 else True
+    content_type_filter = sys.argv[4] if len(sys.argv) > 4 else None
+    
+    if content_type_filter and content_type_filter.lower() == "none":
+        content_type_filter = None
     
     print("="*60)
     print("🔍 RAG SEARCH - HYBRID MODE" if use_hybrid else "🔍 RAG SEARCH - SEMANTIC MODE")
@@ -197,6 +205,8 @@ def main():
     print(f"Dotaz: {query}")
     print(f"Top K: {top_k}")
     print(f"Mode: {'Hybrid (Semantic + Keyword)' if use_hybrid else 'Semantic only'}")
+    if content_type_filter:
+        print(f"Content Type Filter: {content_type_filter}")
     print("="*60)
     print()
     
@@ -209,7 +219,13 @@ def main():
     from rag_agent_helper import search_rag
     print(f"🔍 {'Hybrid search (semantic + keyword)' if use_hybrid else 'Semantic search'}...\n")
     
-    results = search_rag(query, top_k=top_k, min_score=0.3, use_hybrid=use_hybrid)
+    results = search_rag(
+        query, 
+        top_k=top_k, 
+        min_score=0.3, 
+        use_hybrid=use_hybrid,
+        content_type_filter=content_type_filter
+    )
     
     # Výpis výsledkov
     if not results:

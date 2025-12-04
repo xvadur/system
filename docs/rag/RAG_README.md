@@ -86,6 +86,26 @@ Spusti najprv `build_rag_index.py`
 Po úspešnom vytvorení indexu môžeš:
 1. Integrovať do Cursor agenta
 2. Pridať ďalšie dátové zdroje (chronológie, Obsidian)
-3. Implementovať hybrid search (semantic + keyword)
+3. Implementovať hybrid search (semantic + keyword) ✅
 4. Pridať prioritizáciu (hot/warm/cold memory)
+
+## 🆕 Rozšírenie: AI Odpovede
+
+RAG systém teraz podporuje aj AI odpovede z conversation pairs!
+
+**Nové funkcie:**
+- Conversation pairs v indexe (kompletný dialóg)
+- Content type filtering (prompt/response/pair)
+- Rozšírené metadata
+
+**Dokumentácia:** Pozri `RAG_EXTENDED.md` pre detailné informácie.
+
+**Použitie:**
+```bash
+# Rebuild s AI odpoveďami
+python3 scripts/rag/build_rag_index.py
+
+# Vyhľadávanie v conversation pairs
+python3 scripts/rag/rag_search.py "tvoj dotaz" 10 true pair
+```
 

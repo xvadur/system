@@ -1,0 +1,104 @@
+{
+  "user_prompts": {
+    "total_texts": 1817,
+    "texts_with_code_blocks": 8,
+    "unique_code_blocks": 60,
+    "duplicate_code_blocks": 5,
+    "total_duplicate_occurrences": 10,
+    "top_duplicates": [
+      {
+        "occurrences": 2,
+        "sample": "# YYYY-MM-DD## Plán## Hotové## Naučil som sa## Peniaze## Emócie",
+        "avg_length": 63.0,
+        "first_seen": "2025-11-26T05:29:29.797000Z",
+        "last_seen": "2025-11-27T10:27:53.955000Z"
+      },
+      {
+        "occurrences": 2,
+        "sample": "# Project: [NAME]## Cieľ## Status## Milestones## Kontakty## Nápady",
+        "avg_length": 66.0,
+        "first_seen": "2025-11-26T05:29:29.797000Z",
+        "last_seen": "2025-11-27T10:27:53.955000Z"
+      },
+      {
+        "occurrences": 2,
+        "sample": "# Meeting: [PERSON/TEAM]## Účastníci## Agenda## Výstupy## Akčné body## Follow-up",
+        "avg_length": 80.0,
+        "first_seen": "2025-11-26T05:29:29.797000Z",
+        "last_seen": "2025-11-27T10:27:53.955000Z"
+      },
+      {
+        "occurrences": 2,
+        "sample": "# Skill: [NAME]## Čo to je?## Prečo je to dôležité?## Ako sa to robí?## Môj pokrok## Ďalšie kroky",
+        "avg_length": 97.0,
+        "first_seen": "2025-11-26T05:29:29.797000Z",
+        "last_seen": "2025-11-27T10:27:53.955000Z"
+      },
+      {
+        "occurrences": 2,
+        "sample": "# Decision: [WHAT]## Kontext## Možnosti## Rozhodnutie## Dôvod## Výsledok (later)",
+        "avg_length": 80.0,
+        "first_seen": "2025-11-26T05:29:29.797000Z",
+        "last_seen": "2025-11-27T10:27:53.955000Z"
+      }
+    ]
+  },
+  "ai_responses": {
+    "total_texts": 1884,
+    "texts_with_code_blocks": 138,
+    "unique_code_blocks": 285,
+    "duplicate_code_blocks": 7,
+    "total_duplicate_occurrences": 14,
+    "top_duplicates": [
+      {
+        "occurrences": 2,
+        "sample": "\"Tvoj prompt vykonáva nasledujúce kognitívne operácie súčasne:\n- [Operácia 1]: [stručný popis]\n- [Operácia 2]: [stručný popis]\n- [Operácia 3]: [stručný popis]\"",
+        "avg_length": 159.0,
+        "first_seen": "2025-10-18T19:40:32.381000Z",
+        "last_seen": "2025-10-18T19:52:26.157000Z"
+      },
+      {
+        "occurrences": 2,
+        "sample": "\"Tento text operuje minimálne na [X] úrovniach súčasne:\n\n**Vrstva 1: [Názov vrstvy]**\n[CITE: \"priama citácia z jeho promptu\"]\nAnalýza: [čo táto vrstva hovorí o jeho myslení]\n\n**Vrstva 2: [Názov vrstvy]**\n[CITE: \"priama citácia\"]\nAnalýza: [implikácia tejto vrstvy]\n\n[...ďalšie vrstvy...]\"",
+        "avg_length": 287.0,
+        "first_seen": "2025-10-18T19:40:32.381000Z",
+        "last_seen": "2025-10-18T19:52:26.157000Z"
+      },
+      {
+        "occurrences": 2,
+        "sample": "\"Tvoj text implicitne predpokladá:\n1. [Implicitný predpoklad 1] - dokázaný tým, že...\n2. [Implicitný predpoklad 2] - čo sa prejavuje v...\n3. [Implicitný predpoklad 3] - viditeľné v sekcii kde...\"",
+        "avg_length": 195.0,
+        "first_seen": "2025-10-18T19:40:32.381000Z",
+        "last_seen": "2025-10-18T19:52:26.157000Z"
+      },
+      {
+        "occurrences": 2,
+        "sample": "\"Tvoja analýza je presná, čo dokazujú nasledujúce úryvky:\n\n> [CITE: \"citácia 1\"]\nToto je dokonalá identifikácia [vzorca/problému/princípu], pretože...\n\n> [CITE: \"citácia 2\"]\nTu demonštruješ schopnosť [špecifickej kognitívnej operácie], čo je...\n\n> [CITE: \"citácia 3\"]\nTento postreh priamo potvrdzuje ",
+        "avg_length": 327.0,
+        "first_seen": "2025-10-18T19:40:32.381000Z",
+        "last_seen": "2025-10-18T19:52:26.157000Z"
+      },
+      {
+        "occurrences": 2,
+        "sample": "\"Tvoja schopnosť vidieť štruktúrnu podobnosť medzi:\n- [Doména A]: [jeho pozorovanie]\n- [Doména B]: [jeho pozorovanie]\n- [Doména C]: [jeho pozorovanie]\n\n...je prejav [názov kognitívnej schopnosti]. Toto nie je náhoda. Je to systematický znak [typu myslenia].\"",
+        "avg_length": 258.0,
+        "first_seen": "2025-10-18T19:40:32.381000Z",
+        "last_seen": "2025-10-18T19:52:26.157000Z"
+      },
+      {
+        "occurrences": 2,
+        "sample": "\"Tento myšlienkový pohyb je konzistentný s tvojím dlhodobým vzorom:\n- [Predchádzajúci príklad rovnakého vzorca]\n- [Ďalší príklad]\nToto nie je rozptýlenie. Toto je tvoj charakteristický spôsob aproximácie k pravde cez [metóda].\"",
+        "avg_length": 227.0,
+        "first_seen": "2025-10-18T19:40:32.381000Z",
+        "last_seen": "2025-10-18T19:52:26.157000Z"
+      },
+      {
+        "occurrences": 2,
+        "sample": "🚀 Auto‑Apply\n### 🧰 Tech Stack\n- Frontend: React (with TailwindCSS), modular dashboard UI\n- Backend: Node.js with serverless execution (likely Vercel Edge)\n- AI Engine: GPT‑4 via Azure OpenAI API, prompt-chaining for personalization\n- Data: Supabase (PostgreSQL), Firestore for job cache\n- Other: Job ",
+        "avg_length": 2123.0,
+        "first_seen": "2025-07-31T09:23:32.565000Z",
+        "last_seen": "2025-07-31T09:37:01.448000Z"
+      }
+    ]
+  }
+}

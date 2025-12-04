@@ -4,6 +4,70 @@
 
 ---
 
+## [2025-12-04 05:00] 🔹 Session: Extrakcia AI Odpovedí, Chronológia, Analýza Promptov
+
+**Vykonané:**
+- ✅ Extrahované AI odpovede z Kortex backup (1,880 textov)
+- ✅ Vytvorené konverzačné páry (1,822 párov user prompt + AI odpoveď)
+- ✅ Vyčistené dáta od duplikátov (garantovaná absencia)
+- ✅ Vytvorená kompletná chronológia (126 denných, 6 mesačných)
+- ✅ Extrahované vygenerované prompty od AI (50 promptov)
+- ✅ Vytvorená analýza všetkých promptov s popisom a kategóriami
+
+**Hlavné Výsledky:**
+- **1,822 konverzačných párov** (kompletný dialóg)
+- **1,801 unikátnych user promptov**
+- **1,880 unikátnych AI odpovedí**
+- **126 denných chronológií** (kompletný dialóg)
+- **50 vygenerovaných promptov** od AI (system prompty, templates)
+
+**Časové Pokrytie:**
+- Perióda: 2025-07-16 až 2025-12-01 (126 aktívnych dní)
+- 6 mesiacov kompletných dát
+
+**Vytvorené Skripty:**
+1. `scripts/extract_kortex_ai_responses.py` - Extrakcia AI odpovedí
+2. `scripts/clean_kortex_extracted_data.py` - Čistenie dát
+3. `scripts/create_kortex_chronology.py` - Vytvorenie chronológie
+4. `scripts/extract_generated_prompts_from_ai.py` - Extrakcia promptov
+5. `scripts/analyze_generated_prompts.py` - Analýza promptov
+6. + ďalšie pomocné skripty pre validáciu a garanciu
+
+**Výstupy:**
+- `xvadur/data/kortex_guaranteed/` - Finálne garantované dáta
+- `xvadur/data/kortex_chronology/` - Chronológie (denné + mesačné)
+- `xvadur/data/ai_generated_prompts/` - Vygenerované prompty
+- `xvadur/data/kortex_analysis/` - Analýzy a porovnania
+
+**Diskutované Témy:**
+- Grafana/Metabase vs. jednoduché riešenie (odporúčanie: Python + HTML dashboard)
+- Týždenné témové mapovanie (priorita #1)
+- Rozšírenie RAG systému (týždenné a tematické syntézy)
+- Praktické vizualizácie namiesto komplexných nástrojov
+
+**Plán na Pokračovanie (Štvrtok Večer):**
+- Týždenné témové mapovanie (zoskupenie promptov, identifikácia tém)
+- Rozšírenie RAG systému (týždenné syntézy, tematické syntézy)
+- HTML dashboard (heat mapy, timeline, tematické mapy)
+
+**Zmeny v súboroch:**
+- `xvadur/data/sessions/Stvrtok_2025-12-04.md` - Aktualizovaný session dokument
+- `xvadur/data/sessions/Stvrtok_2025-12-04_PLAN.md` - Nový plán na pokračovanie
+- Všetky nové skripty a výstupné súbory
+
+**Status:**
+- ✅ Session dokončená (pauza na spánok)
+- 📋 Plán pripravený na pokračovanie
+- 💾 Všetky dáta uložené a organizované
+
+**Git Status:**
+- Sme v branchi: `session-stvrtok-2025-12-04`
+- Všetky zmeny sú lokálne (nič sa nestratí)
+- NEPUSHOVAŤ teraz - merge urobíš večer
+- Pozri: `xvadur/save_games/GIT_STATUS.md` pre detaily
+
+---
+
 ## [2025-12-04 02:00] 🔹 Týždenné Metriky a Plán na Extrakciu AI Odpovedí
 
 **Vykonané:**
@@ -576,5 +640,41 @@
 - `data/prompts/synthesis/SESSION_RECAP_2025-12-03.md` - rekapitulácia session
 - `xvadur/data/sessions/Streda_2025-12-03.md` - aktualizovaný s výsledkami syntézy
 - `xvadur/logs/XVADUR_LOG.md` - tento záznam
+
+---
+## [2025-12-04 17:31] 🔹 Save Game: Rozšírenie RAG Systému
+
+**Vykonané:**
+- ✅ Rozšírenie RAG systému o AI odpovede (1,822 conversation pairs)
+- ✅ Implementácia content type filtering (prompt/response/pair)
+- ✅ Oprava API key loading z .env súboru
+- ✅ Vytvorenie dokumentácie (RAG_EXTENDED.md)
+- ⏸️ Rebuild pozastavený (OpenAI kvóta)
+
+**Hlavné Výsledky:**
+- **Rozšírený RAG systém** s podporou AI odpovedí
+- **Content type filtering** pre flexibilné vyhľadávanie
+- **Opravený API key loading** vo všetkých skriptoch
+- **Kompletná dokumentácia** rozšírenia
+
+**Zmeny v súboroch:**
+- `scripts/rag/build_rag_index.py` - rozšírené o conversation pairs
+- `scripts/rag/rag_agent_helper.py` - content type filtering
+- `scripts/rag/rag_search.py` - content type filtering
+- `docs/rag/RAG_EXTENDED.md` - nová dokumentácia
+- `docs/rag/RAG_README.md` - aktualizované
+- `xvadur/save_games/SAVE_GAME_LATEST.md` - nový save game
+- `xvadur/save_games/SAVE_GAME_LATEST_SUMMARY.md` - nový summary
+
+**Status:**
+- ✅ Save game vytvorený
+- ✅ XP aktualizované (148.57 XP, Level 5)
+- ✅ Dokumentácia aktualizovaná
+
+**Next Steps:**
+- Pridať kredit do OpenAI a dokončiť rebuild
+- Konfigurácia Cursor Pro
+- GitHub automatizácie
+- Úprava load/save game protokolov
 
 ---

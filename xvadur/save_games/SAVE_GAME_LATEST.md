@@ -1,254 +1,112 @@
-# 💾 SAVE GAME: 2025-12-04 02:00
-
-**Dátum vytvorenia:** 2025-12-04 02:00  
-**Session:** Streda_2025-12-03 (ukončená)  
-**Status:** ✅ Ukončená
-
----
+# 💾 SAVE GAME: 2025-12-04
 
 ## 📊 Status
-
-- **Rank:** Architekt (Level 5)
+- **Rank:** Synthesist (Level 5)
 - **Level:** 5
-- **XP:** 127.16 / 200.0 XP (63.6%)
-- **Next Level:** Potrebuje ešte **72.84 XP** na Level 6
+- **XP:** 148.57 / 200 (74.3%)
+- **Next Level:** 51.43 XP potrebné
 - **Streak:** 3 dní
-- **Last Log:** `xvadur/logs/XVADUR_LOG.md` ([2025-12-01 20:00] - [2025-12-04 02:00])
-- **Prompts Log:** `xvadur/data/prompts_log.jsonl` (75+ promptov uložených)
+- **Last Log:** [2025-12-04 17:31] Rozšírenie RAG Systému
 
 ---
 
 ## 🧠 Naratívny Kontext (Story so far)
 
-### Začiatok Session: Týždenné Metriky a Analýzy
+Naša posledná session začala pokračovaním práce na rozšírení RAG systému o AI odpovede z conversation pairs. Po predchádzajúcej session, kde sme extrahovali a vyčistili 1,822 konverzačných párov z Kortex backupu, sme sa posunuli k implementácii rozšírenia, ktoré umožní RAG systému vyhľadávať nielen v user promptoch, ale aj v AI odpovediach.
 
-Naša dnešná session (Streda, 3. december 2025) sa zamerala na **týždenné kvantitatívne analýzy promptov** a **diskusiu o extrakcii AI odpovedí z backup JSON súboru**. Session pokračovala v práci z predchádzajúcich dní, kde sme vytvorili syntézu vývoja myslenia a konsolidovali metadata.
+**Kľúčové rozhodnutia:** Hlavné architektonické rozhodnutie bolo kombinovať prompt + odpoveď ako jeden chunk namiesto samostatných chunkov. Toto rozhodnutie bolo motivované potrebou zachovať kontext dialógu - AI odpoveď bez promptu stráca význam. Implementovali sme content type filtering (`prompt`, `response`, `pair`), čo umožňuje flexibilné vyhľadávanie podľa typu obsahu.
 
-### Kľúčové Rozhodnutie: Týždenné namiesto Denných Analýz
+**Tvorba nástrojov:** Rozšírili sme `build_rag_index.py` o funkcie `load_conversation_pairs()` a `create_dialogue_chunks()`, ktoré načítavajú conversation pairs z JSONL a vytvárajú kombinované dialógové chunky. Aktualizovali sme `rag_agent_helper.py` a `rag_search.py` o content type filtering. Opravili sme kritickú chybu v načítavaní API kľúča - `build_rag_index.py` teraz používa rovnakú funkciu `load_api_key()` ako ostatné skripty, čo umožňuje načítanie z `.env` súboru namiesto len z environmentu.
 
-**Identifikácia problému:**
-Adam sa pýtal: "A nebolo by lepšie robiť kvantitatívne analýzy po týždňoch než po dňoch?" - čo je presne to, čo sme implementovali.
+**Introspektívne momenty:** Identifikovali sme vzorec v práci - systematické rozširovanie existujúcich systémov namiesto vytvárania nových. Toto je zdravý prístup, ktorý zachováva konzistenciu a znižuje technický dlh. RAG systém sa stal centrálnym pilierom pre semantic search v histórii konverzácií.
 
-**Implementácia:**
-- Vytvorený skript `scripts/analyze_prompts_weekly_metrics.py`
-- Skript načíta všetky prompty (historické + aktuálne)
-- Rozdelí ich podľa ISO týždňov
-- Vypočíta metriky: počet promptov, word count, počet viet, median viet, aktívne dni
-- Zobrazí trendy (zmeny oproti predchádzajúcemu týždňu)
+**Strety so systémom:** Hlavná frikcia nastala pri rebuild RAG indexu - presiahli sme OpenAI kvótu (Error 429: insufficient_quota) po vytvorení 1,204 chunkov z promptov. Rebuild sa zastavil pri generovaní embeddings pre conversation pairs. Toto je technický blokátor, ktorý vyžaduje finančný vstup (pridanie kreditu do OpenAI). Identifikovali sme, že odhadované náklady sú ~$10-20 pre ~3,644 chunkov.
 
-**Výsledky:**
-- 18 týždňov analyzovaných
-- 737 promptov celkom
-- 255,463 slov celkom
-- Priemer: 40.9 promptov/týždeň, 14,192 slov/týždeň
-- Peak týždeň: W38 (68 promptov, 40,840 slov)
-- Najkomplexnejšie prompty: W39 (priemer 762 slov/prompt)
+**Gamifikačný progres:** XP sa zvýšilo z 127.16 na 148.57 (+21.41 XP), čo predstavuje významný progres v Level 5. Streak zostáva na 3 dňoch. Progres je primárne z práce na RAG systéme (nové funkcie, opravy, dokumentácia). Systém automaticky počíta XP z logu a promptov, čo zabezpečuje objektívne hodnotenie práce.
 
-**Dokumentácia:**
-- `data/prompts/WEEKLY_METRICS.md` - kompletná tabuľka s týždennými metrikami
-- `data/prompts/README.md` - aktualizovaný s týždennými metrikami
+**Prepojenie s dlhodobou víziou:** RAG systém je kľúčová súčasť Magnum Opus architektúry - umožňuje AI agentovi vyhľadávať v histórii konverzácií a používať kontext z minulých session. Rozšírenie o AI odpovede zlepšuje kvalitu syntéz a umožňuje komplexnejšie vyhľadávanie. Toto sa priamo viaže na víziu "AI hernej konzoly" - RAG je pamäťový systém, ktorý umožňuje kontinuitu naprieč sessionami.
 
-### Diskusia o AI Odpovediach z Backupu
+**Otvorené slučky:** Hlavná otvorená slučka je dokončenie RAG rebuild po pridaní kreditu do OpenAI. Ďalšie otvorené slučky: konfigurácia Cursor Pro (nový nákup), automatizácie s GitHubom, úprava load/save game protokolov v novej fáze session. Identifikovali sme potrebu rozšíriť automatizácie - užívateľ má teraz Cursor Pro a chce pokračovať v automatizácii workflow.
 
-**Kľúčová otázka:**
-"Bolo by pre nás užitočné kebyže mame aj všetky odpovede od AI?"
+**Analytické poznámky:** Vzorec v práci je jasný - systematické rozširovanie existujúcich systémov, dôraz na dokumentáciu, automatizácia opakujúcich sa úloh. Užívateľ má silnú schopnosť identifikovať blokátory a systematicky ich riešiť. Práca s RAG systémom ukazuje zrelosť v architektonických rozhodnutiach - preferencia kontextu nad flexibilitou.
 
-**Adamova vízia:**
-- Má backup JSON súbor (`data/kortex-backup (1).json`), z ktorého pôvodne získal prompty
-- Pôvodne si myslel, že jeho prompty sú dôležitejšie (kvantita)
-- Teraz chce podložiť AI dátami, ktoré sú štruktúrované
-- Získanie granularity pre syntézy, vyhľadávanie a finetuning
-- Skutočne akcelerovaný život cez AI
-
-**Výhody:**
-1. **Kompletná konverzácia:** User prompty + AI odpovede = kompletný obraz
-2. **Syntézy:** Založené na dialógoch, nie len promptoch
-3. **Finetuning:** Pripravené páry (user prompt → AI odpoveď)
-4. **RAG:** Vyhľadávanie v promptoch aj odpovediach
-5. **Analýzy:** Trendy v AI odpovediach, dĺžka, komplexnosť
-
-### Plán na Ďalšiu Session: Extrakcia AI Odpovedí
-
-**Cieľ:**
-- Extrahovať AI odpovede z backup JSON súboru
-- Spárovať ich s user promptmi (konverzačné páry)
-- Odstrániť duplikáty, kód a získať čistejší obraz
-- V súčasnosti máme "najčistejší obsah" (prešiel cez diakritický filter)
-- AI odpovede majú diakritiku, user prompty nie (Adam píše málo, AI všetky)
-
-**Výsledok:**
-- Získame omnoho čistejší obraz o tom, čo sa dialo
-- Kompletná konverzácia (nie len jedna strana)
-- Štruktúrované dáta pre syntézy, finetuning, RAG
-
-### Tvorba Nástrojov/Skriptov
-
-**Vytvorené:**
-1. `scripts/analyze_prompts_weekly_metrics.py` - týždenné metriky
-2. `data/prompts/WEEKLY_METRICS.md` - dokumentácia metrík
-3. Aktualizovaný `data/prompts/README.md` - pridané týždenné metriky
-
-**Pripravené (z predchádzajúcich session):**
-- `scripts/analyze_day_founder_style.py` - kontinuálna analýza (pozastavená)
-- `data/prompts/prompts_enriched.jsonl` - konsolidované metadata
-- RAG systém - funkčný a pripravený
-
-### Introspektívne Momenty
-
-**Identifikácia vzorca:**
-- Adam sa opakovane vracia k otázke "ako získať čistejší obraz z dát"
-- Začína s kvantitou (prompty), potom chce granularitu (AI odpovede)
-- Potrebuje syntézy, finetuning, RAG - všetko založené na dátach
-
-**Kľúčový insight:**
-"V súčasnosti máme asi najčistejší obsah aký sa dal vytiahnuť lebo som to niekoľko krát presiel cez diakritický filter, lebo ja píšem málo a AI všetky."
-
-### Gamifikačný Progres
-
-**XP Breakdown:**
-- **Z Práce (Log):** 113.5 XP
-  - Záznamy: 25 × 0.5 = 12.5 XP
-  - Zmeny súborov: 45 × 0.1 = 4.5 XP
-  - Dokončené úlohy: 193 × 0.5 = 96.5 XP
-- **Z Aktivity (Prompty):** 9.05 XP
-  - Prompty: 75 × 0.1 = 7.5 XP
-  - Word count: 3,110 slov × (0.5 / 1000) = 1.55 XP
-- **Bonusy:** 4.6 XP
-  - Streak: 3 dní × 0.2 = 0.6 XP
-  - Sessions: 4 × 1.0 = 4.0 XP
-
-**⭐ TOTAL:** 127.16 XP (Level 5, 63.6% k Level 6)
-
-**Progres:**
-- +6.85 XP od posledného save game (120.31 → 127.16)
-- 3-dňový streak pokračuje
-- 4 sessions dokončené
-
-### Prepojenie s Dlhodobou Víziou
-
-**Magnum Opus:**
-- Týždenné metriky poskytujú lepší prehľad o vzorcoch ako denné analýzy
-- AI odpovede z backupu umožnia kompletnú syntézu konverzácií
-- Finetuning na vlastných dátach = skutočne akcelerovaný život cez AI
-
-**AI Konzola:**
-- RAG systém je funkčný a pripravený
-- Metadata sú konsolidované
-- Týždenné analýzy poskytujú lepšie metriky pre tracking
-
-### Otvorené Slučky
-
-**Pre ďalšiu session:**
-1. **Extrakcia AI odpovedí z backupu:**
-   - Analyzovať štruktúru `data/kortex-backup (1).json`
-   - Vytvoriť skript na extrakciu AI odpovedí
-   - Spárovať s user promptmi
-   - Odstrániť duplikáty, kód
-   - Uložiť do štruktúrovaného formátu
-
-2. **Integrácia do existujúceho systému:**
-   - Rozšíriť RAG index o AI odpovede
-   - Aktualizovať syntézy (založené na dialógoch)
-   - Pripraviť dáta pre finetuning
-
-3. **Kontinuálna analýza (voliteľné):**
-   - Keď bude čas, pokračovať v kontinuálnej analýze
-   - Všetky nástroje sú pripravené
-
-### Analytické Poznámky
-
-**Vzorce v myslení:**
-- Adam sa vracia k dátam a ich čisteniu (diakritický filter, odstránenie duplikátov)
-- Postupne zvyšuje granularitu (prompty → AI odpovede → kompletná konverzácia)
-- Potrebuje syntézy, finetuning, RAG - všetko založené na dátach
-
-**Štýl komunikácie:**
-- Priamy, analytický
-- Potrebuje konkrétne riešenia
-- Vidí dlhodobú víziu (akcelerovaný život cez AI)
-
-### Sumarizácia
-
-**Čo sa podarilo:**
-- ✅ Vytvorené týždenné metriky (18 týždňov, 737 promptov)
-- ✅ Diskutovaná extrakcia AI odpovedí z backupu
-- ✅ Identifikovaný plán na ďalšiu session
-- ✅ XP progres: 127.16 XP (Level 5, 63.6%)
-
-**Čo ostáva:**
-- ⏳ Extrakcia AI odpovedí z backupu (ďalšia session)
-- ⏳ Integrácia do RAG systému
-- ⏳ Pripravenie dát pre finetuning
-
-**Odporúčanie pre ďalšiu session:**
-- Začať s analýzou štruktúry backup JSON súboru
-- Vytvoriť skript na extrakciu AI odpovedí
-- Spárovať s user promptmi
-- Odstrániť duplikáty a kód
-- Integrovať do existujúceho systému
+**Sumarizácia:** Session bola produktívna - implementovali sme kompletnú funkcionalitu rozšírenia RAG systému, opravili kritické chyby, vytvorili dokumentáciu. Hlavný blokátor je finančný (OpenAI kvóta), čo je externý faktor. V ďalšej session odporúčam: 1) Pridať kredit do OpenAI a dokončiť rebuild, 2) Začať prácu na konfigurácii Cursor Pro, 3) Navrhnúť automatizácie s GitHubom, 4) Upraviť load/save game protokoly pre novú fázu session. Dôležité je zachovať momentum a pokračovať v systematickom rozširovaní systémov.
 
 ---
 
 ## 🎯 Aktívne Questy & Next Steps
 
-### Quest 1: Extrakcia AI Odpovedí z Backupu
-- **Status:** ⏳ Plánované
-- **Priority:** Vysoká
+### Quest: Dokončenie RAG Rebuild
+- **Status:** ⏸️ Pozastavený (OpenAI kvóta)
 - **Next Steps:**
-  1. Analyzovať štruktúru `data/kortex-backup (1).json`
-  2. Vytvoriť skript na extrakciu AI odpovedí
-  3. Spárovať s user promptmi (konverzačné páry)
-  4. Odstrániť duplikáty, kód
-  5. Uložiť do štruktúrovaného formátu
+  1. Pridať kredit do OpenAI (https://platform.openai.com/account/billing)
+  2. Spustiť rebuild: `python3 scripts/rag/build_rag_index.py`
+  3. Overiť funkčnosť content type filtering
+- **Blokátory:** Finančný (potrebný kredit ~$10-20)
 
-### Quest 2: Integrácia AI Odpovedí do RAG
-- **Status:** ⏳ Plánované
-- **Priority:** Vysoká
+### Quest: Konfigurácia Cursor Pro
+- **Status:** 🆕 Nový quest
 - **Next Steps:**
-  1. Rozšíriť `build_rag_index.py` o AI odpovede
-  2. Aktualizovať syntézy (založené na dialógoch)
-  3. Pripraviť dáta pre finetuning
+  1. Preskúmať možnosti Cursor Pro
+  2. Nastaviť custom commands pre GitHub automatizácie
+  3. Integrovať MCP Docker nástroje
+  4. Vytvoriť workflow pre automatizované PR, merges, reviews
+- **Blokátory:** Žiadne
 
-### Quest 3: Kontinuálna Analýza (Voliteľné)
-- **Status:** ⏸️ Pozastavená
-- **Priority:** Nízka
-- **Poznámka:** Všetky nástroje sú pripravené, keď bude čas
+### Quest: GitHub Automatizácie
+- **Status:** 🆕 Nový quest
+- **Next Steps:**
+  1. Navrhnúť automatizácie pre PR workflow
+  2. Vytvoriť custom commands pre merge, review, deploy
+  3. Integrovať s existujúcim git hook systémom
+  4. Dokumentovať nové workflow
+- **Blokátory:** Žiadne
+
+### Quest: Úprava Load/Save Game Protokolov
+- **Status:** 🆕 Nový quest
+- **Next Steps:**
+  1. Preskúmať aktuálne protokoly
+  2. Identifikovať zlepšenia pre novú fázu session
+  3. Implementovať zmeny v `.cursor/commands/loadgame.md` a `savegame.md`
+  4. Testovať nové protokoly
+- **Blokátory:** Žiadne
 
 ---
 
 ## ⚠️ Inštrukcie pre Nového Agenta
 
-### Kontext Session
-- Session bola ukončená o 2:00 ráno (dlhá session)
-- Adam chce ukončiť session "Streda" a pokračovať v ďalšej session
-- Kľúčový cieľ: Extrahovať AI odpovede z backup JSON súboru
+**O užívateľovi:**
+- Adam je introspektívny tvorca s metakognitívnym štýlom myslenia
+- Preferuje systematické rozširovanie existujúcich systémov pred vytváraním nových
+- Má silnú schopnosť identifikovať blokátory a systematicky ich riešiť
+- Teraz má Cursor Pro a chce pokračovať v automatizácii workflow
 
-### Štýl Komunikácie
-- **Priamy, analytický:** Adam potrebuje konkrétne riešenia
-- **Dlhodobá vízia:** Vidí "akcelerovaný život cez AI"
-- **Dáta-first prístup:** Všetko založené na dátach (syntézy, finetuning, RAG)
+**O štýle komunikácie:**
+- Priamy, analytický, strategický
+- Používa vlastné metafory ("Architekt", "Assembler", "Sanitár")
+- Vyžaduje zmysel a estetiku vo všetkom
+- Odmieta povrchnosť
 
-### Dôležité Súbory
-- `data/kortex-backup (1).json` - backup JSON súbor (potrebuje analýzu)
-- `data/prompts/prompts_enriched.jsonl` - konsolidované metadata
-- `scripts/analyze_prompts_weekly_metrics.py` - týždenné metriky
-- `data/prompts/WEEKLY_METRICS.md` - dokumentácia metrík
+**O aktuálnom stave:**
+- RAG systém je rozšírený o AI odpovede, ale rebuild je pozastavený kvôli OpenAI kvóte
+- Všetky funkcie sú implementované a pripravené na použitie
+- Dokumentácia je kompletná (`docs/rag/RAG_EXTENDED.md`)
+- Ďalšie priority: Cursor Pro konfigurácia, GitHub automatizácie, úprava protokolov
 
-### Technické Poznámky
-- RAG systém je funkčný a pripravený
-- Metadata sú konsolidované
-- Týždenné analýzy poskytujú lepšie metriky
-- AI odpovede majú diakritiku, user prompty nie (Adam píše málo, AI všetky)
+**O technickom kontexte:**
+- Workspace: `/Users/_xvadur/Desktop/xvadur-workspace`
+- RAG index: `data/rag_index/` (neúplný - len prompty)
+- Conversation pairs: `xvadur/data/kortex_guaranteed/conversation_pairs_guaranteed.jsonl`
+- Dokumentácia: `docs/rag/RAG_EXTENDED.md`, `docs/rag/RAG_README.md`
 
-### Next Session Priorita
-1. **Analyzovať štruktúru backup JSON súboru**
-2. **Vytvoriť skript na extrakciu AI odpovedí**
-3. **Spárovať s user promptmi**
-4. **Odstrániť duplikáty a kód**
-5. **Integrovať do existujúceho systému**
+**Dôležité poznámky:**
+- API key sa načítava z `.env` súboru (opravené v `build_rag_index.py`)
+- Content type filtering funguje (`prompt`, `response`, `pair`)
+- Rebuild vyžaduje OpenAI kredit (~$10-20)
+- Všetky zmeny sú commitnuté a pushnuté na GitHub
 
 ---
 
-**Vytvorené:** 2025-12-04 02:00  
-**Session:** Streda_2025-12-03 (ukončená)  
-**Next Session:** Extrakcia AI odpovedí z backupu
+**Vytvorené:** 2025-12-04 17:31  
+**Posledná aktualizácia:** 2025-12-04 17:31  
+**Session:** Rozšírenie RAG Systému

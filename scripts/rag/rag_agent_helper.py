@@ -194,7 +194,8 @@ def search_rag(
     min_score: float = 0.4,
     use_hybrid: bool = True,
     semantic_weight: float = 0.7,
-    keyword_weight: float = 0.3
+    keyword_weight: float = 0.3,
+    content_type_filter: Optional[str] = None
 ) -> List[Dict]:
     """
     Hybrid search v RAG indexe - kombinuje semantic (embeddings) a keyword (TF-IDF) search.
@@ -206,6 +207,7 @@ def search_rag(
         use_hybrid: Použiť hybrid search (True) alebo len semantic (False)
         semantic_weight: Váha semantic search (0-1)
         keyword_weight: Váha keyword search (0-1)
+        content_type_filter: Filter podľa content_type ("prompt", "response", "pair", alebo None pre všetko)
     
     Returns:
         List of search results with metadata
@@ -315,6 +317,12 @@ def search_rag(
             continue
         
         meta = metadata[idx]
+        
+        # Filtrovanie podľa content_type
+        content_type = meta.get("content_type", "prompt")
+        if content_type_filter and content_type != content_type_filter:
+            continue
+        
         results.append({
             "rank": rank,
             "score": hybrid_score,
@@ -326,6 +334,7 @@ def search_rag(
             "source_path": meta.get("source_path", "N/A"),
             "chunk_index": meta.get("chunk_index", 0),
             "total_chunks": meta.get("total_chunks", 1),
+            "content_type": content_type,
             "search_type": "hybrid" if use_hybrid and keyword_results else "semantic"
         })
     

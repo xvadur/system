@@ -1,0 +1,20 @@
+{
+  "user_prompts": {
+    "total": 1801,
+    "kept": 1801,
+    "removed": 0,
+    "unique_hashes": 1801
+  },
+  "ai_responses": {
+    "total": 1880,
+    "kept": 1880,
+    "removed": 0,
+    "unique_hashes": 1880
+  },
+  "conversation_pairs": {
+    "total": 1822,
+    "kept": 1822,
+    "removed": 0,
+    "unique_hashes": 1822
+  }
+}
