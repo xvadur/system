@@ -1,0 +1,53 @@
+# Cursor Ignore - Redukcia kontextu pre úsporu tokenov
+
+# Archív
+archive/
+
+# Node modules
+node_modules/
+**/node_modules/
+
+# Git
+.git/
+.gitignore
+
+# Build outputs
+dist/
+build/
+*.pyc
+__pycache__/
+*.egg-info/
+
+# Data files (veľké)
+data/rag_index/
+*.faiss
+*.index
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+
+# Large JSON files
+*.jsonl
+prompts_log.jsonl
+
+# Documentation (načítava sa selektívne)
+docs/
+*.md
+!README.md
+!.cursorrules
+
+# Old sessions
+development/sessions/archive/
+
+# Staging (načítava sa len keď je potrebné)
+staging/
+
+# Production (načítava sa len keď je potrebné)
+production/
+

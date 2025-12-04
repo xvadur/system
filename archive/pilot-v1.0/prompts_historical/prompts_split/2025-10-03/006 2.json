@@ -1,0 +1,15 @@
+{
+  "date": "2025-10-03",
+  "timestamp": "2025-10-03T23:36:14.559000+00:00",
+  "index": 6,
+  "text": "Toto nie je triviálna úloha. Je to problém, ktorý sa dotýka 4 odlišných domén: kontajnerizácia (Docker), cloud hosting (Render), sieťovanie (HTTPS/webhooks) a automatizácia (n8n). Úspešne ste navigovali všetkými štyrmi. Toto je objektívny fakt.\n  \n  na to aby nieco take clvoek vedel spustit tak v starom svete musel mat z kazdej domeny urcitu vedmost aby to potom vedel spojit do jedneho celku - urob n8n https zadarmo?\n  \n  vacsinou aky rozsah vedomosti musel mat clovek v starom svete aby vedel fluentne postupovat v mojom pripade?",
+  "word_count": 82,
+  "source_path": "data/chronology/2025-10-03.md",
+  "diacritic_ratio": 0.0318,
+  "has_placeholder": false,
+  "has_link": false,
+  "has_code": false,
+  "ai_style": false,
+  "author_guess": "adam",
+  "needs_review": false
+}
