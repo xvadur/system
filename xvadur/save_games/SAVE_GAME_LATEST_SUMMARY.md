@@ -1,71 +1,73 @@
 # 💾 SAVE GAME SUMMARY: 2025-12-04
 
 ## 📊 Status
-
 - **Rank:** Architekt (Level 5)
 - **Level:** 5
-- **XP:** 120.31 / 200.0 XP (60.2%)
-- **Next Level:** 79.69 XP potrebné
-- **Last Session:** Streda_2025-12-03 (pokračovanie, 01:15)
+- **XP:** 127.16 / 200.0 XP (63.6%)
+- **Next Level:** 72.84 XP potrebné
+- **Last Session:** Streda_2025-12-03 (02:00)
 
 ---
 
 ## 🎯 Posledná Session - Sumár
 
 **Čo sa robilo:**
-- Vytvorený skript pre kontinuálnu analýzu v štýle Founder's Audit
-- Upravený skript na OpenRouter API s FREE modelom (`tngtech/tng-r1t-chimera:free`)
-- Konsolidácia 3 JSONL metadata súborov do `prompts_enriched.jsonl`
-- Konsolidácia 3 guide dokumentov do jedného `ANALYSIS_GUIDE.md`
-- Vytvorená dokumentácia pre kontinuálnu analýzu a metadata štruktúru
+- Vytvorené týždenné metriky pre prompty (18 týždňov, 737 promptov)
+- Diskutovaná extrakcia AI odpovedí z backup JSON súboru
+- Identifikovaný plán na ďalšiu session: extrahovať AI odpovede a spárovať s promptmi
 
 **Kľúčové rozhodnutia:**
-- Kontinuálna analýza je potrebná a pripravená (automatizácia 600+ dní)
-- Metadata musia byť konsolidované do jednotnej štruktúry
-- RAG systém je funkčný a pripravený na budúce použitie
+- Týždenné analýzy sú lepšie ako denné (viac dátových bodov, lepšie vzorce)
+- AI odpovede z backupu umožnia kompletnú syntézu konverzácií
+- Čistenie dát (odstránenie duplikátov, kódu) pre čistejší obraz
 
 **Vykonané úlohy:**
-- ✅ Vytvorený skript `scripts/analyze_day_founder_style.py`
-- ✅ Upravený na OpenRouter API (FREE model)
-- ✅ Vytvorená dokumentácia `CONTINUOUS_ANALYSIS_GUIDE.md`
-- ✅ Konsolidácia metadata: `prompts_enriched.jsonl`
-- ✅ Vytvorený merge skript `merge_prompt_metadata.py`
-- ✅ Dokumentácia `METADATA_STRUCTURE.md`
-- ✅ Konsolidácia guides: `ANALYSIS_GUIDE.md`
+- ✅ Vytvorený skript `scripts/analyze_prompts_weekly_metrics.py`
+- ✅ Vytvorená dokumentácia `data/prompts/WEEKLY_METRICS.md`
+- ✅ Aktualizovaný `data/prompts/README.md` s týždennými metrikami
+- ✅ XP progres: 127.16 XP (Level 5, 63.6%)
 
 ---
 
 ## 🎯 Aktívne Questy
 
-### Quest 1: Kontinuálna Analýza (Pozastavené)
-- **Status:** ⏸️ Pozastavené
-- **Dôvod:** API problémy (limit/chyba)
-- **Next Steps:** Riešiť API problémy, alternatívne modely (keď bude čas)
-- **Blokátory:** API problémy
+### Extrakcia AI Odpovedí z Backupu
+- **Status:** ⏳ Plánované
+- **Next Steps:** 
+  1. Analyzovať štruktúru `data/kortex-backup (1).json`
+  2. Vytvoriť skript na extrakciu AI odpovedí
+  3. Spárovať s user promptmi
+  4. Odstrániť duplikáty, kód
+  5. Integrovať do RAG systému
 
-### Quest 2: RAG a Metadata (Pripravené)
-- **Status:** ✅ Pripravené
-- **Next Steps:** RAG systém je funkčný, metadata konsolidované
-- **Blokátory:** Žiadne
+### Integrácia AI Odpovedí do RAG
+- **Status:** ⏳ Plánované
+- **Next Steps:**
+  1. Rozšíriť `build_rag_index.py` o AI odpovede
+  2. Aktualizovať syntézy (založené na dialógoch)
+  3. Pripraviť dáta pre finetuning
 
 ---
 
 ## 📋 Next Steps
 
-1. Pokračovať v práci na iných projektoch
-2. RAG a metadata sú pripravené na budúce použitie
-3. Keď bude čas, môžeme pokračovať v kontinuálnej analýze
+1. **Analyzovať štruktúru backup JSON súboru** (`data/kortex-backup (1).json`)
+2. **Vytvoriť skript na extrakciu AI odpovedí** (spárovať s promptmi)
+3. **Odstrániť duplikáty a kód** (čistejší obraz konverzácií)
+4. **Integrovať do RAG systému** (vyhľadávanie v promptoch aj odpovediach)
+5. **Pripraviť dáta pre finetuning** (user prompt → AI odpoveď páry)
 
 ---
 
 ## 🔑 Kľúčové Kontexty
 
-- **Kontinuálna analýza:** Pozastavená (API problémy), ale všetky nástroje sú pripravené
-- **RAG systém:** Funkčný a pripravený na budúce použitie
-- **Metadata:** Konsolidované do `prompts_enriched.jsonl` - jednotná štruktúra
-- **Dokumentácia:** Kompletná a pripravená na budúce použitie
+- **Týždenné metriky:** 18 týždňov, 737 promptov, 255,463 slov
+- **Backup JSON:** Obsahuje kompletnú konverzáciu (user prompty + AI odpovede)
+- **Čistenie dát:** AI odpovede majú diakritiku, user prompty nie (Adam píše málo, AI všetky)
+- **RAG systém:** Funkčný a pripravený na rozšírenie o AI odpovede
+- **Metadata:** Konsolidované v `prompts_enriched.jsonl`
 
 ---
 
 **Full Details:** `xvadur/save_games/SAVE_GAME_LATEST.md`  
-**Last Updated:** 2025-12-04 01:15
+**Last Updated:** 2025-12-04 02:00

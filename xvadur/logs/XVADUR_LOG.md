@@ -4,6 +4,44 @@
 
 ---
 
+## [2025-12-04 02:00] 🔹 Týždenné Metriky a Plán na Extrakciu AI Odpovedí
+
+**Vykonané:**
+- Vytvorený skript `scripts/analyze_prompts_weekly_metrics.py` pre týždenné kvantitatívne analýzy
+- Analyzovaných 18 týždňov (737 promptov, 255,463 slov)
+- Vytvorená dokumentácia `data/prompts/WEEKLY_METRICS.md` s kompletnou tabuľkou
+- Aktualizovaný `data/prompts/README.md` s týždennými metrikami
+- Diskutovaná extrakcia AI odpovedí z backup JSON súboru
+- Identifikovaný plán na ďalšiu session: extrahovať AI odpovede a spárovať s promptmi
+
+**Kľúčové zistenia:**
+- Týždenné analýzy sú lepšie ako denné (viac dátových bodov, lepšie vzorce)
+- Peak týždeň: W38 (68 promptov, 40,840 slov)
+- Najkomplexnejšie prompty: W39 (priemer 762 slov/prompt)
+- Priemer: 40.9 promptov/týždeň, 14,192 slov/týždeň
+
+**Plán na ďalšiu session:**
+- Analyzovať štruktúru `data/kortex-backup (1).json`
+- Vytvoriť skript na extrakciu AI odpovedí
+- Spárovať s user promptmi (konverzačné páry)
+- Odstrániť duplikáty, kód
+- Integrovať do RAG systému
+
+**Zmeny v súboroch:**
+- `scripts/analyze_prompts_weekly_metrics.py` - nový skript pre týždenné metriky
+- `data/prompts/WEEKLY_METRICS.md` - dokumentácia metrík
+- `data/prompts/README.md` - aktualizovaný s týždennými metrikami
+- `xvadur/save_games/SAVE_GAME_LATEST.md` - nový save game
+- `xvadur/save_games/SAVE_GAME_LATEST_SUMMARY.md` - nový summary
+
+**Status:**
+- ✅ Týždenné metriky vytvorené
+- ✅ Plán na extrakciu AI odpovedí identifikovaný
+- ✅ Session "Streda" ukončená
+- ✅ XP: 127.16 (Level 5, 63.6%)
+
+---
+
 ## [2025-12-04 01:00] 🔹 Kontinuálna Analýza: Pokus a Pause
 
 **Vykonané:**

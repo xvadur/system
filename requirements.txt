@@ -20,6 +20,10 @@ spacy-stanza>=1.0.0
 # XVADUR Scripts Dependencies
 # (watchdog removed - not needed for real-time prompt saving via .cursorrules)
 
+# PDF Generation
+markdown>=3.4.0
+weasyprint>=60.0
+
 
 
 
