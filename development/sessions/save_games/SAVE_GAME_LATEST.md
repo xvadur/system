@@ -1,105 +1,76 @@
 # 💾 SAVE GAME: 2025-12-04
 
 ## 📊 Status
-- **Rank:** Synthesist (Level 5)
+- **Rank:** Architect (Level 5)
 - **Level:** 5
-- **XP:** 167.9 / 200 (84.0%)
-- **Next Level:** 32.1 XP potrebné
+- **XP:** 175.9 / 200 (88.0%)
+- **Next Level:** 24.1 XP potrebné
 - **Streak:** 3 dní
-- **Last Log:** [2025-12-04 22:07] Debugging & Stabilizácia Prompt Logging Systému
-
----
+- **Last Log:** `development/logs/XVADUR_LOG.md`
 
 ## 🧠 Naratívny Kontext (Story so far)
 
-Posledná session bola zameraná na **debugging a stabilizáciu prompt logging systému** - identifikácia a riešenie nestabilného automatického ukladania promptov, ktoré nefungovalo spoľahlivo.
+Naša dnešná session začala otázkou o efektívnejšom využití MCP systému a GitHub integrácie. Identifikovali sme príležitosť vytvoriť Quest System - systém, ktorý kombinuje lokálne logy s GitHub Issues pre štruktúrované trackovanie úloh. Toto bol kľúčový pivot od manuálneho logovania k automatizovanému workflow, kde každá úloha môže byť vytvorená jednoducho cez `/quest` command a automaticky synchronizovaná s GitHub.
 
-**Začiatok session:** Session začala s identifikáciou problému - `prompts_log.jsonl` sa neaktualizoval automaticky, iba pri `/savegame`. Po testovaní sme zistili, že automatické ukladanie cez `.cursorrules` (vložený Python kód) nefungovalo, pretože Cursor AI ho ignoroval alebo nevyrábal správne.
+**Kľúčové rozhodnutia:** Implementovali sme kompletný Quest System s `/quest` commandom, MCP helper funkciami pre GitHub Issues, aktualizáciou `.cursorrules` s MCP Priority pravidlom, a GitHub Actions workflow pre automatické zatváranie Issues. Systém je navrhnutý pre ne-programátora - jednoduché použitie, maximálna automatizácia archivácie.
 
-**Kľúčové rozhodnutia:** Hlavné architektonické rozhodnutie bolo **odstránenie nestabilného automatického ukladania** a zmena na **savegame-only prístup**. Toto je spoľahlivejší a kontrolovateľnejší mechanizmus - všetky prompty sa ukladajú pri `/savegame` commande, čo zaisťuje, že žiadne prompty sa nestratia a je jasné, kedy sa ukladanie deje. Odstránili sme debug logy z kódu, ktoré boli pridané na diagnostiku problému.
+**Tvorba nástrojov:** Vytvorili sme `.cursor/commands/quest.md` command, rozšírili `scripts/mcp_helpers.py` o GitHub Issues funkcie (`create_github_issue`, `close_github_issue`, `get_github_issue`), vytvorili `.github/workflows/auto-close-issues.yml` workflow, a kompletnú dokumentáciu v `docs/QUEST_SYSTEM.md`. Aktualizovali sme `.cursorrules` s novou sekciou "7. MCP PRIORITY" a rozšírili ACTIVE LOGGING sekciu o Quest System informácie.
 
-**Tvorba nástrojov:** Opravili sme importy v `scripts/auto_save_prompt.py` (odstránenie debug logov, zjednodušenie kódu). Aktualizovali sme dokumentáciu (`docs/MEMORY_SYSTEM.md`) na odrážanie nového savegame-only prístupu. Upravili sme `.cursorrules` na odstránenie nestabilného automatického ukladania a jasné vysvetlenie savegame-only workflow.
+**Introspektívne momenty:** Užívateľ identifikoval, že chce delegovať čo najviac archivácie na AI, pretože nie je programátor, ale vie využiť robustné prostredie. Toto viedlo k návrhu systému, kde lokálne logy zostávajú pre rýchle zapisovanie, ale GitHub Issues poskytujú štruktúrované trackovanie a možnosť AI komentárov.
 
-**Introspektívne momenty:** Identifikovali sme vzorec - automatické systémy, ktoré sa spoliehajú na AI správanie (ako vložený Python kód v `.cursorrules`), sú nestabilné a nepredvídateľné. Spoľahlivejšie je mať explicitné, kontrolované body (ako `/savegame`), kde sa ukladanie deje. Toto je dôležitá lekcia pre dizajn automatizácie - preferovať explicitné kontrolné body nad "magickou" automatizáciou.
+**Strety so systémom:** Po implementácii sme úspešne otestovali Quest System - vytvorili sme Issue #4 "otestovat funkcnost quest systemu", zapísali do logu, a následne ho zatvorili. Systém funguje perfektne. Potom sme riešili otázku merge aktuálnej branchy do main, keďže main obsahoval starú štruktúru. Úspešne sme mergli `session-stvrtok-2025-12-04` do main, čím sa nová 3-layer architektúra stala hlavnou.
 
-**Strety so systémom:** Hlavná frikcia bola v debugovaní, prečo automatické ukladanie nefungovalo. Problém bol, že `.cursorrules` je len textová inštrukcia, ktorú AI môže ignorovať alebo nesprávne interpretovať. Riešenie bolo jednoduché - odstránenie nestabilného mechanizmu a zmena na savegame-only prístup, ktorý je jasný, kontrolovateľný a spoľahlivý.
+**Gamifikačný progres:** XP progres: 167.9 → 175.9 (+8.0 XP, Level 5). Získali sme XP za implementáciu Quest System, vytvorenie dokumentácie, merge do main, a uloženie promptov. Aktuálne sme na 88% Level 5, potrebujeme ešte 24.1 XP na Level 6.
 
-**Gamifikačný progres:** XP sa zvýšilo z 159.78 na 167.9 (+8.12 XP), čo predstavuje stabilný progres v Level 5. Streak zostáva na 3 dňoch. Progres je primárne z práce na debugovaní a stabilizácii prompt logging systému. Systém automaticky počíta XP z logu a promptov, čo zabezpečuje objektívne hodnotenie práce.
+**Prepojenie s dlhodobou víziou:** Quest System je kľúčový krok k automatizácii archivácie a delegovaniu práce na AI. Systém umožňuje jednoduché vytváranie úloh, trackovanie progresu, a automatické zatváranie po dokončení. Toto sa priamo viaže na Magnum Opus víziu - vytvorenie robustného systému, kde AI môže efektívne pomáhať s archiváciou a organizáciou práce.
 
-**Prepojenie s dlhodobou víziou:** Stabilizácia prompt logging systému je kľúčová pre kontinuitu pamäte v Magnum Opus architektúre. Savegame-only prístup zabezpečuje, že všetky prompty sú zachytené a uložené spoľahlivo. Ministers systém (`core/ministers/`) je teraz plne funkčný a integrovaný s savegame workflow. Dokumentácia je aktualizovaná na odrážanie nového prístupu.
+**Otvorené slučky:** Všetky questy z tejto session sú dokončené. Systém je pripravený na polnočnú session rotation - workflow `auto-session-rotation.yml` sa spustí o 00:00 UTC (01:00 CET) a automaticky archivuje aktuálnu session, vytvorí novú session z template, a commitne zmeny do main.
 
-**Otvorené slučky:** Hlavná otvorená slučka je **identifikácia a oprava inkoherencií v systéme** - užívateľ chce prejsť celý systém a identifikovať nekonzistencie v cestách, importoch, dokumentácii. Ďalšie otvorené slučky: review `.cursorrules` na konzistentnosť a jasnosť, kontinuálne zlepšovanie automatizácie a dokumentácie.
+**Analytické poznámky:** Užívateľ má jasnú víziu toho, čo chce - jednoduché, automatizované systémy, kde môže delegovať prácu na AI. Preferuje explicitné kontrolné body nad "magickou" automatizáciou. Systém musí byť robustný a fungovať aj bez MCP (fallback logika).
 
-**Analytické poznámky:** Vzorec v práci je jasný - systematické debugovanie problémov, identifikácia nestabilných mechanizmov, nahradenie spoľahlivejšími riešeniami. Užívateľ má silnú schopnosť identifikovať nestabilitu a systematicky ju riešiť. Práca s automatizáciou ukazuje zrelosť v architektonických rozhodnutiach - preferencia spoľahlivosti a jednoduchosti nad "magickou" automatizáciou.
-
-**Sumarizácia:** Session bola produktívna - debugovali sme problém s automatickým ukladaním promptov, identifikovali sme nestabilný mechanizmus, nahradili sme ho spoľahlivejším savegame-only prístupom, odstránili sme debug logy, aktualizovali sme dokumentáciu. Systém je teraz stabilnejší a spoľahlivejší. V ďalšej session odporúčam: 1) Identifikovať a opraviť inkoherencie v systéme (cesty, importy, dokumentácia), 2) Review `.cursorrules` na konzistentnosť a jasnosť, 3) Kontinuálne zlepšovanie automatizácie a dokumentácie. Dôležité je zachovať systematický prístup k debugging a stabilizácii systémov.
-
----
+**Sumarizácia:** Dnešná session bola zameraná na implementáciu Quest System a merge novej štruktúry do main. Systém je teraz plne funkčný a pripravený na automatickú session rotation o polnoci. Všetky zmeny sú commitnuté a pushnuté do main. V ďalšej session odporúčam pokračovať v práci na otvorených questoch a využívať nový Quest System pre trackovanie úloh.
 
 ## 🎯 Aktívne Questy & Next Steps
 
-### Quest: Oprava Inkoherencií v Systéme
-- **Status:** 🔄 V Prebiehaní (Aktuálna Priorita)
-- **Next Steps:**
-  1. Prejsť celý systém a identifikovať nekonzistencie v cestách
-  2. Opraviť importy v skriptoch, ktoré používajú staré cesty
-  3. Aktualizovať dokumentáciu na odrážanie aktuálnej štruktúry
-  4. Overiť konzistentnosť medzi `.cursorrules`, Cursor commands a skriptmi
-- **Blokátory:** Žiadne
+### Quest System - Implementácia ✅
+- **Status:** ✅ Dokončené
+- **Next Steps:** Systém je funkčný, môže sa používať pre trackovanie úloh
 
-### Quest: Review CursorRules
-- **Status:** 📝 Plánovaná (Priorita #2)
-- **Next Steps:**
-  1. Prejsť `.cursorrules` na konzistentnosť a jasnosť
-  2. Identifikovať redundantné alebo protichodné inštrukcie
-  3. Zjednodušiť a zorganizovať pravidlá
-  4. Overiť, že všetky cesty sú správne
-- **Blokátory:** Žiadne
+### Merge do Main ✅
+- **Status:** ✅ Dokončené
+- **Next Steps:** Main branch teraz obsahuje novú 3-layer architektúru
 
-### Quest: Human 3.0 Evaluácia
-- **Status:** 📝 Plánovaná
-- **Next Steps:**
-  1. Vytvoriť skript `scripts/evaluate_human30_transformation.py`
-  2. Aplikovať Human 3.0 framework na dataset (1,822 konverzácií)
-  3. Mapovať úrovne a fázy pre každý kvadrant (Mind, Body, Spirit, Vocation)
-  4. Vygenerovať kompletný evaluačný report
-- **Blokátory:** Žiadne
-
----
+### Session Rotation - Pripravené ✅
+- **Status:** ✅ Pripravené
+- **Next Steps:** Workflow `auto-session-rotation.yml` sa spustí automaticky o 00:00 UTC
 
 ## ⚠️ Inštrukcie pre Nového Agenta
 
 **O užívateľovi:**
-- Adam je introspektívny tvorca s metakognitívnym štýlom myslenia
-- Preferuje systematické debugovanie a stabilizáciu systémov
-- Má silnú schopnosť identifikovať nestabilitu a systematicky ju riešiť
-- Workspace je teraz stabilnejší a spoľahlivejší
+- Nie je programátor, ale vie využiť robustné prostredie
+- Chce delegovať čo najviac archivácie na AI
+- Preferuje explicitné kontrolné body nad "magickou" automatizáciou
+- Potrebuje jednoduché, automatizované systémy
 
-**O štýle komunikácie:**
+**Štýl komunikácie:**
 - Priamy, analytický, strategický
-- Používa vlastné metafory ("Architekt", "Assembler", "Sanitár")
-- Vyžaduje zmysel a estetiku vo všetkom
-- Odmieta povrchnosť
+- Používať Adamove metafory ("Architekt", "Assembler", "Sanitár")
+- Identifikovať blokátory a konfrontovať ich priamo
+- Vždy zapisovať do logu po významných úkonoch
 
-**O aktuálnom stave:**
-- Prompt logging systém je teraz stabilnejší (savegame-only prístup)
-- Ministers systém je plne funkčný a integrovaný s savegame workflow
-- Dokumentácia je aktualizovaná na odrážanie nového prístupu
-- Hlavná priorita: identifikácia a oprava inkoherencií v systéme
+**Dôležité:**
+- Vždy používať MCP najprv (ak je dostupné) - pozri sekciu "7. MCP PRIORITY" v `.cursorrules`
+- Quest System je funkčný - používať `/quest` pre vytváranie úloh
+- Session rotation sa spustí automaticky o polnoci - nie je potrebné manuálne zasahovať
+- Main branch teraz obsahuje novú štruktúru - všetky zmeny sa commitnú do main
 
-**O technickom kontexte:**
-- Workspace: `/Users/_xvadur/Desktop/xvadur-workspace`
-- Prompt logging: `development/data/prompts_log.jsonl` (savegame-only)
-- Ministers systém: `core/ministers/` (plne funkčný)
-- Dokumentácia: `docs/MEMORY_SYSTEM.md`, `docs/README.md`
-- XP systém: `development/logs/XVADUR_XP.md` (167.9 XP, Level 5)
-
-**Dôležité poznámky:**
-- Prompty sa ukladajú iba pri `/savegame` commande (nie automaticky)
-- Ministers systém používa `FileStore` pre persistentné ukladanie (JSONL)
-- Všetky cesty používajú `development/` prefix (3-layer architektúra)
-- Systém je pripravený na identifikáciu a opravu inkoherencií
+**Pripravené na polnoc:**
+- ✅ Workflow `auto-session-rotation.yml` je nastavený na 00:00 UTC
+- ✅ Main branch obsahuje novú štruktúru
+- ✅ Všetky zmeny sú commitnuté a pushnuté
+- ✅ Systém je pripravený na automatickú session rotation
 
 ---
 
-**Posledná aktualizácia:** 2025-12-04 22:07
+**Vytvorené:** 2025-12-04 23:26  
+**Posledná aktualizácia:** 2025-12-04 23:26
