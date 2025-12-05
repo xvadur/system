@@ -45,8 +45,9 @@ jobs:
           if [ ! -f "staging/sessions/today/session.md" ]; then
             echo "⚠️  staging/sessions/today/session.md neexistuje, vytváram základný súbor"
             mkdir -p staging/sessions/today
-            cat > staging/sessions/today/session.md << 'EOF'
-# Session: ${{ env.CURRENT_DATE }}
+            SESSION_DATE="${{ env.CURRENT_DATE }}"
+            cat > staging/sessions/today/session.md << EOF
+# Session: ${SESSION_DATE}
 
 ## 🎯 Cieľ Dňa
 *Doplň svoj cieľ pre dnešný deň*
