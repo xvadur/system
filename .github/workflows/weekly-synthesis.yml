@@ -46,27 +46,8 @@ jobs:
           mkdir -p "$OUTPUT_DIR"
           
           REPORT_FILE="$OUTPUT_DIR/week_${WEEK}.md"
-          cat > "$REPORT_FILE" << EOF
-# Weekly Report: $WEEK
-
-**Generated:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')
-
-## 📊 Týždenný Prehľad
-
-*Tento report bol vytvorený automaticky. Pre detailnú analýzu pozri development/logs/XVADUR_LOG.md*
-
-## 📈 Metriky
-
-*Metriky budú doplnené po implementácii weekly synthesis skriptu*
-
-## ✅ Dokončené Úlohy
-
-*Zoznam dokončených úloh za týždeň*
-
-## 🎯 Ciele na Ďalší Týždeň
-
-*Ciele a priority na nasledujúci týždeň*
-EOF
+          TIMESTAMP=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          python3 -c "from pathlib import Path; import os; week = os.environ.get('WEEK', ''); timestamp = os.environ.get('TIMESTAMP', ''); content = f'# Weekly Report: {week}\n\n**Generated:** {timestamp}\n\n## 📊 Týždenný Prehľad\n\n*Tento report bol vytvorený automaticky. Pre detailnú analýzu pozri development/logs/XVADUR_LOG.md*\n\n## 📈 Metriky\n\n*Metriky budú doplnené po implementácii weekly synthesis skriptu*\n\n## ✅ Dokončené Úlohy\n\n*Zoznam dokončených úloh za týždeň*\n\n## 🎯 Ciele na Ďalší Týždeň\n\n*Ciele a priority na nasledujúci týždeň*\n'; Path(os.environ.get('REPORT_FILE', '')).write_text(content, encoding='utf-8')" || echo "# Weekly Report: $WEEK\n\n**Generated:** $TIMESTAMP\n\n## 📊 Týždenný Prehľad\n\n*Tento report bol vytvorený automaticky.*\n" > "$REPORT_FILE"
           echo "✅ Weekly report vytvorený: $REPORT_FILE"
           
       - name: Commit changes

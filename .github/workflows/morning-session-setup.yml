@@ -45,22 +45,7 @@ jobs:
           if [ ! -f "staging/sessions/today/session.md" ]; then
             echo "⚠️  staging/sessions/today/session.md neexistuje, vytváram základný súbor"
             mkdir -p staging/sessions/today
-            SESSION_DATE="${{ env.CURRENT_DATE }}"
-            cat > staging/sessions/today/session.md << EOF
-# Session: ${SESSION_DATE}
-
-## 🎯 Cieľ Dňa
-*Doplň svoj cieľ pre dnešný deň*
-
-## 📝 Poznámky
-*Tvoje poznámky z práce*
-
-## ✅ Dokončené Úlohy
-*Zoznam dokončených úloh*
-
-## 🔄 V Práci
-*Úlohy, na ktorých práve pracuješ*
-EOF
+            python3 -c "import sys; from pathlib import Path; import os; session_date = os.environ.get('CURRENT_DATE', ''); session_content = f'# Session: {session_date}\n\n## 🎯 Cieľ Dňa\n*Doplň svoj cieľ pre dnešný deň*\n\n## 📝 Poznámky\n*Tvoje poznámky z práce*\n\n## ✅ Dokončené Úlohy\n*Zoznam dokončených úloh*\n\n## 🔄 V Práci\n*Úlohy, na ktorých práve pracuješ*\n'; session_path = Path('staging/sessions/today/session.md'); session_path.write_text(session_content, encoding='utf-8'); print(f'✅ Session súbor vytvorený: {session_path}')"
           fi
           
           cp staging/sessions/today/session.md development/sessions/current/session.md

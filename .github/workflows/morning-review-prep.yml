@@ -59,24 +59,8 @@ jobs:
             echo "Creating fallback review..."
             mkdir -p staging/review
             TODAY=$(date -u +'%Y-%m-%d')
-            cat > staging/review/daily_review.md << EOF
-# 🌅 Denný Review: $TODAY
-
-## ⚠️ Automatické generovanie zlyhalo
-
-Workflow sa pokúsil vygenerovať denný review, ale skript zlyhal.
-
-**Možné príčiny:**
-- Chýbajú dáta z včerajšieho dňa (staging/sessions/yesterday/)
-- Problém s MCP integráciou
-- Chyba v skripte generate_daily_review.py
-
-**Riešenie:**
-Skontroluj logy workflowu pre detailnejšie informácie.
-
----
-*Vygenerované automaticky: $(date -u +'%Y-%m-%d %H:%M:%S UTC')*
-EOF
+            TIMESTAMP=$(date -u +'%Y-%m-%d %H:%M:%S UTC')
+            python3 -c "from pathlib import Path; import os; content = f'# 🌅 Denný Review: {os.environ.get(\"TODAY\", \"\")}\n\n## ⚠️ Automatické generovanie zlyhalo\n\nWorkflow sa pokúsil vygenerovať denný review, ale skript zlyhal.\n\n**Možné príčiny:**\n- Chýbajú dáta z včerajšieho dňa (staging/sessions/yesterday/)\n- Problém s MCP integráciou\n- Chyba v skripte generate_daily_review.py\n\n**Riešenie:**\nSkontroluj logy workflowu pre detailnejšie informácie.\n\n---\n*Vygenerované automaticky: {os.environ.get(\"TIMESTAMP\", \"\")}*\n'; Path('staging/review/daily_review.md').write_text(content, encoding='utf-8')" || echo "# 🌅 Denný Review: $TODAY\n\n## ⚠️ Automatické generovanie zlyhalo\n\nWorkflow sa pokúsil vygenerovať denný review, ale skript zlyhal.\n\n---\n*Vygenerované automaticky: $TIMESTAMP*" > staging/review/daily_review.md
             echo "✅ Fallback review created"
           fi
 
