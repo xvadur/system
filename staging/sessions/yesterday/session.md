@@ -1,18 +1,3 @@
-# 📋 Session: 2025-12-05 - Nová Session
-
-**Session ID:** `2025-12-05_AUTO`  
-**Dátum:** 2025-12-05  
-**Status:** 🟢 Aktívna  
-**Vytvorená:** Automaticky o 00:00
-
----
-
-## 🎯 Cieľ Dňa
-*Čo chceš dnes dosiahnuť?*
-
-## 📋 Včerajší Sumár
-Sequential Thinking analysis for prompt: 'Zosumarizuj nasledujúci session záznam:
-
 # 📋 Session: Štvrtok 2025-12-04 - Kortex Extractions & Human 3.0
 
 **Session ID:** `2025-12-04_FULL`  
@@ -135,15 +120,3 @@ Prechod z "budovania infraštruktúry" na "hlbokú analýzu". Máme dáta, teraz
 
 **Poznámka pod čiarou:**
 Dnešok bol o "upratovaní minulosti", aby sme na nej mohli stavať budúcnosť. Dataset je teraz pripravený na RAG, Finetuning alebo akúkoľvek hlbokú analýzu.
-'
-
-## ✅ Plánované Úlohy
-- [ ] 
-
-## 📝 Poznámky
-*Tvoje poznámky počas dňa*
-
----
-
-**Vytvorené:** 2025-12-05T06:09:55.141687+01:00  
-**Posledná aktualizácia:** 2025-12-05T06:09:55.141687+01:00
