@@ -2,62 +2,64 @@
 
 ## 📊 Status
 - **Rank:** AI Developer
-- **Level:** 5
-- **XP:** 181.4 / 200 (90.7%)
-- **Next Level:** 18.6 XP potrebné
-- **Last Session:** Piatok 2025-12-05 (07:50)
+- **Level:** 1
+- **XP:** 0.0 / 10 (0.0%)
+- **Next Level:** 10.0 XP potrebné
+- **Last Session:** Piatok 2025-12-05 (20:45)
 
 ---
 
 ## 🎯 Posledná Session - Sumár
 
 **Čo sa robilo:**
-- Riešenie kritickej straty historických session súborov
-- Implementácia token optimization plánu pre udržateľnosť
-- Migrácia na DeepSeek v3.1 ako lacnejšiu alternatívu
+- Migrácia z GitHub Actions na lokálny scheduler (cost-saving)
+- Vytvorenie kompletného lokálneho scheduler systému
+- Oprava YAML syntax chýb v workflow súboroch
+- Odstránenie auto-close-issues.yml workflow
 
 **Kľúčové rozhodnutia:**
-- Zmena cleanup stratégie na obmedzenejšiu
-- Implementácia Quest Systemu s GitHub Issues
-- Prepnutie na savegame-only prompt logging pre stabilitu
+- Lokálny scheduler namiesto GitHub Actions (ušetrenie nákladov)
+- Jeden master skript namiesto troch schedulerov (efektívnosť)
+- Identifikácia potreby refaktorovania kontextu pre token optimalizáciu
 
 **Vykonané úlohy:**
-- Komplexný cleanup duplikátov v repozitári
-- Vytvorenie a implementácia token optimization
-- Oprava `.cursorignore` pre lepší AI prístup
+- Vytvorenie `scripts/daily_rotation.py` (master skript)
+- Vytvorenie `scripts/utils/git_helper.py` (git push helper)
+- Vytvorenie macOS launchd scheduler systému
+- Odstránenie `auto-close-issues.yml` workflow
 
 ---
 
 ## 🎯 Aktívne Questy
 
-### Rekonštrukcia stratených session dát
-- **Status:** ⏳
-- **Next Steps:** Extrahovať dáta z prompts_log.jsonl a XVADUR_LOG.md
-- **Blokátory:** Chýbajúce originálne session súbory
+### Refaktorovanie kontextu pre token optimalizáciu
+- **Status:** 🆕 Nový quest
+- **Next Steps:** Navrhnúť štrukturované formáty (JSON/YAML) namiesto naratívnych Markdown dokumentov
+- **Blokátory:** Žiadne
 
-### Automatický backup systém
+### Testovanie lokálneho scheduleru
 - **Status:** ⏳
-- **Next Steps:** Navrhnúť a implementovať backup workflow
+- **Next Steps:** Manuálne otestovať a nainštalovať launchd scheduler
 - **Blokátory:** Žiadne
 
 ---
 
 ## 📋 Next Steps
 
-1. Rekonštruovať stratené session dáta z dostupných logov
-2. Implementovať automatický backup systém pre kritické súbory
-3. Monitorovať token spotrebu na DeepSeek v3.1
-4. Dokončiť integráciu Quest Systemu
+1. Vytvoriť nový quest pre refaktorovanie kontextu
+2. Otestovať `scripts/daily_rotation.py` manuálne
+3. Nainštalovať lokálny scheduler
+4. Navrhnúť štrukturované formáty pre logy a save games
 
 ---
 
 ## 🔑 Kľúčové Kontexty
 
-- Strata session dát vyžaduje lepšiu dátovú resilienciu
-- Token optimization je kritická pre udržateľnosť daily drive
-- DeepSeek v3.1 ako cost-effective alternativa k Cursor Pro
+- GitHub Actions náklady viedli k migrácii na lokálny scheduler
+- Potreba optimalizácie token spotreby cez štrukturované formáty
+- Lokálny scheduler = bez nákladov, plná kontrola, kód na GitHube
 
 ---
 
-**Full Details:** `development/sessions/save_games/SAVE_GAME_LATEST.md`
-**Last Updated:** 2025-12-05 07:50
+**Full Details:** `development/sessions/save_games/SAVE_GAME_LATEST.md`  
+**Last Updated:** 2025-12-05 20:45

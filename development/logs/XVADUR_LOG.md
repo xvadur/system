@@ -879,3 +879,11 @@
 ---
 
 [07:50] 💾 Vytvorený save game: 2025-12-05 - Riešenie problémov s duplicitami a optimalizácia tokenov
+[20:44] 🔹 Finálny savegame: Migrácia na lokálny scheduler, odstránenie GitHub Actions
+  - *Zmenené súbory:*
+    - development/sessions/save_games/SAVE_GAME_LATEST.md
+    - development/sessions/save_games/SAVE_GAME_LATEST_SUMMARY.md
+    - .github/workflows/auto-close-issues.yml
+  - *Status:* Completed
+  - *XP:* 15.0
+
