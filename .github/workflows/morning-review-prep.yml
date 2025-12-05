@@ -108,6 +108,7 @@ EOF
             echo "DEBUG: Committing review changes..."
             git commit -m "chore(review): generate daily review for $(date -u +'%Y-%m-%d')"
             echo "DEBUG: Commit successful"
-            git push
-            echo "DEBUG: Push successful"
+            CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+            git push origin "$CURRENT_BRANCH" || echo "⚠️  Push failed"
+            echo "DEBUG: Push completed"
           fi

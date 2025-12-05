@@ -70,10 +70,17 @@ EOF
           echo "✅ Weekly report vytvorený: $REPORT_FILE"
           
       - name: Commit changes
+        continue-on-error: true
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git diff --staged --quiet || git commit -m "chore(report): weekly synthesis [skip ci]"
-          git push
+          
+          if git diff --staged --quiet; then
+            echo "ℹ️  No changes to commit"
+          else
+            git commit -m "chore(report): weekly synthesis [skip ci]"
+            CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+            git push origin "$CURRENT_BRANCH" || echo "⚠️  Push failed"
+          fi
 
