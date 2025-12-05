@@ -16,6 +16,7 @@ from scripts.mcp_helpers import (
     export_to_obsidian,
     get_time_from_mcp
 )
+from scripts.utils.log_manager import add_log_entry # Import novej funkcie
 
 def generate_daily_review():
     """
@@ -25,6 +26,11 @@ def generate_daily_review():
     3. Uloží review do staging/review.
     4. Exportuje do Obsidianu.
     """
+    add_log_entry(
+        action_name="Spustenie generovania denného review",
+        status="Started",
+    )
+
     staging_yesterday_path = workspace_root / "staging" / "sessions" / "yesterday"
     summary_path = staging_yesterday_path / "summary.md"
     metrics_path = staging_yesterday_path / "metrics.json"
@@ -42,6 +48,12 @@ def generate_daily_review():
             metrics = json.load(f)
             
     if not summary and not metrics:
+        add_log_entry(
+            action_name="Generovanie denného review",
+            status="Failed",
+            files_changed=[str(summary_path), str(metrics_path)],
+            xp_estimate=0.0
+        )
         print("Chyba: Neboli nájdené dáta z včerajšieho dňa.", file=sys.stderr)
         return
 
@@ -81,6 +93,13 @@ def generate_daily_review():
         print(f"✅ Review exportovaný do Obsidianu: {obsidian_path}")
     else:
         print("⚠️ Nepodarilo sa exportovať review do Obsidianu (MCP nie je dostupné).")
+
+    add_log_entry(
+        action_name="Generovanie denného review",
+        status="Completed",
+        files_changed=[str(review_path)],
+        xp_estimate=2.0 # Príklad hodnoty XP
+    )
 
 if __name__ == "__main__":
     generate_daily_review()

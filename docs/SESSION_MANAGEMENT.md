@@ -1,18 +1,18 @@
 #  Súbor: docs/SESSION_MANAGEMENT.md
-# Popis: Dokumentácia pre 3-vrstvový session management.
+# Popis: Dokumentácia pre 3-vrstvový session management s MCP integráciou.
 # Autor: AI Agent
-# Dátum: 2025-12-04
+# Dátum: 2025-12-05
 
-# 🔄 Session Management v3
+# 🔄 Session Management v3.1
 
-**Verzia:** 3.0.0  
-**Posledná aktualizácia:** 2025-12-04
+**Verzia:** 3.1.0  
+**Posledná aktualizácia:** 2025-12-05
 
 ---
 
 ## Prehľad
 
-Tento dokument popisuje 3-vrstvovú architektúru pre session management v XVADUR workspace. Cieľom je oddeliť priebežnú prácu od automatizovaných procesov a ranného review.
+Tento dokument popisuje 3-vrstvovú architektúru pre session management v XVADUR workspace s plnou MCP integráciou. Systém automaticky spravuje denné sessiony, branch rotation a ranné review.
 
 ---
 
@@ -53,19 +53,42 @@ Tento dokument popisuje 3-vrstvovú architektúru pre session management v XVADU
 
 ---
 
-## Automatizačné Procesy
+## Denný Session Rotation s MCP
+
+### GitHub Branch Strategy
+
+- **`main`:** Hlavná stabilná vetva
+- **`session-YYYY-MM-DD`:** Denné session vetvy (napr. `session-2025-12-05`)
+- **Automatické mergovanie:** O polnoci sa aktuálna session branch merguje do main
+
+### Časový Plán
+
+1. **00:00 UTC (Polnoc):**
+   - Merge aktuálnej session branch do `main`
+   - Vytvorenie novej session branch pre nasledujúci deň
+   - Archivácia včerajšej session
+
+2. **07:00 SEČ (Ráno):**
+   - Vytvorenie novej session v `development/sessions/current/`
+   - Generovanie denného review
+
+---
+
+## Automatizačné Procesy s MCP Integráciou
 
 ### 1. Auto Session Rotation (`.github/workflows/auto-session-rotation.yml`)
 
 - **Trigger:** Každý deň o 00:00 UTC.
 - **Kroky:**
-  1.  Spustí `scripts/auto_archive_session.py`:
+  1.  **GitHub MCP:** Merge aktuálnej session branch do `main`
+  2.  **GitHub MCP:** Vytvorenie novej session branch
+  3.  Spustí `scripts/auto_archive_session.py`:
       - Presunie `development/sessions/current/session.md` do `staging/sessions/yesterday/`.
       - Vygeneruje `summary.md` a `metrics.json`.
-  2.  Spustí `scripts/create_new_session.py`:
+  4.  Spustí `scripts/create_new_session.py`:
       - Vytvorí novú session v `staging/sessions/today/` z template.
       - Skopíruje ju do `development/sessions/current/`.
-  3.  Commitne zmeny.
+  5.  **GitHub MCP:** Commitne zmeny do novej session branch.
 
 ### 2. Morning Review Prep (`.github/workflows/morning-review-prep.yml`)
 
@@ -73,22 +96,50 @@ Tento dokument popisuje 3-vrstvovú architektúru pre session management v XVADU
 - **Kroky:**
   1.  Spustí `scripts/generate_daily_review.py`:
       - Načíta dáta zo `staging/sessions/yesterday/`.
-      - Vygeneruje `staging/review/daily_review.md` pomocou `Sequential Thinking MCP`.
-  2.  Commitne zmeny.
+      - **Sequential Thinking MCP:** Vygeneruje `staging/review/daily_review.md`.
+  2.  **GitHub MCP:** Commitne zmeny.
+
+### 3. 7:00 Session Setup (`.github/workflows/morning-session-setup.yml`)
+
+- **Trigger:** Každý deň o 07:00 SEČ.
+- **Kroky:**
+  1.  **Time MCP:** Overenie správneho časového pásma
+  2.  Skopíruje `staging/sessions/today/session.md` do `development/sessions/current/`
+  3.  Aktualizuje `XVADUR_LOG.md` s novou session informáciou
+  4.  **GitHub MCP:** Commitne zmeny
 
 ---
 
 ## Tvoj Denný Workflow
 
-1.  **Ráno:**
-    - Otvoríš `staging/review/daily_review.md`.
-    - Skontroluješ včerajšie metriky a sumár.
-    - Otvoríš `development/sessions/current/session.md`, ktorý je už pripravený.
-    - Doplníš `🎯 Cieľ Dňa`.
+1.  **Ráno o 7:00:**
+    - Nájdeš pripravenú session v `development/sessions/current/session.md`
+    - Otvoríš `staging/review/daily_review.md` pre včerajší sumár
+    - Doplníš `🎯 Cieľ Dňa` do novej session
 
 2.  **Počas Dňa:**
-    - Pracuješ v `development/sessions/current/session.md`.
-    - Používaš `/savegame` na vytváranie checkpointov v `development/sessions/save_games/`.
+    - Pracuješ v `development/sessions/current/session.md`
+    - Používaš `/savegame` na checkpointy
+    - **Priebežné task logging:** Každá úloha sa automaticky zapisuje do `XVADUR_LOG.md`
 
-3.  **Večer:**
-    - Automatizácia sa postará o archiváciu a prípravu na ďalší deň.
+3.  **Automatizácia:**
+    - O polnoci: Session rotation a archivácia
+    - O 6:00: Generovanie ranného review  
+    - O 7:00: Príprava novej session
+
+---
+
+## MCP Nástroje Použité
+
+- **GitHub MCP:** Branch management, mergovanie, commity
+- **Time MCP:** Presné časové synchronizácie
+- **Sequential Thinking MCP:** Analýza a generovanie review
+- **Obsidian MCP:** Export do knowledge base
+
+---
+
+## Súvisiace Dokumenty
+
+- `core/mcp/README.md` - Kompletná MCP integrácia dokumentácia
+- `scripts/mcp_helpers.py` - MCP wrapper funkcie
+- `.github/workflows/` - Automatizačné workflowy

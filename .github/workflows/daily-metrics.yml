@@ -45,7 +45,7 @@ jobs:
           python -c "
           import sys
           sys.path.insert(0, '.')
-          from core.xp.calculator import calculate_xp, update_xp_file
+          from scripts.calculate_xp import calculate_xp, update_xp_file
           
           print('DEBUG: Starting XP calculation...')
           xp_data = calculate_xp('development/data/prompts_log.jsonl', 'development/logs/XVADUR_LOG.md')

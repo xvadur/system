@@ -1,25 +1,74 @@
-# 📋 Session: [Dátum] - [Názov]
+# 🧠 DENNÁ SESSION: [Deň] [YYYY-MM-DD]
 
-**Session ID:** `[YYYY-MM-DD]_AUTO`  
-**Dátum:** [YYYY-MM-DD]  
-**Status:** 🟢 Aktívna  
-**Vytvorená:** Automaticky o 00:00
+**Účel:** Denný záznam práce, úloh a poznámok
 
 ---
 
-## 🎯 Cieľ Dňa
-*Čo chceš dnes dosiahnuť?*
+## 📋 PLÁN DŇA
 
-## 📋 Včerajší Sumár
-[VČERAJŠÍ_SUMÁR]
-
-## ✅ Plánované Úlohy
+### 🎯 Hlavné Ciele
+- [ ] 
+- [ ] 
 - [ ] 
 
-## 📝 Poznámky
-*Tvoje poznámky počas dňa*
+### 🔧 Technické Úlohy
+- [ ] 
+- [ ] 
+- [ ] 
+
+### 📊 Metriky (na konci dňa)
+- **XP získané:** 
+- **Úlohy dokončené:** 
+- **Prompty použité:** 
+- **Čas strávený:** 
 
 ---
 
-**Vytvorené:** [Timestamp]  
-**Posledná aktualizácia:** [Timestamp]
+## 📝 PRÁCA A POZNÁMKY
+
+### 🕘 Ráno (09:00 - 12:00)
+- 
+
+### 🕛 Obed (12:00 - 13:00)
+- 
+
+### 🕐 Popoludnie (13:00 - 18:00)
+- 
+
+### 🕖 Večer (18:00 - 22:00)
+- 
+
+---
+
+## 🔍 ANALÝZA A REFLEXIA
+
+### ✅ Čo sa podarilo
+- 
+
+### ⚠️ Problémy a Výzvy
+- 
+
+### 💡 Nápady a Inšpirácie
+- 
+
+### 🎯 Plán na Ďalší Deň
+- 
+
+---
+
+## 📎 PRILOHY
+
+### 🔗 Odkazy
+- 
+
+### 📁 Súbory
+- 
+
+### 🎮 Questy
+- 
+
+---
+
+**Vytvorené:** [YYYY-MM-DD HH:MM]  
+**Posledná aktualizácia:** [YYYY-MM-DD HH:MM]  
+**Status:** Aktívna

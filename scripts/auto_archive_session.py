@@ -20,6 +20,7 @@ from scripts.mcp_helpers import (
     get_time_from_mcp,
 )
 from scripts.calculate_daily_metrics import calculate_metrics_for_session
+from scripts.utils.log_manager import add_log_entry # Import novej funkcie
 
 def archive_current_session():
     """
@@ -31,48 +32,72 @@ def archive_current_session():
     5. Uloží sumár a metriky.
     6. Exportuje do Obsidianu.
     """
+    add_log_entry(
+        action_name="Spustenie archivácie session",
+        status="Started",
+        files_changed=["development/sessions/current/session.md"],
+    )
+
     dev_current_session_path = workspace_root / "development" / "sessions" / "current" / "session.md"
     staging_yesterday_path = workspace_root / "staging" / "sessions" / "yesterday"
-    
+
     staging_yesterday_path.mkdir(exist_ok=True)
-    
+
     if not dev_current_session_path.exists():
+        add_log_entry(
+            action_name="Archivácia session",
+            status="Failed",
+            files_changed=[str(dev_current_session_path)],
+            xp_estimate=0.0
+        )
         print(f"Chyba: Súbor {dev_current_session_path} neexistuje.", file=sys.stderr)
         return
 
     # 1. Prečítanie obsahu session
     session_content = dev_current_session_path.read_text(encoding="utf-8")
-    
+
     # 2. Vytvorenie sumáru pomocou MCP
     summary_prompt = f"Zosumarizuj nasledujúci session záznam:\n\n{session_content}"
     summary = analyze_with_sequential_thinking(summary_prompt)
-    
+
     # 3. Vypočítanie metrík (bude implementované v calculate_daily_metrics.py)
     today = date.today()
     metrics = calculate_metrics_for_session(session_content, today)
-    
+
     # 4. Presun session súboru
     archived_session_path = staging_yesterday_path / "session.md"
     shutil.move(str(dev_current_session_path), str(archived_session_path))
-    
+
     # 5. Uloženie sumáru a metrík
     summary_path = staging_yesterday_path / "summary.md"
     summary_path.write_text(summary, encoding="utf-8")
-    
+
     metrics_path = staging_yesterday_path / "metrics.json"
     with metrics_path.open("w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=4)
-        
+
     print(f"✅ Session archivovaná do {archived_session_path}")
     print(f"✅ Sumár uložený do {summary_path}")
     print(f"✅ Metriky uložené do {metrics_path}")
-    
+
     # 6. Export do Obsidianu
     obsidian_path = f"Sessions/Archive/{today.strftime('%Y-%m-%d')}_session.md"
     if export_to_obsidian(session_content, obsidian_path):
         print(f"✅ Session exportovaná do Obsidianu: {obsidian_path}")
     else:
         print("⚠️ Nepodarilo sa exportovať session do Obsidianu (MCP nie je dostupné).")
+
+    add_log_entry(
+        action_name="Archivácia session",
+        status="Completed",
+        files_changed=[
+            str(dev_current_session_path),
+            str(archived_session_path),
+            str(summary_path),
+            str(metrics_path),
+        ],
+        xp_estimate=10.0 # Príklad hodnoty XP
+    )
 
 if __name__ == "__main__":
     archive_current_session()

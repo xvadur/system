@@ -4,6 +4,46 @@
 
 ---
 
+## [2025-12-05] 🔹 Session: GitHub Logika & Session Rotation Systém
+
+**Vykonané:**
+- ✅ Presun MCP_INTEGRATION.md z docs/ do core/mcp/README.md
+- ✅ Aktualizácia SESSION_MANAGEMENT.md dokumentácie s novou logikou
+- ✅ Implementácia denného session rotation systému s GitHub branchami
+- ✅ Vytvorenie morning-session-setup.yml workflow pre 7:00 session setup
+- ✅ Implementácia priebežného task loggingu do XVADUR_LOG.md
+- ✅ Vytvorenie scripts/utils/log_manager.py modulu
+- ✅ Integrácia logovania do auto_archive_session.py, create_new_session.py, generate_daily_review.py
+
+**Hlavné Výsledky:**
+- **MCP Dokumentácia:** Presunutá na správne miesto v core/mcp/
+- **Session Rotation:** Automatický merge branch o polnoci + vytvorenie novej session branch
+- **Morning Setup:** Automatické vytvorenie session o 7:00 SEČ
+- **Task Logging:** Priebežné logovanie úloh do XVADUR_LOG.md cez log_manager.py
+
+**Kľúčové rozhodnutia:**
+- GitHub branch strategy: session-YYYY-MM-DD branches s automatickým mergovaním
+- Časový plán: 00:00 UTC (merge + archivácia), 07:00 SEČ (nová session)
+- Logging systém: Centralizovaný cez log_manager.py modul
+
+**Zmeny v súboroch:**
+- `core/mcp/README.md` - nová MCP dokumentácia (presunutá z docs/)
+- `docs/SESSION_MANAGEMENT.md` - aktualizovaná s novou logikou
+- `.github/workflows/auto-session-rotation.yml` - aktualizovaný s branch logikou
+- `.github/workflows/morning-session-setup.yml` - nový workflow pre 7:00 setup
+- `scripts/utils/log_manager.py` - nový modul pre task logging
+- `scripts/auto_archive_session.py` - pridané logovanie
+- `scripts/create_new_session.py` - pridané logovanie
+- `scripts/generate_daily_review.py` - pridané logovanie
+
+**Status:**
+- ✅ Všetky úlohy dokončené
+- ✅ GitHub logika zosúladená
+- ✅ Session rotation systém implementovaný
+- ✅ Task logging systém funkčný
+
+---
+
 ## [2025-12-04 22:07] 🔹 Session: Debugging & Stabilizácia Prompt Logging Systému
 
 **Vykonané:**
@@ -188,7 +228,9 @@
 
 **Kritický problém:** Spotrebovaných 77% tokenov (48M), zostáva len 5€. Potrebuje urgentné riešenie.
 
----
+
+[08:28] ✅ Dokončená úloha #5: usage tokenizacia - kritický problém s spotrebou tokenov v Cursor Pro
+
 
 
 
@@ -232,7 +274,9 @@
 - ✅ Session "Streda" ukončená
 - ✅ XP: 127.16 (Level 5, 63.6%)
 
----
+
+[08:30] 🔹 Vytvorená úloha: Synchronizácia branchy - vytvoriť piatkovú session branchu
+
 
 ## [2025-12-04 01:00] 🔹 Kontinuálna Analýza: Pokus a Pause
 

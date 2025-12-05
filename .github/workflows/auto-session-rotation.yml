@@ -10,77 +10,109 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write # Potrebné pre vytváranie a mergovanie PR
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Potrebné pre kompletnú históriu a operácie s branchami
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Debug - Workflow start
+      - name: Check required files
         run: |
-          echo "DEBUG: Session rotation workflow started at $(date)"
-          echo "DEBUG: Current directory: $(pwd)"
-          echo "DEBUG: GitHub repository: ${{ github.repository }}"
-          echo "DEBUG: Branch: ${{ github.ref }}"
+          echo "🔍 Kontrola požadovaných súborov:"
 
-      - name: Debug - Check file structure
-        run: |
-          echo "DEBUG: Checking development/sessions structure"
-          ls -la development/sessions/ || echo "DEBUG: development/sessions not found"
-          ls -la development/sessions/current/ 2>/dev/null || echo "DEBUG: current/ not found"
-          ls -la development/sessions/archive/ 2>/dev/null || echo "DEBUG: archive/ not found"
-          ls -la templates/ 2>/dev/null || echo "DEBUG: templates/ not found"
-
-      - name: Debug - Check template file
-        run: |
-          if [ -f "templates/session_template.md" ]; then
-            echo "DEBUG: Template found, size: $(wc -l < templates/session_template.md) lines"
-            head -5 templates/session_template.md
+          # Skontroluj session skripty
+          if [ -f "scripts/auto_archive_session.py" ]; then
+            echo "✅ scripts/auto_archive_session.py - OK"
           else
-            echo "ERROR: templates/session_template.md missing!"
+            echo "❌ scripts/auto_archive_session.py - CHÝBA"
+            exit 1
           fi
 
-      - name: Run session rotation scripts
-        run: |
-          echo "DEBUG: Starting auto_archive_session.py"
-          python scripts/auto_archive_session.py || echo "ERROR: auto_archive_session.py failed"
-          
-          echo "DEBUG: Starting create_new_session.py"
-          python scripts/create_new_session.py || echo "ERROR: create_new_session.py failed"
+          if [ -f "scripts/create_new_session.py" ]; then
+            echo "✅ scripts/create_new_session.py - OK"
+          else
+            echo "❌ scripts/create_new_session.py - CHÝBA"
+            exit 1
+          fi
 
-      - name: Debug - Post-script file check
-        run: |
-          echo "DEBUG: After scripts - current/ contents:"
-          ls -la development/sessions/current/ 2>/dev/null || echo "DEBUG: current/ empty or missing"
-          echo "DEBUG: Archive contents:"
-          ls -la development/sessions/archive/ 2>/dev/null || echo "DEBUG: archive/ empty or missing"
-          echo "DEBUG: Staging today:"
-          ls -la staging/sessions/today/ 2>/dev/null || echo "DEBUG: staging/today empty or missing"
+          # Skontroluj template (varovanie, nie chyba)
+          if [ -f "templates/session_template.md" ]; then
+            echo "✅ templates/session_template.md - OK"
+          else
+            echo "⚠️  templates/session_template.md - CHÝBA (použije sa fallback)"
+          fi
 
-      - name: Commit changes
+      - name: Configure Git
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add -A
-          
-          echo "DEBUG: Git status before commit:"
-          git status
-          echo "DEBUG: Git diff summary:"
-          git diff --stat
-          
-          if git diff --staged --quiet; then
-            echo "DEBUG: No changes to commit."
+
+      - name: Get current date for branch naming
+        id: date
+        run: echo "CURRENT_DATE=$(date -u +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: Create session branch
+        run: |
+          BRANCH_NAME="session-${{ env.CURRENT_DATE }}"
+          echo "➡️  Vytváram branch: $BRANCH_NAME"
+          git checkout -b $BRANCH_NAME || git checkout $BRANCH_NAME # Vytvorí alebo prepne na existujúcu branch
+          git push origin $BRANCH_NAME --force # Pre istotu, ak už branch existuje a chceme ju prepísať
+
+      - name: Run session rotation scripts
+        run: |
+          echo "🔄 Spúštam session rotation skripty..."
+
+          # Spusti auto_archive_session.py
+          if python scripts/auto_archive_session.py; then
+            echo "✅ auto_archive_session.py úspešné"
           else
-            echo "DEBUG: Committing changes..."
-            git commit -m "chore(session): auto-rotation for $(date -u +'%Y-%m-%d')"
-            echo "DEBUG: Commit successful"
-            git push
-            echo "DEBUG: Push successful"
+            echo "❌ auto_archive_session.py zlyhalo"
+            exit 1
           fi
+
+          # Spusti create_new_session.py
+          if python scripts/create_new_session.py; then
+            echo "✅ create_new_session.py úspešné"
+          else
+            echo "❌ create_new_session.py zlyhalo"
+            exit 1
+          fi
+
+      - name: Commit and push changes to session branch
+        run: |
+          git add -A
+          git commit -m "chore(session): auto-rotation for ${{ env.CURRENT_DATE }}" || echo "⚠️  Commit failed (možno žiadne zmeny)"
+          git push origin session-${{ env.CURRENT_DATE }} || echo "⚠️  Push failed (možno žiadne zmeny)"
+
+      - name: Create Pull Request
+        id: create_pr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(session): auto-rotation for ${{ env.CURRENT_DATE }}"
+          title: "Session Rotation: ${{ env.CURRENT_DATE }}"
+          body: |
+            Automatické generovanie session pre ${{ env.CURRENT_DATE }}.
+            Obsahuje archiváciu včerajšej session a vytvorenie novej.
+          branch: session-${{ env.CURRENT_DATE }}
+          base: main
+          delete-branch: true # Vymaže session branch po mergi
+
+      - name: Merge Pull Request
+        if: steps.create_pr.outputs.pull-request-number
+        run: |
+          PR_NUMBER=${{ steps.create_pr.outputs.pull-request-number }}
+          echo "➡️  Mergujem Pull Request #$PR_NUMBER"
+          gh pr merge $PR_NUMBER --squash --admin # Použi gh CLI pre merge
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
