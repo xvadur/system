@@ -41,17 +41,42 @@ jobs:
           echo "DEBUG: log size: $(wc -l < development/logs/XVADUR_LOG.md 2>/dev/null || echo 'unknown')"
 
       - name: Calculate XP
+        continue-on-error: true
         run: |
           python -c "
           import sys
-          sys.path.insert(0, '.')
-          from scripts.calculate_xp import calculate_xp, update_xp_file
+          import os
+          from pathlib import Path
           
-          print('DEBUG: Starting XP calculation...')
-          xp_data = calculate_xp('development/data/prompts_log.jsonl', 'development/logs/XVADUR_LOG.md')
-          print(f'DEBUG: Calculated XP data: {xp_data}')
-          update_xp_file('development/logs/XVADUR_XP.md', xp_data)
-          print(f'✅ XP: {xp_data[\"total_xp\"]} (Level {xp_data[\"current_level\"]})')
+          sys.path.insert(0, '.')
+          
+          prompts_log = Path('development/data/prompts_log.jsonl')
+          xvadur_log = Path('development/logs/XVADUR_LOG.md')
+          
+          # Skontroluj existenciu súborov
+          if not prompts_log.exists():
+              print('⚠️  prompts_log.jsonl neexistuje, vytváram prázdny súbor')
+              prompts_log.parent.mkdir(parents=True, exist_ok=True)
+              prompts_log.touch()
+          
+          if not xvadur_log.exists():
+              print('⚠️  XVADUR_LOG.md neexistuje, vytváram základný súbor')
+              xvadur_log.parent.mkdir(parents=True, exist_ok=True)
+              xvadur_log.write_text('# XVADUR Log\n\n', encoding='utf-8')
+          
+          try:
+              from scripts.calculate_xp import calculate_xp, update_xp_file
+              
+              print('DEBUG: Starting XP calculation...')
+              xp_data = calculate_xp(str(prompts_log), str(xvadur_log))
+              print(f'DEBUG: Calculated XP data: {xp_data}')
+              update_xp_file('development/logs/XVADUR_XP.md', xp_data)
+              print(f'✅ XP: {xp_data[\"total_xp\"]} (Level {xp_data[\"current_level\"]})')
+          except Exception as e:
+              print(f'❌ Chyba pri výpočte XP: {e}')
+              import traceback
+              traceback.print_exc()
+              sys.exit(1)
           "
 
       - name: Debug - Post-calculation check

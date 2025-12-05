@@ -39,12 +39,35 @@ jobs:
           # python scripts/synthesis/weekly_synthesis.py --input-dir development --output docs/weekly_synthesis/$(date +%Y-%V).md
           
       - name: Create Weekly Report File
+        continue-on-error: true
         run: |
           WEEK=$(date +%Y-W%V)
-          mkdir -p sessions/archive
-          echo "# Weekly Report: $WEEK" > sessions/archive/week_${WEEK}.md
-          echo "" >> sessions/archive/week_${WEEK}.md
-          echo "Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> sessions/archive/week_${WEEK}.md
+          OUTPUT_DIR="production/sessions/archive"
+          mkdir -p "$OUTPUT_DIR"
+          
+          REPORT_FILE="$OUTPUT_DIR/week_${WEEK}.md"
+          cat > "$REPORT_FILE" << EOF
+# Weekly Report: $WEEK
+
+**Generated:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+
+## 📊 Týždenný Prehľad
+
+*Tento report bol vytvorený automaticky. Pre detailnú analýzu pozri development/logs/XVADUR_LOG.md*
+
+## 📈 Metriky
+
+*Metriky budú doplnené po implementácii weekly synthesis skriptu*
+
+## ✅ Dokončené Úlohy
+
+*Zoznam dokončených úloh za týždeň*
+
+## 🎯 Ciele na Ďalší Týždeň
+
+*Ciele a priority na nasledujúci týždeň*
+EOF
+          echo "✅ Weekly report vytvorený: $REPORT_FILE"
           
       - name: Commit changes
         run: |

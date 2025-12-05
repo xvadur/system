@@ -37,14 +37,50 @@ jobs:
           git pull origin $BRANCH_NAME || true # Skúsi stiahnuť zmeny, ak branch už existuje
 
       - name: Copy session to development
+        continue-on-error: false
         run: |
           echo "📂 Kopírujem staging/sessions/today/session.md do development/sessions/current/"
           mkdir -p development/sessions/current
+          
+          if [ ! -f "staging/sessions/today/session.md" ]; then
+            echo "⚠️  staging/sessions/today/session.md neexistuje, vytváram základný súbor"
+            mkdir -p staging/sessions/today
+            cat > staging/sessions/today/session.md << 'EOF'
+# Session: ${{ env.CURRENT_DATE }}
+
+## 🎯 Cieľ Dňa
+*Doplň svoj cieľ pre dnešný deň*
+
+## 📝 Poznámky
+*Tvoje poznámky z práce*
+
+## ✅ Dokončené Úlohy
+*Zoznam dokončených úloh*
+
+## 🔄 V Práci
+*Úlohy, na ktorých práve pracuješ*
+EOF
+          fi
+          
           cp staging/sessions/today/session.md development/sessions/current/session.md
+          echo "✅ Session skopírovaná"
 
       - name: Add log entry for new session setup
+        continue-on-error: true
         run: |
-          python scripts/utils/log_manager.py "Session Setup: Nová denná session pre ${{ env.CURRENT_DATE }}" "Completed" "development/sessions/current/session.md" 5.0
+          python -c "
+          import sys
+          sys.path.insert(0, '.')
+          from scripts.utils.log_manager import add_log_entry
+          
+          add_log_entry(
+              action_name='Session Setup: Nová denná session pre ${{ env.CURRENT_DATE }}',
+              status='Completed',
+              files_changed=['development/sessions/current/session.md'],
+              xp_estimate=5.0
+          )
+          print('✅ Log entry added')
+          " || echo "⚠️  Nepodarilo sa pridať log entry (pokračujeme)"
 
       - name: Commit and push changes
         run: |
