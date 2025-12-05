@@ -833,3 +833,5 @@
 - ✅ Kód pripravený na rebuild (po pridaní OpenAI kreditu)
 
 ---
+
+[07:50] 💾 Vytvorený save game: 2025-12-05 - Riešenie problémov s duplicitami a optimalizácia tokenov
