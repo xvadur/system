@@ -26,17 +26,20 @@ def get_time_from_mcp(timezone: str = "Europe/Bratislava") -> datetime:
         # response = mcp_ide_proxy.call_tool('mcp_MCP_DOCKER_get_current_time', {'timezone': timezone})
         # return datetime.fromisoformat(response['time'])
         #
-        # Pre teraz simulujeme fallback
-        raise ValueError("MCP not available in this context")
+        # Pre teraz používame fallback priamo
+        pass
     except Exception:
+        pass
+    
+    # Fallback - vždy vrátime čas
+    try:
+        return datetime.now(ZoneInfo(timezone))
+    except (ImportError, AttributeError):
         try:
-            return datetime.now(ZoneInfo(timezone))
-        except ImportError:
-            try:
-                tz = pytz.timezone(timezone)
-                return datetime.now(tz)
-            except ImportError:
-                return datetime.utcnow()
+            tz = pytz.timezone(timezone)
+            return datetime.now(tz)
+        except (ImportError, AttributeError):
+            return datetime.utcnow()
 
 def export_to_obsidian(content: str, path: str) -> bool:
     """Exportuje obsah do Obsidianu cez MCP.
@@ -57,7 +60,7 @@ def analyze_with_sequential_thinking(prompt: str) -> str:
     """Použije Sequential Thinking MCP pre analýzu.
     
     Returns:
-        Analýza alebo prázdny string ak MCP nie je dostupný
+        Analýza alebo fallback text ak MCP nie je dostupný
     """
     try:
         # Tu by bola implementácia volania Sequential Thinking MCP
@@ -65,8 +68,53 @@ def analyze_with_sequential_thinking(prompt: str) -> str:
         # return response['answer']
         raise ValueError("MCP not available in this context")
     except Exception:
-        # Fallback
-        return f"Sequential Thinking analysis for prompt: '{prompt}'"
+        # Fallback pre GitHub Actions - vytvorí základný review
+        # Rozdelíme prompt na časti a vytvoríme štruktúrovaný výstup
+        lines = prompt.strip().split('\n')
+        review_sections = []
+        
+        # Extrahuj včerajší sumár
+        summary_start = False
+        summary_lines = []
+        for line in lines:
+            if "Včerajší sumár:" in line:
+                summary_start = True
+                continue
+            if summary_start and "---" in line:
+                break
+            if summary_start:
+                summary_lines.append(line.strip())
+        
+        # Extrahuj metriky
+        metrics_start = False
+        metrics_lines = []
+        for line in lines:
+            if "Včerajšie metriky:" in line:
+                metrics_start = True
+                continue
+            if metrics_start and "---" in line:
+                break
+            if metrics_start:
+                metrics_lines.append(line.strip())
+        
+        # Vytvor základný review
+        review = "## Včerajší Deň v Kocke\n\n"
+        if summary_lines:
+            review += "\n".join(summary_lines[:5]) + "\n\n"
+        else:
+            review += "Žiadne dáta z včerajšieho dňa.\n\n"
+        
+        review += "## Metriky\n\n"
+        if metrics_lines:
+            review += "\n".join(metrics_lines[:10]) + "\n\n"
+        else:
+            review += "Žiadne metriky z včerajšieho dňa.\n\n"
+        
+        review += "## Odporúčania na Dnes\n\n"
+        review += "- Pokračuj v práci na aktuálnych úlohách\n"
+        review += "- Skontroluj priority a zameraj sa na najdôležitejšie úlohy\n"
+        
+        return review
 
 def git_commit_via_mcp(message: str, files: list) -> bool:
     """Commit cez GitHub MCP (ak je dostupný).

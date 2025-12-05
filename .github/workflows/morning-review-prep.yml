@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: read
 
     steps:
       - name: Checkout repository
@@ -47,9 +48,37 @@ jobs:
           fi
 
       - name: Generate daily review
+        continue-on-error: true
         run: |
           echo "DEBUG: Starting generate_daily_review.py"
-          python scripts/generate_daily_review.py || echo "ERROR: generate_daily_review.py failed with exit code $?"
+          if python scripts/generate_daily_review.py; then
+            echo "✅ generate_daily_review.py completed successfully"
+          else
+            EXIT_CODE=$?
+            echo "⚠️ generate_daily_review.py failed with exit code $EXIT_CODE"
+            echo "Creating fallback review..."
+            mkdir -p staging/review
+            TODAY=$(date -u +'%Y-%m-%d')
+            cat > staging/review/daily_review.md << EOF
+# 🌅 Denný Review: $TODAY
+
+## ⚠️ Automatické generovanie zlyhalo
+
+Workflow sa pokúsil vygenerovať denný review, ale skript zlyhal.
+
+**Možné príčiny:**
+- Chýbajú dáta z včerajšieho dňa (staging/sessions/yesterday/)
+- Problém s MCP integráciou
+- Chyba v skripte generate_daily_review.py
+
+**Riešenie:**
+Skontroluj logy workflowu pre detailnejšie informácie.
+
+---
+*Vygenerované automaticky: $(date -u +'%Y-%m-%d %H:%M:%S UTC')*
+EOF
+            echo "✅ Fallback review created"
+          fi
 
       - name: Debug - Post-review file check
         run: |
