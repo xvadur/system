@@ -56,16 +56,20 @@ jobs:
         run: |
           echo "📊 Data Integrity Check"
           
-          # Počet záznamov v conversations.jsonl
-          if [ -f "data/conversations.jsonl" ]; then
-            CONV_COUNT=$(wc -l < data/conversations.jsonl)
-            echo "  conversations.jsonl: $CONV_COUNT records"
-          fi
-          
           # Počet záznamov v prompts_log.jsonl
           if [ -f "development/data/prompts_log.jsonl" ]; then
             PROMPT_COUNT=$(wc -l < development/data/prompts_log.jsonl)
             echo "  prompts_log.jsonl: $PROMPT_COUNT records"
+          else
+            echo "  ⚠️  prompts_log.jsonl: not found (optional file)"
+          fi
+          
+          # Počet záznamov v xp_history.jsonl
+          if [ -f "development/data/xp_history.jsonl" ]; then
+            XP_COUNT=$(wc -l < development/data/xp_history.jsonl)
+            echo "  xp_history.jsonl: $XP_COUNT records"
+          else
+            echo "  ⚠️  xp_history.jsonl: not found (optional file)"
           fi
           
           echo "✅ Backup validation complete"

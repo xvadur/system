@@ -42,13 +42,9 @@ jobs:
           mkdir -p development/sessions/current
           cp staging/sessions/today/session.md development/sessions/current/session.md
 
-      - name: Update XVADUR_LOG.md
+      - name: Add log entry for new session setup
         run: |
-          echo "📝 Aktualizujem XVADUR_LOG.md"
-          LOG_ENTRY="## [$(date -u +'%Y-%m-%d %H:%M')] 🔹 Session Setup: Nová denná session pre ${{ env.CURRENT_DATE }}
-- *Status:* Completed
-- *Zmeny:* Vytvorená nová session v development/sessions/current/session.md"
-          echo "$LOG_ENTRY" >> development/logs/XVADUR_LOG.md
+          python scripts/utils/log_manager.py "Session Setup: Nová denná session pre ${{ env.CURRENT_DATE }}" "Completed" "development/sessions/current/session.md" 5.0
 
       - name: Commit and push changes
         run: |
