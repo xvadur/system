@@ -31,6 +31,15 @@ jobs:
         run: |
           pip install -r requirements.txt
           
+      - name: Debug - Workflow start and file check
+        run: |
+          echo "DEBUG: Daily metrics workflow started at $(date)"
+          echo "DEBUG: Checking input files:"
+          ls -la development/data/prompts_log.jsonl 2>/dev/null || echo "WARNING: prompts_log.jsonl missing"
+          ls -la development/logs/XVADUR_LOG.md 2>/dev/null || echo "WARNING: XVADUR_LOG.md missing"
+          echo "DEBUG: prompts_log size: $(wc -l < development/data/prompts_log.jsonl 2>/dev/null || echo 'unknown')"
+          echo "DEBUG: log size: $(wc -l < development/logs/XVADUR_LOG.md 2>/dev/null || echo 'unknown')"
+
       - name: Calculate XP
         run: |
           python -c "
@@ -38,17 +47,34 @@ jobs:
           sys.path.insert(0, '.')
           from core.xp.calculator import calculate_xp, update_xp_file
           
+          print('DEBUG: Starting XP calculation...')
           xp_data = calculate_xp('development/data/prompts_log.jsonl', 'development/logs/XVADUR_LOG.md')
+          print(f'DEBUG: Calculated XP data: {xp_data}')
           update_xp_file('development/logs/XVADUR_XP.md', xp_data)
-          
           print(f'✅ XP: {xp_data[\"total_xp\"]} (Level {xp_data[\"current_level\"]})')
           "
+
+      - name: Debug - Post-calculation check
+        run: |
+          echo "DEBUG: After XP calculation:"
+          if [ -f "development/logs/XVADUR_XP.md" ]; then
+            echo "DEBUG: XVADUR_XP.md updated, last lines:"
+            tail -5 development/logs/XVADUR_XP.md
+          else
+            echo "ERROR: XVADUR_XP.md was not created/updated!"
+          fi
           
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
+          
+          echo "DEBUG: Git status before commit:"
+          git status
+          echo "DEBUG: Git diff summary:"
+          git diff --stat
+          
           git diff --staged --quiet || git commit -m "chore(metrics): daily XP update [skip ci]"
           git push
 

@@ -23,19 +23,64 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Debug - Workflow start
+        run: |
+          echo "DEBUG: Session rotation workflow started at $(date)"
+          echo "DEBUG: Current directory: $(pwd)"
+          echo "DEBUG: GitHub repository: ${{ github.repository }}"
+          echo "DEBUG: Branch: ${{ github.ref }}"
+
+      - name: Debug - Check file structure
+        run: |
+          echo "DEBUG: Checking development/sessions structure"
+          ls -la development/sessions/ || echo "DEBUG: development/sessions not found"
+          ls -la development/sessions/current/ 2>/dev/null || echo "DEBUG: current/ not found"
+          ls -la development/sessions/archive/ 2>/dev/null || echo "DEBUG: archive/ not found"
+          ls -la templates/ 2>/dev/null || echo "DEBUG: templates/ not found"
+
+      - name: Debug - Check template file
+        run: |
+          if [ -f "templates/session_template.md" ]; then
+            echo "DEBUG: Template found, size: $(wc -l < templates/session_template.md) lines"
+            head -5 templates/session_template.md
+          else
+            echo "ERROR: templates/session_template.md missing!"
+          fi
+
       - name: Run session rotation scripts
         run: |
-          python scripts/auto_archive_session.py
-          python scripts/create_new_session.py
+          echo "DEBUG: Starting auto_archive_session.py"
+          python scripts/auto_archive_session.py || echo "ERROR: auto_archive_session.py failed"
+          
+          echo "DEBUG: Starting create_new_session.py"
+          python scripts/create_new_session.py || echo "ERROR: create_new_session.py failed"
+
+      - name: Debug - Post-script file check
+        run: |
+          echo "DEBUG: After scripts - current/ contents:"
+          ls -la development/sessions/current/ 2>/dev/null || echo "DEBUG: current/ empty or missing"
+          echo "DEBUG: Archive contents:"
+          ls -la development/sessions/archive/ 2>/dev/null || echo "DEBUG: archive/ empty or missing"
+          echo "DEBUG: Staging today:"
+          ls -la staging/sessions/today/ 2>/dev/null || echo "DEBUG: staging/today empty or missing"
 
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
+          
+          echo "DEBUG: Git status before commit:"
+          git status
+          echo "DEBUG: Git diff summary:"
+          git diff --stat
+          
           if git diff --staged --quiet; then
-            echo "No changes to commit."
+            echo "DEBUG: No changes to commit."
           else
+            echo "DEBUG: Committing changes..."
             git commit -m "chore(session): auto-rotation for $(date -u +'%Y-%m-%d')"
+            echo "DEBUG: Commit successful"
             git push
+            echo "DEBUG: Push successful"
           fi

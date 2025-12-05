@@ -23,17 +23,62 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Debug - Workflow start
+        run: |
+          echo "DEBUG: Morning review workflow started at $(date)"
+          echo "DEBUG: Current directory: $(pwd)"
+          echo "DEBUG: GitHub repository: ${{ github.repository }}"
+          echo "DEBUG: Branch: ${{ github.ref }}"
+
+      - name: Debug - Check yesterday data
+        run: |
+          echo "DEBUG: Checking staging/sessions/yesterday structure"
+          ls -la staging/sessions/yesterday/ 2>/dev/null || echo "DEBUG: yesterday/ not found or empty"
+          if [ -f "staging/sessions/yesterday/summary.md" ]; then
+            echo "DEBUG: Summary found, size: $(wc -l < staging/sessions/yesterday/summary.md) lines"
+            head -3 staging/sessions/yesterday/summary.md
+          else
+            echo "WARNING: summary.md missing in yesterday/"
+          fi
+          if [ -f "staging/sessions/yesterday/metrics.json" ]; then
+            echo "DEBUG: Metrics found, size: $(wc -c < staging/sessions/yesterday/metrics.json) bytes"
+          else
+            echo "WARNING: metrics.json missing in yesterday/"
+          fi
+
       - name: Generate daily review
-        run: python scripts/generate_daily_review.py
+        run: |
+          echo "DEBUG: Starting generate_daily_review.py"
+          python scripts/generate_daily_review.py || echo "ERROR: generate_daily_review.py failed with exit code $?"
+
+      - name: Debug - Post-review file check
+        run: |
+          echo "DEBUG: After review generation:"
+          ls -la staging/review/ 2>/dev/null || echo "DEBUG: staging/review not found"
+          if [ -f "staging/review/daily_review.md" ]; then
+            echo "DEBUG: Review generated, size: $(wc -l < staging/review/daily_review.md) lines"
+            head -5 staging/review/daily_review.md
+          else
+            echo "ERROR: daily_review.md was not generated!"
+          fi
 
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
+          
+          echo "DEBUG: Git status before commit:"
+          git status
+          echo "DEBUG: Git diff summary:"
+          git diff --stat
+          
           if git diff --staged --quiet; then
-            echo "No changes to commit."
+            echo "DEBUG: No changes to commit."
           else
+            echo "DEBUG: Committing review changes..."
             git commit -m "chore(review): generate daily review for $(date -u +'%Y-%m-%d')"
+            echo "DEBUG: Commit successful"
             git push
+            echo "DEBUG: Push successful"
           fi
