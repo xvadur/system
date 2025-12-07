@@ -125,25 +125,3 @@ Aplikujeme 4 kvadranty a 3 úrovne na celý dataset (1,822 konverzácií):
 
 ---
 
-## ⏸️ Session Pauza (05:33)
-
-**Status:** Pauza - pokračovanie neskôr.
-**Branch:** `session-stvrtok-2025-12-04`
-
-**Kľúčové rozhodnutie:**
-Prechod z "budovania infraštruktúry" na "hlbokú analýzu". Máme dáta, teraz potrebujeme pochopiť ich význam cez Human 3.0.
-
-**Poznámka pod čiarou:**
-Dnešok bol o "upratovaní minulosti", aby sme na nej mohli stavať budúcnosť. Dataset je teraz pripravený na RAG, Finetuning alebo akúkoľvek hlbokú analýzu.
-'
-
-## ✅ Plánované Úlohy
-- [ ] 
-
-## 📝 Poznámky
-*Tvoje poznámky počas dňa*
-
----
-
-**Vytvorené:** 2025-12-05T06:09:55.141687+01:00  
-**Posledná aktualizácia:** 2025-12-05T06:09:55.141687+01:00
