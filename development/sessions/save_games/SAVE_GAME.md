@@ -39,3 +39,40 @@ Pre nového agenta je dôležité pochopiť hybridný prístup k ukladaniu konte
 - **Save Game:** Ak existujú nejaké problémy s automatickým generovaním JSON alebo appendovaním Markdown, skontrolovať logy a skripty.
 - **Komunikácia:** Pre akékoľvek nejasnosti týkajúce sa nového systému kontextu požiadať užívateľa o potvrdenie.
 ---
+
+# 💾 SAVE GAME: 2025-12-07 22:30
+
+---
+
+## 📊 Status
+- **Rank:** Architekt Reality
+- **Level:** 1 (Reálne XP: 15.0)
+- **XP:** 15.0 / 10.0 (150%)
+- **Streak:** 1 deň
+- **Last Log:** development/logs/XVADUR_LOG.md
+
+## 🧠 Naratívny Kontext (Story so far)
+
+Dnešná session bola transformačná pre "Quest: Vlado" a architektúru systému. Identifikovali sme potrebu zachytiť hlboké introspektívne reflexie bez zbytočnej tokenovej záťaže, čo viedlo k vytvoreniu subsystému **Vox_Intropektra** (JSONL formát pre denné reflexie).
+
+Spracovali sme kľúčové udalosti víkendu (5.12.-7.12.):
+1.  **Piatok (Trhy):** Prekonanie sociálnej úzkosti cez "inštaláciu reality". Vlado sa otvoril o nespokojnosti v práci a potrebe dôvery.
+2.  **Víkend (Domov):** Potvrdenie Vladovho potenciálu (kapitál, kontakty) a rizík (dominancia, minulosť).
+3.  **Záver:** Vlado je definovaný ako strategický partner pre biznis, nie náhrada otca.
+
+Zároveň sme riešili operatívu:
+- **Karol:** Príprava na utorkové vyjednávanie o cene (cieľ 500€).
+- **Škola:** Stratégia "pozitívnej percepcie" pre zajtrajšiu skúšku.
+
+Systém je teraz nastavený na efektívne zachytávanie "mäkkých" dát (psychológia, vzťahy) v "tvrdých" formátoch (JSONL).
+
+## 🎯 Aktívne Questy & Next Steps
+- **Quest Vlado:** Profesionalizácia vzťahu, validácia produktu.
+- **Karol:** Vyjednať lepšie podmienky v utorok.
+- **Škola:** Zvládnuť zajtrajšok cez prezentačné zručnosti.
+
+## ⚠️ Inštrukcie pre Nového Agenta
+- **Vox_Intropektra:** Hľadaj hlboké reflexie v `development/sessions/Vox_Intropektra/`.
+- **Vlado:** Kľúčová postava. Pozri si jeho profil v `Vox_7-12.jsonl`.
+- **Štýl:** Adam je v fáze "Architekta" - proaktívne tvorí realitu, nečaká na ňu.
+

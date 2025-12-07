@@ -1,0 +1,59 @@
+{
+  "timestamp": "2025-12-07T22:00:00Z",
+  "date": "2025-12-07",
+  "session_id": "2025-12-07_Vlado_Story_Arc_Deep_Dive",
+  "type": "xvadur_reflection",
+  "topic": "Quest: Vlado - Odhalenie Identity & Strategické Partnerstvo",
+  "context_summary": "Hlboký ponor do dynamiky vzťahu s Vladom (31r, adoptovaný, 'biely kôň') a vlastnej transformácie z 'vyhodeného sanitára' na 'AI podnikateľa'. Prekonanie sociálnej úzkosti cez 'inštaláciu reality' a potvrdenie strategického partnerstva.",
+  "narrative_arc": {
+    "prelude_context": {
+      "adam_history": "Sanitár (2017-2025), vysoký výkon (za 6-7 sestier), ale konflikt s hierarchiou/mladšími kolegyňami. Vyhodený 07/2025. Pocit nedostatočnosti a chýbajúcej otcovskej figúry.",
+      "vlado_introduction": "Zoznámenie cez Lauru (nemocnica, júl 2025). Vlado (pacient so zápalom pankreasu) videl potenciál v AI. Dohoda o AI recepčnej (Adam sa učí, Vlado chce predávať).",
+      "the_struggle": "Október-November: Adamov boj s 'pokus-omyl' učením (n8n, ElevenLabs). Prokrastinácia (Valorant), rozbitý režim. 30.11. konečne funkčný prototyp -> 1.12. prvé cvičenie ('bro' naratív)."
+    },
+    "the_event_friday_markets": {
+      "setup": "Vlado volá z trhov (opitý, naliehavý). Adam cíti odpor a tlak (hanba, 'asociálnosť', povinnosti s Karolom).",
+      "turning_point": "Uvedomenie si 'nálepky' a strategické rozhodnutie: 'Ak je Vlado exit plan, musím hrať hru'. Rozhodnutie 'nainštalovať si realitu' namiesto úteku.",
+      "scene_markets": "Príchod, alkohol na uvoľnenie. Vlado sa otvára: Rozchod s doktorkou, nespokojnosť s prácou (600k firma, 'biely kôň'). Emocionálny vrchol: 'Si jediný chlap, ktorému chcem dôverovať'. Plač a objatie."
+    },
+    "the_aftermath_home": {
+      "transition": "Laura navrhuje ísť k Adamovi domov (aby sa vyhli trápnosti?).",
+      "scene_home": "Vlado opitý, 'crazy' momenty (zavádzanie kanyly zo srandy, Instagram stories, korytnačka).",
+      "deep_talk_night": "Rozhovor celú noc. Vlado dominuje (viac rozpráva). Priznanie o adopcii a kontrole rodičov (minulosť s drogami/alkoholom).",
+      "business_reveal": "Vlado má možnosť zobrať úver na firmu (kapitál pre podnikanie). Chce ísť 'na maximum' s Adamom."
+    },
+    "conclusion_sunday": {
+      "realization": "To, čo som chcel, sa deje. Mám partnera s kapitálom a kontaktmi. Som schopný vytvoriť produkt (recepčná, chatbot, dáta).",
+      "new_reality": "Už nie som obeť okolností, ale tvorca príležitostí. Vlado je 'high risk/high reward' partner."
+    }
+  },
+  "vlado_profile_deep": {
+    "background": "31 rokov, adoptovaný, Devínska Nová Ves. Minulosť s alkoholom/drogami (dôvod hospitalizácie?), rodičia ho kontrolujú.",
+    "professional": "Konateľ investičnej firmy (crypto portfóliá pre klientov), obrat 600k, príjem ~5000€. Cíti sa ako 'biely kôň', nenávidí tú prácu a ľudí tam.",
+    "personality": "Dominantný, potrebuje rozprávať, potrebuje 'bro' vzťah a dôveru. 'Crazy' element (baví ho kanyla).",
+    "role_in_quest": "Investor & Sales & 'Bro'. Potenciálny 'Exit Plan' pre Adama."
+  },
+  "adam_transformation_insight": {
+    "from": "Reaktívny 'Sanitár' s pocitom menejcennosti a sociálnou úzkosťou.",
+    "to": "Proaktívny 'Architekt', ktorý si 'inštaluje realitu' a strategicky buduje vzťahy.",
+    "key_mechanisms": [
+      "Odmietnutie nálepky 'asociál'.",
+      "Strategické prekonanie odporu ('hrať hru').",
+      "Transformácia úzkosti na 'nervozitu pred výkonom'."
+    ],
+    "lingering_fears": "Strach z Vladovej dominancie a manipulácie ('donúti ma urobiť niečo čo nechcem'). Energetická náročnosť ('mŕtvy 3 dni po alkohole')."
+  },
+  "patterns_identified": [
+    "Hľadanie otca vs. Hľadanie brata",
+    "Kompetencia (Adam) vs. Kapitál (Vlado)",
+    "Inštalácia reality ako nástroj zmeny",
+    "High Risk / High Reward partnerstvo"
+  ],
+  "xp_estimate": 5.0,
+  "backlinks": [
+    "SAVE_GAME_LATEST",
+    "xvadur_profile",
+    "Recepcia",
+    "Quest_Vlado"
+  ]
+}
