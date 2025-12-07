@@ -11,40 +11,96 @@ Tento súbor definuje kompletný životný cyklus práce s agentom.
 
 ### 1. 📥 LOAD_GAME (`/loadgame`)
 Pri štarte novej session okamžite načítaj kontext:
-Použi `read_file` na:
+**PRIORITA:** Použi štrukturované JSON formáty (ak existujú), fallback na Markdown pre backward compatibility.
 
-1.  **Save Game Summary (Priorita):**
-    - `development/sessions/save_games/SAVE_GAME_LATEST_SUMMARY.md` (Kompaktný sumár - ~50-70 riadkov)
-    - **Fallback:** Ak summary neexistuje, načítaj `development/sessions/save_games/SAVE_GAME_LATEST.md` (backward compatibility)
+**Načítanie kontextu:**
+
+1.  **Save Game (Priorita):**
+    - **JSON (Priorita):** `development/sessions/save_games/SAVE_GAME_LATEST.json` - vždy len najnovší JSON
+    - **Fallback Markdown:** `development/sessions/save_games/SAVE_GAME.md` - načítaj len posledný záznam (od posledného `# 💾 SAVE GAME:` smerom nahor do `---`)
+    - **Technika JSON:** Parsuj JSON a extrahuj len kľúčové informácie (status, narrative.summary, quests)
+    - **Technika Markdown:** Načítaj súbor, nájdi posledný záznam (od posledného `# 💾 SAVE GAME:` do `---` alebo konca súboru)
 
 2.  **Posledné záznamy z logu:**
-    - `development/logs/XVADUR_LOG.md` - len posledných 5 záznamov (~100 riadkov)
-    - **Technika:** Načítaj súbor a extrahuj len záznamy od posledného `## [YYYY-MM-DD HH:MM]` smerom nahor (posledných 5 záznamov)
-    - **Formát:** Každý záznam začína s `## [YYYY-MM-DD HH:MM]` a končí pred ďalším záznamom alebo `---`
+    - **JSONL (Priorita):** `development/logs/XVADUR_LOG.jsonl` - načítaj posledných 5 záznamov
+    - **Fallback Markdown:** `development/logs/XVADUR_LOG.md` - len posledných 5 záznamov (~100 riadkov)
+    - **Technika JSONL:** Načítaj súbor riadok po riadok, parsuj každý JSON objekt, vezmi posledných 5
+    - **Technika Markdown:** Načítaj súbor a extrahuj len záznamy od posledného `## [YYYY-MM-DD HH:MM]` smerom nahor
 
 3.  **Aktuálny XP Status:**
-    - `development/logs/XVADUR_XP.md` - len sekcia "📊 Aktuálny Status" (~20 riadkov)
-    - **Technika:** Načítaj len riadky obsahujúce sekciu `## 📊 Aktuálny Status` (typicky riadky 8-13)
+    - **JSON (Priorita):** `development/logs/XVADUR_XP.json` - načítaj celý súbor
+    - **Fallback Markdown:** `development/logs/XVADUR_XP.md` - len sekcia "📊 Aktuálny Status" (~20 riadkov)
+    - **Technika JSON:** Parsuj JSON a extrahuj len `status` sekciu
+    - **Technika Markdown:** Načítaj len riadky obsahujúce sekciu `## 📊 Aktuálny Status`
 
 4.  **Profil (Voliteľné):**
     - `development/data/profile/xvadur_profile.md` - len sekcia "IV. SÚČASNÝ PROFIL" (~50 riadkov)
     - **Technika:** Načítaj len sekciu `## IV. SÚČASNÝ PROFIL: KTO JE ADAM?` (ak existuje)
+    - **Poznámka:** Profil zostáva v Markdown formáte (nie je kritický pre token optimalizáciu)
 
 **Technické detaily pre selektívne načítanie:**
 
-**Pre log (posledných 5 záznamov):**
-- Načítaj celý súbor `development/logs/XVADUR_LOG.md`
-- Identifikuj záznamy podľa patternu `## [YYYY-MM-DD HH:MM]`
-- Extrahuj len posledných 5 záznamov (od najnovšieho smerom nahor)
-- Každý záznam začína s `## [YYYY-MM-DD HH:MM]` a končí pred ďalším záznamom alebo `---`
-- **Príklad:** Ak súbor má 10 záznamov, načítaj len záznamy 6-10
+**Pre Save Game (JSON priorita):**
+```python
+import json
+from pathlib import Path
 
-**Pre XP (len aktuálny status):**
-- Načítaj súbor `development/logs/XVADUR_XP.md`
-- Extrahuj len sekciu `## 📊 Aktuálny Status` (typicky riadky 8-13)
-- Preskoč históriu a agregované metriky
+save_game_json = Path("development/sessions/save_games/SAVE_GAME_LATEST.json")
+if save_game_json.exists():
+    with open(save_game_json, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+        # Extrahuj len kľúčové informácie:
+        # - data['status'] (rank, level, xp)
+        # - data['narrative']['summary'] (krátky sumár)
+        # - data['quests'] (aktívne questy)
+else:
+    # Fallback na Markdown - načítaj len posledný záznam
+    save_game_md = Path("development/sessions/save_games/SAVE_GAME.md")
+    if save_game_md.exists():
+        content = save_game_md.read_text(encoding='utf-8')
+        # Nájdi posledný záznam (od posledného "# 💾 SAVE GAME:" do "---" alebo konca)
+        last_entry_start = content.rfind("# 💾 SAVE GAME:")
+        if last_entry_start != -1:
+            last_entry = content[last_entry_start:]
+            # Parsuj posledný záznam
+```
 
-**Pre profil (len súčasný profil):**
+**Pre log (JSONL priorita):**
+```python
+import json
+from pathlib import Path
+
+log_jsonl = Path("development/logs/XVADUR_LOG.jsonl")
+if log_jsonl.exists():
+    entries = []
+    with open(log_jsonl, 'r', encoding='utf-8') as f:
+        for line in f:
+            if line.strip():
+                entries.append(json.loads(line))
+    # Vezmi posledných 5 záznamov
+    recent_entries = entries[-5:]
+else:
+    # Fallback na Markdown (pôvodná logika)
+    # Načítaj súbor a extrahuj posledných 5 záznamov
+```
+
+**Pre XP (JSON priorita):**
+```python
+import json
+from pathlib import Path
+
+xp_json = Path("development/logs/XVADUR_XP.json")
+if xp_json.exists():
+    with open(xp_json, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+        # Extrahuj len status sekciu
+        status = data['status']
+else:
+    # Fallback na Markdown
+    # Načítaj len sekciu "📊 Aktuálny Status"
+```
+
+**Pre profil (zostáva Markdown):**
 - Načítaj súbor `development/data/profile/xvadur_profile.md`
 - Extrahuj len sekciu `## IV. SÚČASNÝ PROFIL: KTO JE ADAM?`
 - Preskoč históriu a transformačné momenty
@@ -77,9 +133,10 @@ except Exception:
 **Poznámka:** Prompty z MinisterOfMemory poskytujú dodatočný kontext o predchádzajúcich konverzáciách, ktorý môže byť užitočný pri obnovení práce.
 
 **Výsledok načítania:**
-- **Pred optimalizáciou:** ~1741 riadkov (191 + 627 + 288 + 410 + 225)
-- **Po optimalizácii:** ~170 riadkov (70 + 100 + 20 + 50)
-- **Redukcia:** ~90% tokenov
+- **Pred optimalizáciou (Markdown):** ~1741 riadkov (191 + 627 + 288 + 410 + 225) = ~7,200 tokenov
+- **Po optimalizácii (Markdown selektívne):** ~170 riadkov (70 + 100 + 20 + 50) = ~5,100 tokenov
+- **Po optimalizácii (JSON):** ~95 riadkov JSON (50 + 30 + 15) = ~4,350 tokenov
+- **Redukcia:** ~40% tokenov (JSON vs pôvodný Markdown)
 
 ---
 

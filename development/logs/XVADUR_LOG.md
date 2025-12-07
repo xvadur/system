@@ -887,3 +887,26 @@
   - *Status:* Completed
   - *XP:* 15.0
 
+[20:45] 🔹 Vytvorená úloha #7: Refaktorovanie kontextu - optimalizácia token spotreby
+  - *Status:* Started
+  - *XP:* 0.0
+
+[21:15] 🔹 Quest #7: Návrh štrukturovaných formátov a migračný skript
+  - *Vytvorené súbory:*
+    - development/docs/CONTEXT_FORMAT_DESIGN.md (návrh štruktúr)
+    - scripts/migrate_to_structured_format.py (migračný skript)
+    - scripts/generate_savegame_json.py (helper pre automatické generovanie JSON)
+    - development/docs/STRUCTURED_CONTEXT_SYSTEM.md (dokumentácia)
+  - *Status:* Completed
+  - *XP:* 15.0
+  - *Detaily:*
+    - Navrhnuté JSON formáty pre logy, save games a XP tracking
+    - Vytvorený migračný skript s dry-run podporou
+    - Otestovaný na existujúcich dátach (32 log záznamov)
+    - Aktualizované /loadgame a /savegame commands pre JSON podporu
+    - Vytvorená kompletná dokumentácia systému
+    - Zjednodušený systém: SAVE_GAME.md (append) + SAVE_GAME_LATEST.json (najnovší)
+    - Odstránené SUMMARY súbory (už nie sú potrebné)
+    - Odhadovaná úspora tokenov: ~40% pri /loadgame
+    - Hybridný prístup: Markdown pre ľudí (chronologický), JSON pre AI (najnovší)
+

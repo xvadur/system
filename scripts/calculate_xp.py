@@ -506,6 +506,6 @@ if __name__ == '__main__':
     print(json.dumps(xp_data['breakdown'], indent=2))
     
     # Aktualizovať súbor
-    update_xp_file('xvadur/logs/XVADUR_XP.md', xp_data)
+    update_xp_file('development/logs/XVADUR_XP.md', xp_data)
     print("\n✅ XP súbor aktualizovaný")
 
