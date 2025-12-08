@@ -87,3 +87,4 @@ rm -f "/tmp/${PLIST_NAME}.plist.tmp" "/tmp/${PLIST_NAME}.plist.tmp2" "/tmp/${PLI
 echo ""
 echo "✨ Hotovo!"
 
+

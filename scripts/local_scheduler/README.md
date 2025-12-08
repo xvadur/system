@@ -151,3 +151,4 @@ Inštalačný skript automaticky detekuje Python cestu. Ak máš problém:
 **Vytvorené:** 2025-12-05  
 **Verzia:** 1.0.0
 
+
