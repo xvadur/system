@@ -1,0 +1,30 @@
+{
+  "last_updated": "2025-12-08T15:30:00",
+  "active_project": "AI Reception + Personal Journal",
+  "current_focus": "Refaktor save/load architektury v Cursore",
+  "paths": {
+    "savegame": "development/sessions/save_games/SAVE_GAME_LATEST.json",
+    "log_main": "development/logs/XVADUR_LOG.jsonl",
+    "log_xp": "development/logs/XVADUR_XP.json",
+    "profile": "development/data/profile/xvadur_profile.md"
+  },
+  "log_window": {
+    "main_last_n": 5,
+    "xp_last_n": 1
+  },
+  "session": {
+    "current_session_file": "development/sessions/current/SESSION_2025-12-08.md",
+    "last_checkpoint": "development/sessions/save_games/SAVE_GAME_LATEST.json"
+  },
+  "meta": {
+    "engine_version": "aethero-cursor-v1.0",
+    "author": "Adam (XVADUR)",
+    "directives": [
+      "PREMIER MODE: AETHEROOS ARCHITECTURE EXECUTION ACTIVE",
+      "Maintain constitutional integrity in the AetheroOS agentic system",
+      "Follow Aethero Agent Syntax with # AETH annotations at decision points",
+      "Respect agent hierarchy: Premier → Secretaries → Ministers → Assistants",
+      "Prefer modular, self-explaining, orchestration-compatible components"
+    ]
+  }
+}

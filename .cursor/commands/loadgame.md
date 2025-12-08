@@ -1,197 +1,60 @@
 ---
-description: Načíta kľúčové kontextové súbory (Save Game, Log, Profil) pre okamžité pokračovanie v práci.
+description: Načíta manifest a posledné logy pre okamžité pokračovanie s minimálnymi tokenmi.
 ---
 
-# SYSTEM PROMPT: MAGNUM OPUS WORKFLOW
+# SYSTEM PROMPT: MANIFEST-DRIVEN LOADGAME
 
-Tvojou úlohou je **riadiť kontinuitu pamäte** a udržiavať prísnu disciplínu logovania.
-Tento súbor definuje kompletný životný cyklus práce s agentom.
+Tvojou úlohou je obnoviť kontext **primárne zo `development/state_manifest.json`**.
+Manifest je jediný vstupný bod – všetko ostatné načítavaj len podľa ciest v ňom a s limitmi.
 
-## 🔄 CYKLUS: LOAD_GAME -> WORK -> SAVE_GAME
+## 🔄 LOADGAME TOK-OPTIMAL FLOW
 
-### 1. 📥 LOAD_GAME (`/loadgame`)
-Pri štarte novej session okamžite načítaj kontext:
-**PRIORITA:** Použi štrukturované JSON formáty (ak existujú), fallback na Markdown pre backward compatibility.
+1) **Manifest ako zdroj pravdy**
+- Súbor: `development/state_manifest.json`
+- Účel: obsahuje cesty na savegame/logy a okno čítania.
+- Ak manifest chýba, vytvor otázku pre užívateľa; nečítaj nič veľké navyše.
 
-**Načítanie kontextu:**
-
-1.  **Save Game (Priorita):**
-    - **JSON (Priorita):** `development/sessions/save_games/SAVE_GAME_LATEST.json` - vždy len najnovší JSON
-    - **Fallback Markdown:** `development/sessions/save_games/SAVE_GAME.md` - načítaj len posledný záznam (od posledného `# 💾 SAVE GAME:` smerom nahor do `---`)
-    - **Technika JSON:** Parsuj JSON a extrahuj len kľúčové informácie (status, narrative.summary, quests)
-    - **Technika Markdown:** Načítaj súbor, nájdi posledný záznam (od posledného `# 💾 SAVE GAME:` do `---` alebo konca súboru)
-
-2.  **Posledné záznamy z logu:**
-    - **JSONL (Priorita):** `development/logs/XVADUR_LOG.jsonl` - načítaj posledných 5 záznamov
-    - **Fallback Markdown:** `development/logs/XVADUR_LOG.md` - len posledných 5 záznamov (~100 riadkov)
-    - **Technika JSONL:** Načítaj súbor riadok po riadok, parsuj každý JSON objekt, vezmi posledných 5
-    - **Technika Markdown:** Načítaj súbor a extrahuj len záznamy od posledného `## [YYYY-MM-DD HH:MM]` smerom nahor
-
-3.  **Aktuálny XP Status:**
-    - **JSON (Priorita):** `development/logs/XVADUR_XP.json` - načítaj celý súbor
-    - **Fallback Markdown:** `development/logs/XVADUR_XP.md` - len sekcia "📊 Aktuálny Status" (~20 riadkov)
-    - **Technika JSON:** Parsuj JSON a extrahuj len `status` sekciu
-    - **Technika Markdown:** Načítaj len riadky obsahujúce sekciu `## 📊 Aktuálny Status`
-
-4.  **Profil (Voliteľné):**
-    - `development/data/profile/xvadur_profile.md` - len sekcia "IV. SÚČASNÝ PROFIL" (~50 riadkov)
-    - **Technika:** Načítaj len sekciu `## IV. SÚČASNÝ PROFIL: KTO JE ADAM?` (ak existuje)
-    - **Poznámka:** Profil zostáva v Markdown formáte (nie je kritický pre token optimalizáciu)
-
-**Technické detaily pre selektívne načítanie:**
-
-**Pre Save Game (JSON priorita):**
 ```python
-import json
-from pathlib import Path
-
-save_game_json = Path("development/sessions/save_games/SAVE_GAME_LATEST.json")
-if save_game_json.exists():
-    with open(save_game_json, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-        # Extrahuj len kľúčové informácie:
-        # - data['status'] (rank, level, xp)
-        # - data['narrative']['summary'] (krátky sumár)
-        # - data['quests'] (aktívne questy)
-else:
-    # Fallback na Markdown - načítaj len posledný záznam
-    save_game_md = Path("development/sessions/save_games/SAVE_GAME.md")
-    if save_game_md.exists():
-        content = save_game_md.read_text(encoding='utf-8')
-        # Nájdi posledný záznam (od posledného "# 💾 SAVE GAME:" do "---" alebo konca)
-        last_entry_start = content.rfind("# 💾 SAVE GAME:")
-        if last_entry_start != -1:
-            last_entry = content[last_entry_start:]
-            # Parsuj posledný záznam
+from core.state_manifest import StateManifest
+manifest = StateManifest.load()
+status = manifest.status_report()
 ```
 
-**Pre log (JSONL priorita):**
-```python
-import json
-from pathlib import Path
+2) **Savegame (iba JSON)**
+- Cesta: `manifest.resolve_path("savegame")`
+- Načítaj len JSON (žiadny markdown fallback). Použi ho na stručný status/narratívny sumár.
 
-log_jsonl = Path("development/logs/XVADUR_LOG.jsonl")
-if log_jsonl.exists():
-    entries = []
-    with open(log_jsonl, 'r', encoding='utf-8') as f:
-        for line in f:
-            if line.strip():
-                entries.append(json.loads(line))
-    # Vezmi posledných 5 záznamov
-    recent_entries = entries[-5:]
-else:
-    # Fallback na Markdown (pôvodná logika)
-    # Načítaj súbor a extrahuj posledných 5 záznamov
+```python
+savegame = manifest.savegame_payload()
+summary = savegame.get("narrative", {}).get("summary") if savegame else ""
 ```
 
-**Pre XP (JSON priorita):**
-```python
-import json
-from pathlib import Path
+3) **Logy s limitmi**
+- Hlavný log: `manifest.resolve_path("log_main")` → načítaj **len posledných `main_last_n`** z JSONL.
+- XP log: `manifest.resolve_path("log_xp")` → načítaj JSON status (žiadne markdown sekcie).
+- Markdown logy používaj len na rýchle prelistovanie, nie ako zdroj stavu.
 
-xp_json = Path("development/logs/XVADUR_XP.json")
-if xp_json.exists():
-    with open(xp_json, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-        # Extrahuj len status sekciu
-        status = data['status']
-else:
-    # Fallback na Markdown
-    # Načítaj len sekciu "📊 Aktuálny Status"
+```python
+recent_entries = manifest.recent_main_log_entries()
+xp_status = manifest.xp_status()
 ```
 
-**Pre profil (zostáva Markdown):**
-- Načítaj súbor `development/data/profile/xvadur_profile.md`
-- Extrahuj len sekciu `## IV. SÚČASNÝ PROFIL: KTO JE ADAM?`
-- Preskoč históriu a transformačné momenty
+4) **Profil (voliteľné)**
+- `manifest.resolve_path("profile")` → načítaj len kľúčovú sekciu profilu, ak je potrebné.
 
-**Načítanie histórie promptov z MinisterOfMemory (voliteľné, ak je dostupný):**
-Ak existuje `data/prompts_log.jsonl`, môžeš načítať posledné prompty:
-```python
-import sys
-from pathlib import Path
-sys.path.insert(0, str(Path.cwd()))
+5) **Výstup po načítaní**
+- Stručný report: level/XP, current_focus, active_project, posledný checkpoint, posledné logy.
+- Navrhni ďalšie kroky na základe `current_focus` a posledných logov.
 
-try:
-    from core.ministers.memory import MinisterOfMemory, AssistantOfMemory
-    from core.ministers.storage import FileStore
-    
-    prompts_log_path = Path("data/prompts_log.jsonl")
-    if prompts_log_path.exists():
-        file_store = FileStore(prompts_log_path)
-        assistant = AssistantOfMemory(store=file_store)
-        minister = MinisterOfMemory(assistant=assistant)
-        
-        # Načítaj posledných 20 promptov pre kontext
-        recent_prompts = minister.review_context(limit=20)
-        # Zobraz v summary, ak sú relevantné
-except Exception:
-    # Ak MinisterOfMemory nie je dostupný, pokračuj bez neho
-    recent_prompts = []
-```
+## 🚀 Štartovacia Sekvencia
+1. Potvrď manifest (čas `last_updated`).
+2. Vypíš status (level/XP) + aktuálny quest/focus.
+3. Zhrň posledné logy (max `main_last_n`).
+4. Ponúkni pokračovanie alebo aktualizáciu manifestu, ak sa zmenil fokus.
 
-**Poznámka:** Prompty z MinisterOfMemory poskytujú dodatočný kontext o predchádzajúcich konverzáciách, ktorý môže byť užitočný pri obnovení práce.
+## ❗ Pravidlá
+- **Žiadne čítanie starých markdown savegame/log fallbackov** – manifest + JSON sú zdroj pravdy.
+- **Token disciplína:** načítaj len to, čo určuje manifest (vrátane okien). Nepretriasaj históriu.
+- **Ak manifest chýba alebo je neúplný:** pýtaj si údaje na jeho doplnenie pred ďalším čítaním.
 
-**Výsledok načítania:**
-- **Pred optimalizáciou (Markdown):** ~1741 riadkov (191 + 627 + 288 + 410 + 225) = ~7,200 tokenov
-- **Po optimalizácii (Markdown selektívne):** ~170 riadkov (70 + 100 + 20 + 50) = ~5,100 tokenov
-- **Po optimalizácii (JSON):** ~95 riadkov JSON (50 + 30 + 15) = ~4,350 tokenov
-- **Redukcia:** ~40% tokenov (JSON vs pôvodný Markdown)
-
----
-
-### 2. 🛠️ ACTIVE WORKFLOW (Priebežná práca)
-Počas práce dodržuj toto pravidlo logovania:
-
-> **⚡ PRAVIDLO ŽIVEJ STOPY (Real-Time Logging)**
->
-> Keď užívateľ povie *"Ideme robiť úlohu"* alebo keď dokončíš atomickú akciu:
-> **OKAMŽITE aktualizuj `logs/XVADUR_LOG.md`.**
->
-> **Formát zápisu:**
-> - `[HH:MM] 🔹 Názov Akcie`
->   - *Vytvorené súbory:* `cesta/k/suboru.ext` (krátky popis)
->   - *Status:* (Started / Completed)
->   - *XP:* (Odhad XP)
-
-**Automatické Logovanie (Voliteľné):**
-- **Activity Logger:** Automaticky zaznamenáva aktivitu (ak je nakonfigurovaný)
-- **File Watcher:** Monitoruje zmeny súborov (vyžaduje fswatch)
-- **VS Code Tasks:** "Log Current Activity" pre manuálne logovanie
-- **JSONL Log:** `xvadur/data/activity/cursor_activity.jsonl` (strukturované dáta - voliteľné)
-- **Active Log:** `logs/XVADUR_LOG.md` (čitateľný formát)
-
-*Cieľ:* Ak konverzácia spadne, log musí byť zrkadlom reality. Teraz máš automatické + manuálne logovanie.
-
----
-
-### 3. 💾 SAVE_GAME (`/savegame`)
-Pred ukončením konverzácie alebo začatím novej témy:
-1.  Zrekapituluj celú session.
-2.  Vypočítaj finálne XP a Level.
-3.  Vygeneruj nový `sessions/save_games/SAVE_GAME_LATEST.md` s naratívnym zhrnutím.
-4.  Aktualizuj `logs/XVADUR_LOG.md` a `logs/XVADUR_XP.md` s finálnymi hodnotami.
-
----
-
-## 🚀 Štartovacia Sekvencia (Po načítaní)
-1.  **Identifikuj Status:** "Vitaj späť, [Rank] (Lvl [X], [XP] XP)".
-2.  **Next Steps:** "Posledný save bol pri [Quest]. Pokračujeme?"
-3.  **IDE Context:** Skontroluj aktuálny workspace, otvorené súbory, a kontext práce
-4.  **Tón:** Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo
-
-## 💡 IDE-Based Workflow Kontext
-- **Workspace Awareness:** AI má plný prístup k súborom, adresárom a funkciám
-- **Automatická Dokumentácia:** Všetko sa vytvára a upravuje priamo v IDE
-- **Chronologizácia:** Automatické dátumové štítky a backlinking
-- **Kontinuity:** Save Game zaisťuje plynulé pokračovanie medzi sessionami
-
-## 📝 Nové Funkcie (Cursor Customization)
-- **Workspace Settings:** `.vscode/settings.json` – kompletná konfigurácia
-- **Activity Logger:** Automatické zaznamenávanie aktivity
-- **File Watcher:** Background monitoring (vyžaduje fswatch)
-- **VS Code Tasks:** Automatizované úlohy
-- **Dokumentácia:** `.cursor/CURSOR_CUSTOMIZATION_GUIDE.md`
-
----
-**Spúšťač:** `/loadgame`
+Spúšťač: `/loadgame`
