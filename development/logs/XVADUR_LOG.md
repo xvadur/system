@@ -3,6 +3,11 @@
 **Účel:** Záznam vykonanej práce a zmien v projekte
 
 ---
+[05:47] 🔹 Quest #20: Context Engineering uzavretý
+  - *Status:* completed
+  - *XP:* 20.0
+
+
 [05:38] 🔹 Save Game vytvorený
   - *Zmenené súbory:*
     - development/sessions/save_games/SAVE_GAME_LATEST.md
