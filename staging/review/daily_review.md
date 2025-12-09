@@ -1,4 +1,4 @@
-# 🌅 Denný Review: 2025-12-09
+# 🌅 Denný Review: 2025-12-10
 
 ## Včerajší Deň v Kocke
 

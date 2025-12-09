@@ -58,6 +58,39 @@ def daily_rotation():
         # 2. Vytvorenie novej session
         print("\n🆕 Krok 2/5: Vytvorenie novej session...")
         try:
+            # Vytvor novú git branch pre novú session
+            today_str = datetime.now().strftime('%Y-%m-%d')
+            branch_name = f"session-{today_str}"
+            
+            print(f"🌿 Vytváram novú git branch: {branch_name}...")
+            try:
+                # Skontroluj, či už existuje
+                result = subprocess.run(
+                    ["git", "rev-parse", "--verify", branch_name],
+                    capture_output=True,
+                    text=True
+                )
+                if result.returncode == 0:
+                    print(f"⚠️  Branch {branch_name} už existuje, prepínam sa na ňu...")
+                    subprocess.run(
+                        ["git", "checkout", branch_name],
+                        check=True,
+                        capture_output=True
+                    )
+                else:
+                    # Vytvor novú branch z main
+                    subprocess.run(
+                        ["git", "checkout", "-b", branch_name, "main"],
+                        check=True,
+                        capture_output=True
+                    )
+                    print(f"✅ Nová branch vytvorená: {branch_name}")
+            except subprocess.CalledProcessError as e:
+                error_msg = f"Vytvorenie branch zlyhalo: {e}"
+                errors.append(error_msg)
+                print(f"⚠️  {error_msg} (pokračujem s aktuálnou branch)", file=sys.stderr)
+            
+            # Vytvor novú session
             create_new_session()
             print("✅ Nová session vytvorená")
         except Exception as e:
@@ -98,13 +131,21 @@ def daily_rotation():
         # 5. Git push na GitHub
         print("\n🚀 Krok 5/5: Push zmien na GitHub...")
         try:
-            commit_message = f"chore(daily): automatická rotácia {datetime.now().strftime('%Y-%m-%d')}"
-            if git_push_changes(commit_message):
-                print("✅ Zmeny pushnuté na GitHub")
+            today_str = datetime.now().strftime('%Y-%m-%d')
+            branch_name = f"session-{today_str}"
+            commit_message = f"chore(daily): automatická rotácia {today_str}"
+            
+            # Push aktuálnej branchy (môže byť nová session branch)
+            if git_push_changes(commit_message, branch=branch_name):
+                print(f"✅ Zmeny pushnuté na GitHub (branch: {branch_name})")
             else:
-                error_msg = "Git push zlyhal"
-                errors.append(error_msg)
-                print(f"⚠️  {error_msg} (skús manuálne)", file=sys.stderr)
+                # Fallback na aktuálnu branch
+                if git_push_changes(commit_message):
+                    print("✅ Zmeny pushnuté na GitHub (aktuálna branch)")
+                else:
+                    error_msg = "Git push zlyhal"
+                    errors.append(error_msg)
+                    print(f"⚠️  {error_msg} (skús manuálne)", file=sys.stderr)
         except Exception as e:
             error_msg = f"Git push zlyhal: {e}"
             errors.append(error_msg)

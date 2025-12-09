@@ -3,6 +3,50 @@
 **Účel:** Záznam vykonanej práce a zmien v projekte
 
 ---
+[00:00] 🔹 Generovanie denného review
+  - *Zmenené súbory:*
+    - /Users/_xvadur/Desktop/xvadur-workspace/staging/review/daily_review.md
+  - *Status:* Completed
+  - *XP:* 2.0
+
+
+[00:00] 🔹 Spustenie generovania denného review
+  - *Status:* Started
+
+
+[00:00] 🔹 Vytvorenie novej session
+  - *Zmenené súbory:*
+    - /Users/_xvadur/Desktop/xvadur-workspace/staging/sessions/today/session.md
+    - /Users/_xvadur/Desktop/xvadur-workspace/development/sessions/current/session.md
+  - *Status:* Completed
+  - *XP:* 5.0
+
+
+[00:00] 🔹 Spustenie vytvárania novej session
+  - *Status:* Started
+
+
+[00:00] 🔹 Archivácia session
+  - *Zmenené súbory:*
+    - /Users/_xvadur/Desktop/xvadur-workspace/development/sessions/current/session.md
+    - /Users/_xvadur/Desktop/xvadur-workspace/staging/sessions/yesterday/session.md
+    - /Users/_xvadur/Desktop/xvadur-workspace/staging/sessions/yesterday/summary.md
+    - /Users/_xvadur/Desktop/xvadur-workspace/staging/sessions/yesterday/metrics.json
+  - *Status:* Completed
+  - *XP:* 10.0
+
+
+[00:00] 🔹 Spustenie archivácie session
+  - *Zmenené súbory:*
+    - development/sessions/current/session.md
+  - *Status:* Started
+
+
+[23:47] 🔹 Denná rotácia 2025-12-09
+  - *Status:* Completed
+  - *XP:* 15.0
+
+
 [23:47] 🔹 Generovanie denného review
   - *Zmenené súbory:*
     - /Users/_xvadur/Desktop/xvadur-workspace/staging/review/daily_review.md
