@@ -8,10 +8,13 @@
 
 ## 🎯 Ciele Dňa
 
-1. **Quest #13 - Validácia Schém**
-   - [ ] Overiť JSON schémy v dokumentácii vs. implementácii
+1. **Quest #13 - Validácia Schém** ✅
+   - [x] Overiť JSON schémy v dokumentácii vs. implementácii
+   - [x] Vytvoriť `scripts/utils/validate_schemas.py` validátor
+   - [x] Aktualizovať dokumentáciu `docs/ARCHITECTURE.md`
+   - [x] Opraviť nekonzistencie medzi dokumentáciou a implementáciou
    - [ ] Nainštalovať lokálny scheduler (`./scripts/local_scheduler/install_scheduler.sh`)
-   - [ ] Otestovať dual-write systém v praxi
+   - [x] Otestovať dual-write systém v praxi
 
 2. **Milestone: Level 6**
    - Chýba 0.61 XP!
@@ -36,7 +39,23 @@
 
 ## 📝 Poznámky
 
-*(Poznámky z práce počas dňa)*
+### Quest #13: Validácia Schém ✅
+
+**Výsledky validácie:**
+- ✅ **prompts_log.jsonl**: Platný (4 polia zodpovedajú dokumentácii)
+- ✅ **xp_history.jsonl**: Platný (7 polí, aktualizovaná dokumentácia)
+- ✅ **XVADUR_LOG.jsonl**: Platný (14 polí, všetky dokumentované)
+- ⚠️ **conversations.jsonl**: Legacy súbor (neexistuje, nie je chyba)
+
+**Vytvorené súbory:**
+- `scripts/utils/validate_schemas.py` - Validátor JSON schém
+- Aktualizovaná `docs/ARCHITECTURE.md` - Opravené schémy
+
+**Nekonzistencie opravené:**
+1. `xp_history.jsonl`: `current_level` → `level` (dokumentácia aktualizovaná)
+2. `xp_history.jsonl`: Pridané `next_level_xp`, `xp_needed`, `streak_days`
+3. `xp_history.jsonl`: Breakdown štruktúra aktualizovaná (`from_work`, `from_activity`, `bonuses`)
+4. `XVADUR_LOG.jsonl`: Pridané `xp_earned` a `notes` do dokumentácie
 
 ---
 
