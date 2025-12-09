@@ -3,6 +3,27 @@
 **Účel:** Záznam vykonanej práce a zmien v projekte
 
 ---
+[00:16] 🔹 Task: Quest Management
+  - *Zmenené súbory:*
+    - .cursorrules
+    - scripts/daily_rotation.py
+  - *Status:* completed
+  - *XP:* 3.0
+
+
+[00:16] 🔹 Task: Quest Management
+  - *Status:* started
+
+
+[00:14] 🔹 Task: Quest #17: Príprava na ambulanciu
+  - *Status:* started
+
+
+[00:00] 🔹 Denná rotácia 2025-12-10
+  - *Status:* Completed with warnings
+  - *XP:* 15.0
+
+
 [00:00] 🔹 Generovanie denného review
   - *Zmenené súbory:*
     - /Users/_xvadur/Desktop/xvadur-workspace/staging/review/daily_review.md

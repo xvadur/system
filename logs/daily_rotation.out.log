@@ -1,0 +1,33 @@
+============================================================
+🌙 Denná rotácia spustená: 2025-12-10 00:00:06
+============================================================
+
+📦 Krok 1/5: Archivácia včerajšej session...
+✅ Session archivovaná do /Users/_xvadur/Desktop/xvadur-workspace/staging/sessions/yesterday/session.md
+✅ Sumár uložený do /Users/_xvadur/Desktop/xvadur-workspace/staging/sessions/yesterday/summary.md
+✅ Metriky uložené do /Users/_xvadur/Desktop/xvadur-workspace/staging/sessions/yesterday/metrics.json
+⚠️ Nepodarilo sa exportovať session do Obsidianu (MCP nie je dostupné).
+✅ Archivácia dokončená
+
+🆕 Krok 2/5: Vytvorenie novej session...
+🌿 Vytváram novú git branch: session-2025-12-10...
+✅ Nová branch vytvorená: session-2025-12-10
+✅ Nová session vytvorená v stagingu: /Users/_xvadur/Desktop/xvadur-workspace/staging/sessions/today/session.md
+✅ Nová session skopírovaná do developmentu: /Users/_xvadur/Desktop/xvadur-workspace/development/sessions/current/session.md
+✅ Nová session vytvorená
+
+📊 Krok 3/5: Generovanie denného review...
+✅ Denný review uložený do: /Users/_xvadur/Desktop/xvadur-workspace/staging/review/daily_review.md
+⚠️ Nepodarilo sa exportovať review do Obsidianu (MCP nie je dostupné).
+✅ Review vygenerované
+
+🎮 Krok 4/5: Výpočet denných metrík a XP...
+✅ XP vypočítané: 199.59 (Level 5)
+
+🚀 Krok 5/5: Push zmien na GitHub...
+
+============================================================
+⚠️  Denná rotácia dokončená s 1 chybami
+⏱️  Čas: 0.3s
+   - Git push zlyhal
+============================================================

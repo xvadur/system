@@ -153,3 +153,4 @@ Inštalačný skript automaticky detekuje Python cestu. Ak máš problém:
 
 
 
+

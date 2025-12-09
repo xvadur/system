@@ -264,3 +264,109 @@ Táto follow-up session sa zamerala na riešenie vysokého token loadu (140K) po
 - MCP Priority: Vždy skús použiť MCP najprv pre automatizácie
 - Token Optimization: Vždy myslieť na token spotrebu
 - Tón: Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo
+# 💾 SAVE GAME: 2025-12-10 00:20
+
+---
+
+## 📊 Status
+- **Rank:** AI Developer (Senior)
+- **Level:** 5
+- **XP:** 199.59 / 200.0 (99.8%)
+- **Streak:** 4 dní
+- **Last Log:** development/logs/XVADUR_LOG.md
+
+## 🧠 Naratívny Kontext (Story so far)
+
+Táto session sa začala načítaním kontextu cez `/loadgame` a pokračovala sériou kľúčových optimalizácií a oprav systému. Hlavným cieľom bolo dokončiť automatizácie a zabezpečiť, aby všetky systémy fungovali správne pred polnocou, keď sa mal spustiť scheduler pre dennú rotáciu.
+
+**Kľúčové rozhodnutia:**
+1. **Odstránenie `docs/` z `.cursorignore`** - Užívateľ identifikoval problém, že dokumentácia bola ignorovaná, čo znemožňovalo jej načítanie. Odstránili sme globálne ignore pre `docs/` adresár, čím sa dokumentácia stala dostupnou pre selektívne načítanie.
+2. **MCP Priority v `.cursorrules`** - Rozšírili sme inštrukcie pre používanie MCP nástrojov namiesto git CLI. Pridali sme jasné pravidlá, že GitHub operácie musia používať MCP `push_files` a `create_or_update_file` namiesto shell git príkazov.
+3. **Oprava Local Scheduler** - Identifikovali sme a opravili problémy v `daily_rotation.py`: pridaný git pull pred pushom (rieši non-fast-forward), lepšia error handling pre chýbajúce session súbory, a vytváranie novej git branchy pre každú dennú session.
+4. **Automatické logovanie taskov** - Implementovali sme automatické logovanie cez `log_task_started()` a `log_task_completed()` s konkrétnymi inštrukciami v `.cursorrules`. AI teraz automaticky loguje každý task do triple-write systému (MD + JSONL + SQLite).
+
+**Tvorba nástrojov:**
+- Aktualizovaný `.cursorrules` s MCP prioritou a automatickým logovaním
+- Opravený `scripts/daily_rotation.py` - git pull, error handling, vytváranie branchy
+- Opravený `scripts/utils/git_helper.py` - pull pred pushom
+- Opravený `scripts/auto_archive_session.py` - vytvorenie prázdnej session ak neexistuje
+
+**Introspektívne momenty:**
+Užívateľ sa pýtal, prečo nepoužívam MCP nástroje - to viedlo k identifikácii problému, že inštrukcie v `.cursorrules` boli príliš vágne. Rozšírili sme ich o konkrétne príklady a workflow. Taktiež sme overili, že scheduler funguje správne so sleep mode (spustí sa po prebudení, ak je Mac v spánku o polnoci).
+
+**Gamifikačný progres:**
+Aktuálne sme na Level 5 s 199.59 XP z 200.0 XP (99.8%) - sme na prahu Level 6! Streak je 4 dni. Táto session prispela k lepšiemu pochopeniu automatizácií a implementácii automatického logovania.
+
+**Prepojenie s dlhodobou víziou:**
+MCP integrácia a automatizácie sú kľúčové pre produktizáciu AI konzoly. Scheduler vytvára novú git branch každú polnoc, čo umožňuje čistý workflow pre každý deň. Automatické logovanie zlepšuje tracking produktivity a umožňuje lepšiu analýzu práce.
+
+**Otvorené slučky:**
+- Quest #17: Field Report z ambulancie (10.12.2025) - užívateľ chce vytvoriť field report
+- Quest #16: Vytvorenie zmysluplného RAG (osobný denník + general knowledge)
+- Quest #22: XP systém check - analýza ukázala, že systém meria aktivitu, nie produktivitu
+- Testovanie skutočnej token spotreby po reštarte Cursor
+- Quest #21: XP Systém Revízia (pending)
+
+**Analytické poznámky:**
+Užívateľ má tendenciu identifikovať problémy v systéme (ako `.cursorignore` blokujúci dokumentáciu) a požadovať konkrétne riešenia. Taktiež sa pýta na správanie systémov (scheduler so sleep mode), čo ukazuje potrebu porozumieť, ako veci fungujú. Scheduler sa úspešne spustil o polnoci a vytvoril novú branch `session-2025-12-10`.
+
+**Sumarizácia:**
+Dnešná session bola zameraná na dokončenie automatizácií a opravu systémov. Implementovali sme MCP priority, opravili scheduler, a pridali automatické logovanie taskov. Scheduler úspešne fungoval o polnoci a vytvoril novú session branch. V ďalšej session odporúčam pokračovať s Quest #17 (Field Report z ambulancie) a možno začať s Quest #21 (XP Systém Revízia), keďže sme na prahu Level 6.
+
+## 🎯 Aktívne Questy & Next Steps
+
+### Quest #17: Field Report z ambulancie (10.12.2025)
+- **Status:** Open
+- **Next Steps:**
+  - Vytvoriť field report o skúsenostiach z ambulancie
+  - Dokumentovať pozorovania, prípady, postupy
+  - Pridať systémové poznatky a reflexie
+
+### Quest #16: Vytvorenie zmysluplného RAG
+- **Status:** Open
+- **Next Steps:**
+  - Implementovať RAG pre osobný denník
+  - Pridať general knowledge kategóriu
+  - Integrácia s MinisterOfMemory
+
+### Quest #22: XP systém check
+- **Status:** Open
+- **Next Steps:**
+  - Rozhodnúť, či prerobiť XP systém na completion-based
+  - Alebo ponechať ako gamifikačný element
+
+### Quest #21: XP Systém Revízia
+- **Status:** Pending
+- **Next Steps:**
+  - Načítať GitHub Issue #21
+  - Analyzovať `core/xp/calculator.py`
+  - Implementovať revíziu
+
+## ⚠️ Inštrukcie pre Nového Agenta
+
+**Pre agenta:**
+- Priama, analytická, technicky detailná komunikácia
+- Dôraz na konzistentnosť a presnosť
+- **VŽDY používať MCP nástroje pre GitHub operácie** (nie git CLI)
+- **VŽDY automaticky logovať tasky** - `log_task_started()` na začiatku, `log_task_completed()` na konci
+- Triple-write logovanie (MD + JSONL + SQLite)
+- Pri `/savegame` automaticky uložiť prompty, vypočítať XP, vytvoriť save game a git commit+push cez MCP
+- Pri `/loadgame` načítať kontext z JSON formátov (priorita), fallback na Markdown
+- **MCP Priority:** Vždy skús použiť MCP najprv pre automatizácie
+- **Token Optimization:** Vždy myslieť na token spotrebu
+- Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo
+
+**Štýl:**
+- Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo
+
+**Kontext:**
+- Hot Storage: `development/logs/XVADUR_LOG.jsonl` (max 100 záznamov)
+- Cold Storage: `development/data/archive.db` (SQLite)
+- Templates: `templates/prompts/` (memory_agent, verification_loop, chain_of_thought)
+- Context Schema: `core/context_engineering/schemas/context_v6.json`
+- Scheduler: Aktívny, spúšťa sa každú polnoc (00:00 CET), vytvára novú branch `session-YYYY-MM-DD`
+
+**Next Session:**
+Quest #17: Field Report z ambulancie (priorita - užívateľ chce dokumentovať skúsenosti)
+
+---

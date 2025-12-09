@@ -2,3 +2,8 @@
    ⚠️  Branch 'session-2025-12-10' nemá nastavený remote tracking. Push sa preskočí.
 fatal: mmap failed: Resource deadlock avoided
 
+⚠️  Git chyba: Command '['git', 'commit', '-m', 'chore(daily): automatická rotácia 2025-12-10']' returned non-zero exit status 128.
+   ⚠️  Branch 'session-2025-12-10' nemá nastavený remote tracking. Push sa preskočí.
+fatal: mmap failed: Resource deadlock avoided
+
+⚠️  Git push zlyhal (skús manuálne)

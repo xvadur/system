@@ -34,7 +34,7 @@
     ],
     "open_loops": [
       "Quest #17: Field Report z ambulancie (10.12.2025) - užívateľ chce vytvoriť field report",
-      "Quest #16: Votvorenie zmysluplného RAG (osobný denník + general knowledge)",
+      "Quest #16: Vytvorenie zmysluplného RAG (osobný denník + general knowledge)",
       "Quest #22: XP systém check - analýza ukázala, že systém meria aktivitu, nie produktivitu",
       "Quest #21: XP Systém Revízia (pending)",
       "Testovanie skutočnej token spotreby po reštarte Cursor"
@@ -56,7 +56,7 @@
       "id": "quest-#16-vytvorenie-zmysluplného-rag",
       "title": "Quest #16: Vytvorenie zmysluplného RAG",
       "status": "new",
-      "next_psteps": [
+      "next_steps": [
         "Implementovať RAG pre osobný denník",
         "Pridať general knowledge kategóriu",
         "Integrácia s MinisterOfMemory"
