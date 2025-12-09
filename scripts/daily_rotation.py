@@ -149,5 +149,3 @@ def daily_rotation():
 if __name__ == "__main__":
     exit_code = daily_rotation()
     sys.exit(exit_code)
-
-

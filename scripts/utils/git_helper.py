@@ -114,4 +114,3 @@ if __name__ == "__main__":
     commit_msg = sys.argv[1] if len(sys.argv) > 1 else "test commit"
     success = git_push_changes(commit_msg)
     sys.exit(0 if success else 1)
-
