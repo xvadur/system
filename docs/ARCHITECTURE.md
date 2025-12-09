@@ -106,10 +106,15 @@ User Prompt → .cursorrules → auto_save_prompt.py → FileStore → prompts_l
 {
   "session": "session_id",
   "timestamp": "2025-12-04T12:00:00+01:00",
-  "user": "User prompt text...",
-  "assistant": "AI response text..."
+  "user_prompt": {
+    "extracted_text": "User prompt text..."
+  },
+  "ai_response": {
+    "extracted_text": "AI response text..."
+  }
 }
 ```
+**Poznámka:** Tento súbor môže neexistovať (legacy formát). Aktuálne sa používa `prompts_log.jsonl` pre ukladanie promptov.
 
 ### prompts_log.jsonl
 ```json
@@ -124,16 +129,53 @@ User Prompt → .cursorrules → auto_save_prompt.py → FileStore → prompts_l
 }
 ```
 
+### XVADUR_LOG.jsonl
+```json
+{
+  "timestamp": "2025-12-08T01:15:00+01:00",
+  "date": "2025-12-08",
+  "time": "01:15",
+  "title": "Quest #13: Dual-write systém implementovaný",
+  "type": "task",
+  "status": "completed",
+  "files_changed": ["development/logs/XVADUR_LOG.jsonl", "scripts/utils/log_manager.py"],
+  "xp_estimate": 2.0,
+  "completed": ["Vytvorený XVADUR_LOG.jsonl", "Rozšírený log_manager.py"],
+  "results": {"md_write": "OK", "jsonl_write": "OK"},
+  "decisions": [],
+  "quest_id": 13,
+  "xp_earned": 2.0,
+  "notes": "Scheduler nie je nainštalovaný!"
+}
+```
+**Poznámka:** Dual-write systém zapisuje súčasne do `XVADUR_LOG.md` (Markdown) a `XVADUR_LOG.jsonl` (JSON). Voliteľné polia: `files_changed`, `xp_estimate`, `completed`, `results`, `decisions`, `quest_id`, `xp_earned`, `notes`.
+
 ### xp_history.jsonl
 ```json
 {
   "timestamp": "2025-12-04T12:00:00+01:00",
   "total_xp": 159.78,
-  "current_level": 5,
+  "level": 5,
+  "next_level_xp": 200,
+  "xp_needed": 40.22,
+  "streak_days": 3,
   "breakdown": {
-    "from_log": 145.6,
-    "from_prompts": 9.58,
-    "bonuses": 4.6
+    "from_work": {
+      "entries": {"count": 29, "xp": 14.5},
+      "files": {"count": 61, "xp": 6.1},
+      "tasks": {"count": 250, "xp": 125.0},
+      "total": 145.6
+    },
+    "from_activity": {
+      "prompts": {"count": 80, "xp": 8.0},
+      "words": {"count": 3163, "xp": 1.58},
+      "total": 9.58
+    },
+    "bonuses": {
+      "streak": {"days": 3, "xp": 0.6},
+      "sessions": {"count": 4, "xp": 4.0},
+      "total": 4.6
+    }
   }
 }
 ```
@@ -192,12 +234,69 @@ Systémový prompt, ktorý:
 
 ---
 
+## Quest System (Anthropic Harness Pattern)
+
+**Verzia:** 2.1.0 (2025-12-09)
+
+Implementácia Anthropic best practices pre long-running agents.
+
+### Quest Schema
+
+```json
+{
+  "id": "quest-15",
+  "title": "Quest #15: ...",
+  "status": "in_progress",
+  "passes": false,
+  "validation": {
+    "criteria": [
+      "Kritérium 1 splnené",
+      "Kritérium 2 splnené"
+    ],
+    "last_tested": "2025-12-09T03:00:00Z"
+  },
+  "next_steps": [...],
+  "blockers": []
+}
+```
+
+### Anthropic Pattern Fields
+
+| Field | Typ | Popis |
+|-------|-----|-------|
+| `passes` | boolean | Či quest spĺňa všetky kritériá |
+| `validation.criteria` | array | Zoznam kritérií (Definition of Done) |
+| `validation.last_tested` | string | ISO timestamp poslednej validácie |
+
+### Workflow
+
+1. **Health Check** (`/loadgame`):
+   - Overenie štruktúry questov
+   - Kontrola konzistencie `passes` vs `status`
+   
+2. **Validácia** (`/savegame`):
+   - Pre každý quest over kritériá
+   - Aktualizuj `passes` a `last_tested`
+
+3. **Nástroje:**
+   - `scripts/utils/validate_quest.py --health-check`
+   - `scripts/utils/validate_quest.py --list`
+   - `scripts/utils/validate_quest.py --quest quest-15`
+
+### Dokumentácia
+
+- **Zdroj:** [Anthropic Engineering - Effective Harnesses](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
+- **Analýza:** `development/sessions/current/analysis_nate_jones_calibration.md`
+
+---
+
 ## Ďalší Rozvoj
 
 1. **RAG Rebuild** - Dokončiť po doplnení OpenAI kreditu
 2. **XP v2.0** - Implementovať nový level systém
 3. **Weekly Reports** - Automatické syntézy
 4. **Dashboard** - HTML vizualizácia metrík
+5. **Quest Automation** - Automatické testovanie kritérií questov
 
 ---
 

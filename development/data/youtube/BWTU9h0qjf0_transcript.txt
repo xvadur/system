@@ -1,0 +1,78 @@
+What People Are Actually Using AI for Right Now
+Video ID: BWTU9h0qjf0
+Channel: The AI Daily Brief: Artificial Intelligence News
+Duration: 681s (11:21)
+Upload Date: 2025-12-09
+
+---
+
+TRANSCRIPT:
+
+Welcome back to the AI daily brief. Today we are looking at what people are actually using AI for right now. In other words, beyond our suppositions and our guesses, is there a way to see these specific types of applications that are driving AI adoption? And last week, we got a study that was trying to do exactly that. The study comes from a team up of Open Router and A16Z. A16Z of course being a prominent venture fund and Open Router being a startup that provides a unified API that gives developers and users access to hundreds of different LLMs through a standard API gateway.
+
+Open Router serves 25 trillion tokens monthly across 300 models to 5 million end users. One of the big use cases for open router is consumer-facing AI apps. So basically developers can use open router to automatically route requests to the most efficient or appropriate model. It also provides failover services in case service of a favored model goes down.
+
+The study they released last week is called the state of AI, an empirical 100 trillion token study with open router. In the abstract, they write, "We analyzed over 100 trillion tokens of real world LLM interactions across tasks, geographies, and time. The findings underscore that the way developers and end users engage with LLMs in the wild is complex and multifaceted."
+
+KEY FINDINGS:
+
+1. REASONING MODELS PARADIGM SHIFT:
+- Reasoning model token usage went from basically negligible to now over 50% of tokens consumed
+- This happened since December 2024 when OpenAI's o1 became broadly available
+- Open router calls this a "full paradigm shift"
+- Part of what reasoning models open up is more autonomy and agent capabilities
+
+2. TOOL INVOCATION GROWTH:
+- The share of requests that invoke tools rose steadily throughout the year from around 0% at the beginning of the year to 15% now
+
+3. PROGRAMMING DOMINANCE:
+- The dominant use case by far has become programming
+- Early in 2025, programming was around 11% of usage and now it is over 50%
+- "The dominant and most important phenomenon of this year in AI was the rise of AI coding"
+
+4. OPEN SOURCE VS CLOSED MODELS:
+- Open-source models, especially Chinese releases, gained major market share
+- They now coexist with closed models as high-volume versus high-value options
+- Roleplay and creative dialogue lead open-source usage (52% of open source usage)
+- Anthropic's Claude is used for over 80% of programming and almost zero roleplay - "the serious work model"
+- DeepSeek is "the entertainment king" with two-thirds role-play traffic
+
+5. MODEL DIFFERENTIATION:
+- There is no single best model
+- The top 10 models by volume are from eight different labs
+- Different models for different uses
+- New medium-size model sweet spot in the 20 to 70 billion parameter range
+
+6. CINDERELLA GLASS SLIPPER EFFECT:
+- When a new model gets released, tons of people come in and try it
+- People who persist create a "foundational cohort" who resist substitution even as newer models emerge
+- Early 2025 cohorts of Claude Sonnet and Gemini 2.5 Pro still retain 40 to 50% of users 6 months later
+
+7. PRICE INELASTICITY:
+- Demand is wildly price inelastic
+- Users happily pay 10 to 50x more per token for ChatGPT-5 if it saves them 10 minutes of debugging
+- "Being cheap is nowhere near enough"
+
+8. WRAPPERS AND SCAFFOLDS:
+- Brian Katano's reflection: "I really thought cursor and open router would not become big. Cursor is just a fork of VS Code. Open router is just a wrapper on top of model APIs. I was very wrong."
+- The AI market is special in its sensitive differentiation - easy to switch between providers, but evaluating any model is sensitive
+- Small changes in input cause large changes in output
+- Buyers need wrappers and scaffolds to do work over time, otherwise lose out on optionality in rapidly changing provider market
+
+QUOTES:
+
+- Anan Chadri: "Open router reported what everyone building tools already knows. AI usage is mostly long-running coding job with tool calls."
+
+- Shan Chahan: "Role playing and creative writing is 52% of open source usage. While VCs fund productivity, humans are using AI to write fanfiction and debug code. The market gap versus reality gap is hilarious."
+
+- Token Bender: Points out that while this study is super useful for understanding open source model usage, we probably shouldn't extrapolate their patterns overall because open router is a less preferred option for the closed model providers.
+
+STUDY LIMITATIONS:
+- 100 trillion tokens is between a tenth and a fifteenth of what Google Gemini was serving per month before Gemini 3
+- Usage pattern is concentrated around people who are building things
+- Would look different if studied across all end users (ChatGPT, Claude, Gemini direct users)
+- Grock dominated charts but made tokens available for free as promotion strategy, which warps results
+
+STUDY LOCATION:
+- Available at openrouter.ai (banner right on top of the website)
+

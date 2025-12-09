@@ -22,6 +22,7 @@ sys.path.insert(0, str(workspace_root))
 
 from core.ministers.memory import AssistantOfMemory, MinisterOfMemory
 from core.ministers.storage import FileStore
+from core.context_engineering.token_metrics import TokenBudgetTracker, TokenBudget
 
 logger = logging.getLogger(__name__)
 
@@ -39,6 +40,7 @@ class MetricsTracker:
         file_store = FileStore(prompts_log_path)
         assistant = AssistantOfMemory(store=file_store)
         self.minister = MinisterOfMemory(assistant=assistant)
+        self.token_tracker = TokenBudgetTracker()
 
     def calculate_word_count(self, text: str) -> int:
         """Calculate word count in text.
@@ -172,6 +174,17 @@ class MetricsTracker:
         avg_complexity = 7.5  # Default, could be calculated from content
         estimated_xp = self.estimate_xp(total_words, avg_complexity)
         
+        # Token metriky
+        all_content = ' '.join(r.content for r in records)
+        token_count = self.token_tracker.estimate_tokens(all_content)
+        
+        # Vypočítaj token efficiency (tokens per prompt)
+        token_efficiency = token_count / prompt_count if prompt_count > 0 else 0
+        
+        # Vypočítaj utilization ratio (predpokladáme 16K context window)
+        context_window_size = 16000
+        utilization_ratio = token_count / context_window_size if context_window_size > 0 else 0
+        
         return {
             'prompt_count': prompt_count,
             'total_words': total_words,
@@ -181,6 +194,9 @@ class MetricsTracker:
             'keywords': keywords,
             'sentiment': dominant_sentiment,
             'estimated_xp': estimated_xp,
+            'token_count': token_count,
+            'token_efficiency': round(token_efficiency, 2),
+            'utilization_ratio': round(utilization_ratio, 4),
             'timestamp': datetime.now().isoformat(),
         }
 

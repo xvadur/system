@@ -140,6 +140,111 @@ except Exception:
 
 ---
 
+## Context Engineering Integration
+
+**NOVÉ:** Automatická optimalizácia tokenov pomocou Context Engineering komponentov.
+
+### Automatické Token Tracking
+
+Po načítaní kontextu sa automaticky trackujú tokeny cez `TokenBudgetTracker`:
+
+```python
+from core.context_engineering.integration import load_context_with_optimization
+from pathlib import Path
+
+result = load_context_with_optimization(
+    save_game_path=Path("development/sessions/save_games/SAVE_GAME_LATEST.json"),
+    log_path=Path("development/logs/XVADUR_LOG.jsonl"),
+    xp_path=Path("development/logs/XVADUR_XP.json"),
+    prompts_log_path=Path("development/data/prompts_log.jsonl"),
+    auto_compress=True,
+    auto_isolate=True
+)
+
+# Výsledok obsahuje:
+# - context_parts: Načítané komponenty kontextu
+# - metrics: Token metriky
+# - utilization: Utilization ratio (0.0-1.0)
+# - compressed: Boolean - či bola aplikovaná kompresia
+```
+
+### Automatická Kompresia
+
+Ak utilization > 80% (COMPRESSION_THRESHOLD), automaticky sa aplikuje `CompressContextManager`:
+
+- **Threshold:** 80% utilization (konfigurovateľné v `context_engineering_config.json`)
+- **Cieľový pomer:** 50% redukcia tokenov
+- **Zachovanie:** Kľúčové informácie sú zachované
+
+### Automatická Izolácia Kontextu
+
+Pre nové questy sa automaticky izoluje kontext cez `IsolateContextManager`:
+
+```python
+from core.context_engineering.integration import isolate_context_for_task
+from core.ministers.memory import MinisterOfMemory
+
+minister = MinisterOfMemory(...)
+isolation = minister.isolate_context_for_task(
+    task_id="quest-20",
+    task_description="Implementovať Context Engineering",
+    keywords={"context", "engineering", "token"},
+    limit=20
+)
+
+# Výsledok obsahuje:
+# - isolated_content: Izolovaný obsah pre úlohu
+# - token_count: Počet tokenov v izolovanom kontexte
+# - relevant_records: Filtrované záznamy
+```
+
+### Token Metriky v Summary
+
+Po načítaní kontextu sa zobrazujú token metriky:
+
+```
+📊 Token Metriky:
+- Celkové tokeny: 4,350 / 16,000 (27.2%)
+- System: 2,400 (15%)
+- História: 1,200 (7.5%)
+- Aktuálny: 750 (4.7%)
+- Utilization: 27.2%
+- Kompresia: Nie je potrebná (< 80%)
+```
+
+### Python Helper Skript
+
+Použi `scripts/utils/load_context_optimized.py` pre optimalizované načítanie:
+
+```bash
+# Načíta save game s optimalizáciou
+python scripts/utils/load_context_optimized.py --save-game
+
+# Načíta log entries s izoláciou pre úlohu
+python scripts/utils/load_context_optimized.py --log --task "Implementovať Context Engineering"
+
+# Vráti optimalizovaný sumár
+python scripts/utils/load_context_optimized.py --summary --limit 10
+
+# JSON výstup
+python scripts/utils/load_context_optimized.py --save-game --log --json
+```
+
+### Konfigurácia
+
+Konfigurácia je v `development/data/context_engineering_config.json`:
+
+```json
+{
+  "compression_threshold": 0.8,
+  "target_compression_ratio": 0.5,
+  "context_window_size": 16000,
+  "isolation_max_tokens": 800
+}
+```
+
+---
+
 ### 2. 🛠️ ACTIVE WORKFLOW (Priebežná práca)
 Počas práce dodržuj toto pravidlo logovania:
 
@@ -174,11 +279,54 @@ Pred ukončením konverzácie alebo začatím novej témy:
 
 ---
 
+## 🏥 Health Check (Anthropic Harness Pattern)
+
+**NOVÉ:** Po načítaní kontextu spusti health check pred začatím práce.
+
+**Prečo Health Check?**
+Podľa [Anthropic engineering article](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents),
+agent by mal vždy začať overením, že workspace je v čistom stave. Toto zabraňuje práci na broken codebase.
+
+**Health Check Sekvencia:**
+1. **Overiť štruktúru Questov:**
+   - Každý quest musí mať `passes` a `validation` fields
+   - Ak chýba, upozorniť užívateľa
+   
+2. **Skontrolovať konzistenciu:**
+   - Quest s `passes: true` by mal mať `status: completed`
+   - Quest s `status: in_progress` by mal mať `passes: false`
+
+3. **Identifikovať failing questy:**
+   - Zobraziť questy s `passes: false`
+   - Odporučiť ktorý quest riešiť ako prvý
+
+**Automatický Health Check (voliteľné):**
+```bash
+python scripts/utils/validate_quest.py --health-check
+```
+
+**Výstup Health Check:**
+```
+🏥 Health Check - Anthropic Harness Pattern
+==================================================
+✅ SAVE_GAME_LATEST.json existuje
+✅ JSON validný
+✅ 4 questov nájdených
+✅ Všetky questy majú správny formát (passes + validation)
+✅ Konzistencia passes vs status OK
+==================================================
+🏁 Health Check dokončený
+```
+
+---
+
 ## 🚀 Štartovacia Sekvencia (Po načítaní)
-1.  **Identifikuj Status:** "Vitaj späť, [Rank] (Lvl [X], [XP] XP)".
-2.  **Next Steps:** "Posledný save bol pri [Quest]. Pokračujeme?"
-3.  **IDE Context:** Skontroluj aktuálny workspace, otvorené súbory, a kontext práce
-4.  **Tón:** Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo
+1.  **Health Check:** Spusti `validate_quest.py --health-check` alebo manuálne over štruktúru
+2.  **Identifikuj Status:** "Vitaj späť, [Rank] (Lvl [X], [XP] XP)".
+3.  **Next Steps:** "Posledný save bol pri [Quest]. Pokračujeme?"
+4.  **Failing Quests:** Zobraziť questy s `passes: false` a ich kritériá
+5.  **IDE Context:** Skontroluj aktuálny workspace, otvorené súbory, a kontext práce
+6.  **Tón:** Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo
 
 ## 💡 IDE-Based Workflow Kontext
 - **Workspace Awareness:** AI má plný prístup k súborom, adresárom a funkciám

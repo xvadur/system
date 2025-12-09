@@ -1,117 +1,96 @@
-# 💾 SAVE GAME: 2025-12-05
+# 💾 SAVE GAME: 2025-12-09 05:40
+
+---
 
 ## 📊 Status
-- **Rank:** AI Developer
-- **Level:** 1
-- **XP:** 0.0 / 10 (0.0%)
-- **Next Level:** 10.0 XP potrebné
-- **Streak:** 0 dní
+- **Rank:** AI Developer (Senior)
+- **Level:** 5
+- **XP:** 199.59 / 200 (99.8%) - 0.41 XP do Level 6!
+- **Streak:** 4 dní
 - **Last Log:** `development/logs/XVADUR_LOG.md`
 
 ## 🧠 Naratívny Kontext (Story so far)
 
-Naša dnešná session začala identifikáciou kritického problému - **GitHub Actions je spoplatnená služba** a zistil som, že dlhuješ GitHubu 30€. To bol moment, kedy sme sa rozhodli pre radikálnu zmenu stratégie: **migrácia z GitHub Actions na lokálny scheduler**.
+Táto session bola zameraná na **implementáciu Hot/Cold Storage architektúry** - zásadného vylepšenia systému pre efektívnejšie ukladanie a načítavanie kontextu. Session začala diskusiou o tom, či by bolo efektívnejšie používať SQL namiesto JSONL pre archívne dáta. Po analýze sme sa rozhodli pre **hybridný prístup**: JSONL ako "Hot Storage" pre runtime kontext (posledných 100 záznamov) a SQLite ako "Cold Storage" pre archív a komplexné query.
 
-### Začiatok session
+**Kľúčové rozhodnutia:**
+1. **Architektúra Hot/Cold:** JSONL zostáva pre rýchle načítanie (AI kontext), SQLite pre historické analýzy
+2. **Triple-write systém:** Každý záznam sa zapisuje do MD (človek), JSONL (hot), SQLite (cold)
+3. **Automatická archivácia:** Keď JSONL presiahne 100 záznamov, staré sa presunú do SQLite
 
-Session začala potrebou zosúladiť GitHub logiku a session management. Pracovali sme na:
-- Aktualizácii MCP integrácie dokumentácie (presun z `docs/` do `core/mcp/`)
-- Implementácii denného session rotation systému s GitHub branchami
-- Oprave GitHub Actions workflow súborov, ktoré hlásili chyby
+**Vytvorené nástroje a komponenty:**
+- `core/ministers/sqlite_store.py` - Kompletný SQLite backend s indexmi, query API, agregáciami
+- `scripts/utils/migrate_to_sqlite.py` - Migračný skript s dry-run a force módmi
+- `scripts/utils/archive_query.py` - CLI nástroj pre historické query (stats, xp, quest, aggregate)
+- Aktualizovaný `log_manager.py` - Triple-write s automatickou archiváciou
 
-### Kľúčové rozhodnutia
+**Technické detaily:**
+- SQLite schéma s 5 indexmi (timestamp, type, quest_id, date, status)
+- Batch insert pre efektívnu migráciu
+- Lazy initialization SQLite store (singleton pattern)
+- Konfigurácia v `context_engineering/config.py` (hot_storage_limit, sqlite_db_path)
 
-1. **Migrácia na lokálny scheduler:** Po zistení, že GitHub Actions stojí peniaze, rozhodli sme sa vytvoriť lokálny macOS launchd scheduler, ktorý spúšťa dennú rotáciu každú polnoc (00:00).
+**Výsledky migrácie:**
+- 24 záznamov v Hot Storage (JSONL)
+- 24 záznamov v Cold Storage (SQLite)
+- 47.0 XP v archíve (z taskov)
 
-2. **Optimalizácia workflow:** Namiesto troch rôznych schedulerov (00:00, 07:00, 23:59) sme vytvorili **jeden master skript** (`scripts/daily_rotation.py`), ktorý urobí všetko naraz.
+**Gamifikačný progres:**
+- XP: 199.59 (len 0.41 XP do Level 6!)
+- Streak: 4 dní kontinuálnej práce
+- Breakdown: 178.2 XP z práce, 13.59 XP z promptov, 7.8 XP z bonusov
 
-3. **Odstránenie GitHub Actions:** Odstránili sme `auto-close-issues.yml` workflow, pretože GitHub už automaticky zatvára Issues cez commit messages (`fixes #123`).
+**Prepojenie s dlhodobou víziou:**
+Hot/Cold Storage architektúra je základom pre škálovateľný systém pamäte. Umožňuje:
+- Rýchle načítanie kontextu pre AI (token optimalizácia)
+- Historické analýzy bez zaťaženia runtime
+- Základ pre budúce RAG vylepšenia
 
-### Tvorba nástrojov/skriptov
-
-Vytvorili sme kompletný lokálny scheduler systém:
-- **`scripts/daily_rotation.py`** - Master skript pre dennú rotáciu (archivácia + nová session + metriky + git push)
-- **`scripts/utils/git_helper.py`** - Bezpečný git push helper s error handlingom
-- **`scripts/local_scheduler/com.xvadur.daily_rotation.plist`** - macOS launchd konfigurácia
-- **`scripts/local_scheduler/install_scheduler.sh`** - Automatický inštalačný skript
-- **`scripts/local_scheduler/README.md`** - Kompletná dokumentácia
-
-### Introspektívne momenty
-
-**Kritické uvedomenie:** Zistil si, že píšeš príliš veľa dokumentov kvôli zachovaniu kontextu pre mňa, ale možno to nerobíš správne. Navrhli sme **štrukturované, kompaktné formáty** (JSON/YAML) namiesto naratívnych Markdown dokumentov, ktoré zaberajú veľa tokenov.
-
-### Strety so systémom
-
-- **GitHub Actions náklady:** Zistil si, že dlhuješ GitHubu 30€ za Actions minúty
-- **YAML syntax chyby:** Heredoc bloky s diakritikou spôsobovali parsing chyby v workflow súboroch
-- **Token optimization:** Potreba refaktorovať spôsob, akým sledujeme kontext
-
-### Gamifikačný progres
-
-XP systém aktuálne ukazuje 0.0 XP (Level 1), čo môže byť dôsledkom toho, že logy nie sú správne parsované alebo sú prázdne. Systém je však pripravený na tracking práce po implementácii refaktorovania kontextu.
-
-### Prepojenie s dlhodobou víziou
-
-Migrácia na lokálny scheduler je dôležitá pre **cost-effectiveness** - ušetríš náklady na GitHub Actions a zároveň si zachováš plnú kontrolu nad automatizáciami. Systém zostáva na GitHube (pre prístup cez Codex), ale beží lokálne (bez nákladov).
-
-### Otvorené slučky
-
-1. **Refaktorovanie kontextu:** Potrebujeme optimalizovať spôsob, akým sledujeme kontext - navrhnúť štrukturované formáty namiesto naratívnych dokumentov
-2. **Testovanie lokálneho scheduleru:** Potrebujeme otestovať `daily_rotation.py` manuálne a potom nainštalovať launchd scheduler
-3. **XP systém:** Skontrolovať, prečo XP výpočet ukazuje 0.0 XP
-
-### Analytické poznámky
-
-- Prezident sa zvykne rozhodovať rýchlo pri identifikácii problémov (GitHub náklady → okamžitá migrácia)
-- Preferuje **jednoduché, efektívne riešenia** namiesto komplexných (jeden skript namiesto troch)
-- Je **sebareflexívny** - uvedomil si problém s token spotrebou a chce ho riešiť
-
-### Sumarizácia
-
-Dnešná session bola o **migrácii z cloud-based automatizácií na lokálne riešenie**. Vytvorili sme kompletný lokálny scheduler systém, ktorý nahrádza GitHub Actions, a identifikovali sme potrebu refaktorovania kontextu pre optimalizáciu token spotreby.
-
-V ďalšej session odporúčam začať s **refaktorovaním kontextu** - návrh štrukturovaných formátov (JSON/YAML) namiesto naratívnych Markdown dokumentov. To výrazne zníži token spotrebu pri `/loadgame`.
+**Otvorené slučky:**
+- Issue #21: XP systém - plánované pre ďalšiu session
+- Validácia questov podľa Anthropic Harness Pattern
+- Integrácia SQLite s RAG systémom
 
 ## 🎯 Aktívne Questy & Next Steps
 
-### Refaktorovanie kontextu pre token optimalizáciu
-- **Status:** 🆕 Nový quest
-- **Next Steps:** 
-  1. Navrhnúť štrukturované formáty (JSON/YAML) pre logy a save games
-  2. Vytvoriť migračné skripty
-  3. Aktualizovať `/loadgame` a `/savegame` commands
+### Quest #21: XP Systém Revízia
+- **Status:** Pending (ďalšia session)
+- **Popis:** Preskúmať a vylepšiť XP kalkuláciu
+- **Next:** Načítať issue #21 a analyzovať požiadavky
 
-### Testovanie lokálneho scheduleru
-- **Status:** ⏳
-- **Next Steps:**
-  1. Manuálne otestovať `scripts/daily_rotation.py`
-  2. Nainštalovať launchd scheduler
-  3. Overiť, že sa spúšťa každú polnoc
+### Quest #20: Context Engineering (Dokončený)
+- **Status:** Completed
+- **Výsledky:** Compress, Isolate, Cognitive Tools, Token Metrics implementované
 
-### Odstránenie GitHub Actions workflow súborov
-- **Status:** ✅ Čiastočne dokončené
-- **Next Steps:**
-  1. Skontrolovať, ktoré workflow sú ešte potrebné
-  2. Odstrániť alebo deaktivovať zbytočné workflow
+### Hot/Cold Storage (Dokončený)
+- **Status:** Completed
+- **Výsledky:** SQLite backend, triple-write, migrácia, CLI nástroje
 
 ## ⚠️ Inštrukcie pre Nového Agenta
 
-**Dôležité kontexty:**
-- Prezident migruje z GitHub Actions na lokálny scheduler (cost-saving)
-- Identifikovaná potreba optimalizácie token spotreby cez štrukturované formáty
-- Workspace je na GitHube, ale automatizácie bežia lokálne
+**O užívateľovi (Adam/Xvadur):**
+- Preferuje priamu, analytickú komunikáciu
+- Oceňuje technické detaily a architektúrne rozhodnutia
+- Pracuje iteratívne s jasnými milestone-ami
+- Používa gamifikáciu ako motivačný nástroj
 
 **Štýl práce:**
-- Preferuje jednoduché, efektívne riešenia
-- Rýchlo sa rozhoduje pri identifikácii problémov
-- Je sebareflexívny a ochotný zmeniť prístup
+- Vždy logovať prácu do `XVADUR_LOG.md` a `.jsonl`
+- Používať triple-write systém (MD + JSONL + SQLite)
+- Pri savegame vždy commitnúť a pushnúť na GitHub
+- XP sa počíta automaticky cez `calculate_xp.py`
 
-**Nasledujúce priority:**
-1. Refaktorovanie kontextu (nový quest)
-2. Testovanie lokálneho scheduleru
-3. Oprava XP výpočtu (ak je potrebné)
+**Technický kontext:**
+- Hot Storage: `development/logs/XVADUR_LOG.jsonl` (max 100 záznamov)
+- Cold Storage: `development/data/archive.db` (SQLite)
+- Query CLI: `python scripts/utils/archive_query.py stats`
+
+**Ďalšie kroky:**
+1. Načítať issue #21 (XP systém)
+2. Analyzovať aktuálny XP výpočet v `scripts/calculate_xp.py`
+3. Implementovať vylepšenia podľa požiadaviek
 
 ---
 
-**Vytvorené:** 2025-12-05 20:45  
-**Session:** Piatok 2025-12-05
+*Save Game vytvorený: 2025-12-09 05:40*
+*Session: Hot/Cold Storage Implementation*

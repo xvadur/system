@@ -1,61 +1,87 @@
 {
   "metadata": {
-    "created_at": "2025-12-08T00:57:00+01:00",
-    "session_date": "2025-12-07",
-    "session_name": "Nedeľa 2025-12-07 - Revízia Systémovej Architektúry"
+    "created_at": "2025-12-09T05:40:00+01:00",
+    "session_date": "2025-12-09",
+    "session_name": "Hot/Cold Storage Implementation"
   },
   "status": {
-    "rank": "Architekt Reality",
+    "rank": "AI Developer (Senior)",
     "level": 5,
-    "xp": 199.39,
+    "xp": 199.59,
     "xp_next_level": 200.0,
-    "xp_percent": 99.7,
-    "streak_days": 3
+    "xp_percent": 99.8,
+    "streak_days": 4
   },
   "narrative": {
-    "summary": "Táto session sa zamerala na hlbokú revíziu a optimalizáciu systémovej architektúry. Začali sme kontrolou repozitára (Quest #12), kde sme identifikovali a opravili 4 kritické problémy: duplicitné log záznamy, orphan prompt log súbor, resetnutý XP status a staré cesty v skriptoch. Po opravách sme vytvorili Quest #13 pre komplexnú revíziu architektúry. Kľúčovým výstupom bolo vytvorenie chýbajúceho XVADUR_LOG.jsonl a implementácia dual-write systému v log_manager.py, ktorý teraz zapisuje súčasne do Markdown (pre človeka) aj JSONL (pre AI). Zistili sme, že lokálny scheduler (launchd) NIE JE nainštalovaný, čo je úloha na zajtra. XP je na 199.39 - chýba len 0.61 XP do Level 6!",
+    "summary": "Implementácia Hot/Cold Storage architektúry - JSONL ako Hot Storage pre runtime kontext (max 100 záznamov), SQLite ako Cold Storage pre archív a komplexné query. Triple-write systém zapisuje do MD, JSONL a SQLite súčasne.",
     "key_decisions": [
-      "Implementácia dual-write systému (MD + JSONL)",
-      "Ponechanie Quest #13 otvorený pre validáciu zajtra",
-      "Priorita JSON formátov v /loadgame command"
+      "Hybridný prístup: JSONL (hot) + SQLite (cold)",
+      "Triple-write systém pre konzistenciu",
+      "Automatická archivácia pri prekročení 100 záznamov",
+      "Lazy initialization SQLite store (singleton)"
     ],
     "key_moments": [
-      "Vytvorenie XVADUR_LOG.jsonl - chýbajúci súbor",
-      "Rozšírenie log_manager.py o dual-write funkciu",
-      "Zistenie že scheduler nie je nainštalovaný"
+      "Rozhodnutie o Hot/Cold architektúre",
+      "Úspešná migrácia 24 záznamov",
+      "XP takmer na Level 6 (199.59/200)"
     ],
     "tools_created": [
-      {"name": "XVADUR_LOG.jsonl", "path": "development/logs/XVADUR_LOG.jsonl", "desc": "Štruktúrovaný log pre AI"},
-      {"name": "log_manager.py", "path": "scripts/utils/log_manager.py", "desc": "Rozšírený o dual-write"}
+      "core/ministers/sqlite_store.py - SQLite backend",
+      "scripts/utils/migrate_to_sqlite.py - Migračný skript",
+      "scripts/utils/archive_query.py - CLI pre query"
     ],
     "open_loops": [
-      "Quest #13: Validácia schém (zajtra)",
-      "Inštalácia lokálneho scheduler",
-      "Testovanie dual-write v praxi",
-      "0.61 XP do Level 6"
+      "Issue #21: XP systém revízia",
+      "Integrácia SQLite s RAG systémom",
+      "Validácia questov (Anthropic Harness Pattern)"
     ]
   },
   "quests": [
     {
-      "id": 13,
-      "title": "Revízia a Optimalizácia Systémovej Architektúry",
-      "status": "open",
-      "next_steps": [
-        "Validovať JSON schémy",
-        "Nainštalovať scheduler",
-        "Otestovať priebežné logovanie"
-      ],
+      "id": "quest-21",
+      "title": "Quest #21: XP Systém Revízia",
+      "status": "pending",
+      "passes": false,
+      "validation": {
+        "criteria": [],
+        "last_tested": null
+      },
+      "next_steps": ["Načítať issue #21", "Analyzovať calculate_xp.py"],
+      "blockers": []
+    },
+    {
+      "id": "quest-20",
+      "title": "Quest #20: Context Engineering",
+      "status": "completed",
+      "passes": true,
+      "validation": {
+        "criteria": ["Compress Context", "Isolate Context", "Cognitive Tools", "Token Metrics"],
+        "last_tested": "2025-12-09T03:55:00+01:00"
+      },
+      "next_steps": [],
+      "blockers": []
+    },
+    {
+      "id": "hot-cold-storage",
+      "title": "Hot/Cold Storage Implementation",
+      "status": "completed",
+      "passes": true,
+      "validation": {
+        "criteria": ["SQLite backend", "Triple-write", "Migrácia", "CLI nástroje"],
+        "last_tested": "2025-12-09T05:37:00+01:00"
+      },
+      "next_steps": [],
       "blockers": []
     }
   ],
   "instructions": {
-    "agent_persona": "Architekt Reality",
-    "focus": "Systemic Thinking, Schema Validation",
-    "notes": [
-      "Scheduler NIE JE nainštalovaný - priorita!",
-      "Dual-write funguje - používaj add_log_entry()",
-      "JSON priorita pri /loadgame",
-      "0.61 XP do Level 6 - milestone!"
-    ]
+    "communication_style": "Priama, analytická, technicky detailná",
+    "workflow": "Logovať prácu, triple-write, savegame s git push",
+    "context": {
+      "hot_storage": "development/logs/XVADUR_LOG.jsonl (max 100)",
+      "cold_storage": "development/data/archive.db (SQLite)",
+      "query_cli": "python scripts/utils/archive_query.py"
+    },
+    "next_session": "Issue #21 - XP systém revízia"
   }
 }

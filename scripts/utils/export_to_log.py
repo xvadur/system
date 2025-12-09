@@ -15,6 +15,8 @@ sys.path.insert(0, str(workspace_root))
 
 from core.ministers.memory import AssistantOfMemory, MinisterOfMemory
 from core.ministers.storage import FileStore
+from core.context_engineering.compress_context import CompressContextManager
+from core.context_engineering.isolate_context import IsolateContextManager
 
 logger = logging.getLogger(__name__)
 
@@ -48,6 +50,35 @@ def export_prompts_to_log(
     if not recent_prompts:
         logger.info("No prompts to export")
         return
+    
+    # Optimalizuj pomocou Compress Context ak je promptov veľa
+    if len(recent_prompts) > 30:
+        try:
+            compressor = CompressContextManager(file_store)
+            compression_result = compressor.compress_records(
+                recent_prompts,
+                target_compression_ratio=0.6  # Menej agresívna kompresia pre export
+            )
+            logger.info(f"Kompresia aplikovaná pre export: {compression_result.compression_ratio:.2f}")
+        except Exception as e:
+            logger.warning(f"Chyba pri kompresii pre export: {e}")
+    
+    # Použi Isolate Context pre relevantný kontext
+    try:
+        isolator = IsolateContextManager()
+        # Izoluj kontext pre "export" úlohu
+        isolation = isolator.isolate_for_task(
+            task_id="export_to_log",
+            task_description="Export promptov do logu",
+            records=recent_prompts[-20:],  # Použi posledných 20 pre izoláciu
+            keywords={"prompt", "export", "log"}
+        )
+        # Použi izolované záznamy ak sú dostupné
+        if isolation.relevant_records:
+            recent_prompts = isolation.relevant_records
+            logger.info(f"Izolovaný kontext: {len(recent_prompts)} relevantných záznamov")
+    except Exception as e:
+        logger.warning(f"Chyba pri izolácii kontextu: {e}")
     
     # Generate log entry
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")

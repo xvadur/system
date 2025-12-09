@@ -311,6 +311,54 @@ Ulož obsah do **dvoch formátov** (hybridný prístup):
 
 **⚠️ KRITICKÉ:** Tento krok je povinný. Bez commitu a pushu sa zmeny nezachovajú na GitHub a ďalšia session nebude mať aktuálny kontext.
 
+## 4.5. 🎯 Quest Validácia (Anthropic Harness Pattern - NOVÉ)
+
+**Prečo Quest Validácia?**
+Podľa [Anthropic engineering article](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents),
+agent by mal vždy aktualizovať stav questov pred uložením. Toto zabezpečuje, že `passes` field je vždy aktuálny.
+
+**Postup:**
+
+1. **Pre každý quest v `in_progress` stave:**
+   - Over, či sú splnené všetky `validation.criteria`
+   - Ak áno, nastav `passes: true` a `status: completed`
+   - Ak nie, ponechaj `passes: false`
+
+2. **Aktualizuj `validation.last_tested`:**
+   - Nastav aktuálny timestamp pre všetky validované questy
+
+3. **Automatická validácia (voliteľné):**
+   ```bash
+   python scripts/utils/validate_quest.py --list
+   ```
+
+**Quest Schema (Anthropic Pattern):**
+```json
+{
+  "id": "quest-15",
+  "title": "Quest #15: ...",
+  "status": "in_progress",
+  "passes": false,
+  "validation": {
+    "criteria": [
+      "Kritérium 1 splnené",
+      "Kritérium 2 splnené"
+    ],
+    "last_tested": "2025-12-09T03:00:00Z"
+  },
+  "next_steps": [...],
+  "blockers": []
+}
+```
+
+**Pravidlá:**
+- Quest s `passes: true` musí mať `status: completed`
+- Quest s `passes: false` nemôže mať `status: completed`
+- `validation.criteria` definuje "Definition of Done" pre quest
+- `validation.last_tested` sa aktualizuje pri každej validácii
+
+**Dokumentácia:** Viď `docs/QUEST_SYSTEM.md` pre kompletný popis Anthropic Harness Pattern integrácie.
+
 ### Automatické vykonanie (Použi `run_terminal_cmd`):
 
 Agent MUSÍ automaticky vykonať tieto príkazy pomocou `run_terminal_cmd`:
