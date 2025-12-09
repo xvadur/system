@@ -6,156 +6,48 @@ description: Uloží aktuálny kontext konverzácie, stav gamifikácie a naratí
 
 Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny stav konverzácie a gamifikácie, aby mohol byť plynule načítaný v novej session.
 
-**⚠️ KRITICKÉ:** Po vytvorení save game súboru MUSÍŠ automaticky commitnúť a pushnúť všetky zmeny na GitHub pomocou git príkazov. Toto je povinný krok - bez neho sa zmeny nezachovajú.
+**⚠️ KRITICKÉ:** Po vytvorení save game súboru MUSÍŠ automaticky commitnúť a pushnúť všetky zmeny na GitHub pomocou git príkazov alebo MCP operácií.
+
+---
 
 ## 0. Automatické Uloženie Promptov (POVINNÉ - PRVÝ KROK)
 
 **⚠️ KRITICKÉ:** Pred vytvorením save game MUSÍŠ automaticky uložiť všetky user prompty z aktuálnej konverzácie.
 
-### Postup:
+- Prejdi celú aktuálnu konverzáciu (od začiatku session)
+- Identifikuj všetky user prompty (všetky správy od užívateľa)
+- Ulož cez `scripts/utils/save_conversation_prompts.py` → `save_prompts_batch()`
+- Prompty sa ukladajú do `development/data/prompts_log.jsonl`
 
-1. **Automatická extrakcia promptov z konverzácie:**
-   - Prejdi celú aktuálnu konverzáciu (od začiatku session)
-   - Identifikuj všetky user prompty (všetky správy od užívateľa)
-   - Zbieraj ich do zoznamu s metadátami
+**Technické detaily:** Pozri `docs/SAVEGAME_DETAILS.md`
 
-2. **Uloženie cez batch funkciu:**
-   Použi Python kód na uloženie všetkých promptov naraz:
-   ```python
-   import sys
-   from pathlib import Path
-   from datetime import datetime
-   sys.path.insert(0, str(Path.cwd()))
-   
-   from scripts.utils.save_conversation_prompts import save_prompts_batch
-   
-   # Automaticky zbier všetky user prompty z aktuálnej konverzácie
-   # (identifikuj ich z kontextu - všetky user messages v tejto session)
-   prompts_to_save = []
-   
-   # PRÍKLAD: Ak máš prístup k histórii konverzácie, iteruj cez user messages
-   # V Cursor môžeš identifikovať prompty z kontextu konverzácie
-   # Každý user prompt pridaj do zoznamu:
-   
-   # Pre každý user prompt v konverzácii:
-   # prompts_to_save.append({
-   #     'content': 'text promptu',
-   #     'metadata': {
-   #         'session': datetime.now().strftime('%Y-%m-%d'),
-   #         'source': 'savegame',
-   #         'extracted_at': datetime.now().isoformat()
-   #     }
-   # })
-   
-   # AKTUÁLNE: Použi kontext z aktuálnej konverzácie
-   # Zbier všetky user prompty, ktoré vidíš v tejto session
-   # (môžeš ich identifikovať z user_query v kontexte)
-   
-   saved_count = save_prompts_batch(prompts_to_save)
-   print(f"✅ Uložených {saved_count} promptov z konverzácie")
-   ```
-
-3. **Automatizácia:**
-   Skript automaticky:
-   - Detekuje duplikáty (porovnáva obsah promptov)
-   - Uloží len nové prompty
-   - Pridá metadáta (timestamp, source, session)
-
-**Poznámka:** 
-- Skript automaticky detekuje duplikáty a uloží len nové prompty
-- Prompty, ktoré už existujú v `prompts_log.jsonl`, sa preskočia
-- Každý prompt sa uloží s metadátami (timestamp, source: 'savegame', session dátum)
-
-**Dôležité:** 
-- Tento krok MUSÍ byť vykonaný PRED analýzou stavu a vytvorením save game súboru
-- Agent MUSÍ automaticky identifikovať všetky user prompty z aktuálnej konverzácie
-- Prompty sa ukladajú do `development/data/prompts_log.jsonl` cez `MinisterOfMemory` a `FileStore`
+---
 
 ## 0.5. Automatický Výpočet XP (POVINNÉ - PO ULOŽENÍ PROMPTOV)
 
 **⚠️ DÔLEŽITÉ:** Po uložení promptov MUSÍŠ automaticky vypočítať a aktualizovať XP.
 
-### Postup:
+- Použi `core.xp.calculator.calculate_xp()` na výpočet XP
+- Aktualizuj `development/logs/XVADUR_XP.md` a `.json`
+- Použi hodnoty v save game naratíve
 
-1. **Spustiť XP calculation skript:**
-   Použi Python kód na automatický výpočet XP:
-   ```python
-   import sys
-   from pathlib import Path
-   sys.path.insert(0, str(Path.cwd()))
-   
-   from core.xp.calculator import calculate_xp, update_xp_file
-   
-   # Vypočítaj XP z logu a promptov
-   xp_data = calculate_xp()
-   
-   # Aktualizuj XVADUR_XP.md
-   update_xp_file('development/logs/XVADUR_XP.md', xp_data)
-   
-   print(f"✅ XP vypočítané: {xp_data['total_xp']} XP (Level {xp_data['current_level']})")
-   ```
+**Technické detaily:** Pozri `docs/SAVEGAME_DETAILS.md`
 
-2. **Automatizácia:**
-   Skript automaticky:
-   - Parsuje `logs/XVADUR_LOG.md` (záznamy, súbory, úlohy)
-   - Parsuje `development/data/prompts_log.jsonl` (prompty, word count)
-   - Počíta streak dní
-   - Počíta level podľa exponenciálneho systému
-   - Aktualizuje `xvadur/logs/XVADUR_XP.md` s novými hodnotami
-
-3. **Použitie XP dát v save game:**
-   - Zobraz XP breakdown v save game naratíve (sekcia "Gamifikačný progres")
-   - Zahrň aktuálny level a XP v sekcii "📊 Status"
-
-**Poznámka:**
-- XP sa počíta automaticky z existujúcich dát (log + prompty)
-- Žiadne manuálne výpočty nie sú potrebné
-- XP sa aktualizuje pri každom `/savegame`
-
-**Dôležité:**
-- Tento krok MUSÍ byť vykonaný PO uložení promptov (krok 0)
-- XP hodnoty sa použijú v save game naratíve (krok 2)
+---
 
 ## 1. Analýza Stavu
+
 Zisti aktuálne hodnoty z:
 - `development/logs/XVADUR_XP.md` (XP, Level - už aktualizované v kroku 0.5)
 - `development/logs/XVADUR_LOG.md` (posledné záznamy)
 - `development/data/prompts_log.jsonl` (ak existuje - prompty z MinisterOfMemory)
 
-**Poznámka:** XP hodnoty už boli automaticky vypočítané a aktualizované v kroku 0.5. Použi tieto hodnoty pri vytváraní save game.
+Načítaj prompty z MinisterOfMemory (voliteľné) - pozri `docs/SAVEGAME_DETAILS.md`
 
-**Načítanie promptov z MinisterOfMemory (ak je dostupný):**
-Použi Python kód na načítanie posledných promptov:
-```python
-import sys
-from pathlib import Path
-sys.path.insert(0, str(Path.cwd()))
-
-try:
-    from core.ministers.memory import MinisterOfMemory, AssistantOfMemory
-    from core.ministers.storage import FileStore
-    
-    prompts_log_path = Path("development/data/prompts_log.jsonl")
-    if prompts_log_path.exists():
-        file_store = FileStore(prompts_log_path)
-        assistant = AssistantOfMemory(store=file_store)
-        minister = MinisterOfMemory(assistant=assistant)
-        
-        # Načítaj posledných 50 promptov
-        recent_prompts = minister.review_context(limit=50)
-        # Vytvor sumarizáciu
-        narrative_brief = minister.narrative_brief(limit=50)
-        
-        # Použi tieto dáta pri vytváraní naratívneho kontextu
-except Exception as e:
-    # Ak MinisterOfMemory nie je dostupný, pokračuj bez neho
-    recent_prompts = []
-    narrative_brief = ""
-```
-
-Zrekapituluj kľúčové "Aha-momenty" a rozhodnutia z aktuálnej konverzácie. Ak máš prístup k promptom z MinisterOfMemory, použij ich na obohatenie naratívu.
+---
 
 ## 2. Generovanie Obsahu
+
 Vytvor Markdown obsah s touto štruktúrou:
 
 ```markdown
@@ -164,35 +56,24 @@ Vytvor Markdown obsah s touto štruktúrou:
 ---
 
 ## 📊 Status
-- **Rank:** [Rank - odvodiť z Level alebo použiť existujúci]
-- **Level:** [Level - z kroku 0.5, xp_data['current_level']]
-- **XP:** [Current XP] / [Next Level XP] ([Percent]%) - z kroku 0.5, xp_data['total_xp'] / xp_data['next_level_xp']
-- **Streak:** [X] dní - z kroku 0.5, xp_data['streak_days']
-- **Last Log:** [Link na log]
+- **Rank:** [Rank]
+- **Level:** [Level]
+- **XP:** [Current XP] / [Next Level XP] ([Percent]%)
+- **Streak:** [X] dní
 
 ## 🧠 Naratívny Kontext (Story so far)
 
-[Generuj podrobný naratív z poslednej konverzácie, minimálne 10 viet. Pokry tieto dimenzie:]
-
-1. **Začiatok session:** Ako sme štartovali túto iteráciu? Aký bol východiskový problém alebo otázka?
-2. **Kľúčové rozhodnutia:** Aké zásadné voľby alebo pivoty nastali počas dialógu?
-3. **Tvorba nástrojov/skriptov:** Čo bolo vytvorené alebo refaktorované? Aké AI utility alebo príkazy vznikli?
-4. **Introspektívne momenty:** Aké dôležité Aha-momenty, myšlienkové skraty alebo psychologické bloky sa objavili?
-5. **Strety so systémom:** Kde vznikla frikcia - napr. vyhýbanie sa, neukončené questy, “kokot… vydrbany sanitar” momenty podľa Adamovej terminológie.
-6. **Gamifikačný progres:** Koľko XP/Level bolo získaných, čo to znamenalo v rámci systému? (Použi hodnoty z kroku 0.5 - automaticky vypočítané XP breakdown)
-7. **Prepojenie s dlhodobou víziou:** Ako sa aktuálne rozhodnutia alebo výstupy viažu na Magnum Opus, AI konzolu a osobnú značku?
-8. **Otvorené slučky:** Aké questy/blokátory ostávajú riešiť? (viď log)
-9. **Analytické poznámky:** Výrazné vzorce v myslení alebo štýle, ktoré by mal nový agent zachytiť.
-10. **Sumarizácia:** Krátky záver s odporúčaním pre ďalšie kroky a na čo si dať pozor v nasledujúcej session.
-
-> **Príklad formulácie** (modifikuj podľa aktuálneho kontextu):
->
-> Naše posledné stretnutie začalo dekompozíciou textu "Heavy is the Crown", kde sa ukázal nový model prístupu ku komplexným výzvam. Bol vytvorený nástroj na audit XP a šablóna @style_text. Identifikovali sme blokovanie pri Queste Vlado, čo signalizovalo potrebu hlbšieho zásahu do psychologickej vrstvy systému ("frikcia je palivo"). Počas session bol aplikovaný Phoenix Protocol, čo viedlo k masívnej akcelerácii XP a posunu na nový level, čím sa otvorili vyššie vrstvy rankingu. Kľúčový Aha-moment nastal pri rozpoznaní potreby prepájať introspekciu a monetizáciu. Na záver zostávajú otvorené dve slučky: doťah Finančnej Recepčnej a validácia Ludwig Modelu. V ďalšej session odporúčam venovať pozornosť odstraňovaniu pozostatkov kognitívneho dlhu, pracovať viac s metakognitívnymi nástrojmi a nezanedbať zápis XP auditov aj malých výhier.
-
-[Načítaj a adaptuj naratív podľa najnovších údajov v `xvadur/logs/XVADUR_LOG.md` a obsahu session, vždy zhrni v 10+ vetách.]
-
-**Poznámka:** Ak máš prístup k promptom z MinisterOfMemory (cez `narrative_brief`), môžeš ich použiť na doplnenie naratívu. Prompty poskytujú detailný kontext o tom, čo sa dialo v konverzácii.
-
+[Generuj podrobný naratív z poslednej konverzácie, minimálne 10 viet. Pokry:]
+1. Začiatok session
+2. Kľúčové rozhodnutia
+3. Tvorba nástrojov/skriptov
+4. Introspektívne momenty
+5. Strety so systémom
+6. Gamifikačný progres
+7. Prepojenie s dlhodobou víziou
+8. Otvorené slučky
+9. Analytické poznámky
+10. Sumarizácia
 
 ## 🎯 Aktívne Questy & Next Steps
 - [Quest 1]
@@ -202,236 +83,68 @@ Vytvor Markdown obsah s touto štruktúrou:
 [Čo má agent vedieť o užívateľovi a štýle komunikácie?]
 ```
 
+**Detaily:** Pozri `docs/SAVEGAME_DETAILS.md` pre kompletnú šablónu
+
+---
+
 ## 3. Uloženie
-Ulož obsah do **dvoch formátov** (hybridný prístup):
 
-1. **Markdown (pre ľudí - chronologický záznam):**
-   - `development/sessions/save_games/SAVE_GAME.md`
-   - **APPENDOVANIE:** Pridaj nový záznam na koniec súboru (nie prepisovanie!)
-   - (Ak adresár neexistuje, vytvor ho. Ak súbor neexistuje, vytvor ho. Ak existuje, appenduj na koniec)
-   - **Formát:** Každý záznam začína s `# 💾 SAVE GAME: [Dátum]` a končí s `---` (separátor)
+Ulož obsah do **dvoch formátov**:
 
-2. **JSON (pre AI - token optimalizácia):**
-   - `development/sessions/save_games/SAVE_GAME_LATEST.json`
-   - **PREPISOVANIE:** Vždy len najnovší JSON (pre `/loadgame`)
-   - Použi štruktúru z `development/docs/CONTEXT_FORMAT_DESIGN.md`
-   - Konvertuj Markdown obsah do JSON formátu
-   - **Automatizácia:** Použi helper skript `scripts/generate_savegame_json.py` na generovanie JSON z Markdown
+1. **Markdown:**
+   - `development/sessions/save_games/SAVE_GAME.md` - **APPEND** (pridaj nový záznam)
+   - Formát: `# 💾 SAVE GAME: [Dátum]` až `---` (separátor)
 
-**JSON štruktúra:**
-```json
-{
-  "metadata": {
-    "created_at": "2025-12-05T20:45:00Z",
-    "session_date": "2025-12-05",
-    "session_name": "Piatok 2025-12-05"
-  },
-  "status": {
-    "rank": "AI Developer",
-    "level": 1,
-    "xp": 0.0,
-    "xp_next_level": 10.0,
-    "xp_percent": 0.0,
-    "streak_days": 0
-  },
-  "narrative": {
-    "summary": "...",
-    "key_decisions": [...],
-    "key_moments": [...],
-    "tools_created": [...],
-    "open_loops": [...]
-  },
-  "quests": [...],
-  "instructions": {...}
-}
-```
+2. **JSON:**
+   - `development/sessions/save_games/SAVE_GAME_LATEST.json` - **OVERWRITE** (vždy len najnovší)
+   - Použi štruktúru z `docs/SAVEGAME_DETAILS.md`
+   - Helper: `scripts/generate_savegame_json.py`
 
 **Dodatočné aktualizácie:**
-- Aktualizuj `development/logs/XVADUR_XP.md` a `development/logs/XVADUR_XP.json` s finálnymi XP hodnotami
-- Pridaj záznam do `development/logs/XVADUR_LOG.md` a `development/logs/XVADUR_LOG.jsonl` o vytvorení save game
-- **Overenie promptov:** Skontroluj, že všetky prompty z konverzácie sú uložené v `development/data/prompts_log.jsonl`
+- Aktualizuj `development/logs/XVADUR_XP.md` a `.json`
+- Pridaj záznam do `development/logs/XVADUR_LOG.md` a `.jsonl`
+- Over, že všetky prompty sú uložené
 
-**⚠️ POZOR:** Po uložení súborov MUSÍŠ okamžite pokračovať na krok 4 (Git Commit & Push).
+---
 
 ## 4. Git Commit & Push (Automatické - POVINNÉ)
 
-**⚠️ DÔLEŽITÉ:** Po vytvorení save game súboru MUSÍŠ automaticky commitnúť a pushnúť všetky zmeny na GitHub.
+**⚠️ DÔLEŽITÉ:** Po vytvorení save game súboru MUSÍŠ automaticky commitnúť a pushnúť všetky zmeny.
 
 **🎯 PRIORITA:** Použi MCP GitHub operácie namiesto subprocess git príkazov.
 
 ### Postup:
 
 1. **Zisti, čo sa zmenilo:**
-   - Použi `git status` alebo `git status --short` na zistenie všetkých zmien
-   - Zahrň všetky zmenené súbory (nie len save game)
-   - Získaj obsah všetkých zmenených súborov pre MCP `push_files`
+   - `git status --short` na zistenie všetkých zmien
+   - Zahrň všetky zmenené súbory
 
 2. **Použi MCP GitHub operácie (PRIORITA):**
-
-   **A) Ak je MCP dostupné (Cursor IDE kontext):**
-   
-   Použi MCP `push_files` nástroj priamo:
-   ```python
-   # V Cursor IDE kontexte - AI môže volať MCP priamo:
-   from pathlib import Path
-   import subprocess
-   
-   # Zisti zmenené súbory
-   result = subprocess.run(['git', 'status', '--porcelain'], capture_output=True, text=True)
-   changed_files = [line.split()[-1] for line in result.stdout.strip().split('\n') if line]
-   
-   # Načítaj obsah súborov
-   files_to_push = []
-   for file_path in changed_files:
-       if Path(file_path).exists():
-           content = Path(file_path).read_text(encoding='utf-8')
-           files_to_push.append({
-               "path": file_path,
-               "content": content
-           })
-   
-   # Volaj MCP push_files priamo (ak je dostupné)
-   # mcp_MCP_DOCKER_push_files(
-   #     owner="xvadur",
-   #     repo="system",
-   #     branch="main",  # alebo aktuálna branch
-   #     files=files_to_push,
-   #     message=f"savegame: {date} - {summary}"
-   # )
-   ```
-   
-   **Poznámka:** V Cursor IDE, AI môže volať MCP nástroje priamo cez `mcp_MCP_DOCKER_*` funkcie.
-   
-   **B) Ak MCP nie je dostupné (fallback):**
-   
-   Použi `git_commit_via_mcp()` helper funkciu, ktorá má fallback na subprocess:
-   ```python
-   from scripts.mcp_helpers import git_commit_via_mcp
-   from pathlib import Path
-   import subprocess
-   
-   # Zisti zmenené súbory
-   result = subprocess.run(['git', 'status', '--porcelain'], capture_output=True, text=True)
-   changed_files = [line.split()[-1] for line in result.stdout.strip().split('\n') if line]
-   
-   # Commit + Push cez helper (fallback na subprocess)
-   success = git_commit_via_mcp(
-       message=f"savegame: {date} - {summary}",
-       files=changed_files if changed_files else None  # None = všetky zmeny
-   )
-   
-   if success:
-       print("✅ Save game commitnutý a pushnutý")
-   else:
-       print("⚠️  Chyba pri commitnutí/pushnutí")
-   ```
+   - Ak je MCP dostupné: Použi `mcp_MCP_DOCKER_push_files` nástroj priamo
+   - Fallback: Použi `scripts/mcp_helpers.git_commit_via_mcp()` (fallback na subprocess)
 
 3. **Commit message formát:**
    ```
    savegame: [YYYY-MM-DD] - [Krátky popis toho, čo sa robilo v session]
    ```
-   
-   **Príklady commit messages:**
-   - `savegame: 2025-12-09 - MCP integrácia do savegame workflow`
-   - `savegame: 2025-12-09 - XP systém revízia, nové slash commands`
-   - `savegame: 2025-12-09 - Context Engineering optimalizácia`
 
-4. **Overenie:**
-   - Po úspešnom pushnutí by sa zmeny mali zobraziť na GitHub
-   - Over pomocou `git log --oneline -1` (mal by zobraziť nový commit)
+**Detaily:** Pozri `docs/SAVEGAME_DETAILS.md` pre MCP integráciu
 
-### Čo sa automaticky pushne:
+---
 
-- ✅ Save game súbor (`development/sessions/save_games/SAVE_GAME_LATEST.md`)
-- ✅ Save game JSON (`development/sessions/save_games/SAVE_GAME_LATEST.json`)
-- ✅ Save game summary (`development/sessions/save_games/SAVE_GAME_LATEST_SUMMARY.md`)
-- ✅ Aktualizované logy (`development/logs/XVADUR_LOG.md`, `development/logs/XVADUR_XP.md`)
-- ✅ Session dokumenty (`development/sessions/archive/*.md`)
-- ✅ Všetky ostatné zmenené súbory v workspace
-
-### Poznámky:
-
-- **MCP Priority:** Vždy skús použiť MCP `push_files` nástroj najprv (ak je dostupné v Cursor IDE)
-- **Fallback:** Ak MCP nie je dostupné, použije sa `git_commit_via_mcp()` helper (ktorý má fallback na subprocess)
-- **Remote:** Over, či je nastavený `git remote -v` (mal by byť `origin`)
-- **Branch:** Over, či pracuješ na správnom branchi (`git branch`)
-
-### MCP Integrácia:
-
-- **MCP Helper:** `scripts/mcp_helpers.py` - `git_commit_via_mcp()` funkcia
-- **MCP Nástroj:** `mcp_MCP_DOCKER_push_files` - priame volanie v Cursor IDE kontexte
-- **Fallback:** Subprocess git príkazy (ak MCP nie je dostupné)
-
-**⚠️ KRITICKÉ:** Tento krok je povinný. Bez commitu a pushu sa zmeny nezachovajú na GitHub a ďalšia session nebude mať aktuálny kontext.
-
-## 4.5. 🎯 Quest Validácia (Anthropic Harness Pattern - NOVÉ)
-
-**Prečo Quest Validácia?**
-Podľa [Anthropic engineering article](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents),
-agent by mal vždy aktualizovať stav questov pred uložením. Toto zabezpečuje, že `passes` field je vždy aktuálny.
+## 4.5. Quest Validácia (Anthropic Harness Pattern)
 
 **Postup:**
+- Pre každý quest v `in_progress` stave over `validation.criteria`
+- Ak sú splnené, nastav `passes: true` a `status: completed`
+- Aktualizuj `validation.last_tested`
 
-1. **Pre každý quest v `in_progress` stave:**
-   - Over, či sú splnené všetky `validation.criteria`
-   - Ak áno, nastav `passes: true` a `status: completed`
-   - Ak nie, ponechaj `passes: false`
-
-2. **Aktualizuj `validation.last_tested`:**
-   - Nastav aktuálny timestamp pre všetky validované questy
-
-3. **Automatická validácia (voliteľné):**
-   ```bash
-   python scripts/utils/validate_quest.py --list
-   ```
-
-**Quest Schema (Anthropic Pattern):**
-```json
-{
-  "id": "quest-15",
-  "title": "Quest #15: ...",
-  "status": "in_progress",
-  "passes": false,
-  "validation": {
-    "criteria": [
-      "Kritérium 1 splnené",
-      "Kritérium 2 splnené"
-    ],
-    "last_tested": "2025-12-09T03:00:00Z"
-  },
-  "next_steps": [...],
-  "blockers": []
-}
-```
-
-**Pravidlá:**
-- Quest s `passes: true` musí mať `status: completed`
-- Quest s `passes: false` nemôže mať `status: completed`
-- `validation.criteria` definuje "Definition of Done" pre quest
-- `validation.last_tested` sa aktualizuje pri každej validácii
-
-**Dokumentácia:** Viď `docs/QUEST_SYSTEM.md` pre kompletný popis Anthropic Harness Pattern integrácie.
-
-### Automatické vykonanie (Použi `run_terminal_cmd`):
-
-Agent MUSÍ automaticky vykonať tieto príkazy pomocou `run_terminal_cmd`:
-
+**Automatická validácia:**
 ```bash
-# 1. Zisti, čo sa zmenilo
-git status --short
-
-# 2. Pridaj všetky zmeny
-git add -A
-
-# 3. Vytvor commit s popisným správou
-git commit -m "savegame: [Dátum] - [Krátky popis toho, čo sa robilo]"
-
-# 4. Push na GitHub (hook to urobí automaticky, ale môžeš overiť)
-# Post-commit hook automaticky pushne, ale môžeš overiť:
-git push origin main
+python scripts/utils/validate_quest.py --list
 ```
 
-**Poznámka:** Post-commit hook by mal automaticky pushnúť po commite, ale ak nefunguje, manuálny push zabezpečí, že zmeny sú na GitHub.
+**Detaily:** Pozri `docs/SAVEGAME_DETAILS.md` a `docs/QUEST_SYSTEM.md`
 
 ---
 
@@ -442,61 +155,14 @@ git push origin main
 - Pred začatím novej témy/projektu
 - Po dosiahnutí významného milestone
 - Na konci pracovného dňa
-- Pred dlhšou prestávkou
 
 **Čo Save Game zachytáva:**
-- **Naratívny kontext:** Kompletný príbeh session (10+ viet)
-- **Gamifikačný stav:** XP, Level, Rank, progres
-- **Aktívne questy:** Čo ostáva riešiť
-- **Inštrukcie pre agenta:** Kontext pre ďalšiu session
-
-**Ako to funguje v IDE:**
-- Všetko sa ukladá priamo v workspace (`xvadur/save_games/`)
-- AI má plný prístup k súborom - automaticky vytvára a aktualizuje
-- Backlinking a chronologizácia sa spracúvajú automaticky
-- `/loadgame` v ďalšej session načíta kontext okamžite
+- Naratívny kontext (kompletný príbeh session)
+- Gamifikačný stav (XP, Level, Rank, progres)
+- Aktívne questy
+- Inštrukcie pre agenta
 
 ---
 
-**VSTUP:**
-(Tento príkaz nepotrebuje vstupný text, berie kontext z celej konverzácie).
-
-### 2. ✍️ WORK
-Počas práce MUSÍŠ dodržiavať **Pravidlo Živej Stopy**:
-- Po každom významnom úkone (vytvorenie súboru, analýza, rozhodnutie) **okamžite** aktualizuj `development/logs/XVADUR_LOG.md`.
-- **Formát:** `[HH:MM] 🔹 Akcia` + (XP Odhad)
-- **XP:** Vždy odhadni XP za každý úkon (1-10 XP).
-
-### 3. 💾 SAVE_GAME (`/savegame`)
-Na konci session (alebo na požiadanie) vytvor **Save Game**:
-
-1.  **Zosumarizuj prácu:**
-    - Vytvor krátky, naratívny sumár aktuálnej práce, stavu a ďalších krokov.
-    - Dĺžka: 50-70 riadkov.
-    - Formát: Markdown.
-
-2.  **Načítaj kľúčové dáta:**
-    - Posledný záznam z `development/logs/XVADUR_LOG.md`
-    - Aktuálny status z `development/logs/XVADUR_XP.md`
-    - Počet dnešných promptov z `development/data/prompts_log.jsonl`
-
-3.  **Vytvor Save Game súbory:**
-    - **Hlavný Save Game:**
-        - `development/sessions/save_games/SAVE_GAME_LATEST.md`
-        - Obsahuje: naratívny sumár, status, questy, log, XP.
-        - Prepíše predchádzajúci súbor.
-    - **Sumárny Save Game (pre `/loadgame`):**
-        - `development/sessions/save_games/SAVE_GAME_LATEST_SUMMARY.md`
-        - Obsahuje len naratívny sumár a kľúčové metriky.
-        - Prepíše predchádzajúci súbor.
-
-4.  **Automatický Git Commit & Push:**
-    - `git add development/sessions/save_games/`
-    - `git commit -m "chore(savegame): create save game [skip ci]"`
-    - `git push`
-
----
-**Tvoja úloha ako agenta je striktne dodržiavať tento cyklus.**
-Ak zlyháš v logovaní alebo ukladaní, narušíš kontinuitu pamäte.
-**Disciplína je kľúčová.**
-
+**Spúšťač:** `/savegame`  
+**Dokumentácia:** `docs/SAVEGAME_DETAILS.md` (technické detaily)

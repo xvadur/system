@@ -1,7 +1,7 @@
 ---
 description: Self-improve mechanizmus pre automatické generovanie pravidiel z opakujúcich sa chýb
 globs: ["**/*"]
-alwaysApply: true
+alwaysApply: false
 ---
 
 # Self-Improve (Automatické Generovanie Pravidiel)

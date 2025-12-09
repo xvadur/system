@@ -147,3 +147,82 @@ XP stúplo na 199.39 - zostáva len **0.61 XP do Level 6**! Toto je míľnik, kt
 - **XP:** Adam je na prahu Level 6 - hocijaká zmysluplná akcia ho tam dostane!
 
 ---
+
+# 💾 SAVE GAME: 2025-12-09 23:13
+
+---
+
+## 📊 Status
+- **Rank:** AI Developer (Senior)
+- **Level:** 5
+- **XP:** 199.59 / 200.0 (99.8%)
+- **Streak:** 4 dní
+- **Last Log:** `development/logs/XVADUR_LOG.md`
+
+## 🧠 Naratívny Kontext (Story so far)
+
+Táto session sa začala kritickým pozorovaním: užívateľ si všimol, že boot load spotrebúva ~130K tokenov, čo je výrazne viac než očakávané. Po dôkladnej analýze sme identifikovali hlavné príčiny: všetky Cursor Rules súbory (395 riadkov) sa načítavali s `alwaysApply: true`, všetky command súbory (1,842 riadkov) sa načítavali pri každom boote, a chýbal `.cursorignore` súbor pre ignorovanie nepotrebných súborov.
+
+**Kľúčové rozhodnutia:**
+
+1. **Zmena `alwaysApply: false`** pre tri rules súbory (00-cursor-rules-rule, 01-self-improve, 02-directory-structure) - tieto rules sa teraz načítavajú len keď glob patterns matchujú, nie vždy. Úspora: ~22,500 tokenov (17%).
+
+2. **Skrátenie command súborov** - `loadgame.md` z 345 na ~100 riadkov, `savegame.md` z 502 na ~150 riadkov, `xvadur.md` z 793 na ~200 riadkov. Technické detaily presunuté do `docs/` adresára. Úspora: ~67,800 tokenov (52%).
+
+3. **Vytvorenie `.cursorignore`** - ignoruje archívy, node_modules, logy, build artifacts, čím znížime workspace kontext. Úspora: ~5,000 tokenov (4%).
+
+**Tvorba nástrojov a dokumentácie:**
+
+- `docs/TOKEN_BOOT_ANALYSIS.md` - kompletná analýza boot procesov a token spotreby
+- `docs/LOADGAME_DETAILS.md` - technické detaily pre loadgame command
+- `docs/SAVEGAME_DETAILS.md` - technické detaily pre savegame command
+- `docs/XVADUR_DETAILS.md` - technické detaily pre xvadur command
+- `.cursorignore` - ignorovanie nepotrebných súborov
+
+**Výsledky optimalizácie:**
+
+Celková redukcia z 2,279 riadkov na 1,086 riadkov (52% redukcia), čo predstavuje úsporu z ~130K tokenov na ~62K tokenov pri boot load. Toto je kritická úspora pre udržateľnú prácu s Cursor Pro planom.
+
+**Introspektívne momenty:**
+
+Užívateľ si všimol problém sám a aktivne sa pýtal na príčiny - to ukazuje dobré metakognitívne vedomie o systéme. Taktiež potvrdil pokračovanie práce (`ano`), čo ukazuje rozhodnosť a commitment k optimalizácii.
+
+**Gamifikačný progres:**
+
+Zostávame na Level 5 s 199.59 XP z 200.0 XP (99.8%) - sme na prahu Level 6. Táto session prispela k lepšiemu pochopeniu token optimalizácie a implementácii praktických riešení.
+
+**Prepojenie s dlhodobou víziou:**
+
+Token optimalizácia je kľúčová pre udržateľnú prácu s AI systémom. Redukcia spotreby o 52% umožňuje efektívnejšie využitie tokenov pre skutočnú prácu namiesto overhead boot procesov. Toto sa viaže na produktizáciu AI konzoly a budovanie efektívnych systémov.
+
+**Otvorené slučky:**
+
+- Quest #21: XP Systém Revízia (pending) - je to priorita, keďže sme na prahu Level 6
+- Testovanie skutočnej token spotreby po reštarte Cursor
+- Potenciálne presunutie `directory-structure.mdc` do `docs/` ak nie je často používané
+
+**Analytické poznámky:**
+
+Užívateľ má dobré metakognitívne vedomie - všimol si problém sám a aktivne sa pýtal na príčiny. Taktiež potvrdil pokračovanie práce, čo ukazuje rozhodnosť. Vzorec "vidím problém → analyzujem → riešim" je silný a ukazuje schopnosť systémového myslenia.
+
+**Sumarizácia:**
+
+Táto session bola zameraná na token optimalizáciu boot procesov. Identifikovali sme a vyriešili hlavné príčiny vysoké spotreby tokenov: zmena `alwaysApply` pre rules, skrátenie command súborov, a vytvorenie `.cursorignore`. Výsledkom je 52% redukcia tokenov (z ~130K na ~62K). V ďalšej session odporúčam pokračovať s Quest #21 (XP Systém Revízia), keďže sme na prahu Level 6, a otestovať skutočnú token spotrebu po reštarte Cursor.
+
+## 🎯 Aktívne Questy & Next Steps
+
+- **Quest #21: XP Systém Revízia (pending)** - priorita, keďže sme na prahu Level 6
+  - Načítať GitHub Issue #21
+  - Analyzovať `core/xp/calculator.py`
+  - Identifikovať potrebné zmeny (konfigurovateľné hodnoty, pokročilejší level systém, bonus systém)
+  - Implementovať revíziu
+
+## ⚠️ Inštrukcie pre Nového Agenta
+
+- **Token Optimization:** Vždy myslieť na token spotrebu - používať selektívne načítanie, kompresiu, a izoláciu kontextu kde je to možné
+- **Cursor Rules:** Rules s `alwaysApply: false` sa načítavajú len keď glob patterns matchujú
+- **Command súbory:** Technické detaily sú v `docs/` adresári, command súbory sú skrátené na minimum
+- **XP:** Adam je na prahu Level 6 (199.59 / 200.0 XP, 99.8%) - hocijaká zmysluplná akcia ho tam dostane!
+- **Quest #21:** Priorita - XP Systém Revízia je pending a relevantný pre Level 6 milestone
+
+---

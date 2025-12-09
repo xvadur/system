@@ -1,7 +1,7 @@
 ---
 description: Štruktúra projektu a umiestnenie súborov v Magnum Opus v2.0
 globs: ["**/*"]
-alwaysApply: true
+alwaysApply: false
 ---
 
 # Directory Structure

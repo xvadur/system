@@ -1,1 +1,45 @@
+# Cursor Ignore - Súbory a adresáre, ktoré sa nemajú načítavať do kontextu
 
+# Archívy
+archive/
+development/sessions/archive/
+staging/sessions/
+production/sessions/
+
+# Dependencies
+node_modules/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Git
+.git/
+
+# Data files (veľké)
+data/rag_index/
+*.db
+*.sqlite
+
+# Logs
+*.log
+development/logs/*.md
+development/logs/*.jsonl
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# Documentation (načítava sa selektívne)
+docs/TOKEN_BOOT_ANALYSIS.md
+docs/TOKEN_OPTIMIZATION.md

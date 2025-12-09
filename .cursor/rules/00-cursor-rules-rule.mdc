@@ -1,7 +1,7 @@
 ---
 description: Meta-pravidlo definujúce, ako fungujú Cursor Rules v projekte
 globs: ["**/*"]
-alwaysApply: true
+alwaysApply: false
 ---
 
 # Cursor Rules... Rule
