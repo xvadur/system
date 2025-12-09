@@ -84,11 +84,19 @@ def daily_rotation():
                         check=True,
                         capture_output=True
                     )
-                    print(f"✅ Nová branch vytvorená: {branch_name}")
-            except subprocess.CalledProcessError as e:
-                error_msg = f"Vytvorenie branch zlyhalo: {e}"
-                errors.append(error_msg)
-                print(f"⚠️  {error_msg} (pokračujem s aktuálnou branch)", file=sys.stderr)
+                    # Nastav upstream tracking pre novú branch
+                    try:
+                        subprocess.run(
+                            ["git", "push", "-u", "origin", branch_name],
+                            check=True,
+                            capture_output=True,
+                            timeout=30
+                        )
+                        print(f"✅ Nová branch vytvorená a pushnutá: {branch_name}")
+                    except subprocess.CalledProcessError:
+                        print(f"⚠️  Branch vytvorená, ale upstream tracking zlyhal (pushne sa neskôr)")
+                    except Exception:
+                        print(f"⚠️  Branch vytvorená, ale upstream tracking zlyhal (pushne sa neskôr)")
             
             # Vytvor novú session
             create_new_session()
@@ -190,5 +198,3 @@ def daily_rotation():
 if __name__ == "__main__":
     exit_code = daily_rotation()
     sys.exit(exit_code)
-
-
