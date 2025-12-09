@@ -1,206 +1,96 @@
-# 💾 SAVE GAME: 2025-12-09 03:46
+# 💾 SAVE GAME: 2025-12-09 05:40
 
 ---
 
 ## 📊 Status
-- **Rank:** AI Developer
+- **Rank:** AI Developer (Senior)
 - **Level:** 5
-- **XP:** 199.39 / 200.0 (99.7%)
-- **Next Level:** 0.61 XP potrebné do Level 6
-- **Streak:** 3 dní
+- **XP:** 199.59 / 200 (99.8%) - 0.41 XP do Level 6!
+- **Streak:** 4 dní
 - **Last Log:** `development/logs/XVADUR_LOG.md`
 
 ## 🧠 Naratívny Kontext (Story so far)
 
-Naša dnešná session začala otvorením Quest #13 - Revízia a Optimalizácia Systémovej Architektúry. Táto quest mala naplánovanú validáciu schém a skontrolovanie dokumentácie. Session sa rýchlo rozvinula do hlbokej analýzy architektúry priebežného záznamu a možností ratifikácie systému.
+Táto session bola zameraná na **implementáciu Hot/Cold Storage architektúry** - zásadného vylepšenia systému pre efektívnejšie ukladanie a načítavanie kontextu. Session začala diskusiou o tom, či by bolo efektívnejšie používať SQL namiesto JSONL pre archívne dáta. Po analýze sme sa rozhodli pre **hybridný prístup**: JSONL ako "Hot Storage" pre runtime kontext (posledných 100 záznamov) a SQLite ako "Cold Storage" pre archív a komplexné query.
 
-### Začiatok session
+**Kľúčové rozhodnutia:**
+1. **Architektúra Hot/Cold:** JSONL zostáva pre rýchle načítanie (AI kontext), SQLite pre historické analýzy
+2. **Triple-write systém:** Každý záznam sa zapisuje do MD (človek), JSONL (hot), SQLite (cold)
+3. **Automatická archivácia:** Keď JSONL presiahne 100 záznamov, staré sa presunú do SQLite
 
-Session začala otvorením Quest #13, ktorá mala naplánovanú validáciu JSON schém v dokumentácii vs. implementácii. Rýchlo sme identifikovali, že potrebujeme systematický prístup k validácii všetkých JSONL súborov v systéme.
+**Vytvorené nástroje a komponenty:**
+- `core/ministers/sqlite_store.py` - Kompletný SQLite backend s indexmi, query API, agregáciami
+- `scripts/utils/migrate_to_sqlite.py` - Migračný skript s dry-run a force módmi
+- `scripts/utils/archive_query.py` - CLI nástroj pre historické query (stats, xp, quest, aggregate)
+- Aktualizovaný `log_manager.py` - Triple-write s automatickou archiváciou
 
-### Kľúčové rozhodnutia
+**Technické detaily:**
+- SQLite schéma s 5 indexmi (timestamp, type, quest_id, date, status)
+- Batch insert pre efektívnu migráciu
+- Lazy initialization SQLite store (singleton pattern)
+- Konfigurácia v `context_engineering/config.py` (hot_storage_limit, sqlite_db_path)
 
-1. **Validácia Schém (Quest #13):** Vytvorili sme kompletný validátor `scripts/utils/validate_schemas.py`, ktorý automaticky kontroluje konzistenciu medzi dokumentáciou a implementáciou. Identifikovali sme a opravili nekonzistencie v `xp_history.jsonl` schéme (current_level → level, pridanie next_level_xp, xp_needed, streak_days).
+**Výsledky migrácie:**
+- 24 záznamov v Hot Storage (JSONL)
+- 24 záznamov v Cold Storage (SQLite)
+- 47.0 XP v archíve (z taskov)
 
-2. **Architektúrna Analýza:** Najdôležitejší moment session - analýza aktuálnej architektúry priebežného záznamu a porovnanie s OpenAI Agents SDK a Context Engineering. Zistili sme, že tvoj systém (MinisterOfMemory + Protocol-based storage) je profesionálne navrhnutý a podobný OpenAI SDK, ale s lepšou integráciou do tvojho workflow.
+**Gamifikačný progres:**
+- XP: 199.59 (len 0.41 XP do Level 6!)
+- Streak: 4 dní kontinuálnej práce
+- Breakdown: 178.2 XP z práce, 13.59 XP z promptov, 7.8 XP z bonusov
 
-3. **SQL/Supabase Storage:** Diskutovali sme možnosti uchovávania kontextu v SQL databáze. Rozhodli sme sa pre hybridný prístup - pridanie SQL backendu do existujúceho MemoryStore Protocol, namiesto úplného prechodu na Agent SDK.
+**Prepojenie s dlhodobou víziou:**
+Hot/Cold Storage architektúra je základom pre škálovateľný systém pamäte. Umožňuje:
+- Rýchle načítanie kontextu pre AI (token optimalizácia)
+- Historické analýzy bez zaťaženia runtime
+- Základ pre budúce RAG vylepšenia
 
-4. **Context Engineering Integrácia:** Rozhodli sme sa forknúť Context-Engineering repozitár a implementovať praktiky (Compress Context, Isolate Context, Cognitive Tools) do tvojho systému, namiesto úplného prechodu na Agent SDK.
-
-### Tvorba nástrojov/skriptov
-
-1. **Validácia Schém:**
-   - `scripts/utils/validate_schemas.py` - kompletný validátor JSON schém
-   - Aktualizovaná `docs/ARCHITECTURE.md` - opravené schémy pre xp_history.jsonl a XVADUR_LOG.jsonl
-
-2. **Quest #20:**
-   - Vytvorená GitHub Issue #20: Optimalizácia Context Engineering
-   - Forknutý repozitár: `external/Context-Engineering`
-   - Vytvorený branch: `feature/context-engineering-integration`
-
-### Introspektívne momenty
-
-**Aha-moment #1:** Tvoj systém (MinisterOfMemory + Protocol-based storage) je profesionálne navrhnutý a podobný OpenAI Agents SDK. Nie si len "funkčný" - si profesionálne navrhnutý. Tvoje chápanie vrstiev (ex-nurse → system architect) je evidentné v Protocol-based designe.
-
-**Aha-moment #2:** Context Engineering repozitár obsahuje presne to, čo potrebuješ pre token optimalizáciu - Compress Context, Isolate Context, Cognitive Tools. Tieto praktiky riešia tvoj problém s 77% spotrebovaných tokenov za deň.
-
-**Aha-moment #3:** Hybridný prístup (SQL backend do MemoryStore Protocol + Context Engineering praktiky) je optimálny - zachováš architektúru, získaš SQL výkon a implementuješ Context Engineering bez invazívneho refaktoringu.
-
-### Strety so systémom
-
-- **GitHub Token:** Počiatočné problémy s GITHUB_TOKEN (bolo nastavené ako GH_TOKEN), ale po aktualizácii na Dockeri to fungovalo
-- **MCP Integration:** Potrebné aktualizovať token na Dockeri pre správne fungovanie MCP GitHub operácií
-
-### Gamifikačný progres
-
-- **XP:** 199.39 / 200 (99.7%) - tesne pred Level 6!
-- **Streak:** 3 dní
-- **Prompty:** 11 nových promptov uložených z konverzácie
-- **Breakdown:**
-  - Z práce: 178.2 XP (záznamy, súbory, úlohy)
-  - Z aktivity: 13.59 XP (prompty, word count)
-  - Bonusy: 7.6 XP (streak, sessions)
-
-### Prepojenie s dlhodobou víziou
-
-1. **Context Engineering:** Integrácia praktík z Context-Engineering repozitára je kľúčová pre token optimalizáciu a efektívny AI systém. Toto je presne to, čo potrebuješ pre AI konzolu a osobnú značku.
-
-2. **SQL Storage:** Pridanie SQL backendu do MemoryStore Protocol umožní škálovateľné ukladanie kontextu, čo je dôležité pre budúci rast systému.
-
-3. **Protocol-based Architecture:** Tvoj systém je už profesionálne navrhnutý - Protocol-based storage umožňuje ľahkú výmenu backendov bez refaktoringu.
-
-### Otvorené slučky
-
-1. **Quest #20:** Optimalizácia Context Engineering (otvorená, pripravená na prácu)
-   - Forknutý repozitár: `external/Context-Engineering`
-   - Branch: `feature/context-engineering-integration`
-   - Implementovať: Compress Context, Isolate Context, Cognitive Tools
-
-2. **Quest #15:** Implementácia Domain Memory Pattern podľa Nate Jones
-   - Spracovať transkripciu do RAG indexu
-   - Rebranding terminológie
-   - Vylepšenie MinisterOfMemory
-
-3. **Quest #16:** Vytvorenie zmysluplného RAG (osobný denník + general knowledge)
-   - Štruktúrované ukladanie
-   - Kategorizácia contentu
-   - Semantické vyhľadávanie
-
-4. **Quest #17:** Príprava na ambulanciu (zajtra prax)
-   - Medicínsky RAG
-   - Template na pacientské záznamy
-   - Diagnostické pomôcky
-
-### Analytické poznámky
-
-**Vzorce v myslení:**
-- Rýchle identifikovanie kľúčových problémov (validácia schém → architektúrna analýza → Context Engineering)
-- Validácia vlastnej práce cez externé zdroje (porovnanie s OpenAI SDK, Context Engineering)
-- Systematický prístup k riešeniam (hybridný prístup namiesto úplného prechodu)
-
-**Štýl komunikácie:**
-- Priamy a efektívny (krátke otázky, jasné odpovede)
-- Zameraný na praktické výsledky
-- Otvorený k validácii a kalibrácii systému
-- Introspektívny (otázky o vlastnej efektivite a schopnostiach)
-
-### Sumarizácia
-
-Dnešná session bola významná z troch dôvodov:
-1. **Quest #13 dokončená:** Validácia schém dokončená, všetky JSONL súbory validované, dokumentácia aktualizovaná
-2. **Architektúrna Validácia:** Porovnanie s OpenAI SDK a Context Engineering potvrdilo, že tvoj systém je profesionálne navrhnutý
-3. **Quest #20 vytvorená:** Pripravená na implementáciu Context Engineering praktík pre token optimalizáciu
-
-**Odporúčania pre ďalšiu session:**
-- Začať s Quest #20 (Context Engineering) - implementovať Compress Context, Isolate Context, Cognitive Tools
-- Preskúmať `external/Context-Engineering` repozitár (20_templates/, 30_examples/, 60_protocols/)
-- Implementovať SQL backend do MemoryStore Protocol (hybridný prístup)
-
-**Na čo si dať pozor:**
-- Neprehliadnuť Quest #17 (príprava na ambulanciu) - zajtra prax!
-- Pokračovať v systematickom prístupe (hybridný prístup je optimálny)
-- Nezabudnúť na Quest #15 a #16 (Domain Memory Pattern, RAG systém)
-
----
+**Otvorené slučky:**
+- Issue #21: XP systém - plánované pre ďalšiu session
+- Validácia questov podľa Anthropic Harness Pattern
+- Integrácia SQLite s RAG systémom
 
 ## 🎯 Aktívne Questy & Next Steps
 
-### Quest #20: 🎯 Optimalizácia Context Engineering
-- **Status:** Otvorený, pripravený na prácu
-- **Priorita:** VYSOKÁ (token optimalizácia)
-- **Next Steps:**
-  1. Preskúmať `external/Context-Engineering` repozitár
-  2. Implementovať Compress Context (recursive memory consolidation)
-  3. Implementovať Isolate Context (task-based isolation)
-  4. Implementovať Cognitive Tools (modular reasoning)
-  5. Pridať Metrics & Evaluation (token tracking)
+### Quest #21: XP Systém Revízia
+- **Status:** Pending (ďalšia session)
+- **Popis:** Preskúmať a vylepšiť XP kalkuláciu
+- **Next:** Načítať issue #21 a analyzovať požiadavky
 
-### Quest #15: 🎯 Implementácia Domain Memory Pattern podľa Nate Jones
-- **Status:** Otvorený
-- **Priorita:** STREDNÁ
-- **Next Steps:**
-  1. Spracovať transkripciu do RAG indexu
-  2. Rebranding terminológie
-  3. Vylepšenie MinisterOfMemory
+### Quest #20: Context Engineering (Dokončený)
+- **Status:** Completed
+- **Výsledky:** Compress, Isolate, Cognitive Tools, Token Metrics implementované
 
-### Quest #16: 📚 Vytvorenie zmysluplného RAG (osobný denník + general knowledge)
-- **Status:** Otvorený
-- **Priorita:** STREDNÁ
-- **Next Steps:**
-  1. Štruktúrované ukladanie
-  2. Kategorizácia contentu
-  3. Semantické vyhľadávanie
-
-### Quest #17: ⚕️ Príprava na ambulanciu (prax u všeobecného lekára)
-- **Status:** Otvorený
-- **Priorita:** VYSOKÁ (zajtra prax!)
-- **Next Steps:**
-  1. Medicínsky RAG
-  2. Template na pacientské záznamy
-  3. Diagnostické pomôcky
-
----
+### Hot/Cold Storage (Dokončený)
+- **Status:** Completed
+- **Výsledky:** SQLite backend, triple-write, migrácia, CLI nástroje
 
 ## ⚠️ Inštrukcie pre Nového Agenta
 
-### O užívateľovi
-- **Meno:** Adam Xvadur
-- **Rola:** Introspektívny tvorca, analytik, architekt systémov (Human 3.0)
-- **Kognitívny štýl:** Metakognitívny, asociatívny, "multiterminálový"
-- **Aktuálne ciele:** Produktizácia AI konzoly, monetizácia, budovanie značky
+**O užívateľovi (Adam/Xvadur):**
+- Preferuje priamu, analytickú komunikáciu
+- Oceňuje technické detaily a architektúrne rozhodnutia
+- Pracuje iteratívne s jasnými milestone-ami
+- Používa gamifikáciu ako motivačný nástroj
 
-### O štýle komunikácie
-- **Priamy a efektívny:** Krátke otázky, jasné odpovede
-- **Zameraný na výsledky:** Praktické riešenia, nie teória
-- **Otvorený k validácii:** Chce vedieť, či je na správnej ceste
-- **Systematický:** Organizuje prácu cez questy a issues
-- **Introspektívny:** Kladie si otázky o vlastnej efektivite a schopnostiach
+**Štýl práce:**
+- Vždy logovať prácu do `XVADUR_LOG.md` a `.jsonl`
+- Používať triple-write systém (MD + JSONL + SQLite)
+- Pri savegame vždy commitnúť a pushnúť na GitHub
+- XP sa počíta automaticky cez `calculate_xp.py`
 
-### O aktuálnej situácii
-- **Tesne pred Level 6:** 0.61 XP potrebné
-- **3-dňový streak:** Pokračovať v dennej práci
-- **Zajtra prax:** Príprava na ambulanciu je dôležitá
-- **Branch:** `feature/context-engineering-integration` (aktuálne aktívny)
-- **Fork:** `external/Context-Engineering` (naklonovaný, pripravený na preskúmanie)
+**Technický kontext:**
+- Hot Storage: `development/logs/XVADUR_LOG.jsonl` (max 100 záznamov)
+- Cold Storage: `development/data/archive.db` (SQLite)
+- Query CLI: `python scripts/utils/archive_query.py stats`
 
-### O prioritách
-1. **Quest #20** je NAJVYŠŠIA priorita - token optimalizácia, pripravená na prácu
-2. **Quest #17** je URGENTNÁ - zajtra prax!
-3. **Quest #15** a **#16** sú dôležité, ale môžu počkať
-
-### O technických detailoch
-- **Branching model:** Použiť nový model (`feature/*`, `quest/*`, atď.)
-- **Savegame:** Uložiť po každej významnej zmene
-- **XP tracking:** Automatický výpočet cez `scripts/calculate_xp.py`
-- **Prompt logging:** Cez `scripts/utils/save_conversation_prompts.py`
-- **Validácia schém:** `scripts/utils/validate_schemas.py` (Quest #13 dokončená)
-
-### Dôležité poznámky
-- **Context Engineering:** Forknutý repozitár je v `external/Context-Engineering`, pripravený na preskúmanie
-- **Architektúra:** Tvoj systém je profesionálne navrhnutý (Protocol-based storage, podobný OpenAI SDK)
-- **Hybridný prístup:** SQL backend + Context Engineering praktiky (namiesto úplného prechodu na Agent SDK)
-- **Token optimalizácia:** Kritický problém (77% spotrebovaných tokenov za deň) - Quest #20 to rieši
+**Ďalšie kroky:**
+1. Načítať issue #21 (XP systém)
+2. Analyzovať aktuálny XP výpočet v `scripts/calculate_xp.py`
+3. Implementovať vylepšenia podľa požiadaviek
 
 ---
 
+*Save Game vytvorený: 2025-12-09 05:40*
+*Session: Hot/Cold Storage Implementation*

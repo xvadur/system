@@ -16,6 +16,9 @@ sys.path.insert(0, str(workspace_root))
 
 from core.ministers.memory import MinisterOfMemory, AssistantOfMemory
 from core.ministers.storage import FileStore
+from core.context_engineering.token_metrics import TokenBudgetTracker, TokenBudget
+from core.context_engineering.compress_context import CompressContextManager
+from core.context_engineering.config import COMPRESSION_THRESHOLD, CONTEXT_WINDOW_SIZE
 
 
 def get_existing_prompts() -> set:
@@ -60,6 +63,9 @@ def save_prompts_batch(prompts: List[Dict[str, Any]]) -> int:
         assistant = AssistantOfMemory(store=file_store)
         minister = MinisterOfMemory(assistant=assistant)
         
+        # Inicializuj token tracker
+        tracker = TokenBudgetTracker(TokenBudget(context_window_size=CONTEXT_WINDOW_SIZE))
+        
         existing = get_existing_prompts()
         saved_count = 0
         
@@ -72,11 +78,15 @@ def save_prompts_batch(prompts: List[Dict[str, Any]]) -> int:
             if content in existing:
                 continue
             
+            # Trackuj tokeny pred uložením
+            token_count = tracker.estimate_tokens(content)
+            
             metadata = prompt_data.get('metadata', {})
             metadata.update({
                 'source': 'savegame_batch',
                 'extraction_method': 'savegame_command',
                 'saved_at': datetime.now().isoformat(),
+                'token_count': token_count,
             })
             
             # Save prompt
@@ -88,6 +98,25 @@ def save_prompts_batch(prompts: List[Dict[str, Any]]) -> int:
             
             existing.add(content)  # Add to set to avoid duplicates in same batch
             saved_count += 1
+        
+        # Skontroluj utilization po uložení
+        recent_records = minister.review_context(limit=50)
+        if recent_records:
+            history_content = "\n".join([r.to_summary() for r in recent_records])
+            metrics = tracker.track_usage(history_content=history_content)
+            utilization = metrics.utilization_ratio(CONTEXT_WINDOW_SIZE)
+            
+            # Ak je utilization vysoká, komprimuj
+            if utilization > COMPRESSION_THRESHOLD:
+                try:
+                    compressor = CompressContextManager(file_store)
+                    result = compressor.consolidate_memory(
+                        limit=20,
+                        target_compression_ratio=0.5
+                    )
+                    print(f"✅ Kompresia aplikovaná: {result.compression_ratio:.2f}", file=sys.stderr)
+                except Exception as e:
+                    print(f"⚠️ Chyba pri kompresii: {e}", file=sys.stderr)
         
         return saved_count
     except Exception as e:

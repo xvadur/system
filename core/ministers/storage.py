@@ -58,16 +58,33 @@ class FileStore:
                             continue
                         try:
                             data = json.loads(line)
-                            # Deserialize timestamp
-                            timestamp = datetime.fromisoformat(data['timestamp'])
+                            
+                            # Backward compatibility: Handle missing fields
+                            # If timestamp is missing, use extracted_at from metadata or current time
+                            if 'timestamp' in data:
+                                timestamp = datetime.fromisoformat(data['timestamp'])
+                            elif 'metadata' in data and 'extracted_at' in data['metadata']:
+                                timestamp = datetime.fromisoformat(data['metadata']['extracted_at'])
+                            else:
+                                timestamp = datetime.now()
+                                logger.debug(f"Missing timestamp in line, using current time")
+                            
+                            # If role is missing, default to 'user'
+                            role = data.get('role', 'user')
+                            
+                            # Content is required
+                            if 'content' not in data:
+                                logger.warning(f"Missing 'content' field in line, skipping")
+                                continue
+                            
                             record = MemoryRecord(
                                 timestamp=timestamp,
-                                role=data['role'],
+                                role=role,
                                 content=data['content'],
                                 metadata=data.get('metadata', {})
                             )
                             records.append(record)
-                        except (json.JSONDecodeError, KeyError, ValueError) as e:
+                        except (json.JSONDecodeError, ValueError) as e:
                             logger.warning(f"Failed to parse line in {self.filepath}: {e}")
                             continue
             except IOError as e:

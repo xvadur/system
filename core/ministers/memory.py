@@ -13,6 +13,15 @@ from typing import Any, Callable, Dict, Iterable, List, Protocol, Optional
 
 logger = logging.getLogger(__name__)
 
+# Context Engineering (lazy import pre Context Engineering)
+_CONTEXT_ENGINEERING_AVAILABLE = False
+try:
+    from core.context_engineering.integration import track_and_optimize_context, isolate_context_for_task
+    from core.context_engineering.config import COMPRESSION_THRESHOLD
+    _CONTEXT_ENGINEERING_AVAILABLE = True
+except ImportError:
+    logger.debug("Context Engineering nie je dostupný, používam základné funkcie")
+
 
 def _get_current_time_with_timezone(timezone: str = "Europe/Bratislava") -> datetime:
     """Získa aktuálny čas so správnou časovou zónou.
@@ -181,6 +190,60 @@ class MinisterOfMemory:
 
         logger.info("Minister reviewing context with limit=%d", limit)
         return self.assistant.recall_recent(limit=limit)
+    
+    def get_context_with_compression(self, limit: int = 20) -> Dict[str, Any]:
+        """Získa kontext s automatickou kompresiou ak je utilization vysoká.
+        
+        Args:
+            limit: Počet záznamov na načítanie
+            
+        Returns:
+            Dictionary s kontextom a metrikami kompresie
+        """
+        if not _CONTEXT_ENGINEERING_AVAILABLE:
+            # Fallback na základné review_context
+            records = self.review_context(limit=limit)
+            return {
+                'records': records,
+                'compressed': False,
+                'message': 'Context Engineering nie je dostupný'
+            }
+        
+        # Získaj záznamy
+        records = self.assistant.recall_recent(limit=limit)
+        
+        if not records:
+            return {
+                'records': [],
+                'compressed': False,
+                'message': 'Žiadne záznamy'
+            }
+        
+        # Trackuj a optimalizuj
+        try:
+            content = "\n".join([r.to_summary() for r in records])
+            result = track_and_optimize_context(
+                store=self.assistant.store,
+                history_content=content
+            )
+            
+            # Ak bola aplikovaná kompresia, načítaj znova záznamy
+            if result.get('compression_result', {}).get('compressed'):
+                records = self.assistant.recall_recent(limit=limit)
+            
+            return {
+                'records': records,
+                'compressed': result.get('compression_result', {}).get('compressed', False),
+                'metrics': result.get('metrics'),
+                'utilization': result.get('utilization', 0.0)
+            }
+        except Exception as e:
+            logger.warning(f"Chyba pri kompresii kontextu: {e}")
+            return {
+                'records': records,
+                'compressed': False,
+                'error': str(e)
+            }
 
     def narrative_brief(self, limit: int = 5) -> str:
         """Produce a concise brief suitable for inter-ministerial coordination."""
@@ -194,6 +257,72 @@ class MinisterOfMemory:
 
         logger.info("Minister executing targeted memory search")
         return self.assistant.store.query(matcher)
+    
+    def isolate_context_for_task(
+        self,
+        task_id: str,
+        task_description: str,
+        keywords: Optional[set] = None,
+        limit: int = 20
+    ) -> Dict[str, Any]:
+        """Izoluje kontext pre konkrétnu úlohu.
+        
+        Args:
+            task_id: ID úlohy
+            task_description: Popis úlohy
+            keywords: Kľúčové slová (voliteľné)
+            limit: Počet záznamov na filtrovanie
+            
+        Returns:
+            Dictionary s izolovaným kontextom
+        """
+        if not _CONTEXT_ENGINEERING_AVAILABLE:
+            # Fallback na základné review_context
+            records = self.review_context(limit=limit)
+            return {
+                'task_id': task_id,
+                'records': records,
+                'isolated': False,
+                'message': 'Context Engineering nie je dostupný'
+            }
+        
+        # Získaj záznamy
+        records = self.assistant.recall_recent(limit=limit)
+        
+        if not records:
+            return {
+                'task_id': task_id,
+                'records': [],
+                'isolated': False,
+                'message': 'Žiadne záznamy'
+            }
+        
+        # Izoluj kontext
+        try:
+            isolation = isolate_context_for_task(
+                task_id=task_id,
+                task_description=task_description,
+                records=records,
+                keywords=keywords
+            )
+            
+            return {
+                'task_id': task_id,
+                'task_description': task_description,
+                'records': isolation.relevant_records,
+                'isolated_content': isolation.isolated_content,
+                'token_count': isolation.token_count,
+                'isolated': True,
+                'metadata': isolation.metadata
+            }
+        except Exception as e:
+            logger.warning(f"Chyba pri izolácii kontextu: {e}")
+            return {
+                'task_id': task_id,
+                'records': records,
+                'isolated': False,
+                'error': str(e)
+            }
 
 
 __all__ = [

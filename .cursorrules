@@ -26,7 +26,10 @@
 
 ## 4. WORKFLOW
 - **AUTO-BOOT:** Použi `/loadgame` pre kontext (selektívne)
-- **ACTIVE LOGGING:** Aktualizuj `development/logs/XVADUR_LOG.md` po významných úkonoch
+- **ACTIVE LOGGING:** Automaticky loguj pri každom zadávaní a dokončení tasku:
+  - Pri zadávaní tasku: `log_task_started(task_name, description)`
+  - Pri dokončení tasku: `log_task_completed(task_name, files_changed, xp_estimate)`
+  - Dual-write: Automaticky zapisuje do `XVADUR_LOG.md` (Markdown) aj `XVADUR_LOG.jsonl` (JSON)
 - **CHECKPOINT:** `/savegame` len na konci dňa alebo po milestone
 
 ## 5. TOKEN OPTIMIZATION (KRITICKÉ)
