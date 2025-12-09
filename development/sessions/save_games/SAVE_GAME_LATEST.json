@@ -1,40 +1,34 @@
 {
   "metadata": {
-    "created_at": "2025-12-09T23:30:00Z",
+    "created_at": "2025-12-09T23:29:20.321220",
     "session_date": "2025-12-09",
-    "session_name": "Token Optimalizácia Session"
+    "session_name": "Token Optimalizácia - Follow-up"
   },
   "status": {
     "rank": "AI Developer (Senior)",
-    "level": 5,
-    "xp": 199.59,
-    "xp_next_level": 200.0,
-    "xp_percent": 99.8,
+    "level": 6,
+    "xp": 200.0,
+    "xp_next_level": 400,
+    "xp_percent": 50.0,
     "streak_days": 4
   },
   "narrative": {
-    "summary": "Táto session sa začala kritickým pozorovaním: užívateľ si všimol, že boot load spotrebúva ~130K tokenov, čo je výrazne viac než očakávané. Po dôkladnej analýze sme identifikovali hlavné príčiny: všetky Cursor Rules súbory (395 riadkov) sa načítavali s `alwaysApply: true`, všetky command súbory (1,842 riadkov) sa načítavali pri každom boote, a chýbal `.cursorignore` súbor pre ignorovanie nepotrebných súborov. **Kľúčové rozhodnutia:** 1. **Zmena `alwaysApply: false`** pre tri rules súbory (00-cursor-rules-rule, 01-self-improve, 02-directory-structure) - tieto rules sa teraz načítavajú len keď glob patterns matchujú, nie vždy. Úspora: ~22,500 tokenov (17%). 2. **Skrátenie command súborov** - `loadgame.md` z 345 na ~100 riadkov, `savegame.md` z 502 na ~150 riadkov, `xvadur.md` z 793 na ~200 riadkov. Technické detaily presunuté do `docs/` adresára. Úspora: ~67,800 tokenov (52%). 3. **Vytvorenie `.cursorignore`** - ignoruje archívy, node_modules, logy, build artifacts, čím znížime workspace kontext. Úspora: ~5,000 tokenov (4%). **Tvorba nástrojov a dokumentácie:** - `docs/TOKEN_BOOT_ANALYSIS.md` - kompletná analýza boot procesov a token spotreby - `docs/LOADGAME_DETAILS.md` - technické detaily pre loadgame command - `docs/SAVEGAME_DETAILS.md` - technické detaily pre savegame command - `docs/XVADUR_DETAILS.md` - technické detaily pre xvadur command - `.cursorignore` - ignorovanie nepotrebných súborov **Výsledky optimalizácie:** Celková redukcia z 2,279 riadkov na 1,086 riadkov (52% redukcia), čo predstavuje úsporu z ~130K tokenov na ~62K tokenov pri boot load. Toto je kritická úspora pre udržateľnú prácu s Cursor Pro planom. **Introspektívne momenty:** Užívateľ si všimol problém sám a aktivne sa pýtal na príčiny - to ukazuje dobré metakognitívne vedomie o systéme. Taktiež potvrdil pokračovanie práce (`ano`), čo ukazuje rozhodnosť a commitment k optimalizácii. **Gamifikačný progres:** Zostávame na Level 5 s 199.59 XP z 200.0 XP (99.8%) - sme na prahu Level 6. Táto session prispela k lepšiemu pochopeniu token optimalizácie a implementácii praktických riešení. **Prepojenie s dlhodobou víziou:** Token optimalizácia je kľúčová pre udržateľnú prácu s AI systémom. Redukcia spotreby o 52% umožňuje efektívnejšie využitie tokenov pre skutočnú prácu namiesto overhead boot procesov. Toto sa viaže na produktizáciu AI konzoly a budovanie efektívnych systémov. **Otvorené slučky:** - Quest #21: XP Systém Revízia (pending) - je to priorita, keďže sme na prahu Level 6 - Testovanie skutočnej token spotreby po reštarte Cursor - Potenciálne presunutie `directory-structure.mdc` do `docs/` ak nie je často používané **Analytické poznámky:** Užívateľ má dobré metakognitívne vedomie - všimol si problém sám a aktivne sa pýtal na príčiny. Taktiež potvrdil pokračovanie práce, čo ukazuje rozhodnosť. Vzorec \"vidím problém → analyzujem → riešim\" je silný a ukazuje schopnosť systémového myslenia. **Sumarizácia:** Táto session bola zameraná na token optimalizáciu boot procesov. Identifikovali sme a vyriešili hlavné príčiny vysoké spotreby tokenov: zmena `alwaysApply` pre rules, skrátenie command súborov, a vytvorenie `.cursorignore`. Výsledkom je 52% redukcia tokenov (z ~130K na ~62K). V ďalšej session odporúčam pokračovať s Quest #21 (XP Systém Revízia), keďže sme na prahu Level 6, a otestovať skutočnú token spotrebu po reštarte Cursor.",
+    "summary": "Táto follow-up session sa zamerala na riešenie vysokého token loadu (140K) po predchádzajúcej optimalizácii. Identifikovali sme hlavné zdroje: Cursor Rules + Commands (1,127 riadkov) a Docs súbory (3,906 riadkov). Implementované riešenia: 1. Aktualizácia .cursorignore - pridané docs/ (okrem výnimiek), úspora ~152K tokenov. 2. Skrátenie command súborov - quest.md (202→30 riadkov), xvadur.md (179→50 riadkov), celková redukcia 35% (1,127→728 riadkov), úspora ~20K tokenov. Očakávaná úspora: ~172K tokenov, čím sa load zníži z ~140K na ~40-50K tokenov. Užívateľ prešiel na Level 6 (200.00/400.0 XP, 50.0%).",
     "key_decisions": [
-      "Zmena alwaysApply: false pre 3 rules súbory (úspora ~22,500 tokenov)",
-      "Skrátenie command súborov o 52% (úspora ~67,800 tokenov)",
-      "Vytvorenie .cursorignore pre ignorovanie nepotrebných súborov (úspora ~5,000 tokenov)"
+      "Aktualizácia .cursorignore - ignorovať docs/ (úspora ~152K)",
+      "Skrátenie command súborov o 35% (úspora ~20K)",
+      "Level up na Level 6 (200.00/400.0 XP)"
     ],
     "key_moments": [
-      "Identifikácia problému: 130K tokenov pri boot load",
-      "Analýza: Všetky Cursor Rules a commands sa načítavali vždy",
-      "Implementácia riešení: 52% redukcia tokenov"
+      "Identifikácia 140K token loadu po predchádzajúcej optimalizácii",
+      "Analýza zdrojov: Cursor Rules + Docs súbory",
+      "Implementácia riešení: .cursorignore + command skrátenie"
     ],
-    "tools_created": [
-      "docs/TOKEN_BOOT_ANALYSIS.md",
-      "docs/LOADGAME_DETAILS.md",
-      "docs/SAVEGAME_DETAILS.md",
-      "docs/XVADUR_DETAILS.md",
-      ".cursorignore"
-    ],
+    "tools_created": [],
     "open_loops": [
-      "Quest #21: XP Systém Revízia (pending)",
       "Testovanie skutočnej token spotreby po reštarte Cursor",
-      "Potenciálne presunutie directory-structure.mdc do docs/"
+      "Quest #21: XP Systém Revízia (pending)",
+      "Presun directory-structure.mdc do docs/ ak nie je často používané"
     ]
   },
   "quests": [
@@ -44,7 +38,7 @@
       "status": "new",
       "next_steps": [
         "Načítať GitHub Issue #21",
-        "Analyzovať `core/xp/calculator.py`",
+        "Analyzovať core/xp/calculator.py",
         "Identifikovať potrebné zmeny (konfigurovateľné hodnoty, pokročilejší level systém, bonus systém)",
         "Implementovať revíziu"
       ],
@@ -56,17 +50,11 @@
       "Priama, analytická, technicky detailná komunikácia",
       "Dôraz na konzistentnosť a presnosť",
       "Vždy používať triple-write logovanie (MD + JSONL + SQLite)",
-      "Pri `/savegame` automaticky uložiť prompty, vypočítať XP, vytvoriť save game a git commit+push cez MCP (priorita) alebo fallback",
-      "Pri `/loadgame` načítať kontext z JSON formátov (priorita), fallback na Markdown",
-      "**MCP Priority:** Vždy skús použiť MCP najprv pre automatizácie (GitHub operácie, časové operácie, atď.)",
-      "**Token Optimization:** Vždy myslieť na token spotrebu - používať selektívne načítanie, kompresiu, a izoláciu kontextu kde je to možné",
-      "Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo",
-      "Hot Storage: `development/logs/XVADUR_LOG.jsonl` (max 100 záznamov)",
-      "Cold Storage: `development/data/archive.db` (SQLite)",
-      "Query CLI: `python scripts/utils/archive_query.py`",
-      "Templates: `templates/prompts/` (memory_agent, verification_loop, chain_of_thought)",
-      "Context Schema: `core/context_engineering/schemas/context_v6.json`"
-    ],
-    "style": []
+      "Pri /savegame automaticky uložiť prompty, vypočítať XP, vytvoriť save game a git commit+push cez MCP",
+      "Pri /loadgame načítať kontext z JSON formátov (priorita), fallback na Markdown",
+      "MCP Priority: Vždy skús použiť MCP najprv pre automatizácie",
+      "Token Optimization: Vždy myslieť na token spotrebu",
+      "Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo"
+    ]
   }
 }

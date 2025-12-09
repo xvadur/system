@@ -1,8 +1,8 @@
 {
   "status": {
-    "total_xp": 199.59,
-    "level": 5,
-    "next_level": 200,
+    "total_xp": 200.0,
+    "level": 6,
+    "next_level": 400,
     "streak_days": 4
   },
   "breakdown": {
@@ -16,10 +16,10 @@
         "xp": 8.2
       },
       "tasks": {
-        "count": 307,
-        "xp": 153.5
+        "count": 308,
+        "xp": 153.91
       },
-      "total": 178.2
+      "total": 178.60999999999999
     },
     "from_activity": {
       "prompts": {
@@ -44,5 +44,5 @@
       "total": 7.8
     }
   },
-  "last_updated": "2025-12-09 22:40"
+  "last_updated": "2025-12-09 23:29"
 }

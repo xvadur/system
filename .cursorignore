@@ -40,6 +40,9 @@ build/
 .vscode/
 .idea/
 
-# Documentation (načítava sa selektívne)
-docs/TOKEN_BOOT_ANALYSIS.md
-docs/TOKEN_OPTIMIZATION.md
+# Documentation (načítava sa selektívne cez /loadgame)
+docs/
+# Výnimky - len tieto docs sa môžu načítať selektívne
+!docs/README.md
+!docs/LOADGAME_DETAILS.md
+!docs/SAVEGAME_DETAILS.md

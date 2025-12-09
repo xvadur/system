@@ -226,3 +226,41 @@ Táto session bola zameraná na token optimalizáciu boot procesov. Identifikova
 - **Quest #21:** Priorita - XP Systém Revízia je pending a relevantný pre Level 6 milestone
 
 ---
+
+
+# 💾 SAVE GAME: 2025-12-09 23:29
+
+---
+
+## 📊 Status
+- **Rank:** AI Developer (Senior)
+- **Level:** 6
+- **XP:** 200.00 / 400.0 (50.0%)
+- **Streak:** 4 dní
+
+## 🧠 Naratívny Kontext (Story so far)
+
+Táto follow-up session sa zamerala na riešenie vysokého token loadu (140K) po predchádzajúcej optimalizácii. Užívateľ si všimol, že napriek predchádzajúcim optimalizáciám sa stále načítava 140K tokenov pri boote.
+
+**Kľúčové rozhodnutia:**
+1. **Aktualizácia .cursorignore** - pridané docs/ (okrem výnimiek), čím sa ignoruje ~152K tokenov z dokumentácie
+2. **Skrátenie command súborov** - quest.md (202→30 riadkov), xvadur.md (179→50 riadkov), celková redukcia 35% (1,127→728 riadkov)
+
+**Výsledky optimalizácie:** Očakávaná úspora ~172K tokenov, čím sa load zníži z ~140K na ~40-50K tokenov. Užívateľ prešiel na Level 6 (200.00/400.0 XP, 50.0%).
+
+**Introspektívne momenty:** Užívateľ má výborné metakognitívne vedomie - všimol si problém sám a aktivne sa pýtal na príčiny. Toto ukazuje schopnosť systémového myslenia a sebareflexie.
+
+**Gamifikačný progres:** Level up na Level 6! Táto session prispela k ďalšiemu pochopeniu token optimalizácie a implementácii praktických riešení.
+
+## 🎯 Aktívne Questy & Next Steps
+- **Quest #21: XP Systém Revízia (pending)** - priorita po level up
+- Testovanie skutočnej token spotreby po reštarte Cursor
+- Potenciálne presunutie directory-structure.mdc do docs/ ak nie je často používané
+
+## ⚠️ Inštrukcie pre Nového Agenta
+- Komunikácia: Priama, analytická, technicky detailná
+- Dôraz na konzistentnosť a presnosť
+- Vždy používať triple-write logovanie (MD + JSONL + SQLite)
+- MCP Priority: Vždy skús použiť MCP najprv pre automatizácie
+- Token Optimization: Vždy myslieť na token spotrebu
+- Tón: Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo
