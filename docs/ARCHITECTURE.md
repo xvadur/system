@@ -234,12 +234,69 @@ Systémový prompt, ktorý:
 
 ---
 
+## Quest System (Anthropic Harness Pattern)
+
+**Verzia:** 2.1.0 (2025-12-09)
+
+Implementácia Anthropic best practices pre long-running agents.
+
+### Quest Schema
+
+```json
+{
+  "id": "quest-15",
+  "title": "Quest #15: ...",
+  "status": "in_progress",
+  "passes": false,
+  "validation": {
+    "criteria": [
+      "Kritérium 1 splnené",
+      "Kritérium 2 splnené"
+    ],
+    "last_tested": "2025-12-09T03:00:00Z"
+  },
+  "next_steps": [...],
+  "blockers": []
+}
+```
+
+### Anthropic Pattern Fields
+
+| Field | Typ | Popis |
+|-------|-----|-------|
+| `passes` | boolean | Či quest spĺňa všetky kritériá |
+| `validation.criteria` | array | Zoznam kritérií (Definition of Done) |
+| `validation.last_tested` | string | ISO timestamp poslednej validácie |
+
+### Workflow
+
+1. **Health Check** (`/loadgame`):
+   - Overenie štruktúry questov
+   - Kontrola konzistencie `passes` vs `status`
+   
+2. **Validácia** (`/savegame`):
+   - Pre každý quest over kritériá
+   - Aktualizuj `passes` a `last_tested`
+
+3. **Nástroje:**
+   - `scripts/utils/validate_quest.py --health-check`
+   - `scripts/utils/validate_quest.py --list`
+   - `scripts/utils/validate_quest.py --quest quest-15`
+
+### Dokumentácia
+
+- **Zdroj:** [Anthropic Engineering - Effective Harnesses](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
+- **Analýza:** `development/sessions/current/analysis_nate_jones_calibration.md`
+
+---
+
 ## Ďalší Rozvoj
 
 1. **RAG Rebuild** - Dokončiť po doplnení OpenAI kreditu
 2. **XP v2.0** - Implementovať nový level systém
 3. **Weekly Reports** - Automatické syntézy
 4. **Dashboard** - HTML vizualizácia metrík
+5. **Quest Automation** - Automatické testovanie kritérií questov
 
 ---
 

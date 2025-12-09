@@ -40,6 +40,17 @@
       "id": "quest-#20-optimalizácia-context-engineering",
       "title": "Quest #20: 🎯 Optimalizácia Context Engineering",
       "status": "new",
+      "passes": false,
+      "validation": {
+        "criteria": [
+          "external/Context-Engineering repozitár preskúmaný",
+          "Compress Context implementovaný",
+          "Isolate Context implementovaný",
+          "Cognitive Tools implementované",
+          "Metrics & Evaluation pridané"
+        ],
+        "last_tested": null
+      },
       "next_steps": [
         "Preskúmať external/Context-Engineering repozitár (20_templates/, 30_examples/, 60_protocols/)",
         "Implementovať Compress Context (recursive memory consolidation)",
@@ -53,6 +64,15 @@
       "id": "quest-#15-implementácia-domain-memory-pattern-podľa-nate-jones",
       "title": "Quest #15: 🎯 Implementácia Domain Memory Pattern podľa Nate Jones",
       "status": "new",
+      "passes": false,
+      "validation": {
+        "criteria": [
+          "Transkripcia spracovaná do RAG indexu",
+          "Terminológia rebrandovaná v dokumentácii",
+          "MinisterOfMemory vylepšený podľa Nateho patternu"
+        ],
+        "last_tested": null
+      },
       "next_steps": [
         "Spracovať transkripciu do RAG indexu",
         "Rebranding terminológie",
@@ -64,6 +84,15 @@
       "id": "quest-#16-vytvorenie-zmysluplného-rag",
       "title": "Quest #16: 📚 Vytvorenie zmysluplného RAG (osobný denník + general knowledge)",
       "status": "new",
+      "passes": false,
+      "validation": {
+        "criteria": [
+          "Štruktúrované ukladanie implementované",
+          "Kategorizácia contentu funkčná",
+          "Semantické vyhľadávanie funguje"
+        ],
+        "last_tested": null
+      },
       "next_steps": [
         "Štruktúrované ukladanie",
         "Kategorizácia contentu",
@@ -75,6 +104,15 @@
       "id": "quest-#17-príprava-na-ambulanciu",
       "title": "Quest #17: ⚕️ Príprava na ambulanciu (prax u všeobecného lekára)",
       "status": "new",
+      "passes": false,
+      "validation": {
+        "criteria": [
+          "Medicínsky RAG vytvorený",
+          "Template na pacientské záznamy hotový",
+          "Diagnostické pomôcky funkčné"
+        ],
+        "last_tested": null
+      },
       "next_steps": [
         "Medicínsky RAG",
         "Template na pacientské záznamy",

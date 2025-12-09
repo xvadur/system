@@ -211,6 +211,119 @@ GitHub: Automaticky zatvorí Issue #125
 
 ---
 
+---
+
+## 🧬 Anthropic Harness Pattern (NOVÉ - 2025-12-09)
+
+Implementácia best practices z [Anthropic Engineering článku](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents).
+
+### Prečo Anthropic Pattern?
+
+> *"Generalized agents behave like amnesiacs with tool belts. Domain memory turns chaotic loops into durable progress."*
+> — Nate B Jones (Y Combinator)
+
+Tvoj systém už intuitívne implementoval tieto patterny. Teraz ich formalizujeme.
+
+### Quest Schema 2.1
+
+Každý quest teraz obsahuje `passes` a `validation` fields:
+
+```json
+{
+  "id": "quest-15",
+  "title": "Quest #15: Analýza Nate Jones Videa",
+  "status": "in_progress",
+  "passes": false,
+  "validation": {
+    "criteria": [
+      "Transkript stiahnutý a spracovaný",
+      "Calibration report vytvorený",
+      "Gaps identifikované"
+    ],
+    "last_tested": null
+  },
+  "next_steps": [...],
+  "blockers": []
+}
+```
+
+### Field Definície
+
+| Field | Typ | Popis |
+|-------|-----|-------|
+| `passes` | boolean | Či quest spĺňa všetky kritériá |
+| `validation.criteria` | array | Zoznam kritérií (Definition of Done) |
+| `validation.last_tested` | string/null | ISO timestamp poslednej validácie |
+
+### Pravidlá Konzistencie
+
+1. Quest s `passes: true` musí mať `status: completed`
+2. Quest s `passes: false` nemôže mať `status: completed`
+3. Pri každom `/savegame` sa validujú všetky aktívne questy
+
+### Health Check (`/loadgame`)
+
+Pri každom `/loadgame` sa spustí health check:
+
+```
+🏥 Health Check - Anthropic Harness Pattern
+==================================================
+✅ SAVE_GAME_LATEST.json existuje
+✅ JSON validný
+✅ 4 questov nájdených
+✅ Všetky questy majú správny formát (passes + validation)
+✅ Konzistencia passes vs status OK
+==================================================
+🏁 Health Check dokončený
+```
+
+### Validácia (`/savegame`)
+
+Pri každom `/savegame` sa validujú questy:
+
+1. Pre každý `in_progress` quest:
+   - Over kritériá
+   - Ak všetky splnené → `passes: true`, `status: completed`
+   
+2. Aktualizuj `validation.last_tested`
+
+### CLI Nástroj
+
+```bash
+# Health check
+python scripts/utils/validate_quest.py --health-check
+
+# List všetkých questov
+python scripts/utils/validate_quest.py --list
+
+# Interaktívna validácia konkrétneho questu
+python scripts/utils/validate_quest.py --quest quest-15
+
+# Označ quest ako pass/fail
+python scripts/utils/validate_quest.py --mark-pass quest-15
+python scripts/utils/validate_quest.py --mark-fail quest-15
+```
+
+### Mapping: Anthropic ↔ XVADUR
+
+| Anthropic Koncept | XVADUR Implementácia |
+|-------------------|---------------------|
+| Domain Memory | `XVADUR_LOG.jsonl`, `SAVE_GAME_LATEST.json` |
+| Initializer Agent | `.cursorrules`, `/loadgame` |
+| Feature List | `SAVE_GAME_LATEST.json` → `quests[]` |
+| Progress Log | `XVADUR_LOG.jsonl` |
+| Self-verify Testing | `validate_quest.py`, `validation.criteria` |
+| Harness | 3-Layer Architecture |
+
+### Zdroje
+
+- **Anthropic Article:** [Effective Harnesses for Long-Running Agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
+- **Nate Jones Video:** `development/data/youtube/NateJones.txt`
+- **Calibration Report:** `development/sessions/current/analysis_nate_jones_calibration.md`
+
+---
+
 **Vytvorené:** 2025-12-04  
+**Aktualizované:** 2025-12-09 (Anthropic Harness Pattern)  
 **Status:** ✅ Aktívny
 

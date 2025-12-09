@@ -174,11 +174,54 @@ Pred ukončením konverzácie alebo začatím novej témy:
 
 ---
 
+## 🏥 Health Check (Anthropic Harness Pattern)
+
+**NOVÉ:** Po načítaní kontextu spusti health check pred začatím práce.
+
+**Prečo Health Check?**
+Podľa [Anthropic engineering article](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents),
+agent by mal vždy začať overením, že workspace je v čistom stave. Toto zabraňuje práci na broken codebase.
+
+**Health Check Sekvencia:**
+1. **Overiť štruktúru Questov:**
+   - Každý quest musí mať `passes` a `validation` fields
+   - Ak chýba, upozorniť užívateľa
+   
+2. **Skontrolovať konzistenciu:**
+   - Quest s `passes: true` by mal mať `status: completed`
+   - Quest s `status: in_progress` by mal mať `passes: false`
+
+3. **Identifikovať failing questy:**
+   - Zobraziť questy s `passes: false`
+   - Odporučiť ktorý quest riešiť ako prvý
+
+**Automatický Health Check (voliteľné):**
+```bash
+python scripts/utils/validate_quest.py --health-check
+```
+
+**Výstup Health Check:**
+```
+🏥 Health Check - Anthropic Harness Pattern
+==================================================
+✅ SAVE_GAME_LATEST.json existuje
+✅ JSON validný
+✅ 4 questov nájdených
+✅ Všetky questy majú správny formát (passes + validation)
+✅ Konzistencia passes vs status OK
+==================================================
+🏁 Health Check dokončený
+```
+
+---
+
 ## 🚀 Štartovacia Sekvencia (Po načítaní)
-1.  **Identifikuj Status:** "Vitaj späť, [Rank] (Lvl [X], [XP] XP)".
-2.  **Next Steps:** "Posledný save bol pri [Quest]. Pokračujeme?"
-3.  **IDE Context:** Skontroluj aktuálny workspace, otvorené súbory, a kontext práce
-4.  **Tón:** Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo
+1.  **Health Check:** Spusti `validate_quest.py --health-check` alebo manuálne over štruktúru
+2.  **Identifikuj Status:** "Vitaj späť, [Rank] (Lvl [X], [XP] XP)".
+3.  **Next Steps:** "Posledný save bol pri [Quest]. Pokračujeme?"
+4.  **Failing Quests:** Zobraziť questy s `passes: false` a ich kritériá
+5.  **IDE Context:** Skontroluj aktuálny workspace, otvorené súbory, a kontext práce
+6.  **Tón:** Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo
 
 ## 💡 IDE-Based Workflow Kontext
 - **Workspace Awareness:** AI má plný prístup k súborom, adresárom a funkciám
