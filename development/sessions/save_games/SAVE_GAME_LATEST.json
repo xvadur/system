@@ -1,44 +1,85 @@
 {
   "metadata": {
-    "created_at": "2025-12-09T23:29:20.321220",
-    "session_date": "2025-12-09",
-    "session_name": "Token Optimalizácia - Follow-up"
+    "created_at": "2025-12-10T00:20:12+01:00",
+    "session_date": "2025-12-10",
+    "session_name": "Automatizácie a Scheduler - Dokončenie"
   },
   "status": {
     "rank": "AI Developer (Senior)",
-    "level": 6,
-    "xp": 200.0,
-    "xp_next_level": 400,
-    "xp_percent": 50.0,
+    "level": 5,
+    "xp": 199.59,
+    "xp_next_level": 200.0,
+    "xp_percent": 99.8,
     "streak_days": 4
   },
   "narrative": {
-    "summary": "Táto follow-up session sa zamerala na riešenie vysokého token loadu (140K) po predchádzajúcej optimalizácii. Identifikovali sme hlavné zdroje: Cursor Rules + Commands (1,127 riadkov) a Docs súbory (3,906 riadkov). Implementované riešenia: 1. Aktualizácia .cursorignore - pridané docs/ (okrem výnimiek), úspora ~152K tokenov. 2. Skrátenie command súborov - quest.md (202→30 riadkov), xvadur.md (179→50 riadkov), celková redukcia 35% (1,127→728 riadkov), úspora ~20K tokenov. Očakávaná úspora: ~172K tokenov, čím sa load zníži z ~140K na ~40-50K tokenov. Užívateľ prešiel na Level 6 (200.00/400.0 XP, 50.0%).",
+    "summary": "Táto session sa začala načítaním kontextu cez `/loadgame` a pokračovala sériou kľúčových optimalizácií a oprav systému. Hlavným cieľom bolo dokončiť automatizácie a zabezpečiť, aby všetky systémy fungovali správne pred polnocou, keď sa mal spustiť scheduler pre dennú rotáciu. Identifikovali sme a opravili problémy v `.cursorignore` (dokumentácia bola ignorovaná), rozšírili sme MCP priority inštrukcie v `.cursorrules`, opravili sme local scheduler (git pull, error handling, vytváranie branchy), a implementovali sme automatické logovanie taskov. Scheduler sa úspešne spustil o polnoci a vytvoril novú branch `session-2025-12-10`. Užívateľ je na prahu Level 6 (99.8% k Level 6).",
     "key_decisions": [
-      "Aktualizácia .cursorignore - ignorovať docs/ (úspora ~152K)",
-      "Skrátenie command súborov o 35% (úspora ~20K)",
-      "Level up na Level 6 (200.00/400.0 XP)"
+      "Odstránenie `docs/` z `.cursorignore` - dokumentácia teraz dostupná pre načítanie",
+      "MCP Priority v `.cursorrules` - jasné inštrukcie pre používanie MCP namiesto git CLI",
+      "Oprava Local Scheduler - git pull pred pushom, error handling, vytváranie branchy",
+      "Automatické logovanie taskov - `log_task_started()` a `log_task_completed()` s konkrétnymi inštrukciami"
     ],
     "key_moments": [
-      "Identifikácia 140K token loadu po predchádzajúcej optimalizácii",
-      "Analýza zdrojov: Cursor Rules + Docs súbory",
-      "Implementácia riešení: .cursorignore + command skrátenie"
+      "Identifikácia problému s `.cursorignore` blokujúcim dokumentáciu",
+      "Overenie, že scheduler funguje so sleep mode (spustí sa po prebudení)",
+      "Úspešné spustenie schedulera o polnoci a vytvorenie novej branch `session-2025-12-10`",
+      "Implementácia automatického logovania taskov do triple-write systému"
     ],
-    "tools_created": [],
+    "tools_created": [
+      "Aktualizovaný `.cursorrules` s MCP prioritou a automatickým logovaním",
+      "Opravený `scripts/daily_rotation.py` - git pull, error handling, vytváranie branchy",
+      "Opravený `scripts/utils/git_helper.py` - pull pred pushom",
+      "Opravený `scripts/auto_archive_session.py` - vytvorenie prázdnej session ak neexistuje"
+    ],
     "open_loops": [
-      "Testovanie skutočnej token spotreby po reštarte Cursor",
+      "Quest #17: Field Report z ambulancie (10.12.2025) - užívateľ chce vytvoriť field report",
+      "Quest #16: Votvorenie zmysluplného RAG (osobný denník + general knowledge)",
+      "Quest #22: XP systém check - analýza ukázala, že systém meria aktivitu, nie produktivitu",
       "Quest #21: XP Systém Revízia (pending)",
-      "Presun directory-structure.mdc do docs/ ak nie je často používané"
+      "Testovanie skutočnej token spotreby po reštarte Cursor"
     ]
   },
   "quests": [
     {
-      "id": "quest-#21-xp-systém-revízia-(pending)",
-      "title": "Quest #21: XP Systém Revízia (pending)",
+      "id": "quest-#17-field-report-z-ambulancie-(10.12.2025)",
+      "title": "Quest #17: Field Report z ambulancie (10.12.2025)",
       "status": "new",
       "next_steps": [
+        "Vytvoriť field report o skúsenostiach z ambulancie",
+        "Dokumentovať pozorovania, prípady, postupy",
+        "Pridať systémové poznatky a reflexie"
+      ],
+      "blockers": []
+    },
+    {
+      "id": "quest-#16-vytvorenie-zmysluplného-rag",
+      "title": "Quest #16: Vytvorenie zmysluplného RAG",
+      "status": "new",
+      "next_psteps": [
+        "Implementovať RAG pre osobný denník",
+        "Pridať general knowledge kategóriu",
+        "Integrácia s MinisterOfMemory"
+      ],
+      "blockers": []
+    },
+    {
+      "id": "quest-#22-xp-systém-check",
+      "title": "Quest #22: XP systém check",
+      "status": "new",
+      "next_steps": [
+        "Rozhodnúť, či prerobiť XP systém na completion-based",
+        "Alebo ponechať ako gamifikačný element"
+      ],
+      "blockers": []
+    },
+    {
+      "id": "quest-#21-xp-systém-revízia",
+      "title": "Quest #21: XP Systém Revízia",
+      "status": "pending",
+      "next_steps": [
         "Načítať GitHub Issue #21",
-        "Analyzovať core/xp/calculator.py",
+        "Analyzovať `core/xp/calculator.py`",
         "Identifikovať potrebné zmeny (konfigurovateľné hodnoty, pokročilejší level systém, bonus systém)",
         "Implementovať revíziu"
       ],
@@ -49,7 +90,9 @@
     "for_agent": [
       "Priama, analytická, technicky detailná komunikácia",
       "Dôraz na konzistentnosť a presnosť",
-      "Vždy používať triple-write logovanie (MD + JSONL + SQLite)",
+      "VŽDY používať MCP nástroje pre GitHub operácie (nie git CLI)",
+      "VŽDY automaticky logovať tasky - log_task_started() na začiatku, log_task_completed() na konci",
+      "Triple-write logovanie (MD + JSONL + SQLite)",
       "Pri /savegame automaticky uložiť prompty, vypočítať XP, vytvoriť save game a git commit+push cez MCP",
       "Pri /loadgame načítať kontext z JSON formátov (priorita), fallback na Markdown",
       "MCP Priority: Vždy skús použiť MCP najprv pre automatizácie",

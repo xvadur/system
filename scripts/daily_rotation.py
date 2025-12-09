@@ -97,6 +97,10 @@ def daily_rotation():
                         print(f"⚠️  Branch vytvorená, ale upstream tracking zlyhal (pushne sa neskôr)")
                     except Exception:
                         print(f"⚠️  Branch vytvorená, ale upstream tracking zlyhal (pushne sa neskôr)")
+            except subprocess.CalledProcessError as e:
+                error_msg = f"Vytvorenie branch zlyhalo: {e}"
+                errors.append(error_msg)
+                print(f"⚠️  {error_msg} (pokračujem s aktuálnou branch)", file=sys.stderr)
             
             # Vytvor novú session
             create_new_session()
