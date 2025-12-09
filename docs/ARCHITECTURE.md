@@ -26,10 +26,10 @@ XVADUR je modulárny kognitívny systém navrhnutý pre:
 │ (Session Management, Automatizácia, Denný Review)           │
 ├─────────────────────────────────────────────────────────────┤
 │                      Core Layer (Python)                    │
-│      ┌─────────────┬─────────────┬─────────────┐           │
-│      │  ministers  │     rag     │     xp      │           │
-│      │  (Memory)   │  (Search)   │   (Game)    │           │
-│      └─────────────┴─────────────┴─────────────┘           │
+│      ┌─────────────┬─────────────┬─────────────┐            │
+│      │  ministers  │     rag     │     xp      │            │
+│      │  (Memory)   │  (Search)   │   (Game)    │            │
+│      └─────────────┴─────────────┴─────────────┘            │
 ├─────────────────────────────────────────────────────────────┤
 │                      Data Layer (JSONL)                     │
 │ prompts_log.jsonl | xp_history.jsonl | archive.db (SQLite)  │
