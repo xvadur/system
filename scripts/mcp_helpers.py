@@ -3,6 +3,7 @@
 from datetime import datetime
 import subprocess
 import os
+from pathlib import Path
 from typing import Optional, Dict, List
 
 try:
@@ -116,23 +117,87 @@ def analyze_with_sequential_thinking(prompt: str) -> str:
         
         return review
 
-def git_commit_via_mcp(message: str, files: list) -> bool:
-    """Commit cez GitHub MCP (ak je dostupný).
+def git_commit_via_mcp(message: str, files: list, branch: Optional[str] = None) -> bool:
+    """Commit a push cez GitHub MCP (ak je dostupný v Cursor IDE).
     
-    Fallback: subprocess git commit
+    **Poznámka:** Táto funkcia je navrhnutá na volanie z Cursor IDE kontextu, kde je MCP dostupné.
+    V Python skriptoch sa použije fallback na subprocess git.
+    
+    **V Cursor IDE:** AI môže volať MCP `push_files` priamo:
+    ```python
+    # V Cursor IDE kontexte:
+    mcp_MCP_DOCKER_push_files(
+        owner="xvadur",
+        repo="system",
+        branch="main",
+        files=[{"path": "file1.md", "content": "..."}, ...],
+        message="savegame: 2025-12-09 - ..."
+    )
+    ```
+    
+    **Fallback:** Ak MCP nie je dostupné, použije subprocess git (add + commit + push).
+    
+    Args:
+        message: Commit message
+        files: Zoznam ciest k súborom (relatívne k workspace root)
+        branch: Branch name (ak None, použije aktuálnu branch)
+    
+    Returns:
+        True ak úspešné, False ak zlyhalo
     """
+    # V Python skripte nemôžeme volať MCP priamo (MCP je dostupné len v Cursor IDE)
+    # Takže vždy použijeme fallback na subprocess
     try:
-        # Tu by bola implementácia volania GitHub MCP
-        # napr. create_or_update_file pre každý súbor a potom create_commit
-        raise ValueError("MCP not available in this context")
+        # Zmeň na workspace root
+        workspace_root = Path(__file__).parent.parent.parent
+        original_dir = Path.cwd()
+        os.chdir(workspace_root)
+        
+        # Získaj aktuálnu branch, ak nie je zadaná
+        if not branch:
+            result = subprocess.run(
+                ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+                capture_output=True,
+                text=True,
+                check=True
+            )
+            branch = result.stdout.strip()
+        
+        # Skontroluj, či sú zmeny
+        result = subprocess.run(
+            ["git", "status", "--porcelain"],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        
+        if not result.stdout.strip():
+            os.chdir(original_dir)
+            return True  # Žiadne zmeny na commitnutie
+        
+        # Add všetky zmeny (alebo len zadané súbory)
+        if files:
+            # Pridaj len zadané súbory
+            subprocess.run(['git', 'add'] + files, check=True, capture_output=True)
+        else:
+            # Pridaj všetky zmeny
+            subprocess.run(['git', 'add', '-A'], check=True, capture_output=True)
+        
+        # Commit
+        subprocess.run(['git', 'commit', '-m', message], check=True, capture_output=True)
+        
+        # Push
+        subprocess.run(['git', 'push', 'origin', branch], check=True, capture_output=True)
+        
+        os.chdir(original_dir)
         return True
-    except Exception:
-        try:
-            subprocess.run(['git', 'add'] + files, check=True)
-            subprocess.run(['git', 'commit', '-m', message], check=True)
-            return True
-        except (subprocess.CalledProcessError, FileNotFoundError):
-            return False
+        
+    except (subprocess.CalledProcessError, FileNotFoundError) as e:
+        os.chdir(original_dir) if 'original_dir' in locals() else None
+        return False
+    except Exception as e:
+        os.chdir(original_dir) if 'original_dir' in locals() else None
+        return False
 
 def _get_github_repo_info() -> tuple[str, str]:
     """Získa GitHub repository owner a name.

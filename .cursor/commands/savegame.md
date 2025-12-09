@@ -257,57 +257,110 @@ Ulož obsah do **dvoch formátov** (hybridný prístup):
 
 **⚠️ DÔLEŽITÉ:** Po vytvorení save game súboru MUSÍŠ automaticky commitnúť a pushnúť všetky zmeny na GitHub.
 
+**🎯 PRIORITA:** Použi MCP GitHub operácie namiesto subprocess git príkazov.
+
 ### Postup:
 
 1. **Zisti, čo sa zmenilo:**
    - Použi `git status` alebo `git status --short` na zistenie všetkých zmien
    - Zahrň všetky zmenené súbory (nie len save game)
+   - Získaj obsah všetkých zmenených súborov pre MCP `push_files`
 
-2. **Pridaj všetky zmeny do git:**
-   ```bash
-   git add -A
-   # alebo konkrétne súbory:
-   git add xvadur/save_games/SAVE_GAME_LATEST.md
-   git add xvadur/logs/XVADUR_XP.md xvadur/logs/XVADUR_LOG.md
-   git add xvadur/data/sessions/*.md  # session dokumenty
-   # ... a všetky ostatné zmenené súbory
+2. **Použi MCP GitHub operácie (PRIORITA):**
+
+   **A) Ak je MCP dostupné (Cursor IDE kontext):**
+   
+   Použi MCP `push_files` nástroj priamo:
+   ```python
+   # V Cursor IDE kontexte - AI môže volať MCP priamo:
+   from pathlib import Path
+   import subprocess
+   
+   # Zisti zmenené súbory
+   result = subprocess.run(['git', 'status', '--porcelain'], capture_output=True, text=True)
+   changed_files = [line.split()[-1] for line in result.stdout.strip().split('\n') if line]
+   
+   # Načítaj obsah súborov
+   files_to_push = []
+   for file_path in changed_files:
+       if Path(file_path).exists():
+           content = Path(file_path).read_text(encoding='utf-8')
+           files_to_push.append({
+               "path": file_path,
+               "content": content
+           })
+   
+   # Volaj MCP push_files priamo (ak je dostupné)
+   # mcp_MCP_DOCKER_push_files(
+   #     owner="xvadur",
+   #     repo="system",
+   #     branch="main",  # alebo aktuálna branch
+   #     files=files_to_push,
+   #     message=f"savegame: {date} - {summary}"
+   # )
+   ```
+   
+   **Poznámka:** V Cursor IDE, AI môže volať MCP nástroje priamo cez `mcp_MCP_DOCKER_*` funkcie.
+   
+   **B) Ak MCP nie je dostupné (fallback):**
+   
+   Použi `git_commit_via_mcp()` helper funkciu, ktorá má fallback na subprocess:
+   ```python
+   from scripts.mcp_helpers import git_commit_via_mcp
+   from pathlib import Path
+   import subprocess
+   
+   # Zisti zmenené súbory
+   result = subprocess.run(['git', 'status', '--porcelain'], capture_output=True, text=True)
+   changed_files = [line.split()[-1] for line in result.stdout.strip().split('\n') if line]
+   
+   # Commit + Push cez helper (fallback na subprocess)
+   success = git_commit_via_mcp(
+       message=f"savegame: {date} - {summary}",
+       files=changed_files if changed_files else None  # None = všetky zmeny
+   )
+   
+   if success:
+       print("✅ Save game commitnutý a pushnutý")
+   else:
+       print("⚠️  Chyba pri commitnutí/pushnutí")
    ```
 
-3. **Vytvor commit s popisným správou:**
-   ```bash
-   git commit -m "savegame: [Dátum] - [Krátky popis toho, čo sa robilo v session]"
+3. **Commit message formát:**
+   ```
+   savegame: [YYYY-MM-DD] - [Krátky popis toho, čo sa robilo v session]
    ```
    
    **Príklady commit messages:**
-   - `savegame: 2025-12-02 - MCP Docker objav, reorganizácia workspace`
-   - `savegame: 2025-12-02 - GitHub integrácia, automatizácia savegame workflow`
-   - `savegame: 2025-12-02 - Dokončenie xvadur_runtime, vytvorenie profilu`
+   - `savegame: 2025-12-09 - MCP integrácia do savegame workflow`
+   - `savegame: 2025-12-09 - XP systém revízia, nové slash commands`
+   - `savegame: 2025-12-09 - Context Engineering optimalizácia`
 
-4. **Push na GitHub:**
-   - **Automatický push:** Post-commit hook (`.git/hooks/post-commit`) automaticky pushne na GitHub po commite
-   - **Ak hook nefunguje:** Manuálne `git push origin main`
-   - **Overenie:** Po commite by sa mal hook automaticky spustiť a pushnúť zmeny
+4. **Overenie:**
+   - Po úspešnom pushnutí by sa zmeny mali zobraziť na GitHub
+   - Over pomocou `git log --oneline -1` (mal by zobraziť nový commit)
 
 ### Čo sa automaticky pushne:
 
-- ✅ Save game súbor (`sessions/save_games/SAVE_GAME_LATEST.md`)
-- ✅ Save game summary (`sessions/save_games/SAVE_GAME_LATEST_SUMMARY.md`)
-- ✅ Aktualizované logy (`logs/XVADUR_LOG.md`, `logs/XVADUR_XP.md`)
-- ✅ Session dokumenty (`sessions/archive/*.md`)
+- ✅ Save game súbor (`development/sessions/save_games/SAVE_GAME_LATEST.md`)
+- ✅ Save game JSON (`development/sessions/save_games/SAVE_GAME_LATEST.json`)
+- ✅ Save game summary (`development/sessions/save_games/SAVE_GAME_LATEST_SUMMARY.md`)
+- ✅ Aktualizované logy (`development/logs/XVADUR_LOG.md`, `development/logs/XVADUR_XP.md`)
+- ✅ Session dokumenty (`development/sessions/archive/*.md`)
 - ✅ Všetky ostatné zmenené súbory v workspace
 
 ### Poznámky:
 
-- **Post-commit hook:** Automaticky pushne zmeny na GitHub po každom commite
-- **Ak hook nefunguje:** Skontroluj oprávnenia (`chmod +x .git/hooks/post-commit`)
+- **MCP Priority:** Vždy skús použiť MCP `push_files` nástroj najprv (ak je dostupné v Cursor IDE)
+- **Fallback:** Ak MCP nie je dostupné, použije sa `git_commit_via_mcp()` helper (ktorý má fallback na subprocess)
 - **Remote:** Over, či je nastavený `git remote -v` (mal by byť `origin`)
 - **Branch:** Over, či pracuješ na správnom branchi (`git branch`)
 
-### Dokumentácia:
+### MCP Integrácia:
 
-- Automatický git push: `xvadur/config/AUTOMATIC_GIT_PUSH.md`
-- Setup hooks: `xvadur/config/GIT_HOOKS_SETUP.md`
-- Hook template: `xvadur/config/hooks/post-commit`
+- **MCP Helper:** `scripts/mcp_helpers.py` - `git_commit_via_mcp()` funkcia
+- **MCP Nástroj:** `mcp_MCP_DOCKER_push_files` - priame volanie v Cursor IDE kontexte
+- **Fallback:** Subprocess git príkazy (ak MCP nie je dostupné)
 
 **⚠️ KRITICKÉ:** Tento krok je povinný. Bez commitu a pushu sa zmeny nezachovajú na GitHub a ďalšia session nebude mať aktuálny kontext.
 

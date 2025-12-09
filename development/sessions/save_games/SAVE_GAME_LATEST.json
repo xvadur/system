@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "created_at": "2025-12-09T07:17:00+01:00",
+    "created_at": "2025-12-09T22:00:00Z",
     "session_date": "2025-12-09",
-    "session_name": "Workflow Dokumentácia & Systémová Údržba"
+    "session_name": ""
   },
   "status": {
     "rank": "AI Developer (Senior)",
@@ -13,93 +13,29 @@
     "streak_days": 4
   },
   "narrative": {
-    "summary": "Session bola zameraná na kontrolu a opravu priebežného logovacieho systému a load/save game systému. Identifikovali sme a opravili nekonzistentnosti v dokumentácii (cesty, terminológia dual-write → triple-write). Pridali sme kompletný workflow popis do SYSTEM_AUDIT.md, docs/README.md a MEMORY_AND_LOGGING.md.",
-    "key_decisions": [
-      "Oprava ciest: scripts/save_conversation_prompts.py → scripts/utils/save_conversation_prompts.py",
-      "Aktualizácia terminológie: dual-write → triple-write (MD + JSONL + SQLite)",
-      "Pridanie workflow dokumentácie pre onboarding a prezentáciu"
-    ],
-    "key_moments": [
-      "Kontrola a oprava log systému a load/save game systému",
-      "Identifikácia nekonzistencií v dokumentácii",
-      "Systematická oprava všetkých referencií",
-      "Vytvorenie kompletného workflow popisu"
-    ],
-    "tools_created": [
-      "docs/SYSTEM_AUDIT.md - Kompletný workflow popis",
-      "docs/README.md - Rýchly workflow prehľad",
-      "docs/MEMORY_AND_LOGGING.md - Detailný workflow v sekcii Memory & Logging"
-    ],
-    "open_loops": [
-      "Quest #21: XP Systém Revízia (pending)"
-    ]
+    "summary": "Naša dnešná session začala otázkou o veľkom akreditíve tokenov - užívateľ prešiel z free tier na pro plan a chcel vymyslieť, ako efektívne využije toľko tokenov. Identifikovali sme šesť hlavných oblastí: iterácia celého repo, prepracovanie XP systému (Quest #21), nové slash commands, profily, kompletná architektúrna dokumentácia a vizualizácia, a rozšírenie MCP automatizácií. Kľúčový moment nastal, keď sme sa začali baviť o MCP automatizáciách. Užívateľ sa pýtal, čo to vlastne sú a ako fungujú. Vysvetlil som mu, že MCP (Model Context Protocol) umožňuje AI agentom priamo volať externé nástroje z Cursor IDE - namiesto toho, aby AI len písal kód a užívateľ ho manuálne spúšťal, AI môže priamo vytvárať GitHub Issues, commitovať zmeny, exportovať do Obsidianu, atď. Identifikovali sme problém: MCP nie je naviazané na logy a save game workflow. Aktuálne sa používajú len subprocess git príkazy, nie MCP operácie. To sme opravili implementáciou dvoch kľúčových zmien: **Kľúčové rozhodnutia:** 1. **Oprava `git_commit_via_mcp()` funkcie** - Pridali sme push operáciu (predtým len commit), lepšiu logiku pre kontrolu zmien, podporu špecifických súborov alebo všetkých zmien, a kompletnú dokumentáciu ako volať MCP priamo v Cursor IDE. Funkcia má robustný fallback na subprocess git. 2. **Aktualizácia `/savegame` command** - Pridali sme prioritu MCP operácií: AI má najprv skúsiť volať MCP `push_files` nástroj priamo (ak je dostupné v Cursor IDE), a ak to zlyhá, použiť `git_commit_via_mcp()` helper s fallback na subprocess. Dokumentácia obsahuje príklady použitia oboch prístupov. **Tvorba nástrojov:** - `scripts/mcp_helpers.py` - Vylepšená `git_commit_via_mcp()` funkcia s push operáciou a lepšou logikou - `.cursor/commands/savegame.md` - Aktualizovaný s MCP prioritou a fallback logikou **Introspektívne momenty:** Užívateľ sa pýtal, či by som nepoužíval skripty a CLI, ale priamu interakciu. Vysvetlil som mu hybridný prístup: pre interaktívne operácie počas konverzácie (ako `/savegame`) by AI mal volať MCP priamo, ale pre automatizácie (cron jobs, schedulery) sa stále používajú skripty s MCP helpers. Toto je kľúčové rozlíšenie - MCP nie je náhrada za skripty, ale doplnok pre interaktívne operácie. **Gamifikačný progres:** Aktuálne sme na Level 5 s 199.59 XP z 200.0 XP (99.8%) - sme na prahu Level 6! Streak je 4 dni. Táto session prispela k lepšiemu pochopeniu MCP integrácie a implementácii automatizácií do savegame workflow. **Prepojenie s dlhodobou víziou:** MCP integrácia je kľúčová pre automatizáciu workflow v Magnum Opus systéme. Umožňuje AI agentom robiť operácie priamo bez manuálnych krokov užívateľa, čo zrýchľuje prácu a znižuje frikciu. Toto sa viaže na produktizáciu AI konzoly a budovanie automatizovaných systémov. **Otvorené slučky:** - Quest #21: XP Systém Revízia (pending) - je to priorita, keďže sme na prahu Level 6 - Plán na využitie tokenov: 6 oblastí (XP systém, slash commands, profily, repo iterácia, architektúrna dokumentácia, MCP automatizácie) - Testovanie skutočného `/savegame` command s MCP integráciou **Analytické poznámky:** Užívateľ má tendenciu klásť otázky typu \"čo to je\" a \"ako to funguje\" pred implementáciou - to je dobrý vzorec, ktorý zabezpečuje, že rozumie tomu, čo sa deje. Taktiež sa pýta na konkrétne príklady (\"ke mcp automatizacie si mam terda predstavit?\"), čo ukazuje potrebu vizuálnej predstavy pred abstraktnými konceptmi. **Sumarizácia:** Dnešná session bola zameraná na MCP integráciu do savegame workflow. Implementovali sme dve kľúčové zmeny: opravu `git_commit_via_mcp()` funkcie a aktualizáciu `/savegame` command s MCP prioritou. Otestovali sme implementáciu a všetky testy prešli. V ďalšej session odporúčam pokračovať s Quest #21 (XP Systém Revízia), keďže sme na prahu Level 6, a začať implementovať plán na využitie tokenov (nové slash commands, profily, atď.).",
+    "key_decisions": [],
+    "key_moments": [],
+    "tools_created": [],
+    "open_loops": []
   },
   "quests": [
     {
-      "id": "quest-21",
-      "title": "Quest #21: XP Systém Revízia",
-      "status": "pending",
-      "passes": false,
-      "validation": {
-        "criteria": [],
-        "last_tested": null
-      },
+      "id": "quest-#21-xp-systém-revízia-(pending)",
+      "title": "Quest #21: XP Systém Revízia (pending)",
+      "status": "new",
       "next_steps": [
         "Načítať GitHub Issue #21",
-        "Analyzovať core/xp/calculator.py",
-        "Identifikovať potrebné zmeny",
+        "Analyzovať `core/xp/calculator.py`",
+        "Identifikovať potrebné zmeny (konfigurovateľné hodnoty, pokročilejší level systém, bonus systém)",
         "Implementovať revíziu"
       ],
       "blockers": []
     },
     {
-      "id": "quest-20",
-      "title": "Quest #20: Context Engineering",
-      "status": "completed",
-      "passes": true,
-      "validation": {
-        "criteria": [
-          "Compress Context",
-          "Isolate Context",
-          "Cognitive Tools",
-          "Token Metrics",
-          "Templates Integration"
-        ],
-        "last_tested": "2025-12-09T06:00:00+01:00"
-      },
-      "next_steps": [],
-      "blockers": []
-    },
-    {
-      "id": "hot-cold-storage",
-      "title": "Hot/Cold Storage Implementation",
-      "status": "completed",
-      "passes": true,
-      "validation": {
-        "criteria": [
-          "SQLite backend",
-          "Triple-write",
-          "Migrácia",
-          "CLI nástroje"
-        ],
-        "last_tested": "2025-12-09T05:37:00+01:00"
-      },
-      "next_steps": [],
-      "blockers": []
-    },
-    {
-      "id": "templates-integration",
-      "title": "Context Engineering Templates Integration",
-      "status": "completed",
-      "passes": true,
-      "validation": {
-        "criteria": [
-          "3 prompt templates",
-          "Context v6 schéma",
-          "Dokumentácia"
-        ],
-        "last_tested": "2025-12-09T06:00:00+01:00"
-      },
+      "id": "plán-na-využitie-tokenov-(6-oblastí)",
+      "title": "Plán na využitie tokenov (6 oblastí):",
+      "status": "new",
       "next_steps": [],
       "blockers": []
     }
@@ -109,19 +45,16 @@
       "Priama, analytická, technicky detailná komunikácia",
       "Dôraz na konzistentnosť a presnosť",
       "Vždy používať triple-write logovanie (MD + JSONL + SQLite)",
-      "Pri /savegame automaticky uložiť prompty, vypočítať XP, vytvoriť save game a git commit+push",
-      "Pri /loadgame načítať kontext z JSON formátov (priorita), fallback na Markdown"
+      "Pri `/savegame` automaticky uložiť prompty, vypočítať XP, vytvoriť save game a git commit+push cez MCP (priorita) alebo fallback",
+      "Pri `/loadgame` načítať kontext z JSON formátov (priorita), fallback na Markdown",
+      "**MCP Priority:** Vždy skús použiť MCP najprv pre automatizácie (GitHub operácie, časové operácie, atď.)",
+      "Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo",
+      "Hot Storage: `development/logs/XVADUR_LOG.jsonl` (max 100 záznamov)",
+      "Cold Storage: `development/data/archive.db` (SQLite)",
+      "Query CLI: `python scripts/utils/archive_query.py`",
+      "Templates: `templates/prompts/` (memory_agent, verification_loop, chain_of_thought)",
+      "Context Schema: `core/context_engineering/schemas/context_v6.json`"
     ],
-    "style": [
-      "Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo"
-    ],
-    "context": {
-      "hot_storage": "development/logs/XVADUR_LOG.jsonl (max 100 záznamov)",
-      "cold_storage": "development/data/archive.db (SQLite)",
-      "query_cli": "python scripts/utils/archive_query.py",
-      "templates": "templates/prompts/ (memory_agent, verification_loop, chain_of_thought)",
-      "context_schema": "core/context_engineering/schemas/context_v6.json"
-    },
-    "next_session": "Quest #21: XP Systém Revízia"
+    "style": []
   }
 }
