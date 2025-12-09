@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "created_at": "2025-12-10T00:20:12+01:00",
+    "created_at": "2025-12-10T00:57:00+01:00",
     "session_date": "2025-12-10",
-    "session_name": "Automatizácie a Scheduler - Dokončenie"
+    "session_name": "Token Optimization - Context Engineering Integration"
   },
   "status": {
     "rank": "AI Developer (Senior)",
@@ -13,36 +13,35 @@
     "streak_days": 4
   },
   "narrative": {
-    "summary": "Táto session sa začala načítaním kontextu cez `/loadgame` a pokračovala sériou kľúčových optimalizácií a oprav systému. Hlavným cieľom bolo dokončiť automatizácie a zabezpečiť, aby všetky systémy fungovali správne pred polnocou, keď sa mal spustiť scheduler pre dennú rotáciu. Identifikovali sme a opravili problémy v `.cursorignore` (dokumentácia bola ignorovaná), rozšírili sme MCP priority inštrukcie v `.cursorrules`, opravili sme local scheduler (git pull, error handling, vytváranie branchy), a implementovali sme automatické logovanie taskov. Scheduler sa úspešne spustil o polnoci a vytvoril novú branch `session-2025-12-10`. Užívateľ je na prahu Level 6 (99.8% k Level 6).",
+    "summary": "Táto session sa zamerala na kritickú analýzu token spotreby v `/savegame` workflow. Identifikovali sme, že predchádzajúca session spotrebovala ~5M tokenov kvôli čítaniu celých súborov namiesto selektívneho načítania. Implementovali sme optimalizovaný workflow s integrovaným context engineeringom (`OptimizedSaveGame` trieda v `scripts/utils/optimized_savegame.py`), ktorý automaticky trackuje tokeny, používa selektívne načítanie súborov (offset/limit, sekcie), a aplikuje kompresiu keď utilization > 80%. Aktualizovali sme `.cursor/commands/savegame.md` s novými inštrukciami a vytvorili sme dokumentáciu v `docs/SAVEGAME_OPTIMIZATION.md`. Očakávaná úspora: 90% redukcia tokenov (z ~5M na ~500K).",
     "key_decisions": [
-      "Odstránenie `docs/` z `.cursorignore` - dokumentácia teraz dostupná pre načítanie",
-      "MCP Priority v `.cursorrules` - jasné inštrukcie pre používanie MCP namiesto git CLI",
-      "Oprava Local Scheduler - git pull pred pushom, error handling, vytváranie branchy",
-      "Automatické logovanie taskov - `log_task_started()` a `log_task_completed()` s konkrétnymi inštrukciami"
+      "Implementácia OptimizedSaveGame triedy s context engineeringom",
+      "Aktualizácia `/savegame` workflow s token optimization pravidlami",
+      "Vytvorenie dokumentácie pre token optimization (SAVEGAME_OPTIMIZATION.md)",
+      "Integrácia TokenBudgetTracker, CompressContextManager, IsolateContextManager do savegame workflow"
     ],
     "key_moments": [
-      "Identifikácia problému s `.cursorignore` blokujúcim dokumentáciu",
-      "Overenie, že scheduler funguje so sleep mode (spustí sa po prebudení)",
-      "Úspešné spustenie schedulera o polnoci a vytvorenie novej branch `session-2025-12-10`",
-      "Implementácia automatického logovania taskov do triple-write systému"
+      "Identifikácia problému: ~5M tokenov spotrebovaných v predchádzajúcej session",
+      "Analýza príčin: čítanie celých súborov namiesto selektívneho načítania",
+      "Implementácia optimalizovaného workflow s automatickou kompresiou",
+      "Vytvorenie dokumentácie a aktualizácia inštrukcií"
     ],
     "tools_created": [
-      "Aktualizovaný `.cursorrules` s MCP prioritou a automatickým logovaním",
-      "Opravený `scripts/daily_rotation.py` - git pull, error handling, vytváranie branchy",
-      "Opravený `scripts/utils/git_helper.py` - pull pred pushom",
-      "Opravený `scripts/auto_archive_session.py` - vytvorenie prázdnej session ak neexistuje"
+      "scripts/utils/optimized_savegame.py - OptimizedSaveGame trieda",
+      "docs/SAVEGAME_OPTIMIZATION.md - dokumentácia token optimization",
+      "Aktualizovaný .cursor/commands/savegame.md - nové inštrukcie s token optimization"
     ],
     "open_loops": [
       "Quest #17: Field Report z ambulancie (10.12.2025) - užívateľ chce vytvoriť field report",
       "Quest #16: Vytvorenie zmysluplného RAG (osobný denník + general knowledge)",
       "Quest #22: XP systém check - analýza ukázala, že systém meria aktivitu, nie produktivitu",
       "Quest #21: XP Systém Revízia (pending)",
-      "Testovanie skutočnej token spotreby po reštarte Cursor"
+      "Testovanie skutočnej token spotreby po implementácii optimalizácií"
     ]
   },
   "quests": [
     {
-      "id": "quest-#17-field-report-z-ambulancie-(10.12.2025)",
+      "id": "quest-#17-field-report-z-ambulancie",
       "title": "Quest #17: Field Report z ambulancie (10.12.2025)",
       "status": "new",
       "next_steps": [
@@ -79,8 +78,8 @@
       "status": "pending",
       "next_steps": [
         "Načítať GitHub Issue #21",
-        "Analyzovať `core/xp/calculator.py`",
-        "Identifikovať potrebné zmeny (konfigurovateľné hodnoty, pokročilejší level systém, bonus systém)",
+        "Analyzovať core/xp/calculator.py",
+        "Identifikovať potrebné zmeny",
         "Implementovať revíziu"
       ],
       "blockers": []
@@ -92,11 +91,10 @@
       "Dôraz na konzistentnosť a presnosť",
       "VŽDY používať MCP nástroje pre GitHub operácie (nie git CLI)",
       "VŽDY automaticky logovať tasky - log_task_started() na začiatku, log_task_completed() na konci",
+      "VŽDY používať OptimizedSaveGame pre /savegame workflow",
       "Triple-write logovanie (MD + JSONL + SQLite)",
-      "Pri /savegame automaticky uložiť prompty, vypočítať XP, vytvoriť save game a git commit+push cez MCP",
-      "Pri /loadgame načítať kontext z JSON formátov (priorita), fallback na Markdown",
       "MCP Priority: Vždy skús použiť MCP najprv pre automatizácie",
-      "Token Optimization: Vždy myslieť na token spotrebu",
+      "Token Optimization: Vždy myslieť na token spotrebu - selektívne načítanie, kompresia",
       "Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo"
     ]
   }

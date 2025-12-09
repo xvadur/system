@@ -10,39 +10,86 @@ Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny 
 
 ---
 
-## 0. Automatické Uloženie Promptov (POVINNÉ - PRVÝ KROK)
+## 0. TOKEN OPTIMIZATION (KRITICKÉ - PRVÝ KROK)
 
-**⚠️ KRITICKÉ:** Pred vytvorením save game MUSÍŠ automaticky uložiť všetky user prompty z aktuálnej konverzácie.
+**⚠️ DÔLEŽITÉ:** Pred začatím `/savegame` MUSÍŠ použiť optimalizovaný workflow s context engineeringom.
 
-- Prejdi celú aktuálnu konverzáciu (od začiatku session)
-- Identifikuj všetky user prompty (všetky správy od užívateľa)
-- Ulož cez `scripts/utils/save_conversation_prompts.py` → `save_prompts_batch()`
-- Prompty sa ukladajú do `development/data/prompts_log.jsonl`
+**Použi `scripts/utils/optimized_savegame.py` → `OptimizedSaveGame`:**
 
-**Technické detaily:** Pozri `docs/SAVEGAME_DETAILS.md`
+```python
+from scripts.utils.optimized_savegame import OptimizedSaveGame
+
+optimizer = OptimizedSaveGame()
+```
+
+**Tento modul automaticky:**
+- Trackuje tokeny cez `TokenBudgetTracker`
+- Používa selektívne načítanie súborov (offset/limit, sekcie)
+- Aplikuje kompresiu keď utilization > 80%
+- Izoluje relevantný kontext pre úlohu
+
+**PRAVIDLÁ:**
+- **NIKDY nečítaj celé súbory** - používaj `read_file_selective()` alebo `read_file` s `offset`/`limit`
+- **PRIORITA JSON formátov** - rýchlejšie a menšie než Markdown
+- **Trackuj tokeny** - používaj `tracker.estimate_tokens()` pred každým read_file
+- **Aplikuj kompresiu** - ak utilization > 80%, použij `CompressContextManager`
 
 ---
 
-## 0.5. Automatický Výpočet XP (POVINNÉ - PO ULOŽENÍ PROMPTOV)
+## 0.5. Automatické Uloženie Promptov (POVINNÉ)
 
-**⚠️ DÔLEŽITÉ:** Po uložení promptov MUSÍŠ automaticky vypočítať a aktualizovať XP.
+**⚠️ KRITICKÉ:** Pred vytvorením save game MUSÍŠ automaticky uložiť všetky user prompty.
 
-- Použi `core.xp.calculator.calculate_xp()` na výpočet XP
-- Aktualizuj `development/logs/XVADUR_XP.md` a `.json`
-- Použi hodnoty v save game naratíve
+**Použi optimalizovanú verziu:**
+```python
+prompts_to_save = [...]  # Zoznam promptov z konverzácie
+saved_count = optimizer.save_prompts_optimized(prompts_to_save)
+```
 
-**Technické detaily:** Pozri `docs/SAVEGAME_DETAILS.md`
+**Automaticky:**
+- Uloží prompty cez `save_prompts_batch()`
+- Skontroluje utilization po uložení
+- Aplikuje kompresiu ak utilization > 80%
 
 ---
 
-## 1. Analýza Stavu
+## 0.6. Automatický Výpočet XP (POVINNÉ)
 
-Zisti aktuálne hodnoty z:
-- `development/logs/XVADUR_XP.md` (XP, Level - už aktualizované v kroku 0.5)
-- `development/logs/XVADUR_LOG.md` (posledné záznamy)
-- `development/data/prompts_log.jsonl` (ak existuje - prompty z MinisterOfMemory)
+**⚠️ DÔLEŽITÉ:** Po uložení promptov MUSÍŠ automaticky vypočítať XP.
 
-Načítaj prompty z MinisterOfMemory (voliteľné) - pozri `docs/SAVEGAME_DETAILS.md`
+**Použi optimalizovanú verziu:**
+```python
+xp_data = optimizer.calculate_xp_optimized()
+```
+
+**Automaticky:**
+- Vypočíta XP z logu a promptov
+- Aktualizuje `XVADUR_XP.md` a `.json`
+- Vráti XP data pre save game
+
+---
+
+## 1. Analýza Stavu (SELEKTÍVNE NAČÍTANIE)
+
+**⚠️ KRITICKÉ:** Používaj selektívne načítanie namiesto celých súborov!
+
+**Použi optimalizované metódy:**
+```python
+# XP Status - len status sekcia
+xp_status = optimizer.get_xp_status()
+
+# Posledné log záznamy - len posledných 5
+recent_logs = optimizer.get_recent_log_entries(limit=5)
+
+# Posledný save game - len summary
+latest_summary = optimizer.get_latest_save_game_summary()
+```
+
+**NIKDY:**
+- ❌ `read_file('development/logs/XVADUR_LOG.md')` - celý súbor!
+- ✅ `read_file('development/logs/XVADUR_LOG.jsonl', offset=-5)` - len posledných 5
+- ✅ `read_file('development/logs/XVADUR_XP.json')` - JSON je malý
+- ✅ `optimizer.get_recent_log_entries(limit=5)` - optimalizovaná metóda
 
 ---
 
@@ -87,23 +134,33 @@ Vytvor Markdown obsah s touto štruktúrou:
 
 ---
 
-## 3. Uloženie
+## 3. Uloženie (OPTIMALIZOVANÉ)
 
-Ulož obsah do **dvoch formátov**:
+**Použi optimalizovanú metódu:**
+```python
+save_game = optimizer.create_save_game_optimized(
+    narrative=narrative_text,
+    quests=quests_list,
+    instructions=instructions_dict
+)
+```
 
-1. **Markdown:**
-   - `development/sessions/save_games/SAVE_GAME.md` - **APPEND** (pridaj nový záznam)
-   - Formát: `# 💾 SAVE GAME: [Dátum]` až `---` (separátor)
-
-2. **JSON:**
-   - `development/sessions/save_games/SAVE_GAME_LATEST.json` - **OVERWRITE** (vždy len najnovší)
-   - Použi štruktúru z `docs/SAVEGAME_DETAILS.md`
-   - Helper: `scripts/generate_savegame_json.py`
+**Automaticky:**
+- Načíta len potrebné dáta (selektívne)
+- Vytvorí save game objekt
+- Uloží JSON (`SAVE_GAME_LATEST.json`)
+- Appendne Markdown (`SAVE_GAME.md`) - len nový záznam
 
 **Dodatočné aktualizácie:**
-- Aktualizuj `development/logs/XVADUR_XP.md` a `.json`
-- Pridaj záznam do `development/logs/XVADUR_LOG.md` a `.jsonl`
-- Over, že všetky prompty sú uložené
+- XP už aktualizované v kroku 0.6
+- Log záznamy - použij `log_task_completed()` z `log_manager.py`
+- Prompty už uložené v kroku 0.5
+
+**Token tracking:**
+```python
+metrics = optimizer.tracker.get_metrics_summary()
+print(f"Token usage: {metrics['utilization_ratio']:.2%}")
+```
 
 ---
 

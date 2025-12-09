@@ -370,3 +370,91 @@ Dnešná session bola zameraná na dokončenie automatizácií a opravu systémo
 Quest #17: Field Report z ambulancie (priorita - užívateľ chce dokumentovať skúsenosti)
 
 ---
+# 💾 SAVE GAME: 2025-12-10 00:57
+
+---
+
+## 📊 Status
+- **Rank:** AI Developer (Senior)
+- **Level:** 5
+- **XP:** 199.59 / 200.0 (99.8%)
+- **Streak:** 4 dní
+- **Last Log:** development/logs/XVADUR_LOG.md
+
+## 🧠 Naratívny Kontext (Story so far)
+
+Táto session sa zamerala na kritickú analýzu token spotreby v `/savegame` workflow. Identifikovali sme, že predchádzajúca session spotrebovala ~5M tokenov kvôli čítaniu celých súborov namiesto selektívneho načítania.
+
+**Kľúčové rozhodnutia:**
+1. **Implementácia OptimizedSaveGame triedy** - Vytvorili sme `scripts/utils/optimized_savegame.py` s integrovaným context engineeringom (TokenBudgetTracker, CompressContextManager, IsolateContextManager).
+2. **Aktualizácia `/savegame` workflow** - Aktualizovali sme `.cursor/commands/savegame.md` s novými inštrukciami pre token optimization (selektívne načítanie, kompresia, tracking).
+3. **Dokumentácia** - Vytvorili sme `docs/SAVEGAME_OPTIMIZATION.md` s príkladmi a očakávanými úsporami (90% redukcia tokenov).
+
+**Tvorba nástrojov:**
+- `scripts/utils/optimized_savegame.py` - OptimizedSaveGame trieda s automatickou kompresiou
+- `docs/SAVEGAME_OPTIMIZATION.md` - dokumentácia token optimization
+- Aktualizovaný `.cursor/commands/savegame.md` - nové inštrukcie
+
+**Gamifikačný progres:**
+Zostávame na Level 5 s 199.59 XP z 200.0 XP (99.8%) - sme na prahu Level 6! Streak je 4 dni.
+
+**Prepojenie s dlhodobou víziou:**
+Token optimization je kľúčová pre udržateľnú prácu s AI systémom. Redukcia spotreby o 90% umožňuje efektívnejšie využitie tokenov pre skutočnú prácu namiesto overhead operácií.
+
+**Otvorené slučky:**
+- Quest #17: Field Report z ambulancie (10.12.2025)
+- Quest #16: Vytvorenie zmysluplného RAG
+- Quest #22: XP systém check
+- Quest #21: XP Systém Revízia (pending)
+- Testovanie skutočnej token spotreby po implementácii optimalizácií
+
+## 🎯 Aktívne Questy & Next Steps
+
+### Quest #17: Field Report z ambulancie (10.12.2025)
+- **Status:** Open
+- **Next Steps:**
+  - Vytvoriť field report o skúsenostiach z ambulancie
+  - Dokumentovať pozorovania, prípady, postupy
+  - Pridať systémové poznatky a reflexie
+
+### Quest #16: Vytvorenie zmysluplného RAG
+- **Status:** Open
+- **Next Steps:**
+  - Implementovať RAG pre osobný denník
+  - Pridať general knowledge kategóriu
+  - Integrácia s MinisterOfMemory
+
+### Quest #22: XP systém check
+- **Status:** Open
+- **Next Steps:**
+  - Rozhodnúť, či prerobiť XP systém na completion-based
+  - Alebo ponechať ako gamifikačný element
+
+### Quest #21: XP Systém Revízia
+- **Status:** Pending
+- **Next Steps:**
+  - Načítať GitHub Issue #21
+  - Analyzovať `core/xp/calculator.py`
+  - Identifikovať potrebné zmeny
+  - Implementovať revíziu
+
+## ⚠️ Inštrukcie pre Nového Agenta
+
+**Pre agenta:**
+- Priama, analytická, technicky detailná komunikácia
+- Dôraz na konzistentnosť a presnosť
+- **VŽDY používať OptimizedSaveGame pre /savegame workflow**
+- **VŽDY používať selektívne načítanie** - nikdy nečítaj celé súbory
+- **VŽDY trackuj tokeny** - používaj TokenBudgetTracker
+- **VŽDY aplikuj kompresiu** - ak utilization > 80%
+- VŽDY používať MCP nástroje pre GitHub operácie (nie git CLI)
+- VŽDY automaticky logovať tasky - log_task_started() na začiatku, log_task_completed() na konci
+- Triple-write logovanie (MD + JSONL + SQLite)
+- MCP Priority: Vždy skús použiť MCP najprv pre automatizácie
+- Token Optimization: Vždy myslieť na token spotrebu
+- Magický realizmus + Exekutívna presnosť + Kognitívny partnerstvo
+
+**Next Session:**
+Testovanie skutočnej token spotreby po implementácii optimalizácií a pokračovanie s Quest #17 (Field Report z ambulancie).
+
+---
