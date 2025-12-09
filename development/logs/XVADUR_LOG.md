@@ -1148,3 +1148,9 @@
     - Odhadovaná úspora tokenov: ~40% pri /loadgame
     - Hybridný prístup: Markdown pre ľudí (chronologický), JSON pre AI (najnovší)
 
+
+[23:29] ✅ Save Game vytvorený
+- Token optimalizácia follow-up: .cursorignore update, command skrátenie
+- Level up: 5 → 6 (200.00/400.0 XP, 50.0%)
+- Očakávaná úspora tokenov: ~172K (140K → ~40-50K)
+- Git commit: bea82bd

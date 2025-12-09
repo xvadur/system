@@ -40,9 +40,10 @@ build/
 .vscode/
 .idea/
 
-# Documentation (načítava sa selektívne cez /loadgame)
-docs/
-# Výnimky - len tieto docs sa môžu načítať selektívne
+# Documentation - selektívne načítanie cez /loadgame
+# (Žiadne globálne ignore - dokumentácia je dostupná)
+
+# Výnimky - tieto súbory sa môžu načítať selektívne
 !docs/README.md
 !docs/LOADGAME_DETAILS.md
 !docs/SAVEGAME_DETAILS.md
