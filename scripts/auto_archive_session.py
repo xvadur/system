@@ -44,14 +44,13 @@ def archive_current_session():
     staging_yesterday_path.mkdir(exist_ok=True)
 
     if not dev_current_session_path.exists():
-        add_log_entry(
-            action_name="Archivácia session",
-            status="Failed",
-            files_changed=[str(dev_current_session_path)],
-            xp_estimate=0.0
+        # Ak session neexistuje, vytvor prázdnu session
+        print(f"⚠️  Súbor {dev_current_session_path} neexistuje. Vytváram prázdnu session...", file=sys.stderr)
+        dev_current_session_path.parent.mkdir(parents=True, exist_ok=True)
+        dev_current_session_path.write_text(
+            f"# Session {date.today().strftime('%Y-%m-%d')}\n\nPrázdna session - automaticky vytvorená.\n",
+            encoding="utf-8"
         )
-        print(f"Chyba: Súbor {dev_current_session_path} neexistuje.", file=sys.stderr)
-        return
 
     # 1. Prečítanie obsahu session
     session_content = dev_current_session_path.read_text(encoding="utf-8")

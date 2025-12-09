@@ -66,6 +66,27 @@ def git_push_changes(commit_message: str, branch: Optional[str] = None) -> bool:
             capture_output=True
         )
         
+        # Pull pred pushom (rieši non-fast-forward)
+        try:
+            subprocess.run(
+                ["git", "pull", "--rebase", "origin", branch],
+                check=True,
+                capture_output=True,
+                timeout=30
+            )
+        except subprocess.CalledProcessError:
+            # Ak pull zlyhá, skús normálny pull
+            try:
+                subprocess.run(
+                    ["git", "pull", "origin", branch],
+                    check=True,
+                    capture_output=True,
+                    timeout=30
+                )
+            except subprocess.CalledProcessError:
+                # Ak aj to zlyhá, pokračuj s pushom (možno je už aktuálne)
+                print("⚠️  Git pull zlyhal, pokračujem s pushom...", file=sys.stderr)
+        
         # Push
         subprocess.run(
             ["git", "push", "origin", branch],

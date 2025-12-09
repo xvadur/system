@@ -43,8 +43,13 @@ def daily_rotation():
         # 1. Archivácia včerajšej session
         print("\n📦 Krok 1/5: Archivácia včerajšej session...")
         try:
-            archive_current_session()
-            print("✅ Archivácia dokončená")
+            # Skontroluj, či session existuje
+            session_path = workspace_root / "development" / "sessions" / "current" / "session.md"
+            if session_path.exists():
+                archive_current_session()
+                print("✅ Archivácia dokončená")
+            else:
+                print("⚠️  Session neexistuje, preskakujem archiváciu (vytvorí sa nová)")
         except Exception as e:
             error_msg = f"Archivácia zlyhala: {e}"
             errors.append(error_msg)
