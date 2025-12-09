@@ -2,7 +2,7 @@
 
 **Status:** ✅ Funkčný  
 **Verzia:** Extended (v2.0)  
-**Posledná aktualizácia:** 2025-12-04
+**Posledná aktualizácia:** 2025-12-09
 
 ---
 
@@ -46,12 +46,12 @@ OPENAI_API_KEY=sk-tvoj-api-key
 ### Vytvorenie RAG Indexu
 
 ```bash
-python3 scripts/rag/build_rag_index.py
+python3 core/rag/build_rag_index.py
 ```
 
 **Čo sa stane:**
-- Načíta prompty z `data/prompts/prompts_split` (ak existuje)
-- Načíta conversation pairs z `xvadur/data/dataset/conversations.jsonl`
+- Načíta prompty z `development/data/prompts_log.jsonl`
+- Načíta conversation pairs z `development/data/conversations.jsonl` (ak existuje)
 - Vytvorí inteligentné chunky
 - Generuje embeddings pomocou OpenAI
 - Vytvorí FAISS index
@@ -73,7 +73,7 @@ python3 scripts/rag/build_rag_index.py
 
 RAG systém teraz podporuje aj AI odpovede z conversation pairs:
 
-- **Zdroj:** `xvadur/data/dataset/conversations.jsonl`
+- **Zdroj:** `development/data/conversations.jsonl` (ak existuje)
 - **Formát:** Kombinovaný dialóg (`User: ...\n\nAssistant: ...`)
 - **Počet:** 1,822 conversation pairs
 - **Content Type:** `pair`
@@ -101,7 +101,7 @@ Každý chunk má teraz:
 
 ### Konfigurácia
 
-V `scripts/rag/build_rag_index.py`:
+V `core/rag/build_rag_index.py`:
 
 ```python
 # Flags
@@ -120,19 +120,19 @@ COMBINE_PAIRS = True  # Kombinovať prompt + odpoveď ako jeden chunk
 ### Základné Vyhľadávanie
 
 ```bash
-python3 scripts/rag/rag_agent_helper.py "tvoj dotaz" [top_k] [min_score] [use_hybrid] [mode] [content_type] [output_format]
+python3 core/rag/rag_agent_helper.py "tvoj dotaz" [top_k] [min_score] [use_hybrid] [mode] [content_type] [output_format]
 ```
 
 **Príklady:**
 ```bash
 # Základné vyhľadávanie (top 5 výsledkov, hybrid search, pekný výstup)
-python3 scripts/rag/rag_agent_helper.py "ako som riešil n8n problémy" 5 0.4 true search None pretty
+python3 core/rag/rag_agent_helper.py "ako som riešil n8n problémy" 5 0.4 true search None pretty
 
 # Viac výsledkov, len conversation pairs
-python3 scripts/rag/rag_agent_helper.py "transformácia identity" 10 0.4 true search pair pretty
+python3 core/rag/rag_agent_helper.py "transformácia identity" 10 0.4 true search pair pretty
 
 # Len user prompty (JSON výstup pre agenta)
-python3 scripts/rag/rag_agent_helper.py "ako som riešil n8n" 5 0.4 true search prompt json
+python3 core/rag/rag_agent_helper.py "ako som riešil n8n" 5 0.4 true search prompt json
 ```
 
 ### RAG Query s Automatickou Syntézou
@@ -140,16 +140,16 @@ python3 scripts/rag/rag_agent_helper.py "ako som riešil n8n" 5 0.4 true search 
 Namiesto surových promptov dostávaš syntetizovanú odpoveď:
 
 ```bash
-python3 scripts/rag/rag_agent_helper.py "tvoj dotaz" [top_k] [min_score] [use_hybrid] query [content_type] [output_format] [model]
+python3 core/rag/rag_agent_helper.py "tvoj dotaz" [top_k] [min_score] [use_hybrid] query [content_type] [output_format] [model]
 ```
 
 **Príklady:**
 ```bash
 # Syntetizovaná chronológia augusta (pekný výstup)
-python3 scripts/rag/rag_agent_helper.py "urob mi chronológiu augusta" 10 0.4 true query None pretty
+python3 core/rag/rag_agent_helper.py "urob mi chronológiu augusta" 10 0.4 true query None pretty
 
 # Syntetizovaná analýza témy (JSON výstup)
-python3 scripts/rag/rag_agent_helper.py "čo som hovoril o svojej transformácii identity?" 8 0.4 true query None json
+python3 core/rag/rag_agent_helper.py "čo som hovoril o svojej transformácii identity?" 8 0.4 true query None json
 ```
 
 **Výhody:**
@@ -196,10 +196,10 @@ RAG systém podporuje **hybrid search** - kombináciu semantic search (embedding
 **Použitie:**
 ```bash
 # Hybrid search (default, pekný výstup)
-python3 scripts/rag/rag_agent_helper.py "transformácia identity" 5 0.4 true search None pretty
+python3 core/rag/rag_agent_helper.py "transformácia identity" 5 0.4 true search None pretty
 
 # Len semantic search
-python3 scripts/rag/rag_agent_helper.py "transformácia identity" 5 0.4 false search None pretty
+python3 core/rag/rag_agent_helper.py "transformácia identity" 5 0.4 false search None pretty
 ```
 
 **Výhody:**
@@ -248,21 +248,21 @@ export OPENAI_API_KEY='sk-tvoj-key'
 Alebo vytvor `.env` súbor v root adresári.
 
 ### Chyba: "Index neexistuje"
-Spusti najprv `build_rag_index.py`.
+Spusti najprv `core/rag/build_rag_index.py`.
 
 ### Chyba: "Conversation pairs file neexistuje"
-**Riešenie:** Skontroluj, či existuje `xvadur/data/dataset/conversations.jsonl`
+**Riešenie:** Skontroluj, či existuje `development/data/conversations.jsonl`
 
 ### Chyba: "Žiadne conversation pairs"
 **Riešenie:** Skript pokračuje len s promptmi (ak existujú)
 
 ### Index je príliš veľký
-**Riešenie:** Nastav `INCLUDE_AI_RESPONSES = False` v `build_rag_index.py`
+**Riešenie:** Nastav `INCLUDE_AI_RESPONSES = False` v `core/rag/build_rag_index.py`
 
 ### OpenAI kvóta presiahnutá (Error 429)
 **Riešenie:**
 1. Pridať kredit do OpenAI (https://platform.openai.com/account/billing)
-2. Spustiť rebuild znova: `python3 scripts/rag/build_rag_index.py`
+2. Spustiť rebuild znova: `python3 core/rag/build_rag_index.py`
 3. Alternatíva: Použiť len prompty (bez conversation pairs) - nastav `INCLUDE_AI_RESPONSES = False`
 
 ---
@@ -305,7 +305,7 @@ FAISS index veľkosť: 3,644 vektorov
 
 **Čo urobiť:**
 1. Pridať kredit do OpenAI (https://platform.openai.com/account/billing)
-2. Spustiť rebuild znova: `python3 scripts/rag/build_rag_index.py`
+2. Spustiť rebuild znova: `python3 core/rag/build_rag_index.py`
 3. Odhadované náklady: ~$10-20 pre ~3,644 chunkov
 
 ---
@@ -326,7 +326,7 @@ FAISS index veľkosť: 3,644 vektorov
 ### Príklad 1: Vyhľadávanie v Conversation Pairs
 
 ```bash
-python3 scripts/rag/rag_agent_helper.py "čo AI hovorilo o mojej transformácii" 10 0.4 true search pair pretty
+python3 core/rag/rag_agent_helper.py "čo AI hovorilo o mojej transformácii" 10 0.4 true search pair pretty
 ```
 
 **Výsledok:** Nájde conversation pairs, kde AI hovorilo o transformácii.
@@ -334,7 +334,7 @@ python3 scripts/rag/rag_agent_helper.py "čo AI hovorilo o mojej transformácii"
 ### Príklad 2: Syntetizovaná Chronológia
 
 ```bash
-python3 scripts/rag/rag_agent_helper.py "urob mi chronológiu augusta" 10 0.4 true query None pretty
+python3 core/rag/rag_agent_helper.py "urob mi chronológiu augusta" 10 0.4 true query None pretty
 ```
 
 **Výsledok:** Syntetizovaná chronológia augusta z relevantných promptov.
@@ -342,7 +342,7 @@ python3 scripts/rag/rag_agent_helper.py "urob mi chronológiu augusta" 10 0.4 tr
 ### Príklad 3: Vyhľadávanie v User Prompts
 
 ```bash
-python3 scripts/rag/rag_agent_helper.py "ako som riešil n8n problémy" 5 0.4 true search prompt pretty
+python3 core/rag/rag_agent_helper.py "ako som riešil n8n problémy" 5 0.4 true search prompt pretty
 ```
 
 **Výsledok:** Nájde len user prompty o n8n.

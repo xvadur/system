@@ -22,7 +22,7 @@ sys.path.insert(0, str(workspace_root))
 from scripts.auto_archive_session import archive_current_session
 from scripts.create_new_session import create_new_session
 from scripts.generate_daily_review import generate_daily_review
-from scripts.calculate_xp import calculate_xp, update_xp_file
+from core.xp.calculator import calculate_xp, update_xp_file
 from scripts.utils.log_manager import add_log_entry
 from scripts.utils.git_helper import git_push_changes
 

@@ -29,7 +29,7 @@
 - **ACTIVE LOGGING:** Automaticky loguj pri každom zadávaní a dokončení tasku:
   - Pri zadávaní tasku: `log_task_started(task_name, description)`
   - Pri dokončení tasku: `log_task_completed(task_name, files_changed, xp_estimate)`
-  - Dual-write: Automaticky zapisuje do `XVADUR_LOG.md` (Markdown) aj `XVADUR_LOG.jsonl` (JSON)
+  - Triple-write: Automaticky zapisuje do `XVADUR_LOG.md` (Markdown), `XVADUR_LOG.jsonl` (JSON - Hot Storage) a `archive.db` (SQLite - Cold Storage)
 - **CHECKPOINT:** `/savegame` len na konci dňa alebo po milestone
 
 ## 5. TOKEN OPTIMIZATION (KRITICKÉ)

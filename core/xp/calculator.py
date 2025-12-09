@@ -423,7 +423,7 @@ def generate_xp_graph(history: List[Dict], max_width: int = 40) -> str:
 
 def update_xp_file(xp_file_path: str, xp_data: Dict) -> None:
     """
-    Aktualizuje XVADUR_XP.md s novými hodnotami a grafom
+    Aktualizuje XVADUR_XP.md a XVADUR_XP.json s novými hodnotami a grafom
     """
     xp_file_path = Path(xp_file_path)
     
@@ -439,6 +439,7 @@ def update_xp_file(xp_file_path: str, xp_data: Dict) -> None:
     breakdown = xp_data['breakdown']
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
     
+    # Aktualizovať Markdown súbor
     content = f"""# 🎮 XVADUR XP TRACKING
 
 **Status:** Aktívny  
@@ -493,6 +494,22 @@ def update_xp_file(xp_file_path: str, xp_data: Dict) -> None:
 """
     
     xp_file_path.write_text(content, encoding='utf-8')
+    
+    # Aktualizovať JSON súbor (synchornizácia s Markdown)
+    xp_json_path = xp_file_path.parent / 'XVADUR_XP.json'
+    xp_json_data = {
+        'status': {
+            'total_xp': xp_data['total_xp'],
+            'level': xp_data['current_level'],
+            'next_level': xp_data['next_level_xp'],
+            'streak_days': xp_data['streak_days']
+        },
+        'breakdown': xp_data['breakdown'],
+        'last_updated': timestamp
+    }
+    
+    with open(xp_json_path, 'w', encoding='utf-8') as f:
+        json.dump(xp_json_data, f, indent=2, ensure_ascii=False)
 
 
 if __name__ == '__main__':

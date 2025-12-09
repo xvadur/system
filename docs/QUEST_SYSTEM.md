@@ -26,7 +26,7 @@ Použi `/quest` command v Cursor:
 ```
 
 **Čo sa stane:**
-1. ✅ Vytvorí sa GitHub Issue v `xvadur/system` repozitári
+1. ✅ Vytvorí sa GitHub Issue v `xvadur/system` repozitári (ak je MCP dostupný)
 2. ✅ Zapíše sa do lokálneho logu: `[HH:MM] 🔹 Vytvorená úloha #123: [Popis]`
 3. ✅ Vráti sa Issue number (#123) pre tracking
 
@@ -318,12 +318,12 @@ python scripts/utils/validate_quest.py --mark-fail quest-15
 ### Zdroje
 
 - **Anthropic Article:** [Effective Harnesses for Long-Running Agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
-- **Nate Jones Video:** `development/data/youtube/NateJones.txt`
-- **Calibration Report:** `development/sessions/current/analysis_nate_jones_calibration.md`
+- **Nate Jones Video:** `development/data/youtube/xNcEgqzlPqs_metadata.json` (ak existuje)
+- **Calibration Report:** `development/sessions/archive/december-2025/quests/analysis_nate_jones_calibration.md`
 
 ---
 
 **Vytvorené:** 2025-12-04  
-**Aktualizované:** 2025-12-09 (Anthropic Harness Pattern)  
+**Posledná aktualizácia:** 2025-12-09  
 **Status:** ✅ Aktívny
 

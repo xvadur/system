@@ -21,8 +21,8 @@ workspace_root = Path(__file__).parent.parent
 sys.path.insert(0, str(workspace_root))
 
 # Konfigurácia
-INPUT_FILE = Path("xvadur/data/dataset/conversations.jsonl")
-OUTPUT_DIR = Path("xvadur/data/finetuning")
+INPUT_FILE = Path("development/data/conversations.jsonl")  # Note: May not exist (legacy format)
+OUTPUT_DIR = Path("development/data/finetuning")
 OUTPUT_FILE = OUTPUT_DIR / "openai_finetuning_dataset.jsonl"
 STATS_FILE = OUTPUT_DIR / "finetuning_stats.json"
 

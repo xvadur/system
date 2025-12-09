@@ -33,7 +33,7 @@ except ImportError:
 # Konfigurácia
 PROMPTS_ENRICHED = Path("data/prompts/prompts_enriched.jsonl")
 PROMPTS_SPLIT_DIR = Path("data/prompts/prompts_split")
-PROMPTS_LOG_PATH = Path("xvadur/data/prompts_log.jsonl")
+PROMPTS_LOG_PATH = Path("development/data/prompts_log.jsonl")
 OUTPUT_DIR = Path("data/prompts/continuous_analysis")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -447,7 +447,7 @@ def get_all_dates() -> List[str]:
 
 def load_profile_context() -> Optional[str]:
     """Načíta kontext z xvadur_profile.md (len súčasný profil)."""
-    profile_path = Path("xvadur/data/profile/xvadur_profile.md")
+    profile_path = Path("development/data/profile/xvadur_profile.md")
     
     if not profile_path.exists():
         return None

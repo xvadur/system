@@ -21,7 +21,7 @@ except ImportError:
 
 # Konfigurácia
 PROMPTS_SPLIT_DIR = Path("data/prompts/prompts_split")
-PROMPTS_LOG_PATH = Path("xvadur/data/prompts_log.jsonl")
+PROMPTS_LOG_PATH = Path("development/data/prompts_log.jsonl")
 OUTPUT_DIR = Path("data/prompts/synthesis")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 

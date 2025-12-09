@@ -14,7 +14,7 @@ from typing import List, Dict, Optional
 import time
 
 # Debug logging - relative to workspace root
-# Script is in scripts/rag/, so go up 2 levels to workspace root
+# Script is in core/rag/, so go up 2 levels to workspace root
 _workspace_root = Path(__file__).parent.parent.parent
 DEBUG_LOG_PATH = _workspace_root / ".cursor" / "debug.log"
 

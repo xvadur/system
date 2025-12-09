@@ -27,7 +27,7 @@ Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny 
    from datetime import datetime
    sys.path.insert(0, str(Path.cwd()))
    
-   from scripts.save_conversation_prompts import save_prompts_batch
+   from scripts.utils.save_conversation_prompts import save_prompts_batch
    
    # Automaticky zbier všetky user prompty z aktuálnej konverzácie
    # (identifikuj ich z kontextu - všetky user messages v tejto session)
@@ -84,13 +84,13 @@ Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny 
    from pathlib import Path
    sys.path.insert(0, str(Path.cwd()))
    
-   from scripts.calculate_xp import calculate_xp, update_xp_file
+   from core.xp.calculator import calculate_xp, update_xp_file
    
    # Vypočítaj XP z logu a promptov
    xp_data = calculate_xp()
    
    # Aktualizuj XVADUR_XP.md
-   update_xp_file('logs/XVADUR_XP.md', xp_data)
+   update_xp_file('development/logs/XVADUR_XP.md', xp_data)
    
    print(f"✅ XP vypočítané: {xp_data['total_xp']} XP (Level {xp_data['current_level']})")
    ```

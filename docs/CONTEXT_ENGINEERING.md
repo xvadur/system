@@ -1,5 +1,7 @@
 # Context Engineering Integration
 
+**Posledná aktualizácia:** 2025-12-09
+
 Tento dokument popisuje integráciu Context Engineering praktík do Magnum Opus systému.
 
 ## Prehľad
@@ -320,9 +322,7 @@ print(f"Izolovaný obsah: {isolation['isolated_content']}")
 
 ## Referencie
 
-- [Context-Engineering Repozitár](../../external/Context-Engineering/)
-- [Recursive Context Template](../../external/Context-Engineering/20_templates/recursive_context.py)
-- [Minimal Context Template](../../external/Context-Engineering/20_templates/minimal_context.yaml)
-- [Prompt Program Template](../../external/Context-Engineering/20_templates/prompt_program_template.py)
-- [Token Budgeting Guide](../../external/Context-Engineering/40_reference/token_budgeting.md)
+- **Context Engineering Patterns:** Implementované v `core/context_engineering/`
+- **Templates:** Integrované templates v `templates/prompts/` (memory_agent, verification_loop, chain_of_thought)
+- **Context Schema:** `core/context_engineering/schemas/context_v6.json`
 

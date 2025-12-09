@@ -1,18 +1,13 @@
-#  Súbor: docs/SESSION_MANAGEMENT.md
-# Popis: Dokumentácia pre 3-vrstvový session management s MCP integráciou.
-# Autor: AI Agent
-# Dátum: 2025-12-05
-
 # 🔄 Session Management v3.1
 
 **Verzia:** 3.1.0  
-**Posledná aktualizácia:** 2025-12-05
+**Posledná aktualizácia:** 2025-12-09
 
 ---
 
 ## Prehľad
 
-Tento dokument popisuje 3-vrstvovú architektúru pre session management v XVADUR workspace s plnou MCP integráciou. Systém automaticky spravuje denné sessiony, branch rotation a ranné review.
+Tento dokument popisuje session management v XVADUR workspace. Aktuálne používa lokálny scheduler systém (macOS launchd) pre denné rotácie. GitHub Actions workflows nie sú implementované.
 
 ---
 
@@ -24,7 +19,7 @@ Tento dokument popisuje 3-vrstvovú architektúru pre session management v XVADU
 - **Obsah:**
   - `sessions/current/session.md`: Aktívny session súbor, v ktorom pracuješ.
   - `sessions/save_games/`: Umiestnenie pre `/savegame` a `/loadgame` checkpointy.
-  - `logs/`: Tvoje `XVADUR_LOG.md` a `XVADUR_XP.md`.
+  - `logs/`: Tvoje `XVADUR_LOG.md`, `XVADUR_LOG.jsonl`, `XVADUR_XP.md`, `XVADUR_XP.json`
   - `data/`: `prompts_log.jsonl` a ďalšie dáta generované počas práce.
 - **Workflow:**
   - Každodenná práca sa deje tu.
@@ -41,72 +36,52 @@ Tento dokument popisuje 3-vrstvovú architektúru pre session management v XVADU
   - Ráno si pozrieš `daily_review.md`.
   - `staging/sessions/today/session.md` je automaticky skopírovaná do `development/sessions/current/` pre tvoju prácu.
 
-### 3. 🚀 Production Layer (`production/`)
+### 3. 🚀 Production Layer (`production/`) - ⚠️ NIE JE IMPLEMENTOVANÉ
 
-- **Účel:** Dlhodobá archivácia a agregácia metrík.
-- **Obsah:**
-  - `metrics/`: Agregované denné a týždenné metriky.
-  - `sessions/archive/`: Dlhodobý archív všetkých sessions.
-- **Workflow:**
-  - Plne automatizované procesy.
-  - Dáta sa sem presúvajú zo `staging` vrstvy.
+**Status:** Production layer bol plánovaný v dokumentácii, ale nie je aktuálne implementovaný. Dáta sa archivujú v `development/sessions/archive/` a metriky sú v `development/logs/`.
+
+- **Poznámka:** Tento layer môže byť implementovaný v budúcnosti pre automatizovanú archiváciu a agregáciu metrík.
 
 ---
 
-## Denný Session Rotation s MCP
+## Denný Session Rotation (Lokálny Scheduler)
 
-### GitHub Branch Strategy
+### Lokálny Scheduler Systém
 
-- **`main`:** Hlavná stabilná vetva
-- **`session-YYYY-MM-DD`:** Denné session vetvy (napr. `session-2025-12-05`)
-- **Automatické mergovanie:** O polnoci sa aktuálna session branch merguje do main
+Systém používa macOS launchd pre automatizované denné rotácie.
+
+- **Konfigurácia:** `scripts/local_scheduler/com.xvadur.daily_rotation.plist`
+- **Inštalácia:** `scripts/local_scheduler/install_scheduler.sh`
 
 ### Časový Plán
 
-1. **00:00 UTC (Polnoc):**
-   - Merge aktuálnej session branch do `main`
-   - Vytvorenie novej session branch pre nasledujúci deň
-   - Archivácia včerajšej session
+**00:00 (Polnoc):**
+- Spustí sa `scripts/daily_rotation.py`:
+  1. Archivuje včerajšiu session
+  2. Vytvorí novú session
+  3. Vygeneruje denné metriky
+  4. Vypočíta XP
+  5. (Voliteľne) Pushne zmeny na GitHub
 
-2. **07:00 SEČ (Ráno):**
-   - Vytvorenie novej session v `development/sessions/current/`
-   - Generovanie denného review
+### Manuálne Spustenie
+
+```bash
+# Spustiť dennú rotáciu manuálne
+python3 scripts/daily_rotation.py
+```
 
 ---
 
-## Automatizačné Procesy s MCP Integráciou
+## ⚠️ Poznámka: GitHub Actions Nie Sú Implementované
 
-### 1. Auto Session Rotation (`.github/workflows/auto-session-rotation.yml`)
+Pôvodne plánované GitHub Actions workflows (`.github/workflows/`) nie sú aktuálne implementované. Systém používa lokálny scheduler namiesto toho.
 
-- **Trigger:** Každý deň o 00:00 UTC.
-- **Kroky:**
-  1.  **GitHub MCP:** Merge aktuálnej session branch do `main`
-  2.  **GitHub MCP:** Vytvorenie novej session branch
-  3.  Spustí `scripts/auto_archive_session.py`:
-      - Presunie `development/sessions/current/session.md` do `staging/sessions/yesterday/`.
-      - Vygeneruje `summary.md` a `metrics.json`.
-  4.  Spustí `scripts/create_new_session.py`:
-      - Vytvorí novú session v `staging/sessions/today/` z template.
-      - Skopíruje ju do `development/sessions/current/`.
-  5.  **GitHub MCP:** Commitne zmeny do novej session branch.
+**Pôvodne plánované workflowy (nie sú aktívne):**
+- Auto Session Rotation
+- Morning Review Prep
+- Session Setup
 
-### 2. Morning Review Prep (`.github/workflows/morning-review-prep.yml`)
-
-- **Trigger:** Každý deň o 06:00 UTC.
-- **Kroky:**
-  1.  Spustí `scripts/generate_daily_review.py`:
-      - Načíta dáta zo `staging/sessions/yesterday/`.
-      - **Sequential Thinking MCP:** Vygeneruje `staging/review/daily_review.md`.
-  2.  **GitHub MCP:** Commitne zmeny.
-
-### 3. 7:00 Session Setup (`.github/workflows/morning-session-setup.yml`)
-
-- **Trigger:** Každý deň o 07:00 SEČ.
-- **Kroky:**
-  1.  **Time MCP:** Overenie správneho časového pásma
-  2.  Skopíruje `staging/sessions/today/session.md` do `development/sessions/current/`
-  3.  Aktualizuje `XVADUR_LOG.md` s novou session informáciou
-  4.  **GitHub MCP:** Commitne zmeny
+**Aktuálne riešenie:** Lokálny scheduler (`scripts/local_scheduler/`)
 
 ---
 
@@ -129,12 +104,13 @@ Tento dokument popisuje 3-vrstvovú architektúru pre session management v XVADU
 
 ---
 
-## MCP Nástroje Použité
+## MCP Nástroje (Voliteľné)
 
-- **GitHub MCP:** Branch management, mergovanie, commity
-- **Time MCP:** Presné časové synchronizácie
-- **Sequential Thinking MCP:** Analýza a generovanie review
-- **Obsidian MCP:** Export do knowledge base
+MCP nástroje môžu byť použité v skriptoch, ale nie sú povinné:
+- **GitHub MCP:** Branch management, mergovanie, commity (fallback na git CLI)
+- **Time MCP:** Presné časové synchronizácie (fallback na datetime)
+- **Sequential Thinking MCP:** Analýza a generovanie review (voliteľné)
+- **Obsidian MCP:** Export do knowledge base (voliteľné)
 
 ---
 
@@ -142,4 +118,5 @@ Tento dokument popisuje 3-vrstvovú architektúru pre session management v XVADU
 
 - `core/mcp/README.md` - Kompletná MCP integrácia dokumentácia
 - `scripts/mcp_helpers.py` - MCP wrapper funkcie
-- `.github/workflows/` - Automatizačné workflowy
+- `scripts/local_scheduler/` - Lokálny scheduler konfigurácia
+- `scripts/daily_rotation.py` - Denný rotation script

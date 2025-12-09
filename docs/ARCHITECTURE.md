@@ -1,7 +1,7 @@
 # 🏗️ XVADUR Architektúra
 
 **Verzia:** 2.0.0  
-**Posledná aktualizácia:** 2025-12-04
+**Posledná aktualizácia:** 2025-12-09
 
 ---
 
@@ -11,7 +11,7 @@ XVADUR je modulárny kognitívny systém navrhnutý pre:
 1. **Pamäť** - Automatické ukladanie a vyhľadávanie v histórii
 2. **Analýza** - RAG-based semantic search
 3. **Gamifikácia** - XP/Level systém pre tracking progresu
-4. **Automatizácia** - GitHub Actions pre denné/týždenné úlohy
+4. **Automatizácia** - Lokálny scheduler pre denné rotácie a metriky
 
 ---
 
@@ -32,10 +32,10 @@ XVADUR je modulárny kognitívny systém navrhnutý pre:
 │      └─────────────┴─────────────┴─────────────┘           │
 ├─────────────────────────────────────────────────────────────┤
 │                      Data Layer (JSONL)                     │
-│ conversations.jsonl | prompts_log.jsonl | xp_history.jsonl  │
+│ prompts_log.jsonl | xp_history.jsonl | archive.db (SQLite)  │
 ├─────────────────────────────────────────────────────────────┤
-│                  Automation Layer (GitHub)                  │
-│     daily-metrics | weekly-synthesis | session-rotation     │
+│                  Automation Layer (Local)                   │
+│     daily-rotation | local-scheduler | triple-write logs    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -55,8 +55,10 @@ XVADUR je modulárny kognitívny systém navrhnutý pre:
 
 **Dátový tok:**
 ```
-User Prompt → .cursorrules → auto_save_prompt.py → FileStore → prompts_log.jsonl
+User Prompt → /savegame → save_conversation_prompts.py → FileStore → prompts_log.jsonl
 ```
+
+**Poznámka:** Automatické ukladanie pri každej odpovedi bolo odstránené. Prompty sa ukladajú pri `/savegame` commande.
 
 ### 2. RAG (`core/rag/`)
 
@@ -135,7 +137,7 @@ User Prompt → .cursorrules → auto_save_prompt.py → FileStore → prompts_l
   "timestamp": "2025-12-08T01:15:00+01:00",
   "date": "2025-12-08",
   "time": "01:15",
-  "title": "Quest #13: Dual-write systém implementovaný",
+  "title": "Quest #13: Triple-write systém implementovaný",
   "type": "task",
   "status": "completed",
   "files_changed": ["development/logs/XVADUR_LOG.jsonl", "scripts/utils/log_manager.py"],
@@ -148,7 +150,7 @@ User Prompt → .cursorrules → auto_save_prompt.py → FileStore → prompts_l
   "notes": "Scheduler nie je nainštalovaný!"
 }
 ```
-**Poznámka:** Dual-write systém zapisuje súčasne do `XVADUR_LOG.md` (Markdown) a `XVADUR_LOG.jsonl` (JSON). Voliteľné polia: `files_changed`, `xp_estimate`, `completed`, `results`, `decisions`, `quest_id`, `xp_earned`, `notes`.
+**Poznámka:** Triple-write systém zapisuje súčasne do `XVADUR_LOG.md` (Markdown), `XVADUR_LOG.jsonl` (JSON - Hot Storage, max 100 záznamov) a `archive.db` (SQLite - Cold Storage). Voliteľné polia: `files_changed`, `xp_estimate`, `completed`, `results`, `decisions`, `quest_id`, `xp_earned`, `notes`.
 
 ### xp_history.jsonl
 ```json

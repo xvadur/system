@@ -35,16 +35,12 @@ xvadur-workspace/
 ├── staging/                 # Denný review
 ├── production/              # Automatizácie
 │
-├── core/                    # Jadro systému (Memory, RAG, XP)
+├── core/                    # Jadro systému (Memory, RAG, XP, Context Engineering)
 ├── data/                    # Globálne dáta (RAG index)
-├── sessions/                # Session management
-│   ├── current/             # Aktuálna session
-│   ├── archive/             # Archív
-│   └── save_games/          # Checkpointy
-│
-├── logs/                    # Logy (XP, Activity)
-├── docs/                    # Dokumentácia
 ├── scripts/                 # Utility skripty
+│
+├── docs/                    # Dokumentácia
+├── templates/               # Templates pre sessiony a prompts
 └── archive/                 # Archív pilotného stavu
 ```
 
@@ -57,15 +53,16 @@ xvadur-workspace/
 | `/loadgame` | Načítanie kontextu pre novú session |
 | `/savegame` | Uloženie stavu + git commit/push |
 | `/xvadur` | Konverzačný režim |
+| `/quest` | Vytvorenie questu (GitHub Issue) |
 
 ---
 
 ## 📊 Aktuálny Status
 
-- **Level:** 5 (Expert)
-- **XP:** 159.78 / 750
+- **Level:** 5 (AI Developer Senior)
+- **XP:** 199.59 / 200.0
+- **Streak:** 4 dni
 - **Dataset:** 1,822 konverzačných párov
-- **Obdobie:** 126 dní (Kortex) + 4 dni (Cursor)
 
 ---
 
@@ -75,10 +72,13 @@ xvadur-workspace/
 Automatické ukladanie a vyhľadávanie v histórii konverzácií.
 
 ```python
-from core import MinisterOfMemory, FileStore
+from core.ministers.memory import MinisterOfMemory, AssistantOfMemory
+from core.ministers.storage import FileStore
+from pathlib import Path
 
-store = FileStore(Path("data/prompts_log.jsonl"))
-minister = MinisterOfMemory(assistant=AssistantOfMemory(store=store))
+store = FileStore(Path("development/data/prompts_log.jsonl"))
+assistant = AssistantOfMemory(store=store)
+minister = MinisterOfMemory(assistant=assistant)
 minister.log_event("user", "Môj prompt...")
 ```
 
@@ -93,31 +93,39 @@ python core/rag/rag_agent_helper.py "ako som riešil X" 5 0.4 true search
 Gamifikácia s automatickým výpočtom z logu a promptov.
 
 ```python
-from core import calculate_xp, update_xp_file
+from core.xp.calculator import calculate_xp, update_xp_file
 
 xp_data = calculate_xp()
-update_xp_file("logs/XVADUR_XP.md", xp_data)
+update_xp_file("development/logs/XVADUR_XP.md", xp_data)
 ```
 
----
-
-## 🤖 GitHub Actions
-
-| Workflow | Trigger | Popis |
-|----------|---------|-------|
-| `daily-metrics.yml` | 23:59 UTC | Denný výpočet XP |
-| `weekly-synthesis.yml` | Nedeľa 23:00 | Týždenný report |
-| `backup.yml` | Push do main | Validácia dát |
+### 4. Context Engineering (`core/context_engineering/`)
+Token optimalizácia, kompresia kontextu a izolácia pre úlohy.
 
 ---
 
 ## 📖 Dokumentácia
 
-- **[ARCHITEKTÚRA](docs/ARCHITECTURE.md):** Detailný popis v2.0 architektúry.
-- **[SESSION MANAGEMENT](docs/SESSION_MANAGEMENT.md):** Popis 3-vrstvového session managementu.
-- **[MCP INTEGRÁCIA](docs/MCP_INTEGRATION.md):** Ako sa používa MCP Docker systém.
-- **[MEMORY SYSTÉM](docs/MEMORY_SYSTEM.md):** Ako funguje `MinisterOfMemory`.
-- **[RAG SYSTÉM](docs/rag/RAG_GUIDE.md):** Návod na použitie RAG.
+Kompletná dokumentácia je v [`docs/`](docs/) adresári. Pre prehľad pozri [`docs/README.md`](docs/README.md).
+
+### Kľúčové Dokumenty
+
+- **[ARCHITECTURE.md](docs/ARCHITECTURE.md)**: Detailný popis v2.0 architektúry
+- **[MEMORY_AND_LOGGING.md](docs/MEMORY_AND_LOGGING.md)**: Memory a Logging systém
+- **[SESSION_MANAGEMENT.md](docs/SESSION_MANAGEMENT.md)**: 3-vrstvový session management
+- **[CONTEXT_ENGINEERING.md](docs/CONTEXT_ENGINEERING.md)**: Token optimalizácia a Context Engineering
+- **[QUEST_SYSTEM.md](docs/QUEST_SYSTEM.md)**: GitHub Issues integrácia
+- **[TOKEN_OPTIMIZATION.md](docs/TOKEN_OPTIMIZATION.md)**: Stratégie optimalizácie tokenov
+
+---
+
+## 🤖 Integrácia
+
+### MCP (Multi-Capable Peripheral)
+MCP Docker systém poskytuje 59+ nástrojov (GitHub, Obsidian, Browser, Time). Viac informácií v [`core/mcp/README.md`](core/mcp/README.md).
+
+### Local Scheduler
+Lokálny scheduler (macOS launchd) pre automatizované denné rotácie sessions a metrík.
 
 ---
 
@@ -126,9 +134,11 @@ update_xp_file("logs/XVADUR_XP.md", xp_data)
 | Tag | Popis |
 |-----|-------|
 | `pilot-v1.0` | Pilotná verzia (2025-12-04) |
+| `v2.0.0` | Aktuálna verzia - Magnum Opus v2.0 |
 
 ---
 
 **Vytvorené:** 2025-12-04  
 **Verzia:** 2.0.0  
-**Status:** ✅ Aktívny
+**Status:** ✅ Aktívny  
+**Posledná revízia:** 2025-12-09 (Workspace Refactoring)

@@ -71,6 +71,18 @@ class SchemaValidator:
             "quest_id": "number (optional)",
             "xp_earned": "number (optional)",
             "notes": "string (optional)"
+        },
+        "SAVE_GAME_LATEST.json": {
+            "metadata": "object",
+            "status": "object",
+            "narrative": "object",
+            "quests": "array",
+            "instructions": "object"
+        },
+        "XVADUR_XP.json": {
+            "status": "object",
+            "breakdown": "object",
+            "last_updated": "string"
         }
     }
     
@@ -207,19 +219,98 @@ class SchemaValidator:
         else:
             return "unknown"
     
+    def validate_json_file(self, file_path: Path, schema_name: str) -> SchemaValidationResult:
+        """Validuje jeden JSON súbor (nie JSONL)."""
+        errors = []
+        warnings = []
+        actual_fields = {}
+        documented_fields = self.DOCUMENTED_SCHEMAS.get(schema_name, {})
+        
+        if not file_path.exists():
+            errors.append(f"Súbor neexistuje: {file_path}")
+            return SchemaValidationResult(
+                file_path=str(file_path),
+                is_valid=False,
+                errors=errors,
+                warnings=warnings,
+                actual_fields={},
+                documented_fields=documented_fields
+            )
+        
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+        except json.JSONDecodeError as e:
+            errors.append(f"Chybný JSON: {e}")
+            return SchemaValidationResult(
+                file_path=str(file_path),
+                is_valid=False,
+                errors=errors,
+                warnings=warnings,
+                actual_fields={},
+                documented_fields=documented_fields
+            )
+        except Exception as e:
+            errors.append(f"Chyba pri čítaní súboru: {e}")
+            return SchemaValidationResult(
+                file_path=str(file_path),
+                is_valid=False,
+                errors=errors,
+                warnings=warnings,
+                actual_fields={},
+                documented_fields=documented_fields
+            )
+        
+        # Analyzuj polia v JSON objekte
+        def extract_fields(obj, prefix=""):
+            """Rekurzívne extrahuje polia z JSON objektu."""
+            fields = {}
+            if isinstance(obj, dict):
+                for key, value in obj.items():
+                    field_name = f"{prefix}.{key}" if prefix else key
+                    field_type = self._infer_type([{"value": value}], "value")
+                    fields[field_name] = field_type
+                    if isinstance(value, dict):
+                        fields.update(extract_fields(value, field_name))
+            return fields
+        
+        actual_fields = extract_fields(data)
+        
+        # Kontrola chýbajúcich dokumentovaných polí
+        for doc_field in documented_fields.keys():
+            if doc_field not in actual_fields:
+                warnings.append(f"Pole '{doc_field}' je dokumentované, ale nie je v súbore")
+        
+        is_valid = len(errors) == 0
+        
+        return SchemaValidationResult(
+            file_path=str(file_path),
+            is_valid=is_valid,
+            errors=errors,
+            warnings=warnings,
+            actual_fields=actual_fields,
+            documented_fields=documented_fields
+        )
+    
     def validate_all(self) -> List[SchemaValidationResult]:
-        """Validuje všetky JSONL súbory v systéme."""
+        """Validuje všetky JSON/JSONL súbory v systéme."""
         files_to_validate = [
             ("development/data/prompts_log.jsonl", "prompts_log.jsonl"),
             ("development/data/xp_history.jsonl", "xp_history.jsonl"),
             ("development/logs/XVADUR_LOG.jsonl", "XVADUR_LOG.jsonl"),
             ("development/data/conversations.jsonl", "conversations.jsonl"),
+            ("development/sessions/save_games/SAVE_GAME_LATEST.json", "SAVE_GAME_LATEST.json"),
+            ("development/logs/XVADUR_XP.json", "XVADUR_XP.json"),
         ]
         
         results = []
         for file_path_str, schema_name in files_to_validate:
             file_path = self.workspace_root / file_path_str
-            result = self.validate_file(file_path, schema_name)
+            # JSON súbory validovať inak ako JSONL
+            if schema_name.endswith('.json') and not schema_name.endswith('.jsonl'):
+                result = self.validate_json_file(file_path, schema_name)
+            else:
+                result = self.validate_file(file_path, schema_name)
             results.append(result)
         
         self.results = results
