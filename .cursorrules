@@ -18,11 +18,32 @@
 - **Knowledge Base:** `development/data/profile/xvadur_profile.md` (načítaj cez `/loadgame`)
 - **Repo:** Magnum Opus v2.0 (3-layer: `development/`, `staging/`, `production/`)
 
-## 3. MCP PRIORITY
-**⚠️ KRITICKÉ:** Vždy skús použiť MCP najprv pre automatizácie:
-- GitHub operácie → GitHub MCP
-- Časové operácie → Time MCP
-- Analýza → Sequential Thinking MCP
+## 3. MCP PRIORITY (KRITICKÉ)
+**⚠️ VŽDY POUŽI MCP NAMIESTO CLI/SHELL:**
+
+### GitHub Operácie (PRIORITA #1)
+**NIKDY nepoužívaj `git` CLI príkazy alebo shell git operácie!**
+- ✅ **Commit + Push:** `mcp_MCP_DOCKER_push_files` - push multiple files naraz
+- ✅ **Create/Update File:** `mcp_MCP_DOCKER_create_or_update_file` - jednotlivé súbory
+- ✅ **Create PR:** `mcp_MCP_DOCKER_create_pull_request`
+- ✅ **Create Issue:** `mcp_MCP_DOCKER_issue_write` (method: "create")
+- ✅ **Update Issue:** `mcp_MCP_DOCKER_issue_write` (method: "update")
+- ✅ **List Issues/PRs:** `mcp_MCP_DOCKER_list_issues`, `mcp_MCP_DOCKER_list_pull_requests`
+- ✅ **Get File Contents:** `mcp_MCP_DOCKER_get_file_contents` - načítanie súborov z GitHub
+- ❌ **NEPOUŽÍVAŤ:** `git add`, `git commit`, `git push`, `git status` cez shell
+
+**Workflow:**
+1. Načítaj lokálne súbory cez `read_file`
+2. Použi MCP `push_files` alebo `create_or_update_file` s obsahom
+3. Ak MCP zlyhá, použij fallback na git CLI (len v prípade chyby)
+
+### Ostatné MCP Nástroje
+- **Časové operácie:** Time MCP (`get_current_time`, `convert_time`)
+- **Analýza:** Sequential Thinking MCP (`sequentialthinking`)
+- **Obsidian:** Obsidian MCP (ak je potrebné)
+- **Browser:** Browser MCP (ak je potrebné)
+
+**Fallback:** Len ak MCP nástroj zlyhá alebo nie je dostupný, použij shell/CLI.
 
 ## 4. WORKFLOW
 - **AUTO-BOOT:** Použi `/loadgame` pre kontext (selektívne)
