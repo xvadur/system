@@ -1,17 +1,17 @@
 {
-  "last_updated": "2025-12-13T03:43:45+01:00",
-  "current_task": "RAG analýza a rozdelenie datasetu conversations_clean_backup.jsonl - implementácia všetkých konverzácií s AI za posledné 4 mesiace do RAGu",
-  "status": "in_progress",
+  "last_updated": "2025-12-13T06:07:14+01:00",
+  "current_task": "Quest #25: Analýza podnikateľského potenciálu v súčinnosti s funkčným RAG - pripravený na zajtra",
+  "status": "completed",
   "last_10_tasks": [
     {
       "time": "03:13",
-      "task": "Quest #24 checkpoint - Úspešná analýza dokončená (interview_decomposition.md), ďalší krok: implementácia konverzácií s AI za posledné 4 mesiace do RAGu a hlbková analýza",
+      "task": "Quest #24: Biznis stratégia - roadmapa, produkty (PDF, kurzy, AI videá), influencer stratégia",
       "files": ["development/data/analysis/interview_decomposition.md"],
       "status": "completed"
     },
     {
       "time": "03:36",
-      "task": "Analýza RAG systému - skontrolovaný stav, identifikované chýbajúce dáta (conversations_clean_backup.jsonl nie je v indexe)",
+      "task": "Analýza RAG systému - skontrolovaný stav, identifikované chýbajúce dáta",
       "files": ["development/data/analysis/rag_status_analysis.md"],
       "status": "completed"
     },
@@ -23,8 +23,8 @@
     },
     {
       "time": "03:36",
-      "task": "Rozdelenie datasetu podľa mesiacov - vytvorený skript, rozdelené konverzácie (125 objektov - 2025-10: 13, 2025-11: 112)",
-      "files": ["scripts/split_conversations_by_month.py", "development/data/conversations_by_month/conversations_2025-10.jsonl", "development/data/conversations_by_month/conversations_2025-11.jsonl"],
+      "task": "Rozdelenie datasetu podľa mesiacov - vytvorený skript, rozdelené konverzácie",
+      "files": ["scripts/split_conversations_by_month.py", "development/data/conversations_by_month/"],
       "status": "completed"
     },
     {
@@ -32,28 +32,68 @@
       "task": "Commit a push všetkých zmien na GitHub",
       "files": [],
       "status": "completed"
+    },
+    {
+      "time": "04:06",
+      "task": "Oprava parsera v split_conversations_by_month.py - načítanie 1,820 objektov z 1,822 (99.9% úspešnosť)",
+      "files": ["scripts/split_conversations_by_month.py"],
+      "status": "completed"
+    },
+    {
+      "time": "04:06",
+      "task": "Aktualizácia build_rag_index.py - pridaná funkcia load_conversation_pairs_from_monthly_files()",
+      "files": ["archive/rag/rag/build_rag_index.py"],
+      "status": "completed"
+    },
+    {
+      "time": "04:07",
+      "task": "Vytvorenie štatistík konverzácií - kompletná analýza s metrikami",
+      "files": ["scripts/analyze_conversations_statistics.py", "development/data/analysis/conversations_statistics.md"],
+      "status": "completed"
+    },
+    {
+      "time": "05:18",
+      "task": "RAG Index Rebuild - úspešne dokončený rebuild s OpenRouter API (qwen/qwen3-embedding-8b), 12,574 chunkov z 1,800 konverzácií",
+      "files": ["archive/rag/rag/build_rag_index.py", "archive/rag/rag/rag_agent_helper.py", "data/rag_index/"],
+      "status": "completed"
+    },
+    {
+      "time": "05:25",
+      "task": "Quest #25: Analýza podnikateľského potenciálu v súčinnosti s funkčným RAG - vytvorený a pripravený na zajtra",
+      "files": [],
+      "status": "completed"
     }
   ],
   "files_changed": [
-    "development/data/analysis/rag_status_analysis.md",
-    "development/data/analysis/interview_decomposition.md",
-    "development/data/analysis/conversations_split_summary.md",
-    "scripts/analyze_conversations_clean.py",
+    "archive/rag/rag/build_rag_index.py",
+    "archive/rag/rag/rag_agent_helper.py",
+    "development/sessions/current/session.md",
+    "development/sessions/save_games/SAVE_GAME.json",
     "scripts/split_conversations_by_month.py",
+    "development/data/analysis/rag_status_analysis.md",
+    "development/data/analysis/conversations_split_summary.md",
+    "development/data/analysis/conversations_statistics.md",
+    "development/data/analysis/conversations_temporal_analysis.md",
+    "development/data/analysis/conversations_lexical_analysis.md",
+    "development/data/conversations_by_month/conversations_2025-07.jsonl",
+    "development/data/conversations_by_month/conversations_2025-08.jsonl",
+    "development/data/conversations_by_month/conversations_2025-09.jsonl",
     "development/data/conversations_by_month/conversations_2025-10.jsonl",
     "development/data/conversations_by_month/conversations_2025-11.jsonl",
-    "development/sessions/current/session.md",
-    "development/sessions/save_games/SAVE_GAME.json"
+    "development/data/conversations_by_month/conversations_2025-12.jsonl",
+    "scripts/analyze_conversations_clean.py",
+    "scripts/analyze_conversations_statistics.py",
+    "scripts/analyze_conversations_temporal.py",
+    "scripts/analyze_conversations_lexical.py",
+    "data/rag_index_backup_2025-12-13_04-31-06/",
+    ".gitignore"
   ],
   "next_steps": [
-    "Opraviť parser v split_conversations_by_month.py - načítať všetkých 1,822 objektov namiesto len 125",
-    "Rebuild rozdelenie datasetu - rozdeliť všetky konverzácie podľa mesiacov",
-    "Aktualizovať archive/rag/rag/build_rag_index.py - pridať načítanie mesiacových súborov z conversations_by_month/",
-    "Rebuild RAG indexu - pridať všetky konverzácie z conversations_clean_backup.jsonl (1,822 objektov)",
-    "Hlbková analýza - aplikovať analytickú dekompozíciu z interview_decomposition.md na všetky konverzácie a identifikovať vzorce, témy a príležitosti"
+    "Quest #25: Začať analýzu podnikateľského potenciálu s využitím RAG systému",
+    "Identifikovať hlavné témy a vzorce z konverzácií cez RAG search",
+    "Mapovať produktové príležitosti (PDF, kurzy, AI videá, automatizácie)",
+    "Vytvoriť roadmapu monetizácie na základe analýzy",
+    "Prepojiť analýzu s Quest #24 (biznis stratégia)"
   ],
-  "blockers": [
-    "Parser v split_conversations_by_month.py načíta len 125 objektov z 1,822 - potrebné opraviť parsing logiku pre multi-line JSON formát"
-  ]
+  "blockers": []
 }
-
