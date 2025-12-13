@@ -3,6 +3,13 @@
 **Účel:** Záznam vykonanej práce a zmien v projekte
 
 ---
+[22:04] 🔹 Quest #24: Analýza záujmov a produkčno-publikačná činnosť
+  - *Status:* in_progress
+  - *Popis:* Analýzu záujmov sme zahájili, teraz ideme validovať materiál pre produkčno-publikačnú činnosť
+  - *Ďalšie kroky:* Analýza interview a interview2
+  - *Súbory:* development/sessions/current/interview.md, development/sessions/current/interview2.md
+
+---
 [00:16] 🔹 Task: Quest Management
   - *Zmenené súbory:*
     - .cursorrules

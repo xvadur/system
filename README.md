@@ -32,15 +32,17 @@ cp .env.example .env
 ```
 xvadur-workspace/
 ├── development/             # Tvoja práca
+│   ├── sessions/            # Sessions (current, archive, save_games)
+│   ├── data/                # Dáta (profile, prompts)
+│   └── logs/                # Logy (historické)
 ├── staging/                 # Denný review
 ├── production/              # Automatizácie
 │
-├── core/                    # Jadro systému (Memory, RAG, XP, Context Engineering)
-├── data/                    # Globálne dáta (RAG index)
+├── core/                    # Jadro systému (XP - manuálne použitie)
 ├── scripts/                 # Utility skripty
 │
 ├── docs/                    # Dokumentácia
-├── templates/               # Templates pre sessiony a prompts
+├── templates/               # Templates pre sessiony a savegame
 └── archive/                 # Archív pilotného stavu
 ```
 
@@ -68,29 +70,8 @@ xvadur-workspace/
 
 ## 🔧 Hlavné Komponenty
 
-### 1. MinisterOfMemory (`core/ministers/`)
-Automatické ukladanie a vyhľadávanie v histórii konverzácií.
-
-```python
-from core.ministers.memory import MinisterOfMemory, AssistantOfMemory
-from core.ministers.storage import FileStore
-from pathlib import Path
-
-store = FileStore(Path("development/data/prompts_log.jsonl"))
-assistant = AssistantOfMemory(store=store)
-minister = MinisterOfMemory(assistant=assistant)
-minister.log_event("user", "Môj prompt...")
-```
-
-### 2. RAG System (`core/rag/`)
-Hybrid search (semantic + keyword) v histórii promptov.
-
-```bash
-python core/rag/rag_agent_helper.py "ako som riešil X" 5 0.4 true search
-```
-
-### 3. XP System (`core/xp/`)
-Gamifikácia s automatickým výpočtom z logu a promptov.
+### 1. XP System (`core/xp/`)
+Gamifikácia s manuálnym výpočtom (ak je potrebné).
 
 ```python
 from core.xp.calculator import calculate_xp, update_xp_file
@@ -99,8 +80,7 @@ xp_data = calculate_xp()
 update_xp_file("development/logs/XVADUR_XP.md", xp_data)
 ```
 
-### 4. Context Engineering (`core/context_engineering/`)
-Token optimalizácia, kompresia kontextu a izolácia pre úlohy.
+**Poznámka:** XP systém je dostupný pre manuálne použitie, ale nie je automatizovaný.
 
 ---
 
@@ -110,12 +90,12 @@ Kompletná dokumentácia je v [`docs/`](docs/) adresári. Pre prehľad pozri [`d
 
 ### Kľúčové Dokumenty
 
-- **[ARCHITECTURE.md](docs/ARCHITECTURE.md)**: Detailný popis v2.0 architektúry
-- **[MEMORY_AND_LOGGING.md](docs/MEMORY_AND_LOGGING.md)**: Memory a Logging systém
 - **[SESSION_MANAGEMENT.md](docs/SESSION_MANAGEMENT.md)**: 3-vrstvový session management
-- **[CONTEXT_ENGINEERING.md](docs/CONTEXT_ENGINEERING.md)**: Token optimalizácia a Context Engineering
 - **[QUEST_SYSTEM.md](docs/QUEST_SYSTEM.md)**: GitHub Issues integrácia
 - **[TOKEN_OPTIMIZATION.md](docs/TOKEN_OPTIMIZATION.md)**: Stratégie optimalizácie tokenov
+- **[XVADUR_DETAILS.md](docs/XVADUR_DETAILS.md)**: Konverzačný modul `/xvadur`
+
+**Poznámka:** Niektoré dokumenty (ARCHITECTURE.md, SYSTEM_AUDIT.md) sú historické a odkazujú na odstránené moduly.
 
 ---
 
@@ -139,6 +119,6 @@ Lokálny scheduler (macOS launchd) pre automatizované denné rotácie sessions 
 ---
 
 **Vytvorené:** 2025-12-04  
-**Verzia:** 2.0.0  
+**Verzia:** 2.0.0 (Zjednodušená)  
 **Status:** ✅ Aktívny  
-**Posledná revízia:** 2025-12-09 (Workspace Refactoring)
+**Posledná revízia:** 2025-12-10 (System Simplification & Enhanced Context)

@@ -56,33 +56,14 @@ class SchemaValidator:
                 "bonuses": "object"
             }
         },
-        "XVADUR_LOG.jsonl": {
-            "timestamp": "string (ISO format)",
-            "date": "string (YYYY-MM-DD)",
-            "time": "string (HH:MM)",
-            "title": "string",
-            "type": "string",
+        "SAVE_GAME.json": {
+            "last_updated": "string (ISO 8601)",
+            "current_task": "string",
             "status": "string",
-            "files_changed": "array (optional)",
-            "xp_estimate": "number (optional)",
-            "completed": "array (optional)",
-            "results": "object (optional)",
-            "decisions": "array (optional)",
-            "quest_id": "number (optional)",
-            "xp_earned": "number (optional)",
-            "notes": "string (optional)"
-        },
-        "SAVE_GAME_LATEST.json": {
-            "metadata": "object",
-            "status": "object",
-            "narrative": "object",
-            "quests": "array",
-            "instructions": "object"
-        },
-        "XVADUR_XP.json": {
-            "status": "object",
-            "breakdown": "object",
-            "last_updated": "string"
+            "last_10_tasks": "array",
+            "files_changed": "array",
+            "next_steps": "array",
+            "blockers": "array"
         }
     }
     
@@ -296,11 +277,7 @@ class SchemaValidator:
         """Validuje všetky JSON/JSONL súbory v systéme."""
         files_to_validate = [
             ("development/data/prompts_log.jsonl", "prompts_log.jsonl"),
-            ("development/data/xp_history.jsonl", "xp_history.jsonl"),
-            ("development/logs/XVADUR_LOG.jsonl", "XVADUR_LOG.jsonl"),
-            ("development/data/conversations.jsonl", "conversations.jsonl"),
-            ("development/sessions/save_games/SAVE_GAME_LATEST.json", "SAVE_GAME_LATEST.json"),
-            ("development/logs/XVADUR_XP.json", "XVADUR_XP.json"),
+            ("development/sessions/save_games/SAVE_GAME.json", "SAVE_GAME.json"),
         ]
         
         results = []

@@ -15,13 +15,10 @@ scripts/
 ├── local_scheduler/        # Lokálny scheduler konfigurácia
 │
 ├── auto_archive_session.py      # Automatická archivácia session
-├── auto_save_prompt.py          # Legacy - už sa nepoužíva (prompty sa ukladajú pri /savegame)
-├── calculate_daily_metrics.py   # Denné metriky
 ├── create_new_session.py        # Vytvorenie novej session
 ├── daily_rotation.py            # Denný rotation workflow
-├── generate_daily_review.py     # Generovanie denného review
-├── generate_savegame_json.py    # Generovanie save game JSON
-└── migrate_to_structured_format.py  # Migrácia do štruktúrovaného formátu
+├── generate_daily_review.py     # Generovanie denného review (voliteľné)
+└── generate_savegame_json.py    # Generovanie save game JSON
 ```
 
 ---
@@ -34,19 +31,14 @@ scripts/
 - **`daily_rotation.py`**: Denný rotation workflow (merguje branches, vytvára nové sessiony)
 - **`generate_daily_review.py`**: Generovanie denného review s analýzou
 
-### Save Game & Logging
-- **`generate_savegame_json.py`**: Generovanie save game JSON súboru
-- **`auto_save_prompt.py`**: Manuálne ukladanie promptov (legacy - používa sa pri `/savegame`)
-
-### Metriky
-- **`calculate_daily_metrics.py`**: Výpočet denných metrík
+### Save Game
+- **`generate_savegame_json.py`**: Generovanie save game JSON súboru z Markdown
 
 ---
 
 ## 🛠️ Utility Skripty (`utils/`)
 
-### Log Management
-- **`log_manager.py`**: Dual-write logovanie (Markdown + JSONL), automatické logovanie taskov
+**Poznámka:** Niektoré utility skripty používajú odstránené moduly (`core/ministers/`, `core/context_engineering/`) a môžu vyžadovať úpravu alebo sú deprecated.
 
 ### Git & GitHub
 - **`git_helper.py`**: Git operácie helpers
@@ -57,11 +49,11 @@ scripts/
 - **`validate_schemas.py`**: Validácia JSON/JSONL schém
 - **`test_context_engineering.py`**: Testovanie Context Engineering komponentov
 
-### Context & Memory
-- **`load_context_optimized.py`**: Optimalizované načítanie kontextu pre `/loadgame`
-- **`export_to_log.py`**: Export dát do logu
-- **`migrate_to_sqlite.py`**: Migrácia do SQLite cold storage
-- **`migrate_prompts_log.py`**: Migrácia prompts log
+### Context & Memory (Deprecated)
+- **`load_context_optimized.py`**: ⚠️ Deprecated - používa odstránené moduly
+- **`export_to_log.py`**: ⚠️ Deprecated - používa odstránené moduly
+- **`migrate_to_sqlite.py`**: ⚠️ Deprecated - používa odstránené moduly
+- **`migrate_prompts_log.py`**: ⚠️ Deprecated - používa odstránené moduly
 
 ### Analysis & Metrics
 - **`metrics_tracker.py`**: Tracking metrík
@@ -108,19 +100,17 @@ from scripts.calculate_xp import calculate_xp
 ```
 
 **Core moduly:**
-- `core.xp.calculator` - XP výpočty
-- `core.rag.*` - RAG funkcionalita
-- `core.ministers.*` - Memory systém
-- `core.context_engineering.*` - Context Engineering
+- `core.xp.calculator` - XP výpočty (manuálne použitie)
 
 ---
 
 ## 📝 Poznámky
 
-- **Duplicitné skripty:** RAG skripty (`scripts/rag/`) sú duplicitné s `core/rag/` - používa sa `core/rag/`
-- **XP výpočet:** Používa sa `core.xp.calculator` namiesto `scripts/calculate_xp.py`
-- **Legacy skripty:** Niektoré skripty v `analysis/` sú historické a môžu byť archivované
+- **Zjednodušený systém:** Odstránené moduly `core/ministers/`, `core/context_engineering/`, triple-write logging
+- **XP výpočet:** Používa sa `core.xp.calculator` (manuálne použitie, nie automatizácia)
+- **Legacy skripty:** Niektoré utility skripty používajú odstránené moduly a sú deprecated
+- **Session management:** Jednoduchý workflow - `session.md` + `savegame.json`
 
 ---
 
-**Posledná aktualizácia:** 2025-12-09 (Workspace Refactoring)
+**Posledná aktualizácia:** 2025-12-10 (System Simplification)

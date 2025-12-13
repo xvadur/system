@@ -1,102 +1,35 @@
 #!/usr/bin/env python3
 """
-Archivuje aktuálnu session z development vrstvy do stagingu,
-generuje sumár a metriky.
+Archivuje aktuálnu session z development/sessions/current/ 
+do development/sessions/archive/YYYY-MM-DD.md
 """
 
 import sys
-import json
 from pathlib import Path
 from datetime import date
-import shutil
 
 # Add workspace root to path
 workspace_root = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(workspace_root))
-
-from scripts.mcp_helpers import (
-    analyze_with_sequential_thinking,
-    export_to_obsidian,
-    get_time_from_mcp,
-)
-from scripts.calculate_daily_metrics import calculate_metrics_for_session
-from scripts.utils.log_manager import add_log_entry # Import novej funkcie
 
 def archive_current_session():
     """
-    Hlavná funkcia pre archiváciu session.
-    1. Prečíta aktuálnu session.
-    2. Vytvorí sumár pomocou MCP.
-    3. Vypočíta metriky.
-    4. Presunie session do staging/yesterday.
-    5. Uloží sumár a metriky.
-    6. Exportuje do Obsidianu.
+    Archivuje aktuálnu session.md do archive/YYYY-MM-DD.md
     """
-    add_log_entry(
-        action_name="Spustenie archivácie session",
-        status="Started",
-        files_changed=["development/sessions/current/session.md"],
-    )
-
-    dev_current_session_path = workspace_root / "development" / "sessions" / "current" / "session.md"
-    staging_yesterday_path = workspace_root / "staging" / "sessions" / "yesterday"
-
-    staging_yesterday_path.mkdir(exist_ok=True)
-
-    if not dev_current_session_path.exists():
-        # Ak session neexistuje, vytvor prázdnu session
-        print(f"⚠️  Súbor {dev_current_session_path} neexistuje. Vytváram prázdnu session...", file=sys.stderr)
-        dev_current_session_path.parent.mkdir(parents=True, exist_ok=True)
-        dev_current_session_path.write_text(
-            f"# Session {date.today().strftime('%Y-%m-%d')}\n\nPrázdna session - automaticky vytvorená.\n",
-            encoding="utf-8"
-        )
-
-    # 1. Prečítanie obsahu session
-    session_content = dev_current_session_path.read_text(encoding="utf-8")
-
-    # 2. Vytvorenie sumáru pomocou MCP
-    summary_prompt = f"Zosumarizuj nasledujúci session záznam:\n\n{session_content}"
-    summary = analyze_with_sequential_thinking(summary_prompt)
-
-    # 3. Vypočítanie metrík (bude implementované v calculate_daily_metrics.py)
     today = date.today()
-    metrics = calculate_metrics_for_session(session_content, today)
-
-    # 4. Presun session súboru
-    archived_session_path = staging_yesterday_path / "session.md"
-    shutil.move(str(dev_current_session_path), str(archived_session_path))
-
-    # 5. Uloženie sumáru a metrík
-    summary_path = staging_yesterday_path / "summary.md"
-    summary_path.write_text(summary, encoding="utf-8")
-
-    metrics_path = staging_yesterday_path / "metrics.json"
-    with metrics_path.open("w", encoding="utf-8") as f:
-        json.dump(metrics, f, indent=4)
-
-    print(f"✅ Session archivovaná do {archived_session_path}")
-    print(f"✅ Sumár uložený do {summary_path}")
-    print(f"✅ Metriky uložené do {metrics_path}")
-
-    # 6. Export do Obsidianu
-    obsidian_path = f"Sessions/Archive/{today.strftime('%Y-%m-%d')}_session.md"
-    if export_to_obsidian(session_content, obsidian_path):
-        print(f"✅ Session exportovaná do Obsidianu: {obsidian_path}")
-    else:
-        print("⚠️ Nepodarilo sa exportovať session do Obsidianu (MCP nie je dostupné).")
-
-    add_log_entry(
-        action_name="Archivácia session",
-        status="Completed",
-        files_changed=[
-            str(dev_current_session_path),
-            str(archived_session_path),
-            str(summary_path),
-            str(metrics_path),
-        ],
-        xp_estimate=10.0 # Príklad hodnoty XP
-    )
+    current_session_path = workspace_root / "development" / "sessions" / "current" / "session.md"
+    archive_dir = workspace_root / "development" / "sessions" / "archive"
+    archived_session_path = archive_dir / f"{today.strftime('%Y-%m-%d')}.md"
+    
+    if not current_session_path.exists():
+        print(f"⚠️  Session neexistuje: {current_session_path}")
+        return
+    
+    # Vytvor archive adresár ak neexistuje
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Presuň session do archívu
+    current_session_path.rename(archived_session_path)
+    print(f"✅ Session archivovaná: {archived_session_path}")
 
 if __name__ == "__main__":
     archive_current_session()

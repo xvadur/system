@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Denná rotácia: Archivácia + nová session + metriky + git push
+Denná rotácia: Archivácia + nová session + nová branch + git push
 Spúšťa sa každú polnoc automaticky cez macOS launchd.
 
 Tento skript:
-1. Archivuje včerajšiu session
-2. Vytvorí novú session
-3. Vypočíta denné metriky
+1. Archivuje včerajšiu session → development/sessions/archive/YYYY-MM-DD.md
+2. Vytvorí novú git branch: session-YYYY-MM-DD
+3. Vytvorí novú prázdnu session.md
 4. Pushne zmeny na GitHub
 """
 
@@ -21,10 +21,6 @@ sys.path.insert(0, str(workspace_root))
 
 from scripts.auto_archive_session import archive_current_session
 from scripts.create_new_session import create_new_session
-from scripts.generate_daily_review import generate_daily_review
-from core.xp.calculator import calculate_xp, update_xp_file
-from scripts.utils.log_manager import add_log_entry
-from scripts.utils.git_helper import git_push_changes
 
 def daily_rotation():
     """
@@ -41,9 +37,8 @@ def daily_rotation():
     
     try:
         # 1. Archivácia včerajšej session
-        print("\n📦 Krok 1/5: Archivácia včerajšej session...")
+        print("\n📦 Krok 1/4: Archivácia včerajšej session...")
         try:
-            # Skontroluj, či session existuje
             session_path = workspace_root / "development" / "sessions" / "current" / "session.md"
             if session_path.exists():
                 archive_current_session()
@@ -55,54 +50,47 @@ def daily_rotation():
             errors.append(error_msg)
             print(f"❌ {error_msg}", file=sys.stderr)
         
-        # 2. Vytvorenie novej session
-        print("\n🆕 Krok 2/5: Vytvorenie novej session...")
+        # 2. Vytvorenie novej git branch
+        print("\n🌿 Krok 2/4: Vytvorenie novej git branch...")
         try:
-            # Vytvor novú git branch pre novú session
             today_str = datetime.now().strftime('%Y-%m-%d')
             branch_name = f"session-{today_str}"
             
-            print(f"🌿 Vytváram novú git branch: {branch_name}...")
-            try:
-                # Skontroluj, či už existuje
-                result = subprocess.run(
-                    ["git", "rev-parse", "--verify", branch_name],
+            # Skontroluj, či už existuje
+            result = subprocess.run(
+                ["git", "rev-parse", "--verify", branch_name],
+                capture_output=True,
+                text=True
+            )
+            if result.returncode == 0:
+                print(f"⚠️  Branch {branch_name} už existuje, prepínam sa na ňu...")
+                subprocess.run(
+                    ["git", "checkout", branch_name],
+                    check=True,
+                    capture_output=True
+                )
+            else:
+                # Vytvor novú branch z main (alebo aktuálnej branch)
+                current_branch = subprocess.run(
+                    ["git", "rev-parse", "--abbrev-ref", "HEAD"],
                     capture_output=True,
                     text=True
+                ).stdout.strip()
+                
+                subprocess.run(
+                    ["git", "checkout", "-b", branch_name, current_branch],
+                    check=True,
+                    capture_output=True
                 )
-                if result.returncode == 0:
-                    print(f"⚠️  Branch {branch_name} už existuje, prepínam sa na ňu...")
-                    subprocess.run(
-                        ["git", "checkout", branch_name],
-                        check=True,
-                        capture_output=True
-                    )
-                else:
-                    # Vytvor novú branch z main
-                    subprocess.run(
-                        ["git", "checkout", "-b", branch_name, "main"],
-                        check=True,
-                        capture_output=True
-                    )
-                    # Nastav upstream tracking pre novú branch
-                    try:
-                        subprocess.run(
-                            ["git", "push", "-u", "origin", branch_name],
-                            check=True,
-                            capture_output=True,
-                            timeout=30
-                        )
-                        print(f"✅ Nová branch vytvorená a pushnutá: {branch_name}")
-                    except subprocess.CalledProcessError:
-                        print(f"⚠️  Branch vytvorená, ale upstream tracking zlyhal (pushne sa neskôr)")
-                    except Exception:
-                        print(f"⚠️  Branch vytvorená, ale upstream tracking zlyhal (pushne sa neskôr)")
-            except subprocess.CalledProcessError as e:
-                error_msg = f"Vytvorenie branch zlyhalo: {e}"
-                errors.append(error_msg)
-                print(f"⚠️  {error_msg} (pokračujem s aktuálnou branch)", file=sys.stderr)
-            
-            # Vytvor novú session
+                print(f"✅ Nová branch vytvorená: {branch_name}")
+        except subprocess.CalledProcessError as e:
+            error_msg = f"Vytvorenie branch zlyhalo: {e}"
+            errors.append(error_msg)
+            print(f"⚠️  {error_msg} (pokračujem s aktuálnou branch)", file=sys.stderr)
+        
+        # 3. Vytvorenie novej session
+        print("\n🆕 Krok 3/4: Vytvorenie novej session...")
+        try:
             create_new_session()
             print("✅ Nová session vytvorená")
         except Exception as e:
@@ -110,60 +98,54 @@ def daily_rotation():
             errors.append(error_msg)
             print(f"❌ {error_msg}", file=sys.stderr)
         
-        # 3. Generovanie denného review
-        print("\n📊 Krok 3/5: Generovanie denného review...")
-        try:
-            generate_daily_review()
-            print("✅ Review vygenerované")
-        except Exception as e:
-            error_msg = f"Generovanie review zlyhalo: {e}"
-            errors.append(error_msg)
-            print(f"⚠️  {error_msg} (nie kritické)", file=sys.stderr)
-        
-        # 4. Výpočet XP
-        print("\n🎮 Krok 4/5: Výpočet denných metrík a XP...")
-        try:
-            prompts_log_path = workspace_root / "development" / "data" / "prompts_log.jsonl"
-            log_path = workspace_root / "development" / "logs" / "XVADUR_LOG.md"
-            
-            if prompts_log_path.exists() and log_path.exists():
-                xp_data = calculate_xp(str(prompts_log_path), str(log_path))
-                update_xp_file(
-                    str(workspace_root / "development" / "logs" / "XVADUR_XP.md"),
-                    xp_data
-                )
-                print(f"✅ XP vypočítané: {xp_data.get('total_xp', 0)} (Level {xp_data.get('current_level', 1)})")
-            else:
-                print("⚠️  Súbory pre XP výpočet neexistujú (nie kritické)")
-        except Exception as e:
-            error_msg = f"Výpočet XP zlyhal: {e}"
-            errors.append(error_msg)
-            print(f"⚠️  {error_msg} (nie kritické)", file=sys.stderr)
-        
-        # 5. Git push na GitHub
-        print("\n🚀 Krok 5/5: Push zmien na GitHub...")
+        # 4. Git commit + push na GitHub
+        print("\n🚀 Krok 4/4: Git commit + push na GitHub...")
         try:
             today_str = datetime.now().strftime('%Y-%m-%d')
             branch_name = f"session-{today_str}"
             commit_message = f"chore(daily): automatická rotácia {today_str}"
             
-            # Push aktuálnej branchy (môže byť nová session branch)
-            if git_push_changes(commit_message, branch=branch_name):
+            # Git add
+            subprocess.run(
+                ["git", "add", "."],
+                check=True,
+                capture_output=True
+            )
+            
+            # Git commit
+            subprocess.run(
+                ["git", "commit", "-m", commit_message],
+                check=True,
+                capture_output=True
+            )
+            
+            # Git push (s upstream tracking ak je to nová branch)
+            try:
+                subprocess.run(
+                    ["git", "push", "-u", "origin", branch_name],
+                    check=True,
+                    capture_output=True,
+                    timeout=30
+                )
                 print(f"✅ Zmeny pushnuté na GitHub (branch: {branch_name})")
-            else:
-                # Fallback na aktuálnu branch
-                if git_push_changes(commit_message):
-                    print("✅ Zmeny pushnuté na GitHub (aktuálna branch)")
-                else:
-                    error_msg = "Git push zlyhal"
-                    errors.append(error_msg)
-                    print(f"⚠️  {error_msg} (skús manuálne)", file=sys.stderr)
-        except Exception as e:
+            except subprocess.CalledProcessError:
+                # Fallback: push aktuálnej branch
+                subprocess.run(
+                    ["git", "push"],
+                    check=True,
+                    capture_output=True
+                )
+                print(f"✅ Zmeny pushnuté na GitHub (aktuálna branch)")
+        except subprocess.CalledProcessError as e:
             error_msg = f"Git push zlyhal: {e}"
             errors.append(error_msg)
             print(f"⚠️  {error_msg} (skús manuálne)", file=sys.stderr)
+        except Exception as e:
+            error_msg = f"Git operácia zlyhala: {e}"
+            errors.append(error_msg)
+            print(f"⚠️  {error_msg} (skús manuálne)", file=sys.stderr)
         
-        # Finálne logovanie
+        # Finálne zhrnutie
         end_time = datetime.now()
         duration = (end_time - start_time).total_seconds()
         
@@ -179,24 +161,12 @@ def daily_rotation():
         
         print("=" * 60)
         
-        # Log do XVADUR_LOG.md
-        add_log_entry(
-            action_name=f"Denná rotácia {datetime.now().strftime('%Y-%m-%d')}",
-            status="Completed" if not errors else "Completed with warnings",
-            xp_estimate=15.0
-        )
-        
         # Exit code: 0 ak OK, 1 ak chyby
         return 0 if not errors else 1
         
     except Exception as e:
         error_msg = f"Kritická chyba v dennej rotácii: {e}"
         print(f"\n❌ {error_msg}", file=sys.stderr)
-        add_log_entry(
-            action_name=f"Denná rotácia {datetime.now().strftime('%Y-%m-%d')}",
-            status="Failed",
-            xp_estimate=0.0
-        )
         return 1
 
 if __name__ == "__main__":

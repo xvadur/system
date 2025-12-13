@@ -7,7 +7,7 @@ https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agent
 
 Umožňuje:
 - Validáciu jednotlivých questov proti ich kritériám
-- Aktualizáciu `passes` fieldu v SAVE_GAME_LATEST.json
+- Aktualizáciu `passes` fieldu v SAVE_GAME.json
 - Health check pred začatím práce
 
 Použitie:
@@ -24,14 +24,13 @@ from typing import Optional, List, Dict, Any
 
 # Cesty k súborom
 WORKSPACE_ROOT = Path(__file__).parent.parent.parent
-SAVE_GAME_PATH = WORKSPACE_ROOT / "development" / "sessions" / "save_games" / "SAVE_GAME_LATEST.json"
-LOG_PATH = WORKSPACE_ROOT / "development" / "logs" / "XVADUR_LOG.jsonl"
+SAVE_GAME_PATH = WORKSPACE_ROOT / "development" / "sessions" / "save_games" / "SAVE_GAME.json"
 
 
 def load_save_game() -> Dict[str, Any]:
-    """Načíta SAVE_GAME_LATEST.json"""
+    """Načíta SAVE_GAME.json"""
     if not SAVE_GAME_PATH.exists():
-        print(f"❌ SAVE_GAME_LATEST.json nenájdený: {SAVE_GAME_PATH}")
+        print(f"❌ SAVE_GAME.json nenájdený: {SAVE_GAME_PATH}")
         sys.exit(1)
     
     with open(SAVE_GAME_PATH, 'r', encoding='utf-8') as f:
@@ -39,10 +38,10 @@ def load_save_game() -> Dict[str, Any]:
 
 
 def save_save_game(data: Dict[str, Any]) -> None:
-    """Uloží SAVE_GAME_LATEST.json"""
+    """Uloží SAVE_GAME.json"""
     with open(SAVE_GAME_PATH, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-    print(f"✅ SAVE_GAME_LATEST.json aktualizovaný")
+    print(f"✅ SAVE_GAME.json aktualizovaný")
 
 
 def validate_quest(quest: Dict[str, Any], interactive: bool = True) -> bool:
@@ -110,7 +109,7 @@ def health_check() -> bool:
     Spustí health check pred začatím práce.
     
     Kontroluje:
-    1. Či existuje SAVE_GAME_LATEST.json
+    1. Či existuje SAVE_GAME.json
     2. Či existuje aspoň jeden quest
     3. Či sú questy v správnom formáte (s passes a validation)
     4. Či nie sú nejaké questy s passes=True ale status != completed
@@ -123,9 +122,9 @@ def health_check() -> bool:
     
     # 1. Kontrola existencie súboru
     if not SAVE_GAME_PATH.exists():
-        print("❌ SAVE_GAME_LATEST.json neexistuje")
+        print("❌ SAVE_GAME.json neexistuje")
         return False
-    print("✅ SAVE_GAME_LATEST.json existuje")
+    print("✅ SAVE_GAME.json existuje")
     
     # 2. Načítanie a kontrola štruktúry
     try:

@@ -1,71 +1,24 @@
-# 🧠 DENNÁ SESSION: [Deň] [YYYY-MM-DD]
+# Session: [YYYY-MM-DD]
 
-**Účel:** Denný záznam práce, úloh a poznámok
-
----
-
-## 📋 PLÁN DŇA
-
-### 🎯 Hlavné Ciele
-- [ ] 
-- [ ] 
-- [ ] 
-
-### 🔧 Technické Úlohy
-- [ ] 
-- [ ] 
-- [ ] 
-
-### 📊 Metriky (na konci dňa)
-- **XP získané:** 
-- **Úlohy dokončené:** 
-- **Prompty použité:** 
-- **Čas strávený:** 
+**Účel:** Denný záznam práce a úloh
 
 ---
 
-## 📝 PRÁCA A POZNÁMKY
+## Tasks
 
-### 🕘 Ráno (09:00 - 12:00)
-- 
-
-### 🕛 Obed (12:00 - 13:00)
-- 
-
-### 🕐 Popoludnie (13:00 - 18:00)
-- 
-
-### 🕖 Večer (18:00 - 22:00)
-- 
+- [HH:MM] [Task] | Files: [súbory] | Status: [status]
 
 ---
 
-## 🔍 ANALÝZA A REFLEXIA
+## Notes
 
-### ✅ Čo sa podarilo
-- 
-
-### ⚠️ Problémy a Výzvy
-- 
-
-### 💡 Nápady a Inšpirácie
-- 
-
-### 🎯 Plán na Ďalší Deň
-- 
+- [Technické poznámky]
 
 ---
 
-## 📎 PRILOHY
+## Files Changed
 
-### 🔗 Odkazy
-- 
-
-### 📁 Súbory
-- 
-
-### 🎮 Questy
-- 
+- [cesta/k/súboru.py]
 
 ---
 

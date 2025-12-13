@@ -46,34 +46,8 @@
 **Fallback:** Len ak MCP nástroj zlyhá alebo nie je dostupný, použij shell/CLI.
 
 ## 4. WORKFLOW
-- **AUTO-BOOT:** Použi `/loadgame` pre kontext (selektívne)
-- **ACTIVE LOGGING (POVINNÉ):** Automaticky loguj pri každom zadávaní a dokončení tasku:
-  
-  **PRI ZAČATÍ KAŽDÉHO TASKU:**
-  ```python
-  from scripts.utils.log_manager import log_task_started
-  log_task_started("Názov tasku", "Popis čo robíš")
-  ```
-  
-  **PRI DOKONČENÍ KAŽDÉHO TASKU:**
-  ```python
-  from scripts.utils.log_manager import log_task_completed
-  log_task_completed(
-      "Názov tasku",
-      files_changed=["cesta/k/súboru.py", "ďalší/súbor.md"],
-      xp_estimate=5.0,  # Odhad XP za task
-      completed=["Čo bolo dokončené"],
-      results={"key": "value"}  # Výsledky tasku
-  )
-  ```
-  
-  **PRAVIDLÁ:**
-  - **VŽDY** zavolaj `log_task_started()` hneď na začiatku tasku (pred akoukoľvek prácou)
-  - **VŽDY** zavolaj `log_task_completed()` na konci tasku (po dokončení všetkej práce)
-  - **Triple-write:** Automaticky zapisuje do `XVADUR_LOG.md` (Markdown), `XVADUR_LOG.jsonl` (JSON - Hot Storage) a `archive.db` (SQLite - Cold Storage)
-  - **XP tracking:** Odhadni XP pre každý task (1.0 = malý task, 5.0 = stredný, 10.0+ = veľký)
-  
-- **CHECKPOINT:** `/savegame` len na konci dňa alebo po milestone
+- **AUTO-BOOT:** Použi `/loadgame` pre kontext (načíta savegame.json + posledných 5 taskov z session.md)
+- **CHECKPOINT:** `/savegame` len na konci dňa alebo po milestone (vytvorí jednoduchý savegame.json)
 
 ## 5. TOKEN OPTIMIZATION (KRITICKÉ)
 - **Kratšie prompty:** Konkrétne, bez opakovania

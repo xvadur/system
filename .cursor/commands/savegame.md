@@ -1,166 +1,107 @@
 ---
-description: Uloží aktuálny kontext konverzácie, stav gamifikácie a naratív do súboru pre prenos do novej session.
+description: Uloží aktuálny kontext konverzácie do pracovného JSON súboru pre prenos do novej session.
 ---
 
-# SYSTEM PROMPT: CONTEXT SAVE GAME
+# SYSTEM PROMPT: SAVE GAME
 
-Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny stav konverzácie a gamifikácie, aby mohol byť plynule načítaný v novej session.
+Tvojou úlohou je vytvoriť **"Save Game"** súbor, ktorý zachytáva aktuálny stav konverzácie pre plynulé načítanie v novej session.
 
-**⚠️ KRITICKÉ:** Po vytvorení save game súboru MUSÍŠ automaticky commitnúť a pushnúť všetky zmeny na GitHub pomocou git príkazov alebo MCP operácií.
-
----
-
-## 0. TOKEN OPTIMIZATION (KRITICKÉ - PRVÝ KROK)
-
-**⚠️ DÔLEŽITÉ:** Pred začatím `/savegame` MUSÍŠ použiť optimalizovaný workflow s context engineeringom.
-
-**Použi `scripts/utils/optimized_savegame.py` → `OptimizedSaveGame`:**
-
-```python
-from scripts.utils.optimized_savegame import OptimizedSaveGame
-
-optimizer = OptimizedSaveGame()
-```
-
-**Tento modul automaticky:**
-- Trackuje tokeny cez `TokenBudgetTracker`
-- Používa selektívne načítanie súborov (offset/limit, sekcie)
-- Aplikuje kompresiu keď utilization > 80%
-- Izoluje relevantný kontext pre úlohu
-
-**PRAVIDLÁ:**
-- **NIKDY nečítaj celé súbory** - používaj `read_file_selective()` alebo `read_file` s `offset`/`limit`
-- **PRIORITA JSON formátov** - rýchlejšie a menšie než Markdown
-- **Trackuj tokeny** - používaj `tracker.estimate_tokens()` pred každým read_file
-- **Aplikuj kompresiu** - ak utilization > 80%, použij `CompressContextManager`
+**⚠️ KRITICKÉ:** Po vytvorení save game súboru MUSÍŠ automaticky commitnúť a pushnúť všetky zmeny na GitHub pomocou MCP operácií.
 
 ---
 
-## 0.5. Automatické Uloženie Promptov (POVINNÉ)
+## 1. Získanie Aktuálneho Času
 
-**⚠️ KRITICKÉ:** Pred vytvorením save game MUSÍŠ automaticky uložiť všetky user prompty.
+**KRITICKÉ:** VŽDY použiť MCP Time pre timestamp.
 
-**Použi optimalizovanú verziu:**
-```python
-prompts_to_save = [...]  # Zoznam promptov z konverzácie
-saved_count = optimizer.save_prompts_optimized(prompts_to_save)
-```
-
-**Automaticky:**
-- Uloží prompty cez `save_prompts_batch()`
-- Skontroluje utilization po uložení
-- Aplikuje kompresiu ak utilization > 80%
+1. **Získať aktuálny čas:** Použi `mcp_MCP_DOCKER_get_current_time` 
+2. **Formát:** ISO 8601 s timezone (napr. `2025-12-10T14:30:00+01:00`)
+3. **Fallback:** Len ak MCP Time nie je dostupné, použij `datetime.now(timezone.utc)`
 
 ---
 
-## 0.6. Automatický Výpočet XP (POVINNÉ)
+## 2. Extrakcia Dát z Konverzácie
 
-**⚠️ DÔLEŽITÉ:** Po uložení promptov MUSÍŠ automaticky vypočítať XP.
+### 2.1 Parsovanie session.md
 
-**Použi optimalizovanú verziu:**
-```python
-xp_data = optimizer.calculate_xp_optimized()
-```
+**Načítaj:** `development/sessions/current/session.md`
 
-**Automaticky:**
-- Vypočíta XP z logu a promptov
-- Aktualizuje `XVADUR_XP.md` a `.json`
-- Vráti XP data pre save game
+**Extrahovať:**
+- **Posledných 10 taskov** (nie len 3) z sekcie "## Tasks"
+- **Formát parsing:** Nájsť sekciu "## Tasks" a extrahovať posledných 10 riadkov s `- [HH:MM]`
+- **Struktúra:** Pre každý task extrahovať: time, task, files, status
 
----
-
-## 1. Analýza Stavu (SELEKTÍVNE NAČÍTANIE)
-
-**⚠️ KRITICKÉ:** Používaj selektívne načítanie namiesto celých súborov!
-
-**Použi optimalizované metódy:**
-```python
-# XP Status - len status sekcia
-xp_status = optimizer.get_xp_status()
-
-# Posledné log záznamy - len posledných 5
-recent_logs = optimizer.get_recent_log_entries(limit=5)
-
-# Posledný save game - len summary
-latest_summary = optimizer.get_latest_save_game_summary()
-```
-
-**NIKDY:**
-- ❌ `read_file('development/logs/XVADUR_LOG.md')` - celý súbor!
-- ✅ `read_file('development/logs/XVADUR_LOG.jsonl', offset=-5)` - len posledných 5
-- ✅ `read_file('development/logs/XVADUR_XP.json')` - JSON je malý
-- ✅ `optimizer.get_recent_log_entries(limit=5)` - optimalizovaná metóda
-
----
-
-## 2. Generovanie Obsahu
-
-Vytvor Markdown obsah s touto štruktúrou:
-
+**Príklad:**
 ```markdown
-# 💾 SAVE GAME: [Dátum] [Čas]
+## Tasks
+- [14:30] Implementácia automatického logovania - pridané pravidlá | Files: [.cursorrules] | Status: completed
+- [15:00] Aktualizácia templates - zjednodušené session template | Files: [templates/session_template.md] | Status: completed
+```
+
+### 2.2 Získanie Zmenených Súborov
+
+**Metódy (v poradí priority):**
+1. **Z git status:** Použi `run_terminal_cmd` s `git status --porcelain` (ak je potrebné)
+2. **Z konverzácie:** Extrahovať súbory, ktoré boli spomenuté alebo zmenené
+3. **Z session.md:** Extrahovať súbory z "Files Changed" sekcie
+
+### 2.3 Extrakcia Next Steps
+
+**Z konverzácie:**
+- Hľadať frázy: "ďalšie kroky", "next steps", "potrebujem", "chcem", "plánujem"
+- Extrahovať konkrétne, akčné kroky (nie abstraktné)
+- Ignorovať naratívne popisy
+
+### 2.4 Extrakcia Blokátorov
+
+**Z konverzácie:**
+- Hľadať frázy: "blokátor", "problém", "výzva", "neviem", "zaseknutý"
+- Extrahovať konkrétne blokátory (nie abstraktné)
+- Ignorovať všeobecné problémy
+
+### 2.5 Identifikácia Current Task
+
+**Z konverzácie alebo session.md:**
+- Posledný aktívny task
+- Alebo aktuálna úloha, na ktorej sa pracuje
 
 ---
 
-## 📊 Status
-- **Rank:** [Rank]
-- **Level:** [Level]
-- **XP:** [Current XP] / [Next Level XP] ([Percent]%)
-- **Streak:** [X] dní
+## 3. Generovanie Save Game JSON
 
-## 🧠 Naratívny Kontext (Story so far)
+**Formát:** Pracovný JSON (nie naratívny) - len konkrétne dáta
 
-[Generuj podrobný naratív z poslednej konverzácie, minimálne 10 viet. Pokry:]
-1. Začiatok session
-2. Kľúčové rozhodnutia
-3. Tvorba nástrojov/skriptov
-4. Introspektívne momenty
-5. Strety so systémom
-6. Gamifikačný progres
-7. Prepojenie s dlhodobou víziou
-8. Otvorené slučky
-9. Analytické poznámky
-10. Sumarizácia
-
-## 🎯 Aktívne Questy & Next Steps
-- [Quest 1]
-- [Quest 2]
-
-## ⚠️ Inštrukcie pre Nového Agenta
-[Čo má agent vedieť o užívateľovi a štýle komunikácie?]
+```json
+{
+  "last_updated": "YYYY-MM-DDTHH:MM:SS+00:00",
+  "current_task": "[Konkrétna úloha]",
+  "status": "in_progress|completed|blocked",
+  "last_10_tasks": [
+    {
+      "time": "HH:MM",
+      "task": "[Názov tasku]",
+      "files": ["cesta/k/súboru.py"],
+      "status": "completed|in_progress"
+    }
+  ],
+  "files_changed": ["cesta/k/súboru.py"],
+  "next_steps": [
+    "Konkrétny krok 1",
+    "Konkrétny krok 2"
+  ],
+  "blockers": [
+    "Blokátor 1",
+    "Blokátor 2"
+  ]
+}
 ```
 
-**Detaily:** Pozri `docs/SAVEGAME_DETAILS.md` pre kompletnú šablónu
+**Ulož do:** `development/sessions/save_games/SAVE_GAME.json`
 
----
-
-## 3. Uloženie (OPTIMALIZOVANÉ)
-
-**Použi optimalizovanú metódu:**
-```python
-save_game = optimizer.create_save_game_optimized(
-    narrative=narrative_text,
-    quests=quests_list,
-    instructions=instructions_dict
-)
-```
-
-**Automaticky:**
-- Načíta len potrebné dáta (selektívne)
-- Vytvorí save game objekt
-- Uloží JSON (`SAVE_GAME_LATEST.json`)
-- Appendne Markdown (`SAVE_GAME.md`) - len nový záznam
-
-**Dodatočné aktualizácie:**
-- XP už aktualizované v kroku 0.6
-- Log záznamy - použij `log_task_completed()` z `log_manager.py`
-- Prompty už uložené v kroku 0.5
-
-**Token tracking:**
-```python
-metrics = optimizer.tracker.get_metrics_summary()
-print(f"Token usage: {metrics['utilization_ratio']:.2%}")
-```
+**KRITICKÉ:**
+- `last_updated` získavať cez MCP Time s timezone
+- Pracovný formát (nie naratívny) - len konkrétne dáta
+- Posledných 10 taskov (nie len 3)
 
 ---
 
@@ -173,53 +114,34 @@ print(f"Token usage: {metrics['utilization_ratio']:.2%}")
 ### Postup:
 
 1. **Zisti, čo sa zmenilo:**
-   - `git status --short` na zistenie všetkých zmien
-   - Zahrň všetky zmenené súbory
+   - Použi `read_file` na načítanie zmien
+   - Zahrň všetky zmenené súbory (vrátane SAVE_GAME.json)
 
 2. **Použi MCP GitHub operácie (PRIORITA):**
-   - Ak je MCP dostupné: Použi `mcp_MCP_DOCKER_push_files` nástroj priamo
-   - Fallback: Použi `scripts/mcp_helpers.git_commit_via_mcp()` (fallback na subprocess)
+   - Použi `mcp_MCP_DOCKER_push_files` nástroj priamo
+   - Fallback: Použi `scripts/mcp_helpers.git_commit_via_mcp()` (ak MCP zlyhá)
 
 3. **Commit message formát:**
    ```
    savegame: [YYYY-MM-DD] - [Krátky popis toho, čo sa robilo v session]
    ```
 
-**Detaily:** Pozri `docs/SAVEGAME_DETAILS.md` pre MCP integráciu
-
 ---
 
-## 4.5. Quest Validácia (Anthropic Harness Pattern)
+## 💡 Kedy použiť `/savegame`
 
-**Postup:**
-- Pre každý quest v `in_progress` stave over `validation.criteria`
-- Ak sú splnené, nastav `passes: true` a `status: completed`
-- Aktualizuj `validation.last_tested`
-
-**Automatická validácia:**
-```bash
-python scripts/utils/validate_quest.py --list
-```
-
-**Detaily:** Pozri `docs/SAVEGAME_DETAILS.md` a `docs/QUEST_SYSTEM.md`
-
----
-
-## 💡 IDE-Based Workflow Kontext
-
-**Kedy použiť `/savegame`:**
 - Pred ukončením konverzácie
 - Pred začatím novej témy/projektu
 - Po dosiahnutí významného milestone
 - Na konci pracovného dňa
 
 **Čo Save Game zachytáva:**
-- Naratívny kontext (kompletný príbeh session)
-- Gamifikačný stav (XP, Level, Rank, progres)
-- Aktívne questy
-- Inštrukcie pre agenta
+- Aktuálna úloha
+- Posledných 10 taskov z session
+- Zmenené súbory
+- Následné kroky (konkrétne)
+- Blokátory (konkrétne)
 
 ---
 
-**Spúšťač:** `/savegame`  
-**Dokumentácia:** `docs/SAVEGAME_DETAILS.md` (technické detaily)
+**Spúšťač:** `/savegame`

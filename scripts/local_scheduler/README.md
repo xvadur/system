@@ -9,7 +9,7 @@ Každú polnoc (00:00) sa automaticky spustí skript, ktorý:
 1. **Archivuje včerajšiu session** - Presunie do `staging/sessions/yesterday/`
 2. **Vytvorí novú session** - Z template do `development/sessions/current/`
 3. **Vygeneruje denný review** - Do `staging/review/daily_review.md`
-4. **Vypočíta XP a metriky** - Aktualizuje `development/logs/XVADUR_XP.md`
+4. **Vytvorí novú session** - Z template do `development/sessions/current/`
 5. **Pushne zmeny na GitHub** - Automatický commit a push
 
 ## 🚀 Inštalácia
@@ -150,6 +150,11 @@ Inštalačný skript automaticky detekuje Python cestu. Ak máš problém:
 
 **Vytvorené:** 2025-12-05
 **Verzia:** 1.0.0
+
+
+
+
+
 
 
 
