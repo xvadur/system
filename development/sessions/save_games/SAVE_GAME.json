@@ -1,22 +1,58 @@
 {
-  "last_updated": "2025-12-12T20:55:44+00:00",
-  "current_task": "Transformácia xvadur commandu na expert-to-expert modul",
-  "status": "completed",
+  "last_updated": "2025-12-13T03:43:45+01:00",
+  "current_task": "RAG analýza a rozdelenie datasetu conversations_clean_backup.jsonl - implementácia všetkých konverzácií s AI za posledné 4 mesiace do RAGu",
+  "status": "in_progress",
   "last_10_tasks": [
     {
-      "time": "21:55",
-      "task": "Transformácia xvadur commandu na expert-to-expert modul - pridané sekcie pre hlbokú diskusiu, rozkladanie hypotéz, validáciu cez AI kapacitu a prípravu na veľký biznis",
-      "files": [".cursor/commands/xvadur.md"],
+      "time": "03:13",
+      "task": "Quest #24 checkpoint - Úspešná analýza dokončená (interview_decomposition.md), ďalší krok: implementácia konverzácií s AI za posledné 4 mesiace do RAGu a hlbková analýza",
+      "files": ["development/data/analysis/interview_decomposition.md"],
+      "status": "completed"
+    },
+    {
+      "time": "03:36",
+      "task": "Analýza RAG systému - skontrolovaný stav, identifikované chýbajúce dáta (conversations_clean_backup.jsonl nie je v indexe)",
+      "files": ["development/data/analysis/rag_status_analysis.md"],
+      "status": "completed"
+    },
+    {
+      "time": "03:36",
+      "task": "Analýza conversations_clean_backup.jsonl - formát multi-line JSON, 54,420 riadkov, potrebné rozdelenie podľa mesiacov",
+      "files": ["development/data/analysis/conversations_split_summary.md", "scripts/analyze_conversations_clean.py"],
+      "status": "completed"
+    },
+    {
+      "time": "03:36",
+      "task": "Rozdelenie datasetu podľa mesiacov - vytvorený skript, rozdelené konverzácie (125 objektov - 2025-10: 13, 2025-11: 112)",
+      "files": ["scripts/split_conversations_by_month.py", "development/data/conversations_by_month/conversations_2025-10.jsonl", "development/data/conversations_by_month/conversations_2025-11.jsonl"],
+      "status": "completed"
+    },
+    {
+      "time": "03:41",
+      "task": "Commit a push všetkých zmien na GitHub",
+      "files": [],
       "status": "completed"
     }
   ],
   "files_changed": [
-    ".cursor/commands/xvadur.md"
+    "development/data/analysis/rag_status_analysis.md",
+    "development/data/analysis/interview_decomposition.md",
+    "development/data/analysis/conversations_split_summary.md",
+    "scripts/analyze_conversations_clean.py",
+    "scripts/split_conversations_by_month.py",
+    "development/data/conversations_by_month/conversations_2025-10.jsonl",
+    "development/data/conversations_by_month/conversations_2025-11.jsonl",
+    "development/sessions/current/session.md",
+    "development/sessions/save_games/SAVE_GAME.json"
   ],
   "next_steps": [
-    "Testovanie nového xvadur commandu v praxi",
-    "Získanie feedbacku na expert-to-expert diskusný režim",
-    "Možné ďalšie úpravy podľa skúseností z používania"
+    "Opraviť parser v split_conversations_by_month.py - načítať všetkých 1,822 objektov namiesto len 125",
+    "Rebuild rozdelenie datasetu - rozdeliť všetky konverzácie podľa mesiacov",
+    "Aktualizovať archive/rag/rag/build_rag_index.py - pridať načítanie mesiacových súborov z conversations_by_month/",
+    "Rebuild RAG indexu - pridať všetky konverzácie z conversations_clean_backup.jsonl (1,822 objektov)",
+    "Hlbková analýza - aplikovať analytickú dekompozíciu z interview_decomposition.md na všetky konverzácie a identifikovať vzorce, témy a príležitosti"
   ],
-  "blockers": []
+  "blockers": [
+    "Parser v split_conversations_by_month.py načíta len 125 objektov z 1,822 - potrebné opraviť parsing logiku pre multi-line JSON formát"
+  ]
 }
