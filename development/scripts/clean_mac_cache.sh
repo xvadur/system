@@ -71,3 +71,4 @@ echo "📊 Miesto po čistení: $SPACE_AFTER"
 echo ""
 echo "💡 Tip: Pre detailnú analýzu pozri: development/data/mac_storage_analysis.md"
 
+

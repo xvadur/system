@@ -165,3 +165,4 @@ rm -rf ~/Library/Caches/company.thebrowser.dia
 
 **To uvoľní ~10 GB za 5 minút!**
 
+
