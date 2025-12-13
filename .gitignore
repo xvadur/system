@@ -9,3 +9,6 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+data/rag_index/*.index
+data/rag_index/chunks.json
+data/rag_index/metadata.json

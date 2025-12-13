@@ -26,13 +26,16 @@ import os
 
 # Konfigurácia
 INDEX_DIR = Path("data/rag_index")
-EMBEDDING_MODEL = "text-embedding-3-small"
-EMBEDDING_DIM = 1536
+EMBEDDING_MODEL = "qwen/qwen3-embedding-8b"  # Qwen3 Embedding 8B cez OpenRouter
+EMBEDDING_DIM = 4096  # qwen3-embedding-8b má 4096 dimenzií (cez OpenRouter)
+USE_OPENROUTER = True  # Použiť OpenRouter API namiesto OpenAI
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"  # OpenRouter API endpoint
 
 # Načítanie API key z .env súboru alebo environmentu
 def load_api_key():
-    """Načíta OpenAI API key z .env súboru alebo environmentu."""
-    api_key = os.getenv("OPENAI_API_KEY")
+    """Načíta API key z .env súboru alebo environmentu (OpenRouter alebo OpenAI)."""
+    # Priorita: OpenRouter > OpenAI
+    api_key = os.getenv("OPENROUTER_API_KEY") or os.getenv("OPEROUTER_API_KEY") or os.getenv("OPEN_ROUTER") or os.getenv("OPENAI_API_KEY")
     if api_key:
         return api_key
     
@@ -44,14 +47,29 @@ def load_api_key():
     for env_file in env_files:
         if env_file.exists():
             try:
+                # Najprv prečítaj celý súbor a hľadaj OpenRouter key
                 with open(env_file, 'r', encoding='utf-8') as f:
-                    for line in f:
-                        line = line.strip()
-                        if line.startswith("OPENAI_API_KEY="):
-                            key = line.split("=", 1)[1].strip()
-                            key = key.strip('"').strip("'")
-                            if key and key != "changeme":
-                                return key
+                    lines = f.readlines()
+                
+                # Priorita 1: OpenRouter keys
+                for line in lines:
+                    line = line.strip()
+                    if (line.startswith("OPENROUTER_API_KEY=") or 
+                        line.startswith("OPEROUTER_API_KEY=") or 
+                        line.startswith("OPEN_ROUTER=")):
+                        key = line.split("=", 1)[1].strip()
+                        key = key.strip('"').strip("'")
+                        if key and key != "changeme":
+                            return key
+                
+                # Priorita 2: OpenAI key (len ak OpenRouter neexistuje)
+                for line in lines:
+                    line = line.strip()
+                    if line.startswith("OPENAI_API_KEY="):
+                        key = line.split("=", 1)[1].strip()
+                        key = key.strip('"').strip("'")
+                        if key and key != "changeme":
+                            return key
             except Exception:
                 continue
     
@@ -223,7 +241,17 @@ def search_rag(
         return [{"error": "RAG index neexistuje. Spusti najprv build_rag_index.py"}]
     
     # SEMANTIC SEARCH (embeddings)
-    client = OpenAI(api_key=api_key)
+    if USE_OPENROUTER:
+        client = OpenAI(
+            api_key=api_key, 
+            base_url=OPENROUTER_BASE_URL,
+            default_headers={
+                "HTTP-Referer": "https://github.com/xvadur/system",
+                "X-Title": "RAG Agent Helper"
+            }
+        )
+    else:
+        client = OpenAI(api_key=api_key)
     try:
         response = client.embeddings.create(
             model=EMBEDDING_MODEL,
@@ -405,7 +433,17 @@ def query_rag_with_synthesis(
             "raw_results": rag_results
         }
     
-    client = OpenAI(api_key=api_key)
+    if USE_OPENROUTER:
+        client = OpenAI(
+            api_key=api_key, 
+            base_url=OPENROUTER_BASE_URL,
+            default_headers={
+                "HTTP-Referer": "https://github.com/xvadur/system",
+                "X-Title": "RAG Query Synthesis"
+            }
+        )
+    else:
+        client = OpenAI(api_key=api_key)
     
     # System prompt pre syntézu
     system_prompt = """Si expertný analytik a syntetizátor informácií. Tvoja úloha je vytvoriť syntetizovanú odpoveď na základe relevantných textov z RAG vyhľadávania.
@@ -540,8 +578,7 @@ def main():
             top_k=top_k,
             min_score=min_score,
             use_hybrid=use_hybrid,
-            model=model,
-            content_type_filter=content_type_filter
+            model=model
         )
         
         if output_format == "pretty":

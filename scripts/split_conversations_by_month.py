@@ -14,63 +14,65 @@ INPUT_FILE = Path("development/data/conversations_clean_backup.jsonl")
 OUTPUT_DIR = Path("development/data/conversations_by_month")
 
 def parse_jsonl_objects(file_path):
-    """Parsuje JSONL súbor s multi-line JSON objektmi."""
+    """
+    Parsuje JSONL súbor s multi-line JSON objektmi.
+    
+    Používame regex na rozdelenie súboru podľa patternu '}\n{' alebo '}\n\n{'
+    (objekt končí, ďalší začína na novom riadku).
+    """
+    import re
+    
     records = []
-    current_obj = []
-    brace_count = 0
-    line_num = 0
     
+    # Načítať celý súbor (je to veľký, ale zvládneme to)
     with open(file_path, 'r', encoding='utf-8') as f:
-        for line in f:
-            line_num += 1
-            if line_num % 10000 == 0:
-                print(f"  Spracovaných {line_num:,} riadkov, načítaných {len(records):,} objektov...", flush=True)
-            
-            stripped = line.rstrip()
-            
-            # Ak je prázdny riadok, pokračuj (možno oddelovač medzi objektmi)
-            if not stripped:
-                # Ak máme uzatvorený objekt, skúsme ho načítať
-                if brace_count == 0 and current_obj:
-                    try:
-                        obj_text = ''.join(current_obj)
-                        obj_text = obj_text.rstrip().rstrip(',')
-                        record = json.loads(obj_text)
-                        records.append(record)
-                        current_obj = []
-                    except json.JSONDecodeError:
-                        pass  # Preskočiť neplatný JSON
-                continue
-            
-            current_obj.append(line)
-            
-            # Počítaj zátvorky
-            brace_count += stripped.count('{') - stripped.count('}')
-            
-            # Ak sme uzatvorili objekt (brace_count == 0)
-            if brace_count == 0 and current_obj:
-                try:
-                    obj_text = ''.join(current_obj)
-                    # Skúsme odstrániť trailing comma ak existuje
-                    obj_text = obj_text.rstrip().rstrip(',')
-                    record = json.loads(obj_text)
-                    records.append(record)
-                    # Reset pre ďalší objekt
-                    current_obj = []
-                except json.JSONDecodeError as e:
-                    # Preskočiť neplatný JSON a reset
-                    current_obj = []
-                    brace_count = 0
+        content = f.read()
     
-    # Posledný objekt (ak zostal)
-    if current_obj and brace_count == 0:
+    # Rozdeliť podľa patternu: '}' nasledovaný whitespace a '\n' a whitespace a '{'
+    # Toto identifikuje miesta, kde jeden objekt končí a ďalší začína
+    parts = re.split(r'\}\s*\n\s*\{', content)
+    
+    print(f"  Nájdených {len(parts)} častí (očakávaných ~1,822 objektov)")
+    
+    # Prvý objekt - pridať začiatočnú '{' (ak nie je už v prvej časti)
+    for i, part in enumerate(parts):
+        obj_num = i + 1
+        if obj_num % 500 == 0:
+            print(f"  Spracovaných {obj_num:,}/{len(parts)} objektov...", flush=True)
+        
         try:
-            obj_text = ''.join(current_obj)
+            # Prvý objekt - začíná s '{'
+            if i == 0:
+                obj_text = part.rstrip()
+                # Odstrániť trailing comma ak existuje pred parsovaním
+                obj_text = obj_text.rstrip().rstrip(',')
+                # Ak už nezačína s '{', pridať ho
+                if not obj_text.startswith('{'):
+                    obj_text = '{' + obj_text
+            # Posledný objekt - končí s '}'
+            elif i == len(parts) - 1:
+                obj_text = part.rstrip()
+                # Ak už nekončí s '}', pridať ho
+                if not obj_text.endswith('}'):
+                    obj_text = obj_text + '}'
+            # Stredné objekty - oba '{' a '}' musia byť pridané
+            else:
+                obj_text = '{' + part.rstrip() + '}'
+            
+            # Odstrániť trailing comma ak existuje
             obj_text = obj_text.rstrip().rstrip(',')
+            
+            # Parsovať JSON
             record = json.loads(obj_text)
             records.append(record)
-        except:
-            pass
+            
+        except json.JSONDecodeError as e:
+            # Ak parsovanie zlyhá, lognúť a preskočiť (len prvých pár chýb)
+            if len(records) < 10:
+                print(f"  ⚠️  Chyba pri parsovaní objektu {obj_num}: {e}")
+                print(f"      Dĺžka textu: {len(obj_text)} znakov")
+                print(f"      Prvých 100 znakov: {obj_text[:100]}")
+            continue
     
     return records
 

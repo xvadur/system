@@ -56,12 +56,15 @@ except ImportError:
 
 # Konfigurácia
 PROMPTS_DIR = Path("data/prompts/prompts_split")
-CONVERSATION_PAIRS_FILE = Path("development/data/conversations.jsonl")
+CONVERSATION_PAIRS_FILE = Path("development/data/conversations.jsonl")  # Starý súbor (pre kompatibilitu)
+CONVERSATIONS_BY_MONTH_DIR = Path("development/data/conversations_by_month")  # Nové mesiacové súbory
 OUTPUT_DIR = Path("data/rag_index")
-EMBEDDING_MODEL = "text-embedding-3-small"  # Lacnejšie, rýchlejšie
-EMBEDDING_DIM = 1536  # text-embedding-3-small má 1536 dimenzií
+EMBEDDING_MODEL = "qwen/qwen3-embedding-8b"  # Qwen3 Embedding 8B cez OpenRouter
+EMBEDDING_DIM = 4096  # qwen3-embedding-8b má 4096 dimenzií (cez OpenRouter)
 BATCH_SIZE = 100  # Počet promptov na batch
 MAX_CHUNK_SIZE = 2000  # Maximálna veľkosť chunku (znaky)
+USE_OPENROUTER = True  # Použiť OpenRouter API namiesto OpenAI
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"  # OpenRouter API endpoint
 
 # Flags
 INCLUDE_AI_RESPONSES = True  # Pridať AI odpovede do indexu
@@ -69,9 +72,10 @@ COMBINE_PAIRS = True  # Kombinovať prompt + odpoveď ako jeden chunk
 
 # Načítanie API key z .env súboru alebo environmentu
 def load_api_key():
-    """Načíta OpenAI API key z .env súboru alebo environmentu."""
+    """Načíta API key z .env súboru alebo environmentu (OpenRouter alebo OpenAI)."""
+    # Priorita: OpenRouter > OpenAI
     # Skús najprv environment
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = os.getenv("OPENROUTER_API_KEY") or os.getenv("OPEROUTER_API_KEY") or os.getenv("OPEN_ROUTER") or os.getenv("OPENAI_API_KEY")
     if api_key:
         return api_key
     
@@ -84,15 +88,29 @@ def load_api_key():
     for env_file in env_files:
         if env_file.exists():
             try:
+                # Najprv prečítaj celý súbor a hľadaj OpenRouter key
                 with open(env_file, 'r', encoding='utf-8') as f:
-                    for line in f:
-                        line = line.strip()
-                        if line.startswith("OPENAI_API_KEY="):
-                            # Odstráni "OPENAI_API_KEY=" a quotes ak existujú
-                            key = line.split("=", 1)[1].strip()
-                            key = key.strip('"').strip("'")
-                            if key and key != "changeme":
-                                return key
+                    lines = f.readlines()
+                
+                # Priorita 1: OpenRouter keys
+                for line in lines:
+                    line = line.strip()
+                    if (line.startswith("OPENROUTER_API_KEY=") or 
+                        line.startswith("OPEROUTER_API_KEY=") or 
+                        line.startswith("OPEN_ROUTER=")):
+                        key = line.split("=", 1)[1].strip()
+                        key = key.strip('"').strip("'")
+                        if key and key != "changeme":
+                            return key
+                
+                # Priorita 2: OpenAI key (len ak OpenRouter neexistuje)
+                for line in lines:
+                    line = line.strip()
+                    if line.startswith("OPENAI_API_KEY="):
+                        key = line.split("=", 1)[1].strip()
+                        key = key.strip('"').strip("'")
+                        if key and key != "changeme":
+                            return key
             except Exception:
                 continue
     
@@ -100,8 +118,8 @@ def load_api_key():
 
 API_KEY = load_api_key()
 if not API_KEY:
-    print("⚠️  OPENAI_API_KEY nie je nastavený")
-    print("   Nastav ho v environmente alebo v .env súbore")
+    print("⚠️  API key nie je nastavený")
+    print("   Nastav OPENROUTER_API_KEY, OPEROUTER_API_KEY alebo OPENAI_API_KEY v environmente alebo v .env súbore")
     sys.exit(1)
 
 
@@ -211,6 +229,41 @@ def load_conversation_pairs(input_file: Path) -> List[Dict]:
                 continue
     
     print(f"✅ Načítaných {len(pairs)} conversation pairs")
+    return pairs
+
+
+def load_conversation_pairs_from_monthly_files(monthly_dir: Path) -> List[Dict]:
+    """
+    Načíta conversation pairs zo všetkých mesiacových JSONL súborov.
+    
+    Hľadá súbory v tvare: conversations_YYYY-MM.jsonl
+    
+    Returns:
+        List of conversation pair dictionaries with metadata
+    """
+    pairs = []
+    
+    if not monthly_dir.exists():
+        print(f"⚠️  Adresár neexistuje: {monthly_dir}")
+        return pairs
+    
+    print(f"📖 Načítavam conversation pairs z mesiacových súborov v: {monthly_dir}")
+    
+    # Nájsť všetky mesiacové súbory (conversations_YYYY-MM.jsonl)
+    monthly_files = sorted(monthly_dir.glob("conversations_*.jsonl"))
+    
+    if not monthly_files:
+        print(f"⚠️  Nenašli sa žiadne mesiacové súbory v: {monthly_dir}")
+        return pairs
+    
+    print(f"  Nájdených {len(monthly_files)} mesiacových súborov")
+    
+    for monthly_file in monthly_files:
+        file_pairs = load_conversation_pairs(monthly_file)
+        pairs.extend(file_pairs)
+        print(f"  ✅ {monthly_file.name}: {len(file_pairs)} pairs (celkom: {len(pairs)})")
+    
+    print(f"\n✅ Celkovo načítaných {len(pairs)} conversation pairs zo všetkých mesiacov")
     return pairs
 
 
@@ -433,7 +486,19 @@ def build_index(prompts: List[Dict], pairs: List[Dict], output_dir: Path) -> Non
     """
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    client = OpenAI(api_key=API_KEY)
+    # Vytvorenie OpenAI clientu (kompatibilný s OpenRouter)
+    if USE_OPENROUTER:
+        # OpenRouter vyžaduje špeciálne hlavičky
+        client = OpenAI(
+            api_key=API_KEY,
+            base_url=OPENROUTER_BASE_URL,
+            default_headers={
+                "HTTP-Referer": "https://github.com/xvadur/system",  # Voliteľné, pre tracking
+                "X-Title": "RAG Index Builder"  # Voliteľné, pre tracking
+            }
+        )
+    else:
+        client = OpenAI(api_key=API_KEY)
     
     # Zbieranie všetkých chunkov s metadátami
     all_chunks = []
@@ -597,7 +662,11 @@ def main():
     print("="*60)
     print(f"Zdroj promptov: {PROMPTS_DIR}")
     if INCLUDE_AI_RESPONSES:
-        print(f"Zdroj conversation pairs: {CONVERSATION_PAIRS_FILE}")
+        # Priorita: mesiacové súbory (ak existujú), inak starý súbor
+        if CONVERSATIONS_BY_MONTH_DIR.exists() and list(CONVERSATIONS_BY_MONTH_DIR.glob("conversations_*.jsonl")):
+            print(f"Zdroj conversation pairs: {CONVERSATIONS_BY_MONTH_DIR} (mesiacové súbory)")
+        else:
+            print(f"Zdroj conversation pairs: {CONVERSATION_PAIRS_FILE}")
     print(f"Výstup: {OUTPUT_DIR}")
     print(f"Model: {EMBEDDING_MODEL}")
     print(f"Include AI Responses: {INCLUDE_AI_RESPONSES}")
@@ -615,7 +684,12 @@ def main():
     # Načítanie conversation pairs
     pairs = []
     if INCLUDE_AI_RESPONSES:
-        pairs = load_conversation_pairs(CONVERSATION_PAIRS_FILE)
+        # Priorita: mesiacové súbory (ak existujú), inak starý súbor
+        if CONVERSATIONS_BY_MONTH_DIR.exists() and list(CONVERSATIONS_BY_MONTH_DIR.glob("conversations_*.jsonl")):
+            pairs = load_conversation_pairs_from_monthly_files(CONVERSATIONS_BY_MONTH_DIR)
+        else:
+            print(f"⚠️  Mesiacové súbory neexistujú, používam starý súbor: {CONVERSATION_PAIRS_FILE}")
+            pairs = load_conversation_pairs(CONVERSATION_PAIRS_FILE)
     
     if not prompts and not pairs:
         print("❌ Nenašli sa žiadne dáta (prompty ani conversation pairs)")

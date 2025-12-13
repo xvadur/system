@@ -56,3 +56,4 @@
     "Parser v split_conversations_by_month.py načíta len 125 objektov z 1,822 - potrebné opraviť parsing logiku pre multi-line JSON formát"
   ]
 }
+
