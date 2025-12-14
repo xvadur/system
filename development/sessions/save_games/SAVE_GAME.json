@@ -1,0 +1,61 @@
+{
+  "last_updated": "2025-12-14T21:48:14+01:00",
+  "current_task": "Vytvorenie markdown súboru so všetkými Adamovými zmienkami o kresťanstve a biblii (len jeho vlastné texty, nie AI odpovede)",
+  "status": "in_progress",
+  "last_10_tasks": [
+    {
+      "time": "21:48",
+      "task": "Vytvorenie save game súboru",
+      "files": ["development/sessions/save_games/SAVE_GAME.json"],
+      "status": "in_progress"
+    },
+    {
+      "time": "21:30",
+      "task": "Filtrovanie RAG výsledkov - len user texty (nie AI odpovede)",
+      "files": ["scripts/query_rag_context.py", "scripts/create_markdown_from_rag.py", "scripts/extract_user_mentions.py"],
+      "status": "completed"
+    },
+    {
+      "time": "21:15",
+      "task": "Vytvorenie markdown súboru s výsledkami RAG vyhľadávania o kresťanstve",
+      "files": ["development/data/analysis/krestanstvo_biblia_2025-W29.md", "development/data/analysis/krestanstvo_biblia_user_only_2025-W29.md", "development/data/analysis/krestanstvo_biblia_PURE_USER_2025-W29.md", "development/data/analysis/krestanstvo_biblia_FINAL_2025-W29.md"],
+      "status": "completed"
+    },
+    {
+      "time": "20:45",
+      "task": "Odstránenie všetkých referencií na OpenAI API - používame len OpenRouter s deepseek",
+      "files": ["archive/rag/rag/rag_agent_helper.py", "archive/rag/rag/build_rag_index.py", "scripts/run_rag_analysis.sh", "scripts/query_rag_wrapper.sh"],
+      "status": "completed"
+    },
+    {
+      "time": "20:30",
+      "task": "Overenie funkčnosti RAG query systému pre týždeň 2025-W29",
+      "files": ["scripts/query_rag.py", "scripts/query_rag_context.py"],
+      "status": "completed"
+    }
+  ],
+  "files_changed": [
+    "archive/rag/rag/build_rag_index.py",
+    "archive/rag/rag/rag_agent_helper.py",
+    "scripts/query_rag_context.py",
+    "scripts/create_markdown_from_rag.py",
+    "scripts/extract_user_mentions.py",
+    "scripts/run_rag_analysis.sh",
+    "scripts/query_rag_wrapper.sh",
+    "development/data/analysis/krestanstvo_biblia_2025-W29.md",
+    "development/data/analysis/krestanstvo_biblia_user_only_2025-W29.md",
+    "development/data/analysis/krestanstvo_biblia_PURE_USER_2025-W29.md",
+    "development/data/analysis/krestanstvo_biblia_FINAL_2025-W29.md"
+  ],
+  "next_steps": [
+    "Prehľadať všetky týždne (nie len 2025-W29) pre zmienky o kresťanstve a biblii",
+    "Prehľadať pôvodné mesiacové súbory (conversations_by_month/) pre úplné user texty",
+    "Hľadať v priložených dokumentoch/kontextoch, kde môže byť pôvodný text 'Keď som bol kresťan...'",
+    "Upraviť RAG query systém, aby lepšie filtroval len relevantné user texty (nie všeobecné slová z query)"
+  ],
+  "blockers": [
+    "Pôvodný user text s 'Keď som bol kresťan...' nie je priamo v týždennom súbore conversations_isolated_weeks_clean/2025-W29/conversations.jsonl",
+    "Text sa objavuje len v AI odpovedi ako citácia z predchádzajúceho promptu",
+    "Pravdepodobne bol text v priloženom dokumente (Knowladge_raw alebo Prompt_transformacia), nie v user prompte"
+  ]
+}
