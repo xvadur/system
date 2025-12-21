@@ -1,99 +1,45 @@
 {
-  "last_updated": "2025-12-13T06:07:14+01:00",
-  "current_task": "Quest #25: Analýza podnikateľského potenciálu v súčinnosti s funkčným RAG - pripravený na zajtra",
-  "status": "completed",
+  "last_updated": "2025-12-22T00:34:47+01:00",
+  "current_task": "Rozhodnutie o ukončení spolupráce s Vladom a recepcii - analýza situácie a následné kroky",
+  "status": "in_progress",
   "last_10_tasks": [
     {
-      "time": "03:13",
-      "task": "Quest #24: Biznis stratégia - roadmapa, produkty (PDF, kurzy, AI videá), influencer stratégia",
-      "files": ["development/data/analysis/interview_decomposition.md"],
-      "status": "completed"
+      "time": "19:57",
+      "task": "Quest #28: Analýza a čistenie týždenných splitov - evergreen dokument",
+      "files": ["development/data/profile/adam_evergreen.md"],
+      "status": "in_progress"
     },
     {
-      "time": "03:36",
-      "task": "Analýza RAG systému - skontrolovaný stav, identifikované chýbajúce dáta",
-      "files": ["development/data/analysis/rag_status_analysis.md"],
-      "status": "completed"
-    },
-    {
-      "time": "03:36",
-      "task": "Analýza conversations_clean_backup.jsonl - formát multi-line JSON, 54,420 riadkov, potrebné rozdelenie podľa mesiacov",
-      "files": ["development/data/analysis/conversations_split_summary.md", "scripts/analyze_conversations_clean.py"],
-      "status": "completed"
-    },
-    {
-      "time": "03:36",
-      "task": "Rozdelenie datasetu podľa mesiacov - vytvorený skript, rozdelené konverzácie",
-      "files": ["scripts/split_conversations_by_month.py", "development/data/conversations_by_month/"],
-      "status": "completed"
-    },
-    {
-      "time": "03:41",
-      "task": "Commit a push všetkých zmien na GitHub",
+      "time": "15:15",
+      "task": "Quest #27: Sekvenčné odpovedanie na prompty - syntetický materiál k datasetu",
       "files": [],
-      "status": "completed"
-    },
-    {
-      "time": "04:06",
-      "task": "Oprava parsera v split_conversations_by_month.py - načítanie 1,820 objektov z 1,822 (99.9% úspešnosť)",
-      "files": ["scripts/split_conversations_by_month.py"],
-      "status": "completed"
-    },
-    {
-      "time": "04:06",
-      "task": "Aktualizácia build_rag_index.py - pridaná funkcia load_conversation_pairs_from_monthly_files()",
-      "files": ["archive/rag/rag/build_rag_index.py"],
-      "status": "completed"
-    },
-    {
-      "time": "04:07",
-      "task": "Vytvorenie štatistík konverzácií - kompletná analýza s metrikami",
-      "files": ["scripts/analyze_conversations_statistics.py", "development/data/analysis/conversations_statistics.md"],
-      "status": "completed"
-    },
-    {
-      "time": "05:18",
-      "task": "RAG Index Rebuild - úspešne dokončený rebuild s OpenRouter API (qwen/qwen3-embedding-8b), 12,574 chunkov z 1,800 konverzácií",
-      "files": ["archive/rag/rag/build_rag_index.py", "archive/rag/rag/rag_agent_helper.py", "data/rag_index/"],
-      "status": "completed"
-    },
-    {
-      "time": "05:25",
-      "task": "Quest #25: Analýza podnikateľského potenciálu v súčinnosti s funkčným RAG - vytvorený a pripravený na zajtra",
-      "files": [],
-      "status": "completed"
+      "status": "new"
     }
   ],
   "files_changed": [
-    "archive/rag/rag/build_rag_index.py",
-    "archive/rag/rag/rag_agent_helper.py",
+    "development/sessions/current/rozchod s vladom.md",
     "development/sessions/current/session.md",
-    "development/sessions/save_games/SAVE_GAME.json",
-    "scripts/split_conversations_by_month.py",
-    "development/data/analysis/rag_status_analysis.md",
-    "development/data/analysis/conversations_split_summary.md",
-    "development/data/analysis/conversations_statistics.md",
-    "development/data/analysis/conversations_temporal_analysis.md",
-    "development/data/analysis/conversations_lexical_analysis.md",
-    "development/data/conversations_by_month/conversations_2025-07.jsonl",
-    "development/data/conversations_by_month/conversations_2025-08.jsonl",
-    "development/data/conversations_by_month/conversations_2025-09.jsonl",
-    "development/data/conversations_by_month/conversations_2025-10.jsonl",
-    "development/data/conversations_by_month/conversations_2025-11.jsonl",
-    "development/data/conversations_by_month/conversations_2025-12.jsonl",
-    "scripts/analyze_conversations_clean.py",
-    "scripts/analyze_conversations_statistics.py",
-    "scripts/analyze_conversations_temporal.py",
-    "scripts/analyze_conversations_lexical.py",
-    "data/rag_index_backup_2025-12-13_04-31-06/",
-    ".gitignore"
+    "development/data/analysis/adam_transformacia_kompletna.md",
+    "development/data/analysis/vlado_rozchod_analyza.md",
+    "development/data/analysis/vlado_vztah_mapa.md",
+    "development/data/profile/adam_evergreen.md",
+    "development/data/analysis/evergreen_rag_results/summary.json"
   ],
   "next_steps": [
-    "Quest #25: Začať analýzu podnikateľského potenciálu s využitím RAG systému",
-    "Identifikovať hlavné témy a vzorce z konverzácií cez RAG search",
-    "Mapovať produktové príležitosti (PDF, kurzy, AI videá, automatizácie)",
-    "Vytvoriť roadmapu monetizácie na základe analýzy",
-    "Prepojiť analýzu s Quest #24 (biznis stratégia)"
+    "Dokončiť rozhodnutie o ukončení spolupráce s Vladom (správa odoslaná, čaká sa na odpoveď)",
+    "Vytvoriť Skool Community alebo podobný projekt (Substack, vlastný web)",
+    "Spraviť funnel cez N8N a Lovable/Cursor",
+    "Vytvoriť Design Language pre projekt",
+    "Začať publikovať obsah: prompty, tutoriály, články (napr. o politike)",
+    "Zvážiť umývanie okien pre príjem (400€/mesiac)",
+    "Pokračovať v syntéze a tvorbe obsahu - toto je Adamova silná stránka",
+    "Spracovať a uzavrieť kapitolu 'Vlado' ako ustavný cyklus"
   ],
-  "blockers": []
+  "blockers": [
+    "Rozhodnutie o Vladovi - odoslaná správa, čaká sa na odpoveď, potreba jasného ukončenia",
+    "Karol - zdravotné problémy s nefrostómiou (odlepovanie sáčku, opakované návštevy)",
+    "Recepcia - technické problémy (webhooky, N8N, Eleven Labs), stres z nedodržania termínov",
+    "Nedostatok času/energie na všetko (Vlado, Karol, recepcia, Laura, vlastné projekty)",
+    "Nedostatok jasnosti v tom, čo robiť po ukončení s Vladom - potreba resetu a rekalibrácie"
+  ]
 }
