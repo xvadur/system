@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """
 Chronologická syntéza z originálnych surových promptov pomocou Grok-4.
@@ -29,7 +30,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # DeepSeek R1T2 Chimera má 163k token kontext a je FREE!
 MODEL = "tngtech/deepseek-r1t2-chimera:free"  # 163k token kontext, FREE!
 FALLBACK_MODEL = "mistralai/mistral-7b-instruct:free"  # Fallback ak nefunguje
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
 # DeepSeek R1T2 Chimera: 163k tokenov ≈ 122k slov

@@ -1,3 +1,9 @@
+.DS_Store
+.venv/
+venv/
+development/data/
+development/logs/
+development/sessions/
 .env
 __pycache__/
 *.pyc

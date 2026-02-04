@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """
 Chronologická syntéza príbehu z kategorizovaných promptov.
@@ -27,7 +28,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # OpenRouter konfigurácia
 MODEL = "x-ai/grok-4.1-fast:free"
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
 
