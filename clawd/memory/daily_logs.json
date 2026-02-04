@@ -1,0 +1,290 @@
+[
+  {
+    "timestamp": "2026-01-28T02:55:00",
+    "activity": "Onboarding & System Setup",
+    "category": "INFRASTRUCTURE",
+    "energy": 9,
+    "xp": 100,
+    "note": "Stabilizovaný belief core, prepojený Telegram Jarvis, schválené párovanie. Oficiálny začiatok cesty k 1.4."
+  },
+  {
+    "timestamp": "2026-01-27T10:00:00",
+    "activity": "BNI Leaders Bratislava Meeting",
+    "category": "OUTREACH",
+    "energy": 10,
+    "xp": 250,
+    "note": "Zásah 10 z 19 ľudí. Získané kľúčové leady na podcastové štúdio a zubnú kliniku. Potvrdenie identity AI Podnikateľa."
+  },
+  {
+    "timestamp": "2026-01-28T03:00:00",
+    "activity": "Iniciácia Agentickej Suverenity",
+    "category": "INFRASTRUCTURE",
+    "energy": 10,
+    "xp": 150,
+    "note": "Prepojenie Telegramu s Clawdbotom. Uvedomenie si 'cutting edge' sily systému. Definovanie Jarvisa ako externého korigujúceho faktora pre scattered mind. System synchronicity potvrdený."
+  },
+  {
+    "timestamp": "2026-01-28T02:48:00",
+    "activity": "Ukončenie dňa",
+    "category": "STAMINA",
+    "energy": 6,
+    "note": "Idem spať, únava po historickom onboardingu a BNI.",
+    "xp": 50
+  },
+  {
+    "timestamp": "2026-01-28T02:50:00",
+    "activity": "Telegram Connection Test",
+    "category": "INFRASTRUCTURE",
+    "energy": 9,
+    "note": "Potvrdenie funkčnosti logovacieho engine cez Telegram.",
+    "xp": 10
+  },
+  {
+    "timestamp": "2026-01-28T02:51:04",
+    "activity": "Validácia Log Engine",
+    "category": "INFRASTRUCTURE",
+    "energy": 8,
+    "note": "Adam si potvrdzuje mechanizmus automatického zápisu. Systém reaguje v reálnom čase.",
+    "xp": 20
+  },
+  {
+    "timestamp": "2026-01-28T02:55:56",
+    "activity": "Rekapitulácia a ukončenie dňa",
+    "category": "INFRASTRUCTURE",
+    "energy": 10,
+    "note": "Adam oficiálne uzatvára historickú reláciu 28.1. Systém je plne funkčný a pripravený na ranný štart.",
+    "xp": 100
+  },
+  {
+    "timestamp": "2026-01-28T02:57:00",
+    "activity": "Záverečná rekapitulácia dňa (Test 2)",
+    "category": "STAMINA",
+    "energy": 6,
+    "note": "Adam potvrdzuje správnu funkčnosť diakritiky v logu po oprave. Oficiálne ukončenie práce a odchod k spánku.",
+    "xp": 10
+  },
+  {
+    "timestamp": "2026-01-28T02:58:00",
+    "activity": "Požiadavka na Technickú Analýzu",
+    "category": "INFRASTRUCTURE",
+    "energy": 10,
+    "note": "Adam je sytémom nadšený. Vyžiadal si kompletný technický súhrn pre synchronizáciu kontextu s inými AI (ChatGPT).",
+    "xp": 20
+  },
+  {
+    "timestamp": "2026-01-28T03:23:00",
+    "activity": "Odchod k spánku",
+    "category": "STAMINA",
+    "energy": 5,
+    "note": "Oficiálne ukončenie historickej relácie.",
+    "xp": 10
+  },
+  {
+    "timestamp": "2026-01-28T10:47:00",
+    "activity": "Budíček a doručenie stola",
+    "category": "STAMINA",
+    "energy": 7,
+    "note": "Vstávanie po 10:47. Kuriér doručil nový hydraulický stôl - upgrade pracoviska pre XVADUR OS.",
+    "xp": 30
+  },
+  {
+    "timestamp": "2026-01-28T12:36:00",
+    "activity": "Finalizácia workspace setupu",
+    "category": "INFRASTRUCTURE",
+    "energy": 10,
+    "note": "Upgrade na hydraulický stôl. Setup (monitor, klávesnica, myš) je high-grade a kompletný. Možnosť práce v stoji odstraňuje akútnu potrebu novej stoličky. Readiness level pre hlbokú prácu zvýšený na maximum.",
+    "xp": 50
+  },
+  {
+    "timestamp": "2026-01-28T12:37:00",
+    "activity": "Pozvánka na BNI Growth",
+    "category": "OUTREACH",
+    "energy": 9,
+    "note": "Prijatá oficiálna pozvánka na nové BNI Growth chapter (30.1. Matador Business Center). Kľúčový moment pre obsadenie AI domény v novovznikajúcom biznis clustri.",
+    "xp": 40
+  },
+  {
+    "timestamp": "2026-01-28T13:14:00",
+    "activity": "Návšteva u Karola",
+    "category": "SURVIVAL",
+    "energy": 8,
+    "note": "Adam odchádza za Karolom. Pravidelná starostlivosť a stabilný príjem (15e/návšteva).",
+    "xp": 20
+  },
+  {
+    "timestamp": "2026-01-28T15:00:00",
+    "activity": "Ukončenie návštevy u Karola",
+    "category": "SURVIVAL",
+    "energy": 7,
+    "note": "Odchod o 15:00. Príjem 50 EUR (extra bonus za úpravu matraca a vysávanie). Efektívne zhodnotenie času a stamina boost.",
+    "xp": 50
+  },
+  {
+    "timestamp": "2026-01-28T17:19:00",
+    "activity": "Čakanie na kupcov - Runtime Done",
+    "category": "INFRASTRUCTURE",
+    "energy": 9,
+    "note": "Byt uprataný, kupci na ceste. Strategický runtime setup (iMessage, Gmail, Kalendár, ElevenLabs) je k tomuto momentu dokončený a otestovaný.",
+    "xp": 50
+  },
+  {
+    "timestamp": "2026-01-28T18:31:00",
+    "activity": "Ukončenie obhliadky bytu",
+    "category": "SURVIVAL",
+    "energy": 6,
+    "note": "Obhliadka skončila o 18:31. Byt uvoľnený pre ďalšiu fázu dňa. Prechod do režimu XVADUR FOCUS.",
+    "xp": 30
+  },
+  {
+    "timestamp": "2026-01-28T21:41:35",
+    "activity": "Výdavok: Cine-Max (Kino)",
+    "category": "STAMINA",
+    "energy": 8,
+    "note": "Nákup lístkov do kina (11,20 EUR). Regenerácia a relax Architekta.",
+    "xp": 10
+  },
+  {
+    "timestamp": "2026-01-29T00:27:12",
+    "activity": "Expense: EDEN SUITE, INC.",
+    "category": "SURVIVAL",
+    "energy": 5,
+    "note": "Automatické zachytenie nákupu z SMS. Suma: 30,44 EUR.",
+    "xp": 5
+  },
+  {
+    "timestamp": "2026-01-29T12:51:13",
+    "activity": "Expense: KAUFLAND SK",
+    "category": "STAMINA",
+    "energy": 5,
+    "note": "Automatické zachytenie nákupu z SMS. Suma: 9,50 EUR.",
+    "xp": 5
+  },
+  {
+    "timestamp": "2026-01-29T14:03:10",
+    "activity": "Príjem: SEPA platba",
+    "category": "SURVIVAL",
+    "energy": 8,
+    "note": "Prijatá SEPA platba. Suma: 20,00 EUR.",
+    "xp": 20
+  },
+  {
+    "timestamp": "2026-01-29T14:05:40",
+    "activity": "Expense: OPENROUTER, INC",
+    "category": "INFRASTRUCTURE",
+    "energy": 10,
+    "note": "Dobitie kreditu OpenRouter. Suma: 4,98 EUR. Palivo pre systém.",
+    "xp": 10
+  },
+  {
+    "timestamp": "2026-01-29T14:10:00",
+    "activity": "28. NARODENINY - Strategický Reset",
+    "category": "STAMINA",
+    "energy": 10,
+    "note": "Adam má 28 rokov. Plán: Dekompozícia Dan Koe Substacku, príprava na BNI, regenerácia v Jumparene s Laurou. Belief core na maximálnej úrovni.",
+    "xp": 280
+  },
+  {
+    "timestamp": "2026-01-15T11:30:00",
+    "activity": "Návšteva u Karola",
+    "category": "SURVIVAL",
+    "energy": 8,
+    "note": "Doplnené z kalendára: Služba u Karola.",
+    "xp": 20
+  },
+  {
+    "timestamp": "2026-01-16T14:00:00",
+    "activity": "Návšteva u Karola",
+    "category": "SURVIVAL",
+    "energy": 8,
+    "note": "Doplnené z kalendára: Služba u Karola.",
+    "xp": 20
+  },
+  {
+    "timestamp": "2026-01-17T11:00:00",
+    "activity": "Návšteva u Karola",
+    "category": "SURVIVAL",
+    "energy": 8,
+    "note": "Doplnené z kalendára: Služba u Karola.",
+    "xp": 20
+  },
+  {
+    "timestamp": "2026-01-19T11:00:00",
+    "activity": "Návšteva u Karola (Socialka)",
+    "category": "SURVIVAL",
+    "energy": 8,
+    "note": "Doplnené z kalendára: Vybavovanie sociálnych záležitostí pre Karola.",
+    "xp": 30
+  },
+  {
+    "timestamp": "2026-01-20T10:30:00",
+    "activity": "Návšteva u Karola",
+    "category": "SURVIVAL",
+    "energy": 8,
+    "note": "Doplnené z kalendára: Služba u Karola.",
+    "xp": 20
+  },
+  {
+    "timestamp": "2026-01-23T18:30:00",
+    "activity": "Návšteva u Karola (Podpis)",
+    "category": "SURVIVAL",
+    "energy": 8,
+    "note": "Doplnené z kalendára: Administratíva/Podpis u Karola.",
+    "xp": 20
+  },
+  {
+    "timestamp": "2026-01-26T17:00:00",
+    "activity": "Návšteva u Karola",
+    "category": "SURVIVAL",
+    "energy": 8,
+    "note": "Doplnené z kalendára: Služba u Karola.",
+    "xp": 20
+  },
+  {
+    "timestamp": "2026-01-30T02:15:00",
+    "activity": "Návšteva u Karola",
+    "category": "SURVIVAL",
+    "energy": 8,
+    "note": "Odchod za Karolom. Pravidelná starostlivosť a exekúcia survival príjmu.",
+    "xp": 20
+  },
+  {
+    "timestamp": "2026-01-30T01:31:00",
+    "activity": "Ukončenie nouzovej návštevy u Karola",
+    "category": "SURVIVAL",
+    "energy": 6,
+    "note": "Odchod o 01:31. Príjem 30 EUR. Kontrola nefrostómií úspešná.",
+    "xp": 50
+  },
+  {
+    "timestamp": "2026-01-30T03:08:00",
+    "activity": "Retiring for the night - 28th Birthday concluding",
+    "category": "STAMINA",
+    "energy": 6,
+    "note": "Retiring at 03:08. Intent: Wake up at 07:00 for BNI GROW preparation. Objective: Define 'Who am I' and 'What I offer' with absolute clarity.",
+    "xp": 20
+  },
+  {
+    "timestamp": "2026-01-30T13:05:00",
+    "activity": "Návrat z BNI GROW",
+    "category": "OUTREACH",
+    "energy": 9,
+    "note": "Master Adam returned from the BNI GROW debut. Initial market signal captured.",
+    "xp": 150
+  },
+  {
+    "timestamp": "2026-01-30T18:12:00",
+    "activity": "Odchod do kina",
+    "category": "STAMINA",
+    "energy": 9,
+    "note": "Leaving for the cinema (The Lord of the Rings: The Fellowship of the Ring). The marathon begins.",
+    "xp": 10
+  },
+  {
+    "timestamp": "2026-01-30T18:13:00",
+    "activity": "Zastávka u Karola",
+    "category": "SURVIVAL",
+    "energy": 8,
+    "note": "Brief visit to Karol's before his cinema engagement. Ensuring stability.",
+    "xp": 20
+  }
+]
