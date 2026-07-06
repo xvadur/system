@@ -1,58 +1,49 @@
 # xvadur.system
 
-Osobný systém na sledovanie života a práce — Astro web appka so slovenským UI.
+Osobný **read-only control panel** — Astro web so slovenským UI. Sidebar s tabmi,
+obsah v strede. Appka nič nezapisuje: zobrazuje markdown súbory z `data/`,
+zapisuje sa úpravou súborov v repe (Codex, editor...).
 
-## Moduly
+## Taby
 
-| Stránka | Čo robí |
+| Tab | Čo zobrazuje |
 |---|---|
-| **Prehľad** (`/`) | Štatistiky za posledných 7 dní (kalórie, spánok, cvičenie, meditácia), stav projektov, posledné poznámky |
-| **Denník** (`/dennik`) | Denný záznam: kalórie, spánok, cvičenie, meditácia, poznámka k dňu + história |
-| **Poznámky** (`/poznamky`) | Markdown poznámky s tagmi a fulltextovým vyhľadávaním |
-| **Projekty** (`/projekty`) | Jakub a Netopier — ďalší krok, work log odpracovaného času |
+| **Prehľad** | Štatistiky za 7 dní (kalórie, spánok, cvičenie, meditácia), dnešný deň, projekty, posledné poznámky |
+| **Denník** | Všetky denné záznamy — metriky ako chipy + voľný text dňa |
+| **Poznámky** | Markdown poznámky s tagmi a klientským filtrovaním |
+| **Jakub / Netopier** | Každý projekt ako živý dokument: status, ďalší krok, log práce |
 
-## Dáta
-
-Všetko sa ukladá ako obyčajné súbory v `data/` — žiadna databáza, plná kontrola, história cez git:
+## Dáta = markdown súbory
 
 ```
 data/
-├── dennik/2026-07-06.json     # jeden JSON na deň
-├── poznamky/*.md              # Markdown s frontmatterom (nazov, datum, tagy)
-├── projekty/*.md              # Markdown s frontmatterom (nazov, status, dalsi_krok)
-└── worklog.json               # záznamy o práci na projektoch
+├── dennik/
+│   ├── _sablona.md            # skopíruj ako RRRR-MM-DD.md
+│   └── 2026-07-06.md          # frontmatter: kalorie, spanok, cvicenie, meditacia + voľný text
+├── poznamky/*.md              # frontmatter: nazov, datum, tagy
+└── projekty/
+    ├── jakub.md               # frontmatter: nazov, status, dalsi_krok + ## Log
+    └── netopier.md
 ```
 
-Zapísané dáta commitni, keď ich chceš mať zálohované:
+Súbory začínajúce `_` sa nezobrazujú (šablóny, koncepty).
+
+Zápis = úprava súboru + commit:
 
 ```sh
-git add data && git commit -m "denník" && git push
+git add data && git commit -m "denník 2026-07-06" && git push
 ```
 
 ## Spustenie
 
 ```sh
 npm install
-npm run dev        # http://localhost:4321
+npm run dev        # http://localhost:4321 — číta data/ naživo
 ```
 
-Produkčný build (Node server):
+## Deploy (Cloudflare / xvadur.com)
 
-```sh
-npm run build
-npm start
-```
-
-## Deploy na Cloudflare (xvadur.com)
-
-Appka beží v server móde cez `@astrojs/node`. Pre Cloudflare Pages/Workers vymeň adaptér:
-
-```sh
-npm install @astrojs/cloudflare
-```
-
-a v `astro.config.mjs` nahraď `node(...)` za `cloudflare()`. Pozor: na Cloudflare
-nie je zapisovateľný filesystem — formuláre tam fungovať nebudú, kým sa úložisko
-neprepne na KV/D1/R2 alebo kým sa zápis nerieši cez git (napr. GitHub API).
-Odporúčaný postup: lokálne zapisuješ, commituješ, a Cloudflare slúži ako read-only
-dashboard z posledného commitu.
+Appka je čisto statická — `npm run build` vygeneruje `dist/`, ktorý sa dá
+nasadiť na Cloudflare Pages bez adaptéra a bez servera. Panel vždy zobrazuje
+stav z posledného buildu/commitu; po pushi nových dát stačí rebuild
+(Cloudflare Pages to pri napojení na repo robí automaticky).

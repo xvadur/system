@@ -4,12 +4,15 @@ datum: 2026-07-06
 tagy: systém
 ---
 
-Toto je tvoja prvá poznámka. Poznámky sa ukladajú ako Markdown súbory v `data/poznamky/`,
-takže ich máš navždy vo vlastných rukách — verzované v gite.
+Toto je read-only control panel — appka len **zobrazuje** to, čo je v `data/`.
+Zapisuješ úpravou súborov (Codex, editor, čokoľvek) a commitom do repa.
 
-Čo tu vieš robiť:
+## Ako zapisovať
 
-- **Denník** — každý deň si zapíšeš kalórie, spánok, cvičenie a meditáciu.
-- **Poznámky** — čokoľvek, s tagmi a vyhľadávaním.
-- **Projekty** — Jakub a Netopier: ďalší krok + work log odpracovaného času.
-- **Prehľad** — štatistiky za posledných 7 dní.
+- **Denník** — nový deň = nový súbor `data/dennik/RRRR-MM-DD.md` (skopíruj `_sablona.md`).
+  Vo frontmatteri metriky (kalórie, spánok, cvičenie, meditácia), pod ním voľný text.
+- **Poznámky** — nový súbor `data/poznamky/nieco.md` s frontmatterom `nazov`, `datum`, `tagy`.
+- **Projekty** — `data/projekty/jakub.md` a `netopier.md` sú živé dokumenty:
+  vo frontmatteri `status` a `dalsi_krok`, do sekcie `## Log` píš, na čom si robil.
+
+Súbory začínajúce podčiarkovníkom (`_sablona.md`) sa v paneli nezobrazujú.

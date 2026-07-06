@@ -1,65 +1,33 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { readPoznamky, writePoznamka } from '../../lib/data.js';
+import { readPoznamky } from '../../lib/data.js';
 
-if (Astro.request.method === 'POST') {
-  const form = await Astro.request.formData();
-  const nazov = String(form.get('nazov') ?? '').trim();
-  if (nazov) {
-    writePoznamka({
-      nazov,
-      tagy: String(form.get('tagy') ?? '').trim(),
-      body: String(form.get('body') ?? '').trim(),
-    });
-  }
-  return Astro.redirect('/poznamky');
-}
-
-const hladat = (Astro.url.searchParams.get('q') ?? '').toLowerCase();
-const vsetky = readPoznamky();
-const poznamky = hladat
-  ? vsetky.filter(
-      (p) =>
-        p.nazov.toLowerCase().includes(hladat) ||
-        p.body.toLowerCase().includes(hladat) ||
-        p.tagy.some((t) => t.toLowerCase().includes(hladat))
-    )
-  : vsetky;
+const poznamky = readPoznamky();
 ---
 
 <Layout title="Poznámky">
-  <h1>Poznámky</h1>
+  <h1>Poznámky <span class="muted">· {poznamky.length}</span></h1>
 
-  <h2>Nová poznámka</h2>
-  <form class="formular panel" method="post">
-    <div class="riadok">
-      <label>
-        Názov
-        <input type="text" name="nazov" required placeholder="O čom to je" />
-      </label>
-      <label>
-        Tagy (oddelené čiarkou)
-        <input type="text" name="tagy" placeholder="napr. netopier, nápad" />
-      </label>
-    </div>
-    <label>
-      Text (Markdown)
-      <textarea name="body" rows="6" placeholder="Píš..."></textarea>
-    </label>
-    <button type="submit">Uložiť poznámku</button>
-  </form>
-
-  <h2>Všetky poznámky ({poznamky.length})</h2>
-  <form method="get" style="margin-bottom:0.8rem;">
-    <input type="search" name="q" value={hladat} placeholder="Hľadať v poznámkach..." style="width:100%; max-width:24rem;" />
-  </form>
+  <input
+    type="search"
+    id="filter"
+    placeholder="Filtrovať poznámky..."
+    style="width:100%; max-width:24rem; background:var(--panel); border:1px solid var(--border); border-radius:8px; color:var(--text); padding:0.5rem 0.7rem; font:inherit; margin-bottom:1rem;"
+  />
 
   {poznamky.length === 0 ? (
-    <p class="prazdne">{hladat ? 'Nič sa nenašlo.' : 'Zatiaľ žiadne poznámky.'}</p>
+    <p class="panel prazdne">
+      Zatiaľ žiadne poznámky. Nová poznámka = nový súbor <code>data/poznamky/nazov.md</code>.
+    </p>
   ) : (
-    <div class="mriezka">
+    <div class="mriezka" id="zoznam">
       {poznamky.map((p) => (
-        <a href={`/poznamky/${p.slug}`} class="panel" style="text-decoration:none; color:inherit;">
+        <a
+          href={`/poznamky/${p.slug}`}
+          class="panel poznamka"
+          style="text-decoration:none; color:inherit;"
+          data-text={`${p.nazov} ${p.tagy.join(' ')} ${p.body}`.toLowerCase()}
+        >
           <strong>{p.nazov}</strong>
           <div class="muted" style="font-size:0.82rem; margin:0.2rem 0 0.4rem;">{p.datum}</div>
           <div>{p.tagy.map((t) => <span class="tag">{t}</span>)}</div>
@@ -67,4 +35,14 @@ const poznamky = hladat
       ))}
     </div>
   )}
+
+  <script>
+    const filter = document.getElementById('filter');
+    filter?.addEventListener('input', () => {
+      const q = filter.value.toLowerCase().trim();
+      for (const el of document.querySelectorAll('.poznamka')) {
+        el.style.display = !q || el.dataset.text.includes(q) ? '' : 'none';
+      }
+    });
+  </script>
 </Layout>

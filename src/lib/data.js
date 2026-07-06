@@ -9,29 +9,21 @@ const DIRS = {
   projekty: path.join(ROOT, 'projekty'),
 };
 
-function ensureDir(dir) {
-  fs.mkdirSync(dir, { recursive: true });
+// Súbory začínajúce _ sú šablóny/koncepty — nezobrazujú sa.
+function mdSubory(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter((f) => f.endsWith('.md') && !f.startsWith('_'));
 }
 
 export function dnes() {
   return new Date().toISOString().slice(0, 10);
 }
 
-export function slugify(text) {
-  return text
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 60) || 'zaznam';
-}
-
-// ---------- frontmatter (title: value riadky medzi --- oddeľovačmi) ----------
+// ---------- frontmatter (kluc: hodnota riadky medzi --- oddeľovačmi) ----------
 
 export function parseFrontmatter(raw) {
   const match = /^---\n([\s\S]*?)\n---\n?([\s\S]*)$/.exec(raw);
-  if (!match) return { meta: {}, body: raw };
+  if (!match) return { meta: {}, body: raw.trim() };
   const meta = {};
   for (const line of match[1].split('\n')) {
     const idx = line.indexOf(':');
@@ -41,43 +33,35 @@ export function parseFrontmatter(raw) {
   return { meta, body: match[2].trim() };
 }
 
-export function serializeFrontmatter(meta, body) {
-  const lines = Object.entries(meta)
-    .filter(([, v]) => v !== undefined && v !== null && String(v).trim() !== '')
-    .map(([k, v]) => `${k}: ${String(v).replace(/\n/g, ' ')}`);
-  return `---\n${lines.join('\n')}\n---\n\n${body.trim()}\n`;
-}
+const cislo = (v) => {
+  if (v === undefined || v === null || String(v).trim() === '') return null;
+  const n = Number(String(v).replace(',', '.'));
+  return Number.isNaN(n) ? null : n;
+};
 
-// ---------- denník ----------
+// ---------- denník: data/dennik/RRRR-MM-DD.md ----------
 
 export function readDennik() {
-  ensureDir(DIRS.dennik);
-  return fs
-    .readdirSync(DIRS.dennik)
-    .filter((f) => f.endsWith('.json'))
-    .map((f) => JSON.parse(fs.readFileSync(path.join(DIRS.dennik, f), 'utf8')))
+  return mdSubory(DIRS.dennik)
+    .map((f) => {
+      const raw = fs.readFileSync(path.join(DIRS.dennik, f), 'utf8');
+      const { meta, body } = parseFrontmatter(raw);
+      return {
+        datum: f.replace(/\.md$/, ''),
+        kalorie: cislo(meta.kalorie),
+        spanok: cislo(meta.spanok),
+        meditacia: cislo(meta.meditacia),
+        cvicenie: (meta.cvicenie || '').trim(),
+        body,
+      };
+    })
     .sort((a, b) => b.datum.localeCompare(a.datum));
 }
 
-export function readDennikDen(datum) {
-  const file = path.join(DIRS.dennik, `${datum}.json`);
-  if (!fs.existsSync(file)) return null;
-  return JSON.parse(fs.readFileSync(file, 'utf8'));
-}
-
-export function writeDennikDen(zaznam) {
-  ensureDir(DIRS.dennik);
-  const file = path.join(DIRS.dennik, `${zaznam.datum}.json`);
-  fs.writeFileSync(file, JSON.stringify(zaznam, null, 2) + '\n');
-}
-
-// ---------- poznámky ----------
+// ---------- poznámky: data/poznamky/*.md ----------
 
 export function readPoznamky() {
-  ensureDir(DIRS.poznamky);
-  return fs
-    .readdirSync(DIRS.poznamky)
-    .filter((f) => f.endsWith('.md'))
+  return mdSubory(DIRS.poznamky)
     .map((f) => {
       const raw = fs.readFileSync(path.join(DIRS.poznamky, f), 'utf8');
       const { meta, body } = parseFrontmatter(raw);
@@ -92,30 +76,10 @@ export function readPoznamky() {
     .sort((a, b) => b.datum.localeCompare(a.datum));
 }
 
-export function readPoznamka(slug) {
-  return readPoznamky().find((p) => p.slug === slug) ?? null;
-}
-
-export function writePoznamka({ nazov, tagy, body }) {
-  ensureDir(DIRS.poznamky);
-  const datum = dnes();
-  let slug = slugify(nazov);
-  let file = path.join(DIRS.poznamky, `${slug}.md`);
-  let i = 2;
-  while (fs.existsSync(file)) {
-    file = path.join(DIRS.poznamky, `${slug}-${i}.md`);
-    i += 1;
-  }
-  fs.writeFileSync(file, serializeFrontmatter({ nazov, datum, tagy }, body));
-}
-
-// ---------- projekty ----------
+// ---------- projekty: data/projekty/*.md ----------
 
 export function readProjekty() {
-  ensureDir(DIRS.projekty);
-  return fs
-    .readdirSync(DIRS.projekty)
-    .filter((f) => f.endsWith('.md'))
+  return mdSubory(DIRS.projekty)
     .map((f) => {
       const raw = fs.readFileSync(path.join(DIRS.projekty, f), 'utf8');
       const { meta, body } = parseFrontmatter(raw);
@@ -128,30 +92,4 @@ export function readProjekty() {
       };
     })
     .sort((a, b) => a.nazov.localeCompare(b.nazov));
-}
-
-export function writeProjektDalsiKrok(slug, dalsi_krok) {
-  const file = path.join(DIRS.projekty, `${slug}.md`);
-  if (!fs.existsSync(file)) return;
-  const { meta, body } = parseFrontmatter(fs.readFileSync(file, 'utf8'));
-  meta.dalsi_krok = dalsi_krok;
-  fs.writeFileSync(file, serializeFrontmatter(meta, body));
-}
-
-// ---------- work log ----------
-
-const WORKLOG = path.join(ROOT, 'worklog.json');
-
-export function readWorklog() {
-  if (!fs.existsSync(WORKLOG)) return [];
-  return JSON.parse(fs.readFileSync(WORKLOG, 'utf8')).sort((a, b) =>
-    b.datum.localeCompare(a.datum)
-  );
-}
-
-export function appendWorklog(zaznam) {
-  ensureDir(ROOT);
-  const log = fs.existsSync(WORKLOG) ? JSON.parse(fs.readFileSync(WORKLOG, 'utf8')) : [];
-  log.push(zaznam);
-  fs.writeFileSync(WORKLOG, JSON.stringify(log, null, 2) + '\n');
 }

@@ -1,12 +1,18 @@
 ---
+import { readProjekty } from '../lib/data.js';
+
 const { title = 'Systém' } = Astro.props;
-const nav = [
-  { href: '/', label: 'Prehľad' },
-  { href: '/dennik', label: 'Denník' },
-  { href: '/poznamky', label: 'Poznámky' },
-  { href: '/projekty', label: 'Projekty' },
+const projekty = readProjekty();
+const cesta = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const jeAktivny = (href) =>
+  href === '/' ? cesta === '/' : cesta === href || cesta.startsWith(href + '/');
+
+const taby = [
+  { href: '/', label: 'Prehľad', ikona: '◉' },
+  { href: '/dennik', label: 'Denník', ikona: '☰' },
+  { href: '/poznamky', label: 'Poznámky', ikona: '✎' },
 ];
-const cesta = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -17,16 +23,29 @@ const cesta = Astro.url.pathname;
     <title>{title} · xvadur</title>
   </head>
   <body>
-    <header>
-      <span class="logo">xvadur<span class="dot">.</span>system</span>
+    <aside>
+      <a class="logo" href="/">xvadur<span class="dot">.</span>system</a>
+
       <nav>
-        {nav.map((n) => (
-          <a href={n.href} class={cesta === n.href || (n.href !== '/' && cesta.startsWith(n.href)) ? 'aktivny' : ''}>
-            {n.label}
+        {taby.map((t) => (
+          <a href={t.href} class={jeAktivny(t.href) ? 'aktivny' : ''}>
+            <span class="ikona">{t.ikona}</span>
+            {t.label}
+          </a>
+        ))}
+
+        <div class="sekcia">Projekty</div>
+        {projekty.map((p) => (
+          <a href={`/projekty/${p.slug}`} class={jeAktivny(`/projekty/${p.slug}`) ? 'aktivny' : ''}>
+            <span class="ikona">▸</span>
+            {p.nazov}
           </a>
         ))}
       </nav>
-    </header>
+
+      <div class="paticka">read-only · zápis cez repo</div>
+    </aside>
+
     <main>
       <slot />
     </main>
@@ -36,45 +55,80 @@ const cesta = Astro.url.pathname;
 <style is:global>
   :root {
     --bg: #0e1113;
-    --panel: #171b1e;
-    --border: #262c30;
+    --sidebar: #12161a;
+    --panel: #171c20;
+    --border: #262c31;
     --text: #e6e3dc;
     --muted: #8a938f;
     --accent: #d9a441;
     --accent2: #6fae8f;
   }
   * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
   body {
-    margin: 0;
+    display: flex;
     background: var(--bg);
     color: var(--text);
     font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
     line-height: 1.55;
   }
-  header {
+
+  /* ---------- sidebar ---------- */
+  aside {
+    width: 230px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.1rem 0.8rem;
+    background: var(--sidebar);
+    border-right: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .logo {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.2rem 0.6rem;
+  }
+  .logo .dot { color: var(--accent); }
+  aside nav { display: flex; flex-direction: column; gap: 2px; }
+  aside nav a {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-    padding: 0.9rem 1.4rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .logo { font-weight: 700; letter-spacing: 0.02em; }
-  .logo .dot { color: var(--accent); }
-  nav { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-  nav a {
+    gap: 0.6rem;
     color: var(--muted);
     text-decoration: none;
-    padding: 0.35rem 0.75rem;
+    padding: 0.45rem 0.6rem;
     border-radius: 8px;
     font-size: 0.95rem;
   }
-  nav a:hover { color: var(--text); background: var(--panel); }
-  nav a.aktivny { color: var(--bg); background: var(--accent); font-weight: 600; }
-  main { max-width: 60rem; margin: 0 auto; padding: 1.6rem 1.4rem 4rem; }
-  h1 { font-size: 1.5rem; margin: 0 0 1rem; }
-  h2 { font-size: 1.1rem; margin: 2rem 0 0.7rem; color: var(--accent); }
+  aside nav a:hover { color: var(--text); background: var(--panel); }
+  aside nav a.aktivny { color: var(--text); background: var(--panel); border-left: 3px solid var(--accent); padding-left: calc(0.6rem - 3px); }
+  aside nav .ikona { color: var(--accent); width: 1.1rem; text-align: center; font-size: 0.85rem; }
+  aside nav .sekcia {
+    margin: 1rem 0 0.2rem;
+    padding: 0 0.6rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+  .paticka { margin-top: auto; padding: 0 0.6rem; font-size: 0.72rem; color: var(--muted); }
+
+  /* ---------- obsah ---------- */
+  main {
+    flex: 1;
+    min-width: 0;
+    padding: 1.8rem 2rem 4rem;
+    max-width: 62rem;
+  }
+  h1 { font-size: 1.45rem; margin: 0 0 1rem; }
+  h2 { font-size: 1.05rem; margin: 1.8rem 0 0.7rem; color: var(--accent); }
   a { color: var(--accent2); }
 
   .panel {
@@ -85,44 +139,16 @@ const cesta = Astro.url.pathname;
   }
   .mriezka {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     gap: 0.9rem;
   }
   .stat .cislo { font-size: 1.7rem; font-weight: 700; }
   .stat .popis { color: var(--muted); font-size: 0.85rem; }
 
-  form.formular { display: grid; gap: 0.8rem; }
-  form.formular .riadok {
-    display: grid;
-    gap: 0.8rem;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  }
-  label { display: grid; gap: 0.25rem; font-size: 0.85rem; color: var(--muted); }
-  input, textarea, select {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    padding: 0.5rem 0.65rem;
-    font: inherit;
-  }
-  input:focus, textarea:focus, select:focus { outline: 1px solid var(--accent); }
-  button {
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    border-radius: 8px;
-    padding: 0.55rem 1.1rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    justify-self: start;
-  }
-  button:hover { filter: brightness(1.1); }
-
   table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
   th, td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--border); }
-  th { color: var(--muted); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  th { color: var(--muted); font-weight: 500; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  tr:last-child td { border-bottom: none; }
 
   .tag {
     display: inline-block;
@@ -134,6 +160,43 @@ const cesta = Astro.url.pathname;
     color: var(--muted);
     margin-right: 0.3rem;
   }
+  .chip {
+    display: inline-flex;
+    gap: 0.35rem;
+    align-items: baseline;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin: 0 0.35rem 0.35rem 0;
+  }
+  .chip b { color: var(--text); }
   .muted { color: var(--muted); }
   .prazdne { color: var(--muted); font-style: italic; }
+
+  article.md :is(h1, h2, h3) { color: var(--text); }
+  article.md h1 { font-size: 1.25rem; }
+  article.md h2 { font-size: 1.1rem; color: var(--accent); margin: 1.4rem 0 0.5rem; }
+  article.md code { background: var(--bg); border: 1px solid var(--border); border-radius: 5px; padding: 0.05rem 0.35rem; font-size: 0.88em; }
+  article.md pre { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 0.8rem 1rem; overflow-x: auto; }
+  article.md pre code { border: none; padding: 0; }
+  article.md blockquote { border-left: 3px solid var(--accent); margin: 0.8rem 0; padding: 0.1rem 0 0.1rem 0.9rem; color: var(--muted); }
+
+  /* ---------- mobil ---------- */
+  @media (max-width: 760px) {
+    body { flex-direction: column; }
+    aside {
+      width: 100%;
+      height: auto;
+      position: static;
+      flex-direction: column;
+      padding: 0.8rem;
+    }
+    aside nav { flex-direction: row; flex-wrap: wrap; }
+    aside nav .sekcia { display: none; }
+    .paticka { display: none; }
+    main { padding: 1.2rem 1rem 3rem; }
+  }
 </style>

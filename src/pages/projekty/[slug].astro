@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { marked } from 'marked';
+import { readProjekty } from '../../lib/data.js';
+
+export function getStaticPaths() {
+  return readProjekty().map((p) => ({ params: { slug: p.slug }, props: { projekt: p } }));
+}
+
+const { projekt } = Astro.props;
+const html = marked.parse(projekt.body);
+---
+
+<Layout title={projekt.nazov}>
+  <h1>{projekt.nazov} <span class="tag" style="vertical-align:middle;">{projekt.status}</span></h1>
+
+  <div class="panel" style="margin-bottom:1rem;">
+    <span class="muted" style="font-size:0.82rem;">Ďalší krok</span>
+    <p style="margin:0.2rem 0 0; font-size:1.05rem;">
+      {projekt.dalsi_krok || <span class="prazdne">nezadaný — doplň `dalsi_krok` vo frontmatteri</span>}
+    </p>
+  </div>
+
+  <article class="md panel" set:html={html} />
+
+  <p class="muted" style="font-size:0.8rem;">
+    Dokument: <code>data/projekty/{projekt.slug}.md</code>
+  </p>
+</Layout>
