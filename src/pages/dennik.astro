@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { readDennik, readDennikDen, writeDennikDen, dnes } from '../lib/data.js';
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  const cislo = (k) => {
+    const v = String(form.get(k) ?? '').trim();
+    return v === '' ? null : Number(v);
+  };
+  writeDennikDen({
+    datum: String(form.get('datum') || dnes()),
+    kalorie: cislo('kalorie'),
+    spanok: cislo('spanok'),
+    cvicenie: String(form.get('cvicenie') ?? '').trim(),
+    meditacia: cislo('meditacia'),
+    poznamka: String(form.get('poznamka') ?? '').trim(),
+  });
+  return Astro.redirect('/dennik');
+}
+
+const datum = dnes();
+const dnesny = readDennikDen(datum);
+const historia = readDennik();
+---
+
+<Layout title="Denník">
+  <h1>Denník</h1>
+
+  <h2>{dnesny ? 'Upraviť dnešný záznam' : 'Zapísať dnešný deň'}</h2>
+  <form class="formular panel" method="post">
+    <div class="riadok">
+      <label>
+        Dátum
+        <input type="date" name="datum" value={datum} required />
+      </label>
+      <label>
+        Kalórie (kcal)
+        <input type="number" name="kalorie" min="0" step="1" value={dnesny?.kalorie ?? ''} placeholder="napr. 2400" />
+      </label>
+      <label>
+        Spánok (hodiny)
+        <input type="number" name="spanok" min="0" max="24" step="0.5" value={dnesny?.spanok ?? ''} placeholder="napr. 7.5" />
+      </label>
+      <label>
+        Meditácia (minúty)
+        <input type="number" name="meditacia" min="0" step="1" value={dnesny?.meditacia ?? ''} placeholder="napr. 20" />
+      </label>
+    </div>
+    <label>
+      Cvičenie (čo si cvičil — prázdne = necvičil)
+      <input type="text" name="cvicenie" value={dnesny?.cvicenie ?? ''} placeholder="napr. silový tréning 45 min" />
+    </label>
+    <label>
+      Poznámka k dňu
+      <textarea name="poznamka" rows="3" placeholder="ako sa darilo...">{dnesny?.poznamka ?? ''}</textarea>
+    </label>
+    <button type="submit">Uložiť deň</button>
+  </form>
+
+  <h2>História</h2>
+  {historia.length === 0 ? (
+    <p class="prazdne">Zatiaľ žiadne záznamy.</p>
+  ) : (
+    <div class="panel" style="overflow-x:auto; padding:0.4rem 0.6rem;">
+      <table>
+        <thead>
+          <tr>
+            <th>Dátum</th>
+            <th>Kalórie</th>
+            <th>Spánok</th>
+            <th>Cvičenie</th>
+            <th>Meditácia</th>
+            <th>Poznámka</th>
+          </tr>
+        </thead>
+        <tbody>
+          {historia.map((z) => (
+            <tr>
+              <td>{z.datum}</td>
+              <td>{z.kalorie ?? '—'}</td>
+              <td>{z.spanok != null ? `${z.spanok} h` : '—'}</td>
+              <td>{z.cvicenie || '—'}</td>
+              <td>{z.meditacia != null ? `${z.meditacia} min` : '—'}</td>
+              <td class="muted">{z.poznamka || ''}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+</Layout>

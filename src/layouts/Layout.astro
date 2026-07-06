@@ -1,0 +1,139 @@
+---
+const { title = 'Systém' } = Astro.props;
+const nav = [
+  { href: '/', label: 'Prehľad' },
+  { href: '/dennik', label: 'Denník' },
+  { href: '/poznamky', label: 'Poznámky' },
+  { href: '/projekty', label: 'Projekty' },
+];
+const cesta = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="sk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · xvadur</title>
+  </head>
+  <body>
+    <header>
+      <span class="logo">xvadur<span class="dot">.</span>system</span>
+      <nav>
+        {nav.map((n) => (
+          <a href={n.href} class={cesta === n.href || (n.href !== '/' && cesta.startsWith(n.href)) ? 'aktivny' : ''}>
+            {n.label}
+          </a>
+        ))}
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #0e1113;
+    --panel: #171b1e;
+    --border: #262c30;
+    --text: #e6e3dc;
+    --muted: #8a938f;
+    --accent: #d9a441;
+    --accent2: #6fae8f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+    line-height: 1.55;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.9rem 1.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .logo { font-weight: 700; letter-spacing: 0.02em; }
+  .logo .dot { color: var(--accent); }
+  nav { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+  nav a:hover { color: var(--text); background: var(--panel); }
+  nav a.aktivny { color: var(--bg); background: var(--accent); font-weight: 600; }
+  main { max-width: 60rem; margin: 0 auto; padding: 1.6rem 1.4rem 4rem; }
+  h1 { font-size: 1.5rem; margin: 0 0 1rem; }
+  h2 { font-size: 1.1rem; margin: 2rem 0 0.7rem; color: var(--accent); }
+  a { color: var(--accent2); }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+  }
+  .mriezka {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 0.9rem;
+  }
+  .stat .cislo { font-size: 1.7rem; font-weight: 700; }
+  .stat .popis { color: var(--muted); font-size: 0.85rem; }
+
+  form.formular { display: grid; gap: 0.8rem; }
+  form.formular .riadok {
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+  label { display: grid; gap: 0.25rem; font-size: 0.85rem; color: var(--muted); }
+  input, textarea, select {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    padding: 0.5rem 0.65rem;
+    font: inherit;
+  }
+  input:focus, textarea:focus, select:focus { outline: 1px solid var(--accent); }
+  button {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: 8px;
+    padding: 0.55rem 1.1rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    justify-self: start;
+  }
+  button:hover { filter: brightness(1.1); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .tag {
+    display: inline-block;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.1rem 0.6rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-right: 0.3rem;
+  }
+  .muted { color: var(--muted); }
+  .prazdne { color: var(--muted); font-style: italic; }
+</style>

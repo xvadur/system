@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { readPoznamky, writePoznamka } from '../../lib/data.js';
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  const nazov = String(form.get('nazov') ?? '').trim();
+  if (nazov) {
+    writePoznamka({
+      nazov,
+      tagy: String(form.get('tagy') ?? '').trim(),
+      body: String(form.get('body') ?? '').trim(),
+    });
+  }
+  return Astro.redirect('/poznamky');
+}
+
+const hladat = (Astro.url.searchParams.get('q') ?? '').toLowerCase();
+const vsetky = readPoznamky();
+const poznamky = hladat
+  ? vsetky.filter(
+      (p) =>
+        p.nazov.toLowerCase().includes(hladat) ||
+        p.body.toLowerCase().includes(hladat) ||
+        p.tagy.some((t) => t.toLowerCase().includes(hladat))
+    )
+  : vsetky;
+---
+
+<Layout title="Poznámky">
+  <h1>Poznámky</h1>
+
+  <h2>Nová poznámka</h2>
+  <form class="formular panel" method="post">
+    <div class="riadok">
+      <label>
+        Názov
+        <input type="text" name="nazov" required placeholder="O čom to je" />
+      </label>
+      <label>
+        Tagy (oddelené čiarkou)
+        <input type="text" name="tagy" placeholder="napr. netopier, nápad" />
+      </label>
+    </div>
+    <label>
+      Text (Markdown)
+      <textarea name="body" rows="6" placeholder="Píš..."></textarea>
+    </label>
+    <button type="submit">Uložiť poznámku</button>
+  </form>
+
+  <h2>Všetky poznámky ({poznamky.length})</h2>
+  <form method="get" style="margin-bottom:0.8rem;">
+    <input type="search" name="q" value={hladat} placeholder="Hľadať v poznámkach..." style="width:100%; max-width:24rem;" />
+  </form>
+
+  {poznamky.length === 0 ? (
+    <p class="prazdne">{hladat ? 'Nič sa nenašlo.' : 'Zatiaľ žiadne poznámky.'}</p>
+  ) : (
+    <div class="mriezka">
+      {poznamky.map((p) => (
+        <a href={`/poznamky/${p.slug}`} class="panel" style="text-decoration:none; color:inherit;">
+          <strong>{p.nazov}</strong>
+          <div class="muted" style="font-size:0.82rem; margin:0.2rem 0 0.4rem;">{p.datum}</div>
+          <div>{p.tagy.map((t) => <span class="tag">{t}</span>)}</div>
+        </a>
+      ))}
+    </div>
+  )}
+</Layout>

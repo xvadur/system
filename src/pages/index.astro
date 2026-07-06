@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { readDennik, readDennikDen, readProjekty, readWorklog, readPoznamky, dnes } from '../lib/data.js';
+
+const datum = dnes();
+const dnesnyZaznam = readDennikDen(datum);
+const dennik = readDennik();
+const projekty = readProjekty();
+const worklog = readWorklog();
+const poznamky = readPoznamky();
+
+const poslednych7 = dennik.slice(0, 7);
+const priemer = (pole) => {
+  const cisla = pole.filter((x) => typeof x === 'number' && !Number.isNaN(x));
+  return cisla.length ? Math.round((cisla.reduce((a, b) => a + b, 0) / cisla.length) * 10) / 10 : null;
+};
+const priemerKalorie = priemer(poslednych7.map((z) => z.kalorie));
+const priemerSpanok = priemer(poslednych7.map((z) => z.spanok));
+const meditacieTyzden = poslednych7.filter((z) => z.meditacia > 0).length;
+const cviceniaTyzden = poslednych7.filter((z) => z.cvicenie && z.cvicenie.trim()).length;
+
+const worklogTyzden = worklog.filter((w) => {
+  const rozdiel = (new Date(datum) - new Date(w.datum)) / 86400000;
+  return rozdiel >= 0 && rozdiel < 7;
+});
+const minutyNaProjekt = {};
+for (const w of worklogTyzden) {
+  minutyNaProjekt[w.projekt] = (minutyNaProjekt[w.projekt] || 0) + (w.minuty || 0);
+}
+---
+
+<Layout title="Prehľad">
+  <h1>Prehľad · {datum}</h1>
+
+  {!dnesnyZaznam && (
+    <p class="panel">
+      Dnes ešte nemáš záznam v denníku — <a href="/dennik">zapíš si deň</a>.
+    </p>
+  )}
+
+  <h2>Posledných 7 dní</h2>
+  <div class="mriezka">
+    <div class="panel stat">
+      <div class="cislo">{priemerKalorie ?? '—'}</div>
+      <div class="popis">priemer kalórií / deň</div>
+    </div>
+    <div class="panel stat">
+      <div class="cislo">{priemerSpanok ?? '—'} h</div>
+      <div class="popis">priemer spánku</div>
+    </div>
+    <div class="panel stat">
+      <div class="cislo">{cviceniaTyzden} / 7</div>
+      <div class="popis">dní s cvičením</div>
+    </div>
+    <div class="panel stat">
+      <div class="cislo">{meditacieTyzden} / 7</div>
+      <div class="popis">dní s meditáciou</div>
+    </div>
+  </div>
+
+  <h2>Projekty</h2>
+  <div class="mriezka">
+    {projekty.map((p) => (
+      <div class="panel">
+        <strong>{p.nazov}</strong>
+        <span class="tag">{p.status}</span>
+        <p class="muted" style="margin:0.4rem 0 0.2rem; font-size:0.85rem;">Ďalší krok:</p>
+        <p style="margin:0;">{p.dalsi_krok || <span class="prazdne">nezadaný</span>}</p>
+        <p class="muted" style="margin:0.5rem 0 0; font-size:0.85rem;">
+          Tento týždeň: {Math.round(((minutyNaProjekt[p.nazov] || 0) / 60) * 10) / 10} h
+        </p>
+      </div>
+    ))}
+  </div>
+
+  <h2>Posledné poznámky</h2>
+  {poznamky.length === 0 ? (
+    <p class="prazdne">Zatiaľ žiadne poznámky.</p>
+  ) : (
+    <ul style="margin:0; padding-left:1.2rem;">
+      {poznamky.slice(0, 5).map((p) => (
+        <li>
+          <a href={`/poznamky/${p.slug}`}>{p.nazov}</a>
+          <span class="muted"> · {p.datum}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+</Layout>

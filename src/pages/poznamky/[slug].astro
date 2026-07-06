@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { marked } from 'marked';
+import { readPoznamka } from '../../lib/data.js';
+
+const { slug } = Astro.params;
+const poznamka = readPoznamka(slug);
+if (!poznamka) return Astro.redirect('/poznamky');
+const html = marked.parse(poznamka.body);
+---
+
+<Layout title={poznamka.nazov}>
+  <p><a href="/poznamky">← všetky poznámky</a></p>
+  <h1>{poznamka.nazov}</h1>
+  <p class="muted">
+    {poznamka.datum}
+    {poznamka.tagy.map((t) => <span class="tag">{t}</span>)}
+  </p>
+  <article class="panel" set:html={html} />
+</Layout>
