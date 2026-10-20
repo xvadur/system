@@ -1,0 +1,28 @@
+---
+import Catalog from '../components/Catalog.tsx';
+import '@xvadur/ui/tokens.css';
+import '@xvadur/ui/fonts.css';
+import '@xvadur/ui/styles.css';
+import '../styles.css';
+import pkg from '../../package.json';
+---
+<!doctype html>
+<html lang="sk" data-theme="light" data-material="flat">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="description" content="Živý katalóg zdieľaných komponentov, tokenov a verzií XVADUR." />
+    <title>XVADUR / UI — komponenty a verzie</title>
+    <script is:inline>
+      try {
+        const choice = localStorage.getItem('xvadur-ui-theme');
+        document.documentElement.dataset.theme = choice === 'dark' || (choice !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      } catch { document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Preskočiť na komponenty</a>
+    <Catalog version={pkg.version} client:load />
+  </body>
+</html>

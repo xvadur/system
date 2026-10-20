@@ -1,0 +1,24 @@
+/* Import after design-tokens.css when integrating into Tailwind 4. */
+@theme inline {
+  --color-xv-bg: var(--xv-bg);
+  --color-xv-surface: var(--xv-surface);
+  --color-xv-recess: var(--xv-recess);
+  --color-xv-text: var(--xv-text);
+  --color-xv-muted: var(--xv-muted);
+  --color-xv-line: var(--xv-line);
+  --color-xv-accent: var(--xv-accent);
+  --color-xv-on-accent: var(--xv-on-accent);
+  --color-xv-focus: var(--xv-focus);
+  --color-xv-success: var(--xv-success);
+  --color-xv-warning: var(--xv-warning);
+  --color-xv-danger: var(--xv-danger);
+  --font-xv: var(--xv-font);
+  --font-xv-editorial: var(--xv-font-editorial);
+  --radius-xv-input: var(--xv-radius-input);
+  --radius-xv-card: var(--xv-radius-card);
+  --radius-xv-dialog: var(--xv-radius-dialog);
+  --shadow-xv-card: var(--xv-shadow-card);
+  --shadow-xv-dialog: var(--xv-shadow-dialog);
+  --ease-xv: var(--xv-ease);
+  --breakpoint-xv-mobile: 43.75rem;
+}

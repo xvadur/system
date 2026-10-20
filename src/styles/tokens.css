@@ -1,0 +1,185 @@
+/* XVADUR — working token set, version 0.1.0.
+   Initial values come from the earlier preview; visual approval is separate from code versioning. */
+:root {
+  --xv-ink: #151513;
+  --xv-paper: #f0eee5;
+  --xv-orange: #ff4b24;
+  --xv-world-hriech: #181519;
+  --xv-world-hriech-label: #ef91a8;
+  --xv-world-korpus: #e4e3da;
+  --xv-world-client: #272b24;
+  --xv-world-next: #111513;
+  --xv-light-bg: #f0eee5;
+  --xv-light-surface: #fffdf8;
+  --xv-light-recess: #e6e3da;
+  --xv-light-text: #151513;
+  --xv-light-muted: #575b50;
+  --xv-light-faint: #5c6056;
+  --xv-light-line: #b9bbae;
+  --xv-light-control-line: #777d70;
+  --xv-light-link: #98290f;
+  --xv-light-focus: #b83211;
+  --xv-light-success: #236331;
+  --xv-light-warning: #7c4a06;
+  --xv-light-danger: #9d2828;
+  --xv-dark-bg: #151513;
+  --xv-dark-surface: #252720;
+  --xv-dark-recess: #10120f;
+  --xv-dark-text: #f0eee5;
+  --xv-dark-muted: #c1c3b5;
+  --xv-dark-faint: #b1b4a5;
+  --xv-dark-line: #555b4b;
+  --xv-dark-control-line: #909780;
+  --xv-dark-link: #ff9b7e;
+  --xv-dark-focus: #ff9b7e;
+  --xv-dark-success: #a8dfb4;
+  --xv-dark-warning: #f2cd8b;
+  --xv-dark-danger: #ffb2ab;
+  --xv-bg: var(--xv-light-bg);
+  --xv-surface: var(--xv-light-surface);
+  --xv-recess: var(--xv-light-recess);
+  --xv-text: var(--xv-light-text);
+  --xv-muted: var(--xv-light-muted);
+  --xv-faint: var(--xv-light-faint);
+  --xv-line: var(--xv-light-line);
+  --xv-control-line: var(--xv-light-control-line);
+  --xv-link: var(--xv-light-link);
+  --xv-focus: var(--xv-light-focus);
+  --xv-success: var(--xv-light-success);
+  --xv-warning: var(--xv-light-warning);
+  --xv-danger: var(--xv-light-danger);
+  --xv-accent: var(--xv-orange);
+  --xv-on-accent: var(--xv-ink);
+  --xv-accent-edge: #a72c10;
+  --xv-overlay: #0b0b0bc9;
+  --xv-font: 'Geist', Arial, sans-serif;
+  --xv-font-editorial: 'Instrument', Georgia, serif;
+  --xv-space-1: 4px;
+  --xv-space-2: 8px;
+  --xv-space-3: 12px;
+  --xv-space-4: 16px;
+  --xv-space-5: 20px;
+  --xv-space-6: 24px;
+  --xv-space-8: 32px;
+  --xv-space-10: 40px;
+  --xv-space-12: 48px;
+  --xv-space-16: 64px;
+  --xv-space-20: 80px;
+  --xv-space-24: 96px;
+  --xv-space-32: 128px;
+  --xv-radius-label: 2px;
+  --xv-radius-input: 8px;
+  --xv-radius-card: 16px;
+  --xv-radius-card-mobile: 13px;
+  --xv-radius-dialog: 18px;
+  --xv-radius-pill: 999px;
+  --xv-target: 44px;
+  --xv-input-height: 54px;
+  --xv-dialog-width: 600px;
+  --xv-content-width: 1280px;
+  --xv-reading-width: 720px;
+  --xv-gutter: 34px;
+  --xv-gutter-mobile: 20px;
+  --xv-gutter-min: 16px;
+  --xv-hero-height: 850px;
+  --xv-hero-height-mobile: 960px;
+  --xv-topbar-height: 77px;
+  --xv-topbar-height-mobile: 74px;
+  --xv-type-display: clamp(80px, 24.9vw, 360px);
+  --xv-type-title: clamp(36px, 5.2vw, 72px);
+  --xv-type-section: clamp(30px, 4vw, 52px);
+  --xv-type-heading: 25px;
+  --xv-type-lede: 20px;
+  --xv-type-body: 16px;
+  --xv-type-small: 14px;
+  --xv-type-caption: 12px;
+  --xv-type-micro: 9px;
+  --xv-leading-tight: 1.03;
+  --xv-leading-body: 1.65;
+  --xv-leading-reading: 1.75;
+  --xv-shadow-card: 0 15px 50px #0003;
+  --xv-shadow-card-hover: 0 18px 55px #0005;
+  --xv-shadow-artifact: 0 14px 35px #0006;
+  --xv-shadow-dialog: 0 30px 120px #0008;
+  --xv-ease: cubic-bezier(.2, .75, .2, 1);
+  --xv-motion-press: 120ms;
+  --xv-motion-hover: 350ms;
+  --xv-motion-menu: 260ms;
+  --xv-motion-sheet: 420ms;
+  --xv-motion-arrival: 900ms;
+  --xv-motion-letter: 1100ms;
+  --xv-motion-artifact: 1300ms;
+  --xv-motion-number: 900ms;
+  --xv-motion-reduced: 120ms;
+  --xv-layer-content: 1;
+  --xv-layer-hero-title: 3;
+  --xv-layer-action: 5;
+  --xv-layer-nav: 9;
+  --xv-layer-toast: 30;
+  color-scheme: light;
+}
+[data-theme='light'] {
+  --xv-bg: var(--xv-light-bg);
+  --xv-surface: var(--xv-light-surface);
+  --xv-recess: var(--xv-light-recess);
+  --xv-text: var(--xv-light-text);
+  --xv-muted: var(--xv-light-muted);
+  --xv-faint: var(--xv-light-faint);
+  --xv-line: var(--xv-light-line);
+  --xv-control-line: var(--xv-light-control-line);
+  --xv-link: var(--xv-light-link);
+  --xv-focus: var(--xv-light-focus);
+  --xv-success: var(--xv-light-success);
+  --xv-warning: var(--xv-light-warning);
+  --xv-danger: var(--xv-light-danger);
+  color-scheme: light;
+}
+[data-theme='dark'] {
+  --xv-bg: var(--xv-dark-bg);
+  --xv-surface: var(--xv-dark-surface);
+  --xv-recess: var(--xv-dark-recess);
+  --xv-text: var(--xv-dark-text);
+  --xv-muted: var(--xv-dark-muted);
+  --xv-faint: var(--xv-dark-faint);
+  --xv-line: var(--xv-dark-line);
+  --xv-control-line: var(--xv-dark-control-line);
+  --xv-link: var(--xv-dark-link);
+  --xv-focus: var(--xv-dark-focus);
+  --xv-success: var(--xv-dark-success);
+  --xv-warning: var(--xv-dark-warning);
+  --xv-danger: var(--xv-dark-danger);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --xv-bg: var(--xv-dark-bg);
+    --xv-surface: var(--xv-dark-surface);
+    --xv-recess: var(--xv-dark-recess);
+    --xv-text: var(--xv-dark-text);
+    --xv-muted: var(--xv-dark-muted);
+    --xv-faint: var(--xv-dark-faint);
+    --xv-line: var(--xv-dark-line);
+    --xv-control-line: var(--xv-dark-control-line);
+    --xv-link: var(--xv-dark-link);
+    --xv-focus: var(--xv-dark-focus);
+    --xv-success: var(--xv-dark-success);
+    --xv-warning: var(--xv-dark-warning);
+    --xv-danger: var(--xv-dark-danger);
+    color-scheme: dark;
+  }
+}
+@media (max-width: 700px) {
+  :root { --xv-gutter: var(--xv-gutter-mobile); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --xv-motion-press: 0ms;
+    --xv-motion-hover: 0ms;
+    --xv-motion-menu: 0ms;
+    --xv-motion-sheet: 0ms;
+    --xv-motion-arrival: 0ms;
+    --xv-motion-letter: 0ms;
+    --xv-motion-artifact: 0ms;
+    --xv-motion-number: 0ms;
+  }
+}

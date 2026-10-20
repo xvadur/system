@@ -1,0 +1,38 @@
+name: Check design system
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+      - run: npm pack
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xvadur-ui-package
+          path: '*.tgz'
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xvadur-ui-catalog
+          path: catalog-dist/
+          if-no-files-found: error

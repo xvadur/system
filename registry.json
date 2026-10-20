@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "components": [
+    {
+      "name": "Button",
+      "id": "button",
+      "category": "Akcie",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/primitives.tsx",
+      "description": "Tlačidlo pre akciu. Zakázaný a načítavací stav sú súčasťou komponentu.",
+      "example": "<Button variant=\"primary\">Uložiť zmenu</Button>"
+    },
+    {
+      "name": "ActionLink",
+      "id": "action-link",
+      "category": "Akcie",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/primitives.tsx",
+      "description": "Odkaz pre navigáciu s rovnakými rozmermi ako tlačidlo.",
+      "example": "<ActionLink href=\"/projekty/\">Preskúmať projekty</ActionLink>"
+    },
+    {
+      "name": "TextField",
+      "id": "text-field",
+      "category": "Formuláre",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/fields.tsx",
+      "description": "Textové pole s prepojeným názvom, pomocným textom a chybou.",
+      "example": "<TextField label=\"E-mail\" type=\"email\" description=\"Kam sa ti ozveme.\" required />"
+    },
+    {
+      "name": "TextArea",
+      "id": "text-area",
+      "category": "Formuláre",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/fields.tsx",
+      "description": "Viacriadkový vstup so spoločným správaním a vzhľadom.",
+      "example": "<TextArea label=\"Tvoje zadanie\" rows={4} />"
+    },
+    {
+      "name": "Badge",
+      "id": "badge",
+      "category": "Informácie",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/primitives.tsx",
+      "description": "Stručný pomenovaný stav, ktorý sa nespolieha iba na farbu.",
+      "example": "<Badge tone=\"warning\">Vo vývoji</Badge>"
+    },
+    {
+      "name": "Surface",
+      "id": "surface",
+      "category": "Kompozícia",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/primitives.tsx",
+      "description": "Zdieľaný povrch pre súvisiaci obsah.",
+      "example": "<Surface><h2>Názov</h2><p>Obsah projektu.</p></Surface>"
+    },
+    {
+      "name": "ProjectCard",
+      "id": "project-card",
+      "category": "Obsah",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/primitives.tsx",
+      "description": "Odkaz na projekt s názvom, opisom a explicitným stavom.",
+      "example": "<ProjectCard href=\"/projekty/moj-projekt/\" title=\"Môj projekt\" status=\"Vo vývoji\" />"
+    },
+    {
+      "name": "Notice",
+      "id": "notice",
+      "category": "Stavy",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/primitives.tsx",
+      "description": "Informácia, upozornenie alebo chyba s primeraným oznámením.",
+      "example": "<Notice tone=\"warning\" title=\"Pracovná verzia\">Údaje ešte kontrolujeme.</Notice>"
+    },
+    {
+      "name": "EmptyState",
+      "id": "empty-state",
+      "category": "Stavy",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/primitives.tsx",
+      "description": "Prázdny výsledok s vysvetlením a možnosťou pokračovať.",
+      "example": "<EmptyState title=\"Žiadne výsledky\" description=\"Skús iné vyhľadávanie.\" />"
+    },
+    {
+      "name": "Toggle",
+      "id": "toggle",
+      "category": "Formuláre",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/fields.tsx",
+      "description": "Natívny checkbox zobrazený ako prepínač, s viditeľným názvom.",
+      "example": "<Toggle label=\"Zobrazovať popisy\" defaultChecked />"
+    },
+    {
+      "name": "Accordion",
+      "id": "accordion",
+      "category": "Navigácia",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/primitives.tsx",
+      "description": "Natívne rozbalenie doplňujúceho obsahu.",
+      "example": "<Accordion title=\"Čo dostanem?\"><p>Konkrétny rozsah.</p></Accordion>"
+    },
+    {
+      "name": "Tabs",
+      "id": "tabs",
+      "category": "Navigácia",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/Tabs.tsx",
+      "description": "Záložky s presunom fokusu šípkami a samostatnými panelmi.",
+      "example": "<Tabs label=\"Detail\" items={[{ id: \"overview\", label: \"Prehľad\", content: <p>Obsah</p> }]} />"
+    },
+    {
+      "name": "Dialog",
+      "id": "dialog",
+      "category": "Prekrytia",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/Dialog.tsx",
+      "description": "Natívny modálny dialóg s Escape a návratom fokusu.",
+      "example": "<Dialog open={open} onOpenChange={setOpen} title=\"Názov\"><p>Obsah</p></Dialog>"
+    },
+    {
+      "name": "ThemeControl",
+      "id": "theme-control",
+      "category": "Nastavenia",
+      "status": "preview",
+      "since": "0.1.0",
+      "source": "src/components/ThemeControl.tsx",
+      "description": "Svetlý, tmavý alebo systémový režim s lokálnou preferenciou.",
+      "example": "<ThemeControl storageKey=\"xvadur-ui-theme\" />"
+    }
+  ]
+}

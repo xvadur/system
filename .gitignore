@@ -1,0 +1,10 @@
+node_modules/
+dist/
+catalog-dist/
+.astro/
+.consumer-test/
+*.tgz
+qa/
+.DS_Store
+.env
+.env.*
