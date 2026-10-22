@@ -203,3 +203,5 @@ a { text-underline-offset: .22em; }
 .book-cover { width:100%; max-width:340px; justify-self:end; }
 .book-cover img { max-height:none; }
 @media(max-width:700px) { .book-cover { justify-self:start; max-width:280px; } .book-cover img { max-height:none; } }
+
+.specimen-accent { font-size:28px; line-height:1.35; margin:16px 0; }

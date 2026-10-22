@@ -21,6 +21,7 @@ export default function FontStudy() {
       return <article className={`font-specimen${chosen ? ' is-selected' : ''}`} key={pair.id} id={`pair-${pair.id}`} style={style}>
         <header><h2>{pair.display} <span>+ {pair.secondary}</span></h2><span className="specimen-number">{pair.id}</span></header>
         <div className="specimen-word">XVADUR</div><h3>{sample || 'Výskum, nástroje a vlastné projekty.'}</h3>
+        {pair.secondaryRole === 'accent' && <p className="specimen-accent" style={{ fontFamily: `"${pair.secondary}"` }}>{pair.label}</p>}
         <p className="specimen-body">Zo zdravotníctva som si odniesol pozornosť k ľuďom. S AI dávam svojim otázkam ďalší tvar: texty, výskum, nástroje a vlastnú firmu.</p>
         {detail && <div className="specimen-detail"><p>{pair.label} {pair.note}</p><p>Čítanie · Projekty · Obchod · Spolupráca</p><p className="specimen-body">Ľščťžýáíéôäň · 0123456789 · {pair.display} / {pair.body}</p><a href={`https://fonts.google.com/specimen/${encodeURIComponent(pair.display).replaceAll('%20', '+')}`}>Zdroj písma ↗</a></div>}
         <footer><span>{pair.round}. kolo · nadpis {pair.weight} / text 400</span><Button disabled={!selection.ready} variant={chosen ? 'primary' : 'secondary'} aria-pressed={chosen} aria-label={`${chosen ? 'Zrušiť označenie' : 'Označiť'} dvojicu ${pair.id}`} onClick={() => selection.toggle(pair.id)}>{chosen ? 'Vo výbere' : 'Označiť dvojicu'}</Button></footer>
