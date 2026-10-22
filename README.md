@@ -1,36 +1,52 @@
-# XVADUR UI
+# XVADUR Stack / Brand book
 
-Verziovaný dizajnový systém pre weby a nástroje XVADUR. Repozitár obsahuje zdrojové komponenty balíka `@xvadur/ui`, tokeny, register a živý katalóg. Web si vyberie konkrétnu verziu; ďalší komponent pribudne sem a môže sa použiť aj v inom projekte.
+Vlastný rozpracovaný dizajnový systém XVADUR a jeho spoločný Astro brand book. Zdrojový repozitár: [xvadur/system](https://github.com/xvadur/system).
 
-Prvé vydanie je pracovný základ. Vizuálny štýl vychádza z doterajšej ukážky, ďalšie rozhodnutia sa overujú na skutočných obrazovkách. Nastavenie `flat` je predvolené; `soft` a `neumorphic` sú experimentálne alternatívy na porovnanie v katalógu.
+## Spustenie
 
-## Spustenie katalógu
-
-Použi Node.js 24 a npm. Po klonovaní repozitára:
+Node.js 24 a npm:
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Produkčný náhľad:
+Otvoriť **http://127.0.0.1:4390/**. Celý brand book beží v jednej Astro aplikácii; nepotrebuje Python, ďalšie servery, súkromný priečinok fotografií ani internetové fonty. `npm run dev:stack` je alias toho istého príkazu.
+
+| Sekcia | Adresa | Obsah |
+| --- | --- | --- |
+| Design language | `/` | Rozpracovaný vizuálny smer, materiál, farby a stav rozhodnutí |
+| Komponenty a tokeny | `/komponenty/` | 14 živých komponentov, varianty, stavy a použitie |
+| Fonty | `/fonty/` | 48 dvojíc zo štyroch kôl, deväť prenesených favoritov, skúšobný text |
+| Fotky | `/obrazky/` | 54 optimalizovaných náhľadov, filtre, označovanie a detail |
+
+## Výbery a médiá
+
+Fontoví favoriti pozorovaní pri migrácii sú v `catalog/data/font-favorites.json`. Uložený fotovýber sa preniesol z pôvodnej galérie; pri migrácii bol prázdny. Nové označenia sa ukladajú do localStorage aktuálneho prehliadača. **Export JSON / Import výberu** prenáša výber medzi prehliadačmi a zariadeniami; podporuje aj pôvodné JSON exporty galérie a fontových kandidátov. Zmena výberu sama nevytvára Git commit ani cloudovú synchronizáciu.
+
+Obrázky v `public/brand/photos/` sú optimalizované náhľady. Originály zostávajú na Macu v `xvadur_fotky` a nie sú súčasťou repozitára. Fonty sú lokálne WOFF2 so zdrojovými licenciami v `public/brand/licenses/`. Fotografie sa smú použiť iba v rozsahu práv ich vlastníka; samotná dostupnosť v tomto repozitári neudeľuje tretej strane licenciu na ich ďalšie použitie.
+
+Staré porovnania a lokálne referencie zostávajú zachované v pracovnom priečinku, ale sú ignorované Gitom. `scripts/import-brand-assets.py` dokumentuje jednorazový import z týchto lokálnych podkladov; pri inštalácii, vývoji ani builde sa nespúšťa. Všetky potrebné výsledné dáta a súbory sú commitované.
+
+## Stav systému
+
+XVADUR Stack má umožniť používať rôzne vizuálne štýly v rôznych projektoch. Teraz dokončujeme smer XVADUR: neumorfizmus, výrazný technický dojem, oranžový akcent a výber typografie. Referenciou je Yanis Schweizer / Strade a jeho [Design System Interviewer](https://www.strade.tech/free/design-system-interviewer). Odpovede sú v `design/interview/INTERVIEW.md`.
+
+Existencia tokenov, katalógu ani úspešný build neznamená finálne prijatie vzhľadu. Nasleduje dokončenie vizuálnych rozhodnutí a overenie na jednej obrazovke. Potom vznikne Lab ako prvé reálne použitie systému; následne v Labe hero a ďalšie sekcie webov. Rift bol preskúmaný ako možný zdroj hotovej implementácie a zatiaľ nie je nainštalovaný.
+
+## Build a overenie
 
 ```sh
-npm run build:catalog
-python3 -m http.server 4390 --directory catalog-dist --bind 127.0.0.1
+npm run verify
+npm run build
+npm run preview
 ```
 
-Katalóg bude na [localhost:4390](http://127.0.0.1:4390). Má ukazovať aj stavové a interaktívne správanie komponentov, aby sa zmeny dali posúdiť pred použitím na webe.
+Statický brand book sa vytvorí v `catalog-dist/`. Môže sa obsluhovať na bežnom statickom hostingu z koreňa domény. GitHub repozitár a nasadenie webu sú samostatné veci; tento repozitár zatiaľ nemá nastavený verejný hosting.
 
-## Použitie na webe
+CI pri push do `main` a pri pull requeste overí knižnicu, Astro stránky, testy a použitie balíka v samostatnom spotrebiteľovi. Katalóg a tarball uloží ako artefakty behu.
 
-Po vytvorení release tagu nainštaluj presnú verziu zo súkromného GitHub repozitára. Prístup používa tvoje existujúce SSH oprávnenie:
-
-```sh
-npm install @xvadur/ui@git+ssh://git@github.com/xvadur/design-system.git#v0.1.0
-```
-
-Git inštalácia spustí `prepare`, ktorý zostaví knižnicu zo zdrojov. Vyžaduje Node.js a npm a počas prípravy potrebuje aj vývojové závislosti balíka. Nie je potrebný npm registry ani publikovanie balíka na npm.
+## Použitie komponentov
 
 ```tsx
 import '@xvadur/ui/tokens.css';
@@ -42,17 +58,8 @@ export function Example() {
 }
 ```
 
-Voliteľný import `@xvadur/ui/fonts.css` pridá pribalené fonty Geist a Instrument Serif. Pri vlastných fontoch ho vynechaj. Podrobnosti k Astro, témam a aktualizácii verzie sú v [integrácii](docs/integration.md).
+Aktuálna pracovná verzia je `0.1.0`; prvý publikovaný release tag ešte nie je vytvorený. Po pripravenom vydaní si spotrebiteľ pripne jeho konkrétny tag. Fonty Geist a Instrument Serif zo základnej ukážky sú voliteľný import `@xvadur/ui/fonts.css`; tým sa neurčuje finálna typografia systému.
 
-## Pridanie komponentu a vydanie
-
-Komponent patrí do zdrojov, verejného exportu, registra a katalógu. Potrebuje príklad použitia, zdokumentované varianty a kontrolu relevantného správania. Postup je v [príspevkoch](docs/contributing.md).
-
-```sh
-npm run verify
-npm run version:next -- patch "Opravený fokus tlačidla"
-```
-
-Druhý príkaz upraví verziu v manifeste, lockfile a changelog. Nevytvára commit, tag ani push. Pravidlá vydávania a prepojenie vydania s webom sú v [releases](docs/releases.md).
-
-CI overuje zdroje, zostaví knižnicu aj katalóg a uloží tarball s katalógom ako artefakty. Nasadenie webu a publikovanie balíka majú samostatný krok.
+- [Vývoj komponentov](docs/contributing.md)
+- [Integrácia](docs/integration.md)
+- [Vydávanie](docs/releases.md)

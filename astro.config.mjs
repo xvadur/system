@@ -6,5 +6,6 @@ export default defineConfig({
   outDir: './catalog-dist',
   output: 'static',
   integrations: [react()],
+  devToolbar: { enabled: false },
   trailingSlash: 'always',
 });

@@ -1,0 +1,5 @@
+# Source snapshots and old standalone studies stay as local history.
+# The standalone Astro book owns its committed data and optimized assets.
+reference/
+interview/fonty/
+interview/fotky/

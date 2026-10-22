@@ -1,0 +1,9 @@
+---
+import Study from '../layouts/Study.astro';
+import FontStudy from '../components/FontStudy.tsx';
+---
+<Study title="Fonty" active="fonts">
+  <link slot="head" rel="stylesheet" href="/brand/fonts.css" />
+  <section class="book-page-heading"><h1>Fonty</h1><p>Všetky štyri kolá na jednom mieste. Začíname tvojimi deviatimi favoritmi; konečné písma a ich roly ešte vyberáme.</p></section>
+  <FontStudy client:load />
+</Study>

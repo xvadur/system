@@ -1,0 +1,32 @@
+---
+import StackHeader from '../components/StackHeader.tsx';
+import '@xvadur/ui/tokens.css';
+import '@xvadur/ui/fonts.css';
+import '@xvadur/ui/styles.css';
+import '../styles.css';
+import pkg from '../../package.json';
+interface Props { title: string; active: 'language' | 'fonts' | 'images'; }
+const { title, active } = Astro.props;
+---
+<!doctype html>
+<html lang="sk" data-theme="light" data-material="neumorphic">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>{title} · XVADUR Brand book</title>
+    <meta name="description" content="Pracovný brand book XVADUR: dizajnový jazyk, komponenty, typografia a fotografie." />
+    <slot name="head" />
+    <script is:inline>
+      try {
+        const choice = localStorage.getItem('xvadur-ui-theme');
+        document.documentElement.dataset.theme = choice === 'dark' || (choice !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      } catch {}
+    </script>
+  </head>
+  <body class="study-body">
+    <a class="skip-link" href="#study">Preskočiť na výber</a>
+    <StackHeader active={active} version={pkg.version} client:load />
+    <main id="study" class="study-main"><slot /></main>
+  </body>
+</html>

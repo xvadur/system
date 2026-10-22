@@ -1,0 +1,8 @@
+---
+import Study from '../layouts/Study.astro';
+import PhotoGallery from '../components/PhotoGallery.tsx';
+---
+<Study title="Fotky" active="images">
+  <section class="book-page-heading"><h1>Fotky</h1><p>54 fotografií a vizuálnych variantov z xvadur_fotky. Materiál pre ďalšie skladanie a výber vzhľadu XVADUR.</p></section>
+  <PhotoGallery client:load />
+</Study>

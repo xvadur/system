@@ -1,28 +1,29 @@
 ---
-import Catalog from '../components/Catalog.tsx';
-import '@xvadur/ui/tokens.css';
-import '@xvadur/ui/fonts.css';
-import '@xvadur/ui/styles.css';
-import '../styles.css';
-import pkg from '../../package.json';
+import Study from '../layouts/Study.astro';
+import { ActionLink } from '@xvadur/ui';
+import registry from '../../registry.json';
+import favorites from '../data/font-favorites.json';
+import photos from '../data/photos.json';
 ---
-<!doctype html>
-<html lang="sk" data-theme="light" data-material="flat">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex,nofollow" />
-    <meta name="description" content="Živý katalóg zdieľaných komponentov, tokenov a verzií XVADUR." />
-    <title>XVADUR / UI — komponenty a verzie</title>
-    <script is:inline>
-      try {
-        const choice = localStorage.getItem('xvadur-ui-theme');
-        document.documentElement.dataset.theme = choice === 'dark' || (choice !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-      } catch { document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
-    </script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Preskočiť na komponenty</a>
-    <Catalog version={pkg.version} client:load />
-  </body>
-</html>
+<Study title="Design language" active="language">
+  <div class="brand-overview">
+    <section class="book-intro" id="main">
+      <div><h1>XVADUR<br /><em>Brand book.</em></h1><p class="book-lede">Dizajnový jazyk, komponenty, fonty a fotografie. Spoločný základ, z ktorého budeme ďalej tvoriť.</p><p class="book-status">Pracovný stav · vzhľad systému ešte dokončujeme</p></div>
+      <figure class="book-cover"><img src={photos[0].thumbnail} alt="Fotografický materiál XVADUR — pracovný vizuálny variant" width={photos[0].width} height={photos[0].height} /><figcaption>Materiál z galérie · výber a spracovanie zostávajú otvorené</figcaption></figure>
+    </section>
+    <section class="book-section" aria-labelledby="language"><h2 id="language">Design language</h2><p class="book-section-lede">Výrazne a technicky. Typografia, fotografie a hĺbka povrchov určujú pracovný smer XVADUR.</p><dl class="language-rules">
+      <div><dt>Materiál</dt><dd><strong>Neumorphism</strong><p>Vystúpené ovládanie, vnorené polia a hmatateľné dlaždice. Konkrétnu silu tieňov a kontrast ešte dolaďujeme.</p></dd></div>
+      <div><dt>Farebný signál</dt><dd><strong>Oranžová <code>#ff4b24</code></strong><p>Hlavný akcent doterajšieho smeru. Podporná paleta je pracovná.</p><div class="language-colors"><span style="background:var(--xv-accent)" aria-label="Oranžový akcent"></span><span style="background:var(--xv-bg)" aria-label="Podklad"></span><span style="background:var(--xv-text)" aria-label="Text"></span><span style="background:var(--xv-recess)" aria-label="Vnorený povrch"></span></div></dd></div>
+      <div><dt>Typografia</dt><dd><strong>{favorites.length} označených favoritov</strong><p>48 dvojíc zo štyroch kôl. Označenie znamená kandidáta; finálne nadpisové, textové a akcentové písma ešte určujeme.</p><ActionLink href="/fonty/" variant="secondary">Porovnať fonty</ActionLink></dd></div>
+      <div><dt>Obrazový jazyk</dt><dd><strong>{photos.length} fotografií a variantov</strong><p>Autorský materiál, portréty a vizuálne experimenty. Celé obrázky bez orezu, spoločný výber a detail.</p><ActionLink href="/obrazky/" variant="secondary">Otvoriť fotky</ActionLink></dd></div>
+      <div><dt>Správanie</dt><dd><strong>{registry.components.length} spoločných komponentov</strong><p>Tlačidlá, polia, prepínače, dialóg a ďalšie prvky. Živé príklady ukazujú ich varianty a stavy.</p><ActionLink href="/komponenty/" variant="secondary">Otvoriť komponenty a tokeny</ActionLink></dd></div>
+    </dl></section>
+    <section class="book-section book-continuity"><div><h2>Kde pokračujeme</h2><p>Pokračujeme v Yanisovom Design System Interviewer: dotiahneme písma, paletu a materiál na jednej konkrétnej obrazovke. Z prijatého návrhu vzniknú záväzné pravidlá systému.</p></div><div><h3>Jeden Stack, viac projektov.</h3><p>Tento brand book zachytáva rozpracovaný smer XVADUR. Stack má umožniť aj ďalšie štýly. Lab bude jeho prvým použitím; potom v ňom vzniknú hero a ďalšie sekcie.</p><a href="https://github.com/xvadur/system">Zdrojový repozitár xvadur/system ↗</a></div></section>
+    <footer class="book-footer">XVADUR Stack · Adam Rudavský · pracovný brand book</footer>
+  </div>
+  <script>
+    const hash = location.hash.slice(1);
+    const legacyIds = ['materials', 'tokens', 'components', 'installation', 'versions', 'button', 'action-link', 'text-field', 'text-area', 'badge', 'surface', 'project-card', 'notice', 'empty-state', 'toggle', 'accordion', 'tabs', 'dialog', 'theme-control'];
+    if (legacyIds.includes(hash)) location.replace('/komponenty/#' + encodeURIComponent(hash));
+  </script>
+</Study>

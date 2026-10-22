@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xvadur/design-system.git"
+    "url": "git+https://github.com/xvadur/system.git"
   },
   "exports": {
     ".": {
@@ -44,7 +44,9 @@
     "test:consumer": "node scripts/test-consumer.mjs",
     "verify": "npm run build:lib && npm run check && npm test && npm run build:catalog && npm run test:consumer",
     "prepare": "npm run build:lib",
-    "version:next": "node scripts/version.mjs"
+    "version:next": "node scripts/version.mjs",
+    "dev:stack": "npm run dev",
+    "preview": "astro preview --host 127.0.0.1 --port 4390"
   },
   "peerDependencies": {
     "react": "^19.0.0",
