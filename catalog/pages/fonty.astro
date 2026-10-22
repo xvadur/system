@@ -2,8 +2,8 @@
 import Study from '../layouts/Study.astro';
 import FontStudy from '../components/FontStudy.tsx';
 ---
-<Study title="Fonty" active="fonts">
+<Study title="Výber písiem" active="fonts">
   <link slot="head" rel="stylesheet" href="/brand/fonts.css" />
-  <section class="book-page-heading"><h1>Fonty</h1><p>Všetky štyri kolá na jednom mieste. Začíname tvojimi deviatimi favoritmi; konečné písma a ich roly ešte vyberáme.</p></section>
+  <header class="manual-page-heading"><h1>Výber písiem</h1><p>Pracovné porovnanie typografie. Označené dvojice sú kandidáti na ďalšie rozhodovanie; finálne písma systému ešte nie sú určené.</p><span class="manual-page-status">Pracovné podklady</span></header>
   <FontStudy client:load />
 </Study>

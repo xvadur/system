@@ -1,6 +1,6 @@
-# XVADUR Stack / Brand book
+# XVADUR Stack / Dizajnový manuál
 
-Vlastný rozpracovaný dizajnový systém XVADUR a jeho spoločný Astro brand book. Zdrojový repozitár: [xvadur/system](https://github.com/xvadur/system).
+Vlastný rozpracovaný dizajnový systém XVADUR a jeho spoločný Astro dizajnový manuál. Zdrojový repozitár: [xvadur/system](https://github.com/xvadur/system).
 
 ## Spustenie
 
@@ -15,10 +15,13 @@ Otvoriť **http://127.0.0.1:4390/**. Celý brand book beží v jednej Astro apli
 
 | Sekcia | Adresa | Obsah |
 | --- | --- | --- |
-| Design language | `/` | Rozpracovaný vizuálny smer, materiál, farby a stav rozhodnutí |
-| Komponenty a tokeny | `/komponenty/` | 14 živých komponentov, varianty, stavy a použitie |
-| Fonty | `/fonty/` | 48 dvojíc zo štyroch kôl, deväť prenesených favoritov, skúšobný text |
-| Fotky | `/obrazky/` | 54 optimalizovaných náhľadov, filtre, označovanie a detail |
+| Domov | `/` | Obsah manuálu, dohodnutý smer a otvorené rozhodnutia |
+| Základy vizuálu | `/zaklady/` | Charakter, farby, typografia, materiál, rozloženie a pohyb |
+| Komponenty | `/komponenty/` | 14 živých komponentov, varianty, stavy a použitie |
+| Výber písiem | `/fonty/` | 48 dvojíc zo štyroch kôl, deväť prenesených favoritov, skúšobný text |
+| Fotografie | `/obrazky/` | 54 optimalizovaných náhľadov, filtre, označovanie a detail |
+
+Navigácia má spoločný bočný obsah na širokej obrazovke a výber kapitoly na mobile. Pracovné fontové a fotografické podklady sú oddelené od referenčných kapitol, ale zostávajú v tej istej aplikácii.
 
 ## Výbery a médiá
 

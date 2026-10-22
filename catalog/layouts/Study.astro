@@ -1,32 +1,35 @@
 ---
 import StackHeader from '../components/StackHeader.tsx';
+import type { ManualPage } from '../components/StackHeader.tsx';
 import '@xvadur/ui/tokens.css';
 import '@xvadur/ui/fonts.css';
 import '@xvadur/ui/styles.css';
 import '../styles.css';
+import '../manual.css';
 import pkg from '../../package.json';
-interface Props { title: string; active: 'language' | 'fonts' | 'images'; }
+interface Props { title: string; active: ManualPage; }
 const { title, active } = Astro.props;
 ---
 <!doctype html>
-<html lang="sk" data-theme="light" data-material="neumorphic">
+<html lang="sk" data-theme="light" data-material="flat">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex,nofollow" />
-    <title>{title} · XVADUR Brand book</title>
-    <meta name="description" content="Pracovný brand book XVADUR: dizajnový jazyk, komponenty, typografia a fotografie." />
+    <title>{title} · XVADUR dizajnový manuál</title>
+    <meta name="description" content="Dizajnový manuál XVADUR: pravidlá vizuálu, komponenty a pracovné podklady." />
     <slot name="head" />
     <script is:inline>
       try {
         const choice = localStorage.getItem('xvadur-ui-theme');
         document.documentElement.dataset.theme = choice === 'dark' || (choice !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-      } catch {}
+      } catch { document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
     </script>
   </head>
-  <body class="study-body">
-    <a class="skip-link" href="#study">Preskočiť na výber</a>
+  <body class="manual-layout">
+    <a class="skip-link" href="#study">Preskočiť na obsah</a>
     <StackHeader active={active} version={pkg.version} client:load />
-    <main id="study" class="study-main"><slot /></main>
+    <main id="study" class="manual-main"><slot /></main>
+    <footer class="manual-page-footer"><span>XVADUR Stack · dizajnový manuál</span><span>Pracovná verzia {pkg.version}</span></footer>
   </body>
 </html>

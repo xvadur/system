@@ -1,0 +1,32 @@
+---
+import Study from '../layouts/Study.astro';
+import MaterialPreview from '../components/MaterialPreview.tsx';
+const colors = [
+  {name:'Akcent', token:'--xv-accent', value:'#ff4b24', role:'Hlavná akcia a zvýraznenie', state:'Zvolený smer'},
+  {name:'Podklad',token:'--xv-bg',value:'Podľa témy',role:'Pozadie rozhrania',state:'Pracovná hodnota'},
+  {name:'Text',token:'--xv-text',value:'Podľa témy',role:'Základná čitateľnosť',state:'Pracovná hodnota'},
+  {name:'Vedľajší text',token:'--xv-muted',value:'Podľa témy',role:'Popisy a podporné informácie',state:'Pracovná hodnota'},
+  {name:'Vnorený povrch',token:'--xv-recess',value:'Podľa témy',role:'Hĺbka a zapustené plochy',state:'Pracovná hodnota'},
+  {name:'Fokus',token:'--xv-focus',value:'Podľa témy',role:'Viditeľná pozícia pri ovládaní klávesnicou',state:'Pracovná hodnota'},
+];
+---
+<Study title="Základy vizuálu" active="foundations">
+  <header class="manual-page-heading"><h1>Základy vizuálu</h1><p>Vizuálny jazyk XVADUR a spoločné hodnoty systému. Pri každej oblasti je uvedené, čo už máme zvolené a čo ešte dolaďujeme.</p></header>
+  <nav class="manual-page-outline" aria-label="Na tejto stránke"><a href="#charakter">Charakter</a><a href="#farby">Farby</a><a href="#typografia">Typografia</a><a href="#materialy">Materiály</a><a href="#rozlozenie">Rozloženie a pohyb</a></nav>
+  <section class="manual-document-section" id="charakter"><h2>Charakter</h2><p class="manual-section-intro">Výrazne a technicky.</p><p>Materiál, typografia a autorské fotografie majú vytvoriť rozpoznateľný smer XVADUR. Referenciou je Yanis Schweizer / Strade. Stack bude môcť niesť ďalšie vzhľady pre ďalšie projekty.</p><p class="manual-callout">Toto je prvý rozpracovaný vizuálny smer Stacku. Finálny vzhľad overíme na jednej konkrétnej obrazovke.</p></section>
+  <section class="manual-document-section" id="farby"><h2>Farby</h2><p>Oranžový akcent zostáva. Ostatné farby aktuálne zabezpečujú fungovanie ukážok v svetlej a tmavej téme; ich finálne kombinácie ešte vyberieme.</p><div class="manual-color-grid">{colors.map(color => <div class="manual-color"><span style={`background:var(${color.token})`}></span><strong>{color.name}</strong><code class="manual-color-value" data-token-value={color.token}>{color.value}</code><code>{color.token}</code></div>)}</div><div class="manual-table-scroll"><table class="manual-table"><thead><tr><th>Rola</th><th>Použitie</th><th>Stav</th></tr></thead><tbody>{colors.map(color => <tr><th scope="row">{color.name}</th><td>{color.role}</td><td>{color.state}</td></tr>)}</tbody></table></div></section>
+  <section class="manual-document-section" id="typografia"><h2>Typografia</h2><p>Finálna rodina ani roly písiem ešte nie sú určené. Manuál a komponenty používajú pracovnú dvojicu Geist + Instrument Serif. Výberové porovnania uchovávajú tvojich deväť favoritov.</p><div class="manual-type-sample"><p>Geist</p><strong>Jasný text. Výrazný nadpis.</strong><em>Instrument Serif — autorský akcent.</em><span>Ľščťžýáíéôäň · 0123456789</span></div><a class="manual-text-link" href="/fonty/">Pokračovať vo výbere písiem →</a></section>
+  <section class="manual-document-section" id="materialy"><h2>Materiál a hĺbka</h2><p>Neumorfizmus pracuje s vystúpenými a vnorenými prvkami v blízkej farbe podkladu. Na rovnakých ovládacích prvkoch porovnaj mieru hĺbky; čitateľnosť a viditeľný fokus musia zostať zachované.</p><MaterialPreview client:load /></section>
+  <section class="manual-document-section" id="rozlozenie"><h2>Rozloženie a pohyb</h2><p>Existujúce tokeny poskytujú spoločnú mierku. Sú pracovným základom pre ďalšie overenie.</p><dl class="manual-property-list"><div><dt>Rozostupy</dt><dd>4, 8, 12, 16, 24, 32, 48 a 64 px · pomenované tokeny <code>--xv-space-*</code></dd></div><div><dt>Čítanie</dt><dd>Maximálna pracovná šírka textu 720 px · <code>--xv-reading-width</code></dd></div><div><dt>Ovládanie</dt><dd>Dotykový cieľ aspoň 44 px · <code>--xv-target</code></dd></div><div><dt>Pohyb</dt><dd>Pomenované trvania pre stlačenie, hover, menu a dialóg. Nastavenie obmedzeného pohybu animácie vypína.</dd></div></dl><a class="manual-text-link" href="/komponenty/">Pozrieť správanie na komponentoch →</a></section>
+  <script>
+    const root = document.documentElement;
+    function syncTokenValues() {
+      const values = getComputedStyle(root);
+      document.querySelectorAll<HTMLElement>('[data-token-value]').forEach(node => {
+        node.textContent = values.getPropertyValue(node.dataset.tokenValue || '').trim() || '—';
+      });
+    }
+    syncTokenValues();
+    new MutationObserver(syncTokenValues).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  </script>
+</Study>
