@@ -1,0 +1,11 @@
+import React from 'react';
+import {authoredRegistry as legacy} from './registry';
+import {MediaStageParameters} from '../../../scenes/catalog';
+import {JourneyStage,type JourneyStageProps} from './JourneyStage';
+import {KitchenRulesStage} from './KitchenRulesStage';
+import {TurtleCodingStage} from './TurtleCodingStage';
+import {ProfileWhackStage} from './ProfileWhackStage';
+import {PhonePaperStage} from './PhonePaperStage';
+const Legacy=legacy['media-stage@1.0.0'];
+const MediaStageAdapter:React.FC<JourneyStageProps>=props=><Legacy {...props} parameters={MediaStageParameters.parse(props.parameters)}/>;
+export const authoredRegistry:Record<string,React.FC<JourneyStageProps>>={'media-stage@1.0.0':MediaStageAdapter,'journey-stage@1.0.0':JourneyStage,'kitchen-rules-stage@1.0.0':KitchenRulesStage,'turtle-coding-stage@1.0.0':TurtleCodingStage,'profile-whack-stage@1.0.0':ProfileWhackStage,'phone-paper-stage@1.0.0':PhonePaperStage};

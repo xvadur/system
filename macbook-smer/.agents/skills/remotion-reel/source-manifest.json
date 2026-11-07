@@ -1,0 +1,146 @@
+{
+  "source": "/Users/xvadur_mac/Downloads/remotion-reel",
+  "configuredFor": "/Users/xvadur_mac/xvadur_klipy",
+  "date": "2026-11-05",
+  "license": "No license file in supplied local bundle; retained for local use.",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "sourceSha256": "7fbbec4581d2aebcc4478c8f0e3e8210df594607b0ce36615b73c621ecd8175e",
+      "configuredSha256": "32e0e24a3771e5d244899ea324fca5307fc522bdb92c2fe6d85110b10b655ec4",
+      "adapted": true
+    },
+    {
+      "path": "components/Caption.tsx",
+      "sourceSha256": "55ab9824adc912fb43b75bc99b9648d3e82a7982d5a5c5a5d9737c1f6ccefea2",
+      "configuredSha256": "55ab9824adc912fb43b75bc99b9648d3e82a7982d5a5c5a5d9737c1f6ccefea2",
+      "adapted": false
+    },
+    {
+      "path": "components/Silhouette.tsx",
+      "sourceSha256": "49761dabfccfd0703345a0d5559755924d14bc43f86b8fb0ce145a7405de4eb4",
+      "configuredSha256": "49761dabfccfd0703345a0d5559755924d14bc43f86b8fb0ce145a7405de4eb4",
+      "adapted": false
+    },
+    {
+      "path": "components/TextHook.tsx",
+      "sourceSha256": "3bab126aed840db08fd19a8f488b8383c51dc65fb5ad9005dd6e5423c9cbe60e",
+      "configuredSha256": "3bab126aed840db08fd19a8f488b8383c51dc65fb5ad9005dd6e5423c9cbe60e",
+      "adapted": false
+    },
+    {
+      "path": "components/TwoThirdsPanel.tsx",
+      "sourceSha256": "47cffaf875a5576bef3ca6301a0b87938c71d464a2f052caa4f007e069bb5fdc",
+      "configuredSha256": "47cffaf875a5576bef3ca6301a0b87938c71d464a2f052caa4f007e069bb5fdc",
+      "adapted": false
+    },
+    {
+      "path": "components/storyboard-review.html",
+      "sourceSha256": "0308d49cb6a7de7e44aaefead202bace3f8594836d5ef46403b6a2d778eaec21",
+      "configuredSha256": "0308d49cb6a7de7e44aaefead202bace3f8594836d5ef46403b6a2d778eaec21",
+      "adapted": false
+    },
+    {
+      "path": "references/audio.md",
+      "sourceSha256": "06c0b52b3cc174aa4d609eaf05748907365878d02bc403f3b64ce1ba69cebc79",
+      "configuredSha256": "42be9ab90eeff403820efb8e4572a7ec6ce533f37900a537647ce6b20fd00605",
+      "adapted": true
+    },
+    {
+      "path": "references/background-removal.md",
+      "sourceSha256": "7eee43511f88e80300165902326058aeefb622da995758a1a4e393002f64a18d",
+      "configuredSha256": "e8402906450c2128c1710389f9125f719270eaa5b1d8987996293b66eeb4dafa",
+      "adapted": true
+    },
+    {
+      "path": "references/brand-sheet.md",
+      "sourceSha256": "9a6839c14aaa8eea02bce0c3023da5d8fe8accb3fffc93bc829d0454e40f1ca9",
+      "configuredSha256": "0ceca0049ddc9fdf14289ad942bfa8809c3c25c17412d3ef60b3ffbf7107aca1",
+      "adapted": true
+    },
+    {
+      "path": "references/captions.md",
+      "sourceSha256": "88cfa2f998176f7d2504b95ee7bd4e2cc5246e4f8ba546006ff10ea4ef0ff65e",
+      "configuredSha256": "735177bbcbe26e142892299885175227ac015a15c8f03ac11aad5eda59a5aa77",
+      "adapted": true
+    },
+    {
+      "path": "references/hyperframes-hybrid.md",
+      "sourceSha256": "e4f4e7ece63579776b606dc79008eab6c1485fa12fadeb3924e10fbc48864f42",
+      "configuredSha256": "fe2128e4c994bcc96aff667a787b65421dc62224aad77c1b45741d56b185e443",
+      "adapted": true
+    },
+    {
+      "path": "references/layouts.md",
+      "sourceSha256": "b27183a9f6456bbd6c399772c8e0b6e85c16a22f47a41b1a8799fca0c3d91a6b",
+      "configuredSha256": "a272041983a1fdaeac3e69dcfa94b3b29c7c05929265f59c73bed27ff0f5d68a",
+      "adapted": true
+    },
+    {
+      "path": "references/motion-graphics.md",
+      "sourceSha256": "23bab1f275d2659ac966bec20464d896550b18a600c586687a3b81474674afea",
+      "configuredSha256": "3108143dfa44e9082f9d4494806c9fee2e269a8af0e91ffd1fb8c8ee02219b9f",
+      "adapted": true
+    },
+    {
+      "path": "references/screen-recordings.md",
+      "sourceSha256": "79792d79af7a772542c8b279278f4c83fb2ab7d2b4eeb22ff568adb9deb7640a",
+      "configuredSha256": "1d2bddc4b6b9bac6c6435445c61eaf2fc634db55ae9740aa505373180887a8cb",
+      "adapted": true
+    },
+    {
+      "path": "references/split-screen-from-full-frame.md",
+      "sourceSha256": "eab71b05ffe4b494f60d7d9d6aecd0774aaae32bd46cf9e5289fb04b30bcaf6d",
+      "configuredSha256": "b9460f980fcf7a876d602f883868b303b5eb550a7394988ba5a7d7f83069c921",
+      "adapted": true
+    },
+    {
+      "path": "references/storyboard.md",
+      "sourceSha256": "b2fe8475370685975c1e63e6760554dddec5065701d58bcb665b8c5148bb5373",
+      "configuredSha256": "7480dc7141d3868f4526f64889766dbba2f1169923688350fe44fbdac7d87e1b",
+      "adapted": true
+    },
+    {
+      "path": "references/text-hook.md",
+      "sourceSha256": "bdb1d69de482ad7226a2443d9455e9ce55263797b6ffd427ede965e05c75bd73",
+      "configuredSha256": "915b6b3794c00c68d152a91bb1a923005cc0ccc7f666344944c492e42db3191d",
+      "adapted": true
+    },
+    {
+      "path": "scripts/camera-check.py",
+      "sourceSha256": "aa14910d1bdd4eb3588fd61eac411aa85e215923b7dd7684fdb01e282cbe1868",
+      "configuredSha256": "aa14910d1bdd4eb3588fd61eac411aa85e215923b7dd7684fdb01e282cbe1868",
+      "adapted": false
+    },
+    {
+      "path": "scripts/caption-tone.py",
+      "sourceSha256": "3f930b42ba5a121adea40530273a67be00cec4e2f529d97869400be19bb84752",
+      "configuredSha256": "3f930b42ba5a121adea40530273a67be00cec4e2f529d97869400be19bb84752",
+      "adapted": false
+    },
+    {
+      "path": "scripts/measure-hook.py",
+      "sourceSha256": "71a4977e66f52608ee02f357b33d12b7af52b06d77e5d5b6cd274a54418dba0c",
+      "configuredSha256": "71a4977e66f52608ee02f357b33d12b7af52b06d77e5d5b6cd274a54418dba0c",
+      "adapted": false
+    },
+    {
+      "path": "scripts/retime-captions.py",
+      "sourceSha256": "c046a4e4b2004d94b38ba28c8b1e18643a4240613cf8196d2d5cea1dc50a371b",
+      "configuredSha256": "17ee067c68c5aa628981f7fe361757fcbc687acc7e62d0e2dbb702664566b447",
+      "adapted": true
+    },
+    {
+      "path": "scripts/verify-audio.py",
+      "sourceSha256": "a06352e121f7234a9b6d093eae2695175724892598fb8b8a7952e5493b58efd7",
+      "configuredSha256": "e556ac0b066795f597910c11d084a30ce27c19b55666fbeeda46078e24dd530d",
+      "adapted": true
+    }
+  ],
+  "addedFiles": [
+    "agents/openai.yaml",
+    "references/reference-analysis.md",
+    "references/xvadur-project.md",
+    "requirements.lock"
+  ]
+}

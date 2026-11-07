@@ -1,0 +1,16 @@
+**/node_modules/
+**/.cache/
+**/.venv/
+**/__pycache__/
+**/.DS_Store
+**/.env
+**/.env.*
+**/*.info.json
+**/*cookies*
+**/*.sqlite*
+**/*.db
+/smer/public/*
+!/smer/public/README.md
+/smer/data/
+/smer/out/
+**/*.log

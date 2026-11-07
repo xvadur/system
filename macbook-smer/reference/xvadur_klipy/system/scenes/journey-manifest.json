@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "sceneId": "journey-stage",
+  "implementationHash": "8d0adb89f10481fd7e154d20c4c6c96cc863c2c3535b992cdee10d569cac7ed8",
+  "files": [
+    {
+      "path": "system/renderer/src/authored/JourneyStage.tsx",
+      "hash": "714b90a546d3248985e863db278a2508bb6726482dae91f4f26f5f6554006b82"
+    },
+    {
+      "path": "system/scenes/journey-parameters.ts",
+      "hash": "e9a5288e7379330274c08dac8d6da3df59a6cf1d2cd9b9a777334e010d3793e2"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "sceneId": "phone-paper-stage",
+  "implementationHash": "2f7ccf6e3932bd3ee020718b1dbfe1d7097f6324675d7a018c5ab3fce531e869",
+  "files": [
+    {
+      "path": "system/renderer/src/authored/PhonePaperStage.tsx",
+      "hash": "6966144b41454f9cc5a285862ff0d2e68c51cbd0c536ae5cb6bffd53003b1af3"
+    },
+    {
+      "path": "system/scenes/phone-paper-parameters.ts",
+      "hash": "2ed2870d8976e872073095b42da1a4f400c9a63ab15f6b8c446150e046752c43"
+    }
+  ]
+}

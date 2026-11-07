@@ -1,0 +1,2822 @@
+{
+  "version": 1,
+  "date": "2026-11-07",
+  "note": "Original hashes before portable Markdown link adaptation. Current export hashes are in EXPORT_MANIFEST.json. Source code is unchanged; Smer package name/scripts are adapted, dependencies remain pinned.",
+  "files": [
+    {
+      "path": "reference/xvadur_klipy/system/cli/author.ts",
+      "source": "project:system/cli/author.ts",
+      "sourceSha256": "e825b8b04e219148f5efd32aa8ab42d5bed744696c24cfdcd84ef60f4587b003"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/cli/author_runtime.py",
+      "source": "project:system/cli/author_runtime.py",
+      "sourceSha256": "8c98bf6f0497395695fe4373e1be9078c7d430969800e8f45a430bb73e51d1d5"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/cli/klipy.py",
+      "source": "project:system/cli/klipy.py",
+      "sourceSha256": "1d6c950f44b4c34ead97148146b28d0014747c313e16feceb1bf1af87e17bde5"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/cli/provision_author_runtime.py",
+      "source": "project:system/cli/provision_author_runtime.py",
+      "sourceSha256": "5f8ccf82aafa066386af22d9333dd5c2d3b78f5b4f2667132c988f291bfe2bd3"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/pipeline/authoring.ts",
+      "source": "project:system/pipeline/authoring.ts",
+      "sourceSha256": "a9f2222caeee50ddae55bf1a7e9c5bdaa8fe679885643233ebdea2bc17ce8211"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/pipeline/ingest.ts",
+      "source": "project:system/pipeline/ingest.ts",
+      "sourceSha256": "6595520b22219d639cd4d3de1b389a88ea75d988b8da0b4d7d0bd3b001733685"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/pipeline/io.ts",
+      "source": "project:system/pipeline/io.ts",
+      "sourceSha256": "b90edff13990b641e98fb3b4641f53805ffd2a2e6cd0c5aad0714d6a574a1b94"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/pipeline/model.ts",
+      "source": "project:system/pipeline/model.ts",
+      "sourceSha256": "b45649a211b08687c8c3f6cc7763c2948c29fe176a0807d1a75088a37f0fb384"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/pipeline/review.ts",
+      "source": "project:system/pipeline/review.ts",
+      "sourceSha256": "36b11e1b80f7f07f53bc86290c637c31f46b33cd46ba09459c1023805eda3546"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/pipeline/store.ts",
+      "source": "project:system/pipeline/store.ts",
+      "sourceSha256": "5f598587a8d57b4fe49828327c829ea188dbbdde8f10f5e5c23e4fd0584a3fc9"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/adapter.ts",
+      "source": "project:system/renderer/adapter.ts",
+      "sourceSha256": "be9303ba6153e57666d14bfa75e913a6a9cd91e88e52d9fa59bb49d7f995cc73"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/audio-priming.ts",
+      "source": "project:system/renderer/audio-priming.ts",
+      "sourceSha256": "0c96ccc52b6e149cfc3ea7dacf6ae3f4277e7ef5de7077ec0a356368ad517e77"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/authored-composition.ts",
+      "source": "project:system/renderer/authored-composition.ts",
+      "sourceSha256": "70b78ed2583047a7c874a2d5fa5d0ba997878abb9afa57ca55b759b976faf166"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/authoring-api.md",
+      "source": "project:system/renderer/authoring-api.md",
+      "sourceSha256": "4b89fc433c5eab9518bb85f8b6c5e8c02c8f3c4c29416d53211c40808d524c47"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/design-space.ts",
+      "source": "project:system/renderer/design-space.ts",
+      "sourceSha256": "0b985c8dc01ac784c91565a3727060e6e9d6f51969a191499469b2260b6f73e1"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/render.ts",
+      "source": "project:system/renderer/render.ts",
+      "sourceSha256": "21474c9517aa2dea1ed7f8f56c45b2a22adb51c09d062c84059e4ee51bda6571"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/TimelineComposition.tsx",
+      "source": "project:system/renderer/src/TimelineComposition.tsx",
+      "sourceSha256": "5cd0c8de5837035ca412f9115ffd933542056ea9d3be0bc2a4f5ec3c8aef3be5"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/JourneyStage.tsx",
+      "source": "project:system/renderer/src/authored/JourneyStage.tsx",
+      "sourceSha256": "714b90a546d3248985e863db278a2508bb6726482dae91f4f26f5f6554006b82"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/KitchenRulesStage.tsx",
+      "source": "project:system/renderer/src/authored/KitchenRulesStage.tsx",
+      "sourceSha256": "8c70d0b709adccda246e3c38ec3053d43a69657b30deccd399542138ebc3d92a"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/MediaStage.tsx",
+      "source": "project:system/renderer/src/authored/MediaStage.tsx",
+      "sourceSha256": "ecf0671fc696094714e49384fcc0d6cabaa55c016ec184f03dde47c84dc3e5c4"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/PhonePaperStage.tsx",
+      "source": "project:system/renderer/src/authored/PhonePaperStage.tsx",
+      "sourceSha256": "6966144b41454f9cc5a285862ff0d2e68c51cbd0c536ae5cb6bffd53003b1af3"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/ProfileWhackStage.tsx",
+      "source": "project:system/renderer/src/authored/ProfileWhackStage.tsx",
+      "sourceSha256": "876c0b1f0aea8b83dc05745277a4b5d2d6e6b56f91342c12873aac699fcfd773"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/TurtleCodingStage.tsx",
+      "source": "project:system/renderer/src/authored/TurtleCodingStage.tsx",
+      "sourceSha256": "1cf9c6fb762e66d5c5769de83c576220760c498ba88d0362df6fd0d1fc44bb32"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/extended-registry.tsx",
+      "source": "project:system/renderer/src/authored/extended-registry.tsx",
+      "sourceSha256": "c985d9573427154810d7169e76502cb863ac8a0414b17b9ec8c2834fca9debe9"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/registry.tsx",
+      "source": "project:system/renderer/src/authored/registry.tsx",
+      "sourceSha256": "cb45d679b36b33d1ad0acf4488b0b796ab4ae55eb255c8b9594cb209c62c859d"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authoring.tsx",
+      "source": "project:system/renderer/src/authoring.tsx",
+      "sourceSha256": "84d38afc8c82f0c3d78dc90346bb5c576d49bfdd69df28836c4649dd5c64ae5a"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/captions.ts",
+      "source": "project:system/renderer/src/captions.ts",
+      "sourceSha256": "86c7d6aaad002154877e240f3331594bb73b63bdab1244bb845f2d7b2d607e04"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/frame-transport.ts",
+      "source": "project:system/renderer/src/frame-transport.ts",
+      "sourceSha256": "f96b422e2dfa27c2b6cb354ec0e63277afa18dc6fbc3cfe150d32abaaa495068"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/graphics.tsx",
+      "source": "project:system/renderer/src/graphics.tsx",
+      "sourceSha256": "c84de62663336fb4b1ce937a7cd8dc59a0ac111f7bde6f0e26cc67f604023613"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/media.tsx",
+      "source": "project:system/renderer/src/media.tsx",
+      "sourceSha256": "44a07cb95bbca0cc43e7af5f20b10f30e628112fd9b48e803010eed20b828b28"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/scenes.tsx",
+      "source": "project:system/renderer/src/scenes.tsx",
+      "sourceSha256": "757ffa18c5a899ddd923e1822095101d9d3a5841d139fc787c45c8800d8470df"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/types.ts",
+      "source": "project:system/renderer/src/types.ts",
+      "sourceSha256": "0d66655bc32b674217e90241877c169cf495cbb0cad64fdfe8c39d6f2d027e97"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/visual-effects.tsx",
+      "source": "project:system/renderer/src/visual-effects.tsx",
+      "sourceSha256": "0ad48063b9974fdc2bc7630e56be34cc749c3286b6f61598ca17a965497eee43"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/authoring-4.0.529/README.md",
+      "source": "project:system/runtime/authoring-4.0.529/README.md",
+      "sourceSha256": "d16052f62acc09f6e07b780b66c435cf991d7fdee6294a612c00904fbe762d73"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/authoring-4.0.529/package-lock.json",
+      "source": "project:system/runtime/authoring-4.0.529/package-lock.json",
+      "sourceSha256": "07f1b18436aa28cb635fdb8a01f133b0f6e9e055e05cf8ab8445bbb9cbf0fb58"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/authoring-4.0.529/package.json",
+      "source": "project:system/runtime/authoring-4.0.529/package.json",
+      "sourceSha256": "8ff858fcbece3caffa41b363e18eb463f870ea4e8f437f4d59e5cd3366cff4a3"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/codex-routing.d.mts",
+      "source": "project:system/runtime/codex-routing.d.mts",
+      "sourceSha256": "8997414d6775576b26b1ae7a14cc71b543288219012a737f42f3e1e1a96ac5f8"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/codex-routing.mjs",
+      "source": "project:system/runtime/codex-routing.mjs",
+      "sourceSha256": "2aeebf53575d5fa08f0f53f3db47ab4ae22a38ae5928e53567825bc59a7cbc1b"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/media-cache.d.mts",
+      "source": "project:system/runtime/media-cache.d.mts",
+      "sourceSha256": "56a51c0b1ec0c6d5b3be1daf3ff11e21fcff3a0d4d8f9d0c1a8d19c948328e5c"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/media-cache.mjs",
+      "source": "project:system/runtime/media-cache.mjs",
+      "sourceSha256": "2246d14248969a95ad8244e017251fd964cbf549ca626ebcd29b1053f12fd18a"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/resource-gates.d.mts",
+      "source": "project:system/runtime/resource-gates.d.mts",
+      "sourceSha256": "aec8c7f965b484e48a2402c1543935c30ed0134be96eb6cbfaff1730313c484e"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/resource-gates.mjs",
+      "source": "project:system/runtime/resource-gates.mjs",
+      "sourceSha256": "2f58a2e5391c9f8a5942c7e6a6db8366566248ae6cb056fbbf59831f17481203"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/authored-manifest.json",
+      "source": "project:system/scenes/authored-manifest.json",
+      "sourceSha256": "49b8172a02b4419612de095fd460800fa3877f2591bc6f23e07bb241e10c5ea8"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/catalog.ts",
+      "source": "project:system/scenes/catalog.ts",
+      "sourceSha256": "d8d871caa78b61547d94b645f5534577ac78882c3d6f7d65bcdadbfdff455000"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/journey-manifest.json",
+      "source": "project:system/scenes/journey-manifest.json",
+      "sourceSha256": "b59d743ee565dd3560d0eb7aa0f7addab174807375c50f0a7b6fd375744d2bcb"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/journey-parameters.ts",
+      "source": "project:system/scenes/journey-parameters.ts",
+      "sourceSha256": "e9a5288e7379330274c08dac8d6da3df59a6cf1d2cd9b9a777334e010d3793e2"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/kitchen-manifest.json",
+      "source": "project:system/scenes/kitchen-manifest.json",
+      "sourceSha256": "01f6765af71d515a226543d1945ba4d5e9484f7ef82f520faa343ccd88728eea"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/kitchen-parameters.ts",
+      "source": "project:system/scenes/kitchen-parameters.ts",
+      "sourceSha256": "e8382f7129d47186c5e25b476a9e03517da430303542f70f0e3182c9b8832283"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/phone-paper-manifest.json",
+      "source": "project:system/scenes/phone-paper-manifest.json",
+      "sourceSha256": "e48728f1e53343782f8180235297f815b85365ce28e6ab3107f8c69d1d6c13d1"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/phone-paper-parameters.ts",
+      "source": "project:system/scenes/phone-paper-parameters.ts",
+      "sourceSha256": "2ed2870d8976e872073095b42da1a4f400c9a63ab15f6b8c446150e046752c43"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/profile-whack-manifest.json",
+      "source": "project:system/scenes/profile-whack-manifest.json",
+      "sourceSha256": "42facb85863bdf527b97567270d89b3a2957b74bcf08f9969066a2942928d73d"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/profile-whack-parameters.ts",
+      "source": "project:system/scenes/profile-whack-parameters.ts",
+      "sourceSha256": "e4ae20220b45a38199e3f0e1f1002e4f7052ce1b328bc1bf7bb84422f1cd5f4e"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/registry.ts",
+      "source": "project:system/scenes/registry.ts",
+      "sourceSha256": "0960e98e788d9c26cb8cc6a53ac2adc09f1bff315689c3f6d4fd961f688d97df"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/turtle-manifest.json",
+      "source": "project:system/scenes/turtle-manifest.json",
+      "sourceSha256": "42a2a12ced87138072cf5683e39688884af76f0efc6d7395c20d6c79154678fb"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/turtle-parameters.ts",
+      "source": "project:system/scenes/turtle-parameters.ts",
+      "sourceSha256": "a97ed9ea47e3a8a5495495876d819f51776184b6b18ce41c2f9a4c43c885c078"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/verify.ts",
+      "source": "project:system/scenes/verify.ts",
+      "sourceSha256": "fe33841bf683099c70cc09efb72ee06b2d8188508a7a8258f184d7693ddb7166"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/schemas/authored-composition.ts",
+      "source": "project:system/schemas/authored-composition.ts",
+      "sourceSha256": "f489c3ccd3f1469cf302cb4457632768d51ea1ebae4708436ca9d940b6b4e0d0"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/schemas/editorial.ts",
+      "source": "project:system/schemas/editorial.ts",
+      "sourceSha256": "c8e4e1f08700794604b3d9e83b723ec46665d0ac1f86c9821acff7a3ce7a4aba"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/schemas/index.ts",
+      "source": "project:system/schemas/index.ts",
+      "sourceSha256": "7fefc34e9e24f47a02fb8575870ec3330a7942d058aad7f639be0980709eff00"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/schemas/learning.ts",
+      "source": "project:system/schemas/learning.ts",
+      "sourceSha256": "8cd5d616c963395cb4831a48187d63a7f553cbee7ae8562f8cd38947c7fe96b3"
+    },
+    {
+      "path": "reference/xvadur_klipy/PLAN_IMPLEMENTACIE.md",
+      "source": "project:PLAN_IMPLEMENTACIE.md",
+      "sourceSha256": "05e822eb026f637f511dab7739e68555c9f18046a4472c779f5b2a27ab63790e"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/ARCHITEKTURA.md",
+      "source": "project:docs/ARCHITEKTURA.md",
+      "sourceSha256": "c7fdf7e83374efb59add0e9c07f70d5edb2db525ffa82628f746053b9d827b67"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/AUTORSKE_SCENY.md",
+      "source": "project:docs/AUTORSKE_SCENY.md",
+      "sourceSha256": "b7ba2b35a8ac755c0c45d1ddc516117431b17705047fb17c367fe506b9c3e5bc"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/CODEX_VYROBNY_POSTUP.md",
+      "source": "project:docs/CODEX_VYROBNY_POSTUP.md",
+      "sourceSha256": "7e08045870529fc74a6faee845fdb1fd51381eaf958926d8d85a38879c937c4b"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/ROZHODOVANIE_O_EDITE.md",
+      "source": "project:docs/ROZHODOVANIE_O_EDITE.md",
+      "sourceSha256": "6691a5ee1d64463c06b2ba27a7cdc9b2b70aff62d336f0bbd3a3a8ba474a4b6a"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/KONTROLA_A_OPRAVY.md",
+      "source": "project:docs/KONTROLA_A_OPRAVY.md",
+      "sourceSha256": "e64b664829d18b51d2822d087f810fd378c22bfd8b2fdca0a663b185a69560b4"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/NASTROJOVE_ULOHY.md",
+      "source": "project:docs/NASTROJOVE_ULOHY.md",
+      "sourceSha256": "4d731902daa1490831ba54df78b27c5bb8b7f4273b2c25fe1c3880523429b14e"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/POUZIVANIE.md",
+      "source": "project:docs/POUZIVANIE.md",
+      "sourceSha256": "3ee475980586edc330fa4dd1e113c6b9e834cf6f6ef8c7d1a12162469c191063"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/ZDROJE_A_REUSE.md",
+      "source": "project:docs/ZDROJE_A_REUSE.md",
+      "sourceSha256": "4e6b6a1b9430345620df9fea1dfa2da8bfa2b2037e050c09d59ccbf1ff970eb8"
+    },
+    {
+      "path": "reference/xvadur_klipy/brand/BRAND.md",
+      "source": "project:brand/BRAND.md",
+      "sourceSha256": "22cfe6cd2107c20b7b59dc979031767f760277fbbd2a3faa1f9789559c8bdde7"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-05-fiki-chaty/AKO_MAJU_VYZERAT_KLIPY.md",
+      "source": "project:research/2026-11-05-fiki-chaty/AKO_MAJU_VYZERAT_KLIPY.md",
+      "sourceSha256": "6901b707ac10a7099807d062b828a233cd07e9a5f87bc12bc5357750d47e695a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-05-fiki-chaty/DOPLNENIA_Z_TOHTO_CHATU.md",
+      "source": "project:research/2026-11-05-fiki-chaty/DOPLNENIA_Z_TOHTO_CHATU.md",
+      "sourceSha256": "f49951c0659ff44125173e7cc89bc78f4de6f1d2f6abff2d9ef4e1382c577cbb"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-05-fiki-chaty/REFERENCIE.md",
+      "source": "project:research/2026-11-05-fiki-chaty/REFERENCIE.md",
+      "sourceSha256": "2c7767fd2f54d947c22b496e0ec018cd85eb4d49710e3f1ba942edd6d593e189"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-05-husty-strih-zahranicne-referencie.md",
+      "source": "project:research/2026-11-05-husty-strih-zahranicne-referencie.md",
+      "sourceSha256": "dc21ae3dbdc9c7cb7bd9e29826c04a45592bae224946dd1d477d9e25179ccf34"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-1200-klipov-nastroje.md",
+      "source": "project:research/2026-11-06-1200-klipov-nastroje.md",
+      "sourceSha256": "779dcb540e87e4dbadda77b367c2fb34b175c89683978214f622891b0899af17"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-davkova-vyroba-varianty.md",
+      "source": "project:research/2026-11-06-davkova-vyroba-varianty.md",
+      "sourceSha256": "5b75014df8c3cd2bd8bdafb36784f553f3870ddbc697c87698cf672db922ed85"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/ZISTENIA.md",
+      "source": "project:research/konkurencia/ZISTENIA.md",
+      "sourceSha256": "ee3cbf91f8338b20a7171e3c56acd87bfa40141e1273cc379e02343767b0a510"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/README.md",
+      "source": "project:research/konkurencia/README.md",
+      "sourceSha256": "33c1371099d2670fa3b7d65c62c37da0fcde712b6fdbe69cdc34a7c83f1331f9"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/ZDROJE.md",
+      "source": "project:research/konkurencia/ZDROJE.md",
+      "sourceSha256": "f1d8298b7820389ac275cf9ba6adfe2f47188dc6f07cdf32f0c8579bd8c93a14"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/ASSETY.md",
+      "source": "project:research/konkurencia/ASSETY.md",
+      "sourceSha256": "2d82b30d60ab7e182866015c24a978a69438b9c15c90bf0ec4b3c7d9c5bd4e65"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/GROUP_SCOPE.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/GROUP_SCOPE.md",
+      "sourceSha256": "7b9f6cb76cd7a222560022338c1ed63e6e33ce8678fb3a680e294f8d4244ba2d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/POSTUPY_PRE_EDIT.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/POSTUPY_PRE_EDIT.md",
+      "sourceSha256": "fc7d87211c6b1f2b98b105e7ae8195a18676ba91d7f544b06d954de83d5cc4c9"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/REFERENCIE.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/REFERENCIE.md",
+      "sourceSha256": "eac6330073f8f063e02c4e89a35adce8901ff4b5d0a4cf101e3688e809f2df99"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/VALIDACIA.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/VALIDACIA.md",
+      "sourceSha256": "04641d5b3182a09987f8e451fee0c99af6ebbeffa43a0012b085a2e298f30056"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689138607583628567.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689138607583628567.md",
+      "sourceSha256": "ff1bc6c99912252ee4090605b0b9497ffe52f55ac238627dbedbc3828d9ef5a9"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689226801553444118.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689226801553444118.md",
+      "sourceSha256": "49c957b5916c9ef68b8411207ba3ed3f45d3a0030bc42924b2ab68553e4be79e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689451102990781718.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689451102990781718.md",
+      "sourceSha256": "ff98c6fd72ef3c35339e90cb5bfd67798852211afa5a15475505d905e450e5c6"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689477893352721686.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689477893352721686.md",
+      "sourceSha256": "483f2f956e137d0984bd5c8721db8fc5a855480c96c82d63f08f627f742cae7a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689781792898960662.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689781792898960662.md",
+      "sourceSha256": "e477af3d2d905a9b2a2742e2781aa28b168b47511e1ddc714f7bcfc1b2378ce2"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689807510248770838.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689807510248770838.md",
+      "sourceSha256": "661107f625e9c5bf7345634b2f91d8b1883af1a152727e0982e5b0dbc8b32366"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689885220899753238.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689885220899753238.md",
+      "sourceSha256": "fce2993505f81e21031f1e56954475f534e1ed2b3299aa7fc1d24f38f22f3dcb"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690097844576849174.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690097844576849174.md",
+      "sourceSha256": "2c7b2cd2de350f73495d088cc6ed2a41e4f445bd3abab552cc289f6258bdc45b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690230294305066262.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690230294305066262.md",
+      "sourceSha256": "1be97403fc37feb9034b4221bfba30eee8c8b213d5fdf5f5048c371faf521764"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690265052535934230.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690265052535934230.md",
+      "sourceSha256": "2a7e7fefd4e6fc6c54082f6bb8394cae9603f7820626ff7442a41872b130ec57"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690287936494898454.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690287936494898454.md",
+      "sourceSha256": "9719526e3ccce80c337b56ebcbd42a8e0a12690bca581002dde47679906c60c2"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690625491530829078.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690625491530829078.md",
+      "sourceSha256": "9586fe9cce183a54876f3d540cee3e669700eb47cbfb96e5d8789b4b54dae721"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690666549048331542.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690666549048331542.md",
+      "sourceSha256": "e5469d74ce46f3fc9b99d501ca8725dce2c58ec145c08cc905da92eea8eda47a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690937059875261698.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690937059875261698.md",
+      "sourceSha256": "db29f50b7e75d0e118a2e171e32bde55abdbf68ea2afaa9c730c372be0ce6b46"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690963555969027350.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690963555969027350.md",
+      "sourceSha256": "76f8fdeeeeac1aa15b8533cf34af44eb3f4db062c723e9fd51593414530dec4f"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691004295470238998.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691004295470238998.md",
+      "sourceSha256": "11bfa61102b9c6f133c68af128512955285ac2b3f6ecf6219cd30f647091a6bd"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691007262894148886.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691007262894148886.md",
+      "sourceSha256": "8c620869d9fdc6e90ba66731f24503532b0bfb1bff927237e8dd981df637067c"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691013252490317078.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691013252490317078.md",
+      "sourceSha256": "e5d0dd08bf80e3f300cb30fb081a61761f1972511325ac42468aef5dc0385b0e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691020452457712918.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691020452457712918.md",
+      "sourceSha256": "74c7f81fe477a22659dde5be96ec1b8e4a5b4566da49848bd92a8c66afe8189e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691022886672370966.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691022886672370966.md",
+      "sourceSha256": "c62888d8fd924de51b6b49ae2a52b00efb4cdcd9fabe52da4783fb750ff8cf0d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691054169318313238.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691054169318313238.md",
+      "sourceSha256": "fa0b26baed716e9ed23e9f185ae99634a413e93bdee267022f87b86654c0541f"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691059019565436162.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691059019565436162.md",
+      "sourceSha256": "39a16a7366f9ce5cdf203341c70a14bf1776afa8ccd9d9abc1d33871f9dada4f"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691063927878421783.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691063927878421783.md",
+      "sourceSha256": "e8236c3a47cd9fa09bb0e2b7204764d2312b009b88028ecf05c867b2dac9b10e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691070069740195094.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691070069740195094.md",
+      "sourceSha256": "345b4e40143e99a6698dd92fa858c37652320a1f2f65ad8221200c110d8a818e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691204286641933600.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691204286641933600.md",
+      "sourceSha256": "d5be5cdbf73b34bbc0f4a5a8d0ebbfc99095e004f550c381eb3e37adad976a76"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691266193864379680.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691266193864379680.md",
+      "sourceSha256": "71a394061e5ce14d8b16f0abb4f429e50a4a2b7f00da617c490dc7f5e7cfb888"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691343843693825312.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691343843693825312.md",
+      "sourceSha256": "b3c6474df118ec111988ee362c2ae76d336d7d703f32d7ba58516653c2dc2ad1"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691372489355627798.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691372489355627798.md",
+      "sourceSha256": "098e255089984f2d899c97ca9091c46b8ad59692a8ad30da3f4fb496b0c4da58"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691575565802851617.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691575565802851617.md",
+      "sourceSha256": "cf644699ba4e4e2d46febe0c331584213a896f90f404594c2ea7cb9b0ec4cb37"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691620703971364118.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691620703971364118.md",
+      "sourceSha256": "945092d40d668c3ed28292c98ae634c711990ec2b108a8c2a7037b7a0cf46bce"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691637588867747104.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691637588867747104.md",
+      "sourceSha256": "01784fb792cebefcd15d54afa264cac9200d287fb7af496ad3cf4978aa532b88"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691709827600403734.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691709827600403734.md",
+      "sourceSha256": "1c03bff1052e6ebaa9c37310e0e4579b5bb44e51f69e228fc9d02042138ff131"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691772139170532630.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691772139170532630.md",
+      "sourceSha256": "33869e82f4102eb8e5d816c1807e2c9dae49a5f17758de375ccd441fc0b969e3"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691957721112808726.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691957721112808726.md",
+      "sourceSha256": "9e2c345653b7634b7af718ea1e03f9ea5b16dbd9745476c74757f493238ff0de"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691974169981881622.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691974169981881622.md",
+      "sourceSha256": "85ddf216597dfdb2e68d691689946a5d0894710f7b74c865e4fec29d0418a578"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692002530854980886.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692002530854980886.md",
+      "sourceSha256": "8170798dcf38cd04ff55cee527c9c44a846c06c1f2f7dd2b7a30327a7e07998b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692021640468679958.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692021640468679958.md",
+      "sourceSha256": "df5d18e77994a019277e783a3f832b4f202f4b51aebd0dba4479635334e60140"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692098717758786838.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692098717758786838.md",
+      "sourceSha256": "734c7d1328a2bc22026301fd3c6905b9c857bcaa10e37812904a7fc0fda82825"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692317747530714401.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692317747530714401.md",
+      "sourceSha256": "318bb09d8d94eec0f36c8854ccbd860db789b98c7a5cb0de91cd152b4854b21b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692351659158129942.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692351659158129942.md",
+      "sourceSha256": "9dce52ac3ce80b97b0295b752cedfe1d26b11776c38a00a2afb6a803c0b80a05"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692391908873751830.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692391908873751830.md",
+      "sourceSha256": "c54d122d43caea22320602cf35dfd30edc5c2e14df023882057b259728a201e8"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692439348272270614.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692439348272270614.md",
+      "sourceSha256": "5e72a489e5bafbfc63d8914db72581d5414bc50ac72ec1bd9ab8dacae7ce8419"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692805590359379223.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692805590359379223.md",
+      "sourceSha256": "088ee8238e1a22c75e6d87e8ddc569d962a86c5cc6338850ffa026e0dd8f8e2b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692825927243287830.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692825927243287830.md",
+      "sourceSha256": "7542cfd8c9fbbd9838d12c2fe15deec71fd7fc4e08c6084ed9371363762103b2"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692886180475473174.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692886180475473174.md",
+      "sourceSha256": "985510c5992c2b78f09671abe3576972bb4f448fa655b50eb1c8e1bb8dd7d5b9"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693117767280594198.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693117767280594198.md",
+      "sourceSha256": "b453c5a89b7fc7cdc0f5eab77a27aa62935ca75542d8f4253029cdd639465f1d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693225215526161667.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693225215526161667.md",
+      "sourceSha256": "b19ae624040a43d443247ab344eb93fbeee1bbb43630d01ea33e3b91beecfa7c"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693277737947106582.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693277737947106582.md",
+      "sourceSha256": "e7516772e788ad9af5fc6e195cb4e66248164504a2d974e5eaa8b6d47a4f3c50"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693599741040528663.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693599741040528663.md",
+      "sourceSha256": "b6325d6c72ae79282322e0976af3a9274d2dde12c26cc2566315601c9ca02bba"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693604391093292310.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693604391093292310.md",
+      "sourceSha256": "9810294af65dd099bbafc2ceab54cbecc1208827a51f9178e28d7f51ff8cf8c1"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693614011916537110.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693614011916537110.md",
+      "sourceSha256": "7be041ed69fcd03465b60d3a9bcab0bd5899fcd0373d7cb9fd494785f38a191d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693629454677003542.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693629454677003542.md",
+      "sourceSha256": "7ad57c0ba88f502ee8e5a4421de0323c39633aa03b786b8a373d69129c3e5804"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693916590953221398.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693916590953221398.md",
+      "sourceSha256": "10632778a738eb4cf8ce95e7d3da0714b18d5c7cca734e998ddd203cda99366f"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693941951179312387.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693941951179312387.md",
+      "sourceSha256": "7b8fc0b28b750624582096691fdf7a98712d56cee35bfb4773d2f43257f0ca24"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693962715596868886.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693962715596868886.md",
+      "sourceSha256": "fb463328ef09bb22ca8eae82d3f385f3c69ee8a224c6c6c394129c2ad5b0161a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693968183534914838.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693968183534914838.md",
+      "sourceSha256": "889243d2137520aa5c886e2f32ab6c34962920144151b34d8dcf617848837b87"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693973353320828182.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693973353320828182.md",
+      "sourceSha256": "b09e61906fde9af9e39c63415d68c3eb10e3ae54c74b368c01631779e4238a2e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693995296669355286.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693995296669355286.md",
+      "sourceSha256": "e42b1ececf1a1bc5da75262e307ddd6db399c5d5132a9a677d42d0976eaddbc5"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7694215896696392982.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7694215896696392982.md",
+      "sourceSha256": "a7cf94a2971edf949c20fc05e9e802f74bc26ed1196e081a908ba0f04e12995a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7694220059346013462.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7694220059346013462.md",
+      "sourceSha256": "631cfb4987c33f0461b27cdef8934ff574ae65578cb1d4e5857ae2b9389105d8"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7694395408579120406.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7694395408579120406.md",
+      "sourceSha256": "89c21a470cb10a99994a6f24bcdbc3ec1dbec2050f588ae63c7c0a19f6685a09"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7694624792565009686.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7694624792565009686.md",
+      "sourceSha256": "3be36310aa732757a2de507941603a233e64184800deb42b061b50ede34ca676"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695031570352049430.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695031570352049430.md",
+      "sourceSha256": "c80e0c1e79110a7e5b457232c0800e53c1bc2dedede5fc49b53e9a193d35af9e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695348663014477088.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695348663014477088.md",
+      "sourceSha256": "644dc9df1b4128292afaf3351d4dd584e591204e031cc251fdea7de95ca7b5f3"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695382955316808982.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695382955316808982.md",
+      "sourceSha256": "3c20b3a2e7bb3f8369ddd762dbd2da560e95c6ef2adb95c4975c8d45674cfb24"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695456961991118082.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695456961991118082.md",
+      "sourceSha256": "1523829f4a683e7841ca2386c0a2544c092ebc8421cab4fc92bf8ae30b935208"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695505954225278230.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695505954225278230.md",
+      "sourceSha256": "6a365760b5972c978c1bf6fc06ee700bbd6d93bf71c92b5213c275eb1f4d9948"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695755616219843862.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695755616219843862.md",
+      "sourceSha256": "8003ea574a2ed6d151066e4f814924a3210109984739eb593f94d83a073979c1"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695825723600194819.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695825723600194819.md",
+      "sourceSha256": "7f799581e87b2d17cf0bc4d9f62c3b85691e0f73365c41023825320316703dcc"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695914642274667798.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695914642274667798.md",
+      "sourceSha256": "23f7631ef7425c6b3a92d19cb09df0bb7f824c4d0d1135537c860e5ed108606a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696028900995943713.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696028900995943713.md",
+      "sourceSha256": "39ccf3e6b800dfe713e8a6fb6416f66609d573de03c1bc04f8d8672bae4d8404"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696077105418816790.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696077105418816790.md",
+      "sourceSha256": "cc6110cb726552b4a3d85585f12eccc951f06832d97ab9b69925379df2cf8077"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696081404811136278.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696081404811136278.md",
+      "sourceSha256": "80b28833f249ef522f706ce0f9120a6665ded99f811705c47ab368ad7c80000b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696100146953637142.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696100146953637142.md",
+      "sourceSha256": "724d14125e0ac90cd16d8eeafceb76133b13dc492b2aba18465f8505546631e8"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696178785967770902.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696178785967770902.md",
+      "sourceSha256": "c22ce3e32cc49a69821b34f24ceb1f462a6b74a9ea362612df181142ae2b46d7"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696214054876007713.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696214054876007713.md",
+      "sourceSha256": "4703f246e3b72b005f8812cec36b36867d0f82f9e057e00843d25972729e7054"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696229131423436054.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696229131423436054.md",
+      "sourceSha256": "85effe3824319579b35009cd1b7c373931f9bb517698575c0955fdfda1381ada"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696517555254529302.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696517555254529302.md",
+      "sourceSha256": "445af0fb3c627d87172673990b8348dc1669f0cdf886a891ba2d4cad7b9fb0ef"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696537219548400918.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696537219548400918.md",
+      "sourceSha256": "8b426e9ff0dea4ecac03e6d8ab66df576a573c59995516aba78b84112f933807"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696543048968277270.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696543048968277270.md",
+      "sourceSha256": "a46d024393d37143d1c926ef9acccd3514cd15e2681bdf574120962be81060f0"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696561358766083350.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696561358766083350.md",
+      "sourceSha256": "2b3bc967f942104e9e809e8452eec4d2ea35b523c8d541fd2aa19465452d7307"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696575126673952022.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696575126673952022.md",
+      "sourceSha256": "65e649dfa6a5c17550b5f0d4ca4335ba93679b73706b98849838fdcea90b0d69"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696588987640892694.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696588987640892694.md",
+      "sourceSha256": "cf941e7be744ac8e393968de6f7f61547b683da53dbde122d959191b00893f26"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696605491752897814.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696605491752897814.md",
+      "sourceSha256": "0931e6250d2bd29d738644c06d3c8fdcd7d8456139ecd935b83af36bae07e0a3"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696877903979482390.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696877903979482390.md",
+      "sourceSha256": "2d137ba4a994334aae66ba43312eb911942f3937c6cfc7cf352c2a750b09be79"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696911002360663318.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696911002360663318.md",
+      "sourceSha256": "4298ddd9060f4974b3e1072663f26e1c36f3a9ff24a6395f52098f1522baf5f2"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696962577309388054.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696962577309388054.md",
+      "sourceSha256": "8ab2f81dcb50ee9a76b15b9b309aa411c2aef9ae3fca7c1f2889c8fbe4fcb9ae"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697259219434835223.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697259219434835223.md",
+      "sourceSha256": "6880c752230c32694018c3d0d40044045768385a4d993aac3a6867b0244db5a9"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697399891844271382.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697399891844271382.md",
+      "sourceSha256": "0d57ff81603b97ec918a2b57f8930d3fe3a2c5dd6ded235bc6fdae6ba7580b6a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697411056838233366.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697411056838233366.md",
+      "sourceSha256": "ee89a45a0e43d1c1e9f2810393ee10ccc8d3f4c7365e92e6c99569d8037dd1fe"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697424869339843862.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697424869339843862.md",
+      "sourceSha256": "c5b61c9eb315bef6ff9c7340f3c4d06ed36c674e0826ba0d38ae6926042f0de7"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697428109804506391.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697428109804506391.md",
+      "sourceSha256": "90819ae8664c5f8977983dddf799b92f236806250b6de67cbb81461a931d5d76"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697681561617026326.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697681561617026326.md",
+      "sourceSha256": "b82b641132151d09bac3af648ed5207ca414709f5760b2303304f26ec215b0ab"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697722350845955350.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697722350845955350.md",
+      "sourceSha256": "bcb0b21cd06b111d78af982fa25288d9f50065a64ca046c310a078e00e331d52"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697725317988863254.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697725317988863254.md",
+      "sourceSha256": "facb1159a585e4e8b853781132940cac1e0586121a5d27cddc8b8f830d70f0bd"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697732432069528854.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697732432069528854.md",
+      "sourceSha256": "a26888c508cabf31209ba468137441e23c0250f7c1ecc4a170fd3c524612399b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7698054322310876438.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7698054322310876438.md",
+      "sourceSha256": "5591ad653f57fcf620ae742228fb1f6481aa1b7d853739c6283331f47f7502f7"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7698110482003053846.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7698110482003053846.md",
+      "sourceSha256": "a31a701e7ee7f300bcfd1a89f9a551b96a8c358544d7e1224c70c6fe2ae2d5f9"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7698124696893607190.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7698124696893607190.md",
+      "sourceSha256": "ff056a52a3d132f7853351add6be8a4ed960a1acfe178e70cb97b26229587926"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7698443510000733462.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7698443510000733462.md",
+      "sourceSha256": "83a8e26d224f2cb1f93a182702fc24282adfd704f9d7901427addc51539be8f2"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/mechanisms-batch2.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/mechanisms-batch2.md",
+      "sourceSha256": "95911083fa8631fb1a1d09182ac2e268367f82af3315c7c1ff519e7801dbf3c9"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/methodology-metrics.md",
+      "source": "project:research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/methodology-metrics.md",
+      "sourceSha256": "6d61172abd142b8dbfa8174a9435d61cfbaedb6e81b34cf18be3b71dfee819ce"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/AUDIT_EXISTUJUCEHO.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/AUDIT_EXISTUJUCEHO.md",
+      "sourceSha256": "5760a45d40a68f861e1d04c301f78aaf600b6fbfd2a4caab18caa3a5e51e0d48"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/EVIDENCIA_CASOVANIA.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/EVIDENCIA_CASOVANIA.md",
+      "sourceSha256": "d853327a78525b34d2177d41e00c7214b2572b694d1af8e2dc532162a7f1a127"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/KONTROLA_VYSKUMU.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/KONTROLA_VYSKUMU.md",
+      "sourceSha256": "cf3d4c2c1f365c6b71bc0d78b1e80052f63c45ef50f9df38ad18396bf6c5afe7"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/PODKLADY_NA_VYROBU.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/PODKLADY_NA_VYROBU.md",
+      "sourceSha256": "1d7b00effaee70362ed0f4835e92ee3f157c2149b1dbb8b099ca0ce3c2b4e21e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/POROVNANIE_KVALITY.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/POROVNANIE_KVALITY.md",
+      "sourceSha256": "4a98b85e43d203f4617b681d20aa30b73f971afe4c78675f83e0e8ef2e477faf"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/README.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/README.md",
+      "sourceSha256": "3370f8f294f92e30a0afd134f6cbe6ff9f1b8d0942118939f6a25244973500d1"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/RECEPTY_NA_VYROBU.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/RECEPTY_NA_VYROBU.md",
+      "sourceSha256": "e1389f70e66bdc307bcd8cf7f6ed876842e0a4de70ef051515488676953ed4df"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/VYBER.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/VYBER.md",
+      "sourceSha256": "d13ade603e8c70e1e7995ce6b9e2b42002f032b9b8ce4c7298c939ffaf6edcf0"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/VYSLEDKY.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/VYSLEDKY.md",
+      "sourceSha256": "c274d24629922e15bc9f1ea5940441ab9e6b7d693a1fa0d8b84606302feb5e09"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/ZADANIE.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/ZADANIE.md",
+      "sourceSha256": "0d0d3f9fd7be80afb2aa2eff8062bc99761f633462752b2872947a43baeee5bf"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/podklady/nasa/README.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/podklady/nasa/README.md",
+      "sourceSha256": "e664eb7badc67772e8eee2f4fab9a6bfedce576adc16f98493e46bfd7364744d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/_fiki.unchained_.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/_fiki.unchained_.md",
+      "sourceSha256": "1e9b26250f726c26f5cf884b558c7c4eded132ffdfaa3185dfb1e78ef097de76"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/basedfiky.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/basedfiky.md",
+      "sourceSha256": "d23a87ba95c39e57b8ae15abe0fa1300b03a1795dc5253897e034edddd5323ca"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/best.of.fiki.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/best.of.fiki.md",
+      "sourceSha256": "ca0df8899691605039b95468239d685bd9d1d339f2f46dce171d0008e0fe4156"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.bossik.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.bossik.md",
+      "sourceSha256": "bdef512eb4cc4af35b0120faf403e569f586212bbba620bb57c014ecc0768384"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.clipz.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.clipz.md",
+      "sourceSha256": "4bca03972f852472d7ad24ee5407a4d4240eb343721b3cc09a4b39dd81a692e8"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.extra.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.extra.md",
+      "sourceSha256": "9cac90a4d1afca45dc1a9eb5b2e91452752b19d78d7f42bf4eca6943c7ae97c7"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.hlasky.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.hlasky.md",
+      "sourceSha256": "75ec0732b2a29840ea0580b1b78975565fce813db92d799378cf6d2c503f0195"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.kliky.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.kliky.md",
+      "sourceSha256": "4a6200f3495095c54c9dc20445068de8a9a7a00bd86455a557a966bdf035131b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.nahrad.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.nahrad.md",
+      "sourceSha256": "e5c8f2d0ee131e6c392c30418d657cca2be6b5319688e4e5f5bb141ce8f39105"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.sama.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.sama.md",
+      "sourceSha256": "d310b7f245c1f646344a9bb371a003d949e5bd60380a24b09b5c57ab00739641"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.sulikclips3.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.sulikclips3.md",
+      "sourceSha256": "dc5887e2b1aa264895d54cb8d983b80f9ff0f72d05674c70dd79b2b455d63797"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikiclips1.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikiclips1.md",
+      "sourceSha256": "52337c44567eb829037f73268add3616d674cbcd6326ee01c40c0b7ab20c6b04"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikiclips10.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikiclips10.md",
+      "sourceSha256": "e148f76876438e7bad5f31378dae840f96166454ea285450b4ffcd34a296cad4"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikiframe.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikiframe.md",
+      "sourceSha256": "ceb0fef283b726860e8a996f0d654cc236a8bbe3172b35d5c19dd5d47e66005b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikimentalita.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikimentalita.md",
+      "sourceSha256": "cd044f00b9ef1251092b41c1a183fa559a79ba636a2c71df1c9c10c5d408aa5c"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikinko.shorts.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikinko.shorts.md",
+      "sourceSha256": "e0141061280cccc5167cebe4e0efe1fee57dc8c085ec4a163c7fd633af34da83"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikiprezident.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikiprezident.md",
+      "sourceSha256": "4dd03bc55cd59e354f61f0a8a781f53bf60d93ca1bcd9ebf74d074b115201477"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikirealtalk.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikirealtalk.md",
+      "sourceSha256": "e59c3fba3e0db711d1f7d9607f8f5a018870e6c4013c6947bc9b33158b1cad47"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikisulik_klipyy.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikisulik_klipyy.md",
+      "sourceSha256": "6a99daa321d9824c2343ac8287759ff6a0c7cc4dfe73ce9796d086ab2307ec1a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/frajer.fiki.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/frajer.fiki.md",
+      "sourceSha256": "95e0ef7ae8bd59bb267bbf9831b28c4afd87d43529d6d0accb5e902b2bf594e9"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/kontrola-zle.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/kontrola-zle.md",
+      "sourceSha256": "1a41939fff5648255e01bad36dc33843b82ffb4f642aab592508ffbd491a523b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/nase-porovnanie.md",
+      "source": "project:research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/nase-porovnanie.md",
+      "sourceSha256": "1ed0cf1080b320ead53181effd30495bdeb8763b40569fe9298d2accfe82dc2d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/POSTUPY_PRE_EDIT.md",
+      "source": "project:research/2026-11-06-youtube-referencie/POSTUPY_PRE_EDIT.md",
+      "sourceSha256": "178cef99c5a860ce192487a06836e7f0dd730ac376088f778ce4a80b1cb1ef96"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/REFERENCIE.md",
+      "source": "project:research/2026-11-06-youtube-referencie/REFERENCIE.md",
+      "sourceSha256": "71c60f6515d6ea9bc0c6f0db789e2e1d9cb8491dc56cad20037267e63e705748"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/SHORTS_ROZBOR.md",
+      "source": "project:research/2026-11-06-youtube-referencie/SHORTS_ROZBOR.md",
+      "sourceSha256": "85ad51dd82f8394f3dbee705971135940e820668a4e3244252bd22f43fe9a000"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/-19oR2yF2N4.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/-19oR2yF2N4.md",
+      "sourceSha256": "a6262381418f5f235e6ca8667019ad704ec5d965d14300e3348305c50d0ac44b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/1WXL1IfivVo.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/1WXL1IfivVo.md",
+      "sourceSha256": "60a5326519c6600edc1a9254ab4ace8fd1c9f1e4857c764dea8e0d8023f04f3f"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/BNPlUj-CxB0.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/BNPlUj-CxB0.md",
+      "sourceSha256": "00d4a03d5ed7afcb76ab3e80e7932e40942153e44dca333000b8619886beccb1"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/G0EH0xdy2-E.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/G0EH0xdy2-E.md",
+      "sourceSha256": "ab598747bcfa406911e85c114cf35a5b750fa7d22e174c16d7e6c574f7364472"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/KI0m9SnMAEE.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/KI0m9SnMAEE.md",
+      "sourceSha256": "6ae18b06d6c3c730104f719e9bb013229982a3e7ced9c1f8ef053647eedebcd8"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/NbvcjGHSkV4.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/NbvcjGHSkV4.md",
+      "sourceSha256": "b659f47fca7a63dadaf5b023e3b13a93ff0ce9734b09db3c4ed54c26e7e6f6ae"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/QzvMFvKdvc4.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/QzvMFvKdvc4.md",
+      "sourceSha256": "a632ce3b3a625c39be6b33010c0ea099ae97eaccac70ba4f0a3615b43086c155"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/XkGxDzVmG4M.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/XkGxDzVmG4M.md",
+      "sourceSha256": "2fd72bdeff93aee5f891466b8adc24737923c55662b4b3509828999bb0323ff6"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/_mByyUmqhW8.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/_mByyUmqhW8.md",
+      "sourceSha256": "fb02f8c00e421cc5d1931ced122f3732e84f1cbbe88acfd1256633b5282e4abe"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/iqb5Rd6KKr8.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/iqb5Rd6KKr8.md",
+      "sourceSha256": "f70a8f1f96ff73ead902639a3e9d04090cf2e05c8801bf9c6ff076fccdfc8b00"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/jsDvkduPpw4.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/jsDvkduPpw4.md",
+      "sourceSha256": "e0a0f975b6a20bf0829697d2ecb91fd05303dbe6c6a55e3262585909eda43e48"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/o3IEkKXXXvo.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/o3IEkKXXXvo.md",
+      "sourceSha256": "95c1fcf2853dd505872831123e8bda2f070e17d23d585b055653d88955017247"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/y1sc6wHDAyE.md",
+      "source": "project:research/2026-11-06-youtube-referencie/cards/y1sc6wHDAyE.md",
+      "sourceSha256": "3d63473fdfe9cfddf33a2b01c2f7b98f9025ba62f5adccc06bfccc3feccf08ef"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/discovery-shorts.md",
+      "source": "project:research/2026-11-06-youtube-referencie/discovery-shorts.md",
+      "sourceSha256": "f6035a33f819ecc065931bf124342f9808ff36b115e580c4f4b810f368bb1fc4"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/discovery-tutorials.md",
+      "source": "project:research/2026-11-06-youtube-referencie/discovery-tutorials.md",
+      "sourceSha256": "27c421220ff7d5015cadd89d3ef3bc72f5f0b62c7151a0e979cae75d2ee4084e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/sources/hyperframes-launches-README.md",
+      "source": "project:research/2026-11-06-youtube-referencie/sources/hyperframes-launches-README.md",
+      "sourceSha256": "803916540be13e508fb503b1a8f0c83ede4953bc49b10282310d96d24b38d304"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/sources/nate-herk-kit-README.md",
+      "source": "project:research/2026-11-06-youtube-referencie/sources/nate-herk-kit-README.md",
+      "sourceSha256": "8416b327ec5d988d11a51cb878574ff96043e4b192a5c32885c69bdd7e1b79cc"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-editorske-formaty/HOTOVE_KLIPY.md",
+      "source": "project:research/2026-11-06-youtube-editorske-formaty/HOTOVE_KLIPY.md",
+      "sourceSha256": "ccf7ed269b93b314fb97695893db58266004ecd7c2f4d06c4465e6d05c310531"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-editorske-formaty/NAVODY_A_KOD.md",
+      "source": "project:research/2026-11-06-youtube-editorske-formaty/NAVODY_A_KOD.md",
+      "sourceSha256": "b4244d74afd8409530041dd8b8408ba8e0caba5725eac3985bb5a77c98260307"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-editorske-formaty/POSTUP_PRE_EDIT.md",
+      "source": "project:research/2026-11-06-youtube-editorske-formaty/POSTUP_PRE_EDIT.md",
+      "sourceSha256": "1b69667aaa602e95e52e4cf49337f073e0307150d78acb3a615bc76a73b4e9f2"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/SKILL.md",
+      "source": "project-skill:remotion-best-practices:SKILL.md",
+      "sourceSha256": "b9712d028fe9c3f8d08dbdc08d17e33d4f9b26da44d945ce84995e4011b36096"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/REFERENCE.md",
+      "sourceSha256": "8396359e00263747856c0a9bcc5c0a8bf75017a4d5e60329b9ed7fcff0734d00"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-maps/agents/openai.yaml",
+      "sourceSha256": "9c6c75daec6eabd78cf6fbc7169be3f7dde934df1316e41df6658052056b29ee"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-maps/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/static-map/TECHNIQUE.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/static-map/TECHNIQUE.md",
+      "sourceSha256": "1d2b15f2e09cbb2b2ba0d5a6ec54ecf619b6696acced0b7bec7e010fbe1f1f03"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maplibre/TECHNIQUE.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maplibre/TECHNIQUE.md",
+      "sourceSha256": "8a13debcd2abfce415b5c8b7f323420ec77092d81ceb935853171ca9697b902c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maplibre/references/render-stability.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maplibre/references/render-stability.md",
+      "sourceSha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/TECHNIQUE.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/TECHNIQUE.md",
+      "sourceSha256": "72896873e63d675caaab765941dbb8d668f2790090a63b94e165f254b77ef887"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/references/map-data-sources.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/references/map-data-sources.md",
+      "sourceSha256": "b99680cbda8e7d70dc2cb1a8823f66247a21fc59d10c6dae0dd9ba24d2f15b80"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/references/map-explainer-architecture.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/references/map-explainer-architecture.md",
+      "sourceSha256": "e09de8a4d00ea9a82b992918ec4d0302ee18979b73e6c777d584a9743092344f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/references/map-geo-prep.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/references/map-geo-prep.md",
+      "sourceSha256": "a97b1913f06195601889d4e090ad056db2fffb7b83918924c8cd92847b3829ef"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/references/render-stability.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/references/render-stability.md",
+      "sourceSha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/scripts/prep-geo.mjs",
+      "sourceSha256": "8265f56bd7c27a7d1a5fa528a77bbe1b29c6acc0e6730233583ca53e2632d490"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/assets/CountryLabel.tsx",
+      "sourceSha256": "6be8c7d5b3435c8d933f05394ce5e807da5fc9fe0565db94ccaee6ac049df137"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts",
+      "sourceSha256": "c8137792824323b9db997a88c3b923e8072cf2886cd90c38d84fdbbaad8258ed"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/assets/RiverReveal.tsx",
+      "sourceSha256": "c3091e23dfd80178788d05c0bc43b17aee12aa4236d658f1a97c5acfb29a0f92"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/example-Root.tsx",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/assets/example-Root.tsx",
+      "sourceSha256": "e53677a7a207e37cbc04693eca8ccbab5f5f040efdc67a8b5c030c3913895e83"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/tokens.ts",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/assets/tokens.ts",
+      "sourceSha256": "29ae05eedb4988b5b8f2eb44d241b9c472533fb6ed05d4b33df3e71e0eabc71c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json",
+      "sourceSha256": "470a76cc5a45e58e7e1702cd80f74fcacf9d6e8b1ef7b05011f69853a999ba7b"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json",
+      "sourceSha256": "73a99e77a2ce31cb3ac39be8fe4775d53ecf127a56137b587fca090067dfbb96"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/mapbox/TECHNIQUE.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/mapbox/TECHNIQUE.md",
+      "sourceSha256": "8c434f680988a7212a9443ef9be0f62ef734f3d92af4dc47c11dad184677eec9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/mapbox/references/render-stability.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/mapbox/references/render-stability.md",
+      "sourceSha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/TECHNIQUE.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/cesium/TECHNIQUE.md",
+      "sourceSha256": "09057e77b67dcda23eed8ddbf1b5bd44541a952f380913a00b3bfddaa39ab675"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/references/3d-data-sources.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/cesium/references/3d-data-sources.md",
+      "sourceSha256": "23ac1acc576d49d599b33c812dc697b264ebe28849088c04e9827cb47b95275f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/references/3d-flyover-architecture.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/cesium/references/3d-flyover-architecture.md",
+      "sourceSha256": "09e1891cec991a246eec60dbcf76c4ea84c52e0bee14321471197703395d0a91"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/references/3d-troubleshooting.md",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/cesium/references/3d-troubleshooting.md",
+      "sourceSha256": "c803fe443f5bab1a50408f1f6aa6aded7913577eaefcb586b320c5a96c391bf2"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs",
+      "sourceSha256": "6dbb4d1ae3f5fef9f3f6eb23e2a6d58622750714bb847b088ff58a3533839463"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx",
+      "sourceSha256": "4d4a90e373176e840ae76ae91533fcd9dc445407693b17091c376bb597dbcb10"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/cesium-path.json",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/cesium/assets/cesium-path.json",
+      "sourceSha256": "329621928df19d115f93c472a0b7ddbd2463cad502a10722d3c23579a7441d44"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/city-path.json",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/cesium/assets/city-path.json",
+      "sourceSha256": "3bb420736d196f726b856420b319e21a8d7fc24bca7e626d67e8b00b0544e630"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/example-Root.tsx",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/cesium/assets/example-Root.tsx",
+      "sourceSha256": "51c2df109015adc992b66b62f1ffc9801ad13f3dc47e4290de40cbe1b8e7809e"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/flight-path.ts",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/cesium/assets/flight-path.ts",
+      "sourceSha256": "fab65d2d9cc0c4ca56f8a1422494d178c0e57f92a048a4720358d236ced980f0"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/sample-river.geojson",
+      "source": "project-skill:remotion-best-practices:remotion-maps/techniques/cesium/assets/sample-river.geojson",
+      "sourceSha256": "2c9f6dd35ac4aed56580078046941235ed7e1a5d432a6549dbf7fea4e8d1e9be"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-captions/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-captions/REFERENCE.md",
+      "sourceSha256": "49fbe8314037f02ad3901753f5dbce87a49e18a10fd5a0b7ffe1e6fa66392d3b"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-captions/display-captions.md",
+      "source": "project-skill:remotion-best-practices:remotion-captions/display-captions.md",
+      "sourceSha256": "12676a7250f33f126a8ccb0a2b28de22f5ccc9cad0d5baab53a736e205690a17"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-captions/import-srt-captions.md",
+      "source": "project-skill:remotion-best-practices:remotion-captions/import-srt-captions.md",
+      "sourceSha256": "e328b6845babd08ed2a747f82c59796fd1d7b85140c8eb4d36e41639779473ad"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-captions/transcribe-captions.md",
+      "source": "project-skill:remotion-best-practices:remotion-captions/transcribe-captions.md",
+      "sourceSha256": "0830184ed1f634a6912536768a3aabc0092313db22796c4455e8b46dad874803"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-captions/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-captions/agents/openai.yaml",
+      "sourceSha256": "3b39a48bd00251cf124e80090fe1b792b73020bee858c5d48b5629256cc5f045"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-captions/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-captions/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-create/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-create/REFERENCE.md",
+      "sourceSha256": "6942da1e73a318e6b6768bd9298ff06d4bd651d23b7fdd25d387a176d582eac6"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-create/tailwind.md",
+      "source": "project-skill:remotion-best-practices:remotion-create/tailwind.md",
+      "sourceSha256": "3ef07d3225d212af6a5076e62797a04d22d394434dcdbe2c050dab0d92806f36"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-create/video-layout.md",
+      "source": "project-skill:remotion-best-practices:remotion-create/video-layout.md",
+      "sourceSha256": "7ad94c22e3ad87671292ebb9b22f234c544d6c7fed13f8cb112b84b0f7077d4c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-create/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-create/agents/openai.yaml",
+      "sourceSha256": "ff3b357b492da1791c672e18ae401a23c31bd1e6f1fa6f98c5efabbb3124bd9c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-create/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-create/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/3d.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/3d.md",
+      "sourceSha256": "42cef6d68fb4a266ab495d35df0c60e03672b0d85c043f9b567f6aa7ff00dd0d"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/REFERENCE.md",
+      "sourceSha256": "cceeed9bc0383213d5973ad12e26db5bbc9847b1c556498ddd9f1913b0774270"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/arabic-text.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/arabic-text.md",
+      "sourceSha256": "e062dc1e589275d98dd21d32ab08211cd85c2111b36a6fb522203a2ad1347922"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/audio-visualization.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/audio-visualization.md",
+      "sourceSha256": "0f4043de86639b6390e5ab888eaa66a24a10a8bd540f1443327cb88107eae1e9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/audio.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/audio.md",
+      "sourceSha256": "857bf47188c6de8936f51e862f670da7e1cafa38aea8e1ae4a4920789f224077"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/calculate-metadata.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/calculate-metadata.md",
+      "sourceSha256": "711743642a475970dcadddb71805939dd6ee8f348825818cc8897b6a01e1eef0"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/color-correction.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/color-correction.md",
+      "sourceSha256": "d3cf205d54a75b8f484746b5049dd13461c1a6bad5afb15aaa0464402ba24b9d"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/compositions.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/compositions.md",
+      "sourceSha256": "2b09427165c8708510153c83add50c0f03992bf968962bfd5e3c373860d3853c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/connected-compositions.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/connected-compositions.md",
+      "sourceSha256": "b3319698a63a9ecadb266d29820cdca51a35c090214bd9c25c72e9ce4d6d3a8e"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/cropping.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/cropping.md",
+      "sourceSha256": "e775c020c44261ceb11e8aec83233b8d0dcc00517e512d30eb88fe955d6b64cd"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/effects.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/effects.md",
+      "sourceSha256": "02ba183684b9acecc6e48cae47c2e69c28ba132b3e2a1d0bc8716970f3f7fea7"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/embedding-videos.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/embedding-videos.md",
+      "sourceSha256": "3b0484bc92cd1d54fd6c9a54bc75c4f837054c90bb35e5e8959701d320c6a551"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/ffmpeg.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/ffmpeg.md",
+      "sourceSha256": "1d83085dfb63724f374acc5f01967f6c18f3aa7df62146438262a4061a839770"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/gifs.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/gifs.md",
+      "sourceSha256": "91e17126f7f0d57efdbdbaf34e0c234f874bd6aa66ec7854b80f17b0e32c3b22"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/google-fonts.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/google-fonts.md",
+      "sourceSha256": "fff29cf692ccab0cda263cd85255cf634dbb4d1d2d99e8372b01d9fedbd6cbfd"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/html-in-canvas.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/html-in-canvas.md",
+      "sourceSha256": "9b896dab368f8d9aec41114f8d0b96c1fbee981419b7077d6fd61621a0a54be4"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/images.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/images.md",
+      "sourceSha256": "0e6c2af8ad73483ebbc761237f230c8c0db1bd9db6b60d01d48a24b8a4059284"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/light-leaks.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/light-leaks.md",
+      "sourceSha256": "531514d4740c5a1a3798782300db69ebfe8f61191fc7852960bc5bdf5b82200b"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/local-fonts.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/local-fonts.md",
+      "sourceSha256": "fcad2a2e3a05419d4555c59a75454c4891455dbea91ad596c1095e2887d26a11"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/lottie.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/lottie.md",
+      "sourceSha256": "666268c8151d91042162f9efe3f02fe8c62b4c45053614eb1a9325c169428826"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/measuring-dom-nodes.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/measuring-dom-nodes.md",
+      "sourceSha256": "a677b976eaf1cbc3cdd29cf29a3fd546c557b9a31e6b1fd70e473fde7e828733"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/measuring-text.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/measuring-text.md",
+      "sourceSha256": "4bed81d1ea818db3975f878152dc24ecbc17e163117dcab10761dc8690c33f0c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/motion-blur.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/motion-blur.md",
+      "sourceSha256": "bc7559c9d0e56dffef72dcc4fb2d89d42c587ec2204ac21d33ae0c583d59632d"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/multi-scene-video.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/multi-scene-video.md",
+      "sourceSha256": "9d4abe6b0c22e86f378871b34539ed15f4f16d3d8814fafefbc672bd8d3ce3cf"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/parameters.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/parameters.md",
+      "sourceSha256": "b002ac9959105b2b91da5786bcb20aa6ff4c6632ed37074b32711f248867dff0"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/sequencing.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/sequencing.md",
+      "sourceSha256": "59f2349b125314188506cca8ea8d1386db0fa5031594569577bf1b4a555696c8"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/sfx.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/sfx.md",
+      "sourceSha256": "1f72e2d8858505ae2d31fa89231432714f8bc34c36164d3c0cc43a290b3f826a"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/silence-detection.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/silence-detection.md",
+      "sourceSha256": "7e777b141e339ade03bbdc1d002390e849781ebd3059183f60e1b24a91210f14"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/text-highlights.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/text-highlights.md",
+      "sourceSha256": "70773952286e1aec2ba02f2f54d2d776dad7799d87744df03b0c75637ebfb21f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/timing-props.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/timing-props.md",
+      "sourceSha256": "9401cb2bb5754af3c4868cb4e5c02a98f19bfcf7d8e74802377be8c9686894ba"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/timing.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/timing.md",
+      "sourceSha256": "48047e758b96aea519916479ede62b832bf51f982924978e091c37f569ab4bac"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/transitions.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/transitions.md",
+      "sourceSha256": "ab1f33f5ecbca6c12c5dbb3c2845189a036fdf782e13a820d28780bd18dd0707"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/video-editing.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/video-editing.md",
+      "sourceSha256": "4bf61502564d04c48b5544a5e00371ecd49c7fcf8d6098a3ef61b36c636e12fe"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/voiceover.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/voiceover.md",
+      "sourceSha256": "c310b9425559fac09c4ac660ae18243621565a00fb2aa052fd6e73ef34c57c7f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/REFERENCE.md",
+      "sourceSha256": "8396359e00263747856c0a9bcc5c0a8bf75017a4d5e60329b9ed7fcff0734d00"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/agents/openai.yaml",
+      "sourceSha256": "9c6c75daec6eabd78cf6fbc7169be3f7dde934df1316e41df6658052056b29ee"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/static-map/TECHNIQUE.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/static-map/TECHNIQUE.md",
+      "sourceSha256": "6fcb61a66084f4037a2fa0deb988500dd18e4ae7fa3c6923fb1142c1e521e9be"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maplibre/TECHNIQUE.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maplibre/TECHNIQUE.md",
+      "sourceSha256": "8a13debcd2abfce415b5c8b7f323420ec77092d81ceb935853171ca9697b902c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maplibre/references/render-stability.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maplibre/references/render-stability.md",
+      "sourceSha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/TECHNIQUE.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/TECHNIQUE.md",
+      "sourceSha256": "72896873e63d675caaab765941dbb8d668f2790090a63b94e165f254b77ef887"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/references/map-data-sources.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/references/map-data-sources.md",
+      "sourceSha256": "b99680cbda8e7d70dc2cb1a8823f66247a21fc59d10c6dae0dd9ba24d2f15b80"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/references/map-explainer-architecture.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/references/map-explainer-architecture.md",
+      "sourceSha256": "e09de8a4d00ea9a82b992918ec4d0302ee18979b73e6c777d584a9743092344f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/references/map-geo-prep.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/references/map-geo-prep.md",
+      "sourceSha256": "a97b1913f06195601889d4e090ad056db2fffb7b83918924c8cd92847b3829ef"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/references/render-stability.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/references/render-stability.md",
+      "sourceSha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs",
+      "sourceSha256": "8265f56bd7c27a7d1a5fa528a77bbe1b29c6acc0e6730233583ca53e2632d490"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx",
+      "sourceSha256": "6be8c7d5b3435c8d933f05394ce5e807da5fc9fe0565db94ccaee6ac049df137"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts",
+      "sourceSha256": "c8137792824323b9db997a88c3b923e8072cf2886cd90c38d84fdbbaad8258ed"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx",
+      "sourceSha256": "c3091e23dfd80178788d05c0bc43b17aee12aa4236d658f1a97c5acfb29a0f92"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/example-Root.tsx",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/assets/example-Root.tsx",
+      "sourceSha256": "e53677a7a207e37cbc04693eca8ccbab5f5f040efdc67a8b5c030c3913895e83"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/tokens.ts",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/assets/tokens.ts",
+      "sourceSha256": "29ae05eedb4988b5b8f2eb44d241b9c472533fb6ed05d4b33df3e71e0eabc71c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json",
+      "sourceSha256": "470a76cc5a45e58e7e1702cd80f74fcacf9d6e8b1ef7b05011f69853a999ba7b"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json",
+      "sourceSha256": "73a99e77a2ce31cb3ac39be8fe4775d53ecf127a56137b587fca090067dfbb96"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/mapbox/TECHNIQUE.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/mapbox/TECHNIQUE.md",
+      "sourceSha256": "8c434f680988a7212a9443ef9be0f62ef734f3d92af4dc47c11dad184677eec9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/mapbox/references/render-stability.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/mapbox/references/render-stability.md",
+      "sourceSha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/TECHNIQUE.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/cesium/TECHNIQUE.md",
+      "sourceSha256": "09057e77b67dcda23eed8ddbf1b5bd44541a952f380913a00b3bfddaa39ab675"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/references/3d-data-sources.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/cesium/references/3d-data-sources.md",
+      "sourceSha256": "23ac1acc576d49d599b33c812dc697b264ebe28849088c04e9827cb47b95275f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/references/3d-flyover-architecture.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/cesium/references/3d-flyover-architecture.md",
+      "sourceSha256": "09e1891cec991a246eec60dbcf76c4ea84c52e0bee14321471197703395d0a91"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/references/3d-troubleshooting.md",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/cesium/references/3d-troubleshooting.md",
+      "sourceSha256": "c803fe443f5bab1a50408f1f6aa6aded7913577eaefcb586b320c5a96c391bf2"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs",
+      "sourceSha256": "6dbb4d1ae3f5fef9f3f6eb23e2a6d58622750714bb847b088ff58a3533839463"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx",
+      "sourceSha256": "4d4a90e373176e840ae76ae91533fcd9dc445407693b17091c376bb597dbcb10"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/cesium-path.json",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/cesium/assets/cesium-path.json",
+      "sourceSha256": "329621928df19d115f93c472a0b7ddbd2463cad502a10722d3c23579a7441d44"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/city-path.json",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/cesium/assets/city-path.json",
+      "sourceSha256": "3bb420736d196f726b856420b319e21a8d7fc24bca7e626d67e8b00b0544e630"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/example-Root.tsx",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/cesium/assets/example-Root.tsx",
+      "sourceSha256": "51c2df109015adc992b66b62f1ffc9801ad13f3dc47e4290de40cbe1b8e7809e"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/flight-path.ts",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/cesium/assets/flight-path.ts",
+      "sourceSha256": "fab65d2d9cc0c4ca56f8a1422494d178c0e57f92a048a4720358d236ced980f0"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/sample-river.geojson",
+      "source": "project-skill:remotion-best-practices:remotion-markup/remotion-maps/techniques/cesium/assets/sample-river.geojson",
+      "sourceSha256": "2c9f6dd35ac4aed56580078046941235ed7e1a5d432a6549dbf7fea4e8d1e9be"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-markup/agents/openai.yaml",
+      "sourceSha256": "79e440561b613adf930f61b9f2ececc3284dfd92d06c4c282b73b461ffd16cb6"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-markup/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:agents/openai.yaml",
+      "sourceSha256": "752b402c013ba6f02bd827a7cc56d19e8facb159b52e2e3cecaf2d0229fdefb3"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-multimedia/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-multimedia/REFERENCE.md",
+      "sourceSha256": "b4f23793523ac77943d5f866c79e9c7f79719b6a276842c02960318047784070"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-multimedia/get-audio-duration.md",
+      "source": "project-skill:remotion-best-practices:remotion-multimedia/get-audio-duration.md",
+      "sourceSha256": "53b2e2ff232cae14ff9c0f7bb3ddf95c6137f7f1804cdaf50f7fe742befe0fd0"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-multimedia/get-video-dimensions.md",
+      "source": "project-skill:remotion-best-practices:remotion-multimedia/get-video-dimensions.md",
+      "sourceSha256": "9d4cd07f11ce8fabda258b4d826e7c9b3d6827e87ee036a2c4c8a7a5aca7db76"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-multimedia/get-video-duration.md",
+      "source": "project-skill:remotion-best-practices:remotion-multimedia/get-video-duration.md",
+      "sourceSha256": "6df955602cf7fb591ecb3f529fa9740d26ec1a4893a816aa08ea9b780379a8a0"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-multimedia/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-multimedia/agents/openai.yaml",
+      "sourceSha256": "74e07a383bbf02808320ede199873d00a5fc976cb99d407056456b9abdfb0cb7"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-multimedia/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-multimedia/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-docs/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-docs/REFERENCE.md",
+      "sourceSha256": "9b9938845ed2b042c280f867b03e9087d657704702a1a0b9fab36427da4835ef"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-docs/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-docs/agents/openai.yaml",
+      "sourceSha256": "ab02cb3008e6fc0702d7a601bfdd2f332e1224fda3c37de0265c24311c00d456"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-docs/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-docs/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-render/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-render/REFERENCE.md",
+      "sourceSha256": "abf5f10aebc73588c119b07e89935842dd6a101b414543fa7f6163c2850aff9c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-render/transparent-videos.md",
+      "source": "project-skill:remotion-best-practices:remotion-render/transparent-videos.md",
+      "sourceSha256": "394ccda476e084522d544471fee92d7c65672e2cbaf2201a785c3dd5c74f31a4"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-render/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-render/agents/openai.yaml",
+      "sourceSha256": "386699c32fdc63840ce7ff7412953831095dc4cdf60368648378c32895281290"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-render/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-render/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-upgrade/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-upgrade/REFERENCE.md",
+      "sourceSha256": "a30b91a52c75e438337195ab2b59680f86c27a8f289ab640a811dc375c956ef6"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-upgrade/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-upgrade/agents/openai.yaml",
+      "sourceSha256": "3f3bc995d3531cfb5a714fd8f951954e118909b749217cc8418a235326d003cb"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-upgrade/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-upgrade/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-studio/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-studio/REFERENCE.md",
+      "sourceSha256": "929a76d80627f36bd2c8ff6d572e018ef18ccd341ea1545aca5c4004b7eda5cc"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-studio/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-studio/agents/openai.yaml",
+      "sourceSha256": "43afba3c8088614ece62949e33a7c8350092e76436bad87ad41e1a1ccaebea5d"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-studio/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-studio/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-saas/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-saas/REFERENCE.md",
+      "sourceSha256": "7a7cfcd74af3b9bbae2601b9dc91c64391d4a91115375080e2badff5ad39ee81"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-saas/framework.md",
+      "source": "project-skill:remotion-best-practices:remotion-saas/framework.md",
+      "sourceSha256": "5e35ca3306ac15ad1df189789642cefbc62c59f4929372ffc10a67165d7b04b5"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-saas/player.md",
+      "source": "project-skill:remotion-best-practices:remotion-saas/player.md",
+      "sourceSha256": "cc2f2944f1158d6ff1ddfc421a6a790f99ae86f54bbe0f0b18ef8bc7485e1b05"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-saas/rendering.md",
+      "source": "project-skill:remotion-best-practices:remotion-saas/rendering.md",
+      "sourceSha256": "b2f30b53e0191ef9e7f2da7360b36c0c5448ab5bdcf55575e1f7e55c5bbd257f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-saas/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-saas/agents/openai.yaml",
+      "sourceSha256": "66be5403b3d10194c99e886372bbc1f4bdb2994fe560278bc7a39b4fbe7753a2"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-saas/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-saas/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-interactivity/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-interactivity/REFERENCE.md",
+      "sourceSha256": "db027ae9843ff0bf762079ceaa06347960bf22a0f112a72bd718b8ef5d38c584"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-interactivity/inline-effects.md",
+      "source": "project-skill:remotion-best-practices:remotion-interactivity/inline-effects.md",
+      "sourceSha256": "e2204691164855f195ffefc88706785089153a1e97dae06781841575892a30a6"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-interactivity/timeline-structure.md",
+      "source": "project-skill:remotion-best-practices:remotion-interactivity/timeline-structure.md",
+      "sourceSha256": "e75a122d41f51f2f049a3c4c69653f3fd4bbd3e5540ffc117e16291ed1d30dfa"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-interactivity/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-interactivity/agents/openai.yaml",
+      "sourceSha256": "84cd86b0b10e1f8b5be97bbd46677d5f618304303d922f1016ce0ea6a015d4b9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-interactivity/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-interactivity/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-license/REFERENCE.md",
+      "source": "project-skill:remotion-best-practices:remotion-license/REFERENCE.md",
+      "sourceSha256": "fbc19f61ad15b7baa03039b16ebd19e4b1be38d98b00456cc11c4bacfb787f49"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-license/agents/openai.yaml",
+      "source": "project-skill:remotion-best-practices:remotion-license/agents/openai.yaml",
+      "sourceSha256": "4dee64ca8039a03b64a64ec3430c2520990976391390be2779659489c5aec499"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-license/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-best-practices:remotion-license/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-captions/SKILL.md",
+      "source": "project-skill:remotion-captions:SKILL.md",
+      "sourceSha256": "2c8e945a93cbc644fe297d5d0e94c7cebdc76075ebe5a7fc39d25e999fa74eeb"
+    },
+    {
+      "path": ".agents/skills/remotion-captions/display-captions.md",
+      "source": "project-skill:remotion-captions:display-captions.md",
+      "sourceSha256": "12676a7250f33f126a8ccb0a2b28de22f5ccc9cad0d5baab53a736e205690a17"
+    },
+    {
+      "path": ".agents/skills/remotion-captions/import-srt-captions.md",
+      "source": "project-skill:remotion-captions:import-srt-captions.md",
+      "sourceSha256": "e328b6845babd08ed2a747f82c59796fd1d7b85140c8eb4d36e41639779473ad"
+    },
+    {
+      "path": ".agents/skills/remotion-captions/transcribe-captions.md",
+      "source": "project-skill:remotion-captions:transcribe-captions.md",
+      "sourceSha256": "0830184ed1f634a6912536768a3aabc0092313db22796c4455e8b46dad874803"
+    },
+    {
+      "path": ".agents/skills/remotion-captions/agents/openai.yaml",
+      "source": "project-skill:remotion-captions:agents/openai.yaml",
+      "sourceSha256": "3b39a48bd00251cf124e80090fe1b792b73020bee858c5d48b5629256cc5f045"
+    },
+    {
+      "path": ".agents/skills/remotion-captions/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-captions:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-create/SKILL.md",
+      "source": "project-skill:remotion-create:SKILL.md",
+      "sourceSha256": "433db214a47b315834ca96960dcc746587a10fcbe49da15a3e3f17ca8a8f03f6"
+    },
+    {
+      "path": ".agents/skills/remotion-create/tailwind.md",
+      "source": "project-skill:remotion-create:tailwind.md",
+      "sourceSha256": "3ef07d3225d212af6a5076e62797a04d22d394434dcdbe2c050dab0d92806f36"
+    },
+    {
+      "path": ".agents/skills/remotion-create/video-layout.md",
+      "source": "project-skill:remotion-create:video-layout.md",
+      "sourceSha256": "7ad94c22e3ad87671292ebb9b22f234c544d6c7fed13f8cb112b84b0f7077d4c"
+    },
+    {
+      "path": ".agents/skills/remotion-create/agents/openai.yaml",
+      "source": "project-skill:remotion-create:agents/openai.yaml",
+      "sourceSha256": "ff3b357b492da1791c672e18ae401a23c31bd1e6f1fa6f98c5efabbb3124bd9c"
+    },
+    {
+      "path": ".agents/skills/remotion-create/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-create:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-docs/SKILL.md",
+      "source": "project-skill:remotion-docs:SKILL.md",
+      "sourceSha256": "fa61901b459f67184765fe4a5db9febb2df9b6a32cbb1f6fd8f4c9699bc39c16"
+    },
+    {
+      "path": ".agents/skills/remotion-docs/agents/openai.yaml",
+      "source": "project-skill:remotion-docs:agents/openai.yaml",
+      "sourceSha256": "ab02cb3008e6fc0702d7a601bfdd2f332e1224fda3c37de0265c24311c00d456"
+    },
+    {
+      "path": ".agents/skills/remotion-docs/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-docs:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-interactivity/SKILL.md",
+      "source": "project-skill:remotion-interactivity:SKILL.md",
+      "sourceSha256": "891d0bf373f7a849a0f1bc4829cb59a3ed3f9b9f73f8d64e405a5b54e43216a5"
+    },
+    {
+      "path": ".agents/skills/remotion-interactivity/inline-effects.md",
+      "source": "project-skill:remotion-interactivity:inline-effects.md",
+      "sourceSha256": "e2204691164855f195ffefc88706785089153a1e97dae06781841575892a30a6"
+    },
+    {
+      "path": ".agents/skills/remotion-interactivity/timeline-structure.md",
+      "source": "project-skill:remotion-interactivity:timeline-structure.md",
+      "sourceSha256": "7edab50c1c594100a2512baf34483d8407c25df37234b0d36c18ad1d256b391b"
+    },
+    {
+      "path": ".agents/skills/remotion-interactivity/agents/openai.yaml",
+      "source": "project-skill:remotion-interactivity:agents/openai.yaml",
+      "sourceSha256": "84cd86b0b10e1f8b5be97bbd46677d5f618304303d922f1016ce0ea6a015d4b9"
+    },
+    {
+      "path": ".agents/skills/remotion-interactivity/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-interactivity:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-license/SKILL.md",
+      "source": "project-skill:remotion-license:SKILL.md",
+      "sourceSha256": "fbc19f61ad15b7baa03039b16ebd19e4b1be38d98b00456cc11c4bacfb787f49"
+    },
+    {
+      "path": ".agents/skills/remotion-license/agents/openai.yaml",
+      "source": "project-skill:remotion-license:agents/openai.yaml",
+      "sourceSha256": "4dee64ca8039a03b64a64ec3430c2520990976391390be2779659489c5aec499"
+    },
+    {
+      "path": ".agents/skills/remotion-license/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-license:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/SKILL.md",
+      "source": "project-skill:remotion-maps:SKILL.md",
+      "sourceSha256": "8396359e00263747856c0a9bcc5c0a8bf75017a4d5e60329b9ed7fcff0734d00"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/agents/openai.yaml",
+      "source": "project-skill:remotion-maps:agents/openai.yaml",
+      "sourceSha256": "9c6c75daec6eabd78cf6fbc7169be3f7dde934df1316e41df6658052056b29ee"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-maps:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/static-map/TECHNIQUE.md",
+      "source": "project-skill:remotion-maps:techniques/static-map/TECHNIQUE.md",
+      "sourceSha256": "5c1dd66fe41a476fb54474f29388b2caea6d8f73c81c585a761dace5aa8d8647"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maplibre/TECHNIQUE.md",
+      "source": "project-skill:remotion-maps:techniques/maplibre/TECHNIQUE.md",
+      "sourceSha256": "8a13debcd2abfce415b5c8b7f323420ec77092d81ceb935853171ca9697b902c"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maplibre/references/render-stability.md",
+      "source": "project-skill:remotion-maps:techniques/maplibre/references/render-stability.md",
+      "sourceSha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/TECHNIQUE.md",
+      "source": "project-skill:remotion-maps:techniques/maptiler/TECHNIQUE.md",
+      "sourceSha256": "72896873e63d675caaab765941dbb8d668f2790090a63b94e165f254b77ef887"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/references/map-data-sources.md",
+      "source": "project-skill:remotion-maps:techniques/maptiler/references/map-data-sources.md",
+      "sourceSha256": "b99680cbda8e7d70dc2cb1a8823f66247a21fc59d10c6dae0dd9ba24d2f15b80"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/references/map-explainer-architecture.md",
+      "source": "project-skill:remotion-maps:techniques/maptiler/references/map-explainer-architecture.md",
+      "sourceSha256": "e09de8a4d00ea9a82b992918ec4d0302ee18979b73e6c777d584a9743092344f"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/references/map-geo-prep.md",
+      "source": "project-skill:remotion-maps:techniques/maptiler/references/map-geo-prep.md",
+      "sourceSha256": "a97b1913f06195601889d4e090ad056db2fffb7b83918924c8cd92847b3829ef"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/references/render-stability.md",
+      "source": "project-skill:remotion-maps:techniques/maptiler/references/render-stability.md",
+      "sourceSha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs",
+      "source": "project-skill:remotion-maps:techniques/maptiler/scripts/prep-geo.mjs",
+      "sourceSha256": "8265f56bd7c27a7d1a5fa528a77bbe1b29c6acc0e6730233583ca53e2632d490"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx",
+      "source": "project-skill:remotion-maps:techniques/maptiler/assets/CountryLabel.tsx",
+      "sourceSha256": "6be8c7d5b3435c8d933f05394ce5e807da5fc9fe0565db94ccaee6ac049df137"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts",
+      "source": "project-skill:remotion-maps:techniques/maptiler/assets/MapTilerVectorElement.ts",
+      "sourceSha256": "c8137792824323b9db997a88c3b923e8072cf2886cd90c38d84fdbbaad8258ed"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx",
+      "source": "project-skill:remotion-maps:techniques/maptiler/assets/RiverReveal.tsx",
+      "sourceSha256": "c3091e23dfd80178788d05c0bc43b17aee12aa4236d658f1a97c5acfb29a0f92"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/example-Root.tsx",
+      "source": "project-skill:remotion-maps:techniques/maptiler/assets/example-Root.tsx",
+      "sourceSha256": "e53677a7a207e37cbc04693eca8ccbab5f5f040efdc67a8b5c030c3913895e83"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/tokens.ts",
+      "source": "project-skill:remotion-maps:techniques/maptiler/assets/tokens.ts",
+      "sourceSha256": "29ae05eedb4988b5b8f2eb44d241b9c472533fb6ed05d4b33df3e71e0eabc71c"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json",
+      "source": "project-skill:remotion-maps:techniques/maptiler/assets/sample-data/country-meta.json",
+      "sourceSha256": "470a76cc5a45e58e7e1702cd80f74fcacf9d6e8b1ef7b05011f69853a999ba7b"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json",
+      "source": "project-skill:remotion-maps:techniques/maptiler/assets/sample-data/yarlung-flow.json",
+      "sourceSha256": "73a99e77a2ce31cb3ac39be8fe4775d53ecf127a56137b587fca090067dfbb96"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/mapbox/TECHNIQUE.md",
+      "source": "project-skill:remotion-maps:techniques/mapbox/TECHNIQUE.md",
+      "sourceSha256": "8c434f680988a7212a9443ef9be0f62ef734f3d92af4dc47c11dad184677eec9"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/mapbox/references/render-stability.md",
+      "source": "project-skill:remotion-maps:techniques/mapbox/references/render-stability.md",
+      "sourceSha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/TECHNIQUE.md",
+      "source": "project-skill:remotion-maps:techniques/cesium/TECHNIQUE.md",
+      "sourceSha256": "09057e77b67dcda23eed8ddbf1b5bd44541a952f380913a00b3bfddaa39ab675"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/references/3d-data-sources.md",
+      "source": "project-skill:remotion-maps:techniques/cesium/references/3d-data-sources.md",
+      "sourceSha256": "23ac1acc576d49d599b33c812dc697b264ebe28849088c04e9827cb47b95275f"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/references/3d-flyover-architecture.md",
+      "source": "project-skill:remotion-maps:techniques/cesium/references/3d-flyover-architecture.md",
+      "sourceSha256": "09e1891cec991a246eec60dbcf76c4ea84c52e0bee14321471197703395d0a91"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/references/3d-troubleshooting.md",
+      "source": "project-skill:remotion-maps:techniques/cesium/references/3d-troubleshooting.md",
+      "sourceSha256": "c803fe443f5bab1a50408f1f6aa6aded7913577eaefcb586b320c5a96c391bf2"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs",
+      "source": "project-skill:remotion-maps:techniques/cesium/scripts/prep-cesium-path.mjs",
+      "sourceSha256": "6dbb4d1ae3f5fef9f3f6eb23e2a6d58622750714bb847b088ff58a3533839463"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx",
+      "source": "project-skill:remotion-maps:techniques/cesium/assets/CesiumFlythrough.tsx",
+      "sourceSha256": "4d4a90e373176e840ae76ae91533fcd9dc445407693b17091c376bb597dbcb10"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/assets/cesium-path.json",
+      "source": "project-skill:remotion-maps:techniques/cesium/assets/cesium-path.json",
+      "sourceSha256": "329621928df19d115f93c472a0b7ddbd2463cad502a10722d3c23579a7441d44"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/assets/city-path.json",
+      "source": "project-skill:remotion-maps:techniques/cesium/assets/city-path.json",
+      "sourceSha256": "3bb420736d196f726b856420b319e21a8d7fc24bca7e626d67e8b00b0544e630"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/assets/example-Root.tsx",
+      "source": "project-skill:remotion-maps:techniques/cesium/assets/example-Root.tsx",
+      "sourceSha256": "51c2df109015adc992b66b62f1ffc9801ad13f3dc47e4290de40cbe1b8e7809e"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/assets/flight-path.ts",
+      "source": "project-skill:remotion-maps:techniques/cesium/assets/flight-path.ts",
+      "sourceSha256": "fab65d2d9cc0c4ca56f8a1422494d178c0e57f92a048a4720358d236ced980f0"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/assets/sample-river.geojson",
+      "source": "project-skill:remotion-maps:techniques/cesium/assets/sample-river.geojson",
+      "sourceSha256": "2c9f6dd35ac4aed56580078046941235ed7e1a5d432a6549dbf7fea4e8d1e9be"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/3d.md",
+      "source": "project-skill:remotion-markup:3d.md",
+      "sourceSha256": "42cef6d68fb4a266ab495d35df0c60e03672b0d85c043f9b567f6aa7ff00dd0d"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/SKILL.md",
+      "source": "project-skill:remotion-markup:SKILL.md",
+      "sourceSha256": "30f26d8cf63dbf1c3b271d28468439858f232b7aed316f533b6ab28ef4fc3be4"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/arabic-text.md",
+      "source": "project-skill:remotion-markup:arabic-text.md",
+      "sourceSha256": "e062dc1e589275d98dd21d32ab08211cd85c2111b36a6fb522203a2ad1347922"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/audio-visualization.md",
+      "source": "project-skill:remotion-markup:audio-visualization.md",
+      "sourceSha256": "0f4043de86639b6390e5ab888eaa66a24a10a8bd540f1443327cb88107eae1e9"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/audio.md",
+      "source": "project-skill:remotion-markup:audio.md",
+      "sourceSha256": "857bf47188c6de8936f51e862f670da7e1cafa38aea8e1ae4a4920789f224077"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/calculate-metadata.md",
+      "source": "project-skill:remotion-markup:calculate-metadata.md",
+      "sourceSha256": "ca904cd19d65bd926a1fb07519eb769cc55deeffe74f7c3282d5e3fd16a0dcba"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/color-correction.md",
+      "source": "project-skill:remotion-markup:color-correction.md",
+      "sourceSha256": "d3cf205d54a75b8f484746b5049dd13461c1a6bad5afb15aaa0464402ba24b9d"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/compositions.md",
+      "source": "project-skill:remotion-markup:compositions.md",
+      "sourceSha256": "3d1fcd25ebc11726b216e5e419d950469c3c6416edf45f69630bd11c8179f8dd"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/connected-compositions.md",
+      "source": "project-skill:remotion-markup:connected-compositions.md",
+      "sourceSha256": "a3521a509f34875ad9d46dbdc01bc9e5ee3e93d2d7134e664efb826d67abd300"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/cropping.md",
+      "source": "project-skill:remotion-markup:cropping.md",
+      "sourceSha256": "188cbf969c677629baaf83dbe0e85bb9a8ee22615561f58bfca30ff39b9fdc88"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/effects.md",
+      "source": "project-skill:remotion-markup:effects.md",
+      "sourceSha256": "02ba183684b9acecc6e48cae47c2e69c28ba132b3e2a1d0bc8716970f3f7fea7"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/embedding-videos.md",
+      "source": "project-skill:remotion-markup:embedding-videos.md",
+      "sourceSha256": "3b0484bc92cd1d54fd6c9a54bc75c4f837054c90bb35e5e8959701d320c6a551"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/ffmpeg.md",
+      "source": "project-skill:remotion-markup:ffmpeg.md",
+      "sourceSha256": "1d83085dfb63724f374acc5f01967f6c18f3aa7df62146438262a4061a839770"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/gifs.md",
+      "source": "project-skill:remotion-markup:gifs.md",
+      "sourceSha256": "91e17126f7f0d57efdbdbaf34e0c234f874bd6aa66ec7854b80f17b0e32c3b22"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/google-fonts.md",
+      "source": "project-skill:remotion-markup:google-fonts.md",
+      "sourceSha256": "fff29cf692ccab0cda263cd85255cf634dbb4d1d2d99e8372b01d9fedbd6cbfd"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/html-in-canvas.md",
+      "source": "project-skill:remotion-markup:html-in-canvas.md",
+      "sourceSha256": "9b896dab368f8d9aec41114f8d0b96c1fbee981419b7077d6fd61621a0a54be4"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/images.md",
+      "source": "project-skill:remotion-markup:images.md",
+      "sourceSha256": "0e6c2af8ad73483ebbc761237f230c8c0db1bd9db6b60d01d48a24b8a4059284"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/light-leaks.md",
+      "source": "project-skill:remotion-markup:light-leaks.md",
+      "sourceSha256": "531514d4740c5a1a3798782300db69ebfe8f61191fc7852960bc5bdf5b82200b"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/local-fonts.md",
+      "source": "project-skill:remotion-markup:local-fonts.md",
+      "sourceSha256": "fcad2a2e3a05419d4555c59a75454c4891455dbea91ad596c1095e2887d26a11"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/lottie.md",
+      "source": "project-skill:remotion-markup:lottie.md",
+      "sourceSha256": "666268c8151d91042162f9efe3f02fe8c62b4c45053614eb1a9325c169428826"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/measuring-dom-nodes.md",
+      "source": "project-skill:remotion-markup:measuring-dom-nodes.md",
+      "sourceSha256": "a677b976eaf1cbc3cdd29cf29a3fd546c557b9a31e6b1fd70e473fde7e828733"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/measuring-text.md",
+      "source": "project-skill:remotion-markup:measuring-text.md",
+      "sourceSha256": "4bed81d1ea818db3975f878152dc24ecbc17e163117dcab10761dc8690c33f0c"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/motion-blur.md",
+      "source": "project-skill:remotion-markup:motion-blur.md",
+      "sourceSha256": "bc7559c9d0e56dffef72dcc4fb2d89d42c587ec2204ac21d33ae0c583d59632d"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/multi-scene-video.md",
+      "source": "project-skill:remotion-markup:multi-scene-video.md",
+      "sourceSha256": "27c3b31a3446f7fb1844734e88b837e2e4f67fadc3b0f14f9043b30c09836557"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/parameters.md",
+      "source": "project-skill:remotion-markup:parameters.md",
+      "sourceSha256": "b002ac9959105b2b91da5786bcb20aa6ff4c6632ed37074b32711f248867dff0"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/sequencing.md",
+      "source": "project-skill:remotion-markup:sequencing.md",
+      "sourceSha256": "f53680a3ec4b754501ce37516387666e1b3df3c5714d266154b274caea4236a4"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/sfx.md",
+      "source": "project-skill:remotion-markup:sfx.md",
+      "sourceSha256": "1f72e2d8858505ae2d31fa89231432714f8bc34c36164d3c0cc43a290b3f826a"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/silence-detection.md",
+      "source": "project-skill:remotion-markup:silence-detection.md",
+      "sourceSha256": "7e777b141e339ade03bbdc1d002390e849781ebd3059183f60e1b24a91210f14"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/text-highlights.md",
+      "source": "project-skill:remotion-markup:text-highlights.md",
+      "sourceSha256": "6a3b7629b947e8657c42b73b1f53c91d9b1535af1bfed57e054981c51bb951cc"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/timing-props.md",
+      "source": "project-skill:remotion-markup:timing-props.md",
+      "sourceSha256": "346ff7f3778f3b7ba165ac212459034120cac7cffd3ead3fe68db179e15f7494"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/timing.md",
+      "source": "project-skill:remotion-markup:timing.md",
+      "sourceSha256": "48047e758b96aea519916479ede62b832bf51f982924978e091c37f569ab4bac"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/transitions.md",
+      "source": "project-skill:remotion-markup:transitions.md",
+      "sourceSha256": "83b8b511044ef175244a4e9e81f66bd3f5062cf9cecacd30ae88ac17eda40b82"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/video-editing.md",
+      "source": "project-skill:remotion-markup:video-editing.md",
+      "sourceSha256": "c132393598777260615e3f21e1cc1cb108e37aacb6bd3d20157e86e079893e8a"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/voiceover.md",
+      "source": "project-skill:remotion-markup:voiceover.md",
+      "sourceSha256": "365abf92b89fb0393fc317a80632fddde60d982fa2d199475bbedd0023e77c69"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/REFERENCE.md",
+      "source": "project-skill:remotion-markup:remotion-maps/REFERENCE.md",
+      "sourceSha256": "8396359e00263747856c0a9bcc5c0a8bf75017a4d5e60329b9ed7fcff0734d00"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/agents/openai.yaml",
+      "source": "project-skill:remotion-markup:remotion-maps/agents/openai.yaml",
+      "sourceSha256": "9c6c75daec6eabd78cf6fbc7169be3f7dde934df1316e41df6658052056b29ee"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-markup:remotion-maps/assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/static-map/TECHNIQUE.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/static-map/TECHNIQUE.md",
+      "sourceSha256": "28fe6e300d249cf85493132a23f6e5392bb5933ac99011b3ac4a3868f5f2cae9"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maplibre/TECHNIQUE.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maplibre/TECHNIQUE.md",
+      "sourceSha256": "8a13debcd2abfce415b5c8b7f323420ec77092d81ceb935853171ca9697b902c"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maplibre/references/render-stability.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maplibre/references/render-stability.md",
+      "sourceSha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/TECHNIQUE.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/TECHNIQUE.md",
+      "sourceSha256": "72896873e63d675caaab765941dbb8d668f2790090a63b94e165f254b77ef887"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/references/map-data-sources.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/references/map-data-sources.md",
+      "sourceSha256": "b99680cbda8e7d70dc2cb1a8823f66247a21fc59d10c6dae0dd9ba24d2f15b80"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/references/map-explainer-architecture.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/references/map-explainer-architecture.md",
+      "sourceSha256": "e09de8a4d00ea9a82b992918ec4d0302ee18979b73e6c777d584a9743092344f"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/references/map-geo-prep.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/references/map-geo-prep.md",
+      "sourceSha256": "a97b1913f06195601889d4e090ad056db2fffb7b83918924c8cd92847b3829ef"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/references/render-stability.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/references/render-stability.md",
+      "sourceSha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/scripts/prep-geo.mjs",
+      "sourceSha256": "8265f56bd7c27a7d1a5fa528a77bbe1b29c6acc0e6730233583ca53e2632d490"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/assets/CountryLabel.tsx",
+      "sourceSha256": "6be8c7d5b3435c8d933f05394ce5e807da5fc9fe0565db94ccaee6ac049df137"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts",
+      "sourceSha256": "c8137792824323b9db997a88c3b923e8072cf2886cd90c38d84fdbbaad8258ed"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/assets/RiverReveal.tsx",
+      "sourceSha256": "c3091e23dfd80178788d05c0bc43b17aee12aa4236d658f1a97c5acfb29a0f92"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/example-Root.tsx",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/assets/example-Root.tsx",
+      "sourceSha256": "e53677a7a207e37cbc04693eca8ccbab5f5f040efdc67a8b5c030c3913895e83"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/tokens.ts",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/assets/tokens.ts",
+      "sourceSha256": "29ae05eedb4988b5b8f2eb44d241b9c472533fb6ed05d4b33df3e71e0eabc71c"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json",
+      "sourceSha256": "470a76cc5a45e58e7e1702cd80f74fcacf9d6e8b1ef7b05011f69853a999ba7b"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json",
+      "sourceSha256": "73a99e77a2ce31cb3ac39be8fe4775d53ecf127a56137b587fca090067dfbb96"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/mapbox/TECHNIQUE.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/mapbox/TECHNIQUE.md",
+      "sourceSha256": "8c434f680988a7212a9443ef9be0f62ef734f3d92af4dc47c11dad184677eec9"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/mapbox/references/render-stability.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/mapbox/references/render-stability.md",
+      "sourceSha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/TECHNIQUE.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/cesium/TECHNIQUE.md",
+      "sourceSha256": "09057e77b67dcda23eed8ddbf1b5bd44541a952f380913a00b3bfddaa39ab675"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/references/3d-data-sources.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/cesium/references/3d-data-sources.md",
+      "sourceSha256": "23ac1acc576d49d599b33c812dc697b264ebe28849088c04e9827cb47b95275f"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/references/3d-flyover-architecture.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/cesium/references/3d-flyover-architecture.md",
+      "sourceSha256": "09e1891cec991a246eec60dbcf76c4ea84c52e0bee14321471197703395d0a91"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/references/3d-troubleshooting.md",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/cesium/references/3d-troubleshooting.md",
+      "sourceSha256": "c803fe443f5bab1a50408f1f6aa6aded7913577eaefcb586b320c5a96c391bf2"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs",
+      "sourceSha256": "6dbb4d1ae3f5fef9f3f6eb23e2a6d58622750714bb847b088ff58a3533839463"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx",
+      "sourceSha256": "4d4a90e373176e840ae76ae91533fcd9dc445407693b17091c376bb597dbcb10"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/cesium-path.json",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/cesium/assets/cesium-path.json",
+      "sourceSha256": "329621928df19d115f93c472a0b7ddbd2463cad502a10722d3c23579a7441d44"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/city-path.json",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/cesium/assets/city-path.json",
+      "sourceSha256": "3bb420736d196f726b856420b319e21a8d7fc24bca7e626d67e8b00b0544e630"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/example-Root.tsx",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/cesium/assets/example-Root.tsx",
+      "sourceSha256": "51c2df109015adc992b66b62f1ffc9801ad13f3dc47e4290de40cbe1b8e7809e"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/flight-path.ts",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/cesium/assets/flight-path.ts",
+      "sourceSha256": "fab65d2d9cc0c4ca56f8a1422494d178c0e57f92a048a4720358d236ced980f0"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/sample-river.geojson",
+      "source": "project-skill:remotion-markup:remotion-maps/techniques/cesium/assets/sample-river.geojson",
+      "sourceSha256": "2c9f6dd35ac4aed56580078046941235ed7e1a5d432a6549dbf7fea4e8d1e9be"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/agents/openai.yaml",
+      "source": "project-skill:remotion-markup:agents/openai.yaml",
+      "sourceSha256": "79e440561b613adf930f61b9f2ececc3284dfd92d06c4c282b73b461ffd16cb6"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-markup:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-multimedia/SKILL.md",
+      "source": "project-skill:remotion-multimedia:SKILL.md",
+      "sourceSha256": "b4f23793523ac77943d5f866c79e9c7f79719b6a276842c02960318047784070"
+    },
+    {
+      "path": ".agents/skills/remotion-multimedia/get-audio-duration.md",
+      "source": "project-skill:remotion-multimedia:get-audio-duration.md",
+      "sourceSha256": "53b2e2ff232cae14ff9c0f7bb3ddf95c6137f7f1804cdaf50f7fe742befe0fd0"
+    },
+    {
+      "path": ".agents/skills/remotion-multimedia/get-video-dimensions.md",
+      "source": "project-skill:remotion-multimedia:get-video-dimensions.md",
+      "sourceSha256": "9d4cd07f11ce8fabda258b4d826e7c9b3d6827e87ee036a2c4c8a7a5aca7db76"
+    },
+    {
+      "path": ".agents/skills/remotion-multimedia/get-video-duration.md",
+      "source": "project-skill:remotion-multimedia:get-video-duration.md",
+      "sourceSha256": "6df955602cf7fb591ecb3f529fa9740d26ec1a4893a816aa08ea9b780379a8a0"
+    },
+    {
+      "path": ".agents/skills/remotion-multimedia/agents/openai.yaml",
+      "source": "project-skill:remotion-multimedia:agents/openai.yaml",
+      "sourceSha256": "74e07a383bbf02808320ede199873d00a5fc976cb99d407056456b9abdfb0cb7"
+    },
+    {
+      "path": ".agents/skills/remotion-multimedia/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-multimedia:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-render/SKILL.md",
+      "source": "project-skill:remotion-render:SKILL.md",
+      "sourceSha256": "abf5f10aebc73588c119b07e89935842dd6a101b414543fa7f6163c2850aff9c"
+    },
+    {
+      "path": ".agents/skills/remotion-render/transparent-videos.md",
+      "source": "project-skill:remotion-render:transparent-videos.md",
+      "sourceSha256": "394ccda476e084522d544471fee92d7c65672e2cbaf2201a785c3dd5c74f31a4"
+    },
+    {
+      "path": ".agents/skills/remotion-render/agents/openai.yaml",
+      "source": "project-skill:remotion-render:agents/openai.yaml",
+      "sourceSha256": "386699c32fdc63840ce7ff7412953831095dc4cdf60368648378c32895281290"
+    },
+    {
+      "path": ".agents/skills/remotion-render/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-render:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-saas/SKILL.md",
+      "source": "project-skill:remotion-saas:SKILL.md",
+      "sourceSha256": "7a7cfcd74af3b9bbae2601b9dc91c64391d4a91115375080e2badff5ad39ee81"
+    },
+    {
+      "path": ".agents/skills/remotion-saas/framework.md",
+      "source": "project-skill:remotion-saas:framework.md",
+      "sourceSha256": "5e35ca3306ac15ad1df189789642cefbc62c59f4929372ffc10a67165d7b04b5"
+    },
+    {
+      "path": ".agents/skills/remotion-saas/player.md",
+      "source": "project-skill:remotion-saas:player.md",
+      "sourceSha256": "cc2f2944f1158d6ff1ddfc421a6a790f99ae86f54bbe0f0b18ef8bc7485e1b05"
+    },
+    {
+      "path": ".agents/skills/remotion-saas/rendering.md",
+      "source": "project-skill:remotion-saas:rendering.md",
+      "sourceSha256": "b2f30b53e0191ef9e7f2da7360b36c0c5448ab5bdcf55575e1f7e55c5bbd257f"
+    },
+    {
+      "path": ".agents/skills/remotion-saas/agents/openai.yaml",
+      "source": "project-skill:remotion-saas:agents/openai.yaml",
+      "sourceSha256": "66be5403b3d10194c99e886372bbc1f4bdb2994fe560278bc7a39b4fbe7753a2"
+    },
+    {
+      "path": ".agents/skills/remotion-saas/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-saas:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-studio/SKILL.md",
+      "source": "project-skill:remotion-studio:SKILL.md",
+      "sourceSha256": "929a76d80627f36bd2c8ff6d572e018ef18ccd341ea1545aca5c4004b7eda5cc"
+    },
+    {
+      "path": ".agents/skills/remotion-studio/agents/openai.yaml",
+      "source": "project-skill:remotion-studio:agents/openai.yaml",
+      "sourceSha256": "43afba3c8088614ece62949e33a7c8350092e76436bad87ad41e1a1ccaebea5d"
+    },
+    {
+      "path": ".agents/skills/remotion-studio/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-studio:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-upgrade/SKILL.md",
+      "source": "project-skill:remotion-upgrade:SKILL.md",
+      "sourceSha256": "a30b91a52c75e438337195ab2b59680f86c27a8f289ab640a811dc375c956ef6"
+    },
+    {
+      "path": ".agents/skills/remotion-upgrade/agents/openai.yaml",
+      "source": "project-skill:remotion-upgrade:agents/openai.yaml",
+      "sourceSha256": "3f3bc995d3531cfb5a714fd8f951954e118909b749217cc8418a235326d003cb"
+    },
+    {
+      "path": ".agents/skills/remotion-upgrade/assets/remotion-icon.svg",
+      "source": "project-skill:remotion-upgrade:assets/remotion-icon.svg",
+      "sourceSha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/SKILL.md",
+      "source": "custom-skill:remotion-reel:SKILL.md",
+      "sourceSha256": "203e2c2f068e5891341a34cac773a7ccbb2b5b49337a7bc51611b47940ddc590"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/requirements.lock",
+      "source": "custom-skill:remotion-reel:requirements.lock",
+      "sourceSha256": "1c97fbe9801820d27b097761a653f0a9af7e27e2f7cb632183b90abff48d5954"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/source-manifest.json",
+      "source": "custom-skill:remotion-reel:source-manifest.json",
+      "sourceSha256": "46810b01e232923b490ce81ded8dda48cb00eace2c76803392e900cc9e6f8eb0"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/audio.md",
+      "source": "custom-skill:remotion-reel:references/audio.md",
+      "sourceSha256": "42be9ab90eeff403820efb8e4572a7ec6ce533f37900a537647ce6b20fd00605"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/background-removal.md",
+      "source": "custom-skill:remotion-reel:references/background-removal.md",
+      "sourceSha256": "e8402906450c2128c1710389f9125f719270eaa5b1d8987996293b66eeb4dafa"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/brand-sheet.md",
+      "source": "custom-skill:remotion-reel:references/brand-sheet.md",
+      "sourceSha256": "0ceca0049ddc9fdf14289ad942bfa8809c3c25c17412d3ef60b3ffbf7107aca1"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/captions.md",
+      "source": "custom-skill:remotion-reel:references/captions.md",
+      "sourceSha256": "735177bbcbe26e142892299885175227ac015a15c8f03ac11aad5eda59a5aa77"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/hyperframes-hybrid.md",
+      "source": "custom-skill:remotion-reel:references/hyperframes-hybrid.md",
+      "sourceSha256": "fe2128e4c994bcc96aff667a787b65421dc62224aad77c1b45741d56b185e443"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/layouts.md",
+      "source": "custom-skill:remotion-reel:references/layouts.md",
+      "sourceSha256": "a272041983a1fdaeac3e69dcfa94b3b29c7c05929265f59c73bed27ff0f5d68a"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/motion-graphics.md",
+      "source": "custom-skill:remotion-reel:references/motion-graphics.md",
+      "sourceSha256": "2bbfb642e8b5b4f011ecde23fd35db0068dc6c2d8eaebac1d45534e5fef618ea"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/reference-analysis.md",
+      "source": "custom-skill:remotion-reel:references/reference-analysis.md",
+      "sourceSha256": "5521b9c07ce5c07a01c78f610996179df319fcd38f213f0abd6a991120d33014"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/screen-recordings.md",
+      "source": "custom-skill:remotion-reel:references/screen-recordings.md",
+      "sourceSha256": "1d2bddc4b6b9bac6c6435445c61eaf2fc634db55ae9740aa505373180887a8cb"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/split-screen-from-full-frame.md",
+      "source": "custom-skill:remotion-reel:references/split-screen-from-full-frame.md",
+      "sourceSha256": "b9460f980fcf7a876d602f883868b303b5eb550a7394988ba5a7d7f83069c921"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/storyboard.md",
+      "source": "custom-skill:remotion-reel:references/storyboard.md",
+      "sourceSha256": "7480dc7141d3868f4526f64889766dbba2f1169923688350fe44fbdac7d87e1b"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/text-hook.md",
+      "source": "custom-skill:remotion-reel:references/text-hook.md",
+      "sourceSha256": "915b6b3794c00c68d152a91bb1a923005cc0ccc7f666344944c492e42db3191d"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/whole-scene-authoring.md",
+      "source": "custom-skill:remotion-reel:references/whole-scene-authoring.md",
+      "sourceSha256": "8349d15a9b17bd9a2b28cf678104da195a5ebaaad58d2e345f235811fd83f474"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/xvadur-project.md",
+      "source": "custom-skill:remotion-reel:references/xvadur-project.md",
+      "sourceSha256": "78ba35a9cfd4dfe4b4e188e6994c4a3e6e4843e093a84048c294343a071dedd7"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/agents/openai.yaml",
+      "source": "custom-skill:remotion-reel:agents/openai.yaml",
+      "sourceSha256": "509b5581721d7a6a5562ffd780d89ea3a2b9c696185bea753fca2aa245f88a5d"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/components/Caption.tsx",
+      "source": "custom-skill:remotion-reel:components/Caption.tsx",
+      "sourceSha256": "55ab9824adc912fb43b75bc99b9648d3e82a7982d5a5c5a5d9737c1f6ccefea2"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/components/Silhouette.tsx",
+      "source": "custom-skill:remotion-reel:components/Silhouette.tsx",
+      "sourceSha256": "49761dabfccfd0703345a0d5559755924d14bc43f86b8fb0ce145a7405de4eb4"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/components/TextHook.tsx",
+      "source": "custom-skill:remotion-reel:components/TextHook.tsx",
+      "sourceSha256": "3bab126aed840db08fd19a8f488b8383c51dc65fb5ad9005dd6e5423c9cbe60e"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/components/TwoThirdsPanel.tsx",
+      "source": "custom-skill:remotion-reel:components/TwoThirdsPanel.tsx",
+      "sourceSha256": "47cffaf875a5576bef3ca6301a0b87938c71d464a2f052caa4f007e069bb5fdc"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/components/storyboard-review.html",
+      "source": "custom-skill:remotion-reel:components/storyboard-review.html",
+      "sourceSha256": "0308d49cb6a7de7e44aaefead202bace3f8594836d5ef46403b6a2d778eaec21"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/scripts/camera-check.py",
+      "source": "custom-skill:remotion-reel:scripts/camera-check.py",
+      "sourceSha256": "aa14910d1bdd4eb3588fd61eac411aa85e215923b7dd7684fdb01e282cbe1868"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/scripts/caption-tone.py",
+      "source": "custom-skill:remotion-reel:scripts/caption-tone.py",
+      "sourceSha256": "3f930b42ba5a121adea40530273a67be00cec4e2f529d97869400be19bb84752"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/scripts/measure-hook.py",
+      "source": "custom-skill:remotion-reel:scripts/measure-hook.py",
+      "sourceSha256": "71a4977e66f52608ee02f357b33d12b7af52b06d77e5d5b6cd274a54418dba0c"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/scripts/retime-captions.py",
+      "source": "custom-skill:remotion-reel:scripts/retime-captions.py",
+      "sourceSha256": "17ee067c68c5aa628981f7fe361757fcbc687acc7e62d0e2dbb702664566b447"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/scripts/verify-audio.py",
+      "source": "custom-skill:remotion-reel:scripts/verify-audio.py",
+      "sourceSha256": "e556ac0b066795f597910c11d084a30ce27c19b55666fbeeda46078e24dd530d"
+    },
+    {
+      "path": "smer/package.json",
+      "source": "author-runtime:package.json",
+      "sourceSha256": "8ff858fcbece3caffa41b363e18eb463f870ea4e8f437f4d59e5cd3366cff4a3"
+    },
+    {
+      "path": "smer/package-lock.json",
+      "source": "author-runtime:package-lock.json",
+      "sourceSha256": "07f1b18436aa28cb635fdb8a01f133b0f6e9e055e05cf8ab8445bbb9cbf0fb58"
+    }
+  ]
+}

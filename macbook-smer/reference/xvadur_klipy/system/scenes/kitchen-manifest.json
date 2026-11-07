@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "sceneId": "kitchen-rules-stage",
+  "implementationHash": "2e1778e13302a11c2d31a41d0548471aea33b474b3d0682772489ea8ebfb51a8",
+  "files": [
+    {
+      "path": "system/renderer/src/authored/KitchenRulesStage.tsx",
+      "hash": "8c70d0b709adccda246e3c38ec3053d43a69657b30deccd399542138ebc3d92a"
+    },
+    {
+      "path": "system/scenes/kitchen-parameters.ts",
+      "hash": "e8382f7129d47186c5e25b476a9e03517da430303542f70f0e3182c9b8832283"
+    }
+  ]
+}

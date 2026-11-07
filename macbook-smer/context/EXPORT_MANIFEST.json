@@ -1,0 +1,2887 @@
+{
+  "version": 1,
+  "date": "2026-11-07",
+  "note": "Public handoff to existing xvadur/system, branch macbook-smer-2026-11-07, explicitly authorized by Adam. Local edits may intentionally change these files. Installed dependencies and this manifest are excluded.",
+  "files": [
+    {
+      "path": ".agents/skills/remotion-best-practices/SKILL.md",
+      "bytes": 4356,
+      "sha256": "b9712d028fe9c3f8d08dbdc08d17e33d4f9b26da44d945ce84995e4011b36096"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/agents/openai.yaml",
+      "bytes": 311,
+      "sha256": "752b402c013ba6f02bd827a7cc56d19e8facb159b52e2e3cecaf2d0229fdefb3"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-captions/REFERENCE.md",
+      "bytes": 1152,
+      "sha256": "49fbe8314037f02ad3901753f5dbce87a49e18a10fd5a0b7ffe1e6fa66392d3b"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-captions/agents/openai.yaml",
+      "bytes": 305,
+      "sha256": "3b39a48bd00251cf124e80090fe1b792b73020bee858c5d48b5629256cc5f045"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-captions/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-captions/display-captions.md",
+      "bytes": 5940,
+      "sha256": "12676a7250f33f126a8ccb0a2b28de22f5ccc9cad0d5baab53a736e205690a17"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-captions/import-srt-captions.md",
+      "bytes": 2231,
+      "sha256": "e328b6845babd08ed2a747f82c59796fd1d7b85140c8eb4d36e41639779473ad"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-captions/transcribe-captions.md",
+      "bytes": 5533,
+      "sha256": "0830184ed1f634a6912536768a3aabc0092313db22796c4455e8b46dad874803"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-create/REFERENCE.md",
+      "bytes": 2973,
+      "sha256": "6942da1e73a318e6b6768bd9298ff06d4bd651d23b7fdd25d387a176d582eac6"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-create/agents/openai.yaml",
+      "bytes": 310,
+      "sha256": "ff3b357b492da1791c672e18ae401a23c31bd1e6f1fa6f98c5efabbb3124bd9c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-create/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-create/tailwind.md",
+      "bytes": 386,
+      "sha256": "3ef07d3225d212af6a5076e62797a04d22d394434dcdbe2c050dab0d92806f36"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-create/video-layout.md",
+      "bytes": 498,
+      "sha256": "7ad94c22e3ad87671292ebb9b22f234c544d6c7fed13f8cb112b84b0f7077d4c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-docs/REFERENCE.md",
+      "bytes": 1355,
+      "sha256": "9b9938845ed2b042c280f867b03e9087d657704702a1a0b9fab36427da4835ef"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-docs/agents/openai.yaml",
+      "bytes": 307,
+      "sha256": "ab02cb3008e6fc0702d7a601bfdd2f332e1224fda3c37de0265c24311c00d456"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-docs/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-interactivity/REFERENCE.md",
+      "bytes": 13829,
+      "sha256": "db027ae9843ff0bf762079ceaa06347960bf22a0f112a72bd718b8ef5d38c584"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-interactivity/agents/openai.yaml",
+      "bytes": 320,
+      "sha256": "84cd86b0b10e1f8b5be97bbd46677d5f618304303d922f1016ce0ea6a015d4b9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-interactivity/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-interactivity/inline-effects.md",
+      "bytes": 993,
+      "sha256": "e2204691164855f195ffefc88706785089153a1e97dae06781841575892a30a6"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-interactivity/timeline-structure.md",
+      "bytes": 7016,
+      "sha256": "e75a122d41f51f2f049a3c4c69653f3fd4bbd3e5540ffc117e16291ed1d30dfa"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-license/REFERENCE.md",
+      "bytes": 484,
+      "sha256": "fbc19f61ad15b7baa03039b16ebd19e4b1be38d98b00456cc11c4bacfb787f49"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-license/agents/openai.yaml",
+      "bytes": 300,
+      "sha256": "4dee64ca8039a03b64a64ec3430c2520990976391390be2779659489c5aec499"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-license/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/REFERENCE.md",
+      "bytes": 1030,
+      "sha256": "8396359e00263747856c0a9bcc5c0a8bf75017a4d5e60329b9ed7fcff0734d00"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/agents/openai.yaml",
+      "bytes": 293,
+      "sha256": "9c6c75daec6eabd78cf6fbc7169be3f7dde934df1316e41df6658052056b29ee"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/TECHNIQUE.md",
+      "bytes": 3909,
+      "sha256": "09057e77b67dcda23eed8ddbf1b5bd44541a952f380913a00b3bfddaa39ab675"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx",
+      "bytes": 8912,
+      "sha256": "4d4a90e373176e840ae76ae91533fcd9dc445407693b17091c376bb597dbcb10"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/cesium-path.json",
+      "bytes": 12329,
+      "sha256": "329621928df19d115f93c472a0b7ddbd2463cad502a10722d3c23579a7441d44"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/city-path.json",
+      "bytes": 223,
+      "sha256": "3bb420736d196f726b856420b319e21a8d7fc24bca7e626d67e8b00b0544e630"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/example-Root.tsx",
+      "bytes": 923,
+      "sha256": "51c2df109015adc992b66b62f1ffc9801ad13f3dc47e4290de40cbe1b8e7809e"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/flight-path.ts",
+      "bytes": 1240,
+      "sha256": "fab65d2d9cc0c4ca56f8a1422494d178c0e57f92a048a4720358d236ced980f0"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/assets/sample-river.geojson",
+      "bytes": 6409,
+      "sha256": "2c9f6dd35ac4aed56580078046941235ed7e1a5d432a6549dbf7fea4e8d1e9be"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/references/3d-data-sources.md",
+      "bytes": 1451,
+      "sha256": "23ac1acc576d49d599b33c812dc697b264ebe28849088c04e9827cb47b95275f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/references/3d-flyover-architecture.md",
+      "bytes": 7887,
+      "sha256": "09e1891cec991a246eec60dbcf76c4ea84c52e0bee14321471197703395d0a91"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/references/3d-troubleshooting.md",
+      "bytes": 6741,
+      "sha256": "c803fe443f5bab1a50408f1f6aa6aded7913577eaefcb586b320c5a96c391bf2"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs",
+      "bytes": 5561,
+      "sha256": "6dbb4d1ae3f5fef9f3f6eb23e2a6d58622750714bb847b088ff58a3533839463"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/mapbox/TECHNIQUE.md",
+      "bytes": 13128,
+      "sha256": "8c434f680988a7212a9443ef9be0f62ef734f3d92af4dc47c11dad184677eec9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/mapbox/references/render-stability.md",
+      "bytes": 3639,
+      "sha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maplibre/TECHNIQUE.md",
+      "bytes": 13843,
+      "sha256": "8a13debcd2abfce415b5c8b7f323420ec77092d81ceb935853171ca9697b902c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maplibre/references/render-stability.md",
+      "bytes": 3639,
+      "sha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/TECHNIQUE.md",
+      "bytes": 4518,
+      "sha256": "72896873e63d675caaab765941dbb8d668f2790090a63b94e165f254b77ef887"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx",
+      "bytes": 1849,
+      "sha256": "6be8c7d5b3435c8d933f05394ce5e807da5fc9fe0565db94ccaee6ac049df137"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts",
+      "bytes": 2183,
+      "sha256": "c8137792824323b9db997a88c3b923e8072cf2886cd90c38d84fdbbaad8258ed"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx",
+      "bytes": 10830,
+      "sha256": "c3091e23dfd80178788d05c0bc43b17aee12aa4236d658f1a97c5acfb29a0f92"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/example-Root.tsx",
+      "bytes": 1039,
+      "sha256": "e53677a7a207e37cbc04693eca8ccbab5f5f040efdc67a8b5c030c3913895e83"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json",
+      "bytes": 333134,
+      "sha256": "470a76cc5a45e58e7e1702cd80f74fcacf9d6e8b1ef7b05011f69853a999ba7b"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json",
+      "bytes": 13082,
+      "sha256": "73a99e77a2ce31cb3ac39be8fe4775d53ecf127a56137b587fca090067dfbb96"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/assets/tokens.ts",
+      "bytes": 1256,
+      "sha256": "29ae05eedb4988b5b8f2eb44d241b9c472533fb6ed05d4b33df3e71e0eabc71c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/references/map-data-sources.md",
+      "bytes": 4798,
+      "sha256": "b99680cbda8e7d70dc2cb1a8823f66247a21fc59d10c6dae0dd9ba24d2f15b80"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/references/map-explainer-architecture.md",
+      "bytes": 6871,
+      "sha256": "e09de8a4d00ea9a82b992918ec4d0302ee18979b73e6c777d584a9743092344f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/references/map-geo-prep.md",
+      "bytes": 4098,
+      "sha256": "a97b1913f06195601889d4e090ad056db2fffb7b83918924c8cd92847b3829ef"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/references/render-stability.md",
+      "bytes": 3639,
+      "sha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs",
+      "bytes": 7553,
+      "sha256": "8265f56bd7c27a7d1a5fa528a77bbe1b29c6acc0e6730233583ca53e2632d490"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-maps/techniques/static-map/TECHNIQUE.md",
+      "bytes": 1151,
+      "sha256": "1d2b15f2e09cbb2b2ba0d5a6ec54ecf619b6696acced0b7bec7e010fbe1f1f03"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/3d.md",
+      "bytes": 2292,
+      "sha256": "42cef6d68fb4a266ab495d35df0c60e03672b0d85c043f9b567f6aa7ff00dd0d"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/REFERENCE.md",
+      "bytes": 13560,
+      "sha256": "cceeed9bc0383213d5973ad12e26db5bbc9847b1c556498ddd9f1913b0774270"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/agents/openai.yaml",
+      "bytes": 310,
+      "sha256": "79e440561b613adf930f61b9f2ececc3284dfd92d06c4c282b73b461ffd16cb6"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/arabic-text.md",
+      "bytes": 4540,
+      "sha256": "e062dc1e589275d98dd21d32ab08211cd85c2111b36a6fb522203a2ad1347922"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/audio-visualization.md",
+      "bytes": 4892,
+      "sha256": "0f4043de86639b6390e5ab888eaa66a24a10a8bd540f1443327cb88107eae1e9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/audio.md",
+      "bytes": 4121,
+      "sha256": "857bf47188c6de8936f51e862f670da7e1cafa38aea8e1ae4a4920789f224077"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/calculate-metadata.md",
+      "bytes": 3498,
+      "sha256": "711743642a475970dcadddb71805939dd6ee8f348825818cc8897b6a01e1eef0"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/color-correction.md",
+      "bytes": 7476,
+      "sha256": "d3cf205d54a75b8f484746b5049dd13461c1a6bad5afb15aaa0464402ba24b9d"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/compositions.md",
+      "bytes": 5134,
+      "sha256": "2b09427165c8708510153c83add50c0f03992bf968962bfd5e3c373860d3853c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/connected-compositions.md",
+      "bytes": 3511,
+      "sha256": "b3319698a63a9ecadb266d29820cdca51a35c090214bd9c25c72e9ce4d6d3a8e"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/cropping.md",
+      "bytes": 1324,
+      "sha256": "e775c020c44261ceb11e8aec83233b8d0dcc00517e512d30eb88fe955d6b64cd"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/effects.md",
+      "bytes": 10900,
+      "sha256": "02ba183684b9acecc6e48cae47c2e69c28ba132b3e2a1d0bc8716970f3f7fea7"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/embedding-videos.md",
+      "bytes": 3725,
+      "sha256": "3b0484bc92cd1d54fd6c9a54bc75c4f837054c90bb35e5e8959701d320c6a551"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/ffmpeg.md",
+      "bytes": 1112,
+      "sha256": "1d83085dfb63724f374acc5f01967f6c18f3aa7df62146438262a4061a839770"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/gifs.md",
+      "bytes": 3783,
+      "sha256": "91e17126f7f0d57efdbdbaf34e0c234f874bd6aa66ec7854b80f17b0e32c3b22"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/google-fonts.md",
+      "bytes": 1714,
+      "sha256": "fff29cf692ccab0cda263cd85255cf634dbb4d1d2d99e8372b01d9fedbd6cbfd"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/html-in-canvas.md",
+      "bytes": 2976,
+      "sha256": "9b896dab368f8d9aec41114f8d0b96c1fbee981419b7077d6fd61621a0a54be4"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/images.md",
+      "bytes": 1568,
+      "sha256": "0e6c2af8ad73483ebbc761237f230c8c0db1bd9db6b60d01d48a24b8a4059284"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/light-leaks.md",
+      "bytes": 3148,
+      "sha256": "531514d4740c5a1a3798782300db69ebfe8f61191fc7852960bc5bdf5b82200b"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/local-fonts.md",
+      "bytes": 1533,
+      "sha256": "fcad2a2e3a05419d4555c59a75454c4891455dbea91ad596c1095e2887d26a11"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/lottie.md",
+      "bytes": 1806,
+      "sha256": "666268c8151d91042162f9efe3f02fe8c62b4c45053614eb1a9325c169428826"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/measuring-dom-nodes.md",
+      "bytes": 995,
+      "sha256": "a677b976eaf1cbc3cdd29cf29a3fd546c557b9a31e6b1fd70e473fde7e828733"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/measuring-text.md",
+      "bytes": 2801,
+      "sha256": "4bed81d1ea818db3975f878152dc24ecbc17e163117dcab10761dc8690c33f0c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/motion-blur.md",
+      "bytes": 2039,
+      "sha256": "bc7559c9d0e56dffef72dcc4fb2d89d42c587ec2204ac21d33ae0c583d59632d"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/multi-scene-video.md",
+      "bytes": 1035,
+      "sha256": "9d4abe6b0c22e86f378871b34539ed15f4f16d3d8814fafefbc672bd8d3ce3cf"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/parameters.md",
+      "bytes": 2403,
+      "sha256": "b002ac9959105b2b91da5786bcb20aa6ff4c6632ed37074b32711f248867dff0"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/REFERENCE.md",
+      "bytes": 1030,
+      "sha256": "8396359e00263747856c0a9bcc5c0a8bf75017a4d5e60329b9ed7fcff0734d00"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/agents/openai.yaml",
+      "bytes": 293,
+      "sha256": "9c6c75daec6eabd78cf6fbc7169be3f7dde934df1316e41df6658052056b29ee"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/TECHNIQUE.md",
+      "bytes": 3909,
+      "sha256": "09057e77b67dcda23eed8ddbf1b5bd44541a952f380913a00b3bfddaa39ab675"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx",
+      "bytes": 8912,
+      "sha256": "4d4a90e373176e840ae76ae91533fcd9dc445407693b17091c376bb597dbcb10"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/cesium-path.json",
+      "bytes": 12329,
+      "sha256": "329621928df19d115f93c472a0b7ddbd2463cad502a10722d3c23579a7441d44"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/city-path.json",
+      "bytes": 223,
+      "sha256": "3bb420736d196f726b856420b319e21a8d7fc24bca7e626d67e8b00b0544e630"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/example-Root.tsx",
+      "bytes": 923,
+      "sha256": "51c2df109015adc992b66b62f1ffc9801ad13f3dc47e4290de40cbe1b8e7809e"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/flight-path.ts",
+      "bytes": 1240,
+      "sha256": "fab65d2d9cc0c4ca56f8a1422494d178c0e57f92a048a4720358d236ced980f0"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/assets/sample-river.geojson",
+      "bytes": 6409,
+      "sha256": "2c9f6dd35ac4aed56580078046941235ed7e1a5d432a6549dbf7fea4e8d1e9be"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/references/3d-data-sources.md",
+      "bytes": 1451,
+      "sha256": "23ac1acc576d49d599b33c812dc697b264ebe28849088c04e9827cb47b95275f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/references/3d-flyover-architecture.md",
+      "bytes": 7887,
+      "sha256": "09e1891cec991a246eec60dbcf76c4ea84c52e0bee14321471197703395d0a91"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/references/3d-troubleshooting.md",
+      "bytes": 6741,
+      "sha256": "c803fe443f5bab1a50408f1f6aa6aded7913577eaefcb586b320c5a96c391bf2"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs",
+      "bytes": 5561,
+      "sha256": "6dbb4d1ae3f5fef9f3f6eb23e2a6d58622750714bb847b088ff58a3533839463"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/mapbox/TECHNIQUE.md",
+      "bytes": 13128,
+      "sha256": "8c434f680988a7212a9443ef9be0f62ef734f3d92af4dc47c11dad184677eec9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/mapbox/references/render-stability.md",
+      "bytes": 3639,
+      "sha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maplibre/TECHNIQUE.md",
+      "bytes": 13843,
+      "sha256": "8a13debcd2abfce415b5c8b7f323420ec77092d81ceb935853171ca9697b902c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maplibre/references/render-stability.md",
+      "bytes": 3639,
+      "sha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/TECHNIQUE.md",
+      "bytes": 4518,
+      "sha256": "72896873e63d675caaab765941dbb8d668f2790090a63b94e165f254b77ef887"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx",
+      "bytes": 1849,
+      "sha256": "6be8c7d5b3435c8d933f05394ce5e807da5fc9fe0565db94ccaee6ac049df137"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts",
+      "bytes": 2183,
+      "sha256": "c8137792824323b9db997a88c3b923e8072cf2886cd90c38d84fdbbaad8258ed"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx",
+      "bytes": 10830,
+      "sha256": "c3091e23dfd80178788d05c0bc43b17aee12aa4236d658f1a97c5acfb29a0f92"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/example-Root.tsx",
+      "bytes": 1039,
+      "sha256": "e53677a7a207e37cbc04693eca8ccbab5f5f040efdc67a8b5c030c3913895e83"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json",
+      "bytes": 333134,
+      "sha256": "470a76cc5a45e58e7e1702cd80f74fcacf9d6e8b1ef7b05011f69853a999ba7b"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json",
+      "bytes": 13082,
+      "sha256": "73a99e77a2ce31cb3ac39be8fe4775d53ecf127a56137b587fca090067dfbb96"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/assets/tokens.ts",
+      "bytes": 1256,
+      "sha256": "29ae05eedb4988b5b8f2eb44d241b9c472533fb6ed05d4b33df3e71e0eabc71c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/references/map-data-sources.md",
+      "bytes": 4798,
+      "sha256": "b99680cbda8e7d70dc2cb1a8823f66247a21fc59d10c6dae0dd9ba24d2f15b80"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/references/map-explainer-architecture.md",
+      "bytes": 6871,
+      "sha256": "e09de8a4d00ea9a82b992918ec4d0302ee18979b73e6c777d584a9743092344f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/references/map-geo-prep.md",
+      "bytes": 4098,
+      "sha256": "a97b1913f06195601889d4e090ad056db2fffb7b83918924c8cd92847b3829ef"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/references/render-stability.md",
+      "bytes": 3639,
+      "sha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs",
+      "bytes": 7553,
+      "sha256": "8265f56bd7c27a7d1a5fa528a77bbe1b29c6acc0e6730233583ca53e2632d490"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/remotion-maps/techniques/static-map/TECHNIQUE.md",
+      "bytes": 1138,
+      "sha256": "6fcb61a66084f4037a2fa0deb988500dd18e4ae7fa3c6923fb1142c1e521e9be"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/sequencing.md",
+      "bytes": 1293,
+      "sha256": "59f2349b125314188506cca8ea8d1386db0fa5031594569577bf1b4a555696c8"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/sfx.md",
+      "bytes": 1823,
+      "sha256": "1f72e2d8858505ae2d31fa89231432714f8bc34c36164d3c0cc43a290b3f826a"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/silence-detection.md",
+      "bytes": 2593,
+      "sha256": "7e777b141e339ade03bbdc1d002390e849781ebd3059183f60e1b24a91210f14"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/text-highlights.md",
+      "bytes": 1851,
+      "sha256": "70773952286e1aec2ba02f2f54d2d776dad7799d87744df03b0c75637ebfb21f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/timing-props.md",
+      "bytes": 3368,
+      "sha256": "9401cb2bb5754af3c4868cb4e5c02a98f19bfcf7d8e74802377be8c9686894ba"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/timing.md",
+      "bytes": 3315,
+      "sha256": "48047e758b96aea519916479ede62b832bf51f982924978e091c37f569ab4bac"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/transitions.md",
+      "bytes": 8798,
+      "sha256": "ab1f33f5ecbca6c12c5dbb3c2845189a036fdf782e13a820d28780bd18dd0707"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/video-editing.md",
+      "bytes": 5839,
+      "sha256": "4bf61502564d04c48b5544a5e00371ecd49c7fcf8d6098a3ef61b36c636e12fe"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-markup/voiceover.md",
+      "bytes": 3642,
+      "sha256": "c310b9425559fac09c4ac660ae18243621565a00fb2aa052fd6e73ef34c57c7f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-multimedia/REFERENCE.md",
+      "bytes": 705,
+      "sha256": "b4f23793523ac77943d5f866c79e9c7f79719b6a276842c02960318047784070"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-multimedia/agents/openai.yaml",
+      "bytes": 317,
+      "sha256": "74e07a383bbf02808320ede199873d00a5fc976cb99d407056456b9abdfb0cb7"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-multimedia/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-multimedia/get-audio-duration.md",
+      "bytes": 1507,
+      "sha256": "53b2e2ff232cae14ff9c0f7bb3ddf95c6137f7f1804cdaf50f7fe742befe0fd0"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-multimedia/get-video-dimensions.md",
+      "bytes": 1797,
+      "sha256": "9d4cd07f11ce8fabda258b4d826e7c9b3d6827e87ee036a2c4c8a7a5aca7db76"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-multimedia/get-video-duration.md",
+      "bytes": 1469,
+      "sha256": "6df955602cf7fb591ecb3f529fa9740d26ec1a4893a816aa08ea9b780379a8a0"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-render/REFERENCE.md",
+      "bytes": 1077,
+      "sha256": "abf5f10aebc73588c119b07e89935842dd6a101b414543fa7f6163c2850aff9c"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-render/agents/openai.yaml",
+      "bytes": 286,
+      "sha256": "386699c32fdc63840ce7ff7412953831095dc4cdf60368648378c32895281290"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-render/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-render/transparent-videos.md",
+      "bytes": 2267,
+      "sha256": "394ccda476e084522d544471fee92d7c65672e2cbaf2201a785c3dd5c74f31a4"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-saas/REFERENCE.md",
+      "bytes": 1053,
+      "sha256": "7a7cfcd74af3b9bbae2601b9dc91c64391d4a91115375080e2badff5ad39ee81"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-saas/agents/openai.yaml",
+      "bytes": 283,
+      "sha256": "66be5403b3d10194c99e886372bbc1f4bdb2994fe560278bc7a39b4fbe7753a2"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-saas/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-saas/framework.md",
+      "bytes": 908,
+      "sha256": "5e35ca3306ac15ad1df189789642cefbc62c59f4929372ffc10a67165d7b04b5"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-saas/player.md",
+      "bytes": 942,
+      "sha256": "cc2f2944f1158d6ff1ddfc421a6a790f99ae86f54bbe0f0b18ef8bc7485e1b05"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-saas/rendering.md",
+      "bytes": 3343,
+      "sha256": "b2f30b53e0191ef9e7f2da7360b36c0c5448ab5bdcf55575e1f7e55c5bbd257f"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-studio/REFERENCE.md",
+      "bytes": 1611,
+      "sha256": "929a76d80627f36bd2c8ff6d572e018ef18ccd341ea1545aca5c4004b7eda5cc"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-studio/agents/openai.yaml",
+      "bytes": 237,
+      "sha256": "43afba3c8088614ece62949e33a7c8350092e76436bad87ad41e1a1ccaebea5d"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-studio/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-upgrade/REFERENCE.md",
+      "bytes": 1947,
+      "sha256": "a30b91a52c75e438337195ab2b59680f86c27a8f289ab640a811dc375c956ef6"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-upgrade/agents/openai.yaml",
+      "bytes": 282,
+      "sha256": "3f3bc995d3531cfb5a714fd8f951954e118909b749217cc8418a235326d003cb"
+    },
+    {
+      "path": ".agents/skills/remotion-best-practices/remotion-upgrade/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-captions/SKILL.md",
+      "bytes": 1137,
+      "sha256": "2c8e945a93cbc644fe297d5d0e94c7cebdc76075ebe5a7fc39d25e999fa74eeb"
+    },
+    {
+      "path": ".agents/skills/remotion-captions/agents/openai.yaml",
+      "bytes": 305,
+      "sha256": "3b39a48bd00251cf124e80090fe1b792b73020bee858c5d48b5629256cc5f045"
+    },
+    {
+      "path": ".agents/skills/remotion-captions/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-captions/display-captions.md",
+      "bytes": 5940,
+      "sha256": "12676a7250f33f126a8ccb0a2b28de22f5ccc9cad0d5baab53a736e205690a17"
+    },
+    {
+      "path": ".agents/skills/remotion-captions/import-srt-captions.md",
+      "bytes": 2231,
+      "sha256": "e328b6845babd08ed2a747f82c59796fd1d7b85140c8eb4d36e41639779473ad"
+    },
+    {
+      "path": ".agents/skills/remotion-captions/transcribe-captions.md",
+      "bytes": 5533,
+      "sha256": "0830184ed1f634a6912536768a3aabc0092313db22796c4455e8b46dad874803"
+    },
+    {
+      "path": ".agents/skills/remotion-create/SKILL.md",
+      "bytes": 2711,
+      "sha256": "433db214a47b315834ca96960dcc746587a10fcbe49da15a3e3f17ca8a8f03f6"
+    },
+    {
+      "path": ".agents/skills/remotion-create/agents/openai.yaml",
+      "bytes": 310,
+      "sha256": "ff3b357b492da1791c672e18ae401a23c31bd1e6f1fa6f98c5efabbb3124bd9c"
+    },
+    {
+      "path": ".agents/skills/remotion-create/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-create/tailwind.md",
+      "bytes": 386,
+      "sha256": "3ef07d3225d212af6a5076e62797a04d22d394434dcdbe2c050dab0d92806f36"
+    },
+    {
+      "path": ".agents/skills/remotion-create/video-layout.md",
+      "bytes": 498,
+      "sha256": "7ad94c22e3ad87671292ebb9b22f234c544d6c7fed13f8cb112b84b0f7077d4c"
+    },
+    {
+      "path": ".agents/skills/remotion-docs/SKILL.md",
+      "bytes": 1340,
+      "sha256": "fa61901b459f67184765fe4a5db9febb2df9b6a32cbb1f6fd8f4c9699bc39c16"
+    },
+    {
+      "path": ".agents/skills/remotion-docs/agents/openai.yaml",
+      "bytes": 307,
+      "sha256": "ab02cb3008e6fc0702d7a601bfdd2f332e1224fda3c37de0265c24311c00d456"
+    },
+    {
+      "path": ".agents/skills/remotion-docs/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-interactivity/SKILL.md",
+      "bytes": 13703,
+      "sha256": "891d0bf373f7a849a0f1bc4829cb59a3ed3f9b9f73f8d64e405a5b54e43216a5"
+    },
+    {
+      "path": ".agents/skills/remotion-interactivity/agents/openai.yaml",
+      "bytes": 320,
+      "sha256": "84cd86b0b10e1f8b5be97bbd46677d5f618304303d922f1016ce0ea6a015d4b9"
+    },
+    {
+      "path": ".agents/skills/remotion-interactivity/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-interactivity/inline-effects.md",
+      "bytes": 993,
+      "sha256": "e2204691164855f195ffefc88706785089153a1e97dae06781841575892a30a6"
+    },
+    {
+      "path": ".agents/skills/remotion-interactivity/timeline-structure.md",
+      "bytes": 6929,
+      "sha256": "7edab50c1c594100a2512baf34483d8407c25df37234b0d36c18ad1d256b391b"
+    },
+    {
+      "path": ".agents/skills/remotion-license/SKILL.md",
+      "bytes": 484,
+      "sha256": "fbc19f61ad15b7baa03039b16ebd19e4b1be38d98b00456cc11c4bacfb787f49"
+    },
+    {
+      "path": ".agents/skills/remotion-license/agents/openai.yaml",
+      "bytes": 300,
+      "sha256": "4dee64ca8039a03b64a64ec3430c2520990976391390be2779659489c5aec499"
+    },
+    {
+      "path": ".agents/skills/remotion-license/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/SKILL.md",
+      "bytes": 1030,
+      "sha256": "8396359e00263747856c0a9bcc5c0a8bf75017a4d5e60329b9ed7fcff0734d00"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/agents/openai.yaml",
+      "bytes": 293,
+      "sha256": "9c6c75daec6eabd78cf6fbc7169be3f7dde934df1316e41df6658052056b29ee"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/TECHNIQUE.md",
+      "bytes": 3909,
+      "sha256": "09057e77b67dcda23eed8ddbf1b5bd44541a952f380913a00b3bfddaa39ab675"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx",
+      "bytes": 8912,
+      "sha256": "4d4a90e373176e840ae76ae91533fcd9dc445407693b17091c376bb597dbcb10"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/assets/cesium-path.json",
+      "bytes": 12329,
+      "sha256": "329621928df19d115f93c472a0b7ddbd2463cad502a10722d3c23579a7441d44"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/assets/city-path.json",
+      "bytes": 223,
+      "sha256": "3bb420736d196f726b856420b319e21a8d7fc24bca7e626d67e8b00b0544e630"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/assets/example-Root.tsx",
+      "bytes": 923,
+      "sha256": "51c2df109015adc992b66b62f1ffc9801ad13f3dc47e4290de40cbe1b8e7809e"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/assets/flight-path.ts",
+      "bytes": 1240,
+      "sha256": "fab65d2d9cc0c4ca56f8a1422494d178c0e57f92a048a4720358d236ced980f0"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/assets/sample-river.geojson",
+      "bytes": 6409,
+      "sha256": "2c9f6dd35ac4aed56580078046941235ed7e1a5d432a6549dbf7fea4e8d1e9be"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/references/3d-data-sources.md",
+      "bytes": 1451,
+      "sha256": "23ac1acc576d49d599b33c812dc697b264ebe28849088c04e9827cb47b95275f"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/references/3d-flyover-architecture.md",
+      "bytes": 7887,
+      "sha256": "09e1891cec991a246eec60dbcf76c4ea84c52e0bee14321471197703395d0a91"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/references/3d-troubleshooting.md",
+      "bytes": 6741,
+      "sha256": "c803fe443f5bab1a50408f1f6aa6aded7913577eaefcb586b320c5a96c391bf2"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs",
+      "bytes": 5561,
+      "sha256": "6dbb4d1ae3f5fef9f3f6eb23e2a6d58622750714bb847b088ff58a3533839463"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/mapbox/TECHNIQUE.md",
+      "bytes": 13128,
+      "sha256": "8c434f680988a7212a9443ef9be0f62ef734f3d92af4dc47c11dad184677eec9"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/mapbox/references/render-stability.md",
+      "bytes": 3639,
+      "sha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maplibre/TECHNIQUE.md",
+      "bytes": 13843,
+      "sha256": "8a13debcd2abfce415b5c8b7f323420ec77092d81ceb935853171ca9697b902c"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maplibre/references/render-stability.md",
+      "bytes": 3639,
+      "sha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/TECHNIQUE.md",
+      "bytes": 4518,
+      "sha256": "72896873e63d675caaab765941dbb8d668f2790090a63b94e165f254b77ef887"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx",
+      "bytes": 1849,
+      "sha256": "6be8c7d5b3435c8d933f05394ce5e807da5fc9fe0565db94ccaee6ac049df137"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts",
+      "bytes": 2183,
+      "sha256": "c8137792824323b9db997a88c3b923e8072cf2886cd90c38d84fdbbaad8258ed"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx",
+      "bytes": 10830,
+      "sha256": "c3091e23dfd80178788d05c0bc43b17aee12aa4236d658f1a97c5acfb29a0f92"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/example-Root.tsx",
+      "bytes": 1039,
+      "sha256": "e53677a7a207e37cbc04693eca8ccbab5f5f040efdc67a8b5c030c3913895e83"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json",
+      "bytes": 333134,
+      "sha256": "470a76cc5a45e58e7e1702cd80f74fcacf9d6e8b1ef7b05011f69853a999ba7b"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json",
+      "bytes": 13082,
+      "sha256": "73a99e77a2ce31cb3ac39be8fe4775d53ecf127a56137b587fca090067dfbb96"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/assets/tokens.ts",
+      "bytes": 1256,
+      "sha256": "29ae05eedb4988b5b8f2eb44d241b9c472533fb6ed05d4b33df3e71e0eabc71c"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/references/map-data-sources.md",
+      "bytes": 4798,
+      "sha256": "b99680cbda8e7d70dc2cb1a8823f66247a21fc59d10c6dae0dd9ba24d2f15b80"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/references/map-explainer-architecture.md",
+      "bytes": 6871,
+      "sha256": "e09de8a4d00ea9a82b992918ec4d0302ee18979b73e6c777d584a9743092344f"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/references/map-geo-prep.md",
+      "bytes": 4098,
+      "sha256": "a97b1913f06195601889d4e090ad056db2fffb7b83918924c8cd92847b3829ef"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/references/render-stability.md",
+      "bytes": 3639,
+      "sha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs",
+      "bytes": 7553,
+      "sha256": "8265f56bd7c27a7d1a5fa528a77bbe1b29c6acc0e6730233583ca53e2632d490"
+    },
+    {
+      "path": ".agents/skills/remotion-maps/techniques/static-map/TECHNIQUE.md",
+      "bytes": 1062,
+      "sha256": "5c1dd66fe41a476fb54474f29388b2caea6d8f73c81c585a761dace5aa8d8647"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/3d.md",
+      "bytes": 2292,
+      "sha256": "42cef6d68fb4a266ab495d35df0c60e03672b0d85c043f9b567f6aa7ff00dd0d"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/SKILL.md",
+      "bytes": 13345,
+      "sha256": "30f26d8cf63dbf1c3b271d28468439858f232b7aed316f533b6ab28ef4fc3be4"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/agents/openai.yaml",
+      "bytes": 310,
+      "sha256": "79e440561b613adf930f61b9f2ececc3284dfd92d06c4c282b73b461ffd16cb6"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/arabic-text.md",
+      "bytes": 4540,
+      "sha256": "e062dc1e589275d98dd21d32ab08211cd85c2111b36a6fb522203a2ad1347922"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/audio-visualization.md",
+      "bytes": 4892,
+      "sha256": "0f4043de86639b6390e5ab888eaa66a24a10a8bd540f1443327cb88107eae1e9"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/audio.md",
+      "bytes": 4121,
+      "sha256": "857bf47188c6de8936f51e862f670da7e1cafa38aea8e1ae4a4920789f224077"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/calculate-metadata.md",
+      "bytes": 3350,
+      "sha256": "ca904cd19d65bd926a1fb07519eb769cc55deeffe74f7c3282d5e3fd16a0dcba"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/color-correction.md",
+      "bytes": 7476,
+      "sha256": "d3cf205d54a75b8f484746b5049dd13461c1a6bad5afb15aaa0464402ba24b9d"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/compositions.md",
+      "bytes": 5090,
+      "sha256": "3d1fcd25ebc11726b216e5e419d950469c3c6416edf45f69630bd11c8179f8dd"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/connected-compositions.md",
+      "bytes": 3460,
+      "sha256": "a3521a509f34875ad9d46dbdc01bc9e5ee3e93d2d7134e664efb826d67abd300"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/cropping.md",
+      "bytes": 1282,
+      "sha256": "188cbf969c677629baaf83dbe0e85bb9a8ee22615561f58bfca30ff39b9fdc88"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/effects.md",
+      "bytes": 10900,
+      "sha256": "02ba183684b9acecc6e48cae47c2e69c28ba132b3e2a1d0bc8716970f3f7fea7"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/embedding-videos.md",
+      "bytes": 3725,
+      "sha256": "3b0484bc92cd1d54fd6c9a54bc75c4f837054c90bb35e5e8959701d320c6a551"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/ffmpeg.md",
+      "bytes": 1112,
+      "sha256": "1d83085dfb63724f374acc5f01967f6c18f3aa7df62146438262a4061a839770"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/gifs.md",
+      "bytes": 3783,
+      "sha256": "91e17126f7f0d57efdbdbaf34e0c234f874bd6aa66ec7854b80f17b0e32c3b22"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/google-fonts.md",
+      "bytes": 1714,
+      "sha256": "fff29cf692ccab0cda263cd85255cf634dbb4d1d2d99e8372b01d9fedbd6cbfd"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/html-in-canvas.md",
+      "bytes": 2976,
+      "sha256": "9b896dab368f8d9aec41114f8d0b96c1fbee981419b7077d6fd61621a0a54be4"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/images.md",
+      "bytes": 1568,
+      "sha256": "0e6c2af8ad73483ebbc761237f230c8c0db1bd9db6b60d01d48a24b8a4059284"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/light-leaks.md",
+      "bytes": 3148,
+      "sha256": "531514d4740c5a1a3798782300db69ebfe8f61191fc7852960bc5bdf5b82200b"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/local-fonts.md",
+      "bytes": 1533,
+      "sha256": "fcad2a2e3a05419d4555c59a75454c4891455dbea91ad596c1095e2887d26a11"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/lottie.md",
+      "bytes": 1806,
+      "sha256": "666268c8151d91042162f9efe3f02fe8c62b4c45053614eb1a9325c169428826"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/measuring-dom-nodes.md",
+      "bytes": 995,
+      "sha256": "a677b976eaf1cbc3cdd29cf29a3fd546c557b9a31e6b1fd70e473fde7e828733"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/measuring-text.md",
+      "bytes": 2801,
+      "sha256": "4bed81d1ea818db3975f878152dc24ecbc17e163117dcab10761dc8690c33f0c"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/motion-blur.md",
+      "bytes": 2039,
+      "sha256": "bc7559c9d0e56dffef72dcc4fb2d89d42c587ec2204ac21d33ae0c583d59632d"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/multi-scene-video.md",
+      "bytes": 984,
+      "sha256": "27c3b31a3446f7fb1844734e88b837e2e4f67fadc3b0f14f9043b30c09836557"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/parameters.md",
+      "bytes": 2403,
+      "sha256": "b002ac9959105b2b91da5786bcb20aa6ff4c6632ed37074b32711f248867dff0"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/REFERENCE.md",
+      "bytes": 1030,
+      "sha256": "8396359e00263747856c0a9bcc5c0a8bf75017a4d5e60329b9ed7fcff0734d00"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/agents/openai.yaml",
+      "bytes": 293,
+      "sha256": "9c6c75daec6eabd78cf6fbc7169be3f7dde934df1316e41df6658052056b29ee"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/TECHNIQUE.md",
+      "bytes": 3909,
+      "sha256": "09057e77b67dcda23eed8ddbf1b5bd44541a952f380913a00b3bfddaa39ab675"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/CesiumFlythrough.tsx",
+      "bytes": 8912,
+      "sha256": "4d4a90e373176e840ae76ae91533fcd9dc445407693b17091c376bb597dbcb10"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/cesium-path.json",
+      "bytes": 12329,
+      "sha256": "329621928df19d115f93c472a0b7ddbd2463cad502a10722d3c23579a7441d44"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/city-path.json",
+      "bytes": 223,
+      "sha256": "3bb420736d196f726b856420b319e21a8d7fc24bca7e626d67e8b00b0544e630"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/example-Root.tsx",
+      "bytes": 923,
+      "sha256": "51c2df109015adc992b66b62f1ffc9801ad13f3dc47e4290de40cbe1b8e7809e"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/flight-path.ts",
+      "bytes": 1240,
+      "sha256": "fab65d2d9cc0c4ca56f8a1422494d178c0e57f92a048a4720358d236ced980f0"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/assets/sample-river.geojson",
+      "bytes": 6409,
+      "sha256": "2c9f6dd35ac4aed56580078046941235ed7e1a5d432a6549dbf7fea4e8d1e9be"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/references/3d-data-sources.md",
+      "bytes": 1451,
+      "sha256": "23ac1acc576d49d599b33c812dc697b264ebe28849088c04e9827cb47b95275f"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/references/3d-flyover-architecture.md",
+      "bytes": 7887,
+      "sha256": "09e1891cec991a246eec60dbcf76c4ea84c52e0bee14321471197703395d0a91"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/references/3d-troubleshooting.md",
+      "bytes": 6741,
+      "sha256": "c803fe443f5bab1a50408f1f6aa6aded7913577eaefcb586b320c5a96c391bf2"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/cesium/scripts/prep-cesium-path.mjs",
+      "bytes": 5561,
+      "sha256": "6dbb4d1ae3f5fef9f3f6eb23e2a6d58622750714bb847b088ff58a3533839463"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/mapbox/TECHNIQUE.md",
+      "bytes": 13128,
+      "sha256": "8c434f680988a7212a9443ef9be0f62ef734f3d92af4dc47c11dad184677eec9"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/mapbox/references/render-stability.md",
+      "bytes": 3639,
+      "sha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maplibre/TECHNIQUE.md",
+      "bytes": 13843,
+      "sha256": "8a13debcd2abfce415b5c8b7f323420ec77092d81ceb935853171ca9697b902c"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maplibre/references/render-stability.md",
+      "bytes": 3639,
+      "sha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/TECHNIQUE.md",
+      "bytes": 4518,
+      "sha256": "72896873e63d675caaab765941dbb8d668f2790090a63b94e165f254b77ef887"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/CountryLabel.tsx",
+      "bytes": 1849,
+      "sha256": "6be8c7d5b3435c8d933f05394ce5e807da5fc9fe0565db94ccaee6ac049df137"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/MapTilerVectorElement.ts",
+      "bytes": 2183,
+      "sha256": "c8137792824323b9db997a88c3b923e8072cf2886cd90c38d84fdbbaad8258ed"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/RiverReveal.tsx",
+      "bytes": 10830,
+      "sha256": "c3091e23dfd80178788d05c0bc43b17aee12aa4236d658f1a97c5acfb29a0f92"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/example-Root.tsx",
+      "bytes": 1039,
+      "sha256": "e53677a7a207e37cbc04693eca8ccbab5f5f040efdc67a8b5c030c3913895e83"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/country-meta.json",
+      "bytes": 333134,
+      "sha256": "470a76cc5a45e58e7e1702cd80f74fcacf9d6e8b1ef7b05011f69853a999ba7b"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/sample-data/yarlung-flow.json",
+      "bytes": 13082,
+      "sha256": "73a99e77a2ce31cb3ac39be8fe4775d53ecf127a56137b587fca090067dfbb96"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/assets/tokens.ts",
+      "bytes": 1256,
+      "sha256": "29ae05eedb4988b5b8f2eb44d241b9c472533fb6ed05d4b33df3e71e0eabc71c"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/references/map-data-sources.md",
+      "bytes": 4798,
+      "sha256": "b99680cbda8e7d70dc2cb1a8823f66247a21fc59d10c6dae0dd9ba24d2f15b80"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/references/map-explainer-architecture.md",
+      "bytes": 6871,
+      "sha256": "e09de8a4d00ea9a82b992918ec4d0302ee18979b73e6c777d584a9743092344f"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/references/map-geo-prep.md",
+      "bytes": 4098,
+      "sha256": "a97b1913f06195601889d4e090ad056db2fffb7b83918924c8cd92847b3829ef"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/references/render-stability.md",
+      "bytes": 3639,
+      "sha256": "96650329df3a870743b6255123e93dba866a37eb1ab1d07c8275efff0d4dead9"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/maptiler/scripts/prep-geo.mjs",
+      "bytes": 7553,
+      "sha256": "8265f56bd7c27a7d1a5fa528a77bbe1b29c6acc0e6730233583ca53e2632d490"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/remotion-maps/techniques/static-map/TECHNIQUE.md",
+      "bytes": 1083,
+      "sha256": "28fe6e300d249cf85493132a23f6e5392bb5933ac99011b3ac4a3868f5f2cae9"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/sequencing.md",
+      "bytes": 1242,
+      "sha256": "f53680a3ec4b754501ce37516387666e1b3df3c5714d266154b274caea4236a4"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/sfx.md",
+      "bytes": 1823,
+      "sha256": "1f72e2d8858505ae2d31fa89231432714f8bc34c36164d3c0cc43a290b3f826a"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/silence-detection.md",
+      "bytes": 2593,
+      "sha256": "7e777b141e339ade03bbdc1d002390e849781ebd3059183f60e1b24a91210f14"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/text-highlights.md",
+      "bytes": 1809,
+      "sha256": "6a3b7629b947e8657c42b73b1f53c91d9b1535af1bfed57e054981c51bb951cc"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/timing-props.md",
+      "bytes": 3271,
+      "sha256": "346ff7f3778f3b7ba165ac212459034120cac7cffd3ead3fe68db179e15f7494"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/timing.md",
+      "bytes": 3315,
+      "sha256": "48047e758b96aea519916479ede62b832bf51f982924978e091c37f569ab4bac"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/transitions.md",
+      "bytes": 8747,
+      "sha256": "83b8b511044ef175244a4e9e81f66bd3f5062cf9cecacd30ae88ac17eda40b82"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/video-editing.md",
+      "bytes": 5649,
+      "sha256": "c132393598777260615e3f21e1cc1cb108e37aacb6bd3d20157e86e079893e8a"
+    },
+    {
+      "path": ".agents/skills/remotion-markup/voiceover.md",
+      "bytes": 3594,
+      "sha256": "365abf92b89fb0393fc317a80632fddde60d982fa2d199475bbedd0023e77c69"
+    },
+    {
+      "path": ".agents/skills/remotion-multimedia/SKILL.md",
+      "bytes": 705,
+      "sha256": "b4f23793523ac77943d5f866c79e9c7f79719b6a276842c02960318047784070"
+    },
+    {
+      "path": ".agents/skills/remotion-multimedia/agents/openai.yaml",
+      "bytes": 317,
+      "sha256": "74e07a383bbf02808320ede199873d00a5fc976cb99d407056456b9abdfb0cb7"
+    },
+    {
+      "path": ".agents/skills/remotion-multimedia/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-multimedia/get-audio-duration.md",
+      "bytes": 1507,
+      "sha256": "53b2e2ff232cae14ff9c0f7bb3ddf95c6137f7f1804cdaf50f7fe742befe0fd0"
+    },
+    {
+      "path": ".agents/skills/remotion-multimedia/get-video-dimensions.md",
+      "bytes": 1797,
+      "sha256": "9d4cd07f11ce8fabda258b4d826e7c9b3d6827e87ee036a2c4c8a7a5aca7db76"
+    },
+    {
+      "path": ".agents/skills/remotion-multimedia/get-video-duration.md",
+      "bytes": 1469,
+      "sha256": "6df955602cf7fb591ecb3f529fa9740d26ec1a4893a816aa08ea9b780379a8a0"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/SKILL.md",
+      "bytes": 10654,
+      "sha256": "8f2cfd242ba814a7c834b7ee768cb8b9f2f38ecd255cd3b3e68dbaf3876cc6cc"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/agents/openai.yaml",
+      "bytes": 259,
+      "sha256": "509b5581721d7a6a5562ffd780d89ea3a2b9c696185bea753fca2aa245f88a5d"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/components/Caption.tsx",
+      "bytes": 2763,
+      "sha256": "55ab9824adc912fb43b75bc99b9648d3e82a7982d5a5c5a5d9737c1f6ccefea2"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/components/Silhouette.tsx",
+      "bytes": 1840,
+      "sha256": "49761dabfccfd0703345a0d5559755924d14bc43f86b8fb0ce145a7405de4eb4"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/components/TextHook.tsx",
+      "bytes": 5754,
+      "sha256": "3bab126aed840db08fd19a8f488b8383c51dc65fb5ad9005dd6e5423c9cbe60e"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/components/TwoThirdsPanel.tsx",
+      "bytes": 2827,
+      "sha256": "47cffaf875a5576bef3ca6301a0b87938c71d464a2f052caa4f007e069bb5fdc"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/components/storyboard-review.html",
+      "bytes": 12620,
+      "sha256": "0308d49cb6a7de7e44aaefead202bace3f8594836d5ef46403b6a2d778eaec21"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/audio.md",
+      "bytes": 3918,
+      "sha256": "42be9ab90eeff403820efb8e4572a7ec6ce533f37900a537647ce6b20fd00605"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/background-removal.md",
+      "bytes": 2299,
+      "sha256": "e8402906450c2128c1710389f9125f719270eaa5b1d8987996293b66eeb4dafa"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/brand-sheet.md",
+      "bytes": 899,
+      "sha256": "b6536a67926ad0833e92199afc73c9d04caa48f6eafcb7c6ad409a45b64154ac"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/captions.md",
+      "bytes": 2777,
+      "sha256": "735177bbcbe26e142892299885175227ac015a15c8f03ac11aad5eda59a5aa77"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/hyperframes-hybrid.md",
+      "bytes": 8978,
+      "sha256": "fe2128e4c994bcc96aff667a787b65421dc62224aad77c1b45741d56b185e443"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/layouts.md",
+      "bytes": 7564,
+      "sha256": "a272041983a1fdaeac3e69dcfa94b3b29c7c05929265f59c73bed27ff0f5d68a"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/motion-graphics.md",
+      "bytes": 4192,
+      "sha256": "376fd17afa4e4b38cd27778b72c676495e7aea9696d31ead0927d27318d53be9"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/reference-analysis.md",
+      "bytes": 1841,
+      "sha256": "5521b9c07ce5c07a01c78f610996179df319fcd38f213f0abd6a991120d33014"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/screen-recordings.md",
+      "bytes": 5869,
+      "sha256": "1d2bddc4b6b9bac6c6435445c61eaf2fc634db55ae9740aa505373180887a8cb"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/split-screen-from-full-frame.md",
+      "bytes": 4506,
+      "sha256": "b9460f980fcf7a876d602f883868b303b5eb550a7394988ba5a7d7f83069c921"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/storyboard.md",
+      "bytes": 1404,
+      "sha256": "7480dc7141d3868f4526f64889766dbba2f1169923688350fe44fbdac7d87e1b"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/text-hook.md",
+      "bytes": 3288,
+      "sha256": "915b6b3794c00c68d152a91bb1a923005cc0ccc7f666344944c492e42db3191d"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/whole-scene-authoring.md",
+      "bytes": 5174,
+      "sha256": "8349d15a9b17bd9a2b28cf678104da195a5ebaaad58d2e345f235811fd83f474"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/references/xvadur-project.md",
+      "bytes": 5378,
+      "sha256": "dee771e3a62b97abd299ec5774f5a38040e0c0d040da6ff2c42e723fff85152f"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/requirements.lock",
+      "bytes": 42,
+      "sha256": "1c97fbe9801820d27b097761a653f0a9af7e27e2f7cb632183b90abff48d5954"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/scripts/camera-check.py",
+      "bytes": 2714,
+      "sha256": "aa14910d1bdd4eb3588fd61eac411aa85e215923b7dd7684fdb01e282cbe1868"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/scripts/caption-tone.py",
+      "bytes": 1765,
+      "sha256": "3f930b42ba5a121adea40530273a67be00cec4e2f529d97869400be19bb84752"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/scripts/measure-hook.py",
+      "bytes": 784,
+      "sha256": "71a4977e66f52608ee02f357b33d12b7af52b06d77e5d5b6cd274a54418dba0c"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/scripts/retime-captions.py",
+      "bytes": 6225,
+      "sha256": "17ee067c68c5aa628981f7fe361757fcbc687acc7e62d0e2dbb702664566b447"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/scripts/verify-audio.py",
+      "bytes": 3027,
+      "sha256": "e556ac0b066795f597910c11d084a30ce27c19b55666fbeeda46078e24dd530d"
+    },
+    {
+      "path": ".agents/skills/remotion-reel/source-manifest.json",
+      "bytes": 6165,
+      "sha256": "46810b01e232923b490ce81ded8dda48cb00eace2c76803392e900cc9e6f8eb0"
+    },
+    {
+      "path": ".agents/skills/remotion-render/SKILL.md",
+      "bytes": 1077,
+      "sha256": "abf5f10aebc73588c119b07e89935842dd6a101b414543fa7f6163c2850aff9c"
+    },
+    {
+      "path": ".agents/skills/remotion-render/agents/openai.yaml",
+      "bytes": 286,
+      "sha256": "386699c32fdc63840ce7ff7412953831095dc4cdf60368648378c32895281290"
+    },
+    {
+      "path": ".agents/skills/remotion-render/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-render/transparent-videos.md",
+      "bytes": 2267,
+      "sha256": "394ccda476e084522d544471fee92d7c65672e2cbaf2201a785c3dd5c74f31a4"
+    },
+    {
+      "path": ".agents/skills/remotion-saas/SKILL.md",
+      "bytes": 1053,
+      "sha256": "7a7cfcd74af3b9bbae2601b9dc91c64391d4a91115375080e2badff5ad39ee81"
+    },
+    {
+      "path": ".agents/skills/remotion-saas/agents/openai.yaml",
+      "bytes": 283,
+      "sha256": "66be5403b3d10194c99e886372bbc1f4bdb2994fe560278bc7a39b4fbe7753a2"
+    },
+    {
+      "path": ".agents/skills/remotion-saas/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-saas/framework.md",
+      "bytes": 908,
+      "sha256": "5e35ca3306ac15ad1df189789642cefbc62c59f4929372ffc10a67165d7b04b5"
+    },
+    {
+      "path": ".agents/skills/remotion-saas/player.md",
+      "bytes": 942,
+      "sha256": "cc2f2944f1158d6ff1ddfc421a6a790f99ae86f54bbe0f0b18ef8bc7485e1b05"
+    },
+    {
+      "path": ".agents/skills/remotion-saas/rendering.md",
+      "bytes": 3343,
+      "sha256": "b2f30b53e0191ef9e7f2da7360b36c0c5448ab5bdcf55575e1f7e55c5bbd257f"
+    },
+    {
+      "path": ".agents/skills/remotion-studio/SKILL.md",
+      "bytes": 1611,
+      "sha256": "929a76d80627f36bd2c8ff6d572e018ef18ccd341ea1545aca5c4004b7eda5cc"
+    },
+    {
+      "path": ".agents/skills/remotion-studio/agents/openai.yaml",
+      "bytes": 237,
+      "sha256": "43afba3c8088614ece62949e33a7c8350092e76436bad87ad41e1a1ccaebea5d"
+    },
+    {
+      "path": ".agents/skills/remotion-studio/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".agents/skills/remotion-upgrade/SKILL.md",
+      "bytes": 1947,
+      "sha256": "a30b91a52c75e438337195ab2b59680f86c27a8f289ab640a811dc375c956ef6"
+    },
+    {
+      "path": ".agents/skills/remotion-upgrade/agents/openai.yaml",
+      "bytes": 282,
+      "sha256": "3f3bc995d3531cfb5a714fd8f951954e118909b749217cc8418a235326d003cb"
+    },
+    {
+      "path": ".agents/skills/remotion-upgrade/assets/remotion-icon.svg",
+      "bytes": 1303,
+      "sha256": "5007669bd0555b0f4565b4e7176fa191310ab0039b2ed09d867a9270f5b0ce58"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 205,
+      "sha256": "67cefd0b39bebfd522dd697f635782cfd177230fdd22dcb711486d059525437a"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 3297,
+      "sha256": "2d77ad3a30bf2f27da9a068d8fb8759f96df0706ca6152ee886bb5ef930da18e"
+    },
+    {
+      "path": "START_HERE.md",
+      "bytes": 3628,
+      "sha256": "84da8b7aed5a39d6f2ad53e6cd51e26f6fd3d4362026ad847193eebf2590bee2"
+    },
+    {
+      "path": "context/EXPORT_SOURCES.json",
+      "bytes": 163660,
+      "sha256": "fdd19ef6b8ff51ee8b131a756d9a3645646f621494dba99ded25046fc652bb01"
+    },
+    {
+      "path": "context/HANDOFF.md",
+      "bytes": 4222,
+      "sha256": "461ee57eccdc838894d5d25465fb512cc0b8b9c78af244498a8a7a30c4d39547"
+    },
+    {
+      "path": "context/PATH_MAP.md",
+      "bytes": 2178,
+      "sha256": "690d4e44db01d52ec60f60830d77f9ad98fae0164ea4f47e492256a798774f63"
+    },
+    {
+      "path": "context/SMER_BRIEF.md",
+      "bytes": 3282,
+      "sha256": "6312b4d4172c7ab2a6e2eb41d6f1f036e9950850f39bd13ccec6dabb52e235f0"
+    },
+    {
+      "path": "reference/xvadur_klipy/PLAN_IMPLEMENTACIE.md",
+      "bytes": 53115,
+      "sha256": "05e822eb026f637f511dab7739e68555c9f18046a4472c779f5b2a27ab63790e"
+    },
+    {
+      "path": "reference/xvadur_klipy/brand/BRAND.md",
+      "bytes": 11131,
+      "sha256": "22cfe6cd2107c20b7b59dc979031767f760277fbbd2a3faa1f9789559c8bdde7"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/ARCHITEKTURA.md",
+      "bytes": 45097,
+      "sha256": "c7fdf7e83374efb59add0e9c07f70d5edb2db525ffa82628f746053b9d827b67"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/AUTORSKE_SCENY.md",
+      "bytes": 8751,
+      "sha256": "8b0d075fb8eaf4eac91507c4887e1171f6942dd4d0a72da02e4856e31925a979"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/CODEX_VYROBNY_POSTUP.md",
+      "bytes": 7489,
+      "sha256": "c098cc8354f707c660e1ed217e0c15b22098c370d7ff7bfcf5c47efe1ceb50b9"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/KONTROLA_A_OPRAVY.md",
+      "bytes": 5497,
+      "sha256": "e64b664829d18b51d2822d087f810fd378c22bfd8b2fdca0a663b185a69560b4"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/NASTROJOVE_ULOHY.md",
+      "bytes": 6223,
+      "sha256": "4d731902daa1490831ba54df78b27c5bb8b7f4273b2c25fe1c3880523429b14e"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/POUZIVANIE.md",
+      "bytes": 20451,
+      "sha256": "0f9d7ac9d071cb6669d6803c9dcec54e0ecfc876b2cb388f62139bfeb016ecfb"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/ROZHODOVANIE_O_EDITE.md",
+      "bytes": 25547,
+      "sha256": "dbf048cc2b30f751586ed1d81f3155f2c12342b9d3429258615ef15ce1342f4d"
+    },
+    {
+      "path": "reference/xvadur_klipy/docs/ZDROJE_A_REUSE.md",
+      "bytes": 10416,
+      "sha256": "4e6b6a1b9430345620df9fea1dfa2da8bfa2b2037e050c09d59ccbf1ff970eb8"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-05-fiki-chaty/AKO_MAJU_VYZERAT_KLIPY.md",
+      "bytes": 11553,
+      "sha256": "6901b707ac10a7099807d062b828a233cd07e9a5f87bc12bc5357750d47e695a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-05-fiki-chaty/DOPLNENIA_Z_TOHTO_CHATU.md",
+      "bytes": 6345,
+      "sha256": "9ddff419ff9f4792bd6ec96755baf6c8dd5fe7a5b0c2febf04bad406d8d2dbbd"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-05-fiki-chaty/REFERENCIE.md",
+      "bytes": 7799,
+      "sha256": "dbd1e49248faeb942b575bd5232c1cd2de4502154b9e51c2753280235906ad2a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-05-husty-strih-zahranicne-referencie.md",
+      "bytes": 6649,
+      "sha256": "dc21ae3dbdc9c7cb7bd9e29826c04a45592bae224946dd1d477d9e25179ccf34"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-1200-klipov-nastroje.md",
+      "bytes": 8296,
+      "sha256": "779dcb540e87e4dbadda77b367c2fb34b175c89683978214f622891b0899af17"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-davkova-vyroba-varianty.md",
+      "bytes": 16083,
+      "sha256": "5b75014df8c3cd2bd8bdafb36784f553f3870ddbc697c87698cf672db922ed85"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-editorske-formaty/HOTOVE_KLIPY.md",
+      "bytes": 13886,
+      "sha256": "ccf7ed269b93b314fb97695893db58266004ecd7c2f4d06c4465e6d05c310531"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-editorske-formaty/NAVODY_A_KOD.md",
+      "bytes": 13856,
+      "sha256": "b4244d74afd8409530041dd8b8408ba8e0caba5725eac3985bb5a77c98260307"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-editorske-formaty/POSTUP_PRE_EDIT.md",
+      "bytes": 6374,
+      "sha256": "1b69667aaa602e95e52e4cf49337f073e0307150d78acb3a615bc76a73b4e9f2"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/POSTUPY_PRE_EDIT.md",
+      "bytes": 10178,
+      "sha256": "ebe3b0692313f2ef4bc59f20c0f13c6e9dae1c86b1a28a36de8f7816e82d771e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/REFERENCIE.md",
+      "bytes": 4612,
+      "sha256": "71c60f6515d6ea9bc0c6f0db789e2e1d9cb8491dc56cad20037267e63e705748"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/SHORTS_ROZBOR.md",
+      "bytes": 5822,
+      "sha256": "5b91dfca5fd5b0c725a1d71a5628d58fecc6d76476d3433db2a9b39536edac46"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/-19oR2yF2N4.md",
+      "bytes": 13195,
+      "sha256": "beb692f6bf710fad5ad8b0e9c21c6cc43760d2bb1bc4d3ae80b5ff1d421e1a22"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/1WXL1IfivVo.md",
+      "bytes": 10352,
+      "sha256": "f6c96cdaf11ee5faced70d9a1bc4a024ed7083fb559e6de5499e2c8d8f3126e3"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/BNPlUj-CxB0.md",
+      "bytes": 7750,
+      "sha256": "e35619d0d2b5e23461efdbfc3b624793e48b60525526b0fd49c79ecd54c71939"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/G0EH0xdy2-E.md",
+      "bytes": 10080,
+      "sha256": "0ae901b0d1ee8016845eed2587030f9c7747712de7ee1991f85c448d80e60739"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/KI0m9SnMAEE.md",
+      "bytes": 11627,
+      "sha256": "ecf541206a0262f427e4f1030383f6c3a3b28ac0fa43f2ea0e939cc0962771fa"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/NbvcjGHSkV4.md",
+      "bytes": 11086,
+      "sha256": "847330bda45fb22fa72f9c8e426a3986e668c41d050c958e9d2b96eeba64a0c9"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/QzvMFvKdvc4.md",
+      "bytes": 16326,
+      "sha256": "cd46ee87fd0b2c208f06a101a0bc753d5c040d6f2e515c594658abc98469377a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/XkGxDzVmG4M.md",
+      "bytes": 11222,
+      "sha256": "85c104ab946fe7a150b90750bd2600420d99e0553b2400bc269de08fa88323db"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/_mByyUmqhW8.md",
+      "bytes": 11521,
+      "sha256": "52b1ca2b948dc71af18f215a234e2aab5b0a2b01fd41fae9efe146f11848afa3"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/iqb5Rd6KKr8.md",
+      "bytes": 9150,
+      "sha256": "43a51ad86e64f05cb4703d553c5e7078b7763d9d6d2802ea1492f1d975df4eb7"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/jsDvkduPpw4.md",
+      "bytes": 11284,
+      "sha256": "ac9a85a6aed65cd179924a982e4979a6145627e44664f77a9cbb9e2f3c3e4c72"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/o3IEkKXXXvo.md",
+      "bytes": 11204,
+      "sha256": "78b7fa51711106bb24bd03aa5f4b2f0345e4cc2f8cfac7407f0f233796e38107"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/cards/y1sc6wHDAyE.md",
+      "bytes": 10102,
+      "sha256": "259b619353d16bb46fc560500d967c66bd76035b559da216222e230f3aa3990c"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/discovery-shorts.md",
+      "bytes": 5643,
+      "sha256": "843d06e5ad2536475d364abbbfb46e559b930ecb257d214ef268e940c2654194"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/discovery-tutorials.md",
+      "bytes": 6391,
+      "sha256": "27c421220ff7d5015cadd89d3ef3bc72f5f0b62c7151a0e979cae75d2ee4084e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/sources/hyperframes-launches-README.md",
+      "bytes": 5740,
+      "sha256": "803916540be13e508fb503b1a8f0c83ede4953bc49b10282310d96d24b38d304"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/2026-11-06-youtube-referencie/sources/nate-herk-kit-README.md",
+      "bytes": 8053,
+      "sha256": "8416b327ec5d988d11a51cb878574ff96043e4b192a5c32885c69bdd7e1b79cc"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/ASSETY.md",
+      "bytes": 7773,
+      "sha256": "2d82b30d60ab7e182866015c24a978a69438b9c15c90bf0ec4b3c7d9c5bd4e65"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/README.md",
+      "bytes": 5924,
+      "sha256": "33c1371099d2670fa3b7d65c62c37da0fcde712b6fdbe69cdc34a7c83f1331f9"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/ZDROJE.md",
+      "bytes": 7025,
+      "sha256": "f1d8298b7820389ac275cf9ba6adfe2f47188dc6f07cdf32f0c8579bd8c93a14"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/ZISTENIA.md",
+      "bytes": 37991,
+      "sha256": "ee3cbf91f8338b20a7171e3c56acd87bfa40141e1273cc379e02343767b0a510"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/AUDIT_EXISTUJUCEHO.md",
+      "bytes": 18693,
+      "sha256": "5760a45d40a68f861e1d04c301f78aaf600b6fbfd2a4caab18caa3a5e51e0d48"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/EVIDENCIA_CASOVANIA.md",
+      "bytes": 2107,
+      "sha256": "d853327a78525b34d2177d41e00c7214b2572b694d1af8e2dc532162a7f1a127"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/KONTROLA_VYSKUMU.md",
+      "bytes": 19805,
+      "sha256": "cf3d4c2c1f365c6b71bc0d78b1e80052f63c45ef50f9df38ad18396bf6c5afe7"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/PODKLADY_NA_VYROBU.md",
+      "bytes": 15409,
+      "sha256": "424ac266cf6d685e853f79d94c2c4a36b442308733ffdb0d94a1cb003e3bd88f"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/POROVNANIE_KVALITY.md",
+      "bytes": 8920,
+      "sha256": "4a98b85e43d203f4617b681d20aa30b73f971afe4c78675f83e0e8ef2e477faf"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/README.md",
+      "bytes": 4396,
+      "sha256": "3370f8f294f92e30a0afd134f6cbe6ff9f1b8d0942118939f6a25244973500d1"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/RECEPTY_NA_VYROBU.md",
+      "bytes": 18151,
+      "sha256": "873a75fe47afba6ccf6f76987341f05bd51051da7c8aada15922031c425e7777"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/VYBER.md",
+      "bytes": 29787,
+      "sha256": "0f38a4fcaaf1d167d3dfa78cf6437e869a36d079ba1058a94a36f9f67dbc6935"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/VYSLEDKY.md",
+      "bytes": 11145,
+      "sha256": "c274d24629922e15bc9f1ea5940441ab9e6b7d693a1fa0d8b84606302feb5e09"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/ZADANIE.md",
+      "bytes": 7420,
+      "sha256": "0d0d3f9fd7be80afb2aa2eff8062bc99761f633462752b2872947a43baeee5bf"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/podklady/nasa/README.md",
+      "bytes": 2498,
+      "sha256": "e664eb7badc67772e8eee2f4fab9a6bfedce576adc16f98493e46bfd7364744d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/_fiki.unchained_.md",
+      "bytes": 23086,
+      "sha256": "d70ad5d52979fc28aa4a99a9c45654929e85e1f06e5db1bfbf03674eeb5d12a5"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/basedfiky.md",
+      "bytes": 13977,
+      "sha256": "977abce2101075749cf3c56295160b220dacf7c418617675c538c30ce73d0ef5"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/best.of.fiki.md",
+      "bytes": 12814,
+      "sha256": "d11101b3b0e3db3ed4a73be5efa76f5d7ade0058c0f46bd6124338ca76598775"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.bossik.md",
+      "bytes": 22944,
+      "sha256": "7cf50837e76923782f81493acfc4df45b8764c4f8b9de388183da8a6e2ceac56"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.clipz.md",
+      "bytes": 12826,
+      "sha256": "8073be76e8546ead7f9c6fd96fd703d6d47e036e29ed3b3719ed65fb10f4c31e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.extra.md",
+      "bytes": 26216,
+      "sha256": "87b761c7717f4a1659c3d56aac5d4d6814ea0f1df8b8fb3e85536e70ec3f8586"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.hlasky.md",
+      "bytes": 14643,
+      "sha256": "75ec0732b2a29840ea0580b1b78975565fce813db92d799378cf6d2c503f0195"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.kliky.md",
+      "bytes": 19014,
+      "sha256": "4a6200f3495095c54c9dc20445068de8a9a7a00bd86455a557a966bdf035131b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.nahrad.md",
+      "bytes": 13264,
+      "sha256": "53a8d4eb5b2b8d6dffa7ed88cc459bfabfd3aeccf0c6736e9e3a4143e5cf7a99"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.sama.md",
+      "bytes": 14018,
+      "sha256": "09e781a0983b9c7e71ba05003c733d100bdf6443af47d9ec319674f0b1566fe1"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fiki.sulikclips3.md",
+      "bytes": 23963,
+      "sha256": "077997518c845742bf3ea5a15b3922690d0137495aeb1e729c63a875da60da59"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikiclips1.md",
+      "bytes": 18459,
+      "sha256": "87aa7adcc2f4b9f7378888e86935ea65f366d23557d0c984abef1e48cea4db9b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikiclips10.md",
+      "bytes": 18962,
+      "sha256": "36a0bc5cad98af35cbfdfcfdad458cf02ed773a214bb3866ca67107310d9ea69"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikiframe.md",
+      "bytes": 23017,
+      "sha256": "9c86d02990fea69809e99144b560069f0870b66d833b6fc8b4b96b7f8d69b869"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikimentalita.md",
+      "bytes": 13554,
+      "sha256": "25a2798f1be218dd8c107c1fa7a6dea076b9546f201682c8c53e27d85bd5d77d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikinko.shorts.md",
+      "bytes": 15228,
+      "sha256": "e0141061280cccc5167cebe4e0efe1fee57dc8c085ec4a163c7fd633af34da83"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikiprezident.md",
+      "bytes": 19650,
+      "sha256": "74c0d14b46ff29e7d70a510cdad0a038e4716a6232e6663a02d0e32de2817b02"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikirealtalk.md",
+      "bytes": 22420,
+      "sha256": "f3090ed836ca2af7500571030bf81b15bc4da61a1201cc0a388112b34f40a94c"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/fikisulik_klipyy.md",
+      "bytes": 23731,
+      "sha256": "67068c0a0d6ffaeb633e490de76f0ba28f68aaf6b33a6db5af9e3dc22cb2e60e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/frajer.fiki.md",
+      "bytes": 14848,
+      "sha256": "95e0ef7ae8bd59bb267bbf9831b28c4afd87d43529d6d0accb5e902b2bf594e9"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/kontrola-zle.md",
+      "bytes": 49898,
+      "sha256": "baa3b1e83fae62aa086c6b67a32369ce6765e5e190e0568f4a629a3a314bfe2c"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-10-27-nocny-research/rozbory/nase-porovnanie.md",
+      "bytes": 27851,
+      "sha256": "ed8be5bd016aa3595b5a81084c7e1d1308e33f809459975591fc24dd72be39a3"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/GROUP_SCOPE.md",
+      "bytes": 1618,
+      "sha256": "296e9a654504d54f87f8031fc671b5afb46fd378100f280e81afeb07132c92f8"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/POSTUPY_PRE_EDIT.md",
+      "bytes": 12637,
+      "sha256": "fc7d87211c6b1f2b98b105e7ae8195a18676ba91d7f544b06d954de83d5cc4c9"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/REFERENCIE.md",
+      "bytes": 31450,
+      "sha256": "eac6330073f8f063e02c4e89a35adce8901ff4b5d0a4cf101e3688e809f2df99"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/VALIDACIA.md",
+      "bytes": 5715,
+      "sha256": "4acb5cc68280cffdd00fece18f643c2547fce8b3927730af8af16cee096f60b8"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689138607583628567.md",
+      "bytes": 4458,
+      "sha256": "228773c1f2a02cdbe641a5a64a17a0111ec139c1dd4ca695b1c0246c7c9b5a17"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689226801553444118.md",
+      "bytes": 4529,
+      "sha256": "714d8ffa42cffb9689b128c17eae60330d4d23d22f6ffbdbe38ac9019a0890a1"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689451102990781718.md",
+      "bytes": 4333,
+      "sha256": "03505f42446898c0643d817c63d0c3f773b216d85f4fcbc359369fb61fdc9a18"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689477893352721686.md",
+      "bytes": 5147,
+      "sha256": "6888f50420d4f5c916d0255880c39614887a4e6a1936c6fd468454aba306c6d7"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689781792898960662.md",
+      "bytes": 4303,
+      "sha256": "3f05c4308b5584ddb87d8139aabbdd64c44f8496c44dca2b61fb6b969fcc9b74"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689807510248770838.md",
+      "bytes": 7061,
+      "sha256": "e5f85705c9a59281049e5741d1775ae208ae7930bfca5316c1bd0f27422deca3"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7689885220899753238.md",
+      "bytes": 5240,
+      "sha256": "c7118dbc4a4ee3a12230ae547d0769c02e22f9f5245a7f1aae08c48c6353f0fb"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690097844576849174.md",
+      "bytes": 3530,
+      "sha256": "06b7de22130b468d49a82fad8855a350a71981dc7af4be7941dc3b0470460a76"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690230294305066262.md",
+      "bytes": 5750,
+      "sha256": "92a176b7778b226db9a763adf6853865c52d7739ae474c44fe8588f1387f8cfc"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690265052535934230.md",
+      "bytes": 5339,
+      "sha256": "8543108259de0b573438670bf36e023041f629b5528e99b4d4c74e58469404e2"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690287936494898454.md",
+      "bytes": 4549,
+      "sha256": "fabe0110ee5fd511324e09a5e6dabbe38cc9f8c9897d7dc3c28c89283cab06e2"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690625491530829078.md",
+      "bytes": 5475,
+      "sha256": "73a2ff2a445df8e0d9320bb22be234379d0d4d53cb0abbd5c0832ef6230553b4"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690666549048331542.md",
+      "bytes": 4482,
+      "sha256": "345b8a81d7c9cc54cf4407b18c4c87ec8fe745953ffd9114f5e546ff850d5dfc"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690937059875261698.md",
+      "bytes": 5344,
+      "sha256": "eda0e34d9c96948a6830c50822bb9a604ed650585c9f8db895a77717010015cc"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7690963555969027350.md",
+      "bytes": 4258,
+      "sha256": "ae909f22fc0f77aa3d23eda7346e5a8975967a21471cb1e91619e8ed747f9086"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691004295470238998.md",
+      "bytes": 4417,
+      "sha256": "2127dbf3a0c0906cb8715c1dbc5c43fadebea3d6f728c2a1e7c21fb48d93b099"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691007262894148886.md",
+      "bytes": 5138,
+      "sha256": "bcb86287dbc995ca0199cd9021a8443f234ecbe85964088f9ae9ceb0a81911ac"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691013252490317078.md",
+      "bytes": 6366,
+      "sha256": "17f9c40bd4baf3e96ae516deae73a8f2ba9898bfb26c1c80d1dcfb9f6d06363b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691020452457712918.md",
+      "bytes": 4525,
+      "sha256": "63bf4db831520c0a94ed44782d67dd202c720e01f2a28e0311e75faa14821bf0"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691022886672370966.md",
+      "bytes": 5370,
+      "sha256": "03d3d430218923438530a41ef66453eed0754d927e01135cc538dc59cceb9cae"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691054169318313238.md",
+      "bytes": 5132,
+      "sha256": "6eecb432007698b29641840e2d0ae7bcbb29627043981df256e3e3399cf2b675"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691059019565436162.md",
+      "bytes": 3443,
+      "sha256": "7daaf356cc47beb675306c4d1be02d0d6d67ddd008da65b8ace9bfe649c52df8"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691063927878421783.md",
+      "bytes": 4361,
+      "sha256": "e46434d3600c545ce76f454852d83b3032fdd7ee3f1cd6a655e610d859bb6617"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691070069740195094.md",
+      "bytes": 8531,
+      "sha256": "83bcf43929d757eb1dbb1b71320f231c28a96e16afe7294a4f3f75f886246e8d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691204286641933600.md",
+      "bytes": 4471,
+      "sha256": "6eb735cc57f3a94c4af762bfd4b955bc623350cc21d5b7e244cc340c62212bb4"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691266193864379680.md",
+      "bytes": 4822,
+      "sha256": "7d918302f4b453d05cc8ec9ec004572965ac2fb361ce6eb07bf31631305776c8"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691343843693825312.md",
+      "bytes": 5433,
+      "sha256": "066df664bd0f4c0d03159f53a57e0cc82496c9277f9215c0f3c1408211725d09"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691372489355627798.md",
+      "bytes": 4090,
+      "sha256": "f38aa499484557e4b2369d0cf23900afc44497dba92b40847520c87f92f5b050"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691575565802851617.md",
+      "bytes": 4854,
+      "sha256": "1b84e0b6077cd63083d806902941842d6eebfcafb514e4d4b73b77d95679658c"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691620703971364118.md",
+      "bytes": 4307,
+      "sha256": "b79ec4b1175528978625125f6f9e6068120f0b20bb44b0fbe83d732f491e1f52"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691637588867747104.md",
+      "bytes": 5317,
+      "sha256": "ed2be1a24210e6c90386fc0f2fa529f91b42626f88ed1acd6f537672bddcb596"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691709827600403734.md",
+      "bytes": 4088,
+      "sha256": "a21da84748390433c3f2cdd666c6b0365651208d59ef8396220e29af73ccbc7f"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691772139170532630.md",
+      "bytes": 5148,
+      "sha256": "01e2b344706509de2ba8997d7493557278dbd421db05156729ad6c7a87c96548"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691957721112808726.md",
+      "bytes": 3724,
+      "sha256": "de534564921c6832e793cdd75ce85fc3ea879cb0c3839f896326f2ef7a9a3806"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7691974169981881622.md",
+      "bytes": 4343,
+      "sha256": "3f039e855458fe4c6d59db0b9063d8e885a397977ca6703433800014eb2079c2"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692002530854980886.md",
+      "bytes": 3437,
+      "sha256": "6d6b6429964a853d5ecc6cd4f9d40fd4cd1439b6b1a3fba2f141e1e382cffb07"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692021640468679958.md",
+      "bytes": 3998,
+      "sha256": "c40a8544979132c589c627540b999b52bf0f11c18a40aaa84d53a693419a15ab"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692098717758786838.md",
+      "bytes": 3526,
+      "sha256": "bd8055548e6fdb5fe505e44e2ebb9e5465aecd280616e03e40eef4188cd14f9c"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692317747530714401.md",
+      "bytes": 6779,
+      "sha256": "b79ed55883bf6928d6052b3cefacb8517f9b6d761e872457e7e82377e2a47202"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692351659158129942.md",
+      "bytes": 6348,
+      "sha256": "499debf42fb85d9ff00d3920859b7b2f916c2dfa004a421ed9b8294f162a4238"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692391908873751830.md",
+      "bytes": 3673,
+      "sha256": "2cea9046e0426f6ca47de350cffa781359cfc7fa8eaf654dcaffdd4ec1cf3984"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692439348272270614.md",
+      "bytes": 5387,
+      "sha256": "46d96e059f7d8cfbf14a7659fa17c7101e878ef71344d066fb2bd4d894345031"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692805590359379223.md",
+      "bytes": 5960,
+      "sha256": "7c7b02e150f5d057ef4ef16977d6ab83faf1c0fb53a7392d9a599db48641efc4"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692825927243287830.md",
+      "bytes": 4764,
+      "sha256": "aae8cc06bc92fe7a5cb42ff4226a1106504ea4fb184a68df63fa2fc0e9018b2e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7692886180475473174.md",
+      "bytes": 5663,
+      "sha256": "b94aac4eed0e64ef18e4a6b5aa699e1cd09d6a327c3469cdb10f528c91f51c4a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693117767280594198.md",
+      "bytes": 4707,
+      "sha256": "c651461642983234716abacae61d7eff2aeedc319bcfc9b29f186e573a8c8713"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693225215526161667.md",
+      "bytes": 4859,
+      "sha256": "5e7558a691acec192727c0b4a4b1f0c181991d73a68d797fe6c193e945d26c30"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693277737947106582.md",
+      "bytes": 5923,
+      "sha256": "e7bfa1a273a0243b0809c2a693c0a2782881cdc6a9426122af1525e0ac8a8420"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693599741040528663.md",
+      "bytes": 4015,
+      "sha256": "0a72131df403312a9b8555b714a033211f9f4cdb7bae3e39254495e288d07eb2"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693604391093292310.md",
+      "bytes": 7358,
+      "sha256": "629dfbd10d5c37e50523d337e8257b0388845d16a524a1a56a52cdb0c6d8dcfe"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693614011916537110.md",
+      "bytes": 4327,
+      "sha256": "4ff27e2a34589df5b863a836f8dd940bad5fd9b50d906825c32e4638ad29054d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693629454677003542.md",
+      "bytes": 4189,
+      "sha256": "7c87af9e468298ae906758297e4f498e317a01cc4e3c75e05ad551541616a0e1"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693916590953221398.md",
+      "bytes": 4709,
+      "sha256": "1d31950849ec627ed2c6754ac0be0ab03fbc49ca1e2e01b6712de30aaf40dc11"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693941951179312387.md",
+      "bytes": 4769,
+      "sha256": "54f127b302d59cb741d6b7646258686198bb4ab62b86c29e92b57872c03dc89c"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693962715596868886.md",
+      "bytes": 4422,
+      "sha256": "828bc388e41d805eed8b2acd79518da4fc108c85f53ea0d1fb3eaa551c83132d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693968183534914838.md",
+      "bytes": 3714,
+      "sha256": "5098fd552e158956ad70b815344bc04307683a0d0251dce50d4e36f49378e30d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693973353320828182.md",
+      "bytes": 3939,
+      "sha256": "dda03d7f64647fc2f7d6223684fc6866a0d43a208bd57ad7f45a9e0b8122f428"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7693995296669355286.md",
+      "bytes": 4528,
+      "sha256": "dcdca546a0f8e60c3dbfc051c19e34bbbe4d4fc190f889e09e91c3529d1ca3b3"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7694215896696392982.md",
+      "bytes": 5437,
+      "sha256": "75d379a831a5ffe0ab5137b08f786397f676b978e02d9f02b2ca553e9d2fe881"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7694220059346013462.md",
+      "bytes": 6858,
+      "sha256": "fbd8d2a051e789852bcc959bbeabda9bcbb5b44b80530256043c58ea5a1f7946"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7694395408579120406.md",
+      "bytes": 4474,
+      "sha256": "5aaa4eefcd99bc23b0ea90bebf7775d96075b5d60aed4dd5d06acbc374f98fb2"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7694624792565009686.md",
+      "bytes": 6121,
+      "sha256": "c5165565e4401e1e6f32e6cb2f33f0434e085e5761ea95c653e4f18fbc654109"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695031570352049430.md",
+      "bytes": 6738,
+      "sha256": "6f6a6c7df9155f22dc58e6562c881f150937b9e048dd21509407944ef444f8c6"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695348663014477088.md",
+      "bytes": 5440,
+      "sha256": "648f82c671e5836ba05024dd096273f61ece3f012593576f3ff0f56d346afbda"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695382955316808982.md",
+      "bytes": 3621,
+      "sha256": "3b6b057393f23205853a9770b549359d224b8f688e35999e15878ada95dbe4be"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695456961991118082.md",
+      "bytes": 4228,
+      "sha256": "a92ec8fd3cfa8ca78138e3fb50d0c8a15905089bc9e2f15a9f765dca2c1f87c4"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695505954225278230.md",
+      "bytes": 5149,
+      "sha256": "f4f1e0b124d00ed0707042bf80df1c541d6577911db3a5667a8485560409eddb"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695755616219843862.md",
+      "bytes": 4171,
+      "sha256": "0d1b74d6e4e1becc701089853b7e9d026729cd22573c9e125c36bd8eae41d77e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695825723600194819.md",
+      "bytes": 5434,
+      "sha256": "a9ca6d05fb06d4a2b5507761572c80c6c058da1a497fb3853487565f93476e8e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7695914642274667798.md",
+      "bytes": 4745,
+      "sha256": "87e9a6e5fe26d3af2010c9bb94057416997bc343bfe0a58ace46dfe727be7668"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696028900995943713.md",
+      "bytes": 5005,
+      "sha256": "1c73425f1eca320b243896003675190596f932c9e88c50b6954b6569e3e8abb5"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696077105418816790.md",
+      "bytes": 3891,
+      "sha256": "d3f1adf7efd9e38379592fc24830bbac57334e76d4e4b65457486b34585dc782"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696081404811136278.md",
+      "bytes": 7419,
+      "sha256": "93e65a02a02d7c7a3100b5a68ca6b23a9878048c3ea3956abe0fb78d349f9ea1"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696100146953637142.md",
+      "bytes": 8395,
+      "sha256": "67784c11963bffc5fe67fc781eaaa51efd34c7f4d9dd46fcc5fa159551e338e6"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696178785967770902.md",
+      "bytes": 5624,
+      "sha256": "aed3f8f88f33e52cd053d2ff105b639658bfd95d0f312124f4afd2b99e9e9ba1"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696214054876007713.md",
+      "bytes": 5303,
+      "sha256": "6dc3ff725954fa086ddc785e51846ec9b0964691b6daaa9bc75395678b8ee89a"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696229131423436054.md",
+      "bytes": 4410,
+      "sha256": "88bdaef4becdf2e61a85e0682bc83079a3814903ec3f1a726db2a44732389607"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696517555254529302.md",
+      "bytes": 4727,
+      "sha256": "3b94247a7f463c5cbdd7f5746d7ab0cffe3144efabc5cccb0369af24ea36a3bc"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696537219548400918.md",
+      "bytes": 5525,
+      "sha256": "2f2860cbcabe8b88f6fa790b42dc424001c0878cb877a8529513d4c4e3897bfd"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696543048968277270.md",
+      "bytes": 3686,
+      "sha256": "5cc7a61302354b0ca9a9765027d9f690222aa73e4fa3bab28bb0536e01a53154"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696561358766083350.md",
+      "bytes": 4682,
+      "sha256": "5269337b88262ab1517b0158c181178d07e70eee3b54016482bc9485d7133945"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696575126673952022.md",
+      "bytes": 4651,
+      "sha256": "cb3ad6b788577a49881c475a76b60e07825274f3bc376a67166b50531b4941ad"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696588987640892694.md",
+      "bytes": 5048,
+      "sha256": "0e6594c7c87420dd0954ed80f92cd9ff6b5c0e6b404d89aad698de802fd13f19"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696605491752897814.md",
+      "bytes": 4447,
+      "sha256": "3c9aea077d8ed7af27b8ef13daba5ec1a8b04cf881e65a633e22b1aeb6c46cdb"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696877903979482390.md",
+      "bytes": 3998,
+      "sha256": "7412ab3df0e23bd8bb1767d0af49b58c7de528ff0302fa2ca26965c1b1ee24e5"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696911002360663318.md",
+      "bytes": 4365,
+      "sha256": "b84907771244cce574cd3c16b743dc0f43e14e95dd77b81a7895bfac64c7bc25"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7696962577309388054.md",
+      "bytes": 4583,
+      "sha256": "3547c3cf75615a8c8afe4ccba3bcfa6cd658110a40c8456093fd66fb8fdd7335"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697259219434835223.md",
+      "bytes": 3982,
+      "sha256": "9d507173713b19426b8722af5156eacfb4ef68523807e211d61abc092808187c"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697399891844271382.md",
+      "bytes": 6184,
+      "sha256": "90258a1bae0381f05495994cc07c2b848d723b41bfb0182a0780ec25d84621f7"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697411056838233366.md",
+      "bytes": 4909,
+      "sha256": "f4c0d6bb0fdd7cc3aee45daf0fcd9729dffa6adc823e835c622bb7652994346f"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697424869339843862.md",
+      "bytes": 4344,
+      "sha256": "78f2fab687dd19c3b1747e884a356366b23c2e0d7fa9996aeabbabff7ac0cb62"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697428109804506391.md",
+      "bytes": 4914,
+      "sha256": "8043d3f2013091152d52ca89eab82419837f4c70be4dc8e43e951532a7dda328"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697681561617026326.md",
+      "bytes": 4447,
+      "sha256": "aa08695c5ace9d5bfca48b1eadf0ba2cd25b48df2e0174406631fa1cd6d935c7"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697722350845955350.md",
+      "bytes": 4280,
+      "sha256": "dd029e7e0c60fcfd0587d7b0d2f79512187695907f4f470e24273909781ad38d"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697725317988863254.md",
+      "bytes": 4464,
+      "sha256": "2c6b745d94158de6562e2af848e4b824960b7acc3742256e633995e0cd4f835e"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7697732432069528854.md",
+      "bytes": 3751,
+      "sha256": "aab67482e2ff37196662df8e9d355507b94623cd1568cf62eb041f7819ecccfa"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7698054322310876438.md",
+      "bytes": 7274,
+      "sha256": "0e4fba5d1c90800869a67a48a22f081a440093fb6b3321515350d297735ab89f"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7698110482003053846.md",
+      "bytes": 4518,
+      "sha256": "ee10ce70ace6bd8184dfa7b65b157ccafa21a65ed6c1cc93b973798f97f93d93"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7698124696893607190.md",
+      "bytes": 4317,
+      "sha256": "a4dd897f9af2ea69e84e06a5977f5958fd18752df35046c844b00cba6f12746b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/cards/7698443510000733462.md",
+      "bytes": 6991,
+      "sha256": "b4c4d2efc5323fa056404c9ce30f96b9fd1176197c362fbf967033c6d0a2439b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/mechanisms-batch2.md",
+      "bytes": 7036,
+      "sha256": "cd3291083818a4e47218bb0ca884124fca80b392e29befd91d23961e6122356b"
+    },
+    {
+      "path": "reference/xvadur_klipy/research/konkurencia/zdroje/2026-11-06-top100-remotion-reel/methodology-metrics.md",
+      "bytes": 11439,
+      "sha256": "6d61172abd142b8dbfa8174a9435d61cfbaedb6e81b34cf18be3b71dfee819ce"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/cli/author.ts",
+      "bytes": 3979,
+      "sha256": "e825b8b04e219148f5efd32aa8ab42d5bed744696c24cfdcd84ef60f4587b003"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/cli/author_runtime.py",
+      "bytes": 6468,
+      "sha256": "8c98bf6f0497395695fe4373e1be9078c7d430969800e8f45a430bb73e51d1d5"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/cli/klipy.py",
+      "bytes": 943,
+      "sha256": "1d6c950f44b4c34ead97148146b28d0014747c313e16feceb1bf1af87e17bde5"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/cli/provision_author_runtime.py",
+      "bytes": 2424,
+      "sha256": "5f8ccf82aafa066386af22d9333dd5c2d3b78f5b4f2667132c988f291bfe2bd3"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/pipeline/authoring.ts",
+      "bytes": 26695,
+      "sha256": "a9f2222caeee50ddae55bf1a7e9c5bdaa8fe679885643233ebdea2bc17ce8211"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/pipeline/ingest.ts",
+      "bytes": 11560,
+      "sha256": "6595520b22219d639cd4d3de1b389a88ea75d988b8da0b4d7d0bd3b001733685"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/pipeline/io.ts",
+      "bytes": 9521,
+      "sha256": "b90edff13990b641e98fb3b4641f53805ffd2a2e6cd0c5aad0714d6a574a1b94"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/pipeline/model.ts",
+      "bytes": 18985,
+      "sha256": "b45649a211b08687c8c3f6cc7763c2948c29fe176a0807d1a75088a37f0fb384"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/pipeline/review.ts",
+      "bytes": 22137,
+      "sha256": "36b11e1b80f7f07f53bc86290c637c31f46b33cd46ba09459c1023805eda3546"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/pipeline/store.ts",
+      "bytes": 8334,
+      "sha256": "5f598587a8d57b4fe49828327c829ea188dbbdde8f10f5e5c23e4fd0584a3fc9"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/adapter.ts",
+      "bytes": 7852,
+      "sha256": "be9303ba6153e57666d14bfa75e913a6a9cd91e88e52d9fa59bb49d7f995cc73"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/audio-priming.ts",
+      "bytes": 6166,
+      "sha256": "0c96ccc52b6e149cfc3ea7dacf6ae3f4277e7ef5de7077ec0a356368ad517e77"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/authored-composition.ts",
+      "bytes": 7522,
+      "sha256": "70b78ed2583047a7c874a2d5fa5d0ba997878abb9afa57ca55b759b976faf166"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/authoring-api.md",
+      "bytes": 5889,
+      "sha256": "4b89fc433c5eab9518bb85f8b6c5e8c02c8f3c4c29416d53211c40808d524c47"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/design-space.ts",
+      "bytes": 1871,
+      "sha256": "0b985c8dc01ac784c91565a3727060e6e9d6f51969a191499469b2260b6f73e1"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/render.ts",
+      "bytes": 26923,
+      "sha256": "21474c9517aa2dea1ed7f8f56c45b2a22adb51c09d062c84059e4ee51bda6571"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/TimelineComposition.tsx",
+      "bytes": 10665,
+      "sha256": "5cd0c8de5837035ca412f9115ffd933542056ea9d3be0bc2a4f5ec3c8aef3be5"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/JourneyStage.tsx",
+      "bytes": 3055,
+      "sha256": "714b90a546d3248985e863db278a2508bb6726482dae91f4f26f5f6554006b82"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/KitchenRulesStage.tsx",
+      "bytes": 6179,
+      "sha256": "8c70d0b709adccda246e3c38ec3053d43a69657b30deccd399542138ebc3d92a"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/MediaStage.tsx",
+      "bytes": 2640,
+      "sha256": "ecf0671fc696094714e49384fcc0d6cabaa55c016ec184f03dde47c84dc3e5c4"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/PhonePaperStage.tsx",
+      "bytes": 6201,
+      "sha256": "6966144b41454f9cc5a285862ff0d2e68c51cbd0c536ae5cb6bffd53003b1af3"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/ProfileWhackStage.tsx",
+      "bytes": 5287,
+      "sha256": "876c0b1f0aea8b83dc05745277a4b5d2d6e6b56f91342c12873aac699fcfd773"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/TurtleCodingStage.tsx",
+      "bytes": 7809,
+      "sha256": "1cf9c6fb762e66d5c5769de83c576220760c498ba88d0362df6fd0d1fc44bb32"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/extended-registry.tsx",
+      "bytes": 938,
+      "sha256": "c985d9573427154810d7169e76502cb863ac8a0414b17b9ec8c2834fca9debe9"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authored/registry.tsx",
+      "bytes": 283,
+      "sha256": "cb45d679b36b33d1ad0acf4488b0b796ab4ae55eb255c8b9594cb209c62c859d"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/authoring.tsx",
+      "bytes": 6550,
+      "sha256": "84d38afc8c82f0c3d78dc90346bb5c576d49bfdd69df28836c4649dd5c64ae5a"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/captions.ts",
+      "bytes": 4904,
+      "sha256": "86c7d6aaad002154877e240f3331594bb73b63bdab1244bb845f2d7b2d607e04"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/frame-transport.ts",
+      "bytes": 1295,
+      "sha256": "f96b422e2dfa27c2b6cb354ec0e63277afa18dc6fbc3cfe150d32abaaa495068"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/graphics.tsx",
+      "bytes": 3491,
+      "sha256": "c84de62663336fb4b1ce937a7cd8dc59a0ac111f7bde6f0e26cc67f604023613"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/media.tsx",
+      "bytes": 3145,
+      "sha256": "44a07cb95bbca0cc43e7af5f20b10f30e628112fd9b48e803010eed20b828b28"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/scenes.tsx",
+      "bytes": 9324,
+      "sha256": "757ffa18c5a899ddd923e1822095101d9d3a5841d139fc787c45c8800d8470df"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/types.ts",
+      "bytes": 3105,
+      "sha256": "0d66655bc32b674217e90241877c169cf495cbb0cad64fdfe8c39d6f2d027e97"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/renderer/src/visual-effects.tsx",
+      "bytes": 2244,
+      "sha256": "0ad48063b9974fdc2bc7630e56be34cc749c3286b6f61598ca17a965497eee43"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/authoring-4.0.529/README.md",
+      "bytes": 2337,
+      "sha256": "d16052f62acc09f6e07b780b66c435cf991d7fdee6294a612c00904fbe762d73"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/authoring-4.0.529/package-lock.json",
+      "bytes": 163342,
+      "sha256": "07f1b18436aa28cb635fdb8a01f133b0f6e9e055e05cf8ab8445bbb9cbf0fb58"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/authoring-4.0.529/package.json",
+      "bytes": 549,
+      "sha256": "8ff858fcbece3caffa41b363e18eb463f870ea4e8f437f4d59e5cd3366cff4a3"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/codex-routing.d.mts",
+      "bytes": 1081,
+      "sha256": "8997414d6775576b26b1ae7a14cc71b543288219012a737f42f3e1e1a96ac5f8"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/codex-routing.mjs",
+      "bytes": 3016,
+      "sha256": "2aeebf53575d5fa08f0f53f3db47ab4ae22a38ae5928e53567825bc59a7cbc1b"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/media-cache.d.mts",
+      "bytes": 406,
+      "sha256": "56a51c0b1ec0c6d5b3be1daf3ff11e21fcff3a0d4d8f9d0c1a8d19c948328e5c"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/media-cache.mjs",
+      "bytes": 5750,
+      "sha256": "2246d14248969a95ad8244e017251fd964cbf549ca626ebcd29b1053f12fd18a"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/resource-gates.d.mts",
+      "bytes": 555,
+      "sha256": "aec8c7f965b484e48a2402c1543935c30ed0134be96eb6cbfaff1730313c484e"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/runtime/resource-gates.mjs",
+      "bytes": 4418,
+      "sha256": "2f58a2e5391c9f8a5942c7e6a6db8366566248ae6cb056fbbf59831f17481203"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/authored-manifest.json",
+      "bytes": 578,
+      "sha256": "49b8172a02b4419612de095fd460800fa3877f2591bc6f23e07bb241e10c5ea8"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/catalog.ts",
+      "bytes": 1576,
+      "sha256": "d8d871caa78b61547d94b645f5534577ac78882c3d6f7d65bcdadbfdff455000"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/journey-manifest.json",
+      "bytes": 468,
+      "sha256": "b59d743ee565dd3560d0eb7aa0f7addab174807375c50f0a7b6fd375744d2bcb"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/journey-parameters.ts",
+      "bytes": 407,
+      "sha256": "e9a5288e7379330274c08dac8d6da3df59a6cf1d2cd9b9a777334e010d3793e2"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/kitchen-manifest.json",
+      "bytes": 479,
+      "sha256": "01f6765af71d515a226543d1945ba4d5e9484f7ef82f520faa343ccd88728eea"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/kitchen-parameters.ts",
+      "bytes": 339,
+      "sha256": "e8382f7129d47186c5e25b476a9e03517da430303542f70f0e3182c9b8832283"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/phone-paper-manifest.json",
+      "bytes": 479,
+      "sha256": "e48728f1e53343782f8180235297f815b85365ce28e6ab3107f8c69d1d6c13d1"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/phone-paper-parameters.ts",
+      "bytes": 266,
+      "sha256": "2ed2870d8976e872073095b42da1a4f400c9a63ab15f6b8c446150e046752c43"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/profile-whack-manifest.json",
+      "bytes": 485,
+      "sha256": "42facb85863bdf527b97567270d89b3a2957b74bcf08f9969066a2942928d73d"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/profile-whack-parameters.ts",
+      "bytes": 306,
+      "sha256": "e4ae20220b45a38199e3f0e1f1002e4f7052ce1b328bc1bf7bb84422f1cd5f4e"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/registry.ts",
+      "bytes": 2769,
+      "sha256": "0960e98e788d9c26cb8cc6a53ac2adc09f1bff315689c3f6d4fd961f688d97df"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/turtle-manifest.json",
+      "bytes": 478,
+      "sha256": "42a2a12ced87138072cf5683e39688884af76f0efc6d7395c20d6c79154678fb"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/turtle-parameters.ts",
+      "bytes": 260,
+      "sha256": "a97ed9ea47e3a8a5495495876d819f51776184b6b18ce41c2f9a4c43c885c078"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/scenes/verify.ts",
+      "bytes": 6018,
+      "sha256": "fe33841bf683099c70cc09efb72ee06b2d8188508a7a8258f184d7693ddb7166"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/schemas/authored-composition.ts",
+      "bytes": 1462,
+      "sha256": "f489c3ccd3f1469cf302cb4457632768d51ea1ebae4708436ca9d940b6b4e0d0"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/schemas/editorial.ts",
+      "bytes": 2812,
+      "sha256": "c8e4e1f08700794604b3d9e83b723ec46665d0ac1f86c9821acff7a3ce7a4aba"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/schemas/index.ts",
+      "bytes": 33803,
+      "sha256": "7fefc34e9e24f47a02fb8575870ec3330a7942d058aad7f639be0980709eff00"
+    },
+    {
+      "path": "reference/xvadur_klipy/system/schemas/learning.ts",
+      "bytes": 968,
+      "sha256": "8cd5d616c963395cb4831a48187d63a7f553cbee7ae8562f8cd38947c7fe96b3"
+    },
+    {
+      "path": "scripts/verify_export.py",
+      "bytes": 831,
+      "sha256": "edab920fe486f23ef593a21e5b343b578746feb9b0dd6e898c139d5ada85f88e"
+    },
+    {
+      "path": "smer/package-lock.json",
+      "bytes": 163318,
+      "sha256": "c466739368d2f0cf4f058b9ca384a312384c72a996a61d2edd0589ecfcddeafb"
+    },
+    {
+      "path": "smer/package.json",
+      "bytes": 691,
+      "sha256": "680c7fd097ae686a485ff0945b07618151c908264175822c0f8d1e8fde387ca6"
+    },
+    {
+      "path": "smer/public/README.md",
+      "bytes": 277,
+      "sha256": "312ed0e2259a6a0a65de6456b5b325ffd269c0e03469664b651757d2952981c3"
+    },
+    {
+      "path": "smer/src/README.md",
+      "bytes": 825,
+      "sha256": "89d507bc5da9826d3c95b0d97dd25dc9a4012fcf81c50894cae5a87c77c54075"
+    },
+    {
+      "path": "smer/src/Root.tsx",
+      "bytes": 881,
+      "sha256": "5a7e26468e748f85b5dd60efee6d22f36ac54d65613cc27962eac3b250984b1f"
+    },
+    {
+      "path": "smer/src/index.ts",
+      "bytes": 89,
+      "sha256": "a58f804bf74bab68b4549aa5c715eb4a89ec5835206d198fc79b462b4fc71ef9"
+    },
+    {
+      "path": "smer/tsconfig.json",
+      "bytes": 339,
+      "sha256": "60972507f8acac53bd2829be0cd7f3c59a934ee3a69ad1a6052809c864c9b638"
+    }
+  ]
+}

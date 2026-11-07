@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "implementationHash": "db4ae0617fffeadc357d30b17997b5479e6dfd415f514f72614e3119438c3e81",
+  "files": [
+    {
+      "path": "system/renderer/src/authored/MediaStage.tsx",
+      "hash": "ecf0671fc696094714e49384fcc0d6cabaa55c016ec184f03dde47c84dc3e5c4"
+    },
+    {
+      "path": "system/renderer/src/authored/registry.tsx",
+      "hash": "cb45d679b36b33d1ad0acf4488b0b796ab4ae55eb255c8b9594cb209c62c859d"
+    },
+    {
+      "path": "system/scenes/catalog.ts",
+      "hash": "d8d871caa78b61547d94b645f5534577ac78882c3d6f7d65bcdadbfdff455000"
+    }
+  ]
+}

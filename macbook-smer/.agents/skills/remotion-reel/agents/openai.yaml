@@ -1,0 +1,6 @@
+interface:
+  display_name: "Remotion Reel · XVADUR"
+  short_description: "Edit klipov podľa referencií a existujúceho štýlu"
+  default_prompt: "Použi $remotion-reel a existujúce zadanie XVADUR na tento klip."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "sceneId": "profile-whack-stage",
+  "implementationHash": "f66f181d74e665940242109921deeea4cfaff089e354bdd36334302577c89a9c",
+  "files": [
+    {
+      "path": "system/renderer/src/authored/ProfileWhackStage.tsx",
+      "hash": "876c0b1f0aea8b83dc05745277a4b5d2d6e6b56f91342c12873aac699fcfd773"
+    },
+    {
+      "path": "system/scenes/profile-whack-parameters.ts",
+      "hash": "e4ae20220b45a38199e3f0e1f1002e4f7052ce1b328bc1bf7bb84422f1cd5f4e"
+    }
+  ]
+}

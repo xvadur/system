@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "sceneId": "turtle-coding-stage",
+  "implementationHash": "f913c71555b539d84907d8fabe26add364cabb8c7ba4d3a23a74a7ab9753ed5b",
+  "files": [
+    {
+      "path": "system/renderer/src/authored/TurtleCodingStage.tsx",
+      "hash": "1cf9c6fb762e66d5c5769de83c576220760c498ba88d0362df6fd0d1fc44bb32"
+    },
+    {
+      "path": "system/scenes/turtle-parameters.ts",
+      "hash": "a97ed9ea47e3a8a5495495876d819f51776184b6b18ce41c2f9a4c43c885c078"
+    }
+  ]
+}
